@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# B&B Iluminação (Site 2.0)
 
-## Getting Started
+Este projeto é a reformulação do site e catálogo digital da **B&B Iluminação**, construído visando máxima conversão, performance e rankeamento SEO.
 
-First, run the development server:
+## Stack Tecnológica
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Framework:** Next.js 15+ (App Router)
+- **Linguagem:** TypeScript
+- **Estilização:** Tailwind CSS (+ animações e utilities customizadas)
+- **Ícones:** Lucide React
+- **Estruturação de Dados:** JSON/CMS (a ser definido na Fase 2)
+- **Componentes:** shadcn/ui (para botões e forms base)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Como Rodar Localmente
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone e instale as dependências:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+   ```bash
+   npm install
+   ```
 
-## Learn More
+2. Rode o servidor de desenvolvimento:
 
-To learn more about Next.js, take a look at the following resources:
+   ```bash
+   npm run dev
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. Abra `http://localhost:3000` no seu navegador.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Estrutura de Pastas e Padrões
 
-## Deploy on Vercel
+- `/src/app`: Rotas da aplicação (roteamento nativo App Router).
+  - `/produtos/[category]`: Listagem de produtos de uma categoria.
+  - `/produtos/item/[slug]`: Detalhe fino de um produto.
+  - `/regioes-atendidas/cidades/[city]`: Páginas geradas focadas em Local SEO (ex: Goiânia, Salvador).
+  - `/lp/[slug]`: Landing pages sem Navbar/Footer base focadas 100% em campanhas ADS.
+- `/src/components/layout`: Header e Footer do site.
+- `/src/components/sections`: Grandes blocos de página (Hero, Categorias, Benefícios).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+> 💡 **Redirects** (next.config.ts): Todas as URLs antigas de campanhas (como `/iluminacao` ou `/sobre/`) estão com redirects 301 configurados no `next.config.ts` para transferir tráfego ininterruptamente para as novas páginas do router. Consulte o arquivo `urls_legadas.md` (ou similar) nas anotações do projeto para mais detalhes.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Dúvidas?
+
+Consulte os arquivos:
+
+- `ROADMAP.md`: Para saber onde estamos no projeto.
+- `CHANGELOG.md`: Para rever o que foi mudado recentemente.
+- E procure a equipe de Design/Requisitos se tiver dúvida sobre as linhas de produtos listadas no planejamento.
