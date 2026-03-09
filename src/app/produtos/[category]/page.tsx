@@ -1,61 +1,104 @@
 import { Header } from "@/components/layout/header"
-import { Badge } from "@/components/ui/badge"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { ArrowLeft } from "lucide-react"
+import Image from "next/image"
+import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
+import { ArrowLeft, Filter } from "lucide-react"
 import Link from "next/link"
+import { products, categories } from "@/lib/data"
 
-// Simulação de dados filtrados
-const getProductsByCategory = (category: string) => {
-    const all = [
-        { id: 1, name: "Poste Reto 4m", category: "publica", model: "PR-40" },
-        { id: 2, name: "Poste Curvo Simples", category: "publica", model: "PC-D1" },
-        { id: 3, name: "Poste Decorativo Pétala", category: "decorativa", model: "PD-PET" },
-        { id: 4, name: "Poste Industrial 12m", category: "industrial", model: "PI-120" },
-    ]
-    return all.filter(p => p.category === category)
-}
-
-export default function CategoryPage({ params }: { params: { category: string } }) {
-    const products = getProductsByCategory(params.category)
-    const categoryName = params.category.charAt(0).toUpperCase() + params.category.slice(1)
+export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
+    const { category: categorySlug } = await params;
+    const category = categories.find(c => c.slug === categorySlug);
+    const categoryProducts = products.filter(p => p.category === categorySlug);
+    const categoryName = category?.title || categorySlug;
 
     return (
-        <main className="min-h-screen bg-industrial-950 pt-24">
+        <main className="min-h-screen bg-white">
             <Header />
+            <FloatingWhatsApp />
 
-            <div className="container mx-auto px-4 py-12">
-                <Link href="/produtos" className="text-accent-premium flex items-center gap-2 mb-8 hover:underline text-sm font-bold">
-                    <ArrowLeft className="size-4" /> VOLTAR PARA TODOS OS PRODUTOS
-                </Link>
-
-                <div className="mb-12">
-                    <h1 className="text-4xl font-bold font-outfit text-white mb-2">Iluminação <span className="text-accent-premium">{categoryName}</span></h1>
-                    <p className="text-industrial-400">Linha especializada para aplicações em ambientes de tipo {categoryName.toLowerCase()}.</p>
+            {/* Hero compacto da categoria */}
+            <section className="pt-24 md:pt-28 pb-8 bg-white border-b border-industrial-200">
+                <div className="container mx-auto px-4">
+                    <Link
+                        href="/produtos"
+                        className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-widest text-industrial-500 hover:text-industrial-900 transition-colors mb-6"
+                        aria-label="Voltar para todos os produtos"
+                    >
+                        <ArrowLeft className="size-4" aria-hidden="true" />
+                        Todos os Produtos
+                    </Link>
+                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
+                        <div>
+                            <p className="text-[11px] font-bold uppercase tracking-widest text-industrial-500 mb-2">Linha Industrial</p>
+                            <h1 className="text-3xl md:text-5xl font-black text-industrial-950 uppercase leading-none">
+                                <span className="border-b-4 border-accent-premium">{categoryName}</span>
+                            </h1>
+                            {category?.description && (
+                                <p className="text-industrial-500 mt-3 max-w-xl text-sm md:text-base leading-relaxed">{category.description}</p>
+                            )}
+                        </div>
+                        <button
+                            className="flex items-center justify-center gap-2 h-12 px-5 bg-white border border-industrial-300 hover:bg-industrial-50 text-industrial-700 font-bold uppercase tracking-widest text-[11px] transition-colors w-full md:w-auto shrink-0"
+                            aria-label="Filtrar produtos desta categoria"
+                        >
+                            <Filter className="size-4" aria-hidden="true" /> FILTRAR
+                        </button>
+                    </div>
                 </div>
+            </section>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                    {products.map((product) => (
-                        <Card key={product.id} className="group overflow-hidden border-white/5 bg-industrial-900/40 hover:border-accent-premium/30 transition-all">
-                            <Link href={`/produtos/item/${product.id}`}>
-                                <div className="aspect-square bg-industrial-800 flex items-center justify-center relative overflow-hidden">
-                                    <span className="text-industrial-700 font-outfit text-4xl font-bold">{product.model}</span>
+            <div className="container mx-auto px-4 py-8 md:py-12">
+                {categoryProducts.length > 0 ? (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5" role="list" aria-label={`Produtos da linha ${categoryName}`}>
+                        {categoryProducts.map((product) => (
+                            <Link
+                                key={product.id}
+                                href={`/produtos/item/${product.id}`}
+                                className="group flex flex-col bg-white border border-industrial-200 hover:border-industrial-800 hover:shadow-md transition-all"
+                                role="listitem"
+                                aria-label={`Ver detalhes de ${product.name}`}
+                            >
+                                <div className="aspect-square bg-industrial-100 flex items-center justify-center relative border-b border-industrial-200 overflow-hidden">
+                                    <div className="absolute top-0 left-0 w-full h-0.5 bg-accent-premium group-hover:h-1 transition-all" aria-hidden="true" />
+                                    {product.image ? (
+                                        <Image
+                                            src={product.image}
+                                            alt={product.name}
+                                            fill
+                                            className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                        />
+                                    ) : (
+                                        <span className="text-industrial-300 font-black text-5xl italic select-none tracking-tighter group-hover:scale-105 transition-transform duration-300" aria-hidden="true">
+                                            {product.model}
+                                        </span>
+                                    )}
+                                    <span className="absolute top-3 right-3 bg-industrial-950 text-white text-[9px] font-black uppercase tracking-tight px-2 py-1">
+                                        {categoryName}
+                                    </span>
                                 </div>
-                                <CardHeader>
-                                    <CardTitle className="text-lg group-hover:text-accent-premium transition-colors">{product.name}</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <div className="flex items-center justify-between">
-                                        <span className="text-sm text-industrial-500">Modelo: {product.model}</span>
-                                        <Button variant="link" size="sm" className="p-0 h-auto text-accent-premium font-bold">
-                                            DETALHES
-                                        </Button>
+                                <div className="p-4 flex flex-col flex-1">
+                                    <h2 className="text-sm font-black text-industrial-900 uppercase tracking-tight mb-1 group-hover:text-industrial-700">
+                                        {product.name}
+                                    </h2>
+                                    <p className="text-industrial-500 text-[11px] leading-relaxed flex-1 mb-3">{product.description}</p>
+                                    <div className="flex items-center justify-between pt-3 border-t border-industrial-100">
+                                        <span className="text-[10px] text-industrial-400 font-bold uppercase tracking-widest">Mod: {product.model}</span>
+                                        <span className="text-[11px] text-industrial-900 font-black uppercase tracking-widest group-hover:underline">Ver mais →</span>
                                     </div>
-                                </CardContent>
+                                </div>
                             </Link>
-                        </Card>
-                    ))}
-                </div>
+                        ))}
+                    </div>
+                ) : (
+                    <div className="py-20 text-center border border-dashed border-industrial-300 bg-industrial-50">
+                        <p className="text-industrial-500 font-bold uppercase tracking-widest text-sm mb-4">
+                            Nenhum produto encontrado nesta categoria no momento.
+                        </p>
+                        <Link href="/produtos" className="text-industrial-900 font-black uppercase text-xs underline hover:no-underline">
+                            Ver catálogo completo
+                        </Link>
+                    </div>
+                )}
             </div>
         </main>
     )

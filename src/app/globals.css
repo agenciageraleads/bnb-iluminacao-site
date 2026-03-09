@@ -1,48 +1,61 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Cores Industriais Premium */
+  /* Escala Neutra Industrial (usada para superfícies no tema claro) */
   --color-industrial-950: #0a0a0c;
   --color-industrial-900: #121214;
   --color-industrial-800: #1a1a1e;
   --color-industrial-700: #2a2a30;
   --color-industrial-600: #3f3f46;
-  --color-industrial-500: #52525b;
-  --color-industrial-400: #71717a;
-  --color-industrial-300: #a1a1aa;
-  --color-industrial-200: #d4d4d8;
-  --color-industrial-100: #f4f4f5;
+  --color-industrial-500: #6b7280;
+  --color-industrial-400: #9ca3af;
+  --color-industrial-300: #d1d5db;
+  --color-industrial-200: #e5e7eb;
+  --color-industrial-100: #f5f5f5;
+  --color-industrial-50: #fafafa;
 
-  /* Cores de Destaque (Catálogo B&B - Amarelo Ouro e Preto) */
+  /* Cores de Destaque (Catálogo B&B - Amarelo Ouro Industrial) */
+  /* ATENÇÃO: amarelo é decorativo. Nunca como texto sobre branco. */
   --color-accent-premium: #E8D51C;
-  --color-accent-industrial: #CABD19;
+  --color-accent-dark: #B8A914;
+  /* versão mais escura p/ bordas/acentos em fundo claro */
 
   --font-sans: "Inter", var(--font-geist-sans);
-
-  --radius-xl: 1rem;
-  --radius-2xl: 1.5rem;
+  --font-display: "Outfit", var(--font-geist-sans);
 }
 
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
+  /* Tema Off-White B&B (Cinza Arquitetônico) */
+  --background: #f8f9fa;
+  /* Fundo global cinza sutil */
+  --foreground: #0f0f0f;
+  /* Texto industrial */
+  --surface: #ffffff;
+  /* Elementos brancos que saltam do fundo */
+  --surface-hover: #f1f3f5;
+  /* Hover sutil */
   --card: #ffffff;
-  --card-foreground: #0f172a;
-  --border: #e2e8f0;
-}
-
-.dark {
-  --background: #0a0a0c;
-  --foreground: #f8fafc;
-  --card: #121214;
-  --card-foreground: #f8fafc;
-  --border: #2a2a30;
+  /* Cards brancos sob fundo cinza */
+  --card-foreground: #0f0f0f;
+  --border: #e9ecef;
+  /* Bordas suaves */
+  --border-strong: #dee2e6;
+  /* Bordas de separação */
+  --muted: #6c757d;
+  --muted-foreground: #adb5bd;
 }
 
 @layer base {
   * {
     border-color: var(--border);
-    outline-color: rgba(var(--ring), 0.5);
+    /* Garante que todos os botões e links tenham feedback visual de foco acessível */
+  }
+
+  html {
+    /* Elimina delay de 300ms em duplo-toque em dispositivos iOS/Android */
+    touch-action: manipulation;
+    /* Garante que scrollbars, inputs, etc. respeitem o tema visual */
+    color-scheme: light;
   }
 
   body {
@@ -50,16 +63,47 @@
     color: var(--foreground);
     -webkit-font-smoothing: antialiased;
     font-feature-settings: "rlig" 1, "calt" 1;
+    /* Evita zoom automático em inputs no iOS */
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Focus visível acessível em todos os elementos interativos */
+  :focus-visible {
+    outline: 2px solid #E8D51C;
+    outline-offset: 2px;
   }
 }
 
-/* Glassmorphism Utility */
+/* Utilitários de layout e touch */
 @layer utilities {
-  .glass {
-    @apply bg-white/10 backdrop-blur-md border border-white/20 shadow-xl;
+
+  /* Card claro com elevação sutil */
+  .card-light {
+    @apply bg-white border border-industrial-200 shadow-sm hover:shadow-md transition-shadow;
   }
 
-  .dark .glass {
-    @apply bg-black/20 backdrop-blur-lg border border-white/10 shadow-2xl;
+  /* Seção de fundo alternado (zebra claro) */
+  .section-surface {
+    @apply bg-industrial-50;
+  }
+
+  /* Barra de destaque amarela (decorativa, não usar como texto) */
+  .accent-bar {
+    @apply border-l-4 border-accent-premium pl-4;
+  }
+
+  /* Esconde scrollbar mantendo o scroll funcional */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Garante safe-area para botões fixos próximos ao notch iOS */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 16px);
   }
 }

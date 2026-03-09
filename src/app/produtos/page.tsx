@@ -1,67 +1,121 @@
 import { Header } from "@/components/layout/header"
-import { Badge } from "@/components/ui/badge"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import Image from "next/image"
+import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
 import { Filter, Search } from "lucide-react"
 import Link from "next/link"
+import { products, categories } from "@/lib/data"
 
-const allProducts = [
-    { id: 1, name: "Poste Reto 4m", category: "Pública", model: "PR-40", image: "/images/p1.jpg" },
-    { id: 2, name: "Poste Curvo Simples", category: "Pública", model: "PC-D1", image: "/images/p2.jpg" },
-    { id: 3, name: "Poste Decorativo Pétala", category: "Decorativa", model: "PD-PET", image: "/images/p3.jpg" },
-    { id: 4, name: "Poste Industrial 12m", category: "Industrial", model: "PI-120", image: "/images/p4.jpg" },
-    { id: 5, name: "Poste Cônico 6m", category: "Pública", model: "PCO-60", image: "/images/p5.jpg" },
-    { id: 6, name: "Poste Ornamental", category: "Decorativa", model: "PO-01", image: "/images/p6.jpg" },
-]
 
 export default function ProdutosPage() {
     return (
-        <main className="min-h-screen bg-industrial-950 pt-24">
+        <main className="min-h-screen bg-white">
             <Header />
+            <FloatingWhatsApp />
 
-            <div className="container mx-auto px-4 py-12">
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
-                    <div>
-                        <h1 className="text-4xl font-bold font-outfit text-white mb-2">Catálogo de <span className="text-accent-premium">Produtos</span></h1>
-                        <p className="text-industrial-400">Encontre a solução ideal para seu projeto de iluminação.</p>
-                    </div>
-
-                    <div className="flex items-center gap-4">
-                        <div className="relative">
-                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-industrial-500" />
-                            <input
-                                type="text"
-                                placeholder="Buscar produtos..."
-                                className="bg-industrial-900 border border-industrial-700 rounded-lg pl-10 pr-4 py-2 text-sm text-white focus:outline-none focus:border-accent-premium w-64"
-                            />
-                        </div>
-                        <Button variant="outline" className="gap-2">
-                            <Filter className="size-4" /> FILTRAR
-                        </Button>
+            {/* Hero da página de catálogo */}
+            <section className="pt-24 md:pt-28 pb-10 md:pb-14 bg-white border-b border-industrial-200">
+                <div className="container mx-auto px-4">
+                    <div className="max-w-2xl">
+                        <p className="text-[11px] font-bold uppercase tracking-widest text-industrial-500 mb-3">Catálogo Completo</p>
+                        <h1 className="text-3xl md:text-5xl font-black font-outfit text-industrial-950 uppercase leading-none mb-4">
+                            NOSSOS <span className="border-b-4 border-accent-premium">PRODUTOS</span>
+                        </h1>
+                        <p className="text-industrial-500 text-base leading-relaxed">
+                            Soluções em aço galvanizado com certificação de qualidade para iluminação pública, industrial e decorativa.
+                        </p>
                     </div>
                 </div>
+            </section>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-                    {allProducts.map((product) => (
-                        <Card key={product.id} className="group overflow-hidden border-white/5 bg-industrial-900/40 hover:border-accent-premium/30 transition-all">
-                            <Link href={`/produtos/item/${product.id}`}>
-                                <div className="aspect-square bg-industrial-800 flex items-center justify-center relative overflow-hidden">
-                                    <span className="text-industrial-700 font-outfit text-4xl font-bold">{product.model}</span>
-                                    <Badge variant="industrial" className="absolute top-4 right-4">{product.category}</Badge>
+            <div className="container mx-auto px-4 py-8 md:py-12">
+                {/* Busca e filtro — Mobile: full-width empilhado */}
+                <div className="flex flex-col sm:flex-row items-stretch gap-3 mb-8">
+                    <div className="relative flex-1">
+                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 size-4 text-industrial-400" aria-hidden="true" />
+                        <input
+                            type="search"
+                            placeholder="Buscar produtos…"
+                            aria-label="Buscar produtos"
+                            className="w-full bg-white border border-industrial-300 pl-11 pr-4 h-12 text-sm text-industrial-900 placeholder:text-industrial-400 focus:outline-none focus:border-industrial-700 transition-colors"
+                        />
+                    </div>
+                    <button
+                        className="flex items-center justify-center gap-2 h-12 px-5 bg-white border border-industrial-300 hover:bg-industrial-50 active:bg-industrial-100 text-industrial-700 font-bold tracking-widest uppercase text-[11px] transition-colors"
+                        aria-label="Filtrar produtos"
+                    >
+                        <Filter className="size-4" aria-hidden="true" />
+                        FILTRAR
+                    </button>
+                </div>
+
+                {/* Categorias — scroll horizontal em mobile */}
+                <nav aria-label="Categorias de produtos" className="flex overflow-x-auto pb-4 mb-10 gap-2 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
+                    <Link
+                        href="/produtos"
+                        className="whitespace-nowrap px-5 py-2.5 bg-industrial-950 text-white text-[11px] font-bold uppercase tracking-widest flex-shrink-0 transition-colors"
+                    >
+                        Todos
+                    </Link>
+                    {categories.map((cat) => (
+                        <Link
+                            key={cat.slug}
+                            href={`/produtos/${cat.slug}`}
+                            className="whitespace-nowrap px-5 py-2.5 bg-white border border-industrial-200 text-industrial-700 text-[11px] font-bold uppercase tracking-widest hover:bg-industrial-900 hover:text-white hover:border-industrial-900 flex-shrink-0 transition-all"
+                        >
+                            {cat.title}
+                        </Link>
+                    ))}
+                </nav>
+
+                {/* Grid de produtos */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5" role="list" aria-label="Lista de produtos">
+                    {products.map((product) => (
+                        <Link
+                            key={product.id}
+                            href={`/produtos/item/${product.id}`}
+                            className="group flex flex-col bg-white border border-industrial-200 hover:border-industrial-800 hover:shadow-md active:shadow-sm transition-all"
+                            role="listitem"
+                            aria-label={`Ver detalhes de ${product.name}`}
+                        >
+                            {/* Imagem/placeholder do produto */}
+                            <div className="aspect-square bg-industrial-100 flex items-center justify-center relative overflow-hidden border-b border-industrial-200">
+                                <div className="absolute top-0 left-0 w-full h-0.5 bg-accent-premium group-hover:h-1 transition-all" aria-hidden="true" />
+                                {product.image ? (
+                                    <Image
+                                        src={product.image}
+                                        alt={product.name}
+                                        fill
+                                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                                    />
+                                ) : (
+                                    <span
+                                        className="text-industrial-300 font-black text-5xl select-none italic tracking-tighter group-hover:scale-105 transition-transform duration-300"
+                                        aria-hidden="true"
+                                    >
+                                        {product.model}
+                                    </span>
+                                )}
+                                <span className="absolute top-3 right-3 bg-industrial-950 text-white text-[9px] font-black uppercase tracking-tight px-2 py-1">
+                                    {categories.find(c => c.slug === product.category)?.title || product.category}
+                                </span>
+                            </div>
+
+                            {/* Info */}
+                            <div className="p-4 flex flex-col flex-1">
+                                <h2 className="text-sm font-black text-industrial-900 uppercase tracking-tight group-hover:text-industrial-700 transition-colors mb-1">
+                                    {product.name}
+                                </h2>
+                                <p className="text-industrial-500 text-[11px] leading-relaxed flex-1 mb-3">
+                                    {product.description}
+                                </p>
+                                <div className="flex items-center justify-between pt-3 border-t border-industrial-100">
+                                    <span className="text-[10px] text-industrial-400 font-bold uppercase tracking-widest">Modelo: {product.model}</span>
+                                    <span className="text-[11px] text-industrial-900 font-black uppercase tracking-widest group-hover:underline">
+                                        Ver mais →
+                                    </span>
                                 </div>
-                                <CardHeader>
-                                    <CardTitle className="text-lg group-hover:text-accent-premium transition-colors">{product.name}</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <div className="flex items-center justify-between">
-                                        <span className="text-sm text-industrial-500">Modelo: {product.model}</span>
-                                        <Button variant="link" size="sm" className="p-0 h-auto text-accent-premium font-bold">
-                                            DETALHES
-                                        </Button>
-                                    </div>
-                                </CardContent>
-                            </Link>
-                        </Card>
+                            </div>
+                        </Link>
                     ))}
                 </div>
             </div>

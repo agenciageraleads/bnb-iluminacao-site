@@ -1,52 +1,125 @@
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { ArrowRight, Calculator, FileText } from "lucide-react"
+import Link from "next/link"
+import Image from "next/image"
+import { ArrowRight, Calculator, FileText, CheckCircle2 } from "lucide-react"
+import { categories } from "@/lib/data"
 
 export function Hero() {
+    const featuredCategory = categories[0]
+
     return (
-        <section className="relative pt-32 pb-20 overflow-hidden">
-            {/* Background Decorative Elements */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10 pointer-events-none">
-                <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-accent-premium/10 blur-[120px] rounded-full" />
-                <div className="absolute bottom-[10%] right-[-10%] w-[30%] h-[30%] bg-accent-industrial/10 blur-[100px] rounded-full" />
-            </div>
+        <section className="relative min-h-[100svh] flex items-center pt-24 pb-16 md:pt-32 md:pb-20 overflow-hidden bg-white">
+            {/* Barra decorativa amarela no topo e elementos de fundo */}
+            <div className="absolute top-16 left-0 right-0 h-1 bg-accent-premium" aria-hidden="true" />
+            <div className="absolute top-0 right-0 w-[60%] h-full bg-accent-premium/5 -z-10 pointer-events-none" aria-hidden="true" />
 
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
-                <div className="max-w-4xl mx-auto text-center">
-                    <div className="flex flex-col items-center justify-center text-center">
-                        {/* Logo Gigante da Capa */}
-                        <svg viewBox="0 0 500 200" className="h-32 md:h-48 mb-10 fill-accent-premium lg:fill-white" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10,20 h80 c25,0 45,15 45,40 c0,15 -10,25 -20,30 c15,5 25,18 25,35 c0,25 -20,45 -50,45 h-80 v-150 z m35,30 v30 h40 c10,0 20,-5 20,-15 c0,-10 -10,-15 -20,-15 h-40 z m0,60 v30 h45 c15,0 25,-8 25,-15 c0,-10 -10,-15 -25,-15 h-45 z" />
-                            <path d="M160,105 l20,-30 h-15 c-10,0 -15,-5 -15,-15 c0,-15 15,-15 25,-15 h30 l-25,-25 h-35 c-25,0 -45,15 -45,45 c0,20 15,35 30,40 z" />
-                            <path d="M220,105 l40,-40 h-20 c-15,0 -20,-5 -20,-15 c0,-10 10,-15 20,-15 h35 l15,-15 h-80 c-25,0 -40,20 -40,40 c0,25 20,35 40,45 z" />
-                            <path d="M250,20 h80 c25,0 45,15 45,40 c0,15 -10,25 -20,30 c15,5 25,18 25,35 c0,25 -20,45 -50,45 h-80 v-150 z m35,30 v30 h40 c10,0 20,-5 20,-15 c0,-10 -10,-15 -20,-15 h-40 z m0,60 v30 h45 c15,0 25,-8 25,-15 c0,-10 -10,-15 -25,-15 h-45 z" />
-                        </svg>
+            <div className="container mx-auto px-4 sm:px-6 relative">
+                <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
 
-                        <h1 className="text-4xl md:text-6xl font-light tracking-wide text-industrial-200 mb-12">
-                            Soluções de <span className="font-bold text-white">iluminação</span>
-                        </h1>
+                    {/* Conteúdo textual — aparece primeiro em mobile */}
+                    <div className="space-y-8 order-2 lg:order-1">
+                        <div className="space-y-5">
+                            {/* Badge de credibilidade */}
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-industrial-50 border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-[0.2em] uppercase">
+                                <span className="size-2 bg-accent-premium rounded-full animate-pulse" aria-hidden="true" />
+                                Fabricação Própria • Goiânia, GO
+                            </div>
+
+                            {/* H1: text-balance evita widows. Tamanho responsivo real. */}
+                            <h1
+                                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-industrial-950 leading-[0.95] uppercase"
+                                style={{ textWrap: "balance" } as React.CSSProperties}
+                            >
+                                ILUMINAÇÃO <br className="hidden sm:block" />
+                                <span className="relative inline-block">
+                                    INDUSTRIAL
+                                    {/* Sublinhado decorativo amarelo */}
+                                    <span className="absolute -bottom-1 left-0 w-full h-1 bg-accent-premium" aria-hidden="true" />
+                                </span>
+                                <br /> DE ALTO IMPACTO
+                            </h1>
+
+                            <p className="text-industrial-500 text-base md:text-lg max-w-xl leading-relaxed">
+                                Especialistas em postes metálicos, braços e soluções customizadas
+                                para grandes obras, indústrias e projetos públicos em todo o Brasil.
+                            </p>
+                        </div>
+
+                        {/* CTAs — empilhados em mobile (full-width), lado a lado em sm+ */}
+                        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                            <Link
+                                href="/contato"
+                                className="flex items-center justify-center gap-2 bg-industrial-950 text-white hover:bg-industrial-800 active:bg-industrial-900 font-black uppercase tracking-widest h-14 px-8 w-full sm:w-auto transition-colors group"
+                                aria-label="Solicitar orçamento rápido"
+                            >
+                                <Calculator className="size-5" aria-hidden="true" />
+                                Orçamento Rápido
+                                <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                            </Link>
+                            <Link
+                                href="/downloads"
+                                className="flex items-center justify-center gap-2 bg-white text-industrial-800 hover:bg-industrial-50 active:bg-industrial-100 border border-industrial-300 font-black uppercase tracking-widest h-14 px-8 w-full sm:w-auto transition-colors"
+                                aria-label="Baixar catálogos em PDF"
+                            >
+                                <FileText className="size-5" aria-hidden="true" />
+                                Catálogos PDF
+                            </Link>
+                        </div>
+
+                        {/* Social proof — stats compactos */}
+                        <div className="grid grid-cols-3 gap-4 pt-6 border-t border-industrial-200">
+                            {[
+                                { label: "Projetos Entregues", value: "+5.000" },
+                                { label: "Anos no Mercado", value: "15+" },
+                                { label: "Toneladas/mês", value: "20t" },
+                            ].map((stat, i) => (
+                                <div key={i} className="accent-bar">
+                                    <div className="text-industrial-950 font-black text-xl md:text-2xl">{stat.value}</div>
+                                    <div className="text-industrial-500 text-[10px] uppercase font-bold tracking-wider leading-tight mt-1">{stat.label}</div>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* Trust indicators pequenos — mobile friendly */}
+                        <div className="flex flex-wrap gap-3">
+                            {["Galvanização NBR 6323", "Prazo Garantido", "Frota Própria"].map((item) => (
+                                <div key={item} className="flex items-center gap-1.5 text-[11px] font-bold text-industrial-600 uppercase tracking-wide">
+                                    <CheckCircle2 className="size-4 text-accent-dark shrink-0" aria-hidden="true" />
+                                    {item}
+                                </div>
+                            ))}
+                        </div>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                        <Button className="bg-accent-premium text-black hover:bg-accent-premium/90 font-bold uppercase tracking-widest rounded-none h-14 px-8 w-full sm:w-auto gap-2 group">
-                            <Calculator className="size-5" />
-                            SOLICITE SEU ORÇAMENTO
-                            <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
-                        </Button>
-                        <Button className="bg-transparent border border-industrial-600 text-white hover:bg-white/5 font-bold uppercase tracking-widest rounded-none h-14 px-8 w-full sm:w-auto gap-2">
-                            <FileText className="size-5" />
-                            VER CATÁLOGO COMPLETO
-                        </Button>
-                    </div>
-                </div>
+                    {/* Visual do produto — visível em TODOS os tamanhos (mobile também) */}
+                    <div className="relative order-1 lg:order-2">
+                        <div className="aspect-[4/3] sm:aspect-[4/4] bg-industrial-100 border border-industrial-200 relative overflow-hidden group">
+                            {featuredCategory.image ? (
+                                <Image
+                                    src={featuredCategory.image}
+                                    alt={featuredCategory.title}
+                                    fill
+                                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                    priority
+                                />
+                            ) : (
+                                <div className="absolute inset-0 flex items-center justify-center">
+                                    <span className="text-industrial-200 font-black text-[80px] sm:text-[120px] lg:text-[140px] select-none tracking-widest leading-none">
+                                        B&B
+                                    </span>
+                                </div>
+                            )}
+                            {/* Borda amarela decorativa no canto */}
+                            <div className="absolute top-0 left-0 w-full h-1 bg-accent-premium" aria-hidden="true" />
+                            <div className="absolute bottom-0 right-0 w-1 h-full bg-accent-premium" aria-hidden="true" />
 
-                {/* Imagem Principal ou Vídeo em Destaque */}
-                <div className="max-w-5xl mx-auto mt-16 relative">
-                    <div className="aspect-[21/9] rounded-none overflow-hidden bg-industrial-900 border border-industrial-800 shadow-2xl relative">
-                        <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent z-10" />
-                        <div className="absolute inset-0 flex items-center justify-center z-20">
-                            <span className="text-industrial-600 font-extrabold uppercase tracking-widest text-xl">
-                                E-COMMERCE B&B EM CONSTRUÇÃO
+                            {/* Hover overlay apenas em desktop (sem hover em mobile) */}
+                            <div className="absolute inset-0 bg-industrial-950/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden md:block" aria-hidden="true" />
+                        </div>
+
+                        {/* Selo de qualidade — posicionado fora da imagem para ser legível em mobile */}
+                        <div className="absolute -bottom-4 -right-2 md:-bottom-6 md:-left-6 bg-accent-premium text-black p-3 md:p-4 text-center shadow-md max-w-[120px] md:max-w-none">
+                            <span className="font-black text-[9px] md:text-[11px] uppercase tracking-tight leading-tight block">
+                                Galvanização a Fogo<br />NBR 6323
                             </span>
                         </div>
                     </div>

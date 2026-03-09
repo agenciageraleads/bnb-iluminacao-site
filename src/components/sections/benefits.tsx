@@ -1,28 +1,4 @@
-import { ShieldCheck, Zap, Award, Recycle } from "lucide-react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-
-const benefits = [
-    {
-        title: "MÁXIMA DURABILIDADE",
-        description: "Postes galvanizados a fogo conforme NBR 6323, garantindo resistência extrema contra corrosão em qualquer ambiente.",
-        icon: ShieldCheck,
-    },
-    {
-        title: "EFICIÊNCIA ENERGÉTICA",
-        description: "Projetados para integração perfeita com luminárias LED de alta performance, otimizando o consumo de energia.",
-        icon: Zap,
-    },
-    {
-        title: "CERTIFICAÇÃO TOTAL",
-        description: "Atendimento rigoroso às normas ABNT e certificações exigidas para licitações e grandes projetos industriais.",
-        icon: Award,
-    },
-    {
-        title: "SUSTENTABILIDADE",
-        description: "Aço 100% reciclável e processos de fabricação com baixo impacto ambiental, alinhados às práticas ESG.",
-        icon: Recycle,
-    },
-]
+import { benefits } from "@/lib/data"
 
 export function Benefits() {
     return (
@@ -42,9 +18,6 @@ export function Benefits() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {benefits.map((benefit, index) => (
                         <div key={index} className="bg-industrial-900 border border-industrial-800 p-8 hover:border-accent-premium/50 transition-colors group">
-                            <div className="w-16 h-16 rounded-full bg-industrial-950 border border-industrial-800 flex items-center justify-center mb-6 group-hover:border-accent-premium transition-colors">
-                                <benefit.icon className="size-8 text-accent-premium" />
-                            </div>
                             <h3 className="text-xl font-bold uppercase tracking-widest text-white mb-4">{benefit.title}</h3>
                             <p className="text-sm text-industrial-400 leading-relaxed">
                                 {benefit.description}

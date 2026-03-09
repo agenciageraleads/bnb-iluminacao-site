@@ -1,44 +1,7 @@
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 
-const categories = [
-    {
-        title: "Postes Metálicos",
-        slug: "poste-metalico",
-        image: "/images/cat-publica.jpg", // Placeholder path until image integration
-        description: "Postes Telecônicos retos e curvos, Ornamentais e Mastros para Bandeira.",
-    },
-    {
-        title: "Braços e Suportes",
-        slug: "bracos",
-        image: "/images/cat-industrial.jpg",
-        description: "Braços para Luminária Pública, CFTV e Acessórios.",
-    },
-    {
-        title: "Linha Garden",
-        slug: "linha-garden",
-        image: "/images/cat-decorativa.jpg",
-        description: "Em Breve: Iluminação paisagística e decorativa de alto padrão.",
-    },
-    {
-        title: "Serviços",
-        slug: "servicos",
-        image: "/images/cat-decorativa.jpg",
-        description: "Pintura Eletrostática e Corte a Laser especializados.",
-    },
-    {
-        title: "Linha Sport",
-        slug: "linha-sport",
-        image: "/images/cat-industrial.jpg",
-        description: "Em Breve: Iluminação para quadras, campos e complexos esportivos.",
-    },
-    {
-        title: "Linha Agro",
-        slug: "linha-agro",
-        image: "/images/cat-industrial.jpg",
-        description: "Em Breve: Soluções robustas de iluminação para o agronegócio.",
-    },
-]
+import { categories } from "@/lib/data"
 
 export function Categories() {
     return (

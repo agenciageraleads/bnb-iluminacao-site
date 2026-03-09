@@ -1,4 +1,4 @@
-export function SchemaOrg({ data }: { data: any }) {
+export function SchemaOrg({ data }: { data: Record<string, unknown> }) {
     return (
         <script
             type="application/ld+json"

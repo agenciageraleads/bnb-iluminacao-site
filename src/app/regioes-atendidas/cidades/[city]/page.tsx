@@ -1,6 +1,6 @@
 import { Header } from "@/components/layout/header"
 
-export default async function CityPage({ params }: { params: { city: string } }) {
+export default async function CityPage({ params }: { params: Promise<{ city: string }> }) {
     const { city } = await params;
     const cityName = city.charAt(0).toUpperCase() + city.slice(1).replace('-', ' ');
 

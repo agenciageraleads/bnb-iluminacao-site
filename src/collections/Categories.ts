@@ -31,7 +31,7 @@ const Categories: CollectionConfig = {
             name: 'image',
             type: 'upload',
             relationTo: 'media',
-            required: true,
+            required: false,
         },
     ],
 }
