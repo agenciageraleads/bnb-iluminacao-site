@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
-import { portfolioItems } from "@/lib/data"
+import { portfolioItems } from "@/lib/constants"
 import { MessageCircle } from "lucide-react"
 
 export function Portfolio() {
