@@ -7,14 +7,14 @@ export default function ContatoPage() {
         {
             icon: <Phone className="size-5" aria-hidden="true" />,
             label: "Telefone / WhatsApp",
-            value: "(62) 3288-7711",
-            href: "tel:+556232887711",
+            value: "(62) 3576-1988",
+            href: "tel:+556235761988",
         },
         {
             icon: <Mail className="size-5" aria-hidden="true" />,
             label: "E-mail Comercial",
-            value: "comercial@bebiluminacao.com.br",
-            href: "mailto:comercial@bebiluminacao.com.br",
+            value: "contato@bebiluminacao.com",
+            href: "mailto:contato@bebiluminacao.com",
         },
         {
             icon: <MapPin className="size-5" aria-hidden="true" />,
@@ -171,7 +171,7 @@ export default function ContatoPage() {
 
                         {/* Atalho para WhatsApp */}
                         <a
-                            href="https://wa.me/556232887711"
+                            href="https://wa.me/556235761988"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center gap-3 w-full p-5 bg-industrial-950 text-white hover:bg-industrial-800 active:bg-industrial-700 transition-colors group"

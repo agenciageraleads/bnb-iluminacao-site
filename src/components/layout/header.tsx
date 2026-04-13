@@ -29,14 +29,7 @@ export function Header() {
 
                         {/* Logo */}
                         <Link href="/" className="flex items-center gap-2 group" aria-label="B&B Iluminação - Página Inicial">
-                            <svg viewBox="0 0 400 150" className="h-9 w-auto md:h-11 fill-industrial-900 group-hover:fill-industrial-700 transition-colors" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M10,20 h80 c25,0 45,15 45,40 c0,15 -10,25 -20,30 c15,5 25,18 25,35 c0,25 -20,45 -50,45 h-80 v-150 z m35,30 v30 h40 c10,0 20,-5 20,-15 c0,-10 -10,-15 -20,-15 h-40 z m0,60 v30 h45 c15,0 25,-8 25,-15 c0,-10 -10,-15 -25,-15 h-45 z" />
-                                <path d="M160,105 l20,-30 h-15 c-10,0 -15,-5 -15,-15 c0,-15 15,-15 25,-15 h30 l-25,-25 h-35 c-25,0 -45,15 -45,45 c0,20 15,35 30,40 z" />
-                                <path d="M220,105 l40,-40 h-20 c-15,0 -20,-5 -20,-15 c0,-10 10,-15 20,-15 h35 l15,-15 h-80 c-25,0 -40,20 -40,40 c0,25 20,35 40,45 z" />
-                                <path d="M250,20 h80 c25,0 45,15 45,40 c0,15 -10,25 -20,30 c15,5 25,18 25,35 c0,25 -20,45 -50,45 h-80 v-150 z m35,30 v30 h40 c10,0 20,-5 20,-15 c0,-10 -10,-15 -20,-15 h-40 z m0,60 v30 h45 c15,0 25,-8 25,-15 c0,-10 -10,-15 -25,-15 h-45 z" />
-                                <rect x="5" y="180" width="370" height="8" />
-                                <text x="50" y="215" fontFamily="Arial, sans-serif" fontWeight="900" fontSize="26" letterSpacing="10" fill="#121214">ILUMINAÇÃO</text>
-                            </svg>
+                            <img src="/logo.png" alt="B&B Iluminação" className="h-10 md:h-12 w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity" />
                         </Link>
 
                         {/* Desktop Navigation */}
@@ -51,7 +44,7 @@ export function Header() {
                                 </Link>
                             ))}
                             <a
-                                href="https://wa.me/556232887711"
+                                href="https://wa.me/556235761988"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center gap-2 bg-industrial-900 text-white hover:bg-accent-premium hover:text-black font-black tracking-widest uppercase text-[11px] px-5 h-10 transition-all"
@@ -115,7 +108,7 @@ export function Header() {
                     {/* CTA WhatsApp no fundo do menu — thumb zone */}
                     <div className="p-5 border-t border-industrial-100 pb-safe">
                         <a
-                            href="https://wa.me/556232887711"
+                            href="https://wa.me/556235761988"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex items-center justify-center gap-2 w-full h-14 bg-industrial-900 text-white font-black uppercase tracking-widest text-sm active:bg-industrial-700 transition-colors"

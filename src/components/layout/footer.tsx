@@ -12,14 +12,7 @@ export function Footer() {
                     {/* Coluna 1: Logo e Redes */}
                     <div className="space-y-8 text-center md:text-left">
                         <Link href="/" className="inline-block">
-                            <svg viewBox="0 0 400 150" className="h-16 w-auto fill-white" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M10,20 h80 c25,0 45,15 45,40 c0,15 -10,25 -20,30 c15,5 25,18 25,35 c0,25 -20,45 -50,45 h-80 v-150 z m35,30 v30 h40 c10,0 20,-5 20,-15 c0,-10 -10,-15 -20,-15 h-40 z m0,60 v30 h45 c15,0 25,-8 25,-15 c0,-10 -10,-15 -25,-15 h-45 z" />
-                                <path d="M160,105 l20,-30 h-15 c-10,0 -15,-5 -15,-15 c0,-15 15,-15 25,-15 h30 l-25,-25 h-35 c-25,0 -45,15 -45,45 c0,20 15,35 30,40 z" />
-                                <path d="M220,105 l40,-40 h-20 c-15,0 -20,-5 -20,-15 c0,-10 10,-15 20,-15 h35 l15,-15 h-80 c-25,0 -40,20 -40,40 c0,25 20,35 40,45 z" />
-                                <path d="M250,20 h80 c25,0 45,15 45,40 c0,15 -10,25 -20,30 c15,5 25,18 25,35 c0,25 -20,45 -50,45 h-80 v-150 z m35,30 v30 h40 c10,0 20,-5 20,-15 c0,-10 -10,-15 -20,-15 h-40 z m0,60 v30 h45 c15,0 25,-8 25,-15 c0,-10 -10,-15 -25,-15 h-45 z" />
-                                <rect x="5" y="180" width="370" height="8" />
-                                <text x="50" y="215" fontFamily="Arial, sans-serif" fontWeight="900" fontSize="26" letterSpacing="10" fill="#fff">ILUMINAÇÃO</text>
-                            </svg>
+                            <img src="/logo.png" alt="B&B Iluminação" className="h-16 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity" />
                         </Link>
                         <p className="text-industrial-400 text-sm leading-relaxed max-w-xs mx-auto md:mx-0 font-medium">
                             Soluções inteligentes em iluminação e estruturas metálicas desde 1992. Qualidade e durabilidade certificada.
@@ -79,7 +72,7 @@ export function Footer() {
                             </div>
                             <div className="flex items-center justify-center md:justify-start gap-4 group">
                                 <Mail className="size-5 text-accent-premium shrink-0" />
-                                <a href="mailto:contato@bebiluminacao.com.br" className="text-sm text-industrial-400 hover:text-white transition-colors font-bold break-all">contato@bebiluminacao.com.br</a>
+                                <a href="mailto:contato@bebiluminacao.com" className="text-sm text-industrial-400 hover:text-white transition-colors font-bold break-all">contato@bebiluminacao.com</a>
                             </div>
                         </div>
                     </div>

@@ -3,10 +3,11 @@ import Image from "next/image"
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
 import { ArrowLeft, Filter } from "lucide-react"
 import Link from "next/link"
-import { products, categories } from "@/lib/data"
+import { getProducts, categories } from "@/lib/data"
 
 export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
     const { category: categorySlug } = await params;
+    const products = await getProducts();
     const category = categories.find(c => c.slug === categorySlug);
     const categoryProducts = products.filter(p => p.category === categorySlug);
     const categoryName = category?.title || categorySlug;
@@ -68,9 +69,11 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                                             className="object-cover transition-transform duration-500 group-hover:scale-105"
                                         />
                                     ) : (
-                                        <span className="text-industrial-300 font-black text-5xl italic select-none tracking-tighter group-hover:scale-105 transition-transform duration-300" aria-hidden="true">
-                                            {product.model}
-                                        </span>
+                                        <div className="flex items-center justify-center w-full h-full bg-industrial-50">
+                                            <span className="text-industrial-300 font-black text-5xl italic select-none tracking-tighter group-hover:scale-105 transition-transform duration-300" aria-hidden="true">
+                                                {product.model}
+                                            </span>
+                                        </div>
                                     )}
                                     <span className="absolute top-3 right-3 bg-industrial-950 text-white text-[9px] font-black uppercase tracking-tight px-2 py-1">
                                         {categoryName}

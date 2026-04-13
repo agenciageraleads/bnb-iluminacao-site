@@ -3,10 +3,12 @@ import Image from "next/image"
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
 import { Filter, Search } from "lucide-react"
 import Link from "next/link"
-import { products, categories } from "@/lib/data"
+import { getProducts, categories } from "@/lib/data"
 
 
-export default function ProdutosPage() {
+export default async function ProdutosPage() {
+    const products = await getProducts();
+    
     return (
         <main className="min-h-screen bg-white">
             <Header />

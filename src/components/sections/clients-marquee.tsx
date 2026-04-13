@@ -1,6 +1,6 @@
 "use client";
 
-import { clients } from "@/lib/data"
+import { clients } from "@/lib/constants"
 
 export function ClientsMarquee() {
     // Duplicamos a lista para garantir o efeito de loop infinito

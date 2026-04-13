@@ -10,7 +10,7 @@ export default function PostesMetalicosLP() {
                     <span className="text-industrial-950 font-black text-xl tracking-tight">B&B<span className="text-industrial-500 font-bold text-sm ml-1">INDUSTRIAL</span></span>
                     {/* CTA de contato visível no header em mobile */}
                     <a
-                        href="https://wa.me/556232887711"
+                        href="https://wa.me/556235761988"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 bg-industrial-950 text-white hover:bg-industrial-800 active:bg-industrial-700 font-black uppercase tracking-widest text-[10px] px-4 h-10 transition-colors"
@@ -48,7 +48,7 @@ export default function PostesMetalicosLP() {
                         {/* CTAs — acima do fold no mobile */}
                         <div className="flex flex-col sm:flex-row gap-3">
                             <a
-                                href="https://wa.me/556232887711?text=Quero+receber+cat%C3%A1logo+e+pre%C3%A7os"
+                                href="https://wa.me/556235761988?text=Quero+receber+cat%C3%A1logo+e+pre%C3%A7os"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center justify-center gap-2 bg-industrial-950 text-white hover:bg-industrial-800 active:bg-industrial-700 font-black h-14 px-8 w-full sm:w-auto uppercase tracking-widest transition-colors group"
@@ -135,7 +135,7 @@ export default function PostesMetalicosLP() {
                         Fale com nossa equipe técnica e receba um orçamento personalizado em menos de 24 horas.
                     </p>
                     <a
-                        href="https://wa.me/556232887711"
+                        href="https://wa.me/556235761988"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center justify-center gap-2 bg-black text-white hover:bg-industrial-800 active:bg-industrial-900 font-black h-16 px-10 md:px-16 text-base md:text-lg uppercase tracking-widest w-full sm:w-auto transition-colors"

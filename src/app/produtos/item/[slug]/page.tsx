@@ -199,7 +199,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                             {/* Botões de Ação Desktop */}
                             <div className="hidden md:grid grid-cols-2 gap-4">
                                 <a
-                                    href={`https://wa.me/556232887711?text=Olá! Tenho interesse no produto ${product.name} (${product.model}).`}
+                                    href={`https://wa.me/556235761988?text=Olá! Tenho interesse no produto ${product.name} (${product.model}).`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center justify-center gap-3 bg-industrial-950 text-white hover:bg-industrial-800 font-black uppercase tracking-widest h-16 px-6 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-industrial-950/20"
@@ -208,7 +208,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                                     Solicitar Cotação
                                 </a>
                                 <a
-                                    href="tel:+556232887711"
+                                    href="tel:+556235761988"
                                     className="flex items-center justify-center gap-3 bg-white text-industrial-950 border-2 border-industrial-950 hover:bg-industrial-50 font-black uppercase tracking-widest h-16 px-6 transition-all"
                                 >
                                     <Phone className="size-5" />
@@ -262,7 +262,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             {/* CTA mobile sticky */}
             <div className="fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-industrial-200 p-4 pb-safe md:hidden shadow-2xl" aria-label="Ações de solicitação">
                 <a
-                    href={`https://wa.me/556232887711?text=Olá! Tenho interesse no produto ${product.name} (${product.model}).`}
+                    href={`https://wa.me/556235761988?text=Olá! Tenho interesse no produto ${product.name} (${product.model}).`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-3 bg-industrial-950 text-white font-black uppercase tracking-widest h-16 w-full transition-all active:scale-95 shadow-xl shadow-industrial-950/20"

@@ -6,7 +6,7 @@ interface FloatingWhatsAppProps {
 }
 
 export function FloatingWhatsApp({
-    phoneNumber = "556232887711",
+    phoneNumber = "556235761988",
     message = "Olá! Gostaria de solicitar um orçamento de postes metálicos.",
 }: FloatingWhatsAppProps) {
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
