@@ -107,75 +107,68 @@ export default function QuemSomosPage() {
                         </h2>
                     </div>
 
-                    <div className="grid lg:grid-cols-12 gap-8 lg:gap-12">
+                    <div className="grid md:grid-cols-2 gap-8">
                         
-                        {/* Coluna Esquerda: Missão e Visão */}
-                        <div className="lg:col-span-5 space-y-8">
-                            {/* Missão */}
-                            <div className="bg-white p-8 border-l-4 border-industrial-950 shadow-sm relative overflow-hidden group">
-                                <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
-                                    <Target className="size-24" />
-                                </div>
-                                <div className="flex items-center gap-3 mb-4">
-                                    <Target className="size-6 text-industrial-950" />
-                                    <h3 className="text-2xl font-black text-industrial-950 uppercase tracking-tight">Missão</h3>
-                                </div>
-                                <p className="text-industrial-600 text-lg md:text-xl font-medium leading-relaxed relative z-10">
-                                    "Desenvolver soluções metálicas que iluminam, protegem e transformam espaços."
-                                </p>
+                        {/* Missão */}
+                        <div className="bg-white p-8 border-l-4 border-industrial-950 shadow-sm relative overflow-hidden group flex flex-col justify-center h-full">
+                            <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                                <Target className="size-24" />
                             </div>
+                            <div className="flex items-center gap-3 mb-4">
+                                <Target className="size-6 text-industrial-950" />
+                                <h3 className="text-2xl font-black text-industrial-950 uppercase tracking-tight">Missão</h3>
+                            </div>
+                            <p className="text-industrial-600 text-lg md:text-xl font-medium leading-relaxed relative z-10 w-full">
+                                "Desenvolver soluções metálicas que iluminam, protegem e transformam espaços."
+                            </p>
+                        </div>
 
-                            {/* Visão */}
-                            <div className="bg-white p-8 border-l-4 border-accent-premium shadow-sm relative overflow-hidden group">
-                                <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                                    <Eye className="size-24 text-accent-premium" />
-                                </div>
-                                <div className="flex items-center gap-3 mb-4">
-                                    <Eye className="size-6 text-accent-premium" />
-                                    <h3 className="text-2xl font-black text-industrial-950 uppercase tracking-tight">Visão</h3>
-                                </div>
-                                <p className="text-industrial-600 text-base md:text-lg font-medium leading-relaxed relative z-10">
-                                    Estar presente em todas as regiões do Brasil até 2028, sendo reconhecida como a indústria de postes metálicos mais confiável, com mais de 10.000 projetos entregues no prazo e com excelência.
-                                </p>
+                        {/* Chaves (movido para o lado da Missão / Cima dos Valores) */}
+                        <div className="bg-industrial-950 p-8 shadow-sm flex flex-col justify-center h-full">
+                            <h3 className="text-xl font-black text-white uppercase tracking-tight mb-6 flex items-center gap-2">
+                                <KeyRound className="size-5 text-accent-premium" />
+                                Nossas Chaves
+                            </h3>
+                            <div className="space-y-4">
+                                {chavesArray.map((chave, idx) => (
+                                    <div key={idx} className="flex items-start gap-3">
+                                        <div className="mt-1.5 size-1.5 rounded-full bg-accent-premium shrink-0" />
+                                        <span className="text-industrial-100 font-medium text-sm md:text-base leading-relaxed">{chave}</span>
+                                    </div>
+                                ))}
                             </div>
                         </div>
 
-                        {/* Coluna Direita: Valores e Chaves */}
-                        <div className="lg:col-span-7 space-y-8">
-                            
-                            {/* Valores */}
-                            <div className="bg-white p-8 border border-industrial-200 shadow-sm">
-                                <h3 className="text-xl font-black text-industrial-950 uppercase tracking-tight mb-6 flex items-center gap-2">
-                                    <CheckCircle2 className="size-5 text-accent-dark" />
-                                    Nossos Valores
-                                </h3>
-                                <div className="grid sm:grid-cols-2 gap-x-6 gap-y-4">
-                                    {valoresArray.map((valor, idx) => (
-                                        <div key={idx} className="flex items-start gap-3">
-                                            <CheckSquare className="size-5 text-accent-dark shrink-0 mt-0.5" />
-                                            <span className="text-industrial-700 font-medium text-sm md:text-base leading-snug">{valor}</span>
-                                        </div>
-                                    ))}
-                                </div>
+                        {/* Visão */}
+                        <div className="bg-white p-8 border-l-4 border-accent-premium shadow-sm relative overflow-hidden group flex flex-col justify-center h-full">
+                            <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                                <Eye className="size-24 text-accent-premium" />
                             </div>
-
-                            {/* Chaves */}
-                            <div className="bg-industrial-950 p-8 shadow-sm">
-                                <h3 className="text-xl font-black text-white uppercase tracking-tight mb-6 flex items-center gap-2">
-                                    <KeyRound className="size-5 text-accent-premium" />
-                                    Nossas Chaves
-                                </h3>
-                                <div className="space-y-4">
-                                    {chavesArray.map((chave, idx) => (
-                                        <div key={idx} className="flex items-start gap-3">
-                                            <div className="mt-1.5 size-1.5 rounded-full bg-accent-premium shrink-0" />
-                                            <span className="text-industrial-100 font-medium text-sm md:text-base leading-relaxed">{chave}</span>
-                                        </div>
-                                    ))}
-                                </div>
+                            <div className="flex items-center gap-3 mb-4">
+                                <Eye className="size-6 text-accent-premium" />
+                                <h3 className="text-2xl font-black text-industrial-950 uppercase tracking-tight">Visão</h3>
                             </div>
-
+                            <p className="text-industrial-600 text-base md:text-lg font-medium leading-relaxed relative z-10">
+                                Estar presente em todas as regiões do Brasil até 2028, sendo reconhecida como a indústria de postes metálicos mais confiável, com mais de 10.000 projetos entregues no prazo e com excelência.
+                            </p>
                         </div>
+
+                        {/* Valores (Baixo / Lado da Visão) */}
+                        <div className="bg-white p-8 border border-industrial-200 shadow-sm flex flex-col justify-center h-full">
+                            <h3 className="text-xl font-black text-industrial-950 uppercase tracking-tight mb-6 flex items-center gap-2">
+                                <CheckCircle2 className="size-5 text-accent-dark" />
+                                Nossos Valores
+                            </h3>
+                            <div className="grid sm:grid-cols-2 gap-x-6 gap-y-4">
+                                {valoresArray.map((valor, idx) => (
+                                    <div key={idx} className="flex items-start gap-3">
+                                        <CheckSquare className="size-5 text-accent-dark shrink-0 mt-0.5" />
+                                        <span className="text-industrial-700 font-medium text-sm md:text-base leading-snug">{valor}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </section>
