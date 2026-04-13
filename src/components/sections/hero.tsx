@@ -31,7 +31,7 @@ export function Hero() {
                             >
                                 ILUMINAÇÃO <br className="hidden sm:block" />
                                 <span className="relative inline-block">
-                                    INDUSTRIAL
+                                    PÚBLICA
                                     {/* Sublinhado decorativo amarelo */}
                                     <span className="absolute -bottom-1 left-0 w-full h-1 bg-accent-premium" aria-hidden="true" />
                                 </span>
@@ -81,7 +81,7 @@ export function Hero() {
 
                         {/* Trust indicators pequenos — mobile friendly */}
                         <div className="flex flex-wrap gap-3">
-                            {["Galvanização NBR 6323", "Prazo Garantido", "Frota Própria"].map((item) => (
+                            {["Pintura Eletrostática", "Prazo Garantido", "Logística Facilitada"].map((item) => (
                                 <div key={item} className="flex items-center gap-1.5 text-[11px] font-bold text-industrial-600 uppercase tracking-wide">
                                     <CheckCircle2 className="size-4 text-accent-dark shrink-0" aria-hidden="true" />
                                     {item}
