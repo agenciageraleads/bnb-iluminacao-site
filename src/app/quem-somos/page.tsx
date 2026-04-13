@@ -5,8 +5,8 @@ import Link from "next/link"
 
 export default function QuemSomosPage() {
     const numbers = [
-        { value: "+5.000", label: "Projetos Entregues" },
-        { value: "15+", label: "Anos de Experiência" },
+        { value: "+30.000", label: "Postes Fabricados" },
+        { value: "9+", label: "Anos no Mercado" },
         { value: "20t", label: "Capacidade Mensal" },
         { value: "26", label: "Estados Atendidos" },
     ]
@@ -30,7 +30,7 @@ export default function QuemSomosPage() {
                         QUEM SOMOS<span className="text-accent-dark">.</span>
                     </h1>
                     <p className="text-industrial-500 text-base md:text-lg leading-relaxed max-w-2xl">
-                        A B&B Iluminação é uma fabricante brasileira especializada em postes metálicos e soluções de iluminação para grandes obras. Com 15 anos de mercado e fábrica própria em Goiânia, combinamos tecnologia, agilidade e qualidade certificada.
+                        A B&B Iluminação nasceu em 2017 para inovar o mercado brasileiro de soluções metálicas e de iluminação para grandes obras. A partir de nossa sede própria em Goiânia, unimos excelência, agilidade e fabricação certificada.
                     </p>
                 </div>
             </section>
@@ -67,8 +67,8 @@ export default function QuemSomosPage() {
                                 Nossa <span className="border-b-4 border-accent-premium">História</span>
                             </h2>
                             <div className="space-y-4 text-industrial-600 text-base leading-relaxed">
-                                <p>Fundada com o propósito de modernizar a infraestrutura de iluminação pública no Centro-Oeste, a B&B se tornou referência nacional ao fabricar desde postes simples até mastros monumentais para grandes eventos.</p>
-                                <p>Hoje, atendemos prefeituras, construtoras e montadoras industriais em todo o Brasil, com entrega na obra e suporte técnico especializado do projeto à instalação.</p>
+                                <p>Nascida em 2017 com o intuito de renovar o mercado de artigos de iluminação no estado de Goiás, a B&B preza por utilizar apenas matéria-prima de qualidade e acabamento de primeira linha para garantir aos clientes o que há de mais seguro no setor.</p>
+                                <p>Ocupamos sede própria na região de Goiânia, com um quadro de funcionários capacitados e ampla experiência para a produção de soluções que atendem diversos nichos da construção civil, entregando desde postes metálicos de iluminação viária e esportiva até projetos residenciais requintados.</p>
                             </div>
                             <div className="space-y-2 pt-2">
                                 {["Fabricação 100% nacional", "Galvanização própria in-house", "Frota de entrega própria"].map((item) => (

@@ -35,16 +35,16 @@ export function Sobre() {
                                 Sobre a B&B Iluminação
                             </p>
                             <h2 className="text-4xl md:text-6xl font-black text-industrial-950 uppercase leading-[0.9] tracking-tighter">
-                                DESDE 1992 PROVENDO PRODUTOS DE <span className="text-white">EXCELÊNCIA</span>
+                                DESDE 2017 PROVENDO PRODUTOS DE <span className="text-white">EXCELÊNCIA</span>
                             </h2>
                         </div>
 
                         <div className="space-y-6 text-industrial-900">
                             <p className="text-lg md:text-xl font-bold leading-tight">
-                                A B&B Iluminação é fabricante de Postes de Aço Telecônico e Cônico Contínuo, Luminárias Públicas e Decorativas em LED.
+                                A B&B Iluminação nasceu para renovar o mercado de artigos de iluminação no estado de Goiás, operando a partir de sua sede própria em Goiânia.
                             </p>
                             <p className="text-base leading-relaxed font-medium">
-                                Com intuito de renovar o mercado de artigos de iluminação no Brasil, sempre utilizando matéria-prima de qualidade e acabamento de primeira linha, garantindo o que há de melhor no mercado para seus clientes e parceiros. Mais de 1.000 projetos entregues com sucesso.
+                                Sempre utilizando matéria-prima de qualidade e acabamento de primeira linha para garantir o que há de melhor no ramo. Contamos com um quadro de funcionários capacitados e atendemos a diversos nichos da construção civil, desde postes metálicos de iluminação até grandes projetos residenciais.
                             </p>
                         </div>
 
