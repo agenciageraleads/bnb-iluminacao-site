@@ -85,7 +85,7 @@ export default function QuemSomosPage() {
                                 <p>Ocupamos sede própria na região de Goiânia, com um quadro de funcionários capacitados e ampla experiência para a produção de soluções que atendem diversos nichos da construção civil, entregando desde postes metálicos de iluminação viária e esportiva até projetos residenciais requintados.</p>
                             </div>
                             <div className="space-y-2 pt-2">
-                                {["Fabricação 100% nacional", "Galvanização própria in-house", "Frota de entrega própria"].map((item) => (
+                                {["Fabricação 100% nacional", "Pintura eletrostática in-house", "Logística facilitada em nível nacional"].map((item) => (
                                     <div key={item} className="flex items-center gap-2 text-sm">
                                         <CheckCircle2 className="size-4 text-industrial-700 shrink-0" aria-hidden="true" />
                                         <span className="text-industrial-700 font-medium">{item}</span>
