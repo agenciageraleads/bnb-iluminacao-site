@@ -107,18 +107,15 @@ export const benefits = [
 ]
 
 export const clients = [
-    { name: "Leroy Merlin" },
-    { name: "Makro Service" },
-    { name: "Prefeitura de Goiânia" },
-    { name: "Porto Belo" },
-    { name: "Grupo Comporte" },
-    { name: "UFG" },
-    { name: "Sesi" },
-    { name: "Petrobras" },
-    { name: "Piracanjuba" },
-    { name: "Porto de Santos" },
-    { name: "Porto do Açu" },
-    { name: "Renner" },
+    { name: "Transol", logoUrl: "/logos/transol.png" },
+    { name: "Ajel", logoUrl: "/logos/ajel.png" },
+    { name: "Dolp", logoUrl: "/logos/dolp.png" },
+    { name: "Porto Belo", logoUrl: "/logos/porto_belo.png" },
+    { name: "Makro Service", logoUrl: "/logos/makro_service.png" },
+    { name: "TSE", logoUrl: "/logos/tse.png" },
+    { name: "Zagonel", logoUrl: "/logos/zagonel.png" },
+    { name: "Leroy Merlin", logoUrl: "/logos/leroy_merlin.png" },
+    { name: "Controle & Serviços", logoUrl: "/logos/controle_servicos.png" },
 ]
 
 export const portfolioItems = [

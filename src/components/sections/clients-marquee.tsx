@@ -1,6 +1,7 @@
 "use client";
 
 import { clients } from "@/lib/constants"
+import Image from "next/image"
 
 export function ClientsMarquee() {
     // Duplicamos a lista para garantir o efeito de loop infinito
@@ -16,13 +17,25 @@ export function ClientsMarquee() {
 
             <div className="relative flex">
                 {/* Container da animação marquee */}
-                <div className="flex animate-marquee whitespace-nowrap items-center hover:pause">
+                <div className="flex animate-marquee whitespace-nowrap items-center hover:pause gap-16 md:gap-24 px-8">
                     {allClients.map((client, index) => (
                         <div
                             key={index}
-                            className="px-12 md:px-20 text-3xl md:text-5xl font-black text-industrial-800 uppercase tracking-tighter hover:text-accent-premium transition-colors cursor-default"
+                            className="relative flex items-center justify-center grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500 w-32 md:w-48 h-16 md:h-24 shrink-0"
+                            title={client.name}
                         >
-                            {client.name}
+                            {client.logoUrl ? (
+                                <Image
+                                    src={client.logoUrl}
+                                    alt={`Logo ${client.name}`}
+                                    fill
+                                    className="object-contain"
+                                />
+                            ) : (
+                                <span className="text-xl md:text-3xl font-black text-industrial-800 uppercase tracking-tighter">
+                                    {client.name}
+                                </span>
+                            )}
                         </div>
                     ))}
                 </div>
