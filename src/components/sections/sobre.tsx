@@ -12,7 +12,7 @@ export function Sobre() {
                     <div className="relative order-2 lg:order-1">
                         <div className="aspect-video lg:aspect-square relative overflow-hidden border-[8px] border-white shadow-2xl">
                             <Image
-                                src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=1200" // Fábrica/Indústria
+                                src="https://picsum.photos/seed/sobre/1200/800" // Fábrica/Indústria
                                 alt="Fábrica da B&B Iluminação"
                                 fill
                                 className="object-cover"
@@ -20,7 +20,7 @@ export function Sobre() {
                         </div>
                         {/* Badge flutuante de autoridade */}
                         <div className="absolute -bottom-6 -right-6 md:translate-x-0 bg-industrial-950 text-white p-8 border-t-4 border-white shadow-2xl z-10 max-w-[200px] text-center">
-                            <span className="text-4xl font-black block mb-1">07+</span>
+                            <span className="text-4xl font-black block mb-1">09+</span>
                             <span className="text-[10px] font-bold uppercase tracking-widest leading-tight block">
                                 ANOS DE EXPERIÊNCIA <br /> NO MERCADO
                             </span>

@@ -69,8 +69,8 @@ export function Hero() {
                         <div className="grid grid-cols-3 gap-4 pt-6 border-t border-industrial-200">
                             {[
                                 { label: "Projetos Entregues", value: "+5.000" },
-                                { label: "Anos no Mercado", value: "15+" },
-                                { label: "Toneladas/mês", value: "20t" },
+                                { label: "Postes Fabricados", value: "+30.000" },
+                                { label: "Anos no Mercado", value: "9+" },
                             ].map((stat, i) => (
                                 <div key={i} className="accent-bar">
                                     <div className="text-industrial-950 font-black text-xl md:text-2xl">{stat.value}</div>
@@ -93,21 +93,13 @@ export function Hero() {
                     {/* Visual do produto — visível em TODOS os tamanhos (mobile também) */}
                     <div className="relative order-1 lg:order-2">
                         <div className="aspect-[4/3] sm:aspect-[4/4] bg-industrial-100 border border-industrial-200 relative overflow-hidden group">
-                            {featuredCategory.image ? (
-                                <Image
-                                    src={featuredCategory.image}
-                                    alt={featuredCategory.title}
-                                    fill
-                                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                                    priority
-                                />
-                            ) : (
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                    <span className="text-industrial-200 font-black text-[80px] sm:text-[120px] lg:text-[140px] select-none tracking-widest leading-none">
-                                        B&B
-                                    </span>
-                                </div>
-                            )}
+                            <Image
+                                src="/hero-main.png"
+                                alt="Postes de Iluminação B&B"
+                                fill
+                                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                priority
+                            />
                             {/* Borda amarela decorativa no canto */}
                             <div className="absolute top-0 left-0 w-full h-1 bg-accent-premium" aria-hidden="true" />
                             <div className="absolute bottom-0 right-0 w-1 h-full bg-accent-premium" aria-hidden="true" />
@@ -119,7 +111,7 @@ export function Hero() {
                         {/* Selo de qualidade — posicionado fora da imagem para ser legível em mobile */}
                         <div className="absolute -bottom-4 -right-2 md:-bottom-6 md:-left-6 bg-accent-premium text-black p-3 md:p-4 text-center shadow-md max-w-[120px] md:max-w-none">
                             <span className="font-black text-[9px] md:text-[11px] uppercase tracking-tight leading-tight block">
-                                Galvanização a Fogo<br />NBR 6323
+                                Executamos o seu<br />projeto de iluminação
                             </span>
                         </div>
                     </div>
