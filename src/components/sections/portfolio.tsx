@@ -9,7 +9,7 @@ export function Portfolio() {
     const [currentIndexes, setCurrentIndexes] = useState([0, 1, 2]);
     const [fade, setFade] = useState(false);
 
-    // Efeito para trocar os projetos aleatoriamente a cada 4 segundos
+    // Efeito para trocar os projetos aleatoriamente a cada 15 segundos
     useEffect(() => {
         const interval = setInterval(() => {
             setFade(true); // Inicia o fade out
@@ -24,7 +24,7 @@ export function Portfolio() {
                 setCurrentIndexes(newIndexes);
                 setFade(false); // Inicia o fade in
             }, 500); // Tempo igual a duração da transição CSS
-        }, 5000);
+        }, 15000);
 
         return () => clearInterval(interval);
     }, []);
