@@ -10,7 +10,13 @@ const Representatives: CollectionConfig = {
             name: 'name',
             type: 'text',
             required: true,
-            label: 'Nome Comercial / Empresa',
+            label: 'Nome do Representante',
+        },
+        {
+            name: 'company',
+            type: 'text',
+            required: false,
+            label: 'Empresa / Nome Comercial',
         },
         {
             name: 'email',

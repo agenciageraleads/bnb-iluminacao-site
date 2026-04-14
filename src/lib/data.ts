@@ -9,6 +9,7 @@ async function getClient() {
 
 export interface Representative {
     name: string
+    company?: string | null
     email: string
     phone: string
     states: string[]
@@ -70,6 +71,7 @@ export const getRepresentatives = async (): Promise<Representative[]> => {
 
     return docs.map(doc => ({
       name: doc.name as string,
+      company: doc.company as string | null,
       email: doc.email as string,
       phone: doc.phone as string,
       states: doc.states as string[] || [],

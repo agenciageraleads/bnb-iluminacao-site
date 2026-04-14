@@ -84,6 +84,11 @@ export function RepresentativesClient({ representatives }: { representatives: Re
                                                             </span>
                                                         )}
                                                         <h4 className="text-2xl font-bold text-industrial-950 uppercase leading-none mb-1">{rep.name}</h4>
+                                                        {rep.company && (
+                                                            <div className="text-sm font-medium text-industrial-500 uppercase tracking-wide">
+                                                                {rep.company}
+                                                            </div>
+                                                        )}
                                                     </div>
                                                     
                                                     <div className="flex flex-col gap-3 shrink-0 bg-industrial-50 p-4 border border-industrial-100 min-w-[240px]">

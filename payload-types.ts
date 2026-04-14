@@ -388,6 +388,7 @@ export interface Region {
 export interface Representative {
   id: number;
   name: string;
+  company?: string | null;
   email: string;
   phone: string;
   /**
@@ -712,6 +713,7 @@ export interface RegionsSelect<T extends boolean = true> {
  */
 export interface RepresentativesSelect<T extends boolean = true> {
   name?: T;
+  company?: T;
   email?: T;
   phone?: T;
   states?: T;
