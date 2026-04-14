@@ -1,40 +1,18 @@
 import { Header } from "@/components/layout/header"
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
-import { MapPin, Phone, Mail, ArrowRight, UserPlus } from "lucide-react"
+import { ArrowRight, UserPlus } from "lucide-react"
 import Link from "next/link"
+import { getRepresentatives } from "@/lib/data"
+import { RepresentativesClient } from "./RepresentativesClient"
 
-export default function RepresentantesPage() {
-    // Dados de exemplo que o cliente poderá substituir facilmente via Payload/Data
-    const regions = [
-        {
-            name: "Centro-Oeste",
-            reps: [
-                { state: "GO / DF", name: "João Henrique", email: "joao.go@bebiluminacao.com.br", phone: "(62) 99999-0001" },
-                { state: "MT / MS", name: "Sérgio Moraes", email: "sergio.mt@bebiluminacao.com.br", phone: "(65) 98888-0002" },
-            ]
-        },
-        {
-            name: "Sudeste",
-            reps: [
-                { state: "SP Capital", name: "Carlos Drummond", email: "carlos.sp@bebiluminacao.com.br", phone: "(11) 97777-0003" },
-                { state: "SP Interior / MG", name: "Roberto Silva", email: "roberto.mg@bebiluminacao.com.br", phone: "(31) 96666-0004" },
-                { state: "RJ / ES", name: "Felipe Freitas", email: "felipe.rj@bebiluminacao.com.br", phone: "(21) 95555-0005" },
-            ]
-        },
-        {
-            name: "Sul",
-            reps: [
-                { state: "PR / SC / RS", name: "Fernando Ávila", email: "fernando.sul@bebiluminacao.com.br", phone: "(41) 94444-0006" },
-            ]
-        },
-        {
-            name: "Norte & Nordeste",
-            reps: [
-                { state: "Norte", name: "Juliana Mendes", email: "juliana.norte@bebiluminacao.com.br", phone: "(92) 93333-0007" },
-                { state: "Nordeste", name: "Rafael Torres", email: "rafael.ne@bebiluminacao.com.br", phone: "(81) 92222-0008" },
-            ]
-        }
-    ];
+export const metadata = {
+    title: "Representantes | B&B Iluminação",
+    description: "Encontre o representante comercial da B&B Iluminação mais próximo de você. Cobertura em todo o Brasil.",
+}
+
+export default async function RepresentantesPage() {
+    // Busca dados reais do banco (Payload CMS) via Server Component
+    const representatives = await getRepresentatives();
 
     return (
         <main className="min-h-screen bg-industrial-50">
@@ -53,59 +31,13 @@ export default function RepresentantesPage() {
                     </h1>
                     <p className="text-industrial-500 text-lg md:text-xl leading-relaxed max-w-3xl">
                         A excelência da B&B Iluminação presente em todos os cantos do Brasil. 
-                        Encontre o distribuidor autorizado ou representante comercial mais próximo da sua obra.
+                        Encontre o representante comercial mais próximo da sua obra.
                     </p>
                 </div>
             </section>
 
-            {/* Region Grid Section */}
-            <section className="py-16 md:py-24 bg-industrial-50" aria-labelledby="reps-heading">
-                <div className="container mx-auto px-4">
-                    <h2 id="reps-heading" className="sr-only">Busca de Representantes por Região</h2>
-
-                    <div className="grid lg:grid-cols-2 gap-x-12 gap-y-16">
-                        {regions.map((region, idx) => (
-                            <div key={idx} className="space-y-6">
-                                <div className="border-b-2 border-industrial-200 pb-3 flex items-center justify-between">
-                                    <h3 className="text-2xl font-black text-industrial-950 uppercase tracking-tight">
-                                        Região <span className="text-accent-dark">{region.name}</span>
-                                    </h3>
-                                    <MapPin className="size-6 text-industrial-400" />
-                                </div>
-                                
-                                <div className="space-y-4">
-                                    {region.reps.map((rep, rIdx) => (
-                                        <div key={rIdx} className="bg-white p-6 border border-industrial-200 hover:border-accent-premium transition-colors group relative overflow-hidden">
-                                            {/* Accent line left */}
-                                            <div className="absolute top-0 left-0 h-full w-1 bg-industrial-200 group-hover:bg-accent-premium transition-colors" />
-                                            
-                                            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pl-2">
-                                                <div>
-                                                    <span className="inline-block px-2 py-1 bg-industrial-100 text-industrial-600 text-[10px] font-bold uppercase tracking-wider mb-2">
-                                                        {rep.state}
-                                                    </span>
-                                                    <h4 className="text-xl font-bold text-industrial-950 uppercase">{rep.name}</h4>
-                                                </div>
-                                                
-                                                <div className="flex flex-col gap-2 shrink-0">
-                                                    <a href={`tel:${rep.phone.replace(/[^0-9]/g, '')}`} className="flex items-center gap-2 text-industrial-600 hover:text-industrial-950 transition-colors text-sm font-medium">
-                                                        <Phone className="size-4" />
-                                                        {rep.phone}
-                                                    </a>
-                                                    <a href={`mailto:${rep.email}`} className="flex items-center gap-2 text-industrial-600 hover:text-industrial-950 transition-colors text-sm font-medium">
-                                                        <Mail className="size-4" />
-                                                        {rep.email}
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
+            {/* Interactive Map Component (Client Side) */}
+            <RepresentativesClient representatives={representatives} />
 
             {/* CTA Quer ser Representante */}
             <section className="py-20 md:py-32 bg-industrial-950 relative overflow-hidden" aria-labelledby="seja-rep-heading">

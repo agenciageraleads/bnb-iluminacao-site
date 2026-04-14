@@ -73,6 +73,7 @@ export interface Config {
     media: Media;
     blog: Blog;
     regions: Region;
+    representatives: Representative;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -86,6 +87,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     blog: BlogSelect<false> | BlogSelect<true>;
     regions: RegionsSelect<false> | RegionsSelect<true>;
+    representatives: RepresentativesSelect<false> | RepresentativesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -287,6 +289,18 @@ export interface Blog {
   id: number;
   title: string;
   slug: string;
+  /**
+   * Status controlado pelo pipeline de agentes.
+   */
+  status?: ('draft' | 'ai_review' | 'published') | null;
+  /**
+   * Atrelado ao Person Schema para máxima autoridade (E-E-A-T).
+   */
+  author?: string | null;
+  /**
+   * Resumo crítico de 50 palavras otimizado para motores de IA.
+   */
+  summary?: string | null;
   content: {
     root: {
       type: string;
@@ -302,10 +316,37 @@ export interface Blog {
     };
     [k: string]: unknown;
   };
+  faqs?:
+    | {
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
   featuredImage?: (number | null) | Media;
   meta?: {
     title?: string | null;
     description?: string | null;
+  };
+  schemaMarkup?: {
+    articleSchema?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
+    faqSchema?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
   };
   updatedAt: string;
   createdAt: string;
@@ -337,6 +378,54 @@ export interface Region {
     title?: string | null;
     description?: string | null;
   };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "representatives".
+ */
+export interface Representative {
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+  /**
+   * Selecione todas as UFs que este representante tem exclusividade ou atende.
+   */
+  states: (
+    | 'AC'
+    | 'AL'
+    | 'AP'
+    | 'AM'
+    | 'BA'
+    | 'CE'
+    | 'DF'
+    | 'ES'
+    | 'GO'
+    | 'MA'
+    | 'MT'
+    | 'MS'
+    | 'MG'
+    | 'PA'
+    | 'PB'
+    | 'PR'
+    | 'PE'
+    | 'PI'
+    | 'RJ'
+    | 'RN'
+    | 'RS'
+    | 'RO'
+    | 'RR'
+    | 'SC'
+    | 'SP'
+    | 'SE'
+    | 'TO'
+  )[];
+  /**
+   * Ex: "Nordeste e Norte", "Sul de Minas". Serve para categorização visual se necessário.
+   */
+  region?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -387,6 +476,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'regions';
         value: number | Region;
+      } | null)
+    | ({
+        relationTo: 'representatives';
+        value: number | Representative;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -569,13 +662,29 @@ export interface MediaSelect<T extends boolean = true> {
 export interface BlogSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
+  status?: T;
+  author?: T;
+  summary?: T;
   content?: T;
+  faqs?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
   featuredImage?: T;
   meta?:
     | T
     | {
         title?: T;
         description?: T;
+      };
+  schemaMarkup?:
+    | T
+    | {
+        articleSchema?: T;
+        faqSchema?: T;
       };
   updatedAt?: T;
   createdAt?: T;
@@ -594,6 +703,19 @@ export interface RegionsSelect<T extends boolean = true> {
         title?: T;
         description?: T;
       };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "representatives_select".
+ */
+export interface RepresentativesSelect<T extends boolean = true> {
+  name?: T;
+  email?: T;
+  phone?: T;
+  states?: T;
+  region?: T;
   updatedAt?: T;
   createdAt?: T;
 }

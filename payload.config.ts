@@ -10,6 +10,7 @@ import Categories from './src/collections/Categories'
 import Media from './src/collections/Media'
 import Blog from './src/collections/Blog'
 import Regions from './src/collections/Regions'
+import Representatives from './src/collections/Representatives'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -25,6 +26,7 @@ export default buildConfig({
         Media,
         Blog,
         Regions,
+        Representatives,
     ],
     editor: lexicalEditor({}),
     secret: process.env.PAYLOAD_SECRET || 'bnb_secret_key_generated_securely_123',

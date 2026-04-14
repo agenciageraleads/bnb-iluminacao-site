@@ -7,6 +7,7 @@ import { Menu, X, Phone } from "lucide-react"
 const navigation = [
     { name: "Quem Somos", href: "/quem-somos" },
     { name: "Produtos", href: "/produtos" },
+    { name: "Representantes", href: "/representantes" },
     { name: "Blog", href: "/blog" },
     { name: "Serviços", href: "/produtos/servicos" },
     { name: "Contato", href: "/contato" },

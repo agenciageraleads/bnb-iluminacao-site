@@ -7,6 +7,14 @@ async function getClient() {
   return await getPayload({ config })
 }
 
+export interface Representative {
+    name: string
+    email: string
+    phone: string
+    states: string[]
+    region?: string
+}
+
 export const getCategories = async (): Promise<Category[]> => {
   try {
     const payload = await getClient()
@@ -49,6 +57,27 @@ export const getProducts = async (): Promise<Product[]> => {
   } catch (error) {
     console.error("Erro ao conectar ao CMS para produtos. Retornando vazio.", error);
     return []; // Retorna lista vazia para evitar erro 500 do site
+  }
+}
+
+export const getRepresentatives = async (): Promise<Representative[]> => {
+  try {
+    const payload = await getClient()
+    const { docs } = await payload.find({
+      collection: 'representatives' as any,
+      limit: 100, // Pegar todos
+    })
+
+    return docs.map(doc => ({
+      name: doc.name as string,
+      email: doc.email as string,
+      phone: doc.phone as string,
+      states: doc.states as string[] || [],
+      region: doc.region as string || '',
+    }))
+  } catch (error) {
+    console.error("Erro ao conectar ao CMS para representantes.", error);
+    return [];
   }
 }
 
