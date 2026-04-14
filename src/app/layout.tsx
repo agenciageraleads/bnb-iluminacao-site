@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
-import "../globals.css";
+import "./globals.css";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" data-theme="light" className="light">
+    <html lang="pt-BR">
       <body
         className={`${inter.variable} ${outfit.variable} font-sans antialiased`}
       >
