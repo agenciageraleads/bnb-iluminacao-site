@@ -4,6 +4,7 @@ services:
   bnb-site:
     build: .
     container_name: bnb_site
+    env_file: .env
     restart: always
     ports:
       - "9010:9010"
