@@ -9,6 +9,18 @@ async function getClient() {
   return await getPayload({ config })
 }
 
+// Helper para converter Lexical JSON em string simples
+function extractTextFromLexical(node: any): string {
+    if (!node) return "";
+    if (typeof node === "string") return node;
+    if (node.text) return node.text;
+    if (node.children) {
+        return node.children.map((child: any) => extractTextFromLexical(child)).join(" ").trim();
+    }
+    if (node.root) return extractTextFromLexical(node.root);
+    return "";
+}
+
 export interface Representative {
     name: string
     company?: string | null
@@ -93,18 +105,27 @@ export const getProducts = async (): Promise<Product[]> => {
       depth: 1,
     })
 
-    return docs.map(doc => ({
-      id: doc.slug as string,
-      name: doc.name as string,
-      category: (doc.category as any)?.slug || '',
-      model: doc.model as string,
-      image: (doc.mainImage as any)?.url || '',
-      description: '', // Descrição processada depois
-      leadTime: doc.leadTime as string,
-      badges: doc.badges as string[],
-      optionals: doc.optionals as string[] || [],
-      applications: (doc.applications as any[])?.map(a => a.app) || [],
-    }))
+    return docs.map(doc => {
+      const specs = [];
+      if (doc.specs_material) specs.push(doc.specs_material as string);
+      if (doc.specs_altura) specs.push(doc.specs_altura as string);
+      if (doc.specs_diametro) specs.push(doc.specs_diametro as string);
+      if (doc.specs_norma) specs.push(doc.specs_norma as string);
+
+      return {
+        id: doc.slug as string,
+        name: doc.name as string,
+        category: (doc.category as any)?.slug || '',
+        model: doc.model as string,
+        image: (doc.mainImage as any)?.url || '',
+        description: extractTextFromLexical(doc.description),
+        specs: specs.length > 0 ? specs : undefined,
+        leadTime: doc.leadTime as string,
+        badges: doc.badges as string[],
+        optionals: doc.optionals as string[] || [],
+        applications: (doc.applications as any[])?.map(a => a.app) || [],
+      }
+    })
   } catch (error) {
     console.error("Erro ao conectar ao CMS para produtos. Retornando vazio.", error);
     return []; // Retorna lista vazia para evitar erro 500 do site
