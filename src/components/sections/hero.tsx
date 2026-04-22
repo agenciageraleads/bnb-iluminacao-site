@@ -7,10 +7,10 @@ export function Hero() {
     const featuredCategory = categories[0]
 
     return (
-        <section className="relative min-h-[100svh] flex items-center pt-24 pb-16 md:pt-32 md:pb-20 overflow-hidden bg-white">
+        <section className="relative min-h-[100svh] flex items-center pt-24 pb-16 md:pt-32 md:pb-20 overflow-hidden bg-industrial-50">
             {/* Barra decorativa amarela no topo e elementos de fundo */}
             <div className="absolute top-16 left-0 right-0 h-1 bg-accent-premium" aria-hidden="true" />
-            <div className="absolute top-0 right-0 w-[60%] h-full bg-accent-premium/5 -z-10 pointer-events-none" aria-hidden="true" />
+            <div className="absolute top-0 right-0 w-[60%] h-full bg-industrial-900/5 -z-10 pointer-events-none" aria-hidden="true" />
 
             <div className="container mx-auto px-4 sm:px-6 relative">
                 <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
@@ -19,16 +19,13 @@ export function Hero() {
                     <div className="space-y-8 order-2 lg:order-1">
                         <div className="space-y-5">
                             {/* Badge de credibilidade */}
-                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-industrial-50 border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-[0.2em] uppercase">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-[0.2em] uppercase">
                                 <span className="size-2 bg-accent-premium rounded-full animate-pulse" aria-hidden="true" />
                                 Fabricação Própria • Goiânia, GO
                             </div>
 
-                            {/* H1: text-balance evita widows. Tamanho responsivo real. */}
-                            <h1
-                                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-industrial-950 leading-[0.95] uppercase"
-                                style={{ textWrap: "balance" } as React.CSSProperties}
-                            >
+                            {/* H1: Tipografia Responsiva Centralizada */}
+                            <h1 className="responsive-title">
                                 ILUMINAÇÃO <br className="hidden sm:block" />
                                 <span className="relative inline-block">
                                     PÚBLICA
@@ -92,12 +89,12 @@ export function Hero() {
 
                     {/* Visual do produto — visível em TODOS os tamanhos (mobile também) */}
                     <div className="relative order-1 lg:order-2">
-                        <div className="aspect-[4/3] sm:aspect-[4/4] bg-industrial-100 border border-industrial-200 relative overflow-hidden group">
+                        <div className="aspect-[4/3] sm:aspect-[4/4] bg-industrial-900 border border-industrial-200 relative overflow-hidden group">
                             <Image
-                                src="/hero-main.png"
+                                src="/hero-industrial.jpg"
                                 alt="Postes de Iluminação B&B"
                                 fill
-                                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                className="object-cover transition-transform duration-700 group-hover:scale-105 opacity-90"
                                 priority
                             />
                             {/* Borda amarela decorativa no canto */}
@@ -105,7 +102,7 @@ export function Hero() {
                             <div className="absolute bottom-0 right-0 w-1 h-full bg-accent-premium" aria-hidden="true" />
 
                             {/* Hover overlay apenas em desktop (sem hover em mobile) */}
-                            <div className="absolute inset-0 bg-industrial-950/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden md:block" aria-hidden="true" />
+                            <div className="absolute inset-0 bg-accent-premium/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden md:block" aria-hidden="true" />
                         </div>
 
                         {/* Selo de qualidade — posicionado fora da imagem para ser legível em mobile */}

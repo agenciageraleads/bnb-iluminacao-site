@@ -1,0 +1,16 @@
+#!/usr/bin/expect -f
+set timeout -1
+set password "ImPh,RbdVk4.gLuc@X8t"
+spawn ssh -o StrictHostKeyChecking=no root@187.77.37.213
+expect "password:"
+send "$password\r"
+expect "root@*"
+send "cd /var/www/bnb-platform && docker compose down && docker compose up -d --build\r"
+expect "root@*"
+send "echo 'Container(s) em pé. Aguardando 15s para inicialização completa do banco...' && sleep 15\r"
+expect "root@*"
+# Rodar migração usando o binário do node dentro do host se possível, ou via docker exec
+send "export PATH=\"/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:$PATH\" && export DATABASE_URL=\"postgresql://bnb_user:bnb_password_secure_123@localhost:9001/bnb_database?schema=public\" && export PAYLOAD_SECRET=\"bnb_secret_key_generated_securely_123\" && npx tsx src/scripts/migrate-posts.ts\r"
+expect "root@*"
+send "exit\r"
+expect eof

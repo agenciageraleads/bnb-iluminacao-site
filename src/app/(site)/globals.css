@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Escala Neutra Industrial (usada para superfícies no tema claro) */
+  --color-industrial-950: #0a0a0c;
+  --color-industrial-900: #121214;
+  --color-industrial-800: #1a1a1e;
+  --color-industrial-700: #2a2a30;
+  --color-industrial-600: #3f3f46;
+  --color-industrial-500: #6b7280;
+  --color-industrial-400: #9ca3af;
+  --color-industrial-300: #d1d5db;
+  --color-industrial-200: #e5e7eb;
+  --color-industrial-100: #f5f5f5;
+  --color-industrial-50: #fafafa;
+
+  /* Cores de Destaque (Catálogo B&B - Amarelo Ouro Industrial) */
+  /* ATENÇÃO: amarelo é decorativo. Nunca como texto sobre branco. */
+  --color-accent-premium: #E8D51C;
+  --color-accent-dark: #B8A914;
+  /* versão mais escura p/ bordas/acentos em fundo claro */
+
+  --font-sans: "Inter", var(--font-geist-sans);
+  --font-display: "Outfit", var(--font-geist-sans);
+}
+
+:root {
+  /* Tema Off-White B&B (Cinza Arquitetônico) */
+  --background: #f8f9fa;
+  /* Fundo global cinza sutil */
+  --foreground: #0f0f0f;
+  /* Texto industrial */
+  --surface: #ffffff;
+  /* Elementos brancos que saltam do fundo */
+  --surface-hover: #f1f3f5;
+  /* Hover sutil */
+  --card: #ffffff;
+  /* Cards brancos sob fundo cinza */
+  --card-foreground: #0f0f0f;
+  --border: #e9ecef;
+  /* Bordas suaves */
+  --border-strong: #dee2e6;
+  /* Bordas de separação */
+  --muted: #6c757d;
+  --muted-foreground: #adb5bd;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+    /* Garante que todos os botões e links tenham feedback visual de foco acessível */
+  }
+
+  html {
+    /* Elimina delay de 300ms em duplo-toque em dispositivos iOS/Android */
+    touch-action: manipulation;
+    /* Garante que scrollbars, inputs, etc. respeitem o tema visual */
+    color-scheme: light;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    /* Evita zoom automático em inputs no iOS */
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Focus visível acessível em todos os elementos interativos */
+  :focus-visible {
+    outline: 2px solid #E8D51C;
+    outline-offset: 2px;
+  }
+}
+
+/* Utilitários de layout e touch */
+@layer utilities {
+
+  /* Card claro com elevação sutil */
+  .card-light {
+    @apply bg-white border border-industrial-200 shadow-sm hover:shadow-md transition-shadow;
+  }
+
+  /* Seção de fundo alternado (zebra claro) */
+  .section-surface {
+    @apply bg-industrial-50;
+  }
+
+  /* Barra de destaque amarela (decorativa, não usar como texto) */
+  .accent-bar {
+    @apply border-l-4 border-accent-premium pl-4;
+  }
+
+  /* Esconde scrollbar mantendo o scroll funcional */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Garante safe-area para botões fixos próximos ao notch iOS */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 16px);
+  }
+
+  /* --- TIPOGRAFIA INDUSTRIAL (Posts AI) --- */
+  .prose-industrial {
+    @apply text-industrial-800 leading-relaxed;
+  }
+  
+  .prose-industrial h2 {
+    @apply text-2xl md:text-4xl font-black font-display uppercase tracking-tight text-industrial-950 mt-12 mb-6 border-l-4 border-accent-premium pl-4;
+  }
+
+  .prose-industrial h3 {
+    @apply text-xl md:text-2xl font-bold font-display uppercase tracking-tight text-industrial-900 mt-8 mb-4;
+  }
+
+  .prose-industrial p {
+    @apply text-lg text-industrial-700 mb-6;
+  }
+
+  .prose-industrial strong {
+    @apply font-bold text-industrial-950;
+  }
+
+  .prose-industrial ul, .prose-industrial ol {
+    @apply my-6 space-y-3 ml-6;
+  }
+
+  .prose-industrial li {
+    @apply list-disc text-industrial-700;
+  }
+
+  .prose-industrial table {
+    @apply w-full border-collapse my-8 overflow-hidden rounded-xl border border-industrial-200;
+  }
+
+  .prose-industrial th {
+    @apply bg-industrial-100 text-industrial-900 font-bold p-4 text-left border-b border-industrial-200 text-sm md:text-base;
+  }
+
+  .prose-industrial td {
+    @apply p-4 border-b border-industrial-100 text-industrial-700 text-sm md:text-base;
+  }
+
+  .prose-industrial tr:last-child td {
+    @apply border-b-0;
+  }
+
+  /* Estilos Responsivos para Títulos Dinâmicos */
+  .responsive-title {
+    @apply text-4xl md:text-6xl lg:text-7xl font-black font-display uppercase tracking-tighter leading-[0.9] lg:leading-none;
+  }
+
+  .responsive-summary {
+    @apply text-lg md:text-xl lg:text-2xl text-industrial-500 font-medium leading-relaxed;
+  }
+}

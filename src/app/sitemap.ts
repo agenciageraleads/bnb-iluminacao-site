@@ -1,9 +1,10 @@
 import { MetadataRoute } from 'next'
-import { categories, getProducts } from '@/lib/data'
+import { categories, getProducts, getBlogPosts, getCatalogs } from '@/lib/data'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:9010'
+  const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || 'https://bebiluminacao.com.br'
   const products = await getProducts()
+  const posts = await getBlogPosts(1000)
 
   // Rotas Estáticas
   const staticRoutes = [
@@ -12,6 +13,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/contato',
     '/servicos',
     '/produtos',
+    '/blog',
+    '/downloads',
     '/lp/postes-metalicos',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
@@ -36,5 +39,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }))
 
-  return [...staticRoutes, ...categoryRoutes, ...productRoutes]
+  // Rotas de Blog Posts
+  const blogRoutes = posts.map((post) => ({
+    url: `${baseUrl}/blog/${post.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8, // Prioridade alta para GEO (Artigos Autorais)
+  }))
+
+  return [...staticRoutes, ...categoryRoutes, ...productRoutes, ...blogRoutes]
 }

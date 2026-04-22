@@ -49,9 +49,17 @@ const Blog: CollectionConfig = {
             }
         },
         {
+            name: 'bodyHtml',
+            type: 'textarea',
+            label: 'Conteúdo IA (HTML)',
+            admin: {
+                description: 'Corpo do artigo gerado automaticamente com tags HTML e Tabelas.',
+            }
+        },
+        {
             name: 'content',
             type: 'richText',
-            required: true,
+            required: false, // Permitir que o motor use apenas bodyHtml se preferir
         },
         {
             name: 'faqs',

@@ -1,0 +1,20 @@
+#!/usr/bin/expect -f
+set timeout -1
+set password "ImPh,RbdVk4.gLuc@X8t"
+spawn ssh -o StrictHostKeyChecking=no root@187.77.37.213
+expect "password:"
+send "$password\r"
+expect "root@*"
+# Limpeza agressiva de containers bnb_*
+send "docker ps -a --filter name=bnb_ -q | xargs -r docker rm -f\r"
+expect "root@*"
+send "cd /var/www/bnb-platform && docker compose up -d --build\r"
+expect "root@*"
+send "echo 'Aguardando 20s...' && sleep 20\r"
+expect "root@*"
+send "docker exec bnb_site npx payload migrate\r"
+expect "root@*"
+send "docker exec bnb_site env DATABASE_URL=postgresql://bnb_user:bnb_password_secure_123@postgres:5432/bnb_database?schema=public PAYLOAD_SECRET=bnb_secret_key_generated_securely_123 npx tsx src/scripts/migrate-posts.ts\r"
+expect "root@*"
+send "exit\r"
+expect eof

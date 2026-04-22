@@ -74,6 +74,10 @@ export interface Config {
     blog: Blog;
     regions: Region;
     representatives: Representative;
+    clients: Client;
+    projects: Project;
+    catalogs: Catalog;
+    'catalog-leads': CatalogLead;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -88,6 +92,10 @@ export interface Config {
     blog: BlogSelect<false> | BlogSelect<true>;
     regions: RegionsSelect<false> | RegionsSelect<true>;
     representatives: RepresentativesSelect<false> | RepresentativesSelect<true>;
+    clients: ClientsSelect<false> | ClientsSelect<true>;
+    projects: ProjectsSelect<false> | ProjectsSelect<true>;
+    catalogs: CatalogsSelect<false> | CatalogsSelect<true>;
+    'catalog-leads': CatalogLeadsSelect<false> | CatalogLeadsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -167,7 +175,7 @@ export interface Product {
    */
   model: string;
   category: number | Category;
-  description: {
+  description?: {
     root: {
       type: string;
       children: {
@@ -181,8 +189,8 @@ export interface Product {
       version: number;
     };
     [k: string]: unknown;
-  };
-  mainImage: number | Media;
+  } | null;
+  mainImage?: (number | null) | Media;
   gallery?:
     | {
         image?: (number | null) | Media;
@@ -216,6 +224,15 @@ export interface Product {
         file: number | Media;
         id?: string | null;
       }[]
+    | null;
+  optionals?:
+    | (
+        | 'Chumbador'
+        | 'Janela de Inspeção'
+        | 'Pintura Eletrostática'
+        | 'Projeto Personalizado'
+        | 'Projeto Iluminotécnico'
+      )[]
     | null;
   updatedAt: string;
   createdAt: string;
@@ -279,6 +296,14 @@ export interface Media {
       filesize?: number | null;
       filename?: string | null;
     };
+    'logo-marquee'?: {
+      url?: string | null;
+      width?: number | null;
+      height?: number | null;
+      mimeType?: string | null;
+      filesize?: number | null;
+      filename?: string | null;
+    };
   };
 }
 /**
@@ -301,7 +326,11 @@ export interface Blog {
    * Resumo crítico de 50 palavras otimizado para motores de IA.
    */
   summary?: string | null;
-  content: {
+  /**
+   * Corpo do artigo gerado automaticamente com tags HTML e Tabelas.
+   */
+  bodyHtml?: string | null;
+  content?: {
     root: {
       type: string;
       children: {
@@ -315,7 +344,7 @@ export interface Blog {
       version: number;
     };
     [k: string]: unknown;
-  };
+  } | null;
   faqs?:
     | {
         question: string;
@@ -359,6 +388,7 @@ export interface Region {
   id: number;
   cityName: string;
   slug: string;
+  featuredImage?: (number | null) | Media;
   content?: {
     root: {
       type: string;
@@ -374,6 +404,18 @@ export interface Region {
     };
     [k: string]: unknown;
   } | null;
+  trust?: {
+    logistics?: string | null;
+    deliveryTime?: string | null;
+    warranty?: string | null;
+  };
+  faq?:
+    | {
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
   meta?: {
     title?: string | null;
     description?: string | null;
@@ -432,6 +474,106 @@ export interface Representative {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "clients".
+ */
+export interface Client {
+  id: number;
+  name: string;
+  /**
+   * Suba o logo do cliente. O sistema irá redimensionar automaticamente para o carrossel.
+   */
+  logo: number | Media;
+  /**
+   * Número menor aparece primeiro.
+   */
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projects".
+ */
+export interface Project {
+  id: number;
+  title: string;
+  category: string;
+  location: string;
+  image: number | Media;
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "catalogs".
+ */
+export interface Catalog {
+  id: number;
+  title: string;
+  description?: string | null;
+  thumbnail: number | Media;
+  category?: ('geral' | 'decorativo' | 'publica' | 'industrial') | null;
+  layout?:
+    | (
+        | {
+            title?: string | null;
+            subtitle?: string | null;
+            image?: (number | null) | Media;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'cover';
+          }
+        | {
+            title?: string | null;
+            products?: (number | Product)[] | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'productGrid';
+          }
+        | {
+            content?: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'fullText';
+          }
+      )[]
+    | null;
+  file?: (number | null) | Media;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "catalog-leads".
+ */
+export interface CatalogLead {
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+  company: string;
+  companyCnpj: string;
+  catalogDownloaded?: (number | null) | Catalog;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -481,6 +623,22 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'representatives';
         value: number | Representative;
+      } | null)
+    | ({
+        relationTo: 'clients';
+        value: number | Client;
+      } | null)
+    | ({
+        relationTo: 'projects';
+        value: number | Project;
+      } | null)
+    | ({
+        relationTo: 'catalogs';
+        value: number | Catalog;
+      } | null)
+    | ({
+        relationTo: 'catalog-leads';
+        value: number | CatalogLead;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -589,6 +747,7 @@ export interface ProductsSelect<T extends boolean = true> {
         file?: T;
         id?: T;
       };
+  optionals?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -654,6 +813,16 @@ export interface MediaSelect<T extends boolean = true> {
               filesize?: T;
               filename?: T;
             };
+        'logo-marquee'?:
+          | T
+          | {
+              url?: T;
+              width?: T;
+              height?: T;
+              mimeType?: T;
+              filesize?: T;
+              filename?: T;
+            };
       };
 }
 /**
@@ -666,6 +835,7 @@ export interface BlogSelect<T extends boolean = true> {
   status?: T;
   author?: T;
   summary?: T;
+  bodyHtml?: T;
   content?: T;
   faqs?:
     | T
@@ -697,7 +867,22 @@ export interface BlogSelect<T extends boolean = true> {
 export interface RegionsSelect<T extends boolean = true> {
   cityName?: T;
   slug?: T;
+  featuredImage?: T;
   content?: T;
+  trust?:
+    | T
+    | {
+        logistics?: T;
+        deliveryTime?: T;
+        warranty?: T;
+      };
+  faq?:
+    | T
+    | {
+        question?: T;
+        answer?: T;
+        id?: T;
+      };
   meta?:
     | T
     | {
@@ -718,6 +903,85 @@ export interface RepresentativesSelect<T extends boolean = true> {
   phone?: T;
   states?: T;
   region?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "clients_select".
+ */
+export interface ClientsSelect<T extends boolean = true> {
+  name?: T;
+  logo?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projects_select".
+ */
+export interface ProjectsSelect<T extends boolean = true> {
+  title?: T;
+  category?: T;
+  location?: T;
+  image?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "catalogs_select".
+ */
+export interface CatalogsSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  thumbnail?: T;
+  category?: T;
+  layout?:
+    | T
+    | {
+        cover?:
+          | T
+          | {
+              title?: T;
+              subtitle?: T;
+              image?: T;
+              id?: T;
+              blockName?: T;
+            };
+        productGrid?:
+          | T
+          | {
+              title?: T;
+              products?: T;
+              id?: T;
+              blockName?: T;
+            };
+        fullText?:
+          | T
+          | {
+              content?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
+  file?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "catalog-leads_select".
+ */
+export interface CatalogLeadsSelect<T extends boolean = true> {
+  name?: T;
+  email?: T;
+  phone?: T;
+  company?: T;
+  companyCnpj?: T;
+  catalogDownloaded?: T;
   updatedAt?: T;
   createdAt?: T;
 }

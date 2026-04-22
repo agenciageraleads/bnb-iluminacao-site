@@ -1,0 +1,17 @@
+#!/usr/bin/expect -f
+set timeout -1
+set password "ImPh,RbdVk4.gLuc@X8t"
+spawn ssh -o StrictHostKeyChecking=no root@187.77.37.213
+expect "password:"
+send "$password\r"
+expect "root@*"
+# Modifica a DATABASE_URL para usar o host 'postgres' e porta '5432' interna do Docker
+send "sed -i 's/localhost:9001/postgres:5432/g' /var/www/bnb-platform/.env\r"
+expect "root@*"
+# Modifica o REDIS_URL se existir (geralmente localhost:9002 -> redis:6379)
+send "sed -i 's/localhost:9002/redis:6379/g' /var/www/bnb-platform/.env\r"
+expect "root@*"
+send "cd /var/www/bnb-platform && docker compose restart bnb-site\r"
+expect "root@*"
+send "exit\r"
+expect eof

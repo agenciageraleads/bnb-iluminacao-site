@@ -10,6 +10,7 @@ export interface Product {
     datasheet?: string
     leadTime?: string
     badges?: string[]
+    optionals?: string[]
 }
 
 export interface Category {
@@ -123,54 +124,54 @@ export const portfolioItems = [
         title: "Praças Municipais",
         category: "Público e Praças",
         location: "Centralina, MG",
-        image: "/portfolio/pracas-centralina.png",
+        image: "/portfolio/pracas-centralina.webp",
     },
     {
         title: "Praça do Lago",
         category: "Público e Praças",
         location: "Araporã, MG",
-        image: "/portfolio/praca-lago.png",
+        image: "/portfolio/praca-lago.webp",
     },
     {
         title: "Quadras de Esportes",
         category: "Esportivo",
         location: "Araporã, GO",
-        image: "/portfolio/quadras-arapora.png",
+        image: "/portfolio/quadras-arapora.webp",
     },
     {
         title: "Burger King",
         category: "Comercial / Fast Food",
         location: "Rio Verde, GO",
-        image: "/portfolio/burger-king-rv.png",
+        image: "/portfolio/burger-king-rv.webp",
     },
     {
         title: "Centro de Esportes UFG",
         category: "Esportivo / Público",
         location: "Goiânia, GO",
-        image: "/portfolio/centro-esportes-ufg.png",
+        image: "/portfolio/centro-esportes-ufg.webp",
     },
     {
         title: "Portal do Sol Mendanha",
         category: "Condomínio Residencial",
         location: "Goiânia, GO",
-        image: "/portfolio/portal-do-sol.png",
+        image: "/portfolio/portal-do-sol.webp",
     },
     {
         title: "Maternidade Célia Câmara",
         category: "Saúde e Hospitalar",
         location: "Goiânia, GO",
-        image: "/portfolio/maternidade-celia.png",
+        image: "/portfolio/maternidade-celia.webp",
     },
     {
         title: "Sistema FIEAC SENAI",
         category: "Educação / Institucional",
         location: "Rio Branco, AC",
-        image: "/portfolio/senai-ac.png",
+        image: "/portfolio/senai-ac.webp",
     },
     {
         title: "Reserva do Parque",
         category: "Condomínio Residencial",
         location: "Rio Verde, GO",
-        image: "/portfolio/reserva-parque.png",
+        image: "/portfolio/reserva-parque.webp",
     },
 ]

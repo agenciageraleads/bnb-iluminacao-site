@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  bnb-site:
+    build: .
+    container_name: bnb_site
+    restart: always
+    ports:
+      - "9010:9010"
+    environment:
+      - POSTGRES_URL=postgresql://${POSTGRES_USER:-bnb_user}:${POSTGRES_PASSWORD:-bnb_password_secure_123}@postgres:5432/${POSTGRES_DB:-bnb_database}
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-bnb_user}:${POSTGRES_PASSWORD:-bnb_password_secure_123}@postgres:5432/${POSTGRES_DB:-bnb_database}
+    depends_on:
+      - postgres
+      - redis
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: bnb_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-bnb_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-bnb_password_secure_123}
+      POSTGRES_DB: ${POSTGRES_DB:-bnb_database}
+    ports:
+      - "9001:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    container_name: bnb_redis
+    restart: always
+    ports:
+      - "9002:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  postgres_data:
+  redis_data:

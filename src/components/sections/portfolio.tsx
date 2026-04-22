@@ -2,10 +2,12 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
-import { portfolioItems } from "@/lib/constants"
+import { portfolioItems as staticPortfolioItems } from "@/lib/constants"
 import { MessageCircle } from "lucide-react"
+import type { Project } from "@/lib/data"
 
-export function Portfolio() {
+export function Portfolio({ projects = [] }: { projects?: Project[] }) {
+    const items = projects.length > 0 ? projects : staticPortfolioItems;
     const [currentIndexes, setCurrentIndexes] = useState([0, 1, 2]);
     const [fade, setFade] = useState(false);
 
@@ -18,7 +20,7 @@ export function Portfolio() {
                 // Seleciona 3 novos itens aleatórios sem repetir
                 const newIndexes: number[] = [];
                 while (newIndexes.length < 3) {
-                    const r = Math.floor(Math.random() * portfolioItems.length);
+                    const r = Math.floor(Math.random() * items.length);
                     if (!newIndexes.includes(r)) newIndexes.push(r);
                 }
                 setCurrentIndexes(newIndexes);
@@ -27,11 +29,11 @@ export function Portfolio() {
         }, 15000);
 
         return () => clearInterval(interval);
-    }, []);
+    }, [items.length]);
 
-    const mainProject = portfolioItems[currentIndexes[0]];
-    const sideProject1 = portfolioItems[currentIndexes[1]];
-    const sideProject2 = portfolioItems[currentIndexes[2]];
+    const mainProject = items[currentIndexes[0]] || items[0];
+    const sideProject1 = items[currentIndexes[1]] || items[1];
+    const sideProject2 = items[currentIndexes[2]] || items[2];
 
     return (
         <section className="py-24 bg-white">

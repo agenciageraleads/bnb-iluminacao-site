@@ -32,4 +32,14 @@
 
 - Conferência fina dos *Redirects* do next.config.ts.
 - Testes de performance, carregamento de imagens.
-- Entrega final.
+## Fase 6: Portal do Representante e Integração (A FAZER)
+
+- **Módulo de Treinamento e Downloads**:
+  - [x] Implementar área logada/protegida para representantes (Senha Fixa).
+  - [ ] Evoluir para Login Individual (E-mail + Senha personalizada).
+  - [x] Disponibilizar módulos de treinamento comercial e técnico de produtos.
+  - [x] Criar central de downloads (Catálogos, Logos, Fichas Técnicas).
+- **Integração com CRM**:
+  - [ ] Exibir propostas em aberto e status de negociações.
+- **Integração com ERP (Sankhya)**:
+  - [ ] Dashboard de vendas efetuadas e recebimentos pendentes/futuros.

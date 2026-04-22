@@ -1,0 +1,12 @@
+#!/usr/bin/expect -f
+set timeout -1
+set password "ImPh,RbdVk4.gLuc@X8t"
+spawn ssh -o StrictHostKeyChecking=no root@187.77.37.213
+expect "password:"
+send "$password\r"
+expect "root@*"
+# Verificar dados de catálogos via docker exec psql
+send "docker exec bnb_postgres psql -U bnb_user bnb_database -c \"SELECT title FROM catalogs;\"\r"
+expect "root@*"
+send "exit\r"
+expect eof

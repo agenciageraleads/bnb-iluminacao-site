@@ -2,14 +2,14 @@ import { benefits } from "@/lib/constants"
 
 export function Benefits() {
     return (
-        <section className="py-24 bg-industrial-950">
+        <section className="py-16 md:py-24 bg-industrial-950">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-black font-sans uppercase tracking-tight text-white mb-2">
+                <div className="text-center mb-12 md:mb-16">
+                    <h2 className="text-3xl md:text-5xl font-black font-sans uppercase tracking-tight text-white mb-2 leading-tight">
                         PORQUE COMPRAR <br /> <span className="text-accent-premium">COM A B&B?</span>
                     </h2>
-                    <div className="w-24 h-1 bg-accent-premium mx-auto mt-6 mb-4"></div>
-                    <p className="text-industrial-300 max-w-3xl mx-auto mt-4">
+                    <div className="w-16 md:w-24 h-1 bg-accent-premium mx-auto mt-4 md:mt-6 mb-4"></div>
+                    <p className="text-industrial-400 text-sm md:text-base max-w-3xl mx-auto mt-4">
                         Nossos postes metálicos galvanizados unem durabilidade, segurança e um acabamento impecável.
                         Com fabricação ágil e qualidade superior, entregamos soluções robustas e confiáveis para sua obra brilhar.
                     </p>

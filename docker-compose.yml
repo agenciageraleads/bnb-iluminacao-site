@@ -1,6 +1,20 @@
 version: '3.8'
 
 services:
+  bnb-site:
+    build: .
+    container_name: bnb_site
+    restart: always
+    ports:
+      - "9010:9010"
+    environment:
+      - POSTGRES_URL=postgresql://${POSTGRES_USER:-bnb_user}:${POSTGRES_PASSWORD:-bnb_password_secure_123}@postgres:5432/${POSTGRES_DB:-bnb_database}
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - ./media:/app/media
+
   postgres:
     image: postgres:15-alpine
     container_name: bnb_postgres

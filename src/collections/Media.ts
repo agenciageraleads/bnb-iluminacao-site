@@ -23,6 +23,12 @@ const Media: CollectionConfig = {
                 height: 1080,
                 position: 'centre',
             },
+            {
+                name: 'logo-marquee',
+                width: 250,
+                height: undefined, // Mantém a proporção
+                position: 'centre',
+            },
         ],
         adminThumbnail: 'thumbnail',
         mimeTypes: ['image/*', 'application/pdf'],

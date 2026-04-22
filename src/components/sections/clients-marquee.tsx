@@ -1,9 +1,12 @@
-"use client";
+"use client"
 
-import { clients } from "@/lib/constants"
 import Image from "next/image"
+import type { ClientLogo } from "@/lib/data"
 
-export function ClientsMarquee() {
+export function ClientsMarquee({ clients = [] }: { clients?: ClientLogo[] }) {
+    // Se não vier nada do CMS, não mostramos a seção para não ficar vazia
+    if (!clients || clients.length === 0) return null;
+
     // Duplicamos a lista para garantir o efeito de loop infinito
     const allClients = [...clients, ...clients]
 

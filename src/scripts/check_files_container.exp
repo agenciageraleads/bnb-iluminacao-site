@@ -1,0 +1,11 @@
+#!/usr/bin/expect -f
+set timeout -1
+set password "ImPh,RbdVk4.gLuc@X8t"
+spawn ssh -o StrictHostKeyChecking=no root@187.77.37.213
+expect "password:"
+send "$password\r"
+expect "root@*"
+send "docker exec bnb_site ls -R /app/src/scripts\r"
+expect "root@*"
+send "exit\r"
+expect eof

@@ -1,0 +1,9 @@
+- node_modules/
+- .next/
+- .git/
+- *.log
+- scratch/
+- blog_slugs.txt
+- gsc_urls_consolidadas.txt
+- scripts/extract_sitemaps.js
+- scripts/migrate-content.cjs

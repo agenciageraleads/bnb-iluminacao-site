@@ -38,13 +38,13 @@ const Products: CollectionConfig = {
         {
             name: 'description',
             type: 'richText',
-            required: true,
+            required: false,
         },
         {
             name: 'mainImage',
             type: 'upload',
             relationTo: 'media',
-            required: true,
+            required: false,
         },
         {
             name: 'gallery',
@@ -143,6 +143,19 @@ const Products: CollectionConfig = {
                     relationTo: 'media',
                     required: true,
                 },
+            ],
+        },
+        {
+            name: 'optionals',
+            type: 'select',
+            hasMany: true,
+            label: 'Opcionais Disponíveis',
+            options: [
+                { label: 'Chumbador', value: 'Chumbador' },
+                { label: 'Janela de Inspeção', value: 'Janela de Inspeção' },
+                { label: 'Pintura Eletrostática', value: 'Pintura Eletrostática' },
+                { label: 'Projeto Personalizado', value: 'Projeto Personalizado' },
+                { label: 'Projeto Iluminotécnico', value: 'Projeto Iluminotécnico' },
             ],
         },
     ],

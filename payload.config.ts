@@ -11,6 +11,9 @@ import Media from './src/collections/Media'
 import Blog from './src/collections/Blog'
 import Regions from './src/collections/Regions'
 import Representatives from './src/collections/Representatives'
+import Clients from './src/collections/Clients'
+import Projects from './src/collections/Projects'
+import { Catalogs, CatalogLeads } from './src/collections/Catalogs'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -27,6 +30,10 @@ export default buildConfig({
         Blog,
         Regions,
         Representatives,
+        Clients,
+        Projects,
+        Catalogs,
+        CatalogLeads,
     ],
     editor: lexicalEditor({}),
     secret: process.env.PAYLOAD_SECRET || 'bnb_secret_key_generated_securely_123',
@@ -35,7 +42,7 @@ export default buildConfig({
     },
     db: postgresAdapter({
         pool: {
-            connectionString: process.env.DATABASE_URL || '',
+            connectionString: process.env.DATABASE_URL || process.env.POSTGRES_URL || '',
         },
     }),
 })

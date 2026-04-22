@@ -1,0 +1,15 @@
+#!/usr/bin/expect -f
+set timeout -1
+set password "ImPh,RbdVk4.gLuc@X8t"
+spawn ssh -o StrictHostKeyChecking=no root@187.77.37.213
+expect "password:"
+send "$password\r"
+expect "root@*"
+# Restaurar o banco de dados dentro do container
+send "docker exec -i bnb_postgres psql -U bnb_user bnb_database < /var/www/bnb-platform/bnb_dump.sql\r"
+expect "root@*"
+# Reiniciar a aplicação
+send "cd /var/www/bnb-platform && docker compose restart bnb-site\r"
+expect "root@*"
+send "exit\r"
+expect eof

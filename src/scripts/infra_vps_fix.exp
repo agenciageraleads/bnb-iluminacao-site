@@ -1,0 +1,15 @@
+#!/usr/bin/expect -f
+set timeout -1
+set password "ImPh,RbdVk4.gLuc@X8t"
+spawn ssh -o StrictHostKeyChecking=no root@187.77.37.213
+expect "password:"
+send "$password\r"
+expect "root@*"
+# Corrigir URLs no .env da VPS
+send "sed -i 's|NEXT_PUBLIC_SERVER_URL=.*|NEXT_PUBLIC_SERVER_URL=http://187.77.37.213:9010|g' /var/www/bnb-platform/.env\r"
+expect "root@*"
+# Garantir permissões na pasta media (777 temporário para debugar se é permissão)
+send "chmod -R 777 /var/www/bnb-platform/media\r"
+expect "root@*"
+send "exit\r"
+expect eof

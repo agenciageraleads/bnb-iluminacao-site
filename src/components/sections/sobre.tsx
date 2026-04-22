@@ -12,7 +12,7 @@ export function Sobre() {
                     <div className="relative order-2 lg:order-1">
                         <div className="aspect-video lg:aspect-square relative overflow-hidden border-[8px] border-white shadow-2xl">
                             <Image
-                                src="https://picsum.photos/seed/sobre/1200/800" // Fábrica/Indústria
+                                src="/images/fachada-bb.jpg" 
                                 alt="Fábrica da B&B Iluminação"
                                 fill
                                 className="object-cover"

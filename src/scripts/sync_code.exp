@@ -1,0 +1,7 @@
+#!/usr/bin/expect -f
+set timeout -1
+set password "ImPh,RbdVk4.gLuc@X8t"
+spawn rsync -avz --delete -F -e "ssh -o StrictHostKeyChecking=no" /Users/Lucas-Lenovo/Documents/Documentos/B&B/Site\ 2.0/bnb-platform/ root@187.77.37.213:/var/www/bnb-platform/
+expect "password:"
+send "$password\r"
+expect eof
