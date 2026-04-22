@@ -43,7 +43,17 @@ export function Footer() {
                         </ul>
                     </div>
 
-                    {/* Coluna 3: Empresa */}
+                    {/* Coluna 3: Serviços */}
+                    <div className="space-y-6 text-center md:text-left">
+                        <h3 className="text-sm font-black uppercase tracking-[0.2em] text-accent-premium">Serviços Técnicos</h3>
+                        <ul className="space-y-3">
+                            <li><Link href="/servicos/corte-laser" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Corte a Laser</Link></li>
+                            <li><Link href="/servicos/pintura-eletrostatica" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Pintura Eletrostática</Link></li>
+                            <li><Link href="/servicos" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Todos os Serviços</Link></li>
+                        </ul>
+                    </div>
+
+                    {/* Coluna 4: Empresa */}
                     <div className="space-y-6 text-center md:text-left">
                         <h3 className="text-sm font-black uppercase tracking-[0.2em] text-accent-premium">B&B Iluminação</h3>
                         <ul className="space-y-3">
@@ -52,7 +62,6 @@ export function Footer() {
                             <li><Link href="/downloads" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Catálogos</Link></li>
                             <li><Link href="/contato" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Fale Conosco</Link></li>
                             <li><Link href="/blog" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Blog</Link></li>
-                            <li><Link href="/privacidade" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Privacidade</Link></li>
                         </ul>
                     </div>
 
