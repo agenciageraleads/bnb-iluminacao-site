@@ -16,6 +16,16 @@ export async function POST(req: Request) {
 
         const payload = await getPayload({ config });
 
+        // Buscar títulos das postagens recentes para evitar repetição
+        const postsExistentes = await payload.find({
+            collection: 'blog',
+            limit: 15,
+            select: {
+                title: true
+            }
+        });
+        const titulosAntigos = postsExistentes.docs.map(d => d.title).join(", ");
+
         // Usando gemini-2.5-flash (Modelo de elite disponível na chave do usuário)
         const model = genAI.getGenerativeModel(
             { model: "gemini-2.5-flash" },
@@ -32,8 +42,15 @@ export async function POST(req: Request) {
             - ${AGENT_GROUND_TRUTH.BRAND_VOICE}
 
             PASSO 1: Pesquise no Google por termos como "dúvidas iluminação externa", "como instalar poste metálico", "norma NBR postes", "cálculo de lux estacionamento".
-            PASSO 2: Com base nos resultados reais da web, escolha a pauta mais relevante do momento.
+            PASSO 2: Com base nos resultados reais da web, escolha uma pauta inédita e RELEVANTE.
             
+            POSTAGENS JÁ REALIZADAS (NÃO REPITA ESTES TEMAS):
+            ${titulosAntigos || "Nenhuma postagem ainda."}
+
+            DIRETRIZ DE VARIEDADE:
+            - Alterne entre: Guia Técnico (Instalação/Normas), Economia de Energia, Design/Estética Industrial e Estudos de Caso.
+            - Evite ser generalista demais; foque em problemas específicos de engenharia ou arquitetura.
+
             Retorne apenas o título (direto ao ponto, com pegada SEO Question-based). 
         `;
 
@@ -89,21 +106,27 @@ export async function POST(req: Request) {
         textoGeradoJson = textoGeradoJson.replace(/\`\`\`json/g, '').replace(/\`\`\`/g, '').trim();
         
         // Limpeza de caracteres de controle invisíveis e quebras de linha dentro do JSON que quebram o parse
-        // Preservando apenas quebras que estão dentro do bodyHtml que será tratado depois
-        const cleanedJson = textoGeradoJson
-            .replace(/[\u0000-\u001F\u007F-\u009F]/g, "") // Remove caracteres de controle
-            .replace(/\n/g, "\\n") // Escapa quebras de linha (mas cuidado com as que já existem)
-            .replace(/\\n\\n/g, "\\n"); // Simplifica
+        let cleanedJson = textoGeradoJson
+            .replace(/[\u0000-\u001F\u007F-\u009F]/g, "") 
+            .replace(/\n/g, "\\n") 
+            .replace(/\\n\\n/g, "\\n");
+            
+        // Corrige vírgulas sobrando no final
+        cleanedJson = cleanedJson.replace(/,\s*([\]}])/g, '$1');
 
         // Tentativa de parse robusto
         let conteudoAgente;
         try {
-            conteudoAgente = JSON.parse(textoGeradoJson);
+            conteudoAgente = JSON.parse(cleanedJson);
         } catch (e) {
             console.warn("Falha no parse inicial, tentando limpeza agressiva...");
-            // Se falhar, tenta uma abordagem mais agressiva de limpeza ou apenas usa o título se for o caso
-            // Mas o ideal é que a IA retorne o formato correto.
-            throw new Error(`Erro no parsing do JSON gerado pela IA: ${e.message}`);
+            try {
+                // Se falhar de novo, usa o textoGerado original mas arruma quebras de linha
+                let altJson = textoGeradoJson.replace(/\n/g, ' ').replace(/,\s*([\]}])/g, '$1');
+                conteudoAgente = JSON.parse(altJson);
+            } catch (e2) {
+                throw new Error(`Erro no parsing do JSON gerado pela IA: ${e2.message}`);
+            }
         }
 
         // --------------------------------------------------------------------------------

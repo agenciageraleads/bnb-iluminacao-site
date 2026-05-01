@@ -6,6 +6,8 @@ import Link from "next/link"
 import { getProducts, getCategories } from "@/lib/data"
 import { redirect } from "next/navigation"
 
+export const dynamic = 'force-dynamic'
+
 export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
     const { category: categorySlug } = await params;
     

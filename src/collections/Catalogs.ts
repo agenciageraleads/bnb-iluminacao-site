@@ -6,6 +6,9 @@ export const Catalogs: CollectionConfig = {
         useAsTitle: 'title',
         group: 'Marketing',
     },
+    access: {
+        read: () => true,
+    },
     fields: [
         {
             name: 'generatePdf',
@@ -134,8 +137,7 @@ export const CatalogLeads: CollectionConfig = {
         },
         {
             name: 'catalogDownloaded',
-            type: 'relationship',
-            relationTo: 'catalogs',
+            type: 'text',
             label: 'Catálogo Baixado',
         }
     ],

@@ -6,6 +6,9 @@ import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
 import { Check, MessageCircle, Phone, ShieldCheck, Truck, Calendar, Download, Factory, ArrowRight, Paintbrush, PenTool, Lightbulb, Layout, Anchor } from "lucide-react"
 import Link from "next/link"
 import { getProducts, getCategories } from "@/lib/data"
+import { ProductGallery } from "@/components/ui/product-gallery"
+
+export const dynamic = 'force-dynamic'
 
 export default async function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
@@ -50,7 +53,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
         "@context": "https://schema.org/",
         "@type": "Product",
         "name": product.name,
-        "image": product.image ? [product.image] : [],
+        "image": product.image ? [`https://bebiluminacao.com.br${product.image}`] : [],
         "description": product.description,
         "sku": product.model,
         "mpn": product.model,
@@ -58,9 +61,27 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             "@type": "Brand",
             "name": "B&B Iluminação"
         },
+        "category": category?.title,
+        "material": "Aço Galvanizado a Fogo",
         "manufacturer": {
             "@id": "https://bebiluminacao.com.br/#organization"
         },
+        "offers": {
+            "@type": "Offer",
+            "url": `https://bebiluminacao.com.br/produtos/item/${product.id}`,
+            "priceCurrency": "BRL",
+            "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/NewCondition",
+            "seller": {
+                "@type": "Organization",
+                "name": "B&B Iluminação"
+            }
+        },
+        "additionalProperty": specs.map(spec => ({
+            "@type": "PropertyValue",
+            "name": "Especificação Técnica",
+            "value": spec
+        })),
         "mainEntity": {
             "@type": "FAQPage",
             "mainEntity": [
@@ -83,6 +104,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
             ]
         }
     };
+
 
     return (
         <main className="min-h-screen bg-white pt-24">
@@ -115,43 +137,12 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                 <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
 
                     {/* Galeria do produto */}
-                    <div className="space-y-4 lg:sticky lg:top-24">
-                        <div className="group aspect-square bg-industrial-100 border border-industrial-200 flex items-center justify-center relative overflow-hidden rounded-sm shadow-sm">
-                            <div className="absolute top-0 left-0 w-full h-1 bg-accent-premium z-10" aria-hidden="true" />
-                            {product.image ? (
-                                <Image
-                                    src={product.image}
-                                    alt={product.name}
-                                    fill
-                                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                                    priority
-                                />
-                            ) : (
-                                <span className="text-industrial-200 font-black text-[100px] select-none italic" aria-label="Imagem do produto">
-                                    {product.model}
-                                </span>
-                            )}
-                            <div className="absolute top-4 right-4 bg-industrial-950/80 backdrop-blur-sm text-white text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-sm">
-                                {category?.title}
-                            </div>
-                        </div>
-
-                        {/* Miniaturas em scroll horizontal */}
-                        <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
-                            {[1, 2, 3].map((i) => (
-                                <button
-                                    key={i}
-                                    className="aspect-square w-20 shrink-0 bg-industrial-50 border-2 border-transparent hover:border-accent-premium transition-all relative overflow-hidden group shadow-sm"
-                                    aria-label={`Visualizar foto ${i} do produto`}
-                                >
-                                    <span className="text-industrial-300 font-black text-xs italic" aria-hidden="true">{product.model}</span>
-                                    {product.image && (
-                                        <Image src={product.image} alt="" fill className="object-cover opacity-50 group-hover:opacity-100 transition-opacity" />
-                                    )}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
+                    <ProductGallery 
+                        mainImage={product.image}
+                        model={product.model}
+                        categoryTitle={category?.title}
+                        gallery={product.gallery || []}
+                    />
 
                     {/* Conteúdo do Produto */}
                     <div className="space-y-8">

@@ -5,6 +5,8 @@ import Link from "next/link"
 import { getRepresentatives } from "@/lib/data"
 import { RepresentativesClient } from "./RepresentativesClient"
 
+export const dynamic = 'force-dynamic'
+
 export const metadata = {
     title: "Representantes | B&B Iluminação",
     description: "Encontre o representante comercial da B&B Iluminação mais próximo de você. Cobertura em todo o Brasil.",

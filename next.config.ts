@@ -43,7 +43,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/mastro',
-        destination: '/produtos/mastros-para-bandeiras',
+        destination: '/lp/mastros-para-bandeira',
+        permanent: true,
+      },
+      {
+        source: '/produtos/mastros-para-bandeiras',
+        destination: '/lp/mastros-para-bandeira',
         permanent: true,
       },
       {
@@ -61,6 +66,7 @@ const nextConfig: NextConfig = {
         destination: '/produtos/linha-garden',
         permanent: true,
       },
+      // Consolidação de Categorias Legadas
       {
         source: '/produtos/postes',
         destination: '/produtos/poste-metalico',
@@ -78,7 +84,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/produtos/acessorios',
-        destination: '/produtos/poste-metalico/acessorios',
+        destination: '/produtos/bracos',
         permanent: true,
       },
       // Categorias removidas
@@ -97,13 +103,9 @@ const nextConfig: NextConfig = {
         destination: '/produtos',
         permanent: true,
       },
-      // SEO Local
-      {
-        source: '/regioes-atendidas/cidades',
-        destination: '/regioes-atendidas/cidades', // Garante loop que seria tratado via middleware, ou mantém para match estrito
-        permanent: true,
-      },
+
       // Blog (Mapeia posts da raiz para /blog/)
+
       {
         source: '/category/blog',
         destination: '/blog',

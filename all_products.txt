@@ -1,0 +1,69 @@
+                   name                   |                   slug                   |     category     
+------------------------------------------+------------------------------------------+------------------
+ Mastro p/ Bandeira Flangeado             | mastro-bandeira-flangeado                | Civis
+ Mastro p/ Bandeira Engastado             | mastro-bandeira-engastado                | Civis
+ Poste Telecônico Articulado Engastado    | poste-articulado-engastado               | Forza
+ Poste p/ Placa Solar Flangeado           | poste-placa-solar-flangeado              | Forza
+ Poste p/ Placa Solar Engastado           | poste-placa-solar-engastado              | Forza
+ Poste Telecônico Articulado Flangeado    | poste-articulado-flangeado               | Forza
+ Poste c/ Cruzeta p/ Refletor Engastado   | poste-cruzeta-refletor-engastado         | Forza
+ Poste c/ Cruzeta p/ Refletor Flangeado   | poste-cruzeta-refletor-flangeado         | Forza
+ Poste Ornamental Lyra                    | poste-ornamental-lyra                    | Geral
+ Poste Ornamental Phoenix                 | poste-ornamental-phoenix                 | Geral
+ Poste Ornamental Astra                   | poste-ornamental-astra                   | Geral
+ Poste Ornamental Arcus                   | poste-ornamental-arcus                   | Geral
+ Poste Ornamental Altair                  | poste-ornamental-altair                  | Geral
+ Poste Ornamental Ignis                   | poste-ornamental-ignis                   | Geral
+ Poste Ornamental Heliptica Flangeado     | poste-ornamental-heliptica-flangeado     | Geral
+ Poste Ornamental Atlas                   | poste-ornamental-atlas                   | Geral
+ Poste Ornamental Orionis                 | poste-ornamental-orionis                 | Geral
+ Poste Ornamental Aquila Flangeado        | poste-ornamental-aquila-flangeado        | Geral
+ Porte Ornamental Polaris                 | porte-ornamental-polaris                 | Geral
+ Poste Ornamental Aurion                  | poste-ornamental-aurion                  | Geral
+ Poste Ornamental Vespera                 | poste-ornamental-vespera                 | Geral
+ Poste Ornamental Aurum                   | poste-ornamental-aurum                   | Geral
+ Poste Ornamental Halo                    | poste-ornamental-halo                    | Geral
+ Poste Ornamental Zéfiro                  | poste-ornamental-zefiro                  | Geral
+ Poste Ornamental Pyxis                   | poste-ornamental-pyxis                   | Geral
+ Poste Ornamental Vela                    | poste-ornamental-vela                    | Geral
+ Poste Ornamental Astrea                  | poste-ornamental-astrea                  | Geral
+ Poste Ornamental Serena                  | poste-ornamental-serena                  | Geral
+ Poste Solar para Cochos                  | poste-solar-agro                         | Linha Agro
+ Lixeira Industrial                       | lixeira-industrial                       | Linha Garden
+ Trave de Futsal Oficial                  | trave-futsal                             | Linha Sport
+ Mastro para Bandeira 10m                 | mastro-bandeira-10m                      | Mastros
+ Suporte p/ 2 Luminárias Públicas         | suporte-2-luminarias-publica             | Nexo
+ Conjunto Chumbador 1/2"                  | conjunto-chumbador-12                    | Nexo
+ Conjunto Chumbador 5/8"                  | conjunto-chumbador-58                    | Nexo
+ Conjunto Chumbador 3/4"                  | conjunto-chumbador-34                    | Nexo
+ Suporte p/ 1 Luminária Pública           | suporte-1-luminaria-publica              | Nexo
+ Suporte p/ 3 Luminárias Públicas         | suporte-3-luminarias-publica             | Nexo
+ Suporte p/ 4 Luminárias Públicas         | suporte-4-luminarias-publica             | Nexo
+ Braço Reto p/ Luminária Pública          | braco-reto-luminaria-publica             | Nexo
+ Braço Curvo p/ Câmera Dome               | braco-curvo-camera-dome                  | Nexo
+ Braço Reto p/ Câmera Dome                | braco-reto-camera-dome                   | Nexo
+ Braço Curvo p/ Luminária Pública         | braco-curvo-luminaria-publica            | Nexo
+ Poste Ornamental Heliptica Engastado     | poste-ornamental-heliptica-engastado     | Ornamental
+ Poste Ornamental Harmonia Engastado      | poste-ornamental-harmonia-engastado      | Ornamental
+ Poste Ornamental Harmonia Flangeado      | poste-ornamental-harmonia-flangeado      | Ornamental
+ Poste Ornamental Aquila Engastado        | poste-ornamental-aquila-engastado        | Ornamental
+ Porte Ornamental Autora Engastado        | porte-ornamental-autora-engastado        | Ornamental
+ Poste Ornamental Aurora Flangeado        | poste-ornamental-aurora-flangeado        | Ornamental
+ Poste Reto 4m                            | poste-reto-4m                            | Postes Metálicos
+ Poste Curvo Simples                      | poste-curvo-simples                      | Postes Metálicos
+ Poste Telecônico Curvo Simples Flangeado | poste-teleconico-curvo-simples-flangeado | Urban
+ Poste Telecônico Curvo Duplo Engastado   | poste-teleconico-curvo-duplo-engastado   | Urban
+ Poste Telecônico Reto Engastado          | poste-teleconico-reto-engastado          | Urban
+ Poste Telecônico Curvo Duplo Flangeado   | poste-teleconico-curvo-duplo-flangeado   | Urban
+ Poste Telecônico Curvo Simples Engastado | poste-teleconico-curvo-simples-engastado | Urban
+ Poste Telecônico Reto Flangeado          | poste-teleconico-reto-flangeado          | Urban
+ Poste Girafa Led 2x50W Flangeado         | poste-girafa-led-2-50w-flangeado         | Versa
+ Poste Girafa Led 2x50W Engastado         | poste-girafa-led-2-50w-engastado         | Versa
+ Poste Girafa Led 1x50W Engastado         | poste-girafa-led-1-50w-engastado         | Versa
+ Poste Girafa Led 1x50W Flangeado         | poste-girafa-led-1-50w-flangeado         | Versa
+ Poste p/ Câmera Bullet Flangeado         | poste-camera-bullet-flangeado            | Vigia
+ Poste p/ Câmera Dome Flangeado           | poste-camera-dome-flangeado              | Vigia
+ Poste p/ Câmera Bullet Engastado         | poste-camera-bullet-engastado            | Vigia
+ Poste p/ Câmera Dome Engastado           | poste-camera-dome-engastado              | Vigia
+(65 rows)
+

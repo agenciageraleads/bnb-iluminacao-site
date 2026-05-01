@@ -159,9 +159,15 @@ async function importProducts() {
                 mainImage: mainImageId,
                 gallery: galleryIds,
                 leadTime: row.Prazo_Producao,
-                badges: row.Badges ? row.Badges.split(',').map((s: string) => s.trim()) : [],
-                applications: (row.Aplicacoes || row.Aplicações) ? (row.Aplicacoes || row.Aplicações).split(',').map((s: string) => ({ app: s.trim() })) : [],
-                optionals: row.Opcionais ? row.Opcionais.split(',').map((s: string) => ({ option: s.trim() })) : [],
+                badges: row.Badges 
+                    ? row.Badges.split(',').map((s: string) => s.trim()).filter((s: string) => ['NBR 6323', 'NBR 6123', 'Qualidade ISO', 'Garantia B&B', 'Selo Próprio'].includes(s)) 
+                    : [],
+                applications: (row.Aplicacoes || row.Aplicações) 
+                    ? (row.Aplicacoes || row.Aplicações).split(',').map((s: string) => ({ app: s.trim() })) 
+                    : [],
+                optionals: row.Opcionais 
+                    ? row.Opcionais.split(',').map((s: string) => s.trim()).filter((s: string) => ['Chumbador', 'Janela de Inspeção', 'Pintura Eletrostática', 'Projeto Personalizado', 'Projeto Iluminotécnico'].includes(s)) 
+                    : [],
                 specs: {
                     material: row.Spec_Material || 'Aço Galvanizado a Fogo',
                     altura: row.Spec_Altura,

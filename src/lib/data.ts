@@ -1,6 +1,6 @@
 import { getPayload } from 'payload'
 import config from '../../payload.config'
-import { Category, Product, categories, portfolioItems, benefits, clients } from './constants'
+import { Category, Product, categories, portfolioItems, benefits, clients, catalogs } from './constants'
 import fs from 'fs'
 import path from 'path'
 
@@ -40,6 +40,7 @@ export interface Project {
     category: string
     location: string
     image: string
+    gallery?: string[]
 }
 
 export interface Post {
@@ -103,6 +104,7 @@ export const getProducts = async (): Promise<Product[]> => {
     const { docs } = await payload.find({
       collection: 'products',
       depth: 1,
+      limit: 1000,
     })
 
     return docs.map(doc => {
@@ -112,12 +114,27 @@ export const getProducts = async (): Promise<Product[]> => {
       if (doc.specs_diametro) specs.push(doc.specs_diametro as string);
       if (doc.specs_norma) specs.push(doc.specs_norma as string);
 
+      // Tratamento robusto para categoria (pode vir como objeto populado ou apenas ID)
+      let categorySlug = '';
+      if (typeof doc.category === 'object' && doc.category !== null) {
+          categorySlug = (doc.category as any).slug || '';
+      } else if (typeof doc.category === 'string' || typeof doc.category === 'number') {
+          // Se for ID, tentamos inferir ou deixamos para o frontend buscar se necessário
+          // Por enquanto, mantemos a compatibilidade com o que o frontend espera
+          categorySlug = String(doc.category);
+      }
+
+      const gallery = Array.isArray(doc.gallery) 
+        ? doc.gallery.map((item: any) => item?.image?.url).filter(Boolean)
+        : [];
+
       return {
         id: doc.slug as string,
         name: doc.name as string,
-        category: (doc.category as any)?.slug || '',
+        category: categorySlug,
         model: doc.model as string,
         image: (doc.mainImage as any)?.url || '',
+        gallery,
         description: extractTextFromLexical(doc.description),
         specs: specs.length > 0 ? specs : undefined,
         leadTime: doc.leadTime as string,
@@ -222,6 +239,9 @@ export const getPortfolioProjects = async (): Promise<Project[]> => {
            category: doc.category as string,
            location: doc.location as string,
            image: (doc.image as any)?.url || '',
+           gallery: Array.isArray(doc.gallery) 
+            ? doc.gallery.map((item: any) => item?.image?.url).filter(Boolean)
+            : [],
         }));
       } catch (seedError) {
         console.error("Falha no Auto-Seed:", seedError);
@@ -234,6 +254,9 @@ export const getPortfolioProjects = async (): Promise<Project[]> => {
       category: doc.category as string,
       location: doc.location as string,
       image: (doc.image as any)?.url || '',
+      gallery: Array.isArray(doc.gallery) 
+        ? doc.gallery.map((item: any) => item?.image?.url).filter(Boolean)
+        : [],
     }))
   } catch (error) {
     console.error("Erro ao conectar ao CMS para portfólio.", error);
@@ -256,7 +279,7 @@ export const getBlogPosts = async (limit: number = 10): Promise<Post[]> => {
       title: doc.title as string,
       slug: doc.slug as string,
       summary: doc.summary as string,
-      date: new Date(doc.createdAt).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' }),
+      date: doc.createdAt ? new Date(doc.createdAt).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' }) : '',
       image: (doc.featuredImage as any)?.url || '',
       author: doc.author as string,
     }))
@@ -329,7 +352,7 @@ export const getCatalogs = async (): Promise<Catalog[]> => {
     }))
   } catch (error) {
     console.error("Erro ao buscar catálogos:", error);
-    return [];
+    return catalogs; // Fallback para catálogos estáticos
   }
 }
 

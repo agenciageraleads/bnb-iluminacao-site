@@ -1,9 +1,9 @@
 "use client";
 
-import { BrazilMap } from "@/components/ui/brazil-map"
+import { BrazilMap } from "../../../components/ui/brazil-map"
 import { Phone, Mail, MapPin } from "lucide-react"
 import { useState } from "react"
-import type { Representative } from "@/lib/data"
+import type { Representative } from "../../../lib/data"
 
 export function RepresentativesClient({ representatives }: { representatives: Representative[] }) {
     // Estado selecionado (UF)

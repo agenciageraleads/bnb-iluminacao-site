@@ -2,6 +2,9 @@ import { CollectionConfig } from 'payload'
 
 const Regions: CollectionConfig = {
     slug: 'regions',
+    access: {
+        read: () => true,
+    },
     admin: {
         useAsTitle: 'cityName',
     },

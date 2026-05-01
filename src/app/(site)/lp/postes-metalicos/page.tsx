@@ -4,6 +4,8 @@ import { Portfolio } from "@/components/sections/portfolio"
 import { FaqSection } from "@/components/sections/faq"
 import { getPortfolioProjects, getClientLogos } from "@/lib/data"
 
+import Image from "next/image"
+
 export default async function PostesMetalicosLP() {
     // Buscar dados do Payload CMS para injetar nas seções de prova social
     const projects = await getPortfolioProjects();
@@ -14,7 +16,15 @@ export default async function PostesMetalicosLP() {
             {/* Header minimal de LP — sem navegação para manter o foco na conversão */}
             <header className="bg-white border-b border-industrial-200 shadow-sm py-3 sticky top-0 z-50">
                 <div className="container mx-auto px-4 flex justify-between items-center h-14">
-                    <span className="text-industrial-950 font-black text-xl tracking-tight">B&B<span className="text-industrial-500 font-bold text-sm ml-1">INDUSTRIAL</span></span>
+                    <div className="relative h-10 w-40">
+                        <Image 
+                            src="/logo.png" 
+                            alt="B&B Iluminação" 
+                            fill 
+                            className="object-contain object-left"
+                            priority
+                        />
+                    </div>
                     {/* CTA de contato visível no header em mobile */}
                     <a
                         href="https://wa.me/556235761988"
@@ -30,52 +40,68 @@ export default async function PostesMetalicosLP() {
                 </div>
             </header>
 
-            {/* Hero Section — CTA acima do fold em mobile */}
-            <section className="py-12 md:py-24 bg-white relative overflow-hidden">
+            {/* Hero Section — Mais visual e com o texto corrigido */}
+            <section className="pt-10 pb-20 md:py-24 bg-white relative overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-1 bg-accent-premium" aria-hidden="true" />
-                <div className="absolute top-0 right-0 w-[40%] h-full bg-accent-premium/5 pointer-events-none" aria-hidden="true" />
-                <div className="container mx-auto px-4 flex flex-col items-center text-center relative">
-                    <div className="max-w-4xl mx-auto">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-industrial-50 border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-widest uppercase mb-8">
-                            <span className="size-2 bg-green-500 rounded-full animate-pulse" aria-hidden="true"></span>
-                            Direto da Fábrica — Goiânia, GO
-                        </div>
-                        <h1
-                            className="text-4xl sm:text-6xl md:text-7xl font-black text-industrial-950 leading-[0.95] mb-6 uppercase tracking-tighter"
-                            style={{ textWrap: "balance" } as React.CSSProperties}
-                        >
-                            Postes Metálicos de <br />
-                            <span className="relative inline-block text-accent-premium mt-2">
-                                Alta Performance
-                            </span>
-                        </h1>
-                        <p className="text-industrial-500 text-lg md:text-xl font-medium leading-relaxed mb-10 max-w-2xl mx-auto">
-                            Soluções robustas para indústrias, prefeituras e grandes empreendimentos com foco em durabilidade e entrega pontual.
-                        </p>
+                
+                <div className="container mx-auto px-4 relative z-10">
+                    <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                        {/* Texto */}
+                        <div className="flex-1 text-center lg:text-left">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-industrial-50 border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-widest uppercase mb-8">
+                                <span className="size-2 bg-green-500 rounded-full animate-pulse" aria-hidden="true"></span>
+                                Direto da Fábrica — Goiânia, GO
+                            </div>
+                            <h1
+                                className="text-4xl sm:text-6xl md:text-7xl font-black text-industrial-950 leading-[0.9] mb-6 uppercase tracking-tighter"
+                            >
+                                Postes Metálicos de <br />
+                                <span className="text-accent-premium">Alta Performance</span>
+                            </h1>
+                            <p className="text-industrial-500 text-lg md:text-xl font-medium leading-relaxed mb-10 max-w-2xl mx-auto lg:mx-0">
+                                Soluções robustas para <span className="text-industrial-950 font-bold">construtoras</span>, indústrias, prefeituras e grandes empreendimentos com foco em durabilidade e entrega pontual.
+                            </p>
 
-                        {/* CTAs */}
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a
-                                href="https://wa.me/556235761988?text=Olá, vim pela página de postes metálicos e quero solicitar um orçamento."
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center justify-center gap-3 bg-industrial-950 text-white hover:bg-industrial-800 active:bg-industrial-700 font-black h-16 px-10 w-full sm:w-auto uppercase tracking-widest transition-transform hover:-translate-y-1 shadow-xl shadow-industrial-950/20 group"
-                            >
-                                <Calculator className="size-5" aria-hidden="true" />
-                                SOLICITAR ORÇAMENTO
-                            </a>
-                            <a
-                                href="/downloads"
-                                className="flex items-center justify-center gap-2 bg-white border-2 border-industrial-200 text-industrial-800 hover:border-industrial-950 hover:text-industrial-950 font-black h-16 px-8 w-full sm:w-auto uppercase tracking-widest transition-colors"
-                            >
-                                <FileText className="size-5" aria-hidden="true" />
-                                BAIXAR CATÁLOGOS PDF
-                            </a>
+                            {/* CTAs */}
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                                <a
+                                    href="https://wa.me/556235761988?text=Olá, vim pela página de postes metálicos e quero solicitar um orçamento."
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center justify-center gap-3 bg-industrial-950 text-white hover:bg-industrial-800 active:bg-industrial-700 font-black h-16 px-10 w-full sm:w-auto uppercase tracking-widest transition-transform hover:-translate-y-1 shadow-xl shadow-industrial-950/20 group"
+                                >
+                                    <Calculator className="size-5" aria-hidden="true" />
+                                    SOLICITAR ORÇAMENTO
+                                </a>
+                                <a
+                                    href="/downloads"
+                                    className="flex items-center justify-center gap-2 bg-white border-2 border-industrial-200 text-industrial-800 hover:border-industrial-950 hover:text-industrial-950 font-black h-16 px-8 w-full sm:w-auto uppercase tracking-widest transition-colors"
+                                >
+                                    <FileText className="size-5" aria-hidden="true" />
+                                    BAIXAR CATÁLOGOS PDF
+                                </a>
+                            </div>
+                            
+                            <div className="mt-8 flex items-center justify-center lg:justify-start gap-2 text-industrial-500 text-[11px] font-bold uppercase tracking-widest">
+                                <Truck className="size-4 text-accent-dark" />
+                                Entregamos em todo o território nacional
+                            </div>
                         </div>
-                        
-                        <div className="mt-8 flex items-center justify-center gap-2 text-industrial-500 text-[11px] font-bold uppercase tracking-widest">
-                            <Truck className="size-4 text-accent-dark" />
-                            Entregamos em todo o território nacional
+
+                        {/* Imagem de Produto (Impacto Visual) */}
+                        <div className="flex-1 w-full max-w-2xl lg:max-w-none">
+                            <div className="relative aspect-[4/3] lg:aspect-square bg-industrial-100 border-8 border-white shadow-2xl skew-y-2 lg:skew-y-0 lg:-rotate-2 hover:rotate-0 transition-transform duration-500">
+                                <Image 
+                                    src="/portfolio/reserva-parque.webp" 
+                                    alt="Postes Metálicos B&B Iluminação" 
+                                    fill 
+                                    className="object-cover"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-industrial-950/40 to-transparent" />
+                                <div className="absolute top-4 right-4 bg-accent-premium text-black font-black text-[10px] tracking-widest px-4 py-2 uppercase">
+                                    Padrão Engenharia
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

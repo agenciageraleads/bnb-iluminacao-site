@@ -1,8 +1,28 @@
+import { Metadata } from 'next'
+import Script from 'next/script'
+import Image from "next/image"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { getRegionBySlug } from "@/lib/data"
 import { notFound } from "next/navigation"
 import { Phone, CheckCircle2, Truck, Clock, ShieldCheck, HelpCircle, MessageCircle } from "lucide-react"
+
+
+export async function generateMetadata({ params }: { params: Promise<{ city: string }> }): Promise<Metadata> {
+    const { city } = await params;
+    const region = await getRegionBySlug(city);
+    const cityName = region?.cityName || city.charAt(0).toUpperCase() + city.slice(1).replace('-', ' ');
+
+    return {
+        title: `Indústria de Postes em ${cityName} | B&B Iluminação`,
+        description: `Fabricante de postes metálicos certificados para ${cityName}. Atendimento técnico, entrega rápida e garantia de qualidade para iluminação pública e industrial.`,
+        openGraph: {
+            title: `Postes de Iluminação em ${cityName} - B&B`,
+            description: `A melhor solução em postes de aço para ${cityName} e região.`,
+            type: 'website',
+        }
+    }
+}
 
 export default async function CityPage({ params }: { params: Promise<{ city: string }> }) {
     const { city } = await params;
@@ -11,9 +31,46 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
     // Fallback para nome amigável se não estiver no banco (para SEO passivo)
     const cityName = region?.cityName || city.charAt(0).toUpperCase() + city.slice(1).replace('-', ' ');
 
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": `B&B Iluminação - Unidade ${cityName}`,
+        "description": `Atendimento especializado em postes e iluminação para a região de ${cityName}.`,
+        "url": `https://bebiluminacao.com.br/regioes-atendidas/cidades/${city}`,
+        "telephone": "+55 62 3576-1988",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": cityName,
+            "addressRegion": "GO",
+            "addressCountry": "BR"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "-16.6869",
+            "longitude": "-49.2643"
+        },
+        "mainEntity": {
+            "@type": "FAQPage",
+            "mainEntity": (region?.faq || []).map((f: any) => ({
+                "@type": "Question",
+                "name": f.question,
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": f.answer
+                }
+            }))
+        }
+    };
+
     return (
         <main className="min-h-screen bg-white">
+            <Script
+                id={`region-schema-${city}`}
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             <Header />
+
 
             {/* 1. Hero Regional Industrial */}
             <section className="relative pt-32 pb-20 bg-industrial-950 overflow-hidden">
@@ -160,7 +217,8 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
                             Não compre sem antes falar com o nosso time técnico. Garantimos o melhor custo-benefício e a maior durabilidade do mercado.
                         </p>
                         <a 
-                            href="https://wa.me/556235761988?text=Olá! Estou em ${cityName} e gostaria de um orçamento técnico para meu projeto de iluminação."
+                            href={`https://wa.me/556235761988?text=Olá! Estou em ${cityName} e gostaria de um orçamento técnico para meu projeto de iluminação.`}
+
                             target="_blank"
                             className="inline-flex items-center gap-4 bg-accent-premium text-industrial-950 px-12 h-20 font-black uppercase tracking-[0.2em] text-sm hover:bg-yellow-400 transition-all hover:scale-105 active:scale-95"
                         >

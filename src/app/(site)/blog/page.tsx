@@ -3,8 +3,12 @@ import { getBlogPosts, Post } from "@/lib/data"
 import Link from "next/link"
 import Image from "next/image"
 import { Calendar, ArrowRight } from "lucide-react"
+import { unstable_noStore as noStore } from "next/cache"
+
+export const dynamic = 'force-dynamic'
 
 export default async function BlogPage() {
+    noStore();
     const posts = await getBlogPosts(12);
 
     return (

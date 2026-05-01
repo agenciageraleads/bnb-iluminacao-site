@@ -2,8 +2,8 @@
 
 import { useState, useActionState } from 'react'
 import Image from 'next/image'
-import { Catalog } from '@/lib/data'
-import { createCatalogLead } from '@/app/actions/leads'
+import { Catalog } from '../../../lib/data'
+import { createCatalogLead } from '../../actions/leads'
 import { Download, FileText, X, CheckCircle2, Loader2, Building2, User, Mail, Phone, Hash } from 'lucide-react'
 
 interface DownloadGridProps {

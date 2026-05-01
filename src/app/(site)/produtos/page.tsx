@@ -3,11 +3,16 @@ import Image from "next/image"
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
 import { Filter, Search } from "lucide-react"
 import Link from "next/link"
-import { getProducts, categories } from "@/lib/data"
+import { getProducts, getCategories } from "@/lib/data"
+import { CategoryOverview } from "@/components/products/CategoryOverview"
 
+export const dynamic = 'force-dynamic'
 
 export default async function ProdutosPage() {
-    const products = await getProducts();
+    const [products, categoriesList] = await Promise.all([
+        getProducts(),
+        getCategories()
+    ]);
     
     return (
         <main className="min-h-screen bg-white">
@@ -29,7 +34,15 @@ export default async function ProdutosPage() {
                 </div>
             </section>
 
-            <div className="container mx-auto px-4 py-8 md:py-12">
+            {/* Resumo das Categorias — NOVO */}
+            <CategoryOverview categories={categoriesList} />
+
+            <div className="container mx-auto px-4 py-8 md:py-12 border-t border-industrial-100">
+                <div className="mb-12">
+                    <h2 className="text-xl font-black text-industrial-900 uppercase tracking-tight mb-2">Busca Avançada</h2>
+                    <p className="text-industrial-500 text-sm">Ou explore todos os nossos produtos abaixo</p>
+                </div>
+
                 {/* Busca e filtro — Mobile: full-width empilhado */}
                 <div className="flex flex-col sm:flex-row items-stretch gap-3 mb-8">
                     <div className="relative flex-1">
@@ -58,7 +71,7 @@ export default async function ProdutosPage() {
                     >
                         Todos
                     </Link>
-                    {categories.map((cat) => (
+                    {categoriesList.map((cat) => (
                         <Link
                             key={cat.slug}
                             href={`/produtos/${cat.slug}`}
@@ -98,7 +111,7 @@ export default async function ProdutosPage() {
                                     </span>
                                 )}
                                 <span className="absolute top-3 right-3 bg-industrial-950 text-white text-[9px] font-black uppercase tracking-tight px-2 py-1">
-                                    {categories.find(c => c.slug === product.category)?.title || product.category}
+                                    {categoriesList.find(c => c.slug === product.category)?.title || product.category}
                                 </span>
                             </div>
 
@@ -124,3 +137,4 @@ export default async function ProdutosPage() {
         </main>
     )
 }
+

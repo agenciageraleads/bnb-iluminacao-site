@@ -1,10 +1,8 @@
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight, Calculator, FileText, CheckCircle2 } from "lucide-react"
-import { categories } from "@/lib/data"
 
 export function Hero() {
-    const featuredCategory = categories[0]
 
     return (
         <section className="relative min-h-[100svh] flex items-center pt-24 pb-16 md:pt-32 md:pb-20 overflow-hidden bg-industrial-50">

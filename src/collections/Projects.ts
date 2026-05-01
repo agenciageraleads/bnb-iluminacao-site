@@ -2,6 +2,9 @@ import { CollectionConfig } from 'payload'
 
 const Projects: CollectionConfig = {
     slug: 'projects',
+    access: {
+        read: () => true,
+    },
     admin: {
         useAsTitle: 'title',
     },
@@ -33,7 +36,20 @@ const Projects: CollectionConfig = {
             type: 'upload',
             relationTo: 'media',
             required: true,
-            label: 'Foto da Obra',
+            label: 'Foto da Obra (Destaque)',
+        },
+        {
+            name: 'gallery',
+            type: 'array',
+            label: 'Galeria de Fotos Adicionais',
+            fields: [
+                {
+                    name: 'image',
+                    type: 'upload',
+                    relationTo: 'media',
+                    required: true,
+                },
+            ],
         },
         {
             name: 'order',

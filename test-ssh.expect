@@ -1,0 +1,14 @@
+#!/usr/bin/expect -f
+set timeout 10
+set host "187.77.37.213"
+set user "root"
+set password "Lucas2311#"
+
+spawn ssh -o StrictHostKeyChecking=no ${user}@${host} "echo Hello"
+expect {
+    "assword:" {
+        send "${password}\r"
+        exp_continue
+    }
+    eof
+}

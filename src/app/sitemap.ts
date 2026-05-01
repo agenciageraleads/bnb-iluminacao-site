@@ -1,10 +1,14 @@
 import { MetadataRoute } from 'next'
-import { categories, getProducts, getBlogPosts, getCatalogs } from '@/lib/data'
+import { getCategories, getProducts, getBlogPosts, getCatalogs } from '@/lib/data'
+import { getAllStateSlugs } from '@/lib/states-data'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || 'https://bebiluminacao.com.br'
-  const products = await getProducts()
-  const posts = await getBlogPosts(1000)
+  const [products, posts, categoriesList] = await Promise.all([
+    getProducts(),
+    getBlogPosts(1000),
+    getCategories()
+  ])
 
   // Rotas Estáticas
   const staticRoutes = [
@@ -16,6 +20,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/blog',
     '/downloads',
     '/lp/postes-metalicos',
+    '/lp/mastros-para-bandeira',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
@@ -24,7 +29,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }))
 
   // Rotas de Categorias
-  const categoryRoutes = categories.map((cat) => ({
+  const categoryRoutes = categoriesList.map((cat) => ({
     url: `${baseUrl}/produtos/${cat.slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
@@ -47,5 +52,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8, // Prioridade alta para GEO (Artigos Autorais)
   }))
 
-  return [...staticRoutes, ...categoryRoutes, ...productRoutes, ...blogRoutes]
+  // Rotas de LPs Estaduais (27 estados)
+  const stateRoutes = getAllStateSlugs().map((slug) => ({
+    url: `${baseUrl}/lp/estados/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }))
+
+  return [...staticRoutes, ...categoryRoutes, ...productRoutes, ...blogRoutes, ...stateRoutes]
 }

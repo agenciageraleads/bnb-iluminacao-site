@@ -4,6 +4,7 @@ export interface Product {
     category: string
     model: string
     image: string
+    gallery?: string[]
     description: string
     specs?: string[]
     applications?: string[]
@@ -174,4 +175,15 @@ export const portfolioItems = [
         location: "Rio Verde, GO",
         image: "/portfolio/reserva-parque.webp",
     },
+]
+
+export const catalogs: Catalog[] = [
+    {
+        id: "catalogo-geral-bb",
+        title: "Catálogo Geral B&B Iluminação",
+        description: "Especificações completas de postes telecônicos, decorativos e braços metálicos com padrão de engenharia.",
+        thumbnail: "/portfolio/reserva-parque.webp", 
+        fileUrl: "/downloads/catalogo-bb-iluminacao.pdf",
+        category: "Postes e Estruturas"
+    }
 ]

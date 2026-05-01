@@ -1,10 +1,10 @@
 "use client";
 
-import { Header } from "@/components/layout/header"
-import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
+import { Header } from "../../../components/layout/header"
+import { FloatingWhatsApp } from "../../../components/ui/floating-whatsapp"
 import { Phone, Mail, MapPin, Clock, MessageCircle, Send, CheckCircle2, AlertCircle } from "lucide-react"
 import { useState } from "react"
-import { sendContactEmail } from "@/app/actions/contact"
+import { sendContactEmail } from "../../actions/contact"
 
 export default function ContatoPage() {
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
