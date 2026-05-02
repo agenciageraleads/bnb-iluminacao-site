@@ -24,66 +24,52 @@ export interface Category {
 
 export const categories: Category[] = [
     {
-        title: "Postes Metálicos",
-        slug: "postes-metalicos",
-        image: "https://picsum.photos/seed/poste/1200/800",
-        description: "Postes telecônicos, curvos e retos com galvanização a fogo.",
+        title: "Linha Urban",
+        slug: "linha-urban",
+        image: "/images/categorias/urban.jpg",
+        description: "Postes telecônicos circulares para iluminação pública e industrial.",
         featured: true
     },
     {
-        title: "Braços e Suportes",
-        slug: "bracos-suportes",
-        image: "https://picsum.photos/seed/braco/1200/800",
-        description: "Suportes robustos para fixação de luminárias e refletores.",
+        title: "Linha Versa",
+        slug: "linha-versa",
+        image: "/images/categorias/versa.jpg",
+        description: "Postes decorativos que unem design moderno e eficiência luminosa.",
         featured: true
     },
     {
-        title: "Linha Garden",
-        slug: "garden",
-        image: "https://picsum.photos/seed/garden/1200/800",
-        description: "Iluminação decorativa e funcional para áreas externas e jardins.",
+        title: "Linha Forza",
+        slug: "linha-forza",
+        image: "/images/categorias/forza.jpg",
+        description: "Postes especiais para grandes alturas e projetos de alta complexidade.",
         featured: true
     },
     {
-        title: "Linha Sport",
-        slug: "sport",
-        image: "https://picsum.photos/seed/sport/1200/800",
-        description: "Estruturas de alta performance para quadras e arenas esportivas.",
+        title: "Linha Civis",
+        slug: "linha-civis",
+        image: "/images/categorias/civis.jpg",
+        description: "Mastros metálicos telecônicos para bandeiras seguindo padrões oficiais.",
         featured: true
     },
     {
-        title: "Linha Agro",
-        slug: "agro",
-        image: "https://picsum.photos/seed/agro/1200/800",
-        description: "Soluções em iluminação para agronegócio e áreas rurais.",
+        title: "Linha Vigia",
+        slug: "linha-vigia",
+        image: "/images/categorias/vigia.jpg",
+        description: "Postes exclusivos para sistemas de vídeo monitoramento e segurança.",
         featured: true
     },
     {
-        title: "Pintura Eletrostática",
-        slug: "pintura-eletrostatica",
-        image: "https://picsum.photos/seed/pintura/1200/800",
-        description: "Serviço de pintura eletrostática a pó com alta resistência e acabamento premium.",
+        title: "Linha Nexo",
+        slug: "linha-nexo",
+        image: "/images/categorias/nexo.jpg",
+        description: "Braços, suportes e acessórios metálicos de alta resistência.",
         featured: true
     },
     {
-        title: "Postes Decorativos",
-        slug: "postes-decorativos",
-        image: "https://picsum.photos/seed/decorativo/1200/800",
-        description: "Linha exclusiva de postes decorativos para valorização de patrimônios e praças.",
-        featured: true
-    },
-    {
-        title: "Luminárias e Refletores",
-        slug: "luminarias-refletores",
-        image: "https://picsum.photos/seed/luminaria/1200/800",
-        description: "Luminárias LED e refletores de alta potência para máxima eficiência luminosa.",
-        featured: true
-    },
-    {
-        title: "Mastros para Bandeiras",
-        slug: "mastros-para-bandeiras",
-        image: "https://picsum.photos/seed/mastro/1200/800",
-        description: "Mastros metálicos telecônicos para bandeiras, seguindo padrões oficiais.",
+        title: "Linha Orna",
+        slug: "linha-orna",
+        image: "/images/categorias/orna.jpg",
+        description: "Postes ornamentais para valorização de áreas históricas e urbanas.",
         featured: true
     }
 ]
