@@ -68,8 +68,8 @@ export default function CorteLaserPage() {
                         <div className="relative">
                             <div className="aspect-square bg-industrial-100 relative overflow-hidden group">
                                 <img 
-                                    src="/media/blog-abnt-nbr-5101-2024-iluminacao-viaria-mudancas-projetos-1776131212795.png" 
-                                    alt="Processo de Corte a Laser" 
+                                    src="/images/servicos/corte-laser.jpg" 
+                                    alt="Processo de Corte a Laser Industrial B&B" 
                                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
                                 />
                                 <div className="absolute inset-0 bg-industrial-950/20 mix-blend-overlay" />

@@ -14,7 +14,7 @@ export default function PinturaEletrostaticaPage() {
 
             {/* Hero Section */}
             <section className="pt-32 pb-24 bg-industrial-900 text-white relative overflow-hidden">
-                <div className="absolute inset-0 bg-[url('/media/Tipos-Lampadas-Led-BEB.jpeg')] bg-cover bg-center mix-blend-overlay opacity-30" />
+                <div className="absolute inset-0 bg-[url('/images/servicos/pintura-eletrostatica.jpg')] bg-cover bg-center mix-blend-overlay opacity-30" />
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="max-w-4xl">
                         <Link 
@@ -98,8 +98,8 @@ export default function PinturaEletrostaticaPage() {
                         <div className="order-1 lg:order-2 relative">
                             <div className="aspect-[4/5] bg-industrial-100 overflow-hidden relative">
                                 <img 
-                                    src="/media/Tipos-Lampadas-Led-BEB.jpeg" 
-                                    alt="Peças Pintadas Eletrostaticamente" 
+                                    src="/images/servicos/pintura-eletrostatica.jpg" 
+                                    alt="Peças em Processo de Pintura Eletrostática" 
                                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" 
                                 />
                                 <div className="absolute inset-0 bg-industrial-950/10" />
