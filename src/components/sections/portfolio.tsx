@@ -157,6 +157,7 @@ export function Portfolio({ projects = [] }: { projects?: Project[] }) {
                     </div>
                 </div>
 
+                <div className="mt-12 flex flex-col items-center">
                     <div className="flex flex-col sm:flex-row gap-4">
                         <a
                             href="https://wa.me/556235761988?text=Olá! Vi o portfólio de vocês e gostaria de solicitar um orçamento para um projeto."
