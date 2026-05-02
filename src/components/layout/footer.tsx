@@ -15,7 +15,7 @@ export function Footer() {
                             <img src="/logo.png" alt="B&B Iluminação" className="h-16 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity" />
                         </Link>
                         <p className="text-industrial-400 text-sm leading-relaxed max-w-xs mx-auto md:mx-0 font-medium">
-                            Especialista em soluções de iluminação pública e industrial desde 2011. Qualidade, durabilidade e engenharia de precisão.
+                            Especialista em soluções de iluminação pública e industrial desde 2017. Qualidade, durabilidade e engenharia de precisão.
                         </p>
                         <div className="flex items-center justify-center md:justify-start gap-4">
                             <a href="https://instagram.com/bebiluminacao" target="_blank" className="p-3 bg-industrial-900 hover:bg-accent-premium hover:text-industrial-950 transition-all">
