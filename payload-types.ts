@@ -500,6 +500,12 @@ export interface Project {
   category: string;
   location: string;
   image: number | Media;
+  gallery?:
+    | {
+        image: number | Media;
+        id?: string | null;
+      }[]
+    | null;
   order?: number | null;
   updatedAt: string;
   createdAt: string;
@@ -568,7 +574,7 @@ export interface CatalogLead {
   phone: string;
   company: string;
   companyCnpj: string;
-  catalogDownloaded?: (number | null) | Catalog;
+  catalogDownloaded?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -926,6 +932,12 @@ export interface ProjectsSelect<T extends boolean = true> {
   category?: T;
   location?: T;
   image?: T;
+  gallery?:
+    | T
+    | {
+        image?: T;
+        id?: T;
+      };
   order?: T;
   updatedAt?: T;
   createdAt?: T;

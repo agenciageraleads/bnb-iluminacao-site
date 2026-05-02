@@ -27,10 +27,14 @@ export async function generateMetadata({ params }: { params: Promise<{ estado: s
     return {
         title: `Postes Metálicos em ${stateData.name} | Fabricante Certificado | B&B Iluminação`,
         description: stateData.metaDescription,
+        alternates: {
+            canonical: `https://bebiluminacao.com.br/lp/estados/${stateData.slug}`,
+        },
         openGraph: {
             title: `Postes e Mastros em ${stateData.name} — B&B Iluminação`,
             description: `Fabricante de postes metálicos para ${stateData.name}. Iluminação, CFTV e mastros para bandeira. Entrega em ${stateData.estimatedDelivery}.`,
             type: "website",
+            images: [{ url: "https://bebiluminacao.com.br/logo.png", width: 1200, height: 630, alt: `Postes metálicos em ${stateData.name} - B&B Iluminação` }],
         },
     }
 }

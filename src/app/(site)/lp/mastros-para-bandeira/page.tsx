@@ -11,10 +11,14 @@ export const metadata: Metadata = {
     title: "Mastros para Bandeira em Aço Galvanizado | 3m a 12m | B&B Iluminação",
     description: "Fabricante de mastros para bandeira em aço galvanizado a fogo. De 3 a 12 metros. Kit completo com bandeira. Uso externo. Envio para todo o Brasil.",
     keywords: ["mastro para bandeira", "mastro de bandeira", "mastro externo", "bandeira com mastro", "mastro galvanizado", "hasteamento de bandeira"],
+    alternates: {
+        canonical: "https://bebiluminacao.com.br/lp/mastros-para-bandeira",
+    },
     openGraph: {
         title: "Mastros para Bandeira — Feitos para Área Externa | B&B",
         description: "Kit completo: mastro em aço galvanizado + bandeira. De 3 a 12m de altura. Entrega nacional.",
         type: "website",
+        images: [{ url: "https://bebiluminacao.com.br/logo.png", width: 1200, height: 630, alt: "Mastros para Bandeira B&B Iluminação" }],
     },
 }
 
