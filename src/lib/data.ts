@@ -342,6 +342,8 @@ export const getCatalogs = async (): Promise<Catalog[]> => {
       depth: 1,
     })
 
+    if (docs.length === 0) return catalogs;
+
     return docs.map(doc => ({
       id: doc.id,
       title: doc.title as string,

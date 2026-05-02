@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import { portfolioItems as staticPortfolioItems } from "@/lib/constants"
@@ -156,16 +157,23 @@ export function Portfolio({ projects = [] }: { projects?: Project[] }) {
                     </div>
                 </div>
 
-                <div className="mt-12 flex flex-col items-center">
-                    <a
-                        href="https://wa.me/556235761988?text=Olá! Vi o portfólio de vocês e gostaria de solicitar um orçamento para um projeto."
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-3 bg-industrial-950 text-white font-black uppercase tracking-widest px-10 h-16 hover:bg-industrial-800 active:scale-95 transition-all text-sm group"
-                    >
-                        <MessageCircle className="size-5 text-accent-premium group-hover:scale-110 transition-transform" />
-                        QUERO EXECUTAR MEU PROJETO
-                    </a>
+                    <div className="flex flex-col sm:flex-row gap-4">
+                        <a
+                            href="https://wa.me/556235761988?text=Olá! Vi o portfólio de vocês e gostaria de solicitar um orçamento para um projeto."
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-3 bg-industrial-950 text-white font-black uppercase tracking-widest px-10 h-16 hover:bg-industrial-800 active:scale-95 transition-all text-sm group"
+                        >
+                            <MessageCircle className="size-5 text-accent-premium group-hover:scale-110 transition-transform" />
+                            QUERO EXECUTAR MEU PROJETO
+                        </a>
+                        <Link
+                            href="/obras"
+                            className="inline-flex items-center justify-center gap-3 bg-white border border-industrial-200 text-industrial-950 font-black uppercase tracking-widest px-10 h-16 hover:bg-industrial-50 active:scale-95 transition-all text-sm group"
+                        >
+                            VER TODAS AS OBRAS
+                        </Link>
+                    </div>
                     <p className="mt-4 text-[10px] text-industrial-400 font-bold uppercase tracking-widest">Enviamos nossos postes para todos os estados do Brasil</p>
                 </div>
             </div>
