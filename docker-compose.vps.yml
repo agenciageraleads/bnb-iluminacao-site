@@ -3,10 +3,23 @@ version: '3.8'
 services:
   bnb-site:
     build: .
+    image: bnb-platform-bnb-site:latest
     container_name: bnb_site
     restart: always
     ports:
       - "9010:9010"
+    labels:
+      # Traefik — roteamento automático via domínio
+      - "traefik.enable=true"
+      - "traefik.http.routers.bnb.rule=Host(`bebiluminacao.com.br`) || Host(`www.bebiluminacao.com.br`)"
+      - "traefik.http.routers.bnb.entrypoints=websecure"
+      - "traefik.http.routers.bnb.tls.certresolver=letsencryptresolver"
+      - "traefik.http.services.bnb.loadbalancer.server.port=9010"
+      # Redirect www → sem www
+      - "traefik.http.middlewares.bnb-redir.redirectregex.regex=^https?://www.bebiluminacao.com.br/(.*)"
+      - "traefik.http.middlewares.bnb-redir.redirectregex.replacement=https://bebiluminacao.com.br/$${1}"
+      - "traefik.http.middlewares.bnb-redir.redirectregex.permanent=true"
+      - "traefik.http.routers.bnb.middlewares=bnb-redir"
     environment:
       - POSTGRES_URL=postgresql://${POSTGRES_USER:-bnb_user}:${POSTGRES_PASSWORD:-bnb_password_secure_123}@postgres:5432/${POSTGRES_DB:-bnb_database}
       - DATABASE_URL=postgresql://${POSTGRES_USER:-bnb_user}:${POSTGRES_PASSWORD:-bnb_password_secure_123}@postgres:5432/${POSTGRES_DB:-bnb_database}
@@ -15,6 +28,9 @@ services:
       - redis
     volumes:
       - media_data:/app/media
+    networks:
+      - default
+      - portaleletricos
 
   postgres:
     image: postgres:15-alpine
@@ -42,3 +58,9 @@ volumes:
   postgres_data:
   redis_data:
   media_data:
+
+# Rede externa do Traefik (já existe na VPS)
+networks:
+  portaleletricos:
+    external: true
+

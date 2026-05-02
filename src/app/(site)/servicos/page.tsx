@@ -11,7 +11,7 @@ export default function ServicesPage() {
             description: "Tecnologia de ponta em fibra óptica para cortes de precisão milimétrica em aço carbono e outras ligas.",
             features: ["Precisão de 0.1mm", "Alta Produtividade", "Sem necessidade de retrabalho"],
             href: "/servicos/corte-laser",
-            image: "/media/blog-qual-a-melhor-fundacao-e-metodo-de-instalacao-para-postes-de-iluminacao-externa-chumbadores-flanges-ou-enterramento-direto-1776132889407.png" // Placeholder visual industrial
+            image: "/images/servicos/corte-laser.jpg"
         },
         {
             id: "pintura-eletrostatica",
@@ -20,7 +20,7 @@ export default function ServicesPage() {
             description: "Acabamento premium com pó poliéster, garantindo durabilidade extrema e estética superior para seus projetos.",
             features: ["Paleta RAL completa", "Resistência UV e Química", "Acabamento Uniforme"],
             href: "/servicos/pintura-eletrostatica",
-            image: "/media/Tipos-Lampadas-Led-BEB.jpeg" // Placeholder visual industrial
+            image: "/images/servicos/pintura-eletrostatica.jpg"
         }
     ]
 
@@ -61,7 +61,7 @@ export default function ServicesPage() {
                                     <img 
                                         src={service.image} 
                                         alt={service.title} 
-                                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 opacity-60 group-hover:opacity-100" 
+                                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 opacity-90 group-hover:opacity-100" 
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-industrial-950/80 via-industrial-950/20 to-transparent" />
                                     <div className="absolute bottom-6 left-6 flex items-center gap-4">
