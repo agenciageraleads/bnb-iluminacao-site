@@ -34,13 +34,13 @@ export function Footer() {
                     <div className="space-y-6 text-center md:text-left">
                         <h3 className="text-sm font-black uppercase tracking-[0.2em] text-accent-premium">Nossos Produtos</h3>
                         <ul className="space-y-3">
-                            <li><Link href="/produtos/linha-urban" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Urban (Telecônicos)</Link></li>
-                            <li><Link href="/produtos/linha-versa" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Versa (Decorativos)</Link></li>
-                            <li><Link href="/produtos/linha-forza" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Forza (Especiais)</Link></li>
-                            <li><Link href="/produtos/linha-civis" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Civis (Mastros)</Link></li>
-                            <li><Link href="/produtos/linha-vigia" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Vigia (Monitoramento)</Link></li>
-                            <li><Link href="/produtos/linha-nexo" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Nexo (Acessórios)</Link></li>
-                            <li><Link href="/produtos/linha-orna" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Orna (Ornamentais)</Link></li>
+                            <li><Link href="/produtos/urban" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Urban</Link></li>
+                            <li><Link href="/produtos/versa" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Versa</Link></li>
+                            <li><Link href="/produtos/forza" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Forza</Link></li>
+                            <li><Link href="/produtos/civis" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Civis</Link></li>
+                            <li><Link href="/produtos/vigia" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Vigia</Link></li>
+                            <li><Link href="/produtos/nexo" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Nexo</Link></li>
+                            <li><Link href="/produtos/orna" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Orna</Link></li>
                         </ul>
                     </div>
 

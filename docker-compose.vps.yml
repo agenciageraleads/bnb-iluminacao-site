@@ -56,8 +56,14 @@ services:
 
 volumes:
   postgres_data:
+    external: true
+    name: bnb-platform_postgres_data
   redis_data:
+    external: true
+    name: bnb-platform_redis_data
   media_data:
+    external: true
+    name: bnb-platform_media_data
 
 # Rede externa do Traefik (já existe na VPS)
 networks:

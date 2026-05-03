@@ -46,7 +46,17 @@ const faqs = [
     }
 ]
 
-export function FaqSection() {
+export interface FaqItem {
+    question: string
+    answer: string
+}
+
+interface FaqSectionProps {
+    items?: FaqItem[]
+}
+
+export function FaqSection({ items }: FaqSectionProps) {
+    const displayFaqs = items && items.length > 0 ? items : faqs
     const [openIndex, setOpenIndex] = useState<number | null>(0)
 
     const toggleFaq = (index: number) => {
@@ -69,7 +79,7 @@ export function FaqSection() {
                 </div>
 
                 <div className="space-y-4">
-                    {faqs.map((faq, index) => {
+                    {displayFaqs.map((faq, index) => {
                         const isOpen = openIndex === index
 
                         return (

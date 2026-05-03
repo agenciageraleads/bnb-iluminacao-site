@@ -1,13 +1,15 @@
 import { MetadataRoute } from 'next'
 import { getCategories, getProducts, getBlogPosts, getCatalogs } from '@/lib/data'
 import { getAllStateSlugs } from '@/lib/states-data'
+import { getRegions } from '@/lib/data'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || 'https://bebiluminacao.com.br'
-  const [products, posts, categoriesList] = await Promise.all([
+  const [products, posts, categoriesList, regions] = await Promise.all([
     getProducts(),
     getBlogPosts(1000),
-    getCategories()
+    getCategories(),
+    getRegions()
   ])
 
   // Rotas Estáticas
@@ -60,5 +62,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }))
 
-  return [...staticRoutes, ...categoryRoutes, ...productRoutes, ...blogRoutes, ...stateRoutes]
+  // Rotas de LPs de Cidades (GEO-Targeting via CMS)
+  const cityRoutes = regions.map((region) => ({
+    url: `${baseUrl}/lp/postes-metalicos/cidades/${region.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.9,
+  }))
+
+  return [...staticRoutes, ...categoryRoutes, ...productRoutes, ...blogRoutes, ...stateRoutes, ...cityRoutes]
 }

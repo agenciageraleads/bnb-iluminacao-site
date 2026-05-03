@@ -64,6 +64,7 @@ export interface Catalog {
 
 export interface Region {
     cityName: string
+    uf: string
     slug: string
     featuredImage?: any
     content?: any
@@ -312,6 +313,21 @@ export const getBlogPostBySlug = async (slug: string): Promise<any> => {
   } catch (error) {
     console.error("Erro ao buscar post por slug:", error);
     return null;
+  }
+}
+
+export const getRegions = async (): Promise<Region[]> => {
+  try {
+    const payload = await getClient()
+    const { docs } = await payload.find({
+      collection: 'regions' as any,
+      limit: 1000,
+    })
+
+    return docs as unknown as Region[]
+  } catch (error) {
+    console.error("Erro ao buscar regiões do CMS:", error);
+    return [];
   }
 }
 

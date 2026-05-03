@@ -96,12 +96,12 @@ export default async function ProdutosPage() {
                             <div className="aspect-square bg-industrial-100 flex items-center justify-center relative overflow-hidden border-b border-industrial-200">
                                 <div className="absolute top-0 left-0 w-full h-0.5 bg-accent-premium group-hover:h-1 transition-all" aria-hidden="true" />
                                 {product.image ? (
-                                    <Image
-                                        src={product.image}
-                                        alt={product.name}
-                                        fill
-                                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                                    />
+                                        <Image
+                                            src={product.image}
+                                            alt={product.name}
+                                            fill
+                                            className="object-contain transition-transform duration-500"
+                                        />
                                 ) : (
                                     <span
                                         className="text-industrial-300 font-black text-5xl select-none italic tracking-tighter group-hover:scale-105 transition-transform duration-300"

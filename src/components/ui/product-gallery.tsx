@@ -50,7 +50,7 @@ export function ProductGallery({ mainImage, model, categoryTitle, gallery }: Pro
                   src={activeImage}
                   alt={model}
                   fill
-                  className="object-cover transition-transform duration-700 animate-in fade-in duration-500"
+                  className="object-contain transition-transform duration-700 animate-in fade-in duration-500"
                   priority
               />
             )}
@@ -75,7 +75,7 @@ export function ProductGallery({ mainImage, model, categoryTitle, gallery }: Pro
                         src={img} 
                         alt={`Miniatura ${index + 1}`} 
                         fill 
-                        className={`object-cover transition-opacity ${activeImage === img ? 'opacity-100' : 'opacity-60 group-hover:opacity-100'}`} 
+                        className={`object-contain transition-opacity ${activeImage === img ? 'opacity-100' : 'opacity-60 group-hover:opacity-100'}`} 
                       />
                   </button>
               ))}

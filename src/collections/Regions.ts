@@ -15,6 +15,15 @@ const Regions: CollectionConfig = {
             required: true,
         },
         {
+            name: 'uf',
+            type: 'text',
+            required: true,
+            label: 'Estado (UF)',
+            admin: {
+                placeholder: 'Ex: GO, DF, SP',
+            },
+        },
+        {
             name: 'slug',
             type: 'text',
             required: true,

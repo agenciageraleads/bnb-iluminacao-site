@@ -90,7 +90,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                                             src={product.image}
                                             alt={product.name}
                                             fill
-                                            className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                            className="object-contain transition-transform duration-700"
                                         />
                                     ) : (
                                         <div className="flex items-center justify-center w-full h-full bg-gradient-to-br from-industrial-100 to-industrial-50">

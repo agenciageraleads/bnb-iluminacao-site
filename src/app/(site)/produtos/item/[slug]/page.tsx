@@ -303,7 +303,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                             {relatedProducts.map((rel) => (
                                 <Link key={rel.id} href={`/produtos/item/${rel.id}`} className="group bg-white border border-industrial-100 hover:border-industrial-900 transition-all shadow-sm flex flex-col h-full">
                                     <div className="aspect-square relative overflow-hidden bg-industrial-50 border-b border-industrial-50">
-                                        <Image src={rel.image} alt={rel.name} fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
+                                        <Image src={rel.image} alt={rel.name} fill className="object-contain transition-transform duration-500" />
                                         <div className="absolute top-3 left-3 bg-industrial-950/80 backdrop-blur-sm text-white text-[8px] font-black uppercase px-2 py-1">
                                             {rel.model}
                                         </div>
