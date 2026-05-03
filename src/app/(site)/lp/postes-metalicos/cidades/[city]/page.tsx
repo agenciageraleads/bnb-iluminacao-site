@@ -1,5 +1,5 @@
 import { Check, Phone, Shield, Truck, Zap, Calculator, ArrowRight, FileText, MapPin } from "lucide-react"
-import { ClientsMarquee } from "@/components/sections/marquee-clients"
+import { ClientsMarquee } from "@/components/sections/clients-marquee"
 import { Portfolio } from "@/components/sections/portfolio"
 import { FaqSection } from "@/components/sections/faq"
 import { getPortfolioProjects, getClientLogos, getRegionBySlug, getRegions } from "@/lib/data"
