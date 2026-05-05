@@ -7,8 +7,18 @@ const Representatives: CollectionConfig = {
     },
     admin: {
         useAsTitle: 'name',
+        defaultColumns: ['displayOrder', 'name', 'company', 'states'],
     },
     fields: [
+        {
+            name: 'displayOrder',
+            type: 'number',
+            defaultValue: 999,
+            label: 'Posição no site',
+            admin: {
+                description: 'Menor número aparece primeiro. Use intervalos como 10, 20 e 30 para facilitar ajustes futuros.',
+            },
+        },
         {
             name: 'name',
             type: 'text',

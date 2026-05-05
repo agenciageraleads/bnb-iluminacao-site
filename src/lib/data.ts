@@ -28,6 +28,7 @@ export interface Representative {
     phone: string
     states: string[]
     region?: string
+    displayOrder?: number | null
 }
 
 export interface ClientLogo {
@@ -156,6 +157,7 @@ export const getRepresentatives = async (): Promise<Representative[]> => {
     const { docs } = await payload.find({
       collection: 'representatives' as any,
       limit: 100, // Pegar todos
+      sort: ['displayOrder', 'name'],
     })
 
     return docs.map(doc => ({
@@ -165,6 +167,7 @@ export const getRepresentatives = async (): Promise<Representative[]> => {
       phone: doc.phone as string,
       states: doc.states as string[] || [],
       region: doc.region as string || '',
+      displayOrder: doc.displayOrder as number | null,
     }))
   } catch (error) {
     console.error("Erro ao conectar ao CMS para representantes.", error);
@@ -391,4 +394,3 @@ export const getCatalogById = async (id: string): Promise<any> => {
 }
 
 export { categories, portfolioItems, benefits, clients }
-

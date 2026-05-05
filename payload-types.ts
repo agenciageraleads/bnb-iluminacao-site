@@ -387,6 +387,7 @@ export interface Blog {
 export interface Region {
   id: number;
   cityName: string;
+  uf: string;
   slug: string;
   featuredImage?: (number | null) | Media;
   content?: {
@@ -429,6 +430,10 @@ export interface Region {
  */
 export interface Representative {
   id: number;
+  /**
+   * Menor número aparece primeiro. Use intervalos como 10, 20 e 30 para facilitar ajustes futuros.
+   */
+  displayOrder?: number | null;
   name: string;
   company?: string | null;
   email: string;
@@ -872,6 +877,7 @@ export interface BlogSelect<T extends boolean = true> {
  */
 export interface RegionsSelect<T extends boolean = true> {
   cityName?: T;
+  uf?: T;
   slug?: T;
   featuredImage?: T;
   content?: T;
@@ -903,6 +909,7 @@ export interface RegionsSelect<T extends boolean = true> {
  * via the `definition` "representatives_select".
  */
 export interface RepresentativesSelect<T extends boolean = true> {
+  displayOrder?: T;
   name?: T;
   company?: T;
   email?: T;
