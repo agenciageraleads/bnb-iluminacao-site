@@ -119,13 +119,14 @@ export default function RootLayout({
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID || '';
   const adsId = process.env.NEXT_PUBLIC_ADS_ID || '';
   const gaId = process.env.NEXT_PUBLIC_GA_ID || '';
+  const fbPixelId = process.env.NEXT_PUBLIC_FB_PIXEL_ID || '';
 
   return (
     <html lang="pt-BR">
       <body
         className={`${inter.variable} ${outfit.variable} font-sans antialiased bg-industrial-50 text-industrial-950`}
       >
-        <GoogleTagManager gtmId={gtmId} adsId={adsId} gaId={gaId} />
+        <GoogleTagManager gtmId={gtmId} adsId={adsId} gaId={gaId} fbPixelId={fbPixelId} />
         <Script
             id="global-schema"
             type="application/ld+json"
