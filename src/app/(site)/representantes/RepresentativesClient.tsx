@@ -12,7 +12,7 @@ export function RepresentativesClient({ representatives }: { representatives: Re
     
     // Gated Contact States
     const [isContactRevealed, setIsContactRevealed] = useState(false);
-    const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const [dialogRepName, setDialogRepName] = useState<string | null>(null);
 
     // Verificar se já revelou anteriormente
     useEffect(() => {
@@ -32,7 +32,7 @@ export function RepresentativesClient({ representatives }: { representatives: Re
 
     const handleSuccessReveal = () => {
         setIsContactRevealed(true);
-        setIsDialogOpen(false);
+        setDialogRepName(null);
         localStorage.setItem("hasRevealedReps", "true");
     };
 
@@ -113,7 +113,7 @@ export function RepresentativesClient({ representatives }: { representatives: Re
                                                     <div className="flex flex-col gap-3 shrink-0 bg-industrial-50 p-4 border border-industrial-100 min-w-[240px]">
                                                         {!isContactRevealed ? (
                                                             <button 
-                                                                onClick={() => setIsDialogOpen(true)}
+                                                                onClick={() => setDialogRepName(rep.name)}
                                                                 className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-industrial-950 text-white rounded-md text-sm font-bold uppercase tracking-wide hover:bg-accent-dark transition-colors"
                                                             >
                                                                 <Lock className="size-4 text-accent-premium" />
@@ -156,10 +156,11 @@ export function RepresentativesClient({ representatives }: { representatives: Re
             </div>
 
             <LeadCaptureDialog 
-                isOpen={isDialogOpen} 
-                onClose={() => setIsDialogOpen(false)} 
+                isOpen={!!dialogRepName} 
+                onClose={() => setDialogRepName(null)} 
                 onSuccess={handleSuccessReveal}
                 representativeState={selectedState || "Brasil"}
+                representativeName={dialogRepName || "Múltiplos (Estado Completo)"}
             />
         </section>
     )

@@ -8,9 +8,10 @@ interface LeadCaptureDialogProps {
     onClose: () => void;
     onSuccess: () => void;
     representativeState: string;
+    representativeName: string;
 }
 
-export function LeadCaptureDialog({ isOpen, onClose, onSuccess, representativeState }: LeadCaptureDialogProps) {
+export function LeadCaptureDialog({ isOpen, onClose, onSuccess, representativeState, representativeName }: LeadCaptureDialogProps) {
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
     const [isLoading, setIsLoading] = useState(false);
@@ -39,7 +40,7 @@ export function LeadCaptureDialog({ isOpen, onClose, onSuccess, representativeSt
                     name,
                     phone,
                     representativeState,
-                    representativeName: "Múltiplos (Estado Completo)" // Contexto geral
+                    representativeName
                 }),
             });
 
