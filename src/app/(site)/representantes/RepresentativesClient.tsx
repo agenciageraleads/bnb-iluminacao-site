@@ -1,13 +1,26 @@
 "use client";
 
 import { BrazilMap } from "../../../components/ui/brazil-map"
-import { Phone, Mail, MapPin } from "lucide-react"
-import { useState } from "react"
+import { Phone, Mail, MapPin, Lock } from "lucide-react"
+import { useState, useEffect } from "react"
 import type { Representative } from "../../../lib/data"
+import { LeadCaptureDialog } from "./LeadCaptureDialog";
 
 export function RepresentativesClient({ representatives }: { representatives: Representative[] }) {
     // Estado selecionado (UF)
     const [selectedState, setSelectedState] = useState<string | null>(null);
+    
+    // Gated Contact States
+    const [isContactRevealed, setIsContactRevealed] = useState(false);
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+    // Verificar se já revelou anteriormente
+    useEffect(() => {
+        const hasRevealed = localStorage.getItem("hasRevealedReps");
+        if (hasRevealed === "true") {
+            setIsContactRevealed(true);
+        }
+    }, []);
 
     // Array de UFs que possuem pelo menos um representante (para acender no mapa)
     const activeStates = Array.from(new Set(representatives.flatMap(r => r.states)));
@@ -16,6 +29,12 @@ export function RepresentativesClient({ representatives }: { representatives: Re
     const filteredReps = selectedState 
         ? representatives.filter(r => r.states.includes(selectedState))
         : [];
+
+    const handleSuccessReveal = () => {
+        setIsContactRevealed(true);
+        setIsDialogOpen(false);
+        localStorage.setItem("hasRevealedReps", "true");
+    };
 
     return (
         <section className="py-16 md:py-24 bg-industrial-50 relative" aria-labelledby="reps-map-heading">
@@ -92,18 +111,38 @@ export function RepresentativesClient({ representatives }: { representatives: Re
                                                     </div>
                                                     
                                                     <div className="flex flex-col gap-3 shrink-0 bg-industrial-50 p-4 border border-industrial-100 min-w-[240px]">
-                                                        <a href={`tel:${rep.phone.replace(/[^0-9]/g, '')}`} className="flex items-center gap-3 text-industrial-600 hover:text-industrial-950 transition-colors text-sm font-medium">
-                                                            <div className="size-8 bg-white flex items-center justify-center rounded-sm border border-industrial-200">
-                                                                <Phone className="size-4 text-accent-dark" />
-                                                            </div>
-                                                            {rep.phone}
-                                                        </a>
-                                                        <a href={`mailto:${rep.email}`} className="flex items-center gap-3 text-industrial-600 hover:text-industrial-950 transition-colors text-sm font-medium">
-                                                            <div className="size-8 bg-white flex items-center justify-center rounded-sm border border-industrial-200">
-                                                                <Mail className="size-4 text-accent-dark" />
-                                                            </div>
-                                                            <span className="break-all">{rep.email}</span>
-                                                        </a>
+                                                        {!isContactRevealed ? (
+                                                            <button 
+                                                                onClick={() => setIsDialogOpen(true)}
+                                                                className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-industrial-950 text-white rounded-md text-sm font-bold uppercase tracking-wide hover:bg-accent-dark transition-colors"
+                                                            >
+                                                                <Lock className="size-4 text-accent-premium" />
+                                                                Mostrar Contatos
+                                                            </button>
+                                                        ) : (
+                                                            <>
+                                                                <a href={`tel:${rep.phone.replace(/[^0-9]/g, '')}`} className="flex items-center gap-3 text-industrial-600 hover:text-industrial-950 transition-colors text-sm font-medium">
+                                                                    <div className="size-8 bg-white flex items-center justify-center rounded-sm border border-industrial-200">
+                                                                        <Phone className="size-4 text-accent-dark" />
+                                                                    </div>
+                                                                    {rep.phone}
+                                                                </a>
+                                                                <a href={`mailto:${rep.email}`} className="flex items-center gap-3 text-industrial-600 hover:text-industrial-950 transition-colors text-sm font-medium">
+                                                                    <div className="size-8 bg-white flex items-center justify-center rounded-sm border border-industrial-200">
+                                                                        <Mail className="size-4 text-accent-dark" />
+                                                                    </div>
+                                                                    <span className="break-all">{rep.email}</span>
+                                                                </a>
+                                                                <a 
+                                                                    href={`https://api.whatsapp.com/send?phone=55${rep.phone.replace(/[^0-9]/g, '')}&text=Ol%C3%A1%2C%20encontrei%20seu%20contato%20no%20site%20da%20B%26B%20Ilumina%C3%A7%C3%A3o.`} 
+                                                                    target="_blank" 
+                                                                    rel="noopener noreferrer"
+                                                                    className="mt-2 w-full flex items-center justify-center gap-2 py-2 px-4 bg-[#25D366] text-white rounded-md text-sm font-bold uppercase tracking-wide hover:bg-[#1DA851] transition-colors"
+                                                                >
+                                                                    WhatsApp
+                                                                </a>
+                                                            </>
+                                                        )}
                                                     </div>
                                                 </div>
                                             </div>
@@ -115,6 +154,13 @@ export function RepresentativesClient({ representatives }: { representatives: Re
                     </div>
                 </div>
             </div>
+
+            <LeadCaptureDialog 
+                isOpen={isDialogOpen} 
+                onClose={() => setIsDialogOpen(false)} 
+                onSuccess={handleSuccessReveal}
+                representativeState={selectedState || "Brasil"}
+            />
         </section>
     )
 }
