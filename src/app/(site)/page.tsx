@@ -30,7 +30,7 @@ const homeSchema = {
     "addressRegion": "GO",
     "addressCountry": "BR"
   },
-  "url": "https://www.bebiluminacao.com.br"
+  "url": "https://bebiluminacao.com.br"
 }
 
 export default async function Home() {

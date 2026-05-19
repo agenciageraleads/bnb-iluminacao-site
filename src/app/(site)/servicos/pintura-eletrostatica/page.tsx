@@ -1,6 +1,7 @@
 import { Header } from "@/components/layout/header"
 import { ArrowRight, Palette, ShieldCheck, Sun, Droplets, Paintbrush, Layers } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 export const metadata = {
     title: "Pintura Eletrostática Premium (Pó) | B&B Iluminação",
@@ -97,10 +98,12 @@ export default function PinturaEletrostaticaPage() {
 
                         <div className="order-1 lg:order-2 relative">
                             <div className="aspect-[4/5] bg-industrial-100 overflow-hidden relative">
-                                <img 
+                                <Image 
                                     src="/images/servicos/pintura-eletrostatica.jpg" 
                                     alt="Peças em Processo de Pintura Eletrostática" 
-                                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" 
+                                    fill
+                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                    className="object-cover grayscale hover:grayscale-0 transition-all duration-700" 
                                 />
                                 <div className="absolute inset-0 bg-industrial-950/10" />
                             </div>

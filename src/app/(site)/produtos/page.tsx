@@ -1,3 +1,4 @@
+import { Metadata } from "next"
 import { Header } from "@/components/layout/header"
 import Image from "next/image"
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
@@ -5,6 +6,14 @@ import { Filter, Search } from "lucide-react"
 import Link from "next/link"
 import { getProducts, getCategories } from "@/lib/data"
 import { CategoryOverview } from "@/components/products/CategoryOverview"
+
+export const metadata: Metadata = {
+    title: "Catálogo de Produtos | B&B Iluminação",
+    description: "Conheça nossa linha completa de postes metálicos certificados ABNT. Soluções em iluminação viária, decorativa, monitoramento e mastros para bandeira.",
+    alternates: {
+        canonical: "https://bebiluminacao.com.br/produtos",
+    }
+}
 
 export const dynamic = 'force-dynamic'
 
@@ -126,7 +135,7 @@ export default async function ProdutosPage() {
                                 <div className="flex items-center justify-between pt-3 border-t border-industrial-100">
                                     <span className="text-[10px] text-industrial-400 font-bold uppercase tracking-widest">Modelo: {product.model}</span>
                                     <span className="text-[11px] text-industrial-900 font-black uppercase tracking-widest group-hover:underline">
-                                        Ver mais →
+                                        Ver detalhes do produto →
                                     </span>
                                 </div>
                             </div>

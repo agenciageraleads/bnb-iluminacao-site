@@ -8,7 +8,7 @@ interface SeoProps {
 }
 
 export function generateSeoMetadata({ title, description, slug, image }: SeoProps): Metadata {
-    const url = `https://www.bebiluminacao.com.br${slug || ''}`
+    const url = `https://bebiluminacao.com.br${slug || ''}`
     const finalImage = image || '/og-image.jpg'
 
     return {

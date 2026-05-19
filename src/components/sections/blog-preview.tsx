@@ -31,7 +31,7 @@ export function BlogPreview({ posts = [] }: BlogPreviewProps) {
                                 <div className="aspect-[16/10] bg-industrial-900 border border-industrial-800 overflow-hidden relative">
                                     <div className="absolute inset-0 bg-accent-premium/20 opacity-0 group-hover:opacity-100 transition-opacity z-10" />
                                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20">
-                                        <span className="text-black bg-accent-premium px-4 py-2 font-bold uppercase tracking-widest text-xs">Leia Mais</span>
+                                        <span className="text-black bg-accent-premium px-4 py-2 font-bold uppercase tracking-widest text-xs">Ler artigo completo</span>
                                     </div>
                                     
                                     {post.image ? (

@@ -1,6 +1,7 @@
 import { Header } from "@/components/layout/header"
 import { ArrowRight, Scissors, ShieldCheck, Zap, Maximize2, Cpu, FileCheck } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 export const metadata = {
     title: "Corte a Laser de Alta Precisão | B&B Iluminação",
@@ -67,10 +68,12 @@ export default function CorteLaserPage() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <div className="relative">
                             <div className="aspect-square bg-industrial-100 relative overflow-hidden group">
-                                <img 
+                                <Image 
                                     src="/images/servicos/corte-laser.jpg" 
                                     alt="Processo de Corte a Laser Industrial B&B" 
-                                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
+                                    fill
+                                    sizes="(max-width: 768px) 100vw, 50vw"
+                                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700" 
                                 />
                                 <div className="absolute inset-0 bg-industrial-950/20 mix-blend-overlay" />
                             </div>

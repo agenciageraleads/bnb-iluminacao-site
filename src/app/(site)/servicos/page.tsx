@@ -1,6 +1,16 @@
+import { Metadata } from "next"
 import { Header } from "@/components/layout/header"
 import { ArrowRight, Scissors, Palette, ShieldCheck, Zap, Cog } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
+
+export const metadata: Metadata = {
+    title: "Serviços Industriais de Alta Performance | B&B Iluminação",
+    description: "Processamento de metais, corte a laser de precisão milimétrica e acabamento em pintura eletrostática a pó poliéster premium para todo o Brasil.",
+    alternates: {
+        canonical: "https://bebiluminacao.com.br/servicos",
+    }
+}
 
 export default function ServicesPage() {
     const services = [
@@ -58,10 +68,12 @@ export default function ServicesPage() {
                                 className="group bg-white border border-industrial-200 overflow-hidden hover:border-accent-premium transition-all duration-500 shadow-2xl hover:-translate-y-2"
                             >
                                 <div className="h-64 relative overflow-hidden">
-                                    <img 
+                                    <Image 
                                         src={service.image} 
                                         alt={service.title} 
-                                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 opacity-90 group-hover:opacity-100" 
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, 50vw"
+                                        className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 opacity-90 group-hover:opacity-100" 
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-industrial-950/80 via-industrial-950/20 to-transparent" />
                                     <div className="absolute bottom-6 left-6 flex items-center gap-4">

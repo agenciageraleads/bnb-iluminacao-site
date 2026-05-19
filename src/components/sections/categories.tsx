@@ -11,7 +11,7 @@ export async function Categories() {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col mb-16 text-center">
                     <h2 className="text-5xl md:text-7xl font-black font-outfit uppercase tracking-tight text-white mb-4">
-                        PRODUTOS
+                        LINHAS DE PRODUTOS
                     </h2>
                     <div className="w-24 h-1 bg-accent-premium mx-auto"></div>
                 </div>

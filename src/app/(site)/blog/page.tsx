@@ -1,9 +1,18 @@
+import { Metadata } from "next"
 import { Header } from "@/components/layout/header"
 import { getBlogPosts, Post } from "@/lib/data"
 import Link from "next/link"
 import Image from "next/image"
 import { Calendar, ArrowRight } from "lucide-react"
 import { unstable_noStore as noStore } from "next/cache"
+
+export const metadata: Metadata = {
+    title: "Blog | Dicas e Guias de Iluminação | B&B Iluminação",
+    description: "Acompanhe artigos técnicos, dicas de instalação e novidades sobre postes metálicos, iluminação externa e engenharia industrial.",
+    alternates: {
+        canonical: "https://bebiluminacao.com.br/blog",
+    }
+}
 
 export const dynamic = 'force-dynamic'
 

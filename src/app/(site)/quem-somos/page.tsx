@@ -1,8 +1,17 @@
+import { Metadata } from "next"
 import { Header } from "@/components/layout/header"
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
 import { CheckCircle2, Target, Eye, CheckSquare, KeyRound } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+
+export const metadata: Metadata = {
+    title: "Quem Somos | B&B Iluminação",
+    description: "Conheça a B&B Iluminação, fabricante de postes metálicos fundada em 2017 em Goiânia. Qualidade, agilidade e fabricação própria certificada pela ABNT.",
+    alternates: {
+        canonical: "https://bebiluminacao.com.br/quem-somos",
+    }
+}
 
 export default function QuemSomosPage() {
     const numbers = [

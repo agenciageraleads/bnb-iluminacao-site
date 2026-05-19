@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Menu, X, Phone } from "lucide-react"
 
 const navigation = [
@@ -30,7 +31,7 @@ export function Header() {
 
                         {/* Logo */}
                         <Link href="/" className="flex items-center gap-2 group" aria-label="B&B Iluminação - Página Inicial">
-                            <img src="/logo.png" alt="B&B Iluminação" className="h-10 md:h-12 w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity" />
+                            <Image src="/logo.png" alt="B&B Iluminação" width={200} height={48} className="h-10 md:h-12 w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity" priority />
                         </Link>
 
                         {/* Desktop Navigation */}

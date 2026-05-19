@@ -1,3 +1,4 @@
+import { Metadata } from "next"
 import { Header } from "@/components/layout/header"
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
 import { ArrowRight, UserPlus } from "lucide-react"
@@ -7,9 +8,12 @@ import { RepresentativesClient } from "./RepresentativesClient"
 
 export const dynamic = 'force-dynamic'
 
-export const metadata = {
-    title: "Representantes | B&B Iluminação",
-    description: "Encontre o representante comercial da B&B Iluminação mais próximo de você. Cobertura em todo o Brasil.",
+export const metadata: Metadata = {
+    title: "Representantes Comerciais | B&B Iluminação",
+    description: "Encontre o representante comercial da B&B Iluminação mais próximo de você. Cobertura de ponta a ponta em todo o Brasil para atender seu projeto de iluminação pública ou industrial com excelência.",
+    alternates: {
+        canonical: 'https://bebiluminacao.com.br/representantes',
+    },
 }
 
 export default async function RepresentantesPage() {

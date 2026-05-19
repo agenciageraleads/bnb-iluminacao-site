@@ -205,7 +205,7 @@ export default async function EstadoLP({ params }: { params: Promise<{ estado: s
                                 <h3 className="font-black text-industrial-950 uppercase tracking-widest text-sm mb-3">{sol.title}</h3>
                                 <p className="text-industrial-500 text-sm leading-relaxed mb-4">{sol.desc}</p>
                                 <span className="inline-flex items-center gap-2 text-accent-dark text-[10px] font-black uppercase tracking-widest group-hover:gap-3 transition-all">
-                                    Saiba mais <ArrowRight className="size-3" />
+                                    Acessar catálogo <ArrowRight className="size-3" />
                                 </span>
                             </a>
                         ))}

@@ -11,7 +11,7 @@ const genAI = new GoogleGenerativeAI(apiKey);
 export async function POST(req: Request) {
     try {
         if (!process.env.GEMINI_API_KEY) {
-            return NextResponse.json({ error: 'GEMINI_API_KEY não configurada no .env' }, { status: 500 });
+            return NextResponse.json({ success: false, error: 'GEMINI_API_KEY não configurada no .env' }, { status: 200 });
         }
 
         const payload = await getPayload({ config });
@@ -19,7 +19,7 @@ export async function POST(req: Request) {
         // Buscar títulos das postagens recentes para evitar repetição
         const postsExistentes = await payload.find({
             collection: 'blog',
-            limit: 15,
+            limit: 50,
             select: {
                 title: true
             }
@@ -44,12 +44,13 @@ export async function POST(req: Request) {
             PASSO 1: Pesquise no Google por termos como "dúvidas iluminação externa", "como instalar poste metálico", "norma NBR postes", "cálculo de lux estacionamento".
             PASSO 2: Com base nos resultados reais da web, escolha uma pauta inédita e RELEVANTE.
             
-            POSTAGENS JÁ REALIZADAS (NÃO REPITA ESTES TEMAS):
+            POSTAGENS JÁ REALIZADAS (É CRÍTICO NÃO REPETIR NENHUM DESTES TEMAS OU ÂNGULOS):
             ${titulosAntigos || "Nenhuma postagem ainda."}
 
             DIRETRIZ DE VARIEDADE:
             - Alterne entre: Guia Técnico (Instalação/Normas), Economia de Energia, Design/Estética Industrial e Estudos de Caso.
             - Evite ser generalista demais; foque em problemas específicos de engenharia ou arquitetura.
+            - Se um tema já foi abordado (veja a lista acima), escolha um nicho ou ângulo completamente diferente.
 
             Retorne apenas o título (direto ao ponto, com pegada SEO Question-based). 
         `;
@@ -144,7 +145,11 @@ export async function POST(req: Request) {
             ARTIGO GERADO (JSON):
             ${JSON.stringify(conteudoAgente)}
             
-            O artigo menciona algo que viola as NBRs? Ele fala de iluminação interna (que é proibido)? 
+            DIRETRIZ DE REVISÃO (RIGOR MODERADO):
+            O artigo recomenda ativamente alguma prática que viole diretamente as NBRs de segurança? 
+            (Pequenas imprecisões ou menções indiretas a iluminação interna são aceitáveis como contexto, desde que o foco principal seja iluminação externa e industrial). 
+            Seja flexível com o escopo criativo, priorizando a coerência, a qualidade B2B e o fluxo de leitura, barrando apenas erros técnicos graves ou conselhos que firam as normas de estrutura.
+
             Responda em formato JSON:
             {
                 "aprovado": true ou false,
@@ -164,9 +169,10 @@ export async function POST(req: Request) {
             // Para proteger o Payload, rejeitamos e logamos a atuação protetora do Revisor.
             console.warn("Agente Revisor reprovou o artigo:", veredicto.motivo_reprovacao);
             return NextResponse.json({ 
+                success: false,
                 warning: "Artigo reprovado pelo Agente Revisor AI na malha técnica fina.", 
                 reason: veredicto.motivo_reprovacao 
-            }, { status: 400 });
+            }, { status: 200 });
         }
 
         // --------------------------------------------------------------------------------
@@ -280,9 +286,10 @@ export async function POST(req: Request) {
     } catch (error: any) {
         console.error("Falha na Sala de Redação AI:", error);
         return NextResponse.json({ 
+            success: false,
             error: 'Erro no pipeline dos agentes', 
             details: error.message,
             stack: error.stack ? error.stack.split('\n').slice(0, 3) : null
-        }, { status: 500 });
+        }, { status: 200 });
     }
 }
