@@ -32,7 +32,7 @@ export default function CorteLaserPage() {
                             <span className="text-accent-premium">Industrial</span>
                         </h1>
                         <p className="text-industrial-400 text-xl max-w-2xl leading-relaxed mb-10">
-                            Equipamentos de fibra óptica de última geração para cortes complexos com precisão de décimos de milímetro. A agilidade que sua obra precisa com a qualidade que só a B&B entrega.
+                            Equipamentos de fibra óptica de última geração para cortes complexos e de alta precisão em <strong className="text-white">tubos e chapas</strong>. Cortamos metais com espessuras de até <strong className="text-white">19mm</strong> com a agilidade que sua obra precisa e a qualidade que só a B&B entrega.
                         </p>
                         <div className="flex flex-wrap gap-4">
                             <Link href="/contato?servico=laser" className="bg-accent-premium text-black h-16 px-10 flex items-center justify-center font-black uppercase tracking-widest text-xs hover:bg-white transition-all shadow-xl">
@@ -48,9 +48,9 @@ export default function CorteLaserPage() {
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                         {[
-                            { value: "0.1mm", label: "Precisão Nominal" },
-                            { value: "Fibra", label: "Tecnologia" },
-                            { value: "6.5kW", label: "Potência" },
+                            { value: "Tubos & Chapas", label: "Formatos Suportados" },
+                            { value: "3kW", label: "Potência" },
+                            { value: "Até 19mm", label: "Espessura Máxima" },
                             { value: "3x1.5m", label: "Área de Mesa" }
                         ].map((stat, i) => (
                             <div key={i} className="text-center md:text-left">
@@ -95,7 +95,7 @@ export default function CorteLaserPage() {
                                 {[
                                     { icon: <Cpu />, title: "Agilidade", desc: "Ciclos de produção até 5x mais rápidos que métodos convencionais." },
                                     { icon: <ShieldCheck />, title: "Consistência", desc: "Repetibilidade garantida em lotes de alto volume." },
-                                    { icon: <Maximize2 />, title: "Capacidade", desc: "Corte em aço carbono, inox e alumínio com espessuras variadas." },
+                                    { icon: <Maximize2 />, title: "Capacidade", desc: "Corte de alto rendimento em tubos e chapas com espessuras de até 19mm." },
                                     { icon: <FileCheck />, title: "Pronto para Uso", desc: "Peças saem prontas para a etapa de dobra ou soldagem." }
                                 ].map((item, i) => (
                                     <div key={i} className="space-y-3">
@@ -116,8 +116,8 @@ export default function CorteLaserPage() {
                     <h2 className="text-3xl font-black uppercase text-industrial-900 text-center mb-16">Aplicações Reais</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {[
-                            { title: "Placas Base", tag: "Estrutural" },
-                            { title: "Brasões e Logos", tag: "Ornamental" },
+                            { title: "Chapas Metálicas", tag: "Corte Plano" },
+                            { title: "Tubos de Aço", tag: "Corte Tubular" },
                             { title: "Peças Sob Medida", tag: "Especial" }
                         ].map((app, i) => (
                             <div key={i} className="bg-white p-8 border border-industrial-200">
