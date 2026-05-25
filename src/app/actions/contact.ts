@@ -8,6 +8,7 @@ export async function sendContactEmail(formData: FormData) {
   const nome = formData.get('nome') as string;
   const email = formData.get('email') as string;
   const telefone = formData.get('telefone') as string;
+  const empresa = formData.get('empresa') as string;
   const assunto = formData.get('assunto') as string;
   const mensagem = formData.get('mensagem') as string;
 
@@ -38,6 +39,10 @@ export async function sendContactEmail(formData: FormData) {
             <tr>
               <td style="padding: 10px 0; font-size: 11px; font-weight: bold; text-transform: uppercase; color: #6b7280;">Telefone:</td>
               <td style="padding: 10px 0; font-size: 14px; font-weight: bold;">${telefone || 'Não informado'}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; font-size: 11px; font-weight: bold; text-transform: uppercase; color: #6b7280;">Empresa:</td>
+              <td style="padding: 10px 0; font-size: 14px; font-weight: bold;">${empresa || 'Não informado'}</td>
             </tr>
             <tr>
               <td style="padding: 10px 0; font-size: 11px; font-weight: bold; text-transform: uppercase; color: #6b7280;">Assunto:</td>

@@ -3,12 +3,25 @@
 import { Header } from "../../../components/layout/header"
 import { FloatingWhatsApp } from "../../../components/ui/floating-whatsapp"
 import { Phone, Mail, MapPin, Clock, MessageCircle, Send, CheckCircle2, AlertCircle } from "lucide-react"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { useSearchParams } from "next/navigation"
 import { sendContactEmail } from "../../actions/contact"
 
 export default function ContatoPage() {
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
     const [message, setMessage] = useState('');
+    const [assunto, setAssunto] = useState('');
+    const searchParams = useSearchParams();
+
+    useEffect(() => {
+        const servico = searchParams.get('servico');
+        const assuntoParam = searchParams.get('assunto');
+        if (servico) {
+            setAssunto('orcamento');
+        } else if (assuntoParam) {
+            setAssunto(assuntoParam);
+        }
+    }, [searchParams]);
 
     const infos = [
         {
@@ -148,6 +161,19 @@ export default function ContatoPage() {
                                     </div>
                                 </div>
                                 <div className="space-y-1.5">
+                                    <label htmlFor="empresa" className="text-[11px] font-bold uppercase tracking-widest text-industrial-600 block">
+                                        Empresa / Organização
+                                    </label>
+                                    <input
+                                        id="empresa"
+                                        type="text"
+                                        name="empresa"
+                                        autoComplete="organization"
+                                        className="w-full bg-white border border-industrial-300 focus:border-industrial-900 px-4 h-14 text-sm text-industrial-900 placeholder:text-industrial-400 outline-none transition-colors"
+                                        placeholder="Ex: Prefeitura de Goiânia"
+                                    />
+                                </div>
+                                <div className="space-y-1.5">
                                     <label htmlFor="assunto" className="text-[11px] font-bold uppercase tracking-widest text-industrial-600 block">
                                         Assunto <span className="text-red-600" aria-label="campo obrigatório">*</span>
                                     </label>
@@ -155,6 +181,8 @@ export default function ContatoPage() {
                                         id="assunto"
                                         name="assunto"
                                         required
+                                        value={assunto}
+                                        onChange={e => setAssunto(e.target.value)}
                                         className="w-full bg-white border border-industrial-300 focus:border-industrial-900 px-4 h-14 text-sm text-industrial-900 outline-none transition-colors appearance-none"
                                     >
                                         <option value="">Selecione um assunto…</option>

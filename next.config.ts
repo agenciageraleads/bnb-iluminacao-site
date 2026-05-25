@@ -38,7 +38,17 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/pintura-eletrostatica',
-        destination: '/servicos',
+        destination: '/lp/pintura-eletrostatica',
+        permanent: true,
+      },
+      {
+        source: '/corte-laser',
+        destination: '/lp/corte-laser',
+        permanent: true,
+      },
+      {
+        source: '/braco-para-luminaria',
+        destination: '/lp/braco-para-luminaria',
         permanent: true,
       },
       {

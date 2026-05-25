@@ -1,3 +1,5 @@
+"use client"
+
 import { MessageCircle } from "lucide-react"
 
 interface FloatingWhatsAppProps {
@@ -10,6 +12,13 @@ export function FloatingWhatsApp({
     message = "Olá! Gostaria de solicitar um orçamento de postes metálicos.",
 }: FloatingWhatsAppProps) {
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
+
+    function handleClick() {
+        if (typeof window !== 'undefined') {
+            (window as any).dataLayer = (window as any).dataLayer || []
+            ;(window as any).dataLayer.push({ event: 'whatsapp_click' })
+        }
+    }
 
     return (
         <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 group">
@@ -25,6 +34,7 @@ export function FloatingWhatsApp({
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={handleClick}
                 className="
                     flex items-center gap-3
                     bg-[#25D366] text-white
