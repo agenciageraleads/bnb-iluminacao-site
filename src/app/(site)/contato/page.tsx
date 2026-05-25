@@ -3,11 +3,11 @@
 import { Header } from "../../../components/layout/header"
 import { FloatingWhatsApp } from "../../../components/ui/floating-whatsapp"
 import { Phone, Mail, MapPin, Clock, MessageCircle, Send, CheckCircle2, AlertCircle } from "lucide-react"
-import { useState, useEffect } from "react"
+import { useState, useEffect, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import { sendContactEmail } from "../../actions/contact"
 
-export default function ContatoPage() {
+function ContatoContent() {
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
     const [message, setMessage] = useState('');
     const [assunto, setAssunto] = useState('');
@@ -265,5 +265,13 @@ export default function ContatoPage() {
                 </div>
             </div>
         </main>
+    )
+}
+
+export default function ContatoPage() {
+    return (
+        <Suspense fallback={null}>
+            <ContatoContent />
+        </Suspense>
     )
 }
