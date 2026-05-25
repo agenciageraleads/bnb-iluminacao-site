@@ -82,8 +82,8 @@ export default async function CorteLaserLP() {
                                 <h2 className="text-lg font-black text-industrial-950 uppercase tracking-tight mb-1">
                                     Solicite sua Cotação
                                 </h2>
-                                <p className="text-industrial-500 text-xs mb-6">
-                                    Descreva sua peça ou envie o DXF via WhatsApp após o envio.
+                                                <p className="text-industrial-500 text-xs mb-6">
+                                    Anexe o DXF, PDF ou foto da peça diretamente no formulário.
                                 </p>
                                 <LaserQuoteForm />
                             </div>
@@ -93,6 +93,28 @@ export default async function CorteLaserLP() {
             </section>
 
             <ClientsMarquee clients={clients} />
+
+            {/* Foto real do serviço */}
+            <section className="relative h-[360px] md:h-[480px] overflow-hidden" aria-hidden="true">
+                <Image
+                    src="/images/servicos/corte-laser.jpg"
+                    alt="Máquina de corte a laser fibra óptica B&B Iluminação"
+                    fill
+                    className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-industrial-950/85 via-industrial-950/50 to-transparent" />
+                <div className="absolute inset-0 flex items-center">
+                    <div className="container mx-auto px-4">
+                        <p className="text-accent-premium text-[11px] font-bold uppercase tracking-widest mb-3">Equipamento próprio em Goiânia-GO</p>
+                        <h2 className="text-3xl md:text-5xl font-black text-white uppercase leading-none tracking-tighter max-w-xl">
+                            Fibra óptica 3kW<br />para chapas e tubos<br />até 19mm
+                        </h2>
+                        <p className="text-white/70 text-sm mt-4 max-w-sm font-medium">
+                            Cortes de precisão milimétrica, sem rebarbas, prontos para solda ou dobra.
+                        </p>
+                    </div>
+                </div>
+            </section>
 
             {/* Diferenciais */}
             <section className="py-20 bg-industrial-50" aria-labelledby="diferenciais-laser">

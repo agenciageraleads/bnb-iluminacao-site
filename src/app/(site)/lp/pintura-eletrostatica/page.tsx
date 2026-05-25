@@ -92,6 +92,28 @@ export default async function PinturaEletrostaticaLP() {
 
             <ClientsMarquee clients={clients} />
 
+            {/* Foto real do serviço */}
+            <section className="relative h-[360px] md:h-[480px] overflow-hidden" aria-hidden="true">
+                <Image
+                    src="/images/servicos/pintura-eletrostatica.jpg"
+                    alt="Serviço de pintura eletrostática industrial B&B Iluminação"
+                    fill
+                    className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-industrial-950/80 via-industrial-950/40 to-transparent" />
+                <div className="absolute inset-0 flex items-center">
+                    <div className="container mx-auto px-4">
+                        <p className="text-accent-premium text-[11px] font-bold uppercase tracking-widest mb-3">Estrutura própria em Goiânia-GO</p>
+                        <h2 className="text-3xl md:text-5xl font-black text-white uppercase leading-none tracking-tighter max-w-xl">
+                            Cabine de pintura<br />e estufa de cura<br />industrial
+                        </h2>
+                        <p className="text-white/70 text-sm mt-4 max-w-sm font-medium">
+                            Linha de produção preparada para lotes industriais com controle de temperatura e camada uniforme.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
             {/* Diferenciais */}
             <section className="py-20 bg-white" aria-labelledby="diferenciais-pintura">
                 <div className="container mx-auto px-4 max-w-5xl">

@@ -26,8 +26,15 @@ const nextConfig: NextConfig = {
       {
         protocol: 'http',
         hostname: 'localhost',
+      },
+      {
+        protocol: 'https',
+        hostname: 'bebiluminacao.com.br',
       }
     ],
+  },
+  experimental: {
+    serverActionsBodySizeLimit: '10mb',
   },
   async redirects() {
     return [

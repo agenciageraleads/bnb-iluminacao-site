@@ -83,18 +83,31 @@ export default async function BracoParaLuminariaLP() {
                         </div>
 
                         <div className="flex-1 w-full max-w-2xl lg:max-w-none">
-                            <div className="relative aspect-[4/3] lg:aspect-square bg-industrial-100 border-8 border-white shadow-2xl skew-y-2 lg:skew-y-0 lg:-rotate-2 hover:rotate-0 transition-transform duration-500">
-                                <Image
-                                    src="/portfolio/reserva-parque.webp"
-                                    alt="Braços para Luminária Pública B&B Iluminação"
-                                    fill
-                                    className="object-cover"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-industrial-950/40 to-transparent" />
-                                <div className="absolute top-4 right-4 bg-accent-premium text-black font-black text-[10px] tracking-widest px-4 py-2 uppercase">
-                                    Padrão Engenharia
-                                </div>
+                            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                                {[
+                                    { src: "https://bebiluminacao.com.br/api/media/file/braco-reto-luminaria.png", nome: "Braço Reto" },
+                                    { src: "https://bebiluminacao.com.br/api/media/file/braco-curvo-luminaria.png", nome: "Braço Curvo" },
+                                    { src: "https://bebiluminacao.com.br/api/media/file/suporte-1-luminaria.png", nome: "Suporte 1 Luminária" },
+                                    { src: "https://bebiluminacao.com.br/api/media/file/suporte-2-luminarias.png", nome: "Suporte 2 Luminárias" },
+                                    { src: "https://bebiluminacao.com.br/api/media/file/suporte-3-luminarias.png", nome: "Suporte 3 Luminárias" },
+                                    { src: "https://bebiluminacao.com.br/api/media/file/suporte-4-luminarias.png", nome: "Suporte 4 Luminárias" },
+                                ].map((produto) => (
+                                    <div key={produto.src} className="bg-industrial-50 border border-industrial-200 hover:border-accent-premium transition-colors p-4 flex flex-col items-center gap-3 group">
+                                        <div className="relative w-full aspect-square">
+                                            <Image
+                                                src={produto.src}
+                                                alt={`${produto.nome} — B&B Iluminação`}
+                                                fill
+                                                className="object-contain group-hover:scale-105 transition-transform duration-300"
+                                            />
+                                        </div>
+                                        <p className="text-[10px] font-black uppercase tracking-widest text-industrial-600 text-center leading-tight">{produto.nome}</p>
+                                    </div>
+                                ))}
                             </div>
+                            <p className="text-center text-[11px] text-industrial-400 mt-4 font-medium">
+                                Todos os modelos em estoque — pronta-entrega ou lotes sob medida
+                            </p>
                         </div>
                     </div>
                 </div>
