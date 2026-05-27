@@ -1,20 +1,53 @@
 import { NextResponse } from 'next/server';
 
-// Mapeamento de nome de representante (no Payload CMS) para o ID (UUID) no CRM
-const CRM_REPRESENTATIVE_MAP: Record<string, string> = {
-  "Lucas Borges": "502d8788-3335-49c7-8069-7b056e5bd54a",
-  "Juarez": "984a7b33-30cd-424a-b67f-168b52be8571",
-  "Alex Ferrari": "0720e174-8cb0-40d3-aa68-e9a7f6f4c118",
-  "José Gomes": "f222857a-0561-4468-9985-64c7e3c28526",
-  "Glauco": "5770d94c-bdb8-4206-bef1-548a5ff6e07e",
-  "João Santos": "67b49b83-2981-41af-95c9-9d0b8ef2ddd3",
-  "Wagner": "be65d9cf-9a51-440d-9d53-be6fb08467e4",
-  "Daniel": "5fbceab7-9aee-4588-a55c-c74fd36c2fbf",
-  "Mateus Henrique": "369bad03-cc3f-4bb9-9bdc-c747d6f4b3b1",
-  "Fernanda Rainy": "3cdedb4e-a25d-4ade-b6d5-da42c727acc3",
-  "Nickson": "ce84876f-67d4-498d-9550-701e10e6c57c",
-  "Luiz Alberto": "8d7ad977-3eca-4a59-b121-e33473b68a73"
+type CrmAssignment = {
+  owner_id?: string;
+  representative_id?: string;
 };
+
+const CRM_REPRESENTATIVE_ASSIGNMENTS: Record<string, CrmAssignment> = {
+  "Bruno Pereira": { owner_id: "425caf44-5b7e-47bb-89a2-7c07f707ecd5" },
+  "Bruno": { owner_id: "425caf44-5b7e-47bb-89a2-7c07f707ecd5" },
+  "Juarez": { representative_id: "984a7b33-30cd-424a-b67f-168b52be8571" },
+  "Alex Ferrari": { representative_id: "0720e174-8cb0-40d3-aa68-e9a7f6f4c118" },
+  "José Gomes": { representative_id: "f222857a-0561-4468-9985-64c7e3c28526" },
+  "Glauco": { representative_id: "5770d94c-bdb8-4206-bef1-548a5ff6e07e" },
+  "João Santos": { representative_id: "67b49b83-2981-41af-95c9-9d0b8ef2ddd3" },
+  "Wagner": { representative_id: "be65d9cf-9a51-440d-9d53-be6fb08467e4" },
+  "Daniel": { representative_id: "5fbceab7-9aee-4588-a55c-c74fd36c2fbf" },
+  "Mateus Henrique": { representative_id: "369bad03-cc3f-4bb9-9bdc-c747d6f4b3b1" },
+  "Nickson": { representative_id: "ce84876f-67d4-498d-9550-701e10e6c57c" },
+  "Luiz Alberto": { representative_id: "8d7ad977-3eca-4a59-b121-e33473b68a73" },
+  "Júnior Martins": { representative_id: "f5f9a0bf-d8aa-4957-8c78-a477e7ead110" },
+  "Junior Martins": { representative_id: "f5f9a0bf-d8aa-4957-8c78-a477e7ead110" },
+};
+
+function normalizeLookupKey(value: unknown) {
+  return String(value || 'br')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .trim();
+}
+
+function normalizeSourceSegment(value: unknown) {
+  return normalizeLookupKey(value)
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '') || 'br';
+}
+
+function digitsOnly(value: unknown) {
+  return String(value || '').replace(/\D/g, '');
+}
+
+function resolveCrmAssignment(representativeName: unknown) {
+  const target = normalizeLookupKey(representativeName);
+  const assignmentKey = Object.keys(CRM_REPRESENTATIVE_ASSIGNMENTS).find(
+    (name) => normalizeLookupKey(name) === target,
+  );
+
+  return assignmentKey ? CRM_REPRESENTATIVE_ASSIGNMENTS[assignmentKey] : {};
+}
 
 export async function POST(req: Request) {
   try {
@@ -32,18 +65,19 @@ export async function POST(req: Request) {
     const crmApiKey = process.env.CRM_API_KEY;
 
     if (crmApiKey) {
-      // Procurar o UUID do representante no mapa
-      const ownerId = CRM_REPRESENTATIVE_MAP[representativeName];
+      const assignment = resolveCrmAssignment(representativeName);
+      const stateSegment = normalizeSourceSegment(representativeState);
+      const phoneDigits = digitsOnly(phone);
 
       const crmPayload = {
         name: name,
         whatsapp: phone,
         source: 'Site B&B',
-        source_reference: `representantes-${representativeState?.toLowerCase() || 'br'}`,
+        source_reference: `representantes-${stateSegment}:${phoneDigits || Date.now()}`,
         demand: `Contato para Representante: ${representativeName} (Região: ${representativeState || 'Não informada'})`,
         pipeline_slug: 'leads',
         status: 'novo',
-        ...(ownerId ? { owner_id: ownerId } : {}) // Atribui ao representante caso encontrado
+        ...assignment,
       };
 
       try {
@@ -60,7 +94,7 @@ export async function POST(req: Request) {
           const errorText = await response.text();
           console.error("Erro na API do CRM:", response.status, errorText);
         } else {
-          console.log(`[Lead Capture] Lead ${name} enviado com sucesso para o CRM. Owner: ${representativeName}`);
+          console.log(`[Lead Capture] Lead ${name} enviado com sucesso para o CRM. Representante: ${representativeName}`);
         }
       } catch (crmError) {
         console.error("Erro de conexão ao enviar para o CRM:", crmError);
