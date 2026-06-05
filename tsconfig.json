@@ -40,6 +40,18 @@
     "**/*.mts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "scripts",
+    "src/scripts",
+    ".claude",
+    "pptx_extracted",
+    "produto_imagens",
+    "produto_imagens_teste",
+    "check-*.ts",
+    "create-*.ts",
+    "import-*.ts",
+    "read-excel.ts",
+    "reset-admin.ts",
+    "scratch"
   ]
 }
