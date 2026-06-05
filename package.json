@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start -p 9010",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit --incremental false",
+    "typecheck": "tsc --project tsconfig.typecheck.json --noEmit --incremental false",
     "smoke:public": "node scripts/smoke-public.mjs",
     "test:validate": "npm run typecheck && npm run lint && npm run build && npm run smoke:public"
   },

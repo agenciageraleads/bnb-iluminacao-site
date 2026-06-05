@@ -1,0 +1,34 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "plugins": [],
+    "types": [
+      "node",
+      "react",
+      "react-dom"
+    ]
+  },
+  "include": [
+    "next-env.d.ts",
+    "next.config.ts",
+    "payload-types.ts",
+    "payload.config.ts",
+    "prisma.config.ts",
+    "src/app/**/*.ts",
+    "src/app/**/*.tsx",
+    "src/collections/**/*.ts",
+    "src/components/**/*.ts",
+    "src/components/**/*.tsx",
+    "src/lib/**/*.ts",
+    "src/migrations/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    ".next/cache",
+    ".claude",
+    "pptx_extracted",
+    "produto_imagens",
+    "produto_imagens_teste",
+    "src/scripts"
+  ]
+}
