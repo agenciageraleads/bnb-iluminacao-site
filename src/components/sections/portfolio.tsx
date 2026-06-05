@@ -9,7 +9,7 @@ import type { Project } from "@/lib/data"
 import { AnimatePresence, motion } from "framer-motion"
 
 export function Portfolio({ projects = [] }: { projects?: Project[] }) {
-    const items = projects.length > 0 ? projects : staticPortfolioItems;
+    const items: Project[] = projects.length > 0 ? projects : staticPortfolioItems;
     const [currentIndexes, setCurrentIndexes] = useState([0, 1, 2]);
     const [fade, setFade] = useState(false);
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);

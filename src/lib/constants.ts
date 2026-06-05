@@ -14,6 +14,15 @@ export interface Product {
     optionals?: string[]
 }
 
+export interface Catalog {
+    id: string
+    title: string
+    description?: string
+    thumbnail: string
+    fileUrl: string
+    category: string
+}
+
 export interface Category {
     title: string
     slug: string

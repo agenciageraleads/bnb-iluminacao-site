@@ -123,10 +123,11 @@ export async function POST(req: Request) {
             console.warn("Falha no parse inicial, tentando limpeza agressiva...");
             try {
                 // Se falhar de novo, usa o textoGerado original mas arruma quebras de linha
-                let altJson = textoGeradoJson.replace(/\n/g, ' ').replace(/,\s*([\]}])/g, '$1');
+                const altJson = textoGeradoJson.replace(/\n/g, ' ').replace(/,\s*([\]}])/g, '$1');
                 conteudoAgente = JSON.parse(altJson);
             } catch (e2) {
-                throw new Error(`Erro no parsing do JSON gerado pela IA: ${e2.message}`);
+                const parseMessage = e2 instanceof Error ? e2.message : String(e2);
+                throw new Error(`Erro no parsing do JSON gerado pela IA: ${parseMessage}`);
             }
         }
 

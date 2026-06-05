@@ -78,6 +78,10 @@ export interface Region {
         question: string
         answer: string
     }>
+    meta?: {
+        title?: string | null
+        description?: string | null
+    }
 }
 
 export const getCategories = async (): Promise<Category[]> => {
@@ -111,10 +115,10 @@ export const getProducts = async (): Promise<Product[]> => {
 
     return docs.map(doc => {
       const specs = [];
-      if (doc.specs_material) specs.push(doc.specs_material as string);
-      if (doc.specs_altura) specs.push(doc.specs_altura as string);
-      if (doc.specs_diametro) specs.push(doc.specs_diametro as string);
-      if (doc.specs_norma) specs.push(doc.specs_norma as string);
+      if (doc.specs?.material) specs.push(doc.specs.material);
+      if (doc.specs?.altura) specs.push(doc.specs.altura);
+      if (doc.specs?.diametro) specs.push(doc.specs.diametro);
+      if (doc.specs?.norma) specs.push(doc.specs.norma);
 
       // Tratamento robusto para categoria (pode vir como objeto populado ou apenas ID)
       let categorySlug = '';
