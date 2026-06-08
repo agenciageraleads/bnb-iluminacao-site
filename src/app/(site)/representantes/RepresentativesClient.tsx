@@ -6,6 +6,16 @@ import { useState, useEffect } from "react"
 import type { Representative } from "../../../lib/data"
 import { LeadCaptureDialog } from "./LeadCaptureDialog";
 
+// Mapeamento de canais/mercados de atuação para exibição no frontend (comentários em pt-br)
+const MARKET_LABELS: Record<string, string> = {
+    revenda: 'Revenda / Lojistas',
+    construtoras: 'Construtoras',
+    material_construcao: 'Material de Construção',
+    consumidor_final: 'Consumidor Final',
+    atacado_distribuidor: 'Atacado / Distribuidor',
+    industria: 'Indústria / Corporativo',
+};
+
 export function RepresentativesClient({ representatives }: { representatives: Representative[] }) {
     // Estado selecionado (UF)
     const [selectedState, setSelectedState] = useState<string | null>(null);
@@ -106,6 +116,23 @@ export function RepresentativesClient({ representatives }: { representatives: Re
                                                         {rep.company && (
                                                             <div className="text-sm font-medium text-industrial-500 uppercase tracking-wide">
                                                                 {rep.company}
+                                                            </div>
+                                                        )}
+
+                                                        {/* Canais/Mercados de Atuação do Representante */}
+                                                        {rep.markets && rep.markets.length > 0 && (
+                                                            <div className="flex flex-wrap gap-1.5 mt-3 max-w-xs md:max-w-md">
+                                                                {rep.markets.map((marketValue) => {
+                                                                    const label = MARKET_LABELS[marketValue] || marketValue;
+                                                                    return (
+                                                                        <span 
+                                                                            key={marketValue} 
+                                                                            className="inline-flex items-center px-2 py-0.5 rounded-sm text-[10px] font-extrabold uppercase bg-accent-premium/15 text-accent-dark border border-accent-premium/25 tracking-wider"
+                                                                        >
+                                                                            {label}
+                                                                        </span>
+                                                                    );
+                                                                })}
                                                             </div>
                                                         )}
                                                     </div>

@@ -29,6 +29,7 @@ export interface Representative {
     states: string[]
     region?: string
     displayOrder?: number | null
+    markets?: string[] | null
 }
 
 export interface ClientLogo {
@@ -172,6 +173,7 @@ export const getRepresentatives = async (): Promise<Representative[]> => {
       states: doc.states as string[] || [],
       region: doc.region as string || '',
       displayOrder: doc.displayOrder as number | null,
+      markets: doc.markets as string[] || [],
     }))
   } catch (error) {
     console.error("Erro ao conectar ao CMS para representantes.", error);

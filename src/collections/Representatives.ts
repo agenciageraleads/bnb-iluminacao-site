@@ -85,9 +85,27 @@ const Representatives: CollectionConfig = {
         {
             name: 'region',
             type: 'text',
-            label: 'Nome da Região (opcional vizualição)',
+            label: 'Nome da Região (opcional visualização)',
             admin: {
                 description: 'Ex: "Nordeste e Norte", "Sul de Minas". Serve para categorização visual se necessário.',
+            }
+        },
+        {
+            name: 'markets',
+            type: 'select',
+            hasMany: true,
+            required: false,
+            label: 'Canais de Atendimento (Mercados)',
+            options: [
+                { label: 'Revenda / Lojistas', value: 'revenda' },
+                { label: 'Construtoras & Incorporadoras', value: 'construtoras' },
+                { label: 'Material de Construção', value: 'material_construcao' },
+                { label: 'Consumidor Final', value: 'consumidor_final' },
+                { label: 'Atacado / Distribuidor', value: 'atacado_distribuidor' },
+                { label: 'Indústria / Corporativo', value: 'industria' },
+            ],
+            admin: {
+                description: 'Selecione todos os canais/mercados atendidos por este representante.',
             }
         }
     ],

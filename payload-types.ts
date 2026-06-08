@@ -474,6 +474,12 @@ export interface Representative {
    * Ex: "Nordeste e Norte", "Sul de Minas". Serve para categorização visual se necessário.
    */
   region?: string | null;
+  /**
+   * Selecione todos os canais/mercados atendidos por este representante.
+   */
+  markets?:
+    | ('revenda' | 'construtoras' | 'material_construcao' | 'consumidor_final' | 'atacado_distribuidor' | 'industria')[]
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -916,6 +922,7 @@ export interface RepresentativesSelect<T extends boolean = true> {
   phone?: T;
   states?: T;
   region?: T;
+  markets?: T;
   updatedAt?: T;
   createdAt?: T;
 }
