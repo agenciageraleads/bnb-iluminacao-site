@@ -23,6 +23,7 @@ services:
     environment:
       - POSTGRES_URL=postgresql://${POSTGRES_USER:-bnb_user}:${POSTGRES_PASSWORD:-bnb_password_secure_123}@postgres:5432/${POSTGRES_DB:-bnb_database}
       - DATABASE_URL=postgresql://${POSTGRES_USER:-bnb_user}:${POSTGRES_PASSWORD:-bnb_password_secure_123}@postgres:5432/${POSTGRES_DB:-bnb_database}
+      - PAYLOAD_NO_PUSH=true
     depends_on:
       - postgres
       - redis

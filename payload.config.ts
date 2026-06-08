@@ -2,6 +2,7 @@ import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { buildConfig } from 'payload'
+import sharp from 'sharp'
 import { fileURLToPath } from 'url'
 
 import Users from './src/collections/Users'
@@ -36,6 +37,7 @@ export default buildConfig({
         CatalogLeads,
     ],
     editor: lexicalEditor({}),
+    sharp,
     secret: process.env.PAYLOAD_SECRET || 'bnb_secret_key_generated_securely_123',
     typescript: {
         outputFile: path.resolve(dirname, 'payload-types.ts'),
@@ -44,5 +46,6 @@ export default buildConfig({
         pool: {
             connectionString: process.env.DATABASE_URL || process.env.POSTGRES_URL || '',
         },
+        push: process.env.PAYLOAD_NO_PUSH !== 'true', // Default to true, but disable if PAYLOAD_NO_PUSH=true
     }),
 })

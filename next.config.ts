@@ -1,9 +1,13 @@
 import type { NextConfig } from "next";
 import { withPayload } from '@payloadcms/next/withPayload'
+import path from 'path'
+import { fileURLToPath } from 'url'
+
+const dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const nextConfig: NextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
+  turbopack: {
+    root: dirname,
   },
   /* config options here */
   images: {
@@ -31,7 +35,9 @@ const nextConfig: NextConfig = {
     ],
   },
   experimental: {
-    serverActionsBodySizeLimit: '10mb',
+    serverActions: {
+      bodySizeLimit: '10mb',
+    },
   },
   async redirects() {
     return [

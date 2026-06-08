@@ -41,3 +41,23 @@ yarn-error.log*
 next-env.d.ts
 
 /src/generated/prisma
+
+# Local exploratory/import artifacts
+.claude/
+pptx_extracted/
+produto_imagens/
+produto_imagens_teste/
+media/*.png
+check-db.ts
+check-xlsx-ornamentals.ts
+compose_all_pptx_images.py
+create-eos.ts
+extract_ornamentals.py
+gen-rebatedor.cjs
+gen-scene.cjs
+import-ornamentals-images.ts
+postes_urban_retos.csv
+product-management-playground.html
+read-excel.ts
+replace_bg_smooth.py
+validacao_imagens.html
