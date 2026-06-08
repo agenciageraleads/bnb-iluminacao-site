@@ -71,7 +71,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                                 <User className="size-3 md:size-4" /> {post.author}
                             </div>
                         </div>
-                        <h1 className="responsive-title mb-8 text-industrial-950">
+                        {/* Título do artigo de blog ajustado para melhor proporção e legibilidade */}
+                        <h1 className="blog-post-title mb-8 text-industrial-950">
                             {post.title}
                         </h1>
                         <p className="responsive-summary text-industrial-600">

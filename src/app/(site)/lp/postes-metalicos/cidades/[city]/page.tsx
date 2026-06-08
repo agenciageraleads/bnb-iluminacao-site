@@ -9,6 +9,8 @@ import { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
 
+export const dynamic = 'force-dynamic'
+
 interface Props {
   params: { city: string }
 }
@@ -32,11 +34,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       images: [(city.featuredImage as any)?.url || '/portfolio/reserva-parque.webp'],
     }
   }
-}
-
-export async function generateStaticParams() {
-  const regions = await getRegions()
-  return regions.map((region) => ({ city: region.slug }))
 }
 
 export default async function PostesMetalicosCityLP({ params }: Props) {

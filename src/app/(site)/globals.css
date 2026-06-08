@@ -157,6 +157,11 @@
     @apply text-4xl md:text-6xl lg:text-7xl font-black font-display uppercase tracking-tighter leading-[0.9] lg:leading-none;
   }
 
+  /* Título de Artigo de Blog - Premium, Imponente e Legível */
+  .blog-post-title {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-[42px] xl:text-[48px] font-black font-display uppercase tracking-tight leading-[1.15] lg:leading-[1.1];
+  }
+
   .responsive-summary {
     @apply text-lg md:text-xl lg:text-2xl text-industrial-500 font-medium leading-relaxed;
   }

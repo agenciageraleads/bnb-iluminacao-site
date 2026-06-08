@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { MetadataRoute } from 'next'
 import { getCategories, getProducts, getBlogPosts, getCatalogs } from '@/lib/data'
 import { getAllStateSlugs } from '@/lib/states-data'

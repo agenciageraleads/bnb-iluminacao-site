@@ -10,10 +10,7 @@ import { getPortfolioProjects, getClientLogos, getRepresentatives } from "@/lib/
 import { statesData, getStateBySlug, getAllStateSlugs, type StateData } from "@/lib/states-data"
 import { notFound } from "next/navigation"
 
-// Gera todas as rotas estáticas para os 27 estados
-export async function generateStaticParams() {
-    return getAllStateSlugs().map(slug => ({ estado: slug }))
-}
+export const dynamic = 'force-dynamic'
 
 // Metadados SEO dinâmicos por estado
 export async function generateMetadata({ params }: { params: Promise<{ estado: string }> }): Promise<Metadata> {
