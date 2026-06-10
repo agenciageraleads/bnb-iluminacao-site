@@ -1,8 +1,25 @@
+import { timingSafeEqual } from 'node:crypto'
 import { NextResponse } from 'next/server';
 import { getPayload } from 'payload';
 import config from '@payload-config';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { AGENT_GROUND_TRUTH } from '@/lib/agent-context';
+
+function verifyInternalToken(req: Request): boolean {
+  const secret = process.env.BLOG_ENGINE_SECRET
+  if (!secret) return false
+  const auth = req.headers.get('Authorization') ?? ''
+  if (!auth.startsWith('Bearer ')) return false
+  const token = auth.slice(7)
+  try {
+    const tokenBuf = Buffer.from(token)
+    const secretBuf = Buffer.from(secret)
+    if (tokenBuf.length !== secretBuf.length) return false
+    return timingSafeEqual(tokenBuf, secretBuf)
+  } catch {
+    return false
+  }
+}
 
 // Configurando o SDK do Gemini
 const apiKey = process.env.GEMINI_API_KEY || '';
@@ -10,6 +27,9 @@ const genAI = new GoogleGenerativeAI(apiKey);
 
 export async function POST(req: Request) {
     try {
+        if (!verifyInternalToken(req)) {
+            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+        }
         if (!process.env.GEMINI_API_KEY) {
             return NextResponse.json({ success: false, error: 'GEMINI_API_KEY não configurada no .env' }, { status: 200 });
         }

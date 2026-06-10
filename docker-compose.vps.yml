@@ -21,8 +21,8 @@ services:
       - "traefik.http.middlewares.bnb-redir.redirectregex.permanent=true"
       - "traefik.http.routers.bnb.middlewares=bnb-redir"
     environment:
-      - POSTGRES_URL=postgresql://${POSTGRES_USER:-bnb_user}:${POSTGRES_PASSWORD:-bnb_password_secure_123}@postgres:5432/${POSTGRES_DB:-bnb_database}
-      - DATABASE_URL=postgresql://${POSTGRES_USER:-bnb_user}:${POSTGRES_PASSWORD:-bnb_password_secure_123}@postgres:5432/${POSTGRES_DB:-bnb_database}
+      - POSTGRES_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
       - PAYLOAD_NO_PUSH=true
     depends_on:
       - postgres
@@ -38,11 +38,10 @@ services:
     container_name: bnb_postgres
     restart: always
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-bnb_user}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-bnb_password_secure_123}
-      POSTGRES_DB: ${POSTGRES_DB:-bnb_database}
-    ports:
-      - "9001:5432"
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    # Sem exposição de porta ao host — acesso apenas via rede Docker interna
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
@@ -50,8 +49,7 @@ services:
     image: redis:7-alpine
     container_name: bnb_redis
     restart: always
-    ports:
-      - "9002:6379"
+    # Sem exposição de porta ao host — acesso apenas via rede Docker interna
     volumes:
       - redis_data:/data
 
@@ -70,4 +68,3 @@ volumes:
 networks:
   portaleletricos:
     external: true
-

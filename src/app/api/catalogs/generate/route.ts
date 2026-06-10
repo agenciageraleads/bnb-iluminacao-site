@@ -1,11 +1,31 @@
+import { timingSafeEqual } from 'node:crypto'
 import { NextRequest, NextResponse } from 'next/server';
 import { getPayload } from 'payload';
 import config from '@payload-config';
 import puppeteer from 'puppeteer';
 import path from 'path';
 
+function verifyInternalToken(req: NextRequest): boolean {
+  const secret = process.env.CATALOG_GEN_SECRET
+  if (!secret) return false
+  const auth = req.headers.get('Authorization') ?? ''
+  if (!auth.startsWith('Bearer ')) return false
+  const token = auth.slice(7)
+  try {
+    const tokenBuf = Buffer.from(token)
+    const secretBuf = Buffer.from(secret)
+    if (tokenBuf.length !== secretBuf.length) return false
+    return timingSafeEqual(tokenBuf, secretBuf)
+  } catch {
+    return false
+  }
+}
+
 export async function POST(req: NextRequest) {
     try {
+        if (!verifyInternalToken(req)) {
+            return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+        }
         const { catalogId } = await req.json();
         
         if (!catalogId) {

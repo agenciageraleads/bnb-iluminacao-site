@@ -7,7 +7,7 @@ const Users: CollectionConfig = {
         useAsTitle: 'email',
     },
     access: {
-        read: () => true,
+        read: ({ req }) => !!req.user,
     },
     fields: [
         // Email e Password são adicionados automaticamente pelo 'auth: true'

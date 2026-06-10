@@ -38,7 +38,11 @@ export default buildConfig({
     ],
     editor: lexicalEditor({}),
     sharp,
-    secret: process.env.PAYLOAD_SECRET || 'bnb_secret_key_generated_securely_123',
+    secret: (() => {
+        const s = process.env.PAYLOAD_SECRET
+        if (!s) throw new Error('PAYLOAD_SECRET environment variable is required')
+        return s
+    })(),
     typescript: {
         outputFile: path.resolve(dirname, 'payload-types.ts'),
     },
