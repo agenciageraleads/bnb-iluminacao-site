@@ -4,6 +4,16 @@ WORKDIR /app
 ENV NEXT_TELEMETRY_DISABLED=1
 ARG PAYLOAD_SECRET
 ENV PAYLOAD_SECRET=${PAYLOAD_SECRET}
+# NEXT_PUBLIC_* precisam existir no build: paginas estaticas (LPs) sao
+# pre-renderizadas aqui e ficam sem tags se as vars chegarem so em runtime
+ARG NEXT_PUBLIC_GTM_ID
+ARG NEXT_PUBLIC_ADS_ID
+ARG NEXT_PUBLIC_GA_ID
+ARG NEXT_PUBLIC_FB_PIXEL_ID
+ENV NEXT_PUBLIC_GTM_ID=${NEXT_PUBLIC_GTM_ID} \
+    NEXT_PUBLIC_ADS_ID=${NEXT_PUBLIC_ADS_ID} \
+    NEXT_PUBLIC_GA_ID=${NEXT_PUBLIC_GA_ID} \
+    NEXT_PUBLIC_FB_PIXEL_ID=${NEXT_PUBLIC_FB_PIXEL_ID}
 COPY package*.json ./
 RUN npm ci --legacy-peer-deps
 COPY . .

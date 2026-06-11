@@ -22,7 +22,18 @@ Use this for releases to `bebiluminacao.com.br` and `www.bebiluminacao.com.br`.
 
 ## Deploy
 
-1. Build or load the commit-tagged image.
+1. Build or load the commit-tagged image. The build MUST pass the `NEXT_PUBLIC_*` tracking vars as build args — static pages (all `/lp/*`) are prerendered at build time and ship without Google/Meta tags if these are missing. On the VPS:
+
+   ```bash
+   set -a; source /opt/vps-bb/env/site-bb.env; set +a
+   docker build \
+     --build-arg PAYLOAD_SECRET="$PAYLOAD_SECRET" \
+     --build-arg NEXT_PUBLIC_GTM_ID="$NEXT_PUBLIC_GTM_ID" \
+     --build-arg NEXT_PUBLIC_ADS_ID="$NEXT_PUBLIC_ADS_ID" \
+     --build-arg NEXT_PUBLIC_GA_ID="$NEXT_PUBLIC_GA_ID" \
+     --build-arg NEXT_PUBLIC_FB_PIXEL_ID="$NEXT_PUBLIC_FB_PIXEL_ID" \
+     -t bnb-site:<short-sha> .
+   ```
 2. Update only `site-bb_app`.
 3. Keep `site-bb_site-bb-postgres` and `site-bb_site-bb-redis` unchanged unless the release explicitly requires data work.
 4. Watch rollout until `site-bb_app` is `1/1`.
@@ -34,5 +45,6 @@ Use this for releases to `bebiluminacao.com.br` and `www.bebiluminacao.com.br`.
 - `https://www.bebiluminacao.com.br/` returns 200.
 - `/produtos`, `/blog`, `/representantes`, and `/downloads` return 200.
 - A known media file loads through Payload.
+- Tracking tags render on static LPs: `curl -s https://bebiluminacao.com.br/lp/pintura-eletrostatica | grep -c googletagmanager` returns >= 1.
 - Representative lead capture UI renders; do not submit real leads without approval.
 - Logs show no new critical errors during the first 15 minutes.
