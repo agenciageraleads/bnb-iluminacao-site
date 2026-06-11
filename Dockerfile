@@ -2,6 +2,8 @@
 FROM node:20-alpine AS builder
 WORKDIR /app
 ENV NEXT_TELEMETRY_DISABLED=1
+ARG PAYLOAD_SECRET
+ENV PAYLOAD_SECRET=${PAYLOAD_SECRET}
 COPY package*.json ./
 RUN npm ci --legacy-peer-deps
 COPY . .
