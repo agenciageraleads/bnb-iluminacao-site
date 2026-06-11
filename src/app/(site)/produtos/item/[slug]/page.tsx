@@ -10,6 +10,31 @@ import { ProductGallery } from "@/components/ui/product-gallery"
 
 export const dynamic = 'force-dynamic'
 
+// Downloads técnicos da Linha Urban derivados do código do produto (BB-URB-XXXxx-E/F)
+const URBAN_DOWNLOADS: Record<string, { datasheet: string; desenhoSigla: string }> = {
+    TCS: { datasheet: '/downloads/datasheets/DATASHEET-BB-POSTE-CURVO-SIMPLES.pdf', desenhoSigla: 'TCS' },
+    TCD: { datasheet: '/downloads/datasheets/DATASHEET-BB-POSTE-CURVO-DUPLO.pdf', desenhoSigla: 'TCD' },
+    TR: { datasheet: '/downloads/datasheets/DATASHEET-BB-POSTE-RETO.pdf', desenhoSigla: 'TR' },
+}
+const URBAN_HEIGHTS = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+function getUrbanDownloads(model?: string) {
+    const match = model?.match(/^BB-URB-(TCS|TCD|TR)XX-([EF])$/i)
+    if (!match) return null
+    const familia = URBAN_DOWNLOADS[match[1].toUpperCase()]
+    if (!familia) return null
+    return {
+        datasheet: familia.datasheet,
+        // desenhos técnicos disponíveis apenas para os engastados (flangeados em breve)
+        desenhos: match[2].toUpperCase() === 'E'
+            ? URBAN_HEIGHTS.map(h => ({
+                altura: h,
+                href: `/downloads/desenhos-tecnicos/DESENHO-TECNICO-BB-URB-${familia.desenhoSigla}${String(h).padStart(2, '0')}-E.pdf`,
+            }))
+            : null,
+    }
+}
+
 export default async function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
     const allProducts = await getProducts();
@@ -42,6 +67,8 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
     const relatedProducts = allProducts
         .filter(p => p.category === product.category && p.id !== product.id)
         .slice(0, 4);
+
+    const urbanDownloads = getUrbanDownloads(product.model);
 
     const defaultBadges = ["NBR 6323", "Qualidade ISO", "Garantia B&B"];
     const productBadges = product.badges ?? defaultBadges;
@@ -254,11 +281,36 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                         </div>
 
                         <div className="space-y-4">
-                            {product.datasheet && (
-                                <button className="w-full flex items-center justify-center gap-3 bg-industrial-100 text-industrial-900 border border-industrial-200 font-black uppercase tracking-widest h-14 hover:bg-industrial-200 transition-colors group">
+                            {(urbanDownloads?.datasheet || product.datasheet) && (
+                                <a
+                                    href={urbanDownloads?.datasheet ?? product.datasheet}
+                                    download
+                                    className="w-full flex items-center justify-center gap-3 bg-industrial-100 text-industrial-900 border border-industrial-200 font-black uppercase tracking-widest h-14 hover:bg-industrial-200 transition-colors group"
+                                >
                                     <Download className="size-5 group-hover:translate-y-0.5 transition-transform" />
-                                    Baixar Ficha Técnica (PDF)
-                                </button>
+                                    Baixar Datasheet (PDF)
+                                </a>
+                            )}
+
+                            {urbanDownloads?.desenhos && (
+                                <div className="bg-industrial-50 border border-industrial-100 p-4 space-y-3">
+                                    <p className="text-[10px] font-black uppercase tracking-widest text-industrial-400 flex items-center gap-2">
+                                        <Download className="size-4 text-industrial-900" />
+                                        Desenho Técnico por Altura (PDF)
+                                    </p>
+                                    <div className="flex flex-wrap gap-2">
+                                        {urbanDownloads.desenhos.map(({ altura, href }) => (
+                                            <a
+                                                key={altura}
+                                                href={href}
+                                                download
+                                                className="px-3 py-1.5 bg-white border border-industrial-200 text-[11px] font-black text-industrial-700 uppercase tracking-widest hover:border-industrial-900 hover:text-industrial-950 transition-colors"
+                                            >
+                                                {altura}m
+                                            </a>
+                                        ))}
+                                    </div>
+                                </div>
                             )}
 
                             {/* Botões de Ação Desktop */}
