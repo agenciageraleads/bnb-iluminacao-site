@@ -4,7 +4,8 @@ import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { getCatalogs } from "@/lib/data"
 import { DownloadGrid } from "./DownloadGrid"
-import { FileText, ShieldCheck, Download } from "lucide-react"
+import { FileText, ShieldCheck, Download, Ruler } from "lucide-react"
+import { URBAN_FAMILIES, URBAN_HEIGHTS, desenhoTecnicoHref } from "@/lib/urban-downloads"
 
 export const metadata = {
     title: "Downloads de Catálogos Corporativos | B&B Indústria",
@@ -62,6 +63,62 @@ export default async function DownloadsPage() {
                             <p className="text-industrial-400 text-sm mt-2">Estamos atualizando nossos materiais técnicos.</p>
                         </div>
                     )}
+
+                    {/* Datasheets e Desenhos Técnicos — Linha Urban */}
+                    <div className="max-w-6xl mx-auto mt-24">
+                        <div className="text-center mb-12">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-[0.2em] uppercase mb-6">
+                                <Ruler className="size-4 text-accent-dark" />
+                                Linha Urban
+                            </div>
+                            <h2 className="text-3xl md:text-5xl font-black text-industrial-950 uppercase tracking-tighter leading-none mb-4">
+                                Datasheets <span className="text-accent-premium">&amp; Desenhos Técnicos</span>
+                            </h2>
+                            <p className="text-industrial-500 text-base md:text-lg font-medium max-w-2xl mx-auto">
+                                Ficha técnica completa de cada modelo e desenho técnico dimensional por altura, em PDF.
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                            {URBAN_FAMILIES.map((familia) => (
+                                <div key={familia.sigla} className="bg-white border border-industrial-200 hover:border-accent-premium transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col">
+                                    <div className="p-6 border-b border-industrial-100">
+                                        <div className="bg-accent-premium text-black inline-block px-3 py-1 text-[10px] font-black uppercase tracking-widest mb-3">
+                                            BB-URB-{familia.sigla}
+                                        </div>
+                                        <h3 className="font-black text-industrial-950 uppercase text-lg leading-tight">{familia.nome}</h3>
+                                    </div>
+                                    <div className="p-6 space-y-5 flex flex-col flex-1">
+                                        <a
+                                            href={familia.datasheet}
+                                            download
+                                            className="w-full flex items-center justify-center gap-2 bg-industrial-950 text-white font-black uppercase text-xs tracking-widest py-4 hover:bg-industrial-800 transition-colors"
+                                        >
+                                            <Download className="size-4" />
+                                            Baixar Datasheet
+                                        </a>
+                                        <div className="space-y-3 flex-1">
+                                            <p className="text-[10px] font-black uppercase tracking-widest text-industrial-400">
+                                                Desenho técnico por altura (engastado)
+                                            </p>
+                                            <div className="flex flex-wrap gap-2">
+                                                {URBAN_HEIGHTS.map((altura) => (
+                                                    <a
+                                                        key={altura}
+                                                        href={desenhoTecnicoHref(familia.sigla, altura)}
+                                                        download
+                                                        className="px-3 py-1.5 bg-industrial-50 border border-industrial-200 text-[11px] font-black text-industrial-700 uppercase tracking-widest hover:border-industrial-900 hover:text-industrial-950 transition-colors"
+                                                    >
+                                                        {altura}m
+                                                    </a>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </main>
 

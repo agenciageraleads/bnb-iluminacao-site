@@ -8,32 +8,9 @@ import Link from "next/link"
 import { getProducts, getCategories } from "@/lib/data"
 import { ProductGallery } from "@/components/ui/product-gallery"
 
+import { getUrbanDownloads } from "@/lib/urban-downloads"
+
 export const dynamic = 'force-dynamic'
-
-// Downloads técnicos da Linha Urban derivados do código do produto (BB-URB-XXXxx-E/F)
-const URBAN_DOWNLOADS: Record<string, { datasheet: string; desenhoSigla: string }> = {
-    TCS: { datasheet: '/downloads/datasheets/DATASHEET-BB-POSTE-CURVO-SIMPLES.pdf', desenhoSigla: 'TCS' },
-    TCD: { datasheet: '/downloads/datasheets/DATASHEET-BB-POSTE-CURVO-DUPLO.pdf', desenhoSigla: 'TCD' },
-    TR: { datasheet: '/downloads/datasheets/DATASHEET-BB-POSTE-RETO.pdf', desenhoSigla: 'TR' },
-}
-const URBAN_HEIGHTS = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-
-function getUrbanDownloads(model?: string) {
-    const match = model?.match(/^BB-URB-(TCS|TCD|TR)XX-([EF])$/i)
-    if (!match) return null
-    const familia = URBAN_DOWNLOADS[match[1].toUpperCase()]
-    if (!familia) return null
-    return {
-        datasheet: familia.datasheet,
-        // desenhos técnicos disponíveis apenas para os engastados (flangeados em breve)
-        desenhos: match[2].toUpperCase() === 'E'
-            ? URBAN_HEIGHTS.map(h => ({
-                altura: h,
-                href: `/downloads/desenhos-tecnicos/DESENHO-TECNICO-BB-URB-${familia.desenhoSigla}${String(h).padStart(2, '0')}-E.pdf`,
-            }))
-            : null,
-    }
-}
 
 export default async function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
