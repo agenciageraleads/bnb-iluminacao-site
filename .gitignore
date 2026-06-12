@@ -61,3 +61,17 @@ product-management-playground.html
 read-excel.ts
 replace_bg_smooth.py
 validacao_imagens.html
+
+# Sensitive operational artifacts
+/*.sql
+/*.tar.gz
+/*.expect
+/logs.txt
+/reset-admin.*
+/src/scripts/*.exp
+/deploy.sh
+/sync-vps.sh
+/sync-full.sh
+/fix-docker.sh
+/fix-dockerfile.sh
+/src/scripts/list-users.ts

@@ -3,7 +3,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getPayload } from 'payload';
 import config from '@payload-config';
 import puppeteer from 'puppeteer';
-import path from 'path';
 
 function verifyInternalToken(req: NextRequest): boolean {
   const secret = process.env.CATALOG_GEN_SECRET
@@ -21,9 +20,20 @@ function verifyInternalToken(req: NextRequest): boolean {
   }
 }
 
+async function canGenerateCatalog(req: NextRequest, payload: Awaited<ReturnType<typeof getPayload>>) {
+    if (verifyInternalToken(req)) return true
+
+    const authResult = await payload.auth({ headers: req.headers }).catch(() => null)
+    const user = authResult?.user as { role?: string } | null | undefined
+
+    return user?.role === 'admin' || user?.role === 'editor'
+}
+
 export async function POST(req: NextRequest) {
     try {
-        if (!verifyInternalToken(req)) {
+        const payload = await getPayload({ config });
+
+        if (!await canGenerateCatalog(req, payload)) {
             return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
         }
         const { catalogId } = await req.json();
@@ -32,8 +42,6 @@ export async function POST(req: NextRequest) {
             return NextResponse.json({ error: 'ID do catálogo é obrigatório' }, { status: 400 });
         }
 
-        const payload = await getPayload({ config });
-        
         // 1. Buscar dados do catálogo para nomear o arquivo
         const catalog = await payload.findByID({
             collection: 'catalogs',
