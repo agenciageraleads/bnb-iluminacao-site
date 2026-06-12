@@ -5,7 +5,7 @@ import { Footer } from "@/components/layout/footer"
 import { getCatalogs } from "@/lib/data"
 import { DownloadGrid } from "./DownloadGrid"
 import { FileText, ShieldCheck, Download, Ruler } from "lucide-react"
-import { URBAN_FAMILIES, URBAN_HEIGHTS, desenhoTecnicoHref } from "@/lib/urban-downloads"
+import { URBAN_FAMILIES, desenhoTecnicoHref } from "@/lib/urban-downloads"
 
 export const metadata = {
     title: "Downloads de Catálogos Corporativos | B&B Indústria",
@@ -102,7 +102,7 @@ export default async function DownloadsPage() {
                                                 Desenho técnico por altura (engastado)
                                             </p>
                                             <div className="flex flex-wrap gap-2">
-                                                {URBAN_HEIGHTS.map((altura) => (
+                                                {familia.alturas.map((altura) => (
                                                     <a
                                                         key={altura}
                                                         href={desenhoTecnicoHref(familia.sigla, altura)}

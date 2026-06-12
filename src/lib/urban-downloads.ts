@@ -7,23 +7,28 @@ export type UrbanFamily = {
     sigla: 'TCS' | 'TCD' | 'TR'
     nome: string
     datasheet: string
+    alturas: number[]
 }
 
+// TCD não tem 3m por enquanto (definição de fábrica pendente)
 export const URBAN_FAMILIES: UrbanFamily[] = [
     {
         sigla: 'TCS',
         nome: 'Poste Telecônico Curvo Simples',
         datasheet: '/downloads/datasheets/DATASHEET-BB-POSTE-CURVO-SIMPLES.pdf',
+        alturas: URBAN_HEIGHTS,
     },
     {
         sigla: 'TCD',
         nome: 'Poste Telecônico Curvo Duplo',
         datasheet: '/downloads/datasheets/DATASHEET-BB-POSTE-CURVO-DUPLO.pdf',
+        alturas: URBAN_HEIGHTS.filter(h => h >= 4),
     },
     {
         sigla: 'TR',
         nome: 'Poste Telecônico Reto',
         datasheet: '/downloads/datasheets/DATASHEET-BB-POSTE-RETO.pdf',
+        alturas: URBAN_HEIGHTS,
     },
 ]
 
@@ -41,7 +46,7 @@ export function getUrbanDownloads(model?: string) {
         datasheet: familia.datasheet,
         // desenhos técnicos disponíveis apenas para os engastados (flangeados em breve)
         desenhos: match[2].toUpperCase() === 'E'
-            ? URBAN_HEIGHTS.map(h => ({ altura: h, href: desenhoTecnicoHref(familia.sigla, h) }))
+            ? familia.alturas.map(h => ({ altura: h, href: desenhoTecnicoHref(familia.sigla, h) }))
             : null,
     }
 }
