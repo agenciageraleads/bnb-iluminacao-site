@@ -42,6 +42,18 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        // Portal do Representante migrou para o CRM (crm.bebiluminacao.com).
+        // O antigo portal de treinamento do site foi aposentado.
+        source: '/treinamento',
+        destination: 'https://crm.bebiluminacao.com/login',
+        permanent: false,
+      },
+      {
+        source: '/treinamento/:path*',
+        destination: 'https://crm.bebiluminacao.com/login',
+        permanent: false,
+      },
+      {
         source: '/sobre',
         destination: '/quem-somos',
         permanent: true,

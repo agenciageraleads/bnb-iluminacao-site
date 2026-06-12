@@ -75,12 +75,14 @@ export default async function RepresentantesPage() {
                             <ArrowRight className="size-5" />
                         </Link>
                         
-                        <Link
-                            href="/treinamento/login"
+                        <a
+                            href="https://crm.bebiluminacao.com/login"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="flex items-center justify-center gap-3 bg-transparent border border-industrial-700 text-industrial-400 hover:text-white hover:border-white font-bold uppercase tracking-widest h-12 px-10 transition-all w-full md:w-auto text-xs"
                         >
-                            Já sou Representante (Acesso Restrito)
-                        </Link>
+                            Portal do Representante (Acessar CRM)
+                        </a>
                     </div>
                 </div>
             </section>
