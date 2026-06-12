@@ -97,22 +97,29 @@ export default async function DownloadsPage() {
                                             <Download className="size-4" />
                                             Baixar Datasheet
                                         </a>
-                                        <div className="space-y-3 flex-1">
-                                            <p className="text-[10px] font-black uppercase tracking-widest text-industrial-400">
-                                                Desenho técnico por altura (engastado)
-                                            </p>
-                                            <div className="flex flex-wrap gap-2">
-                                                {familia.alturas.map((altura) => (
-                                                    <a
-                                                        key={altura}
-                                                        href={desenhoTecnicoHref(familia.sigla, altura)}
-                                                        download
-                                                        className="px-3 py-1.5 bg-industrial-50 border border-industrial-200 text-[11px] font-black text-industrial-700 uppercase tracking-widest hover:border-industrial-900 hover:text-industrial-950 transition-colors"
-                                                    >
-                                                        {altura}m
-                                                    </a>
-                                                ))}
-                                            </div>
+                                        <div className="space-y-5 flex-1">
+                                            {([
+                                                { label: 'engastado', alturas: familia.alturasEng, mount: 'E' as const },
+                                                { label: 'flangeado', alturas: familia.alturasFla, mount: 'F' as const },
+                                            ]).map((grupo) => (
+                                                <div key={grupo.mount} className="space-y-3">
+                                                    <p className="text-[10px] font-black uppercase tracking-widest text-industrial-400">
+                                                        Desenho técnico por altura ({grupo.label})
+                                                    </p>
+                                                    <div className="flex flex-wrap gap-2">
+                                                        {grupo.alturas.map((altura) => (
+                                                            <a
+                                                                key={altura}
+                                                                href={desenhoTecnicoHref(familia.sigla, altura, grupo.mount)}
+                                                                download
+                                                                className="px-3 py-1.5 bg-industrial-50 border border-industrial-200 text-[11px] font-black text-industrial-700 uppercase tracking-widest hover:border-industrial-900 hover:text-industrial-950 transition-colors"
+                                                            >
+                                                                {altura}m
+                                                            </a>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
                                 </div>
