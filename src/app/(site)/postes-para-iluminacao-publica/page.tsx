@@ -169,6 +169,7 @@ const gallery = [
 
 const internalLinks = [
     ["Postes metalicos", "/postes-metalicos"],
+    ["Poste teleconico", "/produtos/poste-teleconico"],
     ["Fabricante de postes metalicos", "/fabricante-de-postes-metalicos"],
     ["Linha Urban", "/produtos/linha-urban"],
     ["Linha Orna", "/produtos/linha-orna"],

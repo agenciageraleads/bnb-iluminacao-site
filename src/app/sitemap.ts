@@ -20,6 +20,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/fabricante-de-postes-metalicos',
     '/postes-metalicos',
     '/postes-para-iluminacao-publica',
+    '/produtos/poste-teleconico',
     '/quem-somos',
     '/contato',
     '/servicos',

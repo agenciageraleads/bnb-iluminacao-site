@@ -104,6 +104,16 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/poste-teleconico',
+        destination: '/produtos/poste-teleconico',
+        permanent: true,
+      },
+      {
+        source: '/postes-teleconicos',
+        destination: '/produtos/poste-teleconico',
+        permanent: true,
+      },
+      {
         source: '/para-raio',
         destination: '/postes-metalicos',
         permanent: true,
@@ -127,6 +137,16 @@ const nextConfig: NextConfig = {
       {
         source: '/produtos/postes-de-iluminacao-publica',
         destination: '/postes-para-iluminacao-publica',
+        permanent: true,
+      },
+      {
+        source: '/produtos/postes-teleconicos',
+        destination: '/produtos/poste-teleconico',
+        permanent: true,
+      },
+      {
+        source: '/produtos/poste-teleconico-galvanizado',
+        destination: '/produtos/poste-teleconico',
         permanent: true,
       },
       {

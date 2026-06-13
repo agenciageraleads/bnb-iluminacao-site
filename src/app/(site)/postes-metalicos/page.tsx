@@ -59,7 +59,7 @@ const models = [
         title: "Poste teleconico",
         description: "Modelo versatil para vias, loteamentos, condominios, estacionamentos e iluminacao publica.",
         use: "Iluminacao urbana e privada",
-        href: "/produtos/linha-urban",
+        href: "/produtos/poste-teleconico",
     },
     {
         title: "Poste reto metalico",
@@ -179,6 +179,7 @@ const gallery = [
 const internalLinks = [
     ["Fabricante de postes metalicos", "/fabricante-de-postes-metalicos"],
     ["Postes para iluminacao publica", "/postes-para-iluminacao-publica"],
+    ["Poste teleconico", "/produtos/poste-teleconico"],
     ["Catalogo de produtos", "/produtos"],
     ["Linha Urban", "/produtos/linha-urban"],
     ["Linha Forza", "/produtos/linha-forza"],
