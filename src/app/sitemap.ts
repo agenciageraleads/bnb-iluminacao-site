@@ -1,7 +1,7 @@
 export const dynamic = 'force-dynamic'
 
 import { MetadataRoute } from 'next'
-import { getCategories, getProducts, getBlogPosts, getCatalogs } from '@/lib/data'
+import { getCategories, getProducts, getBlogPosts } from '@/lib/data'
 import { getAllStateSlugs } from '@/lib/states-data'
 import { getRegions } from '@/lib/data'
 
@@ -17,13 +17,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Rotas Estáticas
   const staticRoutes = [
     '',
+    '/fabricante-de-postes-metalicos',
+    '/postes-metalicos',
     '/quem-somos',
     '/contato',
     '/servicos',
     '/produtos',
     '/blog',
     '/downloads',
-    '/lp/postes-metalicos',
     '/lp/mastros-para-bandeira',
   ].map((route) => ({
     url: `${baseUrl}${route}`,

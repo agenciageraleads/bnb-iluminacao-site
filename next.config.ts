@@ -84,39 +84,44 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/lp/postes-metalicos',
+        destination: '/postes-metalicos',
+        permanent: true,
+      },
+      {
         source: '/iluminacao',
-        destination: '/lp/postes-metalicos',
+        destination: '/postes-metalicos',
         permanent: true,
       },
       {
         source: '/para-raio',
-        destination: '/produtos/poste-metalico',
+        destination: '/postes-metalicos',
         permanent: true,
       },
       {
         source: '/pergolado-de-ferro',
-        destination: '/produtos/linha-garden',
+        destination: '/produtos/linha-orna',
         permanent: true,
       },
       // Consolidação de Categorias Legadas
       {
         source: '/produtos/postes',
-        destination: '/produtos/poste-metalico',
+        destination: '/postes-metalicos',
         permanent: true,
       },
       {
         source: '/produtos/postes-de-iluminacao',
-        destination: '/produtos/poste-metalico',
+        destination: '/postes-metalicos',
         permanent: true,
       },
       {
         source: '/produtos/postes-decorativos',
-        destination: '/produtos/poste-metalico/decorativo',
+        destination: '/produtos/linha-orna',
         permanent: true,
       },
       {
         source: '/produtos/acessorios',
-        destination: '/produtos/bracos',
+        destination: '/produtos/linha-nexo',
         permanent: true,
       },
       // Categorias removidas

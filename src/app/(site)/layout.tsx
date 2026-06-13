@@ -16,15 +16,15 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SERVER_URL || 'https://bebiluminacao.com.br'),
   title: {
-    default: "B&B Iluminação | Postes Metálicos de Alta Performance",
+    default: "B&B Iluminação | Soluções Metálicas para Urbanismo",
     template: "%s | B&B Iluminação",
   },
-  description: "Líder nacional em postes metálicos certificados ABNT. Iluminação pública, industrial e decorativa com máxima durabilidade e tecnologia.",
-  keywords: ["postes metálicos", "iluminação pública", "aço galvanizado", "B&B Iluminação", "postes decorativos", "Goiania"],
-  authors: [{ name: "B&B Engenharia" }],
+  description: "Postes metálicos, braços, suportes e estruturas para iluminação pública, urbanismo, segurança e projetos industriais. Na medida. No prazo. Na norma.",
+  keywords: ["postes metálicos", "iluminação pública", "estruturas metálicas", "braços para luminária", "B&B Iluminação", "Goiânia"],
+  authors: [{ name: "B&B Iluminação" }],
   openGraph: {
-    title: "B&B Iluminação | Postes Metálicos",
-    description: "Qualidade superior em engenharia de postes e iluminação LED para projetos estruturais.",
+    title: "B&B Iluminação | Soluções Metálicas para Urbanismo",
+    description: "Postes metálicos, braços, suportes e estruturas para iluminação, urbanismo e segurança.",
     url: "https://bebiluminacao.com.br",
     siteName: "B&B Iluminação",
     locale: "pt_BR",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "B&B Iluminação",
-    description: "Fabricante líder em postes metálicos galvanizados.",
+    description: "Soluções metálicas para urbanismo. Na medida. No prazo. Na norma.",
   },
   robots: {
     index: true,

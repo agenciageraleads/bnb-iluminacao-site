@@ -1,12 +1,19 @@
 "use client"
 
-import { type ReactNode } from "react"
+import { type MouseEventHandler, type ReactNode } from "react"
+
+declare global {
+  interface Window {
+    dataLayer?: Array<Record<string, unknown>>
+  }
+}
 
 interface WhatsAppLinkProps {
   phoneNumber?: string
   message?: string
   className?: string
   children: ReactNode
+  onClick?: MouseEventHandler<HTMLAnchorElement>
   'aria-label'?: string
 }
 
@@ -15,17 +22,19 @@ export function WhatsAppLink({
   message,
   className,
   children,
+  onClick,
   'aria-label': ariaLabel,
 }: WhatsAppLinkProps) {
   const url = message
     ? `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
     : `https://wa.me/${phoneNumber}`
 
-  function handleClick() {
+  const handleClick: MouseEventHandler<HTMLAnchorElement> = (event) => {
     if (typeof window !== 'undefined') {
-      (window as any).dataLayer = (window as any).dataLayer || []
-      ;(window as any).dataLayer.push({ event: 'whatsapp_click' })
+      window.dataLayer = window.dataLayer || []
+      window.dataLayer.push({ event: 'whatsapp_click' })
     }
+    onClick?.(event)
   }
 
   return (

@@ -2,6 +2,9 @@ const baseUrl = process.env.SITE_SMOKE_BASE_URL ?? 'https://bebiluminacao.com.br
 
 const paths = [
   '/',
+  '/fabricante-de-postes-metalicos',
+  '/postes-metalicos',
+  '/lp/postes-metalicos',
   '/produtos',
   '/blog',
   '/representantes',

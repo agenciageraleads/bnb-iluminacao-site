@@ -15,8 +15,8 @@ import { SchemaOrg } from "@/components/seo/schema-org"
 import { getClientLogos, getPortfolioProjects, getBlogPosts, getCatalogs } from "@/lib/data"
 
 export const metadata = generateSeoMetadata({
-  title: "B&B Indústria de Iluminação | Qualidade Garantida em Goiânia",
-  description: "Indústria de Iluminação em Goiânia | Fabricante de Postes e Refletores Certificados ABNT | Máxima Resistência e Durabilidade.",
+  title: "B&B Iluminação | Soluções Metálicas para Urbanismo",
+  description: "Postes metálicos, braços, suportes e estruturas para iluminação, segurança, mastros e projetos públicos ou privados em todo o Brasil.",
 })
 
 const homeSchema = {
@@ -64,4 +64,3 @@ export default async function Home() {
     </main>
   )
 }
-

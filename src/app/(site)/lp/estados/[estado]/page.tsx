@@ -42,7 +42,7 @@ const solutions = [
         title: "Iluminação Pública",
         desc: "Postes telecônicos e decorativos para praças, parques, estacionamentos e rodovias.",
         icon: <Lightbulb />,
-        href: "/lp/postes-metalicos",
+        href: "/postes-metalicos",
     },
     {
         title: "CFTV e Monitoramento",
