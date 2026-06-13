@@ -36,6 +36,7 @@ export function Footer() {
                         <h3 className="text-sm font-black uppercase tracking-[0.2em] text-accent-premium">Nossos Produtos</h3>
                         <ul className="space-y-3">
                             <li><Link href="/postes-metalicos" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Postes Metálicos</Link></li>
+                            <li><Link href="/postes-para-iluminacao-publica" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Iluminação Pública</Link></li>
                             <li><Link href="/produtos/linha-urban" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Urban</Link></li>
                             <li><Link href="/produtos/linha-versa" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Versa</Link></li>
                             <li><Link href="/produtos/linha-forza" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Forza</Link></li>

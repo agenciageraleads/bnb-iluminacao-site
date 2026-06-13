@@ -90,7 +90,17 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/iluminacao',
-        destination: '/postes-metalicos',
+        destination: '/postes-para-iluminacao-publica',
+        permanent: true,
+      },
+      {
+        source: '/iluminacao-publica',
+        destination: '/postes-para-iluminacao-publica',
+        permanent: true,
+      },
+      {
+        source: '/postes-de-iluminacao-publica',
+        destination: '/postes-para-iluminacao-publica',
         permanent: true,
       },
       {
@@ -111,7 +121,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/produtos/postes-de-iluminacao',
-        destination: '/postes-metalicos',
+        destination: '/postes-para-iluminacao-publica',
+        permanent: true,
+      },
+      {
+        source: '/produtos/postes-de-iluminacao-publica',
+        destination: '/postes-para-iluminacao-publica',
         permanent: true,
       },
       {

@@ -5,15 +5,17 @@ import type { ReactNode } from "react"
 import {
     ArrowRight,
     Building2,
+    ClipboardCheck,
     Download,
     Factory,
     FileText,
     Landmark,
+    MapPin,
     MessageCircle,
-    Paintbrush,
     Ruler,
     ShieldCheck,
     Truck,
+    Zap,
 } from "lucide-react"
 
 import { Footer } from "@/components/layout/footer"
@@ -24,22 +26,23 @@ import { getPortfolioProjects, getProducts } from "@/lib/data"
 
 export const dynamic = "force-dynamic"
 
-const pageUrl = "https://bebiluminacao.com.br/postes-metalicos"
+const pageUrl = "https://bebiluminacao.com.br/postes-para-iluminacao-publica"
 const pageDescription =
-    "Postes metalicos para iluminacao publica, condominios, loteamentos e industrias. Veja modelos, acabamentos, aplicacoes e solicite orcamento direto com a B&B."
-const whatsappMessage = "Ola, vim pela pagina de postes metalicos e quero solicitar um orcamento tecnico."
-const heroImage = "/images/seo/postes-metalicos/via-urbana-iluminada-postes.jpg"
+    "Postes para iluminacao publica e urbana com modelos teleconicos, retos e curvos. Fabricacao propria, suporte tecnico, catalogos e entrega nacional."
+const whatsappMessage =
+    "Ola, vim pela pagina de postes para iluminacao publica e quero solicitar um orcamento tecnico."
+const heroImage = "/images/seo/postes-metalicos/via-publica-postes-retos-dois-lados.jpg"
 
 export const metadata: Metadata = {
     title: {
-        absolute: "Postes Metalicos: Modelos, Aplicacoes e Orcamento | B&B",
+        absolute: "Postes para Iluminacao Publica | Modelos e Orcamento B&B",
     },
     description: pageDescription,
     alternates: {
         canonical: pageUrl,
     },
     openGraph: {
-        title: "Postes Metalicos: Modelos, Aplicacoes e Orcamento | B&B",
+        title: "Postes para Iluminacao Publica | Modelos e Orcamento B&B",
         description: pageDescription,
         url: pageUrl,
         type: "website",
@@ -48,170 +51,156 @@ export const metadata: Metadata = {
                 url: `https://bebiluminacao.com.br${heroImage}`,
                 width: 1200,
                 height: 630,
-                alt: "Postes metalicos para iluminacao urbana B&B",
+                alt: "Postes para iluminacao publica em via urbana",
             },
         ],
     },
 }
 
-const models = [
+const requirements = [
     {
-        title: "Poste teleconico",
-        description: "Modelo versatil para vias, loteamentos, condominios, estacionamentos e iluminacao publica.",
-        use: "Iluminacao urbana e privada",
-        href: "/produtos/linha-urban",
+        title: "Aplicacao urbana",
+        description: "Vias, avenidas, pracas, loteamentos, estacionamentos publicos e areas institucionais.",
+        icon: Landmark,
     },
     {
-        title: "Poste reto metalico",
-        description: "Solucao objetiva para patios, galpoes, estacionamentos e areas com layout tecnico simples.",
-        use: "Patios, acessos e galpoes",
-        href: "/produtos/linha-urban",
+        title: "Especificacao tecnica",
+        description: "Apoio para definir modelo, altura, avanco, fixacao, acabamento e quantidade.",
+        icon: ClipboardCheck,
     },
     {
-        title: "Poste curvo simples",
-        description: "Indicado quando o projeto pede avanco unico da luminaria sobre ruas, acessos ou calcadas.",
-        use: "Ruas, acessos e calcadas",
-        href: "/produtos/linha-urban",
+        title: "Fabricacao propria",
+        description: "Origem fabril em Goiania como prova operacional, com atendimento comercial nacional.",
+        icon: Factory,
     },
     {
-        title: "Poste curvo duplo",
-        description: "Aplicacao comum em avenidas, canteiros centrais e areas que precisam iluminar dois sentidos.",
-        use: "Avenidas e canteiros",
-        href: "/produtos/linha-forza",
-    },
-    {
-        title: "Poste ornamental",
-        description: "Alternativa para pracas, jardins, condominios e areas urbanas com exigencia visual.",
-        use: "Pracas e paisagismo",
-        href: "/produtos/linha-orna",
-    },
-    {
-        title: "Bracos e suportes",
-        description: "Acessorios metalicos para compatibilizar luminarias, postes existentes e projetos especiais.",
-        use: "Luminarias publicas",
-        href: "/produtos/linha-nexo",
+        title: "Entrega por projeto",
+        description: "Fornecimento orientado por cidade, UF, prazo, volume, logistica e necessidade da obra.",
+        icon: Truck,
     },
 ]
 
 const applications = [
     {
-        title: "Iluminacao publica",
-        description: "Postes para vias, avenidas, pracas e obras urbanas com especificacao tecnica.",
+        title: "Vias e avenidas",
+        description: "Postes retos, teleconicos, curvos simples ou duplos conforme largura da via e distribuicao luminosa.",
+        icon: MapPin,
+    },
+    {
+        title: "Pracas e parques",
+        description: "Modelos ornamentais ou urbanos para areas de convivencia, circulacao e seguranca visual.",
         icon: Landmark,
     },
     {
         title: "Loteamentos",
-        description: "Padronizacao visual, repetibilidade de fornecimento e apoio para definicao de modelos.",
+        description: "Padronizacao de modelos, repetibilidade de fornecimento e suporte para compras em volume.",
         icon: Building2,
     },
     {
-        title: "Condominios",
-        description: "Modelos decorativos, retos ou teleconicos conforme arquitetura e necessidade luminotecnica.",
+        title: "Areas institucionais",
+        description: "Postes para escolas, hospitais, estacionamentos, patios e equipamentos publicos.",
         icon: ShieldCheck,
-    },
-    {
-        title: "Areas industriais",
-        description: "Postes para patios, galpoes, docas, estacionamentos e circulacao interna.",
-        icon: Factory,
     },
 ]
 
-const comparisonRows = [
-    ["Teleconico", "Vias, condominios e loteamentos", "Boa rigidez, visual limpo e ampla aplicacao"],
-    ["Reto metalico", "Patios, galpoes e estacionamentos", "Especificacao simples e instalacao objetiva"],
-    ["Curvo simples", "Ruas, acessos e calcadas", "Um avanco de luminaria para direcionamento lateral"],
-    ["Curvo duplo", "Avenidas e canteiros centrais", "Dois pontos de iluminacao para sentidos opostos"],
-    ["Ornamental", "Pracas, jardins e areas nobres", "Design urbano com acabamento visual mais relevante"],
-    ["Bracos e suportes", "Compatibilizacao de luminarias", "Adaptacao entre poste, luminaria e projeto"],
+const decisionRows = [
+    ["Via local", "Poste reto, teleconico ou curvo simples", "Altura, afastamento, tipo de luminaria e fixacao"],
+    ["Avenida", "Poste curvo duplo ou teleconico", "Canteiro central, dois sentidos e volume de trafego"],
+    ["Praca", "Poste ornamental, reto ou decorativo", "Circulacao de pessoas, paisagismo e identidade visual"],
+    ["Loteamento", "Poste teleconico ou padrao urbano", "Repetibilidade, prazo, quantidade e padronizacao"],
+    ["Estacionamento publico", "Poste reto ou teleconico", "Area de cobertura, altura e interferencias no piso"],
+    ["Area institucional", "Poste sob especificacao", "Ambiente, durabilidade, acabamento e manutencao"],
 ]
 
-const finishOptions = [
+const quoteData = [
+    ["Local da obra", "Cidade, UF e tipo de ambiente: via, praca, loteamento, estacionamento ou patio."],
+    ["Modelo desejado", "Reto, teleconico, curvo simples, curvo duplo, ornamental ou estrutura especial."],
+    ["Altura e luminaria", "Altura aproximada, quantidade de luminarias, braco/suporte e necessidade de avanco."],
+    ["Fixacao", "Poste engastado, flangeado, base, chumbadores ou definicao a partir do projeto civil."],
+    ["Acabamento", "Galvanizacao, pintura eletrostatica ou acabamento conforme memorial e ambiente."],
+    ["Volume e prazo", "Quantidade, etapa da obra, previsao de entrega e documentos tecnicos disponiveis."],
+]
+
+const relatedLines = [
     {
-        title: "Galvanizacao",
-        description: "Indicada quando o ambiente exige maior protecao contra corrosao e vida util prolongada.",
-        icon: ShieldCheck,
+        title: "Linha Urban",
+        description: "Postes teleconicos e urbanos para vias, loteamentos e iluminacao publica.",
+        href: "/produtos/linha-urban",
     },
     {
-        title: "Pintura eletrostatica",
-        description: "Acabamento para padronizacao visual, identidade do empreendimento e protecao adicional.",
-        icon: Paintbrush,
+        title: "Linha Forza",
+        description: "Postes especiais para projetos com maiores alturas, esforcos e complexidade tecnica.",
+        href: "/produtos/linha-forza",
     },
     {
-        title: "Sob especificacao",
-        description: "Definicao conforme memorial tecnico, ambiente, instalacao, quantidade e prazo do projeto.",
-        icon: Ruler,
+        title: "Linha Orna",
+        description: "Postes ornamentais para pracas, parques, jardins e areas urbanas com exigencia visual.",
+        href: "/produtos/linha-orna",
+    },
+    {
+        title: "Linha Nexo",
+        description: "Bracos, suportes e acessorios metalicos para compatibilizacao com luminarias.",
+        href: "/produtos/linha-nexo",
     },
 ]
 
 const gallery = [
     {
-        src: "/images/seo/postes-metalicos/via-urbana-iluminada-postes.jpg",
-        alt: "Postes metalicos em via urbana iluminada durante a noite",
-        title: "Via urbana",
-    },
-    {
-        src: "/images/seo/postes-metalicos/estacionamento-industrial-postes-retos.jpg",
-        alt: "Postes metalicos retos iluminando area de estacionamento e circulacao industrial",
-        title: "Estacionamento industrial",
-    },
-    {
-        src: "/images/seo/postes-metalicos/estacionamento-hospital-postes.jpg",
-        alt: "Postes metalicos aplicados em estacionamento hospitalar iluminado",
-        title: "Estacionamento hospitalar",
-    },
-    {
-        src: "/images/seo/postes-metalicos/praca-iluminada-luminaria-redonda.jpg",
-        alt: "Postes ornamentais com luminaria redonda em praca iluminada",
-        title: "Praca iluminada",
+        src: "/images/seo/postes-metalicos/via-publica-postes-retos-dois-lados.jpg",
+        alt: "Postes para iluminacao publica em via urbana nos dois sentidos",
+        title: "Via publica",
     },
     {
         src: "/images/seo/postes-metalicos/rua-iluminada-poste-curvo.jpg",
-        alt: "Poste metalico curvo iluminando rua arborizada ao anoitecer",
+        alt: "Poste curvo para iluminacao publica em rua arborizada",
         title: "Rua com poste curvo",
     },
     {
-        src: "/images/seo/postes-metalicos/via-publica-postes-retos-dois-lados.jpg",
-        alt: "Postes metalicos retos em via publica iluminada nos dois sentidos",
-        title: "Via publica",
+        src: "/images/seo/postes-metalicos/praca-iluminada-luminaria-redonda.jpg",
+        alt: "Poste ornamental para iluminacao publica em praca",
+        title: "Praca iluminada",
+    },
+    {
+        src: "/images/seo/postes-metalicos/via-urbana-iluminada-postes.jpg",
+        alt: "Postes metalicos para iluminacao urbana com trafego noturno",
+        title: "Iluminacao urbana",
     },
 ]
 
 const internalLinks = [
+    ["Postes metalicos", "/postes-metalicos"],
     ["Fabricante de postes metalicos", "/fabricante-de-postes-metalicos"],
-    ["Postes para iluminacao publica", "/postes-para-iluminacao-publica"],
-    ["Catalogo de produtos", "/produtos"],
     ["Linha Urban", "/produtos/linha-urban"],
-    ["Linha Forza", "/produtos/linha-forza"],
+    ["Linha Orna", "/produtos/linha-orna"],
     ["Bracos e suportes", "/produtos/linha-nexo"],
     ["Catalogos e downloads", "/downloads"],
-    ["Obras realizadas", "/obras"],
 ]
 
 const faq = [
     {
-        question: "Quais modelos de postes metalicos existem?",
+        question: "A B&B fabrica postes para iluminacao publica?",
         answer:
-            "Os modelos mais comuns incluem postes teleconicos, retos, curvos simples, curvos duplos, ornamentais, decorativos e estruturas com bracos ou suportes para luminarias.",
+            "Sim. A B&B fabrica postes metalicos para aplicacoes urbanas e orienta a especificacao conforme ambiente, modelo, altura, fixacao, acabamento, quantidade e prazo.",
     },
     {
-        question: "Poste metalico e indicado para iluminacao publica?",
+        question: "Quais modelos podem ser usados em iluminacao publica?",
         answer:
-            "Sim. Postes metalicos sao usados em iluminacao publica, loteamentos, avenidas, pracas, condominios, estacionamentos e areas industriais, desde que especificados conforme a aplicacao.",
+            "A escolha pode envolver postes retos, teleconicos, curvos simples, curvos duplos, ornamentais, bracos e suportes. A aplicacao define o modelo mais adequado.",
     },
     {
-        question: "Como escolher entre poste reto, curvo e teleconico?",
+        question: "A pagina atende apenas projetos em Goias?",
         answer:
-            "A escolha depende de altura, avanco da luminaria, area a iluminar, tipo de instalacao, acabamento, carga prevista e exigencias do projeto. A B&B orienta essa definicao no orcamento tecnico.",
+            "Nao. Goiania e Goias funcionam como prova de origem fabril. A estrategia comercial da B&B para postes de iluminacao publica e nacional.",
     },
     {
-        question: "A B&B atende projetos fora de Goiania?",
+        question: "O que enviar para cotar postes para iluminacao publica?",
         answer:
-            "Sim. A fabrica em Goiania e prova de origem e capacidade produtiva, mas a pagina e voltada para atendimento nacional em projetos publicos e privados.",
+            "Envie cidade e UF, tipo de via ou area, quantidade, altura desejada, luminaria, tipo de fixacao, acabamento, prazo e, se houver, projeto ou memorial tecnico.",
     },
     {
-        question: "Quais dados enviar para orcar postes metalicos?",
+        question: "A B&B ajuda a escolher acabamento e fixacao?",
         answer:
-            "Envie modelo desejado, altura, quantidade, cidade e UF, aplicacao, tipo de fixacao, acabamento, prazo e, se houver, desenho tecnico ou memorial do projeto.",
+            "Sim. O time comercial pode orientar a conversa tecnica inicial para transformar a demanda em uma cotacao mais clara para engenharia e compras.",
     },
 ]
 
@@ -223,10 +212,14 @@ function getSchema() {
                 "@type": "WebPage",
                 "@id": `${pageUrl}#webpage`,
                 url: pageUrl,
-                name: "Postes Metalicos",
+                name: "Postes para Iluminacao Publica",
                 description: pageDescription,
                 isPartOf: {
                     "@id": "https://bebiluminacao.com.br/#organization",
+                },
+                primaryImageOfPage: {
+                    "@type": "ImageObject",
+                    url: `https://bebiluminacao.com.br${heroImage}`,
                 },
             },
             {
@@ -242,20 +235,20 @@ function getSchema() {
                     {
                         "@type": "ListItem",
                         position: 2,
-                        name: "Postes Metalicos",
+                        name: "Postes para Iluminacao Publica",
                         item: pageUrl,
                     },
                 ],
             },
             {
                 "@type": "ItemList",
-                "@id": `${pageUrl}#modelos`,
-                name: "Modelos de postes metalicos",
-                itemListElement: models.map((model, index) => ({
+                "@id": `${pageUrl}#aplicacoes`,
+                name: "Aplicacoes de postes para iluminacao publica",
+                itemListElement: applications.map((application, index) => ({
                     "@type": "ListItem",
                     position: index + 1,
-                    name: model.title,
-                    url: `https://bebiluminacao.com.br${model.href}`,
+                    name: application.title,
+                    description: application.description,
                 })),
             },
             ...gallery.map((image) => ({
@@ -288,21 +281,21 @@ function SectionLabel({ children }: { children: ReactNode }) {
     )
 }
 
-export default async function PostesMetalicosPage() {
+export default async function PostesParaIluminacaoPublicaPage() {
     const [products, projects] = await Promise.all([
         getProducts(),
         getPortfolioProjects(),
     ])
 
     const featuredProducts = products
-        .filter((product) => /poste|braco|suporte|mastro/i.test(`${product.name} ${product.model}`))
+        .filter((product) => /poste|braco|suporte/i.test(`${product.name} ${product.model}`))
         .slice(0, 6)
     const featuredProjects = projects.filter((project) => project.image).slice(0, 3)
 
     return (
         <main className="min-h-screen bg-white text-industrial-950">
             <script
-                id="postes-metalicos-schema"
+                id="postes-iluminacao-publica-schema"
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(getSchema()) }}
             />
@@ -320,31 +313,31 @@ export default async function PostesMetalicosPage() {
                         priority
                         className="object-cover opacity-85 md:opacity-100"
                         sizes="100vw"
-                        style={{ objectPosition: "60% center" }}
+                        style={{ objectPosition: "center center" }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-industrial-950/88 via-industrial-950/46 to-industrial-950/0" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-industrial-950/50 via-industrial-950/8 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-industrial-950/90 via-industrial-950/54 to-industrial-950/10" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-industrial-950/58 via-industrial-950/10 to-transparent" />
                 </div>
 
                 <div className="container relative z-10 mx-auto px-4 pb-20 pt-12 md:pb-28">
                     <div className="max-w-4xl">
                         <div className="mb-6 inline-flex items-center gap-3 border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.22em] text-white">
-                            <Truck className="size-4 text-accent-premium" aria-hidden="true" />
-                            Postes para projetos em todo o Brasil
+                            <Landmark className="size-4 text-accent-premium" aria-hidden="true" />
+                            Vias, pracas e obras urbanas
                         </div>
                         <h1 className="max-w-4xl text-4xl font-black uppercase leading-[0.95] tracking-tight text-white md:text-6xl lg:text-7xl">
-                            Postes Metalicos
+                            Postes para Iluminacao Publica
                         </h1>
                         <p className="mt-8 max-w-3xl text-base font-medium leading-relaxed text-industrial-200 md:text-xl">
-                            Hub tecnico e comercial para escolher postes metalicos por modelo, aplicacao, acabamento e
-                            necessidade de instalacao. A B&B fabrica e orienta projetos de iluminacao publica, loteamentos,
-                            condominios, estacionamentos e areas industriais.
+                            Postes metalicos para vias, avenidas, pracas, loteamentos e areas institucionais, com
+                            fabricacao propria, apoio tecnico na especificacao e atendimento para projetos em todo o
+                            Brasil.
                         </p>
                         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                             <WhatsAppLink
                                 message={whatsappMessage}
                                 className="inline-flex h-14 items-center justify-center gap-3 bg-accent-premium px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-yellow-300"
-                                aria-label="Solicitar orcamento de postes metalicos pelo WhatsApp"
+                                aria-label="Solicitar orcamento de postes para iluminacao publica pelo WhatsApp"
                             >
                                 <MessageCircle className="size-5" aria-hidden="true" />
                                 Solicitar orcamento
@@ -363,7 +356,7 @@ export default async function PostesMetalicosPage() {
 
             <section className="border-b border-industrial-200 bg-industrial-50 py-8">
                 <div className="container mx-auto grid gap-4 px-4 md:grid-cols-4">
-                    {applications.map((item) => {
+                    {requirements.map((item) => {
                         const Icon = item.icon
                         return (
                             <div key={item.title} className="flex items-start gap-4 bg-white p-5">
@@ -383,90 +376,23 @@ export default async function PostesMetalicosPage() {
             <section className="py-20 md:py-28">
                 <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
                     <div className="space-y-6">
-                        <SectionLabel>Escolha por modelo</SectionLabel>
+                        <SectionLabel>Aplicacao publica</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Como comparar postes metalicos antes do orcamento
+                            A compra depende do ambiente, nao so do poste
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-600 md:text-lg">
-                            A busca por postes metalicos geralmente comeca ampla, mas a compra depende de uma decisao
-                            tecnica: altura, geometria, tipo de fixacao, acabamento, luminaria, local de aplicacao e prazo.
+                            Em iluminacao publica, o comprador precisa alinhar seguranca, durabilidade, manutencao,
+                            padrao visual, fixacao e compatibilidade com luminarias. A pagina existe para tirar a busca do
+                            termo generico e levar o lead para uma especificacao objetiva.
                         </p>
                         <p className="text-base leading-relaxed text-industrial-600 md:text-lg">
-                            Esta pagina funciona como o hub pilar da B&B. Ela organiza os principais modelos e aponta para
-                            linhas, catalogos, obras e paginas tecnicas que ajudam o comprador a especificar com mais
-                            seguranca.
+                            A B&B deve aparecer como fabricante que orienta a decisao: qual modelo usar, onde aplicar,
+                            quais informacoes enviar e como transformar demanda publica ou urbana em orcamento tecnico.
                         </p>
                     </div>
 
                     <div className="grid gap-4 sm:grid-cols-2">
-                        {models.map((model) => (
-                            <Link
-                                key={model.title}
-                                href={model.href}
-                                className="group border border-industrial-200 p-6 transition-colors hover:border-industrial-950"
-                            >
-                                <p className="text-[10px] font-black uppercase tracking-widest text-industrial-400">
-                                    {model.use}
-                                </p>
-                                <h3 className="mt-3 text-base font-black uppercase tracking-tight text-industrial-950">
-                                    {model.title}
-                                </h3>
-                                <p className="mt-3 text-sm leading-relaxed text-industrial-600">{model.description}</p>
-                                <span className="mt-5 inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-industrial-500 group-hover:text-industrial-950">
-                                    Ver linha
-                                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-                                </span>
-                            </Link>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            <section className="bg-industrial-950 py-20 text-white md:py-28">
-                <div className="container mx-auto px-4">
-                    <div className="mb-12 max-w-3xl space-y-5">
-                        <SectionLabel>Tabela comparativa</SectionLabel>
-                        <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Modelos, aplicacoes e criterio de escolha
-                        </h2>
-                        <p className="text-base leading-relaxed text-industrial-300">
-                            A tabela ajuda a transformar uma busca generica por poste metalico em uma especificacao mais
-                            clara para engenharia, compras e orcamento.
-                        </p>
-                    </div>
-
-                    <div className="overflow-hidden border border-white/15">
-                        {comparisonRows.map(([model, use, criterion]) => (
-                            <div key={model} className="grid border-b border-white/15 last:border-b-0 md:grid-cols-[220px_1fr_1fr]">
-                                <div className="bg-white/10 px-5 py-4 text-xs font-black uppercase tracking-widest text-white">
-                                    {model}
-                                </div>
-                                <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-200">
-                                    {use}
-                                </div>
-                                <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-200">
-                                    {criterion}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            <section className="py-20 md:py-28">
-                <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
-                    <div className="space-y-5">
-                        <SectionLabel>Acabamento</SectionLabel>
-                        <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Galvanizacao, pintura e especificacao por ambiente
-                        </h2>
-                        <p className="text-base leading-relaxed text-industrial-600">
-                            A escolha do acabamento muda durabilidade, manutencao, percepcao visual e compatibilidade com
-                            o memorial do projeto. A B&B deve orientar essa decisao antes da proposta.
-                        </p>
-                    </div>
-                    <div className="grid gap-4 md:grid-cols-3">
-                        {finishOptions.map((item) => {
+                        {applications.map((item) => {
                             const Icon = item.icon
                             return (
                                 <div key={item.title} className="border border-industrial-200 p-6">
@@ -484,19 +410,110 @@ export default async function PostesMetalicosPage() {
                 </div>
             </section>
 
+            <section className="bg-industrial-950 py-20 text-white md:py-28">
+                <div className="container mx-auto px-4">
+                    <div className="mb-12 max-w-3xl space-y-5">
+                        <SectionLabel>Critério de escolha</SectionLabel>
+                        <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
+                            Onde cada modelo tende a entrar
+                        </h2>
+                        <p className="text-base leading-relaxed text-industrial-300">
+                            Esta tabela ajuda compras, engenharia e obras a organizar uma conversa tecnica antes de pedir
+                            preco.
+                        </p>
+                    </div>
+
+                    <div className="overflow-hidden border border-white/15">
+                        {decisionRows.map(([place, model, criterion]) => (
+                            <div key={place} className="grid border-b border-white/15 last:border-b-0 md:grid-cols-[220px_1fr_1fr]">
+                                <div className="bg-white/10 px-5 py-4 text-xs font-black uppercase tracking-widest text-white">
+                                    {place}
+                                </div>
+                                <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-200">
+                                    {model}
+                                </div>
+                                <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-200">
+                                    {criterion}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="py-20 md:py-28">
+                <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+                    <div className="space-y-5">
+                        <SectionLabel>Dados para cotacao</SectionLabel>
+                        <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
+                            Informacoes que evitam orcamento incompleto
+                        </h2>
+                        <p className="text-base leading-relaxed text-industrial-600">
+                            Iluminacao publica costuma envolver volume, prazo, memoriais e etapas de obra. Quanto mais
+                            claro o briefing, mais rapido o time comercial consegue orientar o modelo certo.
+                        </p>
+                    </div>
+                    <div className="overflow-hidden border border-industrial-200">
+                        {quoteData.map(([label, value]) => (
+                            <div key={label} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[220px_1fr]">
+                                <div className="bg-industrial-50 px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-600">
+                                    {label}
+                                </div>
+                                <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-800">
+                                    {value}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             <section className="bg-industrial-50 py-20 md:py-28">
+                <div className="container mx-auto px-4">
+                    <div className="mb-12 max-w-3xl space-y-5">
+                        <SectionLabel>Linhas relacionadas</SectionLabel>
+                        <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
+                            Produtos que sustentam projetos urbanos
+                        </h2>
+                        <p className="text-base leading-relaxed text-industrial-600">
+                            A pagina de aplicacao distribui autoridade para linhas tecnicas e ajuda o comprador a
+                            comparar caminhos antes do contato comercial.
+                        </p>
+                    </div>
+                    <div className="grid gap-4 md:grid-cols-4">
+                        {relatedLines.map((line) => (
+                            <Link
+                                key={line.href}
+                                href={line.href}
+                                className="group border border-industrial-200 bg-white p-6 transition-colors hover:border-industrial-950"
+                            >
+                                <h3 className="text-base font-black uppercase tracking-tight text-industrial-950">
+                                    {line.title}
+                                </h3>
+                                <p className="mt-3 text-sm leading-relaxed text-industrial-600">{line.description}</p>
+                                <span className="mt-5 inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-industrial-500 group-hover:text-industrial-950">
+                                    Ver linha
+                                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                                </span>
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="py-20 md:py-28">
                 <div className="container mx-auto px-4">
                     <div className="mb-12 max-w-3xl space-y-5">
                         <SectionLabel>Galeria indexavel</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Imagens de postes metalicos por aplicacao
+                            Imagens de postes aplicados em areas urbanas
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-600">
-                            As imagens ajudam compradores e o Google Imagens a entender diferencas de modelo e uso. Fotos
-                            reais de obras e produtos devem substituir gradualmente qualquer material generico.
+                            Fotos por aplicacao ajudam o lead a reconhecer o contexto do projeto e reforcam sinais para
+                            busca organica e Google Imagens.
                         </p>
                     </div>
-                    <div className="grid gap-5 md:grid-cols-3">
+                    <div className="grid gap-5 md:grid-cols-4">
                         {gallery.map((image) => (
                             <div key={image.src} className="border border-industrial-200 bg-white">
                                 <div className="relative aspect-[4/3] bg-industrial-100">
@@ -505,7 +522,7 @@ export default async function PostesMetalicosPage() {
                                         alt={image.alt}
                                         fill
                                         className="object-cover"
-                                        sizes="(min-width: 768px) 33vw, 100vw"
+                                        sizes="(min-width: 768px) 25vw, 100vw"
                                     />
                                 </div>
                                 <div className="p-5">
@@ -519,13 +536,13 @@ export default async function PostesMetalicosPage() {
             </section>
 
             {featuredProducts.length > 0 && (
-                <section className="py-20 md:py-28">
+                <section className="bg-industrial-50 py-20 md:py-28">
                     <div className="container mx-auto px-4">
                         <div className="mb-12 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
                             <div className="max-w-3xl space-y-5">
-                                <SectionLabel>Produtos relacionados</SectionLabel>
+                                <SectionLabel>Catalogo B&B</SectionLabel>
                                 <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                                    Itens do catalogo conectados ao hub
+                                    Produtos relacionados
                                 </h2>
                             </div>
                             <Link
@@ -588,8 +605,8 @@ export default async function PostesMetalicosPage() {
                             Caminhos para aprofundar a especificacao
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-300">
-                            O hub precisa distribuir autoridade para fabricante, linhas, catalogos, obras e futuras paginas
-                            tecnicas do cluster.
+                            A pagina de iluminacao publica deve conectar hub, fabricante, linhas, bracos, catalogos e
+                            futuras paginas de produto.
                         </p>
                     </div>
                     <div className="grid gap-3 sm:grid-cols-2">
@@ -616,8 +633,8 @@ export default async function PostesMetalicosPage() {
                                 Obras ajudam a validar aplicacao e capacidade
                             </h2>
                             <p className="text-base leading-relaxed text-industrial-600">
-                                O ganho nacional depende de unir pagina pilar, fotos reais, portfolio e especificacao
-                                tecnica. Goiania prova origem; o objetivo comercial e Brasil.
+                                A prova local de fabrica e portfolio sustenta a ambicao nacional quando aparece conectada
+                                a paginas especificas.
                             </p>
                         </div>
                         <div className="grid gap-5 md:grid-cols-3">
@@ -653,11 +670,10 @@ export default async function PostesMetalicosPage() {
                     <div className="space-y-5">
                         <SectionLabel>Perguntas frequentes</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Duvidas comuns sobre postes metalicos
+                            Duvidas comuns antes do orcamento
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-600">
-                            Respostas objetivas para compradores que ainda estao comparando modelos, aplicacoes e
-                            criterios de compra.
+                            Respostas para compradores que precisam transformar uma demanda urbana em briefing tecnico.
                         </p>
                     </div>
                     <div className="space-y-4">
@@ -678,18 +694,18 @@ export default async function PostesMetalicosPage() {
                 <div className="container mx-auto grid gap-8 px-4 lg:grid-cols-[1fr_auto] lg:items-center">
                     <div>
                         <h2 className="text-3xl font-black uppercase leading-tight text-industrial-950 md:text-5xl">
-                            Compare modelos e envie seu projeto
+                            Envie a demanda da obra publica ou urbana
                         </h2>
                         <p className="mt-4 max-w-3xl text-base font-bold leading-relaxed text-industrial-800">
-                            Informe aplicacao, altura, quantidade, cidade/UF, fixacao, acabamento e prazo. A equipe B&B
-                            ajuda a transformar a busca por postes metalicos em especificacao e orcamento.
+                            Informe local, aplicacao, quantidade, altura desejada, luminarias, fixacao, acabamento e prazo.
+                            A B&B ajuda a organizar a especificacao para orcamento.
                         </p>
                     </div>
                     <div className="flex flex-col gap-4 sm:flex-row lg:flex-col">
                         <WhatsAppLink
                             message={whatsappMessage}
                             className="inline-flex h-14 items-center justify-center gap-3 bg-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-industrial-800"
-                            aria-label="Solicitar orcamento tecnico de postes metalicos pelo WhatsApp"
+                            aria-label="Falar com especialista sobre postes para iluminacao publica"
                         >
                             <MessageCircle className="size-5" aria-hidden="true" />
                             Falar com especialista
@@ -698,8 +714,8 @@ export default async function PostesMetalicosPage() {
                             href="/downloads"
                             className="inline-flex h-14 items-center justify-center gap-3 border-2 border-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-white"
                         >
-                            <Download className="size-5" aria-hidden="true" />
-                            Baixar catalogos
+                            <FileText className="size-5" aria-hidden="true" />
+                            Ver catalogos
                         </Link>
                     </div>
                 </div>
@@ -707,16 +723,16 @@ export default async function PostesMetalicosPage() {
 
             <section className="border-b border-industrial-200 bg-white py-10">
                 <div className="container mx-auto grid gap-4 px-4 md:grid-cols-3">
+                    <Link href="/postes-metalicos" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950">
+                        <Zap className="size-6 text-accent-dark" aria-hidden="true" />
+                        <span className="text-sm font-black uppercase tracking-widest">Comparar modelos de postes</span>
+                    </Link>
                     <Link href="/fabricante-de-postes-metalicos" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950">
                         <Factory className="size-6 text-accent-dark" aria-hidden="true" />
                         <span className="text-sm font-black uppercase tracking-widest">Comprar direto de fabricante</span>
                     </Link>
-                    <Link href="/postes-para-iluminacao-publica" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950">
-                        <Landmark className="size-6 text-accent-dark" aria-hidden="true" />
-                        <span className="text-sm font-black uppercase tracking-widest">Aplicacao em iluminacao publica</span>
-                    </Link>
                     <Link href="/downloads" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950">
-                        <FileText className="size-6 text-accent-dark" aria-hidden="true" />
+                        <Ruler className="size-6 text-accent-dark" aria-hidden="true" />
                         <span className="text-sm font-black uppercase tracking-widest">Catalogos e desenhos tecnicos</span>
                     </Link>
                 </div>
