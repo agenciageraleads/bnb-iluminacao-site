@@ -35,6 +35,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/blog/normas-para-postes-de-iluminacao',
     '/blog/poste-galvanizado-ou-pintado',
     '/blog/poste-teleconico-ou-reto',
+    '/blog/poste-flangeado-ou-engastado',
     '/downloads',
     '/lp/mastros-para-bandeira',
   ].map((route) => ({

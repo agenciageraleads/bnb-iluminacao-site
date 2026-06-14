@@ -215,6 +215,12 @@ const internalLinks = [
         icon: ShieldCheck,
     },
     {
+        title: "Poste flangeado ou engastado",
+        description: "Entenda como base, chumbadores e engastamento entram na especificacao da obra.",
+        href: "/blog/poste-flangeado-ou-engastado",
+        icon: Wrench,
+    },
+    {
         title: "Poste teleconico",
         description: "Acesse a pagina tecnica do modelo usado em vias, loteamentos, condominios e projetos urbanos.",
         href: "/produtos/poste-teleconico",

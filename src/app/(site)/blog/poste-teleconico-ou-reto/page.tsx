@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import type { ReactNode } from "react"
 import {
+    Anchor,
     ArrowRight,
     Building2,
     ClipboardCheck,
@@ -208,6 +209,12 @@ const internalLinks = [
         description: "Continue a triagem por altura, via, luminaria, braco e fixacao.",
         href: "/blog/altura-de-poste-para-iluminacao-publica",
         icon: Ruler,
+    },
+    {
+        title: "Poste flangeado ou engastado",
+        description: "Defina se a fixacao deve partir de base com chumbadores ou engastamento em fundacao.",
+        href: "/blog/poste-flangeado-ou-engastado",
+        icon: Anchor,
     },
     {
         title: "Poste galvanizado ou pintado",
@@ -655,6 +662,7 @@ export default function PosteTeleconicoOuRetoPage() {
                         ["Postes para iluminacao publica", "/postes-para-iluminacao-publica"],
                         ["Poste curvo simples", "/produtos/poste-curvo-simples"],
                         ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
+                        ["Poste flangeado ou engastado", "/blog/poste-flangeado-ou-engastado"],
                         ["Poste metalico galvanizado", "/produtos/poste-metalico-galvanizado"],
                         ["Fabricante de postes teleconicos", "/fabricante-de-postes-teleconicos"],
                         ["Catalogos e downloads", "/downloads"],

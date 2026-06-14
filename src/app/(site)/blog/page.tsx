@@ -3,7 +3,7 @@ import { Header } from "@/components/layout/header"
 import { getBlogPosts, Post } from "@/lib/data"
 import Link from "next/link"
 import Image from "next/image"
-import { Calendar, ArrowRight, BookOpen, Paintbrush, Ruler, Zap } from "lucide-react"
+import { Calendar, ArrowRight, Anchor, BookOpen, Paintbrush, Ruler, Zap } from "lucide-react"
 import { unstable_noStore as noStore } from "next/cache"
 
 export const metadata: Metadata = {
@@ -24,6 +24,7 @@ const featuredGuides = [
         href: "/blog/altura-de-poste-para-iluminacao-publica",
         image: "/images/seo/postes-metalicos/via-publica-postes-retos-dois-lados.jpg",
         date: "14/06/2026",
+        tier: "Guia tecnico P0",
         icon: Ruler,
     },
     {
@@ -33,6 +34,7 @@ const featuredGuides = [
         href: "/blog/normas-para-postes-de-iluminacao",
         image: "/images/seo/postes-metalicos/rua-iluminada-poste-curvo.jpg",
         date: "14/06/2026",
+        tier: "Guia tecnico P0",
         icon: BookOpen,
     },
     {
@@ -42,6 +44,7 @@ const featuredGuides = [
         href: "/blog/poste-galvanizado-ou-pintado",
         image: "/images/seo/postes-metalicos/estacionamento-industrial-postes-retos.jpg",
         date: "14/06/2026",
+        tier: "Guia tecnico P0",
         icon: Paintbrush,
     },
     {
@@ -51,7 +54,18 @@ const featuredGuides = [
         href: "/blog/poste-teleconico-ou-reto",
         image: "/images/produtos/poste-reto-avenida-dia.png",
         date: "14/06/2026",
+        tier: "Guia tecnico P0",
         icon: Zap,
+    },
+    {
+        title: "Poste Flangeado ou Engastado",
+        summary:
+            "Comparativo para alinhar fixacao, base, chumbadores, fundacao e dados de cotacao antes da compra.",
+        href: "/blog/poste-flangeado-ou-engastado",
+        image: "/images/seo/postes-metalicos/estacionamento-industrial-postes-retos.jpg",
+        date: "14/06/2026",
+        tier: "Guia tecnico P1",
+        icon: Anchor,
     },
 ]
 
@@ -95,7 +109,7 @@ export default async function BlogPage() {
                                 <div className="flex flex-col justify-center p-8 md:p-10">
                                     <div className="mb-5 inline-flex w-fit items-center gap-3 bg-industrial-950 px-4 py-2 text-[10px] font-black uppercase tracking-widest text-white">
                                         <Icon className="size-4 text-accent-premium" aria-hidden="true" />
-                                        Guia tecnico P0
+                                        {guide.tier}
                                     </div>
                                     <div className="mb-4 flex items-center gap-3 text-industrial-500 text-[10px] font-bold uppercase tracking-widest">
                                         <Calendar className="size-3 text-accent-premium" />

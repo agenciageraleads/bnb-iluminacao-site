@@ -62,6 +62,10 @@ const pages = [
     path: '/blog/poste-teleconico-ou-reto',
     types: ['Article', 'WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'FAQPage'],
   },
+  {
+    path: '/blog/poste-flangeado-ou-engastado',
+    types: ['Article', 'WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'FAQPage'],
+  },
 ]
 
 const redirects = [

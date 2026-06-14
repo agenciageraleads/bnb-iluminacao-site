@@ -20,6 +20,7 @@ const paths = [
   '/blog/normas-para-postes-de-iluminacao',
   '/blog/poste-galvanizado-ou-pintado',
   '/blog/poste-teleconico-ou-reto',
+  '/blog/poste-flangeado-ou-engastado',
   '/representantes',
   '/downloads',
 ]

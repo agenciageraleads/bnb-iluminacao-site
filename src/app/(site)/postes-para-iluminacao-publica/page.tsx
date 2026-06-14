@@ -186,6 +186,7 @@ const internalLinks = [
     ["Poste galvanizado ou pintado", "/blog/poste-galvanizado-ou-pintado"],
     ["Poste teleconico", "/produtos/poste-teleconico"],
     ["Poste teleconico ou reto", "/blog/poste-teleconico-ou-reto"],
+    ["Poste flangeado ou engastado", "/blog/poste-flangeado-ou-engastado"],
     ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
     ["Fabricante de postes metalicos", "/fabricante-de-postes-metalicos"],
     ["Linha Urban", "/produtos/linha-urban"],
