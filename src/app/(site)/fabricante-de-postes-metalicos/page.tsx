@@ -71,9 +71,9 @@ const models = [
         href: "/produtos/linha-urban",
     },
     {
-        title: "Linha Forza",
-        description: "Postes especiais para grandes alturas e projetos de alta complexidade tecnica.",
-        href: "/produtos/linha-forza",
+        title: "Poste curvo duplo",
+        description: "Postes para avenidas, canteiros centrais e areas que precisam iluminar dois sentidos.",
+        href: "/produtos/poste-curvo-duplo",
     },
     {
         title: "Linha Orna",

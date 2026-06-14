@@ -87,7 +87,7 @@ const models = [
         title: "Poste curvo duplo",
         description: "Aplicacao comum em avenidas, canteiros centrais e areas que precisam iluminar dois sentidos.",
         use: "Avenidas e canteiros",
-        href: "/produtos/linha-forza",
+        href: "/produtos/poste-curvo-duplo",
     },
     {
         title: "Poste ornamental",
@@ -193,6 +193,7 @@ const internalLinks = [
     ["Postes para iluminacao publica", "/postes-para-iluminacao-publica"],
     ["Poste teleconico", "/produtos/poste-teleconico"],
     ["Poste curvo simples", "/produtos/poste-curvo-simples"],
+    ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
     ["Poste metalico galvanizado", "/produtos/poste-metalico-galvanizado"],
     ["Braco para luminaria publica", "/produtos/braco-para-luminaria-publica"],
     ["Catalogo de produtos", "/produtos"],

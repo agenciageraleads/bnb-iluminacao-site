@@ -189,6 +189,36 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/poste-curvo-duplo',
+        destination: '/produtos/poste-curvo-duplo',
+        permanent: true,
+      },
+      {
+        source: '/postes-curvos-duplos',
+        destination: '/produtos/poste-curvo-duplo',
+        permanent: true,
+      },
+      {
+        source: '/poste-teleconico-curvo-duplo',
+        destination: '/produtos/poste-curvo-duplo',
+        permanent: true,
+      },
+      {
+        source: '/poste-curvo-duplo-galvanizado',
+        destination: '/produtos/poste-curvo-duplo',
+        permanent: true,
+      },
+      {
+        source: '/poste-curvo-duplo-com-base',
+        destination: '/produtos/poste-curvo-duplo',
+        permanent: true,
+      },
+      {
+        source: '/poste-curvo-duplo-engastado',
+        destination: '/produtos/poste-curvo-duplo',
+        permanent: true,
+      },
+      {
         source: '/fabrica-postes-metalicos',
         destination: '/fabrica-de-postes-metalicos',
         permanent: true,
@@ -282,6 +312,11 @@ const nextConfig: NextConfig = {
       {
         source: '/produtos/poste-curvo-simples-galvanizado',
         destination: '/produtos/poste-curvo-simples',
+        permanent: true,
+      },
+      {
+        source: '/produtos/poste-curvo-duplo-galvanizado',
+        destination: '/produtos/poste-curvo-duplo',
         permanent: true,
       },
       {

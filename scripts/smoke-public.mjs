@@ -11,6 +11,7 @@ const paths = [
   '/produtos/poste-teleconico',
   '/produtos/poste-metalico-galvanizado',
   '/produtos/poste-curvo-simples',
+  '/produtos/poste-curvo-duplo',
   '/produtos/braco-para-luminaria-publica',
   '/lp/postes-metalicos',
   '/produtos',

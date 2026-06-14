@@ -195,6 +195,7 @@ const downloadLinks = [
 ]
 
 const internalLinks = [
+    ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
     ["Poste teleconico", "/produtos/poste-teleconico"],
     ["Poste metalico galvanizado", "/produtos/poste-metalico-galvanizado"],
     ["Postes para iluminacao publica", "/postes-para-iluminacao-publica"],
@@ -590,11 +591,11 @@ export default function PosteCurvoSimplesPage() {
                                     Solicitar cotacao
                                 </WhatsAppLink>
                                 <Link
-                                    href="/produtos/poste-teleconico"
+                                    href="/produtos/poste-curvo-duplo"
                                     className="inline-flex h-14 items-center justify-center gap-3 border border-industrial-300 px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:border-industrial-950"
                                 >
                                     <Ruler className="size-5" aria-hidden="true" />
-                                    Ver teleconicos
+                                    Ver curvo duplo
                                 </Link>
                             </div>
                         </div>

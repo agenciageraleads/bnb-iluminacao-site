@@ -209,6 +209,7 @@ const primaryInternalLinks = [
 const secondaryInternalLinks = [
     ["Fabricante de postes teleconicos", "/fabricante-de-postes-teleconicos"],
     ["Poste curvo simples", "/produtos/poste-curvo-simples"],
+    ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
     ["Poste metalico galvanizado", "/produtos/poste-metalico-galvanizado"],
     ["Linha Urban", "/produtos/linha-urban"],
     ["Catalogos e downloads", "/downloads"],

@@ -218,6 +218,7 @@ const primaryInternalLinks = [
 const secondaryInternalLinks = [
     ["Hub de postes metalicos", "/postes-metalicos"],
     ["Poste curvo simples", "/produtos/poste-curvo-simples"],
+    ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
     ["Poste metalico galvanizado", "/produtos/poste-metalico-galvanizado"],
     ["Fabrica de postes metalicos", "/fabrica-de-postes-metalicos"],
     ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
