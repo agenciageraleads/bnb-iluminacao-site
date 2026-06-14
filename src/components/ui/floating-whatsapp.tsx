@@ -1,6 +1,7 @@
 "use client"
 
 import { MessageCircle } from "lucide-react"
+import { WhatsAppLink } from "@/components/ui/whatsapp-link"
 
 interface FloatingWhatsAppProps {
     phoneNumber?: string
@@ -15,24 +16,6 @@ export function FloatingWhatsApp({
     eventLabel = "Solicitar orcamento",
     eventSource = "floating_whatsapp",
 }: FloatingWhatsAppProps) {
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
-
-    function handleClick() {
-        if (typeof window !== 'undefined') {
-            (window as any).dataLayer = (window as any).dataLayer || []
-            ;(window as any).dataLayer.push({
-                event: 'whatsapp_click',
-                cta_channel: 'whatsapp',
-                cta_source: eventSource,
-                cta_label: eventLabel,
-                page_path: window.location.pathname,
-                page_location: window.location.href,
-                whatsapp_phone: phoneNumber,
-                has_prefilled_message: Boolean(message),
-            })
-        }
-    }
-
     return (
         <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 group">
             {/* Tooltip/Label Desktop */}
@@ -43,11 +26,11 @@ export function FloatingWhatsApp({
             </div>
 
             {/* Botão Principal */}
-            <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={handleClick}
+            <WhatsAppLink
+                phoneNumber={phoneNumber}
+                message={message}
+                eventLabel={eventLabel}
+                eventSource={eventSource}
                 className="
                     flex items-center gap-3
                     bg-[#25D366] text-white
@@ -64,7 +47,7 @@ export function FloatingWhatsApp({
                 <MessageCircle className="size-6 shrink-0 fill-white" aria-hidden="true" />
                 <span className="hidden xs:block md:hidden">WhatsApp</span>
                 <span className="hidden md:block">SOLICITAR ORÇAMENTO</span>
-            </a>
+            </WhatsAppLink>
         </div>
     )
 }
