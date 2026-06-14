@@ -8,6 +8,7 @@ const paths = [
   '/fornecedor-de-postes-metalicos',
   '/postes-metalicos',
   '/postes-para-iluminacao-publica',
+  '/postes-para-loteamentos',
   '/produtos/poste-teleconico',
   '/produtos/poste-metalico-galvanizado',
   '/produtos/poste-curvo-simples',

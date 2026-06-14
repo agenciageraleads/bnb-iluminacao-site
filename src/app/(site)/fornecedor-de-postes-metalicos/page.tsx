@@ -156,6 +156,7 @@ const internalLinks = [
     ["Fabrica de postes metalicos", "/fabrica-de-postes-metalicos"],
     ["Postes metalicos", "/postes-metalicos"],
     ["Postes para iluminacao publica", "/postes-para-iluminacao-publica"],
+    ["Postes para loteamentos", "/postes-para-loteamentos"],
     ["Poste teleconico", "/produtos/poste-teleconico"],
     ["Braco para luminaria publica", "/produtos/braco-para-luminaria-publica"],
     ["Catalogos e downloads", "/downloads"],

@@ -23,6 +23,10 @@ const pages = [
     types: ['WebPage', 'BreadcrumbList', 'ItemList', 'FAQPage'],
   },
   {
+    path: '/postes-para-loteamentos',
+    types: ['WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'ImageObject', 'FAQPage'],
+  },
+  {
     path: '/produtos/poste-teleconico',
     types: ['Product', 'WebPage', 'BreadcrumbList', 'ItemList', 'FAQPage'],
   },
@@ -72,6 +76,10 @@ const redirects = [
   ['/lp/postes-metalicos', '/postes-metalicos'],
   ['/iluminacao-publica', '/postes-para-iluminacao-publica'],
   ['/postes-de-iluminacao-publica', '/postes-para-iluminacao-publica'],
+  ['/postes-loteamentos', '/postes-para-loteamentos'],
+  ['/postes-para-loteamento', '/postes-para-loteamentos'],
+  ['/poste-para-loteamento', '/postes-para-loteamentos'],
+  ['/iluminacao-para-loteamentos', '/postes-para-loteamentos'],
   ['/fabricante-postes-teleconicos', '/fabricante-de-postes-teleconicos'],
   ['/fabricantes-de-postes-teleconicos', '/fabricante-de-postes-teleconicos'],
   ['/fabricante-de-poste-teleconico', '/fabricante-de-postes-teleconicos'],

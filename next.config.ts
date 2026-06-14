@@ -114,6 +114,26 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/postes-loteamentos',
+        destination: '/postes-para-loteamentos',
+        permanent: true,
+      },
+      {
+        source: '/postes-para-loteamento',
+        destination: '/postes-para-loteamentos',
+        permanent: true,
+      },
+      {
+        source: '/poste-para-loteamento',
+        destination: '/postes-para-loteamentos',
+        permanent: true,
+      },
+      {
+        source: '/iluminacao-para-loteamentos',
+        destination: '/postes-para-loteamentos',
+        permanent: true,
+      },
+      {
         source: '/fabricante-postes-teleconicos',
         destination: '/fabricante-de-postes-teleconicos',
         permanent: true,
