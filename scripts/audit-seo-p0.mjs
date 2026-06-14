@@ -59,6 +59,10 @@ const pages = [
     types: ['Product', 'WebPage', 'BreadcrumbList', 'ItemList', 'FAQPage'],
   },
   {
+    path: '/produtos/suporte-para-luminaria-publica',
+    types: ['Product', 'WebPage', 'BreadcrumbList', 'ItemList', 'FAQPage'],
+  },
+  {
     path: '/fabrica-de-postes-metalicos',
     types: ['WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'FAQPage'],
   },
@@ -133,6 +137,11 @@ const redirects = [
   ['/postes-teleconicos', '/produtos/poste-teleconico'],
   ['/braco-para-luminaria-publica', '/produtos/braco-para-luminaria-publica'],
   ['/bracos-para-luminaria-publica', '/produtos/braco-para-luminaria-publica'],
+  ['/suporte-para-luminaria-publica', '/produtos/suporte-para-luminaria-publica'],
+  ['/suportes-para-luminaria-publica', '/produtos/suporte-para-luminaria-publica'],
+  ['/suporte-para-luminarias-publicas', '/produtos/suporte-para-luminaria-publica'],
+  ['/nucleo-para-luminaria-publica', '/produtos/suporte-para-luminaria-publica'],
+  ['/nucleo-para-luminarias-publicas', '/produtos/suporte-para-luminaria-publica'],
   ['/fabrica-postes-metalicos', '/fabrica-de-postes-metalicos'],
   ['/fabricas-de-postes-metalicos', '/fabrica-de-postes-metalicos'],
   ['/industria-de-postes-metalicos', '/fabrica-de-postes-metalicos'],

@@ -43,6 +43,7 @@ export function Footer() {
                             <li><Link href="/produtos/poste-curvo-duplo" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Poste Curvo Duplo</Link></li>
                             <li><Link href="/produtos/poste-metalico-galvanizado" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Poste Galvanizado</Link></li>
                             <li><Link href="/produtos/braco-para-luminaria-publica" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Braços e Suportes</Link></li>
+                            <li><Link href="/produtos/suporte-para-luminaria-publica" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Suporte para Luminária</Link></li>
                             <li><Link href="/produtos/linha-urban" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Urban</Link></li>
                             <li><Link href="/produtos/linha-versa" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Versa</Link></li>
                             <li><Link href="/produtos/linha-forza" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Forza</Link></li>

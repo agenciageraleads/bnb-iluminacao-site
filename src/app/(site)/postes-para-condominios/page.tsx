@@ -282,6 +282,7 @@ const internalLinks = [
     ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
     ["Poste metalico galvanizado", "/produtos/poste-metalico-galvanizado"],
     ["Braco para luminaria publica", "/produtos/braco-para-luminaria-publica"],
+    ["Suporte para luminaria publica", "/produtos/suporte-para-luminaria-publica"],
     ["Poste flangeado ou engastado", "/blog/poste-flangeado-ou-engastado"],
     ["Poste galvanizado ou pintado", "/blog/poste-galvanizado-ou-pintado"],
     ["Altura de poste para iluminacao publica", "/blog/altura-de-poste-para-iluminacao-publica"],

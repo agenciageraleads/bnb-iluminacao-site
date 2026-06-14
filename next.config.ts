@@ -84,6 +84,31 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/suporte-para-luminaria-publica',
+        destination: '/produtos/suporte-para-luminaria-publica',
+        permanent: true,
+      },
+      {
+        source: '/suportes-para-luminaria-publica',
+        destination: '/produtos/suporte-para-luminaria-publica',
+        permanent: true,
+      },
+      {
+        source: '/suporte-para-luminarias-publicas',
+        destination: '/produtos/suporte-para-luminaria-publica',
+        permanent: true,
+      },
+      {
+        source: '/nucleo-para-luminaria-publica',
+        destination: '/produtos/suporte-para-luminaria-publica',
+        permanent: true,
+      },
+      {
+        source: '/nucleo-para-luminarias-publicas',
+        destination: '/produtos/suporte-para-luminaria-publica',
+        permanent: true,
+      },
+      {
         source: '/mastro',
         destination: '/lp/mastros-para-bandeira',
         permanent: true,
@@ -417,6 +442,16 @@ const nextConfig: NextConfig = {
       {
         source: '/produtos/bracos-para-luminaria-publica',
         destination: '/produtos/braco-para-luminaria-publica',
+        permanent: true,
+      },
+      {
+        source: '/produtos/suportes-para-luminaria-publica',
+        destination: '/produtos/suporte-para-luminaria-publica',
+        permanent: true,
+      },
+      {
+        source: '/produtos/suporte-para-luminarias-publicas',
+        destination: '/produtos/suporte-para-luminaria-publica',
         permanent: true,
       },
       // Categorias removidas

@@ -30,6 +30,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/produtos/poste-curvo-simples',
     '/produtos/poste-curvo-duplo',
     '/produtos/braco-para-luminaria-publica',
+    '/produtos/suporte-para-luminaria-publica',
     '/quem-somos',
     '/contato',
     '/servicos',

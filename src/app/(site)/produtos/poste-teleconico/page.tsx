@@ -218,6 +218,7 @@ const secondaryInternalLinks = [
     ["Normas para postes de iluminacao", "/blog/normas-para-postes-de-iluminacao"],
     ["Poste galvanizado ou pintado", "/blog/poste-galvanizado-ou-pintado"],
     ["Poste curvo simples", "/produtos/poste-curvo-simples"],
+    ["Suporte para luminaria publica", "/produtos/suporte-para-luminaria-publica"],
     ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
     ["Poste metalico galvanizado", "/produtos/poste-metalico-galvanizado"],
     ["Linha Urban", "/produtos/linha-urban"],

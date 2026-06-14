@@ -162,6 +162,7 @@ const internalLinks = [
     ["Postes para estacionamentos", "/postes-para-estacionamentos"],
     ["Poste teleconico", "/produtos/poste-teleconico"],
     ["Braco para luminaria publica", "/produtos/braco-para-luminaria-publica"],
+    ["Suporte para luminaria publica", "/produtos/suporte-para-luminaria-publica"],
     ["Catalogos e downloads", "/downloads"],
     ["Contato", "/contato"],
 ]
