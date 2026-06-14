@@ -601,7 +601,11 @@ export default async function FabricanteDePostesMetalicosPage() {
             </section>
 
             <section className="border-b border-industrial-200 bg-white py-10">
-                <div className="container mx-auto grid gap-4 px-4 md:grid-cols-4">
+                <div className="container mx-auto grid gap-4 px-4 md:grid-cols-2 lg:grid-cols-5">
+                    <Link href="/fabrica-de-postes-metalicos" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950">
+                        <Factory className="size-6 text-accent-dark" aria-hidden="true" />
+                        <span className="text-sm font-black uppercase tracking-widest">Fabrica de postes</span>
+                    </Link>
                     <Link href="/postes-metalicos" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950">
                         <Ruler className="size-6 text-accent-dark" aria-hidden="true" />
                         <span className="text-sm font-black uppercase tracking-widest">Modelos de postes metalicos</span>

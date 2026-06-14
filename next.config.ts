@@ -114,6 +114,26 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/fabrica-postes-metalicos',
+        destination: '/fabrica-de-postes-metalicos',
+        permanent: true,
+      },
+      {
+        source: '/fabricas-de-postes-metalicos',
+        destination: '/fabrica-de-postes-metalicos',
+        permanent: true,
+      },
+      {
+        source: '/industria-de-postes-metalicos',
+        destination: '/fabrica-de-postes-metalicos',
+        permanent: true,
+      },
+      {
+        source: '/postes-metalicos-direto-da-fabrica',
+        destination: '/fabrica-de-postes-metalicos',
+        permanent: true,
+      },
+      {
         source: '/poste-teleconico',
         destination: '/produtos/poste-teleconico',
         permanent: true,

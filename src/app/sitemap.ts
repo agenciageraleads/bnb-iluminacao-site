@@ -17,6 +17,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Rotas Estáticas
   const staticRoutes = [
     '',
+    '/fabrica-de-postes-metalicos',
     '/fabricante-de-postes-metalicos',
     '/postes-metalicos',
     '/postes-para-iluminacao-publica',
