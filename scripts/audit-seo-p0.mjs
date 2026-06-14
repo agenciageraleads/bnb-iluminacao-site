@@ -42,6 +42,10 @@ const redirects = [
   ['/postes-metalicos-direto-da-fabrica', '/fabrica-de-postes-metalicos'],
 ]
 
+const sitemapForbiddenPaths = [
+  '/lp/postes-metalicos/cidades/',
+]
+
 const failures = []
 
 function absolute(path, base = baseUrl) {
@@ -110,7 +114,11 @@ console.log(`${sitemapResponse.status} /sitemap.xml`)
 assert(sitemapResponse.status === 200, `/sitemap.xml returned ${sitemapResponse.status}`)
 
 for (const page of pages) {
-  assert(sitemap.includes(absolute(page.path)), `/sitemap.xml missing ${page.path}`)
+  assert(sitemap.includes(expectedCanonical(page.path)), `/sitemap.xml missing ${page.path}`)
+}
+
+for (const forbiddenPath of sitemapForbiddenPaths) {
+  assert(!sitemap.includes(forbiddenPath), `/sitemap.xml should not include ${forbiddenPath}`)
 }
 
 for (const [source, destination] of redirects) {
