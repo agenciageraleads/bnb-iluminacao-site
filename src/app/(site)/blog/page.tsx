@@ -3,7 +3,7 @@ import { Header } from "@/components/layout/header"
 import { getBlogPosts, Post } from "@/lib/data"
 import Link from "next/link"
 import Image from "next/image"
-import { Calendar, ArrowRight, BookOpen, Paintbrush, Ruler } from "lucide-react"
+import { Calendar, ArrowRight, BookOpen, Paintbrush, Ruler, Zap } from "lucide-react"
 import { unstable_noStore as noStore } from "next/cache"
 
 export const metadata: Metadata = {
@@ -43,6 +43,15 @@ const featuredGuides = [
         image: "/images/seo/postes-metalicos/estacionamento-industrial-postes-retos.jpg",
         date: "14/06/2026",
         icon: Paintbrush,
+    },
+    {
+        title: "Poste Teleconico ou Reto",
+        summary:
+            "Guia para entender nomenclatura, geometria, avanco de luminaria e modelo correto antes da cotacao.",
+        href: "/blog/poste-teleconico-ou-reto",
+        image: "/images/produtos/poste-reto-avenida-dia.png",
+        date: "14/06/2026",
+        icon: Zap,
     },
 ]
 

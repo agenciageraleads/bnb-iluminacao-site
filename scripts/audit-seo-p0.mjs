@@ -58,6 +58,10 @@ const pages = [
     path: '/blog/poste-galvanizado-ou-pintado',
     types: ['Article', 'WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'FAQPage'],
   },
+  {
+    path: '/blog/poste-teleconico-ou-reto',
+    types: ['Article', 'WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'FAQPage'],
+  },
 ]
 
 const redirects = [
