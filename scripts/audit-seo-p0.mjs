@@ -7,6 +7,10 @@ const pages = [
     types: ['WebPage', 'BreadcrumbList', 'ItemList', 'FAQPage'],
   },
   {
+    path: '/fabricante-de-postes-teleconicos',
+    types: ['WebPage', 'BreadcrumbList', 'ItemList', 'FAQPage'],
+  },
+  {
     path: '/fornecedor-de-postes-metalicos',
     types: ['WebPage', 'BreadcrumbList', 'ItemList', 'FAQPage'],
   },
@@ -36,6 +40,10 @@ const redirects = [
   ['/lp/postes-metalicos', '/postes-metalicos'],
   ['/iluminacao-publica', '/postes-para-iluminacao-publica'],
   ['/postes-de-iluminacao-publica', '/postes-para-iluminacao-publica'],
+  ['/fabricante-postes-teleconicos', '/fabricante-de-postes-teleconicos'],
+  ['/fabricantes-de-postes-teleconicos', '/fabricante-de-postes-teleconicos'],
+  ['/fabricante-de-poste-teleconico', '/fabricante-de-postes-teleconicos'],
+  ['/fabricante-poste-teleconico', '/fabricante-de-postes-teleconicos'],
   ['/poste-teleconico', '/produtos/poste-teleconico'],
   ['/postes-teleconicos', '/produtos/poste-teleconico'],
   ['/braco-para-luminaria-publica', '/produtos/braco-para-luminaria-publica'],

@@ -15,7 +15,6 @@ import {
     Ruler,
     ShieldCheck,
     Truck,
-    Zap,
 } from "lucide-react"
 
 import { Footer } from "@/components/layout/footer"
@@ -28,28 +27,27 @@ import {
     createBreadcrumbSchema,
     createFaqSchema,
     createItemListSchema,
-    createProductSchema,
     createSchemaGraph,
     createWebPageSchema,
 } from "@/lib/seo/schema"
 
-const pageUrl = "https://bebiluminacao.com.br/produtos/poste-teleconico"
+const pageUrl = "https://bebiluminacao.com.br/fabricante-de-postes-teleconicos"
 const pageDescription =
-    "Poste teleconico para iluminacao publica, avenidas, pracas, condominios e estacionamentos. Modelos retos, curvos, flangeados e engastados com orcamento tecnico."
+    "Fabricante de postes teleconicos retos e curvos para iluminacao publica, loteamentos, pracas e industrias. Consulte modelos, acabamentos e orcamento tecnico."
 const whatsappMessage =
-    "Ola, vim pela pagina de poste teleconico e quero solicitar um orcamento tecnico."
-const heroImage = "/images/produtos/poste-reto-avenida-dia.png"
+    "Ola, vim pela pagina de fabricante de postes teleconicos e quero solicitar um orcamento tecnico."
+const heroImage = "/images/produtos/poste-curvo-duplo-avenida-dia.png"
 
 export const metadata: Metadata = {
     title: {
-        absolute: "Poste Teleconico Galvanizado Reto e Curvo | B&B",
+        absolute: "Fabricante de Postes Teleconicos | Retos e Curvos B&B",
     },
     description: pageDescription,
     alternates: {
         canonical: pageUrl,
     },
     openGraph: {
-        title: "Poste Teleconico Galvanizado Reto e Curvo | B&B",
+        title: "Fabricante de Postes Teleconicos | Retos e Curvos B&B",
         description: pageDescription,
         url: pageUrl,
         type: "website",
@@ -58,7 +56,7 @@ export const metadata: Metadata = {
                 url: `https://bebiluminacao.com.br${heroImage}`,
                 width: 1200,
                 height: 630,
-                alt: "Poste metalico para iluminacao urbana",
+                alt: "Postes teleconicos fabricados pela B&B",
             },
         ],
     },
@@ -66,23 +64,23 @@ export const metadata: Metadata = {
 
 const highlights = [
     {
-        title: "Reto ou curvo",
-        description: "Escolha conforme avanco da luminaria, area de cobertura e leitura visual do projeto.",
+        title: "Producao propria",
+        description: "Fabrica em Goiania como prova operacional, com atendimento comercial para projetos em todo o Brasil.",
+        icon: Factory,
+    },
+    {
+        title: "Modelos teleconicos",
+        description: "Postes retos, curvos simples e curvos duplos para vias, pracas, loteamentos, condominios e patios.",
         icon: Ruler,
     },
     {
-        title: "Engastado ou flangeado",
-        description: "Fixacao definida junto ao projeto civil, base, fundacao, chumbadores e local de instalacao.",
+        title: "Orcamento tecnico",
+        description: "A proposta nasce de modelo, altura, fixacao, acabamento, quantidade, cidade de entrega e prazo.",
         icon: ClipboardCheck,
     },
     {
-        title: "Acabamento tecnico",
-        description: "Galvanizacao, pintura eletrostatica ou pintura sob especificacao conforme ambiente e memorial.",
-        icon: ShieldCheck,
-    },
-    {
-        title: "Atendimento nacional",
-        description: "Fabrica em Goiania como prova de origem, com atendimento para projetos em todo o Brasil.",
+        title: "Entrega nacional",
+        description: "Goias comprova origem fabril; o mercado-alvo da pagina e nacional.",
         icon: Truck,
     },
 ]
@@ -90,58 +88,69 @@ const highlights = [
 const modelOptions = [
     {
         title: "Poste teleconico reto",
-        use: "Vias, patios e estacionamentos",
+        use: "Patios, condominios e estacionamentos",
         description:
-            "Solucao de geometria objetiva para areas que precisam de poste vertical, compatibilizacao de luminaria e instalacao limpa.",
+            "Modelo indicado para areas que pedem geometria objetiva, instalacao limpa e compatibilidade com luminarias no topo ou em suporte.",
         image: "/images/produtos/poste-reto-avenida-dia.png",
     },
     {
         title: "Poste teleconico curvo simples",
         use: "Ruas, acessos e calcadas",
         description:
-            "Aplicacao indicada quando a luminaria precisa avancar para um lado, ajudando a direcionar a iluminacao sobre a via ou passagem.",
+            "Opcao para projetos em que a luminaria precisa avancar para um lado, direcionando a luz para a via ou area de circulacao.",
         image: "/images/produtos/poste-curvo-simples-rua-noite.png",
     },
     {
         title: "Poste teleconico curvo duplo",
         use: "Avenidas e canteiros centrais",
         description:
-            "Modelo usado quando o projeto pede iluminacao em dois sentidos, especialmente em canteiros, avenidas e areas amplas.",
+            "Aplicacao para iluminar dois sentidos, especialmente em canteiros, vias largas, avenidas e areas com dois fluxos.",
         image: "/images/produtos/poste-curvo-duplo-avenida-dia.png",
     },
 ]
 
 const specificationRows = [
-    ["Aplicacao", "Iluminacao publica, loteamentos, condominios, estacionamentos, patios e areas urbanas."],
-    ["Formato", "Reto, curvo simples ou curvo duplo, conforme luminaria, avanco e area de cobertura."],
+    ["Produto", "Postes teleconicos retos, curvos simples e curvos duplos fabricados conforme necessidade do projeto."],
+    ["Aplicacoes", "Iluminacao publica, loteamentos, pracas, condominios, industrias, patios e estacionamentos."],
     ["Fixacao", "Engastado, flangeado, base e chumbadores conforme projeto civil e condicao de instalacao."],
-    ["Acabamento", "Galvanizacao, pintura eletrostatica ou pintura sob especificacao do ambiente."],
-    ["Altura", "Definida conforme estudo luminotecnico, local de aplicacao, luminaria e memoriais do projeto."],
-    ["Compra", "Orcamento tecnico com modelo, quantidade, cidade/UF, prazo, acabamento e documentos disponiveis."],
+    ["Acabamento", "Galvanizacao, pintura eletrostatica ou acabamento sob especificacao do memorial tecnico."],
+    ["Altura", "Definida a partir da aplicacao, luminaria, estudo luminotecnico, largura da via e padrao do projeto."],
+    ["Compra", "Orcamento com modelo, quantidade, cidade/UF, prazo, acabamento e desenhos ou memoriais disponiveis."],
 ]
 
-const decisionRows = [
-    ["Reto", "Patios, estacionamentos, condominios e vias", "Quando o projeto pede linha objetiva e luminaria no topo ou em suporte."],
-    ["Curvo simples", "Ruas, acessos, calcadas e areas laterais", "Quando o ponto de luz precisa avancar para um unico lado."],
-    ["Curvo duplo", "Avenidas, canteiros centrais e vias largas", "Quando o projeto precisa iluminar dois sentidos ou lados opostos."],
-    ["Engastado", "Instalacoes com poste embutido no solo", "Quando o projeto civil preve fundacao para engastamento."],
-    ["Flangeado", "Bases, lajes, chumbadores e areas com manutencao prevista", "Quando a fixacao precisa de base aparafusada conforme projeto."],
+const buyingSteps = [
+    {
+        title: "1. Identificar aplicacao",
+        description: "Via publica, avenida, praca, condominio, loteamento, industria, patio ou estacionamento.",
+    },
+    {
+        title: "2. Definir geometria",
+        description: "Reto, curvo simples ou curvo duplo conforme ponto de luz, avanco e area de cobertura.",
+    },
+    {
+        title: "3. Confirmar fixacao",
+        description: "Engastado ou flangeado conforme fundacao, base, chumbadores e condicao da obra.",
+    },
+    {
+        title: "4. Fechar acabamento",
+        description: "Galvanizado, pintado ou sob especificacao conforme ambiente, durabilidade e padrao visual.",
+    },
 ]
 
 const finishOptions = [
     {
-        title: "Poste teleconico galvanizado",
-        description: "Alternativa para ambientes que exigem maior protecao contra corrosao e durabilidade operacional.",
+        title: "Galvanizacao",
+        description: "Indicada quando o projeto exige maior protecao contra corrosao e vida util operacional.",
         icon: ShieldCheck,
     },
     {
         title: "Pintura eletrostatica",
-        description: "Acabamento para padronizacao visual, identidade do empreendimento e protecao adicional.",
+        description: "Usada para padronizacao visual, identidade do empreendimento e protecao complementar.",
         icon: Paintbrush,
     },
     {
-        title: "Sob especificacao",
-        description: "Definicao conforme memorial, ambiente, volume, prazo, luminaria, fixacao e padrao do projeto.",
+        title: "Memorial tecnico",
+        description: "Quando a compra exige compatibilidade com documentos, prazos, luminarias e padroes da obra.",
         icon: FileText,
     },
 ]
@@ -149,27 +158,27 @@ const finishOptions = [
 const applicationCards = [
     {
         title: "Iluminacao publica",
-        description: "Vias, avenidas, pracas e areas urbanas com necessidade de padrao tecnico e repetibilidade.",
+        description: "Postes teleconicos para vias, avenidas, pracas e obras urbanas com especificacao tecnica.",
         href: "/postes-para-iluminacao-publica",
         icon: Landmark,
     },
     {
         title: "Loteamentos",
-        description: "Projetos em volume que pedem padronizacao visual, prazo e suporte para especificacao.",
+        description: "Padronizacao visual, repetibilidade de fornecimento e suporte para definicao de modelos.",
         href: "/postes-metalicos",
         icon: Building2,
     },
     {
-        title: "Condominios",
-        description: "Aplicacoes residenciais e comerciais com combinacao de durabilidade, acabamento e desenho urbano.",
-        href: "/postes-metalicos",
-        icon: ShieldCheck,
-    },
-    {
         title: "Areas industriais",
-        description: "Patios, galpoes, estacionamentos, acessos e circulacao interna com demanda operacional.",
+        description: "Patios, galpoes, docas, estacionamentos e acessos com demanda operacional.",
         href: "/postes-metalicos",
         icon: Factory,
+    },
+    {
+        title: "Compra tecnica",
+        description: "Pagina para quem precisa de fornecedor/fabricante, prazo e documentacao para cotacao.",
+        href: "/fornecedor-de-postes-metalicos",
+        icon: ClipboardCheck,
     },
 ]
 
@@ -190,81 +199,72 @@ const downloadLinks = [
 
 const primaryInternalLinks = [
     {
-        label: "Comparar modelos de postes",
-        href: "/postes-metalicos",
-        icon: Zap,
+        label: "Ver pagina do produto",
+        href: "/produtos/poste-teleconico",
+        icon: Ruler,
+    },
+    {
+        label: "Fabricante de postes metalicos",
+        href: "/fabricante-de-postes-metalicos",
+        icon: Factory,
     },
     {
         label: "Aplicacao em iluminacao publica",
         href: "/postes-para-iluminacao-publica",
         icon: Landmark,
     },
-    {
-        label: "Comprar direto da fabrica",
-        href: "/fabricante-de-postes-metalicos",
-        icon: Factory,
-    },
 ]
 
 const secondaryInternalLinks = [
-    ["Fabricante de postes teleconicos", "/fabricante-de-postes-teleconicos"],
-    ["Linha Urban", "/produtos/linha-urban"],
+    ["Hub de postes metalicos", "/postes-metalicos"],
+    ["Fabrica de postes metalicos", "/fabrica-de-postes-metalicos"],
+    ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
     ["Catalogos e downloads", "/downloads"],
-    ["Obras realizadas", "/obras"],
 ]
 
 const faq = [
     {
-        question: "O que e um poste teleconico?",
+        question: "A B&B e fabricante de postes teleconicos?",
         answer:
-            "E um poste metalico com geometria afunilada ao longo da altura, usado em projetos de iluminacao urbana, vias, condominios, loteamentos, pracas, patios e estacionamentos.",
+            "Sim. A B&B fabrica postes metalicos, incluindo modelos teleconicos retos, curvos simples e curvos duplos para diferentes aplicacoes de iluminacao.",
     },
     {
-        question: "A B&B trabalha com poste teleconico reto e curvo?",
+        question: "Qual a diferenca entre poste teleconico reto, curvo simples e curvo duplo?",
         answer:
-            "Sim. A pagina organiza os modelos reto, curvo simples e curvo duplo para orientar a conversa tecnica antes do orcamento.",
+            "O reto tem geometria vertical objetiva. O curvo simples avanca a luminaria para um lado. O curvo duplo atende dois sentidos, comum em canteiros centrais e avenidas.",
     },
     {
-        question: "Qual a diferenca entre poste engastado e flangeado?",
+        question: "A pagina substitui o projeto luminotecnico?",
         answer:
-            "O engastado e instalado com parte do poste embutida na fundacao. O flangeado utiliza base aparafusada com chumbadores, conforme projeto civil e local de instalacao.",
+            "Nao. A pagina organiza a compra e a especificacao inicial. Altura, afastamento, luminaria e fixacao devem ser confirmados conforme projeto e memoriais tecnicos.",
     },
     {
-        question: "A B&B atende somente Goiania e Goias?",
+        question: "A B&B atende fora de Goias?",
         answer:
-            "Nao. A fabrica em Goiania comprova origem e capacidade operacional, mas a estrategia comercial para postes teleconicos e nacional.",
+            "Sim. A fabrica em Goiania serve como prova de origem e capacidade operacional, mas o atendimento comercial para postes teleconicos e nacional.",
     },
     {
-        question: "Quais dados enviar para cotar poste teleconico?",
+        question: "Quais dados enviar para cotar com fabricante?",
         answer:
-            "Envie modelo desejado, aplicacao, altura aproximada, quantidade, cidade e UF, tipo de fixacao, acabamento, luminaria, prazo e, se houver, desenho ou memorial tecnico.",
+            "Envie aplicacao, modelo desejado, altura aproximada, quantidade, cidade e UF, tipo de fixacao, acabamento, luminaria, prazo e desenho ou memorial se houver.",
     },
 ]
 
 function getSchema() {
     return createSchemaGraph([
-        createProductSchema({
-            url: pageUrl,
-            name: "Poste Teleconico",
-            description: pageDescription,
-            image: heroImage,
-            category: "Postes metalicos para iluminacao",
-            properties: specificationRows.map(([name, value]) => ({ name, value })),
-        }),
         createWebPageSchema({
             url: pageUrl,
-            name: "Poste Teleconico",
+            name: "Fabricante de Postes Teleconicos",
             description: pageDescription,
-            mainEntityId: `${pageUrl}#product`,
+            image: heroImage,
         }),
         createBreadcrumbSchema(pageUrl, [
             { name: "Inicio", item: SITE_URL },
-            { name: "Produtos", item: `${SITE_URL}/produtos` },
-            { name: "Poste Teleconico", item: pageUrl },
+            { name: "Fabricante de Postes Teleconicos", item: pageUrl },
         ]),
         createItemListSchema({
             id: `${pageUrl}#modelos`,
-            name: "Modelos de poste teleconico",
+            name: "Modelos de postes teleconicos fabricados pela B&B",
             items: modelOptions.map((model) => ({
                 name: model.title,
                 description: model.description,
@@ -282,13 +282,17 @@ function SectionLabel({ children }: { children: ReactNode }) {
     )
 }
 
-export default function PosteTeleconicoPage() {
+export default function FabricanteDePostesTeleconicosPage() {
     return (
         <main className="min-h-screen bg-white text-industrial-950">
-            <SchemaOrg id="poste-teleconico-schema" data={getSchema()} />
+            <SchemaOrg id="fabricante-postes-teleconicos-schema" data={getSchema()} />
             <Header />
             <div className="hidden md:block">
-                <FloatingWhatsApp message={whatsappMessage} />
+                <FloatingWhatsApp
+                    message={whatsappMessage}
+                    eventLabel="Solicitar orcamento fabricante postes teleconicos"
+                    eventSource="floating_fabricante_postes_teleconicos"
+                />
             </div>
 
             <section className="relative overflow-hidden bg-industrial-950 pt-28 md:pt-36">
@@ -298,43 +302,44 @@ export default function PosteTeleconicoPage() {
                         alt=""
                         fill
                         priority
-                        className="object-cover opacity-85 md:opacity-100"
+                        className="object-cover opacity-80 md:opacity-95"
                         sizes="100vw"
                         style={{ objectPosition: "center center" }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-industrial-950/92 via-industrial-950/58 to-industrial-950/8" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-industrial-950/58 via-industrial-950/10 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-industrial-950/94 via-industrial-950/62 to-industrial-950/12" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-industrial-950/64 via-industrial-950/10 to-transparent" />
                 </div>
 
                 <div className="container relative z-10 mx-auto px-4 pb-20 pt-12 md:pb-28">
                     <div className="max-w-4xl">
                         <div className="mb-6 inline-flex items-center gap-3 border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.22em] text-white">
-                            <Zap className="size-4 text-accent-premium" aria-hidden="true" />
-                            Reto, curvo, flangeado ou engastado
+                            <Factory className="size-4 text-accent-premium" aria-hidden="true" />
+                            Producao propria, atendimento nacional
                         </div>
                         <h1 className="max-w-4xl text-4xl font-black uppercase leading-[0.95] tracking-tight text-white md:text-6xl lg:text-7xl">
-                            Poste Teleconico
+                            Fabricante de Postes Teleconicos
                         </h1>
                         <p className="mt-8 max-w-3xl text-base font-medium leading-relaxed text-industrial-200 md:text-xl">
-                            Poste teleconico para iluminacao publica, avenidas, pracas, condominios, loteamentos,
-                            estacionamentos e areas industriais, com orientacao tecnica para modelo, fixacao, acabamento e
-                            orcamento.
+                            Postes teleconicos retos, curvos simples e curvos duplos para iluminacao publica, loteamentos,
+                            pracas, condominios, estacionamentos e areas industriais, com suporte para compra tecnica.
                         </p>
                         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                             <WhatsAppLink
                                 message={whatsappMessage}
+                                eventLabel="Solicitar orcamento fabricante postes teleconicos"
+                                eventSource="hero_fabricante_postes_teleconicos"
                                 className="inline-flex h-14 items-center justify-center gap-3 bg-accent-premium px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-yellow-300"
-                                aria-label="Solicitar orcamento de poste teleconico pelo WhatsApp"
+                                aria-label="Solicitar orcamento de postes teleconicos pelo WhatsApp"
                             >
                                 <MessageCircle className="size-5" aria-hidden="true" />
                                 Solicitar orcamento
                             </WhatsAppLink>
                             <Link
-                                href="/downloads"
+                                href="/produtos/poste-teleconico"
                                 className="inline-flex h-14 items-center justify-center gap-3 border border-white/25 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-industrial-950"
                             >
-                                <Download className="size-5" aria-hidden="true" />
-                                Baixar catalogos
+                                <Ruler className="size-5" aria-hidden="true" />
+                                Ver poste teleconico
                             </Link>
                         </div>
                     </div>
@@ -363,18 +368,17 @@ export default function PosteTeleconicoPage() {
             <section className="py-20 md:py-28">
                 <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
                     <div className="space-y-6">
-                        <SectionLabel>Produto tecnico</SectionLabel>
+                        <SectionLabel>Compra com fabricante</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Quando usar poste teleconico
+                            O que confirmar antes de pedir preco
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-600 md:text-lg">
-                            A busca por poste teleconico normalmente ja vem de uma necessidade tecnica: iluminar uma area,
-                            manter padrao urbano, atender memoriais, compatibilizar luminarias e definir fixacao antes da
-                            compra.
+                            Quem procura fabricante de postes teleconicos normalmente ja precisa sair da busca generica e
+                            chegar em uma especificacao: modelo, aplicacao, fixacao, acabamento e prazo.
                         </p>
                         <p className="text-base leading-relaxed text-industrial-600 md:text-lg">
-                            Esta pagina organiza a conversa para compras, engenharia e obras: modelo, aplicacao, fixacao,
-                            acabamento, documentos e informacoes minimas para um orcamento tecnico.
+                            A B&B posiciona Goiania como prova fabril e atende projetos no Brasil com conversa comercial
+                            orientada por engenharia, compras e obra.
                         </p>
                     </div>
 
@@ -396,13 +400,13 @@ export default function PosteTeleconicoPage() {
             <section className="bg-industrial-950 py-20 text-white md:py-28">
                 <div className="container mx-auto px-4">
                     <div className="mb-12 max-w-3xl space-y-5">
-                        <SectionLabel>Modelos</SectionLabel>
+                        <SectionLabel>Modelos fabricados</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Reto, curvo simples e curvo duplo
+                            Retos, curvos simples e curvos duplos
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-300">
-                            A geometria do poste deve seguir o ambiente, o posicionamento da luminaria e o objetivo de
-                            iluminacao. A B&B orienta a escolha antes da proposta.
+                            A geometria do poste muda conforme largura da via, posicao da luminaria, canteiro central,
+                            circulacao e necessidade visual do projeto.
                         </p>
                     </div>
                     <div className="grid gap-5 md:grid-cols-3">
@@ -433,29 +437,24 @@ export default function PosteTeleconicoPage() {
             </section>
 
             <section className="py-20 md:py-28">
-                <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+                <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
                     <div className="space-y-5">
-                        <SectionLabel>Fixacao e escolha</SectionLabel>
+                        <SectionLabel>Processo de cotacao</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Como transformar demanda em especificacao
+                            Como transformar busca em briefing
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-600">
-                            Antes de comparar preco, vale confirmar o tipo de uso, o modelo, a fixacao e o acabamento.
-                            Isso reduz retrabalho entre compras, obra e engenharia.
+                            A pagina existe para reduzir ruído na cotacao. Quanto melhor o briefing, mais rapido o time
+                            comercial consegue orientar modelo, acabamento, documentos e prazo.
                         </p>
                     </div>
-                    <div className="overflow-hidden border border-industrial-200">
-                        {decisionRows.map(([item, use, criterion]) => (
-                            <div key={item} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[180px_1fr_1fr]">
-                                <div className="bg-industrial-50 px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-600">
-                                    {item}
-                                </div>
-                                <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-800">
-                                    {use}
-                                </div>
-                                <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-800">
-                                    {criterion}
-                                </div>
+                    <div className="grid gap-4 md:grid-cols-2">
+                        {buyingSteps.map((step) => (
+                            <div key={step.title} className="border border-industrial-200 p-6">
+                                <h3 className="text-base font-black uppercase tracking-tight text-industrial-950">
+                                    {step.title}
+                                </h3>
+                                <p className="mt-3 text-sm leading-relaxed text-industrial-600">{step.description}</p>
                             </div>
                         ))}
                     </div>
@@ -498,11 +497,11 @@ export default function PosteTeleconicoPage() {
                     <div className="mb-12 max-w-3xl space-y-5">
                         <SectionLabel>Aplicacoes</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Onde o poste teleconico entra no cluster B&B
+                            Onde os postes teleconicos entram
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-600">
-                            Esta pagina aprofunda o produto e distribui o comprador para aplicacoes, fabricante, hub de
-                            postes e catalogos.
+                            A pagina de fabricante distribui o comprador para produto, aplicacao, hub de postes e
+                            cotacao com fornecedor.
                         </p>
                     </div>
                     <div className="grid gap-4 md:grid-cols-4">
@@ -522,7 +521,7 @@ export default function PosteTeleconicoPage() {
                                     </h3>
                                     <p className="mt-3 text-sm leading-relaxed text-industrial-600">{card.description}</p>
                                     <span className="mt-5 inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-industrial-500 group-hover:text-industrial-950">
-                                        Ver aplicacao
+                                        Ver detalhes
                                         <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
                                     </span>
                                 </Link>
@@ -537,11 +536,11 @@ export default function PosteTeleconicoPage() {
                     <div className="space-y-5">
                         <SectionLabel>Downloads</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Datasheets e desenhos para iniciar a conversa tecnica
+                            Documentos para iniciar a conversa tecnica
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-300">
-                            Use os documentos disponiveis como ponto de partida. A confirmacao final de modelo, altura,
-                            fixacao e acabamento deve acontecer no orcamento tecnico.
+                            Use os materiais como ponto de partida. A confirmacao final de modelo, altura, fixacao e
+                            acabamento deve acontecer no orcamento tecnico.
                         </p>
                     </div>
                     <div className="grid gap-3">
@@ -576,11 +575,10 @@ export default function PosteTeleconicoPage() {
                     <div className="space-y-5">
                         <SectionLabel>Perguntas frequentes</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Duvidas comuns sobre poste teleconico
+                            Duvidas sobre fabricante de postes teleconicos
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-600">
-                            Respostas objetivas para compradores que precisam sair da busca generica e chegar a um
-                            briefing tecnico.
+                            Respostas para compradores que precisam validar fornecedor, modelo e dados de cotacao.
                         </p>
                     </div>
                     <div className="space-y-4">
@@ -601,21 +599,23 @@ export default function PosteTeleconicoPage() {
                 <div className="container mx-auto grid gap-8 px-4 lg:grid-cols-[1fr_auto] lg:items-center">
                     <div>
                         <h2 className="text-3xl font-black uppercase leading-tight text-industrial-950 md:text-5xl">
-                            Envie o projeto para cotar poste teleconico
+                            Fale com fabricante de postes teleconicos
                         </h2>
                         <p className="mt-4 max-w-3xl text-base font-bold leading-relaxed text-industrial-800">
-                            Informe aplicacao, modelo, altura aproximada, quantidade, cidade/UF, fixacao, acabamento,
-                            luminaria e prazo. A equipe B&B organiza a especificacao para orcamento.
+                            Envie aplicacao, modelo, altura aproximada, quantidade, cidade/UF, fixacao, acabamento,
+                            luminaria e prazo para iniciar uma cotacao tecnica.
                         </p>
                     </div>
                     <div className="flex flex-col gap-4 sm:flex-row lg:flex-col">
                         <WhatsAppLink
                             message={whatsappMessage}
+                            eventLabel="Falar com fabricante de postes teleconicos"
+                            eventSource="final_fabricante_postes_teleconicos"
                             className="inline-flex h-14 items-center justify-center gap-3 bg-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-industrial-800"
-                            aria-label="Falar com especialista sobre poste teleconico"
+                            aria-label="Falar com fabricante de postes teleconicos"
                         >
                             <MessageCircle className="size-5" aria-hidden="true" />
-                            Falar com especialista
+                            Falar com fabricante
                         </WhatsAppLink>
                         <Link
                             href="/downloads"
@@ -640,7 +640,7 @@ export default function PosteTeleconicoPage() {
             </section>
 
             <section className="bg-white py-10">
-                <div className="container mx-auto grid gap-3 px-4 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="container mx-auto grid gap-3 px-4 sm:grid-cols-2 lg:grid-cols-4">
                     {secondaryInternalLinks.map(([label, href]) => (
                         <Link
                             key={href}
