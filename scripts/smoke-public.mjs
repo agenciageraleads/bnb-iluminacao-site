@@ -18,6 +18,7 @@ const paths = [
   '/blog',
   '/blog/altura-de-poste-para-iluminacao-publica',
   '/blog/normas-para-postes-de-iluminacao',
+  '/blog/poste-galvanizado-ou-pintado',
   '/representantes',
   '/downloads',
 ]

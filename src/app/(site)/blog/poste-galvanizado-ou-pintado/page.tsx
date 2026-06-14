@@ -3,20 +3,19 @@ import Image from "next/image"
 import Link from "next/link"
 import type { ReactNode } from "react"
 import {
-    AlertTriangle,
     ArrowRight,
-    BookOpen,
+    Building2,
     ClipboardCheck,
     Download,
-    FileCheck2,
+    Factory,
     FileText,
     Landmark,
     MessageCircle,
+    Paintbrush,
     Ruler,
     ShieldCheck,
-    Wind,
+    Waves,
     Wrench,
-    Zap,
 } from "lucide-react"
 
 import { Footer } from "@/components/layout/footer"
@@ -36,24 +35,24 @@ import {
     createWebPageSchema,
 } from "@/lib/seo/schema"
 
-const pageUrl = "https://bebiluminacao.com.br/blog/normas-para-postes-de-iluminacao"
-const pageTitle = "Normas para Postes de Iluminacao Publica"
+const pageUrl = "https://bebiluminacao.com.br/blog/poste-galvanizado-ou-pintado"
+const pageTitle = "Poste Galvanizado ou Pintado"
 const pageDescription =
-    "Guia tecnico para orientar quais normas e documentos entram na especificacao de postes para iluminacao publica, sem substituir projeto ou memorial."
-const heroImage = "/images/seo/postes-metalicos/rua-iluminada-poste-curvo.jpg"
+    "Compare poste galvanizado, pintado e galvanizado com pintura para escolher acabamento conforme ambiente, durabilidade, visual e memorial tecnico."
+const heroImage = "/images/seo/postes-metalicos/estacionamento-industrial-postes-retos.jpg"
 const whatsappMessage =
-    "Ola, vim pelo guia de normas para postes de iluminacao e quero ajuda para montar um orcamento tecnico."
+    "Ola, vim pelo comparativo de poste galvanizado ou pintado e quero ajuda para definir acabamento e orcamento tecnico."
 
 export const metadata: Metadata = {
     title: {
-        absolute: "Normas para Postes de Iluminacao Publica | Guia Tecnico B&B",
+        absolute: "Poste Galvanizado ou Pintado | Comparativo Tecnico B&B",
     },
     description: pageDescription,
     alternates: {
         canonical: pageUrl,
     },
     openGraph: {
-        title: "Normas para Postes de Iluminacao Publica | Guia Tecnico B&B",
+        title: "Poste Galvanizado ou Pintado | Comparativo Tecnico B&B",
         description: pageDescription,
         url: pageUrl,
         type: "article",
@@ -62,7 +61,7 @@ export const metadata: Metadata = {
                 url: absoluteUrl(heroImage),
                 width: 1200,
                 height: 630,
-                alt: "Via urbana iluminada por postes publicos",
+                alt: "Postes metalicos externos em estacionamento industrial",
             },
         ],
     },
@@ -70,155 +69,149 @@ export const metadata: Metadata = {
 
 const decisionCards = [
     {
-        title: "Norma nao e catalogo",
+        title: "Ambiente primeiro",
         description:
-            "A norma ajuda a orientar requisitos tecnicos, mas a compra ainda precisa de modelo, altura, fixacao, acabamento, desenho e quantidade.",
-        icon: BookOpen,
+            "Umidade, maresia, agentes agressivos, manutencao e exposicao externa pesam mais que uma escolha puramente estetica.",
+        icon: Waves,
     },
     {
-        title: "Versao vigente importa",
+        title: "Visual tambem importa",
         description:
-            "Edicao, escopo e aplicabilidade devem ser confirmados em fonte oficial antes de fechar memorial, edital ou pedido de compra.",
-        icon: FileCheck2,
+            "Cor, identidade do empreendimento e padronizacao urbana podem pedir pintura mesmo quando a protecao ja foi considerada.",
+        icon: Paintbrush,
     },
     {
-        title: "Projeto manda na compra",
+        title: "Memorial fecha a regra",
         description:
-            "Projeto luminotecnico, memorial, padrao local e concessionaria podem ser mais determinantes que uma busca generica por norma.",
+            "Projeto, edital, norma citada, prazo, processo e documentos de recebimento devem definir o acabamento de compra.",
         icon: ClipboardCheck,
     },
 ]
 
-const standardRows = [
+const comparisonRows = [
     [
-        "ABNT NBR 14744",
-        "Postes de aco para iluminacao",
-        "Entra na conversa de postes de aco retos ou curvos e acessorios. Confirme escopo, requisitos e edicao no catalogo oficial e no memorial.",
+        "Poste galvanizado",
+        "Quando a prioridade e protecao contra corrosao em area externa, loteamentos, industrias, vias e ambientes mais exigentes.",
+        "Confirme processo, dimensoes, prazo, necessidade de pintura complementar e requisito do memorial.",
     ],
     [
-        "ABNT NBR 5101",
-        "Projeto de iluminacao publica",
-        "Orienta criterios luminotecnicos de iluminacao publica. Nao define sozinha o poste comercial, a base, o acabamento ou a compra.",
+        "Poste pintado",
+        "Quando a prioridade e padrao visual, cor, arquitetura, identidade do condominio, praca ou empreendimento.",
+        "Confirme preparo de superficie, tipo de pintura, cor, ambiente e expectativa de manutencao.",
     ],
     [
-        "ABNT NBR 6323",
-        "Galvanizacao por imersao a quente",
-        "Costuma entrar quando o memorial exige acabamento galvanizado e protecao anticorrosiva para pecas de aco ou ferro fundido.",
+        "Galvanizado + pintura",
+        "Quando o projeto precisa combinar protecao anticorrosiva com acabamento visual especifico.",
+        "Confirme compatibilidade entre processos, sequencia de fabricacao, aderencia, cor e prazo.",
     ],
     [
-        "ABNT NBR 6123",
-        "Acoes de vento",
-        "Pode ser relevante no dimensionamento estrutural quando altura, area exposta, bracos, luminarias e local de instalacao exigem analise.",
-    ],
-    [
-        "Padrao da concessionaria ou municipio",
-        "Ligacao, rede e recebimento local",
-        "Pode definir detalhes de rede, aceite, instalacao, responsabilidades e documentos exigidos no local da obra.",
-    ],
-    [
-        "Memorial e projeto da obra",
-        "Especificacao de compra",
-        "Fecha modelo, altura, fixacao, acabamento, desenhos, prazo, quantidade e documentos que o fornecedor precisa entregar.",
+        "Sob memorial",
+        "Quando edital, concessionaria, cliente ou engenharia ja definiram requisito tecnico de acabamento.",
+        "Envie o documento antes da cotacao para evitar preco incompleto ou retrabalho.",
     ],
 ]
 
-const documentChecklist = [
+const factorCards = [
     {
-        title: "Projeto luminotecnico",
-        description: "Ajuda a validar nivel de iluminacao, espacamento, altura, luminaria, lente, braco e distribuicao de luz.",
-        icon: Landmark,
-    },
-    {
-        title: "Memorial descritivo",
-        description: "Transforma a necessidade da obra em requisito de compra: material, acabamento, altura, fixacao e documentos.",
-        icon: FileText,
-    },
-    {
-        title: "Modelo e geometria",
-        description: "Poste reto, teleconico, curvo simples, curvo duplo, ornamental ou com braco mudam fabricacao e aplicacao.",
-        icon: Ruler,
-    },
-    {
-        title: "Fixacao e fundacao",
-        description: "Poste engastado, flangeado, base, chumbadores e fundacao precisam conversar com o projeto civil.",
-        icon: Wrench,
-    },
-    {
-        title: "Acabamento e ambiente",
-        description: "Galvanizacao, pintura, corrosao, manutencao e exposicao definem a durabilidade esperada do conjunto.",
+        title: "Corrosao e intemperie",
+        description: "Exposicao a chuva, umidade, maresia, poluicao, produtos quimicos e manutencao muda a necessidade de protecao.",
         icon: ShieldCheck,
     },
     {
-        title: "Local e vento",
-        description: "Cidade, UF, topografia, altura, area exposta e acessorios podem exigir validacao estrutural especifica.",
-        icon: Wind,
+        title: "Aplicacao do poste",
+        description: "Via publica, loteamento, praca, condominio, estacionamento e patio industrial pedem decisoes diferentes.",
+        icon: Landmark,
+    },
+    {
+        title: "Modelo e geometria",
+        description: "Poste reto, teleconico, curvo simples, curvo duplo, base e bracos podem interferir no processo e no prazo.",
+        icon: Ruler,
+    },
+    {
+        title: "Fixacao e manutencao",
+        description: "Engastado, flangeado, base, chumbadores e acesso de manutencao devem entrar no briefing.",
+        icon: Wrench,
+    },
+    {
+        title: "Padrao visual",
+        description: "Cores, identidade urbana e compatibilidade com luminarias, fachadas e paisagismo podem justificar pintura.",
+        icon: Paintbrush,
+    },
+    {
+        title: "Documentos tecnicos",
+        description: "Memorial, projeto, edital e requisitos de recebimento devem ser enviados antes de fechar acabamento.",
+        icon: FileText,
     },
 ]
 
-const riskCards = [
+const choiceGuide = [
     {
-        title: "Copiar trecho de norma da internet",
-        description:
-            "Alem de risco legal, muitas copias estao incompletas ou desatualizadas. Use fonte oficial e trate a pagina como orientacao de briefing.",
+        title: "Escolha galvanizado quando",
+        items: [
+            "o poste ficara exposto ao tempo;",
+            "o ambiente exige maior protecao anticorrosiva;",
+            "o memorial cita galvanizacao ou durabilidade externa;",
+            "a obra prioriza vida util e reducao de manutencao.",
+        ],
+        icon: ShieldCheck,
     },
     {
-        title: "Comprar so por preco",
-        description:
-            "Sem altura, aplicacao, fixacao e acabamento, o menor preco pode virar retrabalho, incompatibilidade ou troca de fornecedor.",
+        title: "Escolha pintado quando",
+        items: [
+            "o padrao visual e decisivo;",
+            "a cor precisa seguir arquitetura ou identidade do empreendimento;",
+            "o ambiente e menos agressivo ou ja tem protecao definida;",
+            "o memorial especifica pintura, cor ou acabamento visual.",
+        ],
+        icon: Paintbrush,
     },
     {
-        title: "Ignorar o padrao local",
-        description:
-            "Concessionaria, prefeitura, edital e memorial podem exigir documentos e detalhes que nao aparecem em uma busca nacional.",
-    },
-    {
-        title: "Trocar acabamento sem validar",
-        description:
-            "Galvanizacao, pintura e protecao anticorrosiva devem ser decididas pelo ambiente e pela durabilidade esperada do projeto.",
+        title: "Combine processos quando",
+        items: [
+            "a obra exige protecao e cor especifica;",
+            "o cliente quer durabilidade com identidade visual;",
+            "o memorial pede sistema de acabamento combinado;",
+            "engenharia validou compatibilidade, aderencia e prazo.",
+        ],
+        icon: ClipboardCheck,
     },
 ]
 
 const quoteChecklist = [
-    "Cidade, UF, tipo de obra e ambiente de instalacao.",
-    "Aplicacao: via publica, loteamento, condominio, praca, estacionamento ou area industrial.",
-    "Modelo pretendido: reto, teleconico, curvo simples, curvo duplo, ornamental ou suporte/braco.",
-    "Altura, quantidade, luminaria, braco, numero de pontos por poste e espacamento previsto.",
-    "Tipo de fixacao: engastado, flangeado, base, chumbadores ou indefinido.",
-    "Acabamento esperado: galvanizado, pintura, cor, durabilidade ou exigencia do memorial.",
-    "Projeto, memorial, edital, padrao da concessionaria, desenho ou foto do local.",
-    "Prazo, cidade de entrega e documentos tecnicos exigidos para recebimento.",
+    "Cidade, UF e ambiente de instalacao: via, loteamento, condominio, praca, estacionamento ou industria.",
+    "Modelo do poste: reto, teleconico, curvo simples, curvo duplo, ornamental ou sob desenho.",
+    "Altura, quantidade, luminaria, braco, fixacao e necessidade de base/chumbadores.",
+    "Acabamento desejado: galvanizado, pintado, galvanizado com pintura ou indefinido.",
+    "Cor, padrao visual, referencia arquitetonica ou identidade do empreendimento.",
+    "Memorial, edital, projeto, norma citada ou documento de recebimento, quando houver.",
+    "Prazo esperado, cidade de entrega e restricoes de obra.",
+    "Fotos do local ou historico de corrosao/manutencao, quando existir.",
 ]
 
 const internalLinks = [
     {
-        title: "Altura de poste para iluminacao publica",
-        description: "Continue a triagem tecnica por altura, aplicacao, luminaria, braco e fixacao.",
-        href: "/blog/altura-de-poste-para-iluminacao-publica",
-        icon: Ruler,
-    },
-    {
-        title: "Postes para iluminacao publica",
-        description: "Veja aplicacoes urbanas, loteamentos, condominios, areas industriais e dados para orcamento.",
-        href: "/postes-para-iluminacao-publica",
-        icon: Landmark,
-    },
-    {
         title: "Poste metalico galvanizado",
-        description: "Entenda quando o acabamento galvanizado entra como requisito de durabilidade e protecao.",
+        description: "Aprofunde a pagina comercial do acabamento galvanizado para iluminacao e areas externas.",
         href: "/produtos/poste-metalico-galvanizado",
         icon: ShieldCheck,
     },
     {
-        title: "Poste galvanizado ou pintado",
-        description: "Compare acabamento galvanizado, pintado ou combinado antes de fechar o memorial de compra.",
-        href: "/blog/poste-galvanizado-ou-pintado",
-        icon: ShieldCheck,
+        title: "Pintura eletrostatica",
+        description: "Veja o servico de pintura para projetos que precisam de cor e acabamento visual.",
+        href: "/servicos/pintura-eletrostatica",
+        icon: Paintbrush,
     },
     {
-        title: "Poste teleconico",
-        description: "Acesse a pagina tecnica do modelo usado em vias, loteamentos, condominios e projetos urbanos.",
-        href: "/produtos/poste-teleconico",
-        icon: Zap,
+        title: "Normas para postes",
+        description: "Organize normas, memoriais e documentos antes de fechar especificacao de compra.",
+        href: "/blog/normas-para-postes-de-iluminacao",
+        icon: FileText,
+    },
+    {
+        title: "Postes metalicos",
+        description: "Compare modelos, aplicacoes e caminhos de compra no hub nacional de postes.",
+        href: "/postes-metalicos",
+        icon: Building2,
     },
 ]
 
@@ -243,29 +236,29 @@ const downloadLinks = [
 
 const faq = [
     {
-        question: "Qual norma rege poste de iluminacao publica?",
+        question: "Poste galvanizado e sempre melhor que poste pintado?",
         answer:
-            "Nao existe uma resposta unica para toda compra. Postes de aco para iluminacao, projeto luminotecnico, galvanizacao, vento, padrao local, concessionaria e memorial podem entrar juntos na especificacao.",
+            "Nao necessariamente. Galvanizacao costuma priorizar protecao contra corrosao. Pintura costuma priorizar padrao visual e cor. A melhor escolha depende do ambiente, memorial, manutencao e objetivo do projeto.",
     },
     {
-        question: "A B&B pode dizer que um poste esta em norma sem projeto?",
+        question: "Quando usar poste galvanizado com pintura?",
         answer:
-            "A pagina orienta briefing comercial e tecnico. A confirmacao formal deve considerar projeto, memorial, edicao vigente da norma, local de instalacao e requisitos exigidos pelo cliente ou orgao responsavel.",
+            "Quando o projeto precisa combinar protecao anticorrosiva com acabamento visual especifico. A compatibilidade entre processos, aderencia, cor e prazo deve ser validada antes da compra.",
     },
     {
-        question: "NBR 14744 e NBR 5101 sao a mesma coisa?",
+        question: "Qual norma entra na galvanizacao de postes metalicos?",
         answer:
-            "Nao. Elas aparecem em conversas diferentes: uma associada a postes de aco para iluminacao e outra ao projeto de iluminacao publica. A aplicacao deve ser confirmada em fonte oficial e no memorial da obra.",
+            "A ABNT NBR 6323 costuma aparecer quando o memorial exige galvanizacao por imersao a quente em produtos de aco ou ferro fundido. A edicao vigente e o escopo devem ser confirmados em fonte oficial e no memorial.",
     },
     {
-        question: "Quando galvanizacao entra na especificacao?",
+        question: "Pintura eletrostatica substitui galvanizacao?",
         answer:
-            "Quando o ambiente, a durabilidade esperada, o memorial ou o comprador exigem protecao anticorrosiva. Em muitos casos a galvanizacao por imersao a quente aparece como requisito tecnico.",
+            "Nao e uma substituicao automatica. A pintura pode atender padrao visual e protecao complementar, mas a decisao depende de ambiente, preparo de superficie, processo, durabilidade esperada e memorial.",
     },
     {
-        question: "O que enviar para orcar poste conforme norma?",
+        question: "O que enviar para a B&B definir acabamento do poste?",
         answer:
-            "Envie cidade e UF, aplicacao, quantidade, modelo, altura, luminaria, braco, fixacao, acabamento, prazo, memorial, projeto, edital ou padrao local quando existir.",
+            "Envie aplicacao, cidade e UF, ambiente, quantidade, modelo, altura, fixacao, cor desejada, prazo e qualquer memorial, projeto, edital ou referencia tecnica disponivel.",
     },
 ]
 
@@ -308,11 +301,11 @@ function getSchema() {
             { name: pageTitle, item: pageUrl },
         ]),
         createItemListSchema({
-            id: `${pageUrl}#normas-documentos`,
-            name: "Normas e documentos para postes de iluminacao publica",
-            items: standardRows.map(([standard, scope, note]) => ({
-                name: `${standard}: ${scope}`,
-                description: note,
+            id: `${pageUrl}#comparativo-acabamentos`,
+            name: "Comparativo de acabamento para postes metalicos",
+            items: comparisonRows.map(([finish, use, note]) => ({
+                name: finish,
+                description: `${use} ${note}`,
             })),
         }),
         createFaqSchema(pageUrl, faq),
@@ -327,16 +320,16 @@ function SectionLabel({ children }: { children: ReactNode }) {
     )
 }
 
-export default function NormasParaPostesDeIluminacaoPage() {
+export default function PosteGalvanizadoOuPintadoPage() {
     return (
         <main className="min-h-screen bg-white text-industrial-950">
-            <SchemaOrg id="normas-postes-iluminacao-schema" data={getSchema()} />
+            <SchemaOrg id="poste-galvanizado-ou-pintado-schema" data={getSchema()} />
             <Header />
             <div className="hidden 2xl:block">
                 <FloatingWhatsApp
                     message={whatsappMessage}
-                    eventLabel="Solicitar orcamento pelo guia de normas"
-                    eventSource="floating_normas_postes_ip"
+                    eventLabel="Solicitar orcamento pelo comparativo de acabamento"
+                    eventSource="floating_acabamento_postes"
                 />
             </div>
 
@@ -358,34 +351,34 @@ export default function NormasParaPostesDeIluminacaoPage() {
                 <div className="container relative z-10 mx-auto px-4 pb-20 pt-12 md:pb-28">
                     <div className="max-w-4xl">
                         <div className="mb-6 inline-flex items-center gap-3 border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.22em] text-white">
-                            <BookOpen className="size-4 text-accent-premium" aria-hidden="true" />
-                            Guia tecnico para briefing e compra
+                            <Paintbrush className="size-4 text-accent-premium" aria-hidden="true" />
+                            Guia tecnico de acabamento
                         </div>
                         <h1 className="max-w-4xl text-4xl font-black uppercase leading-[0.95] tracking-tight text-white md:text-6xl lg:text-7xl">
-                            Normas para Postes de Iluminacao Publica
+                            Poste Galvanizado ou Pintado: Como Escolher
                         </h1>
                         <p className="mt-8 max-w-3xl text-base font-medium leading-relaxed text-industrial-200 md:text-xl">
-                            Antes de cotar poste, organize quais normas, memoriais, padroes locais e documentos tecnicos
-                            entram na especificacao. Este guia ajuda compras e engenharia a chegar em um orcamento mais
-                            claro, sem substituir consulta oficial, projeto ou responsavel tecnico.
+                            O acabamento do poste nao deve ser definido so por preco ou aparencia. Compare galvanizado,
+                            pintado e galvanizado com pintura para alinhar durabilidade, ambiente, padrao visual, memorial
+                            tecnico e prazo de fornecimento.
                         </p>
                         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                             <WhatsAppLink
                                 message={whatsappMessage}
-                                eventLabel="Solicitar orcamento pelo guia de normas"
-                                eventSource="hero_normas_postes_ip"
+                                eventLabel="Solicitar orcamento pelo comparativo de acabamento"
+                                eventSource="hero_acabamento_postes"
                                 className="inline-flex h-14 items-center justify-center gap-3 bg-accent-premium px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-yellow-300"
-                                aria-label="Solicitar orcamento de postes conforme briefing tecnico pelo WhatsApp"
+                                aria-label="Solicitar orcamento de poste com acabamento pelo WhatsApp"
                             >
                                 <MessageCircle className="size-5" aria-hidden="true" />
                                 Solicitar orcamento
                             </WhatsAppLink>
                             <Link
-                                href="/downloads"
+                                href="/produtos/poste-metalico-galvanizado"
                                 className="inline-flex h-14 items-center justify-center gap-3 border border-white/25 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-industrial-950"
                             >
-                                <Download className="size-5" aria-hidden="true" />
-                                Ver catalogos
+                                <ShieldCheck className="size-5" aria-hidden="true" />
+                                Ver poste galvanizado
                             </Link>
                         </div>
                     </div>
@@ -415,34 +408,62 @@ export default function NormasParaPostesDeIluminacaoPage() {
                 <section className="py-20 md:py-28">
                     <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
                         <div className="space-y-6">
-                            <SectionLabel>Como usar este guia</SectionLabel>
+                            <SectionLabel>Comparativo rapido</SectionLabel>
                             <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                                Norma entra no contexto, mas a especificacao nasce do projeto
+                                Galvanizar, pintar ou combinar processos
                             </h2>
                             <p className="text-base leading-relaxed text-industrial-600 md:text-lg">
-                                Em postes para iluminacao publica, a decisao raramente depende de uma unica sigla. A compra
-                                pode envolver norma de produto, projeto luminotecnico, dimensionamento estrutural, acabamento,
-                                padrao da concessionaria, edital, memorial da obra e exigencias de recebimento.
+                                Em postes metalicos, acabamento e especificacao caminham juntos. A galvanizacao costuma
+                                aparecer quando a conversa e durabilidade externa e protecao anticorrosiva. A pintura
+                                aparece quando cor, identidade visual e padronizacao do empreendimento sao decisivas.
                             </p>
                             <p className="text-base leading-relaxed text-industrial-600 md:text-lg">
-                                Use esta pagina para montar o briefing antes de falar com a fabrica. Para fechar requisito
-                                formal, confirme sempre a edicao vigente em fonte oficial, o memorial do projeto e a
-                                responsabilidade tecnica aplicavel.
+                                Em muitos projetos, a decisao correta nao e "um contra o outro", mas entender se o poste
+                                deve ser galvanizado, pintado ou galvanizado com pintura complementar conforme ambiente,
+                                memorial, prazo e processo de fabricacao.
                             </p>
                         </div>
 
+                        <div className="overflow-hidden border border-industrial-200">
+                            {comparisonRows.map(([finish, use, note]) => (
+                                <div key={finish} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[220px_1fr]">
+                                    <div className="bg-industrial-950 px-5 py-4 text-xs font-black uppercase tracking-widest text-white">
+                                        {finish}
+                                    </div>
+                                    <div className="space-y-2 px-5 py-4">
+                                        <p className="text-sm font-bold leading-relaxed text-industrial-800">{use}</p>
+                                        <p className="text-sm leading-relaxed text-industrial-600">{note}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                <section className="bg-industrial-950 py-20 text-white md:py-28">
+                    <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+                        <div className="space-y-5">
+                            <SectionLabel>Fatores de decisao</SectionLabel>
+                            <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
+                                O acabamento depende do uso real do poste
+                            </h2>
+                            <p className="text-base leading-relaxed text-industrial-300">
+                                Uma escolha bem feita considera ambiente, processo, visual, manutencao, fixacao, modelo do
+                                poste e exigencias do memorial. Essa triagem reduz retrabalho no orcamento.
+                            </p>
+                        </div>
                         <div className="grid gap-4 sm:grid-cols-2">
-                            {documentChecklist.map((item) => {
-                                const Icon = item.icon
+                            {factorCards.map((factor) => {
+                                const Icon = factor.icon
                                 return (
-                                    <div key={item.title} className="border border-industrial-200 p-6">
-                                        <div className="mb-6 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium">
-                                            <Icon className="size-6" aria-hidden="true" />
+                                    <div key={factor.title} className="border border-white/15 bg-white/5 p-6">
+                                        <div className="mb-6 flex size-12 items-center justify-center bg-white text-industrial-950">
+                                            <Icon className="size-6 text-accent-dark" aria-hidden="true" />
                                         </div>
-                                        <h3 className="text-base font-black uppercase tracking-tight text-industrial-950">
-                                            {item.title}
+                                        <h3 className="text-base font-black uppercase tracking-tight text-white">
+                                            {factor.title}
                                         </h3>
-                                        <p className="mt-3 text-sm leading-relaxed text-industrial-600">{item.description}</p>
+                                        <p className="mt-3 text-sm leading-relaxed text-industrial-300">{factor.description}</p>
                                     </div>
                                 )
                             })}
@@ -450,69 +471,41 @@ export default function NormasParaPostesDeIluminacaoPage() {
                     </div>
                 </section>
 
-                <section className="bg-industrial-950 py-20 text-white md:py-28">
+                <section className="py-20 md:py-28">
                     <div className="container mx-auto px-4">
                         <div className="mb-12 max-w-3xl space-y-5">
-                            <SectionLabel>Normas e documentos</SectionLabel>
+                            <SectionLabel>Regra pratica</SectionLabel>
                             <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                                O que normalmente entra na conversa tecnica
-                            </h2>
-                            <p className="text-base leading-relaxed text-industrial-300">
-                                A lista abaixo e orientativa. Ela nao reproduz texto de norma e nao substitui consulta ao
-                                catalogo oficial, ao projetista, ao edital, ao memorial ou ao padrao local da obra.
-                            </p>
-                        </div>
-
-                        <div className="overflow-hidden border border-white/15">
-                            {standardRows.map(([standard, scope, note]) => (
-                                <div key={standard} className="grid border-b border-white/15 last:border-b-0 md:grid-cols-[260px_270px_1fr]">
-                                    <div className="bg-white/10 px-5 py-4 text-xs font-black uppercase tracking-widest text-white">
-                                        {standard}
-                                    </div>
-                                    <div className="px-5 py-4 text-base font-black uppercase text-accent-premium">
-                                        {scope}
-                                    </div>
-                                    <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-200">
-                                        {note}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="mt-6 flex items-start gap-3 border border-white/15 bg-white/5 p-5 text-sm leading-relaxed text-industrial-300">
-                            <AlertTriangle className="mt-0.5 size-5 shrink-0 text-accent-premium" aria-hidden="true" />
-                            <p>
-                                As normas citadas devem ser verificadas em fonte oficial. O papel da B&B aqui e ajudar a
-                                transformar requisito em briefing de fabricacao, cotacao e atendimento tecnico.
-                            </p>
-                        </div>
-                    </div>
-                </section>
-
-                <section className="py-20 md:py-28">
-                    <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-                        <div className="space-y-5">
-                            <SectionLabel>Riscos comuns</SectionLabel>
-                            <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                                Erros que atrasam a compra de postes
+                                Como orientar a primeira escolha
                             </h2>
                             <p className="text-base leading-relaxed text-industrial-600">
-                                A maior parte dos atrasos nao nasce da fabricacao, mas de briefing incompleto. Compras,
-                                engenharia e fornecedor precisam falar sobre a mesma especificacao desde o inicio.
+                                Use estes cenarios como triagem inicial. A confirmacao final deve considerar memorial,
+                                processo, compatibilidade de acabamento, responsavel tecnico e condicoes da obra.
                             </p>
                         </div>
-                        <div className="grid gap-4 md:grid-cols-2">
-                            {riskCards.map((risk) => (
-                                <div key={risk.title} className="border border-industrial-200 p-6">
-                                    <div className="mb-5 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium">
-                                        <AlertTriangle className="size-6" aria-hidden="true" />
+
+                        <div className="grid gap-5 lg:grid-cols-3">
+                            {choiceGuide.map((group) => {
+                                const Icon = group.icon
+                                return (
+                                    <div key={group.title} className="border border-industrial-200 p-6">
+                                        <div className="mb-6 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium">
+                                            <Icon className="size-6" aria-hidden="true" />
+                                        </div>
+                                        <h3 className="text-base font-black uppercase tracking-tight text-industrial-950">
+                                            {group.title}
+                                        </h3>
+                                        <ul className="mt-5 space-y-3">
+                                            {group.items.map((item) => (
+                                                <li key={item} className="flex gap-3 text-sm leading-relaxed text-industrial-600">
+                                                    <span className="mt-2 size-1.5 shrink-0 bg-accent-dark" aria-hidden="true" />
+                                                    <span>{item}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
                                     </div>
-                                    <h3 className="text-base font-black uppercase tracking-tight text-industrial-950">
-                                        {risk.title}
-                                    </h3>
-                                    <p className="mt-3 text-sm leading-relaxed text-industrial-600">{risk.description}</p>
-                                </div>
-                            ))}
+                                )
+                            })}
                         </div>
                     </div>
                 </section>
@@ -522,11 +515,11 @@ export default function NormasParaPostesDeIluminacaoPage() {
                         <div className="space-y-5">
                             <SectionLabel>Dados para cotacao</SectionLabel>
                             <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                                O que enviar para orcar com menos retrabalho
+                                O que enviar para a B&B definir acabamento
                             </h2>
                             <p className="text-base leading-relaxed text-industrial-600">
-                                Se o pedido envolve norma, memorial ou edital, envie os documentos desde o primeiro contato.
-                                A equipe comercial consegue direcionar melhor modelo, altura, acabamento e escopo de entrega.
+                                Se o acabamento nao estiver fechado, envie o contexto da obra. A B&B consegue orientar a
+                                conversa comercial para chegar em uma cotacao mais objetiva.
                             </p>
                         </div>
                         <div className="grid gap-3">
@@ -545,11 +538,11 @@ export default function NormasParaPostesDeIluminacaoPage() {
                         <div className="space-y-5">
                             <SectionLabel>Arquivos tecnicos</SectionLabel>
                             <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                                Catalogos ajudam a transformar norma em item compravel
+                                Datasheets ajudam a comparar modelo e acabamento
                             </h2>
                             <p className="text-base leading-relaxed text-industrial-600">
-                                Datasheets e desenhos nao substituem o projeto, mas ajudam a comparar modelos e enviar uma
-                                solicitacao mais objetiva para fabricacao.
+                                Antes de fechar galvanizado, pintado ou combinado, compare modelo, altura, braco, fixacao
+                                e aplicacao do poste.
                             </p>
                         </div>
                         <div className="grid gap-3">
@@ -577,11 +570,11 @@ export default function NormasParaPostesDeIluminacaoPage() {
                         <div className="space-y-5">
                             <SectionLabel>Perguntas frequentes</SectionLabel>
                             <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                                Duvidas comuns sobre normas para postes
+                                Duvidas comuns sobre acabamento de postes
                             </h2>
                             <p className="text-base leading-relaxed text-industrial-300">
-                                Respostas objetivas para compradores, engenheiros, loteadores, condominios e equipes de
-                                obra que precisam especificar sem travar o orcamento.
+                                Respostas para orientar a conversa entre compras, engenharia, obra e fornecedor antes de
+                                fechar o pedido.
                             </p>
                         </div>
                         <div className="space-y-4">
@@ -603,30 +596,30 @@ export default function NormasParaPostesDeIluminacaoPage() {
                 <div className="container mx-auto grid gap-8 px-4 lg:grid-cols-[1fr_auto] lg:items-center">
                     <div>
                         <h2 className="text-3xl font-black uppercase leading-tight text-industrial-950 md:text-5xl">
-                            Envie memorial, projeto ou dados da obra
+                            Defina o acabamento antes de comprar
                         </h2>
                         <p className="mt-4 max-w-3xl text-base font-bold leading-relaxed text-industrial-800">
-                            A B&B ajuda a transformar requisito em cotacao tecnica: modelo, altura, fixacao, acabamento,
-                            quantidade, prazo, entrega e documentos de apoio.
+                            Envie ambiente, modelo, quantidade, fixacao, cor desejada e memorial. A B&B ajuda a transformar
+                            acabamento em especificacao de cotacao.
                         </p>
                     </div>
                     <div className="flex flex-col gap-4 sm:flex-row lg:flex-col">
                         <WhatsAppLink
                             message={whatsappMessage}
-                            eventLabel="Enviar dados para orcamento conforme normas"
-                            eventSource="final_normas_postes_ip"
+                            eventLabel="Enviar dados para orcamento de acabamento"
+                            eventSource="final_acabamento_postes"
                             className="inline-flex h-14 items-center justify-center gap-3 bg-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-industrial-800"
-                            aria-label="Enviar dados para orcamento de poste conforme normas pelo WhatsApp"
+                            aria-label="Enviar dados para orcamento de acabamento de poste pelo WhatsApp"
                         >
                             <MessageCircle className="size-5" aria-hidden="true" />
                             Falar com especialista
                         </WhatsAppLink>
                         <Link
-                            href="/postes-para-iluminacao-publica"
+                            href="/postes-metalicos"
                             className="inline-flex h-14 items-center justify-center gap-3 border-2 border-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-white"
                         >
-                            <Landmark className="size-5" aria-hidden="true" />
-                            Ver aplicacoes
+                            <Factory className="size-5" aria-hidden="true" />
+                            Ver postes metalicos
                         </Link>
                     </div>
                 </div>
@@ -654,11 +647,11 @@ export default function NormasParaPostesDeIluminacaoPage() {
             <section className="bg-white py-10">
                 <div className="container mx-auto grid gap-3 px-4 sm:grid-cols-2 lg:grid-cols-3">
                     {[
-                        ["Fabricante de postes metalicos", "/fabricante-de-postes-metalicos"],
-                        ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
+                        ["Postes para iluminacao publica", "/postes-para-iluminacao-publica"],
+                        ["Poste teleconico", "/produtos/poste-teleconico"],
                         ["Poste curvo simples", "/produtos/poste-curvo-simples"],
                         ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
-                        ["Braco para luminaria publica", "/produtos/braco-para-luminaria-publica"],
+                        ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
                         ["Catalogos e downloads", "/downloads"],
                     ].map(([label, href]) => (
                         <Link

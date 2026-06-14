@@ -183,6 +183,7 @@ const internalLinks = [
     ["Postes metalicos", "/postes-metalicos"],
     ["Altura de poste para iluminacao publica", "/blog/altura-de-poste-para-iluminacao-publica"],
     ["Normas para postes de iluminacao", "/blog/normas-para-postes-de-iluminacao"],
+    ["Poste galvanizado ou pintado", "/blog/poste-galvanizado-ou-pintado"],
     ["Poste teleconico", "/produtos/poste-teleconico"],
     ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
     ["Fabricante de postes metalicos", "/fabricante-de-postes-metalicos"],

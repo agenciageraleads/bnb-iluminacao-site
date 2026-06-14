@@ -196,6 +196,7 @@ const internalLinks = [
     ["Poste curvo simples", "/produtos/poste-curvo-simples"],
     ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
     ["Poste metalico galvanizado", "/produtos/poste-metalico-galvanizado"],
+    ["Poste galvanizado ou pintado", "/blog/poste-galvanizado-ou-pintado"],
     ["Braco para luminaria publica", "/produtos/braco-para-luminaria-publica"],
     ["Catalogo de produtos", "/produtos"],
     ["Linha Urban", "/produtos/linha-urban"],

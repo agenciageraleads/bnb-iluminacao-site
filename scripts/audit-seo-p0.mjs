@@ -54,6 +54,10 @@ const pages = [
     path: '/blog/normas-para-postes-de-iluminacao',
     types: ['Article', 'WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'FAQPage'],
   },
+  {
+    path: '/blog/poste-galvanizado-ou-pintado',
+    types: ['Article', 'WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'FAQPage'],
+  },
 ]
 
 const redirects = [

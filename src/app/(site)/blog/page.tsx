@@ -3,7 +3,7 @@ import { Header } from "@/components/layout/header"
 import { getBlogPosts, Post } from "@/lib/data"
 import Link from "next/link"
 import Image from "next/image"
-import { Calendar, ArrowRight, BookOpen, Ruler } from "lucide-react"
+import { Calendar, ArrowRight, BookOpen, Paintbrush, Ruler } from "lucide-react"
 import { unstable_noStore as noStore } from "next/cache"
 
 export const metadata: Metadata = {
@@ -34,6 +34,15 @@ const featuredGuides = [
         image: "/images/seo/postes-metalicos/rua-iluminada-poste-curvo.jpg",
         date: "14/06/2026",
         icon: BookOpen,
+    },
+    {
+        title: "Poste Galvanizado ou Pintado",
+        summary:
+            "Comparativo tecnico para escolher acabamento por ambiente, durabilidade, visual, memorial e prazo.",
+        href: "/blog/poste-galvanizado-ou-pintado",
+        image: "/images/seo/postes-metalicos/estacionamento-industrial-postes-retos.jpg",
+        date: "14/06/2026",
+        icon: Paintbrush,
     },
 ]
 

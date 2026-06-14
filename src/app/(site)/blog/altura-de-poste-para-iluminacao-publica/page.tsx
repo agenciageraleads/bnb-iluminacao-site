@@ -602,6 +602,7 @@ export default function AlturaDePosteParaIluminacaoPublicaPage() {
                 <div className="container mx-auto grid gap-3 px-4 sm:grid-cols-2 lg:grid-cols-3">
                     {[
                         ["Poste metalico galvanizado", "/produtos/poste-metalico-galvanizado"],
+                        ["Poste galvanizado ou pintado", "/blog/poste-galvanizado-ou-pintado"],
                         ["Fabricante de postes teleconicos", "/fabricante-de-postes-teleconicos"],
                         ["Normas para postes de iluminacao", "/blog/normas-para-postes-de-iluminacao"],
                         ["Poste curvo simples", "/produtos/poste-curvo-simples"],
