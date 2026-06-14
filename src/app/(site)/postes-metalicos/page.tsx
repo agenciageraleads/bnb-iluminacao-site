@@ -81,7 +81,7 @@ const models = [
         title: "Poste curvo simples",
         description: "Indicado quando o projeto pede avanco unico da luminaria sobre ruas, acessos ou calcadas.",
         use: "Ruas, acessos e calcadas",
-        href: "/produtos/linha-urban",
+        href: "/produtos/poste-curvo-simples",
     },
     {
         title: "Poste curvo duplo",
@@ -192,6 +192,7 @@ const internalLinks = [
     ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
     ["Postes para iluminacao publica", "/postes-para-iluminacao-publica"],
     ["Poste teleconico", "/produtos/poste-teleconico"],
+    ["Poste curvo simples", "/produtos/poste-curvo-simples"],
     ["Poste metalico galvanizado", "/produtos/poste-metalico-galvanizado"],
     ["Braco para luminaria publica", "/produtos/braco-para-luminaria-publica"],
     ["Catalogo de produtos", "/produtos"],

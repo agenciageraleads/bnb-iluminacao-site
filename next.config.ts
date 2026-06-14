@@ -159,6 +159,36 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/poste-curvo-simples',
+        destination: '/produtos/poste-curvo-simples',
+        permanent: true,
+      },
+      {
+        source: '/postes-curvos-simples',
+        destination: '/produtos/poste-curvo-simples',
+        permanent: true,
+      },
+      {
+        source: '/poste-teleconico-curvo-simples',
+        destination: '/produtos/poste-curvo-simples',
+        permanent: true,
+      },
+      {
+        source: '/poste-curvo-simples-galvanizado',
+        destination: '/produtos/poste-curvo-simples',
+        permanent: true,
+      },
+      {
+        source: '/poste-curvo-simples-com-base',
+        destination: '/produtos/poste-curvo-simples',
+        permanent: true,
+      },
+      {
+        source: '/poste-curvo-simples-engastado',
+        destination: '/produtos/poste-curvo-simples',
+        permanent: true,
+      },
+      {
         source: '/fabrica-postes-metalicos',
         destination: '/fabrica-de-postes-metalicos',
         permanent: true,
@@ -247,6 +277,11 @@ const nextConfig: NextConfig = {
       {
         source: '/produtos/postes-metalicos-galvanizados',
         destination: '/produtos/poste-metalico-galvanizado',
+        permanent: true,
+      },
+      {
+        source: '/produtos/poste-curvo-simples-galvanizado',
+        destination: '/produtos/poste-curvo-simples',
         permanent: true,
       },
       {

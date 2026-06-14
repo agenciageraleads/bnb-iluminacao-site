@@ -15,8 +15,8 @@ import {
     Ruler,
     ShieldCheck,
     Truck,
-    Waves,
     Wrench,
+    Zap,
 } from "lucide-react"
 
 import { Footer } from "@/components/layout/footer"
@@ -34,23 +34,23 @@ import {
     createWebPageSchema,
 } from "@/lib/seo/schema"
 
-const pageUrl = "https://bebiluminacao.com.br/produtos/poste-metalico-galvanizado"
+const pageUrl = "https://bebiluminacao.com.br/produtos/poste-curvo-simples"
 const pageDescription =
-    "Poste metalico galvanizado para iluminacao publica, condominios, loteamentos e industrias. Veja aplicacoes, acabamentos e solicite orcamento tecnico."
+    "Poste curvo simples para iluminacao publica, ruas, pracas, condominios e estacionamentos. Consulte modelos, fixacao, acabamento e orcamento."
 const whatsappMessage =
-    "Ola, vim pela pagina de poste metalico galvanizado e quero solicitar um orcamento tecnico."
-const heroImage = "/images/seo/postes-metalicos/estacionamento-industrial-postes-retos.jpg"
+    "Ola, vim pela pagina de poste curvo simples e quero solicitar um orcamento tecnico."
+const heroImage = "/images/produtos/poste-curvo-simples-rua-noite.png"
 
 export const metadata: Metadata = {
     title: {
-        absolute: "Poste Metalico Galvanizado para Iluminacao | B&B",
+        absolute: "Poste Curvo Simples Galvanizado | B&B Iluminacao",
     },
     description: pageDescription,
     alternates: {
         canonical: pageUrl,
     },
     openGraph: {
-        title: "Poste Metalico Galvanizado para Iluminacao | B&B",
+        title: "Poste Curvo Simples Galvanizado | B&B Iluminacao",
         description: pageDescription,
         url: pageUrl,
         type: "website",
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
                 url: `https://bebiluminacao.com.br${heroImage}`,
                 width: 1200,
                 height: 630,
-                alt: "Postes metalicos galvanizados para iluminacao",
+                alt: "Poste curvo simples para iluminacao publica",
             },
         ],
     },
@@ -67,19 +67,19 @@ export const metadata: Metadata = {
 
 const highlights = [
     {
-        title: "Protecao contra corrosao",
-        description: "Acabamento indicado para projetos externos e ambientes que exigem maior resistencia operacional.",
+        title: "Avanco unico",
+        description: "Modelo para quando a luminaria precisa avancar para um lado da via, calcada ou area de circulacao.",
+        icon: Zap,
+    },
+    {
+        title: "Fixacao definida em projeto",
+        description: "Engastado, flangeado, base e chumbadores conforme obra, fundacao e condicao de instalacao.",
+        icon: Wrench,
+    },
+    {
+        title: "Acabamento tecnico",
+        description: "Galvanizacao, pintura eletrostatica ou acabamento combinado conforme ambiente e memorial.",
         icon: ShieldCheck,
-    },
-    {
-        title: "Compra sob especificacao",
-        description: "Modelo, altura, fixacao e acabamento devem seguir aplicacao, memorial tecnico e condicao da obra.",
-        icon: ClipboardCheck,
-    },
-    {
-        title: "Aplicacao B2B",
-        description: "Postes para iluminacao publica, loteamentos, condominios, estacionamentos e areas industriais.",
-        icon: Building2,
     },
     {
         title: "Atendimento nacional",
@@ -88,117 +88,105 @@ const highlights = [
     },
 ]
 
-const useCases = [
-    {
-        title: "Iluminacao publica",
-        description: "Vias, avenidas, pracas e obras urbanas que exigem padrao tecnico, repetibilidade e durabilidade.",
-        href: "/postes-para-iluminacao-publica",
-        icon: Landmark,
-    },
-    {
-        title: "Loteamentos e condominios",
-        description: "Projetos em volume que precisam combinar padrao visual, acabamento e prazo de fornecimento.",
-        href: "/postes-metalicos",
-        icon: Building2,
-    },
-    {
-        title: "Areas industriais",
-        description: "Patios, docas, estacionamentos, galpoes e circulacao interna em ambientes de uso intenso.",
-        href: "/postes-metalicos",
-        icon: Factory,
-    },
-    {
-        title: "Ambientes agressivos",
-        description: "Regioes com maior exposicao a umidade, intemperies ou agentes que pedem cuidado no acabamento.",
-        href: "/fornecedor-de-postes-metalicos",
-        icon: Waves,
-    },
-]
-
 const specificationRows = [
-    ["Produto", "Poste metalico com acabamento galvanizado, definido conforme modelo, aplicacao e memorial tecnico."],
-    ["Modelos", "Reto, teleconico, curvo simples, curvo duplo ou solucao sob especificacao do projeto."],
+    ["Produto", "Poste curvo simples para luminaria com avanco unico, conforme aplicacao e especificacao do projeto."],
+    ["Aplicacoes", "Ruas, acessos, pracas, estacionamentos, condominios, loteamentos e iluminacao publica."],
+    ["Avanco", "Definido conforme luminaria, area de cobertura, largura da via e memoriais tecnicos disponiveis."],
     ["Fixacao", "Engastado, flangeado, base e chumbadores conforme projeto civil e condicao de instalacao."],
-    ["Uso", "Iluminacao publica, loteamentos, condominios, industrias, patios, estacionamentos e areas externas."],
-    ["Acabamento", "Galvanizacao e, quando necessario, pintura complementar conforme padrao visual e ambiente."],
-    ["Compra", "Orcamento com modelo, quantidade, cidade/UF, prazo, fixacao, acabamento e documentos disponiveis."],
+    ["Acabamento", "Galvanizado, pintado ou sob especificacao conforme ambiente, durabilidade esperada e padrao visual."],
+    ["Compra", "Orcamento com modelo, altura, avanco, quantidade, cidade/UF, prazo, acabamento e documentos disponiveis."],
 ]
 
 const comparisonRows = [
     [
-        "Galvanizado",
-        "Quando o projeto prioriza protecao contra corrosao em ambiente externo.",
-        "Indicado para obras que precisam de maior durabilidade operacional.",
+        "Curvo simples",
+        "Um ponto de avanco para luminaria.",
+        "Ruas, acessos, calcadas, estacionamentos e areas que precisam iluminar um lado predominante.",
     ],
     [
-        "Pintado",
-        "Quando a prioridade e padronizacao visual, cor ou identidade do empreendimento.",
-        "Pode ser suficiente em ambientes menos agressivos, conforme especificacao tecnica.",
+        "Curvo duplo",
+        "Dois avancos ou dois pontos de iluminacao.",
+        "Avenidas, canteiros centrais e areas que precisam iluminar dois sentidos.",
     ],
     [
-        "Galvanizado + pintura",
-        "Quando o projeto combina protecao e acabamento visual.",
-        "Deve ser definido conforme memorial, compatibilidade de processo e padrao da obra.",
+        "Reto",
+        "Poste vertical com luminaria no topo ou suporte dedicado.",
+        "Patios, estacionamentos, galpoes e aplicacoes com geometria mais objetiva.",
     ],
 ]
 
-const modelOptions = [
+const useCases = [
     {
-        title: "Poste reto galvanizado",
-        description: "Opcao objetiva para patios, estacionamentos, areas industriais e layouts de iluminacao direta.",
+        title: "Ruas e acessos",
+        description: "Poste curvo simples para direcionar a luminaria sobre a via, acesso ou area de passagem.",
+        href: "/postes-para-iluminacao-publica",
+        icon: Landmark,
+    },
+    {
+        title: "Condominios",
+        description: "Aplicacoes residenciais e comerciais com necessidade de padrao visual e iluminacao lateral.",
         href: "/postes-metalicos",
+        icon: Building2,
     },
     {
-        title: "Poste teleconico galvanizado",
-        description: "Modelo usado em vias, loteamentos, condominios e aplicacoes urbanas com exigencia tecnica.",
-        href: "/produtos/poste-teleconico",
+        title: "Estacionamentos",
+        description: "Areas de manobra e circulacao que pedem poste com avanco e compatibilidade com luminaria.",
+        href: "/postes-metalicos",
+        icon: Ruler,
     },
     {
-        title: "Poste curvo galvanizado",
-        description: "Aplicacao para ruas, acessos, avenidas e canteiros onde o avanco da luminaria e relevante.",
-        href: "/fabricante-de-postes-teleconicos",
+        title: "Compra tecnica",
+        description: "Pagina para alinhar modelo, acabamento, fixacao, quantidade, prazo e cidade de entrega.",
+        href: "/fornecedor-de-postes-metalicos",
+        icon: ClipboardCheck,
     },
 ]
 
 const buyingSteps = [
     {
-        title: "1. Definir ambiente",
-        description: "Informe se o poste sera usado em via, condominio, loteamento, estacionamento, industria ou area externa.",
+        title: "1. Informar aplicacao",
+        description: "Rua, praca, acesso, condominio, estacionamento, loteamento ou area industrial.",
     },
     {
-        title: "2. Escolher modelo",
-        description: "Reto, teleconico, curvo simples, curvo duplo ou outro formato conforme necessidade luminotecnica.",
+        title: "2. Indicar altura e avanco",
+        description: "Use o memorial ou estudo luminotecnico como referencia. Sem isso, a equipe orienta a conversa inicial.",
     },
     {
-        title: "3. Confirmar fixacao",
-        description: "Engastado ou flangeado conforme fundacao, base, chumbadores e condicao civil da instalacao.",
+        title: "3. Definir fixacao",
+        description: "Engastado ou flangeado conforme fundacao, base, chumbadores e local de instalacao.",
     },
     {
-        title: "4. Validar acabamento",
-        description: "Galvanizado, pintado ou combinado conforme ambiente, padrao visual, memorial e prazo.",
+        title: "4. Confirmar acabamento",
+        description: "Galvanizado, pintado ou combinado conforme ambiente, padrao visual e prazo do projeto.",
     },
 ]
 
-const internalLinks = [
-    ["Postes metalicos", "/postes-metalicos"],
-    ["Fabricante de postes metalicos", "/fabricante-de-postes-metalicos"],
-    ["Fabricante de postes teleconicos", "/fabricante-de-postes-teleconicos"],
-    ["Poste curvo simples", "/produtos/poste-curvo-simples"],
-    ["Poste teleconico", "/produtos/poste-teleconico"],
-    ["Postes para iluminacao publica", "/postes-para-iluminacao-publica"],
-    ["Pintura eletrostatica", "/servicos/pintura-eletrostatica"],
-    ["Catalogos e downloads", "/downloads"],
-    ["Obras realizadas", "/obras"],
+const finishOptions = [
+    {
+        title: "Galvanizacao",
+        description: "Opcao para ambientes externos e projetos que pedem maior protecao contra corrosao.",
+        icon: ShieldCheck,
+    },
+    {
+        title: "Pintura",
+        description: "Acabamento para padronizacao visual, cor e identidade do empreendimento.",
+        icon: Paintbrush,
+    },
+    {
+        title: "Memorial tecnico",
+        description: "Especificacao final conforme projeto, luminaria, fixacao, ambiente e volume.",
+        icon: FileText,
+    },
 ]
 
 const downloadLinks = [
     {
-        title: "Datasheet poste reto",
-        href: "/downloads/datasheets/DATASHEET-BB-POSTE-RETO.pdf",
-    },
-    {
         title: "Datasheet poste curvo simples",
         href: "/downloads/datasheets/DATASHEET-BB-POSTE-CURVO-SIMPLES.pdf",
+    },
+    {
+        title: "Datasheet poste reto",
+        href: "/downloads/datasheets/DATASHEET-BB-POSTE-RETO.pdf",
     },
     {
         title: "Datasheet poste curvo duplo",
@@ -206,31 +194,42 @@ const downloadLinks = [
     },
 ]
 
+const internalLinks = [
+    ["Poste teleconico", "/produtos/poste-teleconico"],
+    ["Poste metalico galvanizado", "/produtos/poste-metalico-galvanizado"],
+    ["Postes para iluminacao publica", "/postes-para-iluminacao-publica"],
+    ["Fabricante de postes metalicos", "/fabricante-de-postes-metalicos"],
+    ["Fabricante de postes teleconicos", "/fabricante-de-postes-teleconicos"],
+    ["Postes metalicos", "/postes-metalicos"],
+    ["Catalogos e downloads", "/downloads"],
+    ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
+]
+
 const faq = [
     {
-        question: "O que e um poste metalico galvanizado?",
+        question: "O que e um poste curvo simples?",
         answer:
-            "E um poste de aco que recebe acabamento galvanizado para aumentar a protecao contra corrosao, especialmente em aplicacoes externas e ambientes mais exigentes.",
+            "E um poste metalico com um unico avanco para luminaria, usado quando o ponto de luz precisa ser projetado para um lado da via, acesso, calcada ou area de circulacao.",
     },
     {
-        question: "Poste galvanizado e melhor que poste pintado?",
+        question: "Qual a diferenca entre poste curvo simples e curvo duplo?",
         answer:
-            "Depende do ambiente e do objetivo do projeto. A galvanizacao prioriza protecao contra corrosao. A pintura prioriza padrao visual e pode ser complementar quando o memorial pedir acabamento especifico.",
+            "O curvo simples direciona a luminaria para um lado. O curvo duplo atende dois sentidos ou lados opostos, comum em avenidas e canteiros centrais.",
     },
     {
-        question: "A B&B fabrica postes galvanizados sob medida?",
+        question: "O poste curvo simples pode ser galvanizado?",
         answer:
-            "A B&B fabrica postes metalicos sob especificacao. A confirmacao de modelo, acabamento, fixacao e prazos deve ser feita no orcamento tecnico.",
+            "Pode receber acabamento galvanizado quando a especificacao pedir maior protecao contra corrosao. A confirmacao do acabamento deve ocorrer no orcamento tecnico.",
     },
     {
-        question: "Quais dados enviar para cotar poste metalico galvanizado?",
+        question: "Quais dados enviar para cotar poste curvo simples?",
         answer:
-            "Envie aplicacao, modelo desejado, altura aproximada, quantidade, cidade e UF, tipo de fixacao, acabamento esperado, prazo e desenho ou memorial tecnico se houver.",
+            "Envie aplicacao, altura aproximada, avanco desejado, quantidade, cidade e UF, tipo de fixacao, acabamento, luminaria, prazo e desenho ou memorial se houver.",
     },
     {
-        question: "A pagina substitui uma especificacao de engenharia?",
+        question: "A pagina substitui o projeto luminotecnico?",
         answer:
-            "Nao. A pagina orienta a compra e a conversa comercial. A especificacao final deve respeitar projeto, memoriais, local de instalacao e requisitos tecnicos da obra.",
+            "Nao. A pagina orienta a compra e a especificacao inicial. Altura, avanco, luminaria e fixacao devem seguir projeto, memoriais e condicoes da obra.",
     },
 ]
 
@@ -238,7 +237,7 @@ function getSchema() {
     return createSchemaGraph([
         createProductSchema({
             url: pageUrl,
-            name: "Poste Metalico Galvanizado",
+            name: "Poste Curvo Simples",
             description: pageDescription,
             image: heroImage,
             category: "Postes metalicos para iluminacao",
@@ -246,7 +245,7 @@ function getSchema() {
         }),
         createWebPageSchema({
             url: pageUrl,
-            name: "Poste Metalico Galvanizado",
+            name: "Poste Curvo Simples",
             description: pageDescription,
             image: heroImage,
             mainEntityId: `${pageUrl}#product`,
@@ -254,11 +253,11 @@ function getSchema() {
         createBreadcrumbSchema(pageUrl, [
             { name: "Inicio", item: SITE_URL },
             { name: "Produtos", item: `${SITE_URL}/produtos` },
-            { name: "Poste Metalico Galvanizado", item: pageUrl },
+            { name: "Poste Curvo Simples", item: pageUrl },
         ]),
         createItemListSchema({
             id: `${pageUrl}#aplicacoes`,
-            name: "Aplicacoes de poste metalico galvanizado",
+            name: "Aplicacoes de poste curvo simples",
             items: useCases.map((item) => ({
                 name: item.title,
                 description: item.description,
@@ -277,16 +276,16 @@ function SectionLabel({ children }: { children: ReactNode }) {
     )
 }
 
-export default function PosteMetalicoGalvanizadoPage() {
+export default function PosteCurvoSimplesPage() {
     return (
         <main className="min-h-screen bg-white text-industrial-950">
-            <SchemaOrg id="poste-metalico-galvanizado-schema" data={getSchema()} />
+            <SchemaOrg id="poste-curvo-simples-schema" data={getSchema()} />
             <Header />
             <div className="hidden md:block">
                 <FloatingWhatsApp
                     message={whatsappMessage}
-                    eventLabel="Solicitar orcamento de poste metalico galvanizado"
-                    eventSource="floating_poste_metalico_galvanizado"
+                    eventLabel="Solicitar orcamento de poste curvo simples"
+                    eventSource="floating_poste_curvo_simples"
                 />
             </div>
 
@@ -297,35 +296,34 @@ export default function PosteMetalicoGalvanizadoPage() {
                         alt=""
                         fill
                         priority
-                        className="object-cover opacity-85 md:opacity-100"
+                        className="object-cover opacity-90 md:opacity-100"
                         sizes="100vw"
                         style={{ objectPosition: "center center" }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-industrial-950/94 via-industrial-950/62 to-industrial-950/12" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-industrial-950/62 via-industrial-950/10 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-industrial-950/94 via-industrial-950/58 to-industrial-950/10" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-industrial-950/68 via-industrial-950/12 to-transparent" />
                 </div>
 
                 <div className="container relative z-10 mx-auto px-4 pb-20 pt-12 md:pb-28">
                     <div className="max-w-4xl">
                         <div className="mb-6 inline-flex items-center gap-3 border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.22em] text-white">
-                            <ShieldCheck className="size-4 text-accent-premium" aria-hidden="true" />
-                            Acabamento tecnico para uso externo
+                            <Zap className="size-4 text-accent-premium" aria-hidden="true" />
+                            Um avanco para luminaria publica
                         </div>
                         <h1 className="max-w-4xl text-4xl font-black uppercase leading-[0.95] tracking-tight text-white md:text-6xl lg:text-7xl">
-                            Poste Metalico Galvanizado
+                            Poste Curvo Simples
                         </h1>
                         <p className="mt-8 max-w-3xl text-base font-medium leading-relaxed text-industrial-200 md:text-xl">
-                            Poste metalico galvanizado para iluminacao publica, loteamentos, condominios,
-                            estacionamentos e areas industriais, com orientacao para modelo, fixacao, acabamento e
-                            orcamento tecnico.
+                            Poste curvo simples para iluminacao publica, ruas, pracas, condominios, estacionamentos e
+                            acessos, com orientacao para altura, avanco, fixacao, acabamento e orcamento tecnico.
                         </p>
                         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                             <WhatsAppLink
                                 message={whatsappMessage}
-                                eventLabel="Solicitar orcamento de poste metalico galvanizado"
-                                eventSource="hero_poste_metalico_galvanizado"
+                                eventLabel="Solicitar orcamento de poste curvo simples"
+                                eventSource="hero_poste_curvo_simples"
                                 className="inline-flex h-14 items-center justify-center gap-3 bg-accent-premium px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-yellow-300"
-                                aria-label="Solicitar orcamento de poste metalico galvanizado pelo WhatsApp"
+                                aria-label="Solicitar orcamento de poste curvo simples pelo WhatsApp"
                             >
                                 <MessageCircle className="size-5" aria-hidden="true" />
                                 Solicitar orcamento
@@ -335,7 +333,7 @@ export default function PosteMetalicoGalvanizadoPage() {
                                 className="inline-flex h-14 items-center justify-center gap-3 border border-white/25 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-industrial-950"
                             >
                                 <Download className="size-5" aria-hidden="true" />
-                                Baixar catalogos
+                                Baixar datasheet
                             </Link>
                         </div>
                     </div>
@@ -364,19 +362,17 @@ export default function PosteMetalicoGalvanizadoPage() {
             <section className="py-20 md:py-28">
                 <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
                     <div className="space-y-6">
-                        <SectionLabel>Acabamento e especificacao</SectionLabel>
+                        <SectionLabel>Modelo e aplicacao</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Quando escolher poste galvanizado
+                            Quando usar poste curvo simples
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-600 md:text-lg">
-                            A galvanizacao entra quando o projeto precisa aumentar a protecao do aco contra corrosao,
-                            principalmente em aplicacoes externas, areas expostas e ambientes que pedem maior cuidado de
-                            durabilidade.
+                            O curvo simples e indicado quando o projeto precisa posicionar a luminaria com avanco para
+                            um lado, mantendo o poste em uma borda, calcada, passeio, canteiro lateral ou area de acesso.
                         </p>
                         <p className="text-base leading-relaxed text-industrial-600 md:text-lg">
-                            A decisao final deve considerar modelo do poste, ambiente, fixacao, padrao visual,
-                            especificacao da obra e prazo. Por isso a pagina trata o tema como compra tecnica, nao como
-                            produto de prateleira.
+                            A decisao deve considerar altura, avanco, tipo de luminaria, fixacao, acabamento, largura da
+                            via e memoriais do projeto. Por isso a cotacao precisa nascer de especificacao tecnica.
                         </p>
                     </div>
 
@@ -400,86 +396,25 @@ export default function PosteMetalicoGalvanizadoPage() {
                     <div className="mb-12 max-w-3xl space-y-5">
                         <SectionLabel>Comparativo</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Galvanizado, pintado ou combinado
+                            Curvo simples, curvo duplo ou reto
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-300">
-                            A melhor escolha nao e uma regra unica. O acabamento precisa seguir ambiente, memoriais,
-                            padrao visual, manutencao esperada e requisitos do projeto.
+                            A geometria do poste deve seguir o lado iluminado, o posicionamento da luminaria e a area de
+                            cobertura. O modelo errado aumenta retrabalho na obra e na compra.
                         </p>
                     </div>
                     <div className="overflow-hidden border border-white/15">
-                        {comparisonRows.map(([option, use, note]) => (
-                            <div key={option} className="grid border-b border-white/15 last:border-b-0 md:grid-cols-[220px_1fr_1fr]">
+                        {comparisonRows.map(([model, shape, use]) => (
+                            <div key={model} className="grid border-b border-white/15 last:border-b-0 md:grid-cols-[190px_1fr_1.2fr]">
                                 <div className="bg-white/10 px-5 py-5 text-xs font-black uppercase tracking-widest text-accent-premium">
-                                    {option}
+                                    {model}
+                                </div>
+                                <div className="px-5 py-5 text-sm font-medium leading-relaxed text-industrial-200">
+                                    {shape}
                                 </div>
                                 <div className="px-5 py-5 text-sm font-medium leading-relaxed text-industrial-200">
                                     {use}
                                 </div>
-                                <div className="px-5 py-5 text-sm font-medium leading-relaxed text-industrial-200">
-                                    {note}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            <section className="py-20 md:py-28">
-                <div className="container mx-auto px-4">
-                    <div className="mb-12 max-w-3xl space-y-5">
-                        <SectionLabel>Modelos aplicaveis</SectionLabel>
-                        <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            O acabamento acompanha o projeto do poste
-                        </h2>
-                        <p className="text-base leading-relaxed text-industrial-600">
-                            A pagina de galvanizado nao substitui as paginas de modelo. Ela ajuda a definir o acabamento
-                            correto depois que a geometria, a aplicacao e a fixacao estao encaminhadas.
-                        </p>
-                    </div>
-                    <div className="grid gap-5 md:grid-cols-3">
-                        {modelOptions.map((model) => (
-                            <Link
-                                key={model.title}
-                                href={model.href}
-                                className="group border border-industrial-200 p-7 transition-colors hover:border-industrial-950"
-                            >
-                                <h3 className="text-lg font-black uppercase tracking-tight text-industrial-950">
-                                    {model.title}
-                                </h3>
-                                <p className="mt-4 text-sm leading-relaxed text-industrial-600">{model.description}</p>
-                                <span className="mt-6 inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-industrial-950">
-                                    Ver contexto
-                                    <ArrowRight className="size-4 text-accent-dark transition-transform group-hover:translate-x-1" aria-hidden="true" />
-                                </span>
-                            </Link>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            <section className="bg-industrial-50 py-20 md:py-28">
-                <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-                    <div className="space-y-5">
-                        <SectionLabel>Compra tecnica</SectionLabel>
-                        <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Dados minimos para cotacao
-                        </h2>
-                        <p className="text-base leading-relaxed text-industrial-600">
-                            Para evitar comparacao errada de preco, a B&B precisa entender uso, quantidade, local de
-                            entrega, modelo, acabamento e fixacao antes de fechar a proposta.
-                        </p>
-                    </div>
-                    <div className="grid gap-4 md:grid-cols-2">
-                        {buyingSteps.map((step) => (
-                            <div key={step.title} className="border border-industrial-200 bg-white p-6">
-                                <div className="mb-5 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium">
-                                    <Wrench className="size-6" aria-hidden="true" />
-                                </div>
-                                <h3 className="text-base font-black uppercase tracking-tight text-industrial-950">
-                                    {step.title}
-                                </h3>
-                                <p className="mt-3 text-sm leading-relaxed text-industrial-600">{step.description}</p>
                             </div>
                         ))}
                     </div>
@@ -491,11 +426,11 @@ export default function PosteMetalicoGalvanizadoPage() {
                     <div className="mb-12 max-w-3xl space-y-5">
                         <SectionLabel>Aplicacoes</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Onde o galvanizado costuma entrar
+                            Onde o curvo simples costuma resolver melhor
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-600">
-                            O acabamento galvanizado e mais relevante quando a obra combina exposicao externa, exigencia
-                            de durabilidade e necessidade de reduzir riscos de corrosao ao longo do uso.
+                            O modelo e especialmente util quando o ponto de instalacao fica lateralizado em relacao a
+                            area iluminada.
                         </p>
                     </div>
                     <div className="grid gap-4 md:grid-cols-4">
@@ -515,10 +450,69 @@ export default function PosteMetalicoGalvanizadoPage() {
                                     </h3>
                                     <p className="mt-3 text-sm leading-relaxed text-industrial-600">{card.description}</p>
                                     <span className="mt-5 inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-industrial-950">
-                                        Ver aplicacao
+                                        Ver contexto
                                         <ArrowRight className="size-4 text-accent-dark transition-transform group-hover:translate-x-1" aria-hidden="true" />
                                     </span>
                                 </Link>
+                            )
+                        })}
+                    </div>
+                </div>
+            </section>
+
+            <section className="bg-industrial-50 py-20 md:py-28">
+                <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+                    <div className="space-y-5">
+                        <SectionLabel>Briefing de compra</SectionLabel>
+                        <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
+                            Dados minimos para cotar sem retrabalho
+                        </h2>
+                        <p className="text-base leading-relaxed text-industrial-600">
+                            Quanto mais claro o briefing, mais rapido o time comercial consegue separar modelo, fixacao,
+                            acabamento e prazo de fornecimento.
+                        </p>
+                    </div>
+                    <div className="grid gap-4 md:grid-cols-2">
+                        {buyingSteps.map((step) => (
+                            <div key={step.title} className="border border-industrial-200 bg-white p-6">
+                                <div className="mb-5 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium">
+                                    <ClipboardCheck className="size-6" aria-hidden="true" />
+                                </div>
+                                <h3 className="text-base font-black uppercase tracking-tight text-industrial-950">
+                                    {step.title}
+                                </h3>
+                                <p className="mt-3 text-sm leading-relaxed text-industrial-600">{step.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="py-20 md:py-28">
+                <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+                    <div className="space-y-5">
+                        <SectionLabel>Acabamento</SectionLabel>
+                        <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
+                            Galvanizado, pintado ou sob especificacao
+                        </h2>
+                        <p className="text-base leading-relaxed text-industrial-600">
+                            O acabamento acompanha o ambiente. A B&B orienta a escolha entre galvanizacao, pintura ou
+                            combinacao conforme memorial, agressividade do local, padrao visual e prazo.
+                        </p>
+                    </div>
+                    <div className="grid gap-4 md:grid-cols-3">
+                        {finishOptions.map((item) => {
+                            const Icon = item.icon
+                            return (
+                                <div key={item.title} className="border border-industrial-200 p-6">
+                                    <div className="mb-6 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium">
+                                        <Icon className="size-6" aria-hidden="true" />
+                                    </div>
+                                    <h3 className="text-base font-black uppercase tracking-tight text-industrial-950">
+                                        {item.title}
+                                    </h3>
+                                    <p className="mt-3 text-sm leading-relaxed text-industrial-600">{item.description}</p>
+                                </div>
                             )
                         })}
                     </div>
@@ -530,11 +524,10 @@ export default function PosteMetalicoGalvanizadoPage() {
                     <div className="space-y-5">
                         <SectionLabel>Downloads</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Catalogos para conversa tecnica
+                            Datasheets para iniciar a especificacao
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-300">
-                            Use os materiais como ponto de partida. O acabamento galvanizado deve ser confirmado no
-                            orcamento conforme modelo e especificacao.
+                            Use os materiais como ponto de partida e confirme medidas, avanco e acabamento no orcamento.
                         </p>
                     </div>
                     <div className="grid gap-4">
@@ -557,7 +550,7 @@ export default function PosteMetalicoGalvanizadoPage() {
                     <div className="space-y-5">
                         <SectionLabel>Perguntas frequentes</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Duvidas sobre poste galvanizado
+                            Duvidas sobre poste curvo simples
                         </h2>
                     </div>
                     <div className="space-y-4">
@@ -579,29 +572,29 @@ export default function PosteMetalicoGalvanizadoPage() {
                         <div className="space-y-5">
                             <SectionLabel>Proximo passo</SectionLabel>
                             <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                                Solicite cotacao com especificacao clara
+                                Solicite cotacao do poste curvo simples
                             </h2>
                             <p className="text-base leading-relaxed text-industrial-600">
-                                Envie modelo, quantidade, cidade/UF, tipo de fixacao, acabamento esperado e prazo. Se
-                                houver memorial, desenho ou luminaria definida, envie tambem.
+                                Envie aplicacao, altura, avanco, quantidade, cidade/UF, fixacao, acabamento e prazo. Se
+                                tiver memorial ou desenho, envie junto para acelerar a proposta.
                             </p>
                             <div className="flex flex-col gap-4 sm:flex-row">
                                 <WhatsAppLink
                                     message={whatsappMessage}
-                                    eventLabel="Solicitar cotacao de poste metalico galvanizado"
-                                    eventSource="final_poste_metalico_galvanizado"
+                                    eventLabel="Solicitar cotacao de poste curvo simples"
+                                    eventSource="final_poste_curvo_simples"
                                     className="inline-flex h-14 items-center justify-center gap-3 bg-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-accent-premium hover:text-industrial-950"
-                                    aria-label="Solicitar cotacao de poste metalico galvanizado pelo WhatsApp"
+                                    aria-label="Solicitar cotacao de poste curvo simples pelo WhatsApp"
                                 >
                                     <MessageCircle className="size-5" aria-hidden="true" />
                                     Solicitar cotacao
                                 </WhatsAppLink>
                                 <Link
-                                    href="/fornecedor-de-postes-metalicos"
+                                    href="/produtos/poste-teleconico"
                                     className="inline-flex h-14 items-center justify-center gap-3 border border-industrial-300 px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:border-industrial-950"
                                 >
-                                    <FileText className="size-5" aria-hidden="true" />
-                                    Ver fornecedor
+                                    <Ruler className="size-5" aria-hidden="true" />
+                                    Ver teleconicos
                                 </Link>
                             </div>
                         </div>
