@@ -197,6 +197,7 @@ const internalLinks = [
     ["Linha Orna", "/produtos/linha-orna"],
     ["Braco para luminaria publica", "/produtos/braco-para-luminaria-publica"],
     ["Suporte para luminaria publica", "/produtos/suporte-para-luminaria-publica"],
+    ["Chumbador para poste metalico", "/produtos/chumbador-para-poste-metalico"],
     ["Linha Nexo", "/produtos/linha-nexo"],
     ["Catalogos e downloads", "/downloads"],
 ]

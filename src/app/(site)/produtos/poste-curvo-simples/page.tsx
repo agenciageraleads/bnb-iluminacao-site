@@ -200,6 +200,7 @@ const internalLinks = [
     ["Poste metalico galvanizado", "/produtos/poste-metalico-galvanizado"],
     ["Postes para iluminacao publica", "/postes-para-iluminacao-publica"],
     ["Suporte para luminaria publica", "/produtos/suporte-para-luminaria-publica"],
+    ["Chumbador para poste metalico", "/produtos/chumbador-para-poste-metalico"],
     ["Fabricante de postes metalicos", "/fabricante-de-postes-metalicos"],
     ["Fabricante de postes teleconicos", "/fabricante-de-postes-teleconicos"],
     ["Postes metalicos", "/postes-metalicos"],

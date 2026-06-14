@@ -291,6 +291,7 @@ const internalLinks = [
     ["Altura de poste para iluminacao publica", "/blog/altura-de-poste-para-iluminacao-publica"],
     ["Normas para postes de iluminacao", "/blog/normas-para-postes-de-iluminacao"],
     ["Poste flangeado ou engastado", "/blog/poste-flangeado-ou-engastado"],
+    ["Chumbador para poste metalico", "/produtos/chumbador-para-poste-metalico"],
     ["Poste galvanizado ou pintado", "/blog/poste-galvanizado-ou-pintado"],
     ["Catalogos e downloads", "/downloads"],
 ]

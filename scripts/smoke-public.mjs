@@ -18,6 +18,7 @@ const paths = [
   '/produtos/poste-curvo-duplo',
   '/produtos/braco-para-luminaria-publica',
   '/produtos/suporte-para-luminaria-publica',
+  '/produtos/chumbador-para-poste-metalico',
   '/lp/postes-metalicos',
   '/produtos',
   '/blog',

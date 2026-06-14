@@ -109,6 +109,36 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/chumbador-para-poste-metalico',
+        destination: '/produtos/chumbador-para-poste-metalico',
+        permanent: true,
+      },
+      {
+        source: '/chumbadores-para-poste-metalico',
+        destination: '/produtos/chumbador-para-poste-metalico',
+        permanent: true,
+      },
+      {
+        source: '/chumbador-para-poste',
+        destination: '/produtos/chumbador-para-poste-metalico',
+        permanent: true,
+      },
+      {
+        source: '/base-flangeada-para-poste',
+        destination: '/produtos/chumbador-para-poste-metalico',
+        permanent: true,
+      },
+      {
+        source: '/base-para-poste-metalico',
+        destination: '/produtos/chumbador-para-poste-metalico',
+        permanent: true,
+      },
+      {
+        source: '/gabarito-para-chumbador',
+        destination: '/produtos/chumbador-para-poste-metalico',
+        permanent: true,
+      },
+      {
         source: '/mastro',
         destination: '/lp/mastros-para-bandeira',
         permanent: true,
@@ -452,6 +482,21 @@ const nextConfig: NextConfig = {
       {
         source: '/produtos/suporte-para-luminarias-publicas',
         destination: '/produtos/suporte-para-luminaria-publica',
+        permanent: true,
+      },
+      {
+        source: '/produtos/chumbadores-para-poste-metalico',
+        destination: '/produtos/chumbador-para-poste-metalico',
+        permanent: true,
+      },
+      {
+        source: '/produtos/base-flangeada-para-poste',
+        destination: '/produtos/chumbador-para-poste-metalico',
+        permanent: true,
+      },
+      {
+        source: '/produtos/gabarito-para-chumbador',
+        destination: '/produtos/chumbador-para-poste-metalico',
         permanent: true,
       },
       // Categorias removidas

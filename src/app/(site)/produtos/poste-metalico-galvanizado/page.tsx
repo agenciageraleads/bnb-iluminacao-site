@@ -188,6 +188,7 @@ const internalLinks = [
     ["Poste teleconico", "/produtos/poste-teleconico"],
     ["Postes para iluminacao publica", "/postes-para-iluminacao-publica"],
     ["Suporte para luminaria publica", "/produtos/suporte-para-luminaria-publica"],
+    ["Chumbador para poste metalico", "/produtos/chumbador-para-poste-metalico"],
     ["Poste galvanizado ou pintado", "/blog/poste-galvanizado-ou-pintado"],
     ["Normas para postes de iluminacao", "/blog/normas-para-postes-de-iluminacao"],
     ["Pintura eletrostatica", "/servicos/pintura-eletrostatica"],

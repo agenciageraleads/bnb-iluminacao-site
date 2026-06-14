@@ -217,6 +217,12 @@ const internalLinks = [
         icon: Ruler,
     },
     {
+        title: "Chumbador para poste",
+        description: "Transforme base, flange, furo e gabarito em dados objetivos para cotacao.",
+        href: "/produtos/chumbador-para-poste-metalico",
+        icon: Wrench,
+    },
+    {
         title: "Poste galvanizado ou pintado",
         description: "Depois da fixacao, defina acabamento conforme ambiente, durabilidade e memorial.",
         href: "/blog/poste-galvanizado-ou-pintado",

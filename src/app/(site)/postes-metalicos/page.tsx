@@ -205,6 +205,7 @@ const internalLinks = [
     ["Poste galvanizado ou pintado", "/blog/poste-galvanizado-ou-pintado"],
     ["Braco para luminaria publica", "/produtos/braco-para-luminaria-publica"],
     ["Suporte para luminaria publica", "/produtos/suporte-para-luminaria-publica"],
+    ["Chumbador para poste metalico", "/produtos/chumbador-para-poste-metalico"],
     ["Catalogo de produtos", "/produtos"],
     ["Linha Urban", "/produtos/linha-urban"],
     ["Linha Forza", "/produtos/linha-forza"],

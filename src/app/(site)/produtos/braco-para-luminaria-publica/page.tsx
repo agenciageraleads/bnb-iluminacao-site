@@ -213,6 +213,7 @@ const primaryInternalLinks = [
 
 const secondaryInternalLinks = [
     ["Suporte para luminaria publica", "/produtos/suporte-para-luminaria-publica"],
+    ["Chumbador para poste metalico", "/produtos/chumbador-para-poste-metalico"],
     ["Poste teleconico", "/produtos/poste-teleconico"],
     ["Linha Nexo", "/produtos/linha-nexo"],
     ["Catalogos e downloads", "/downloads"],

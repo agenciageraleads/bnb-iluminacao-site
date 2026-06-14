@@ -5,15 +5,16 @@ import type { ReactNode } from "react"
 import {
     ArrowRight,
     Building2,
+    ClipboardCheck,
     Download,
     Factory,
     FileText,
     Landmark,
     MessageCircle,
+    Ruler,
     ShieldCheck,
     Truck,
     Wrench,
-    Zap,
 } from "lucide-react"
 
 import { Footer } from "@/components/layout/footer"
@@ -23,6 +24,7 @@ import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
 import { WhatsAppLink } from "@/components/ui/whatsapp-link"
 import {
     SITE_URL,
+    absoluteUrl,
     createBreadcrumbSchema,
     createFaqSchema,
     createItemListSchema,
@@ -31,207 +33,202 @@ import {
     createWebPageSchema,
 } from "@/lib/seo/schema"
 
-const pageUrl = "https://bebiluminacao.com.br/produtos/suporte-para-luminaria-publica"
+const pageUrl = "https://bebiluminacao.com.br/produtos/chumbador-para-poste-metalico"
 const pageDescription =
-    "Suporte para luminaria publica em aco para 1, 2, 3 ou 4 luminarias, com compatibilidade para postes metalicos, acabamento e orcamento tecnico B&B."
+    "Chumbador para poste metalico e base flangeada sob especificacao para postes de iluminacao, com orientacao de dados para orcamento tecnico B&B."
 const whatsappMessage =
-    "Ola, vim pela pagina de suporte para luminaria publica e quero especificar modelo, quantidade e orcamento tecnico."
-const heroImage = "https://bebiluminacao.com.br/api/media/file/suporte-4-luminarias.png"
-const backgroundImage = "/images/seo/postes-metalicos/via-publica-postes-retos-dois-lados.jpg"
+    "Ola, vim pela pagina de chumbador para poste metalico e quero ajuda para cotar base, chumbadores ou gabarito conforme projeto."
+const heroImage = "/images/seo/postes-metalicos/estacionamento-industrial-postes-retos.jpg"
 
 export const metadata: Metadata = {
     title: {
-        absolute: "Suporte para Luminaria Publica | 1 a 4 Luminarias B&B",
+        absolute: "Chumbador para Poste Metalico | Base Flangeada B&B",
     },
     description: pageDescription,
     alternates: {
         canonical: pageUrl,
     },
     openGraph: {
-        title: "Suporte para Luminaria Publica | 1 a 4 Luminarias B&B",
+        title: "Chumbador para Poste Metalico | Base Flangeada B&B",
         description: pageDescription,
         url: pageUrl,
         type: "website",
         images: [
             {
-                url: heroImage,
+                url: absoluteUrl(heroImage),
                 width: 1200,
                 height: 630,
-                alt: "Suporte metalico para luminaria publica com multiplos pontos",
+                alt: "Postes metalicos em area externa com base de instalacao",
             },
         ],
     },
 }
 
-const supportModels = [
-    {
-        title: "Suporte 1 luminaria",
-        use: "Ponto unico de luz",
-        description:
-            "Solucao para poste com uma luminaria, indicada quando o projeto pede leitura simples, manutencao objetiva e compatibilidade direta com o conjunto.",
-        image: "https://bebiluminacao.com.br/api/media/file/suporte-1-luminaria.png",
-    },
-    {
-        title: "Suporte 2 luminarias",
-        use: "Dois sentidos ou area mais ampla",
-        description:
-            "Usado quando o mesmo poste precisa atender duas direcoes, canteiros, patios, acessos ou areas que exigem maior cobertura.",
-        image: "https://bebiluminacao.com.br/api/media/file/suporte-2-luminarias.png",
-    },
-    {
-        title: "Suporte 3 luminarias",
-        use: "Pracas, patios e circulacao",
-        description:
-            "Opcao para distribuir pontos de luz em diferentes angulos conforme poste, luminarias, carga e desenho tecnico.",
-        image: "https://bebiluminacao.com.br/api/media/file/suporte-3-luminarias.png",
-    },
-    {
-        title: "Suporte 4 luminarias",
-        use: "Grandes areas abertas",
-        description:
-            "Aplicacao para areas amplas, patios, estacionamentos e pontos centrais que precisam iluminar mais de uma direcao.",
-        image: "https://bebiluminacao.com.br/api/media/file/suporte-4-luminarias.png",
-    },
-]
-
 const highlights = [
     {
-        title: "Nucleos multiplos",
-        description: "Modelos para 1, 2, 3 ou 4 luminarias conforme area, poste, carga e distribuicao de luz.",
-        icon: Zap,
-    },
-    {
-        title: "Compatibilidade",
-        description: "Definicao por diametro do poste, encaixe, fixacao, peso da luminaria e avanco necessario.",
+        title: "Base flangeada",
+        description: "A base aparafusada depende de flange, chumbadores, fundacao, carga, altura e projeto civil.",
         icon: Wrench,
     },
     {
-        title: "Acabamento externo",
-        description: "Galvanizacao, pintura ou acabamento sob especificacao do memorial e do ambiente.",
-        icon: ShieldCheck,
+        title: "Dados sob projeto",
+        description: "Medidas, furo, bitola, comprimento, rosca e gabarito devem seguir desenho ou memorial.",
+        icon: Ruler,
+    },
+    {
+        title: "Compra tecnica",
+        description: "Evita comparar chumbadores, bases e postes com criterios diferentes pelo mesmo nome.",
+        icon: ClipboardCheck,
     },
     {
         title: "Atendimento nacional",
-        description: "Fabrica em Goiania como prova operacional, com atendimento para projetos em todo o Brasil.",
+        description: "Fabrica em Goiania como prova operacional, com suporte para obras em todo o Brasil.",
         icon: Truck,
     },
 ]
 
+const productOptions = [
+    {
+        title: "Chumbador para poste",
+        description:
+            "Conjunto de fixacao usado em poste flangeado quando o projeto civil preve base de concreto e ancoragem aparafusada.",
+        icon: Wrench,
+    },
+    {
+        title: "Base flangeada",
+        description:
+            "Interface entre poste e fundacao, definida por flange, furo, parafusos/chumbadores, carga e geometria do poste.",
+        icon: ShieldCheck,
+    },
+    {
+        title: "Gabarito de fixacao",
+        description:
+            "Referencia para posicionar os chumbadores na obra civil conforme furo, espacamento, prumo e desenho tecnico.",
+        icon: Ruler,
+    },
+    {
+        title: "Conjunto sob desenho",
+        description:
+            "Quando memorial, altura, carga, solo ou padrao da obra exigem medidas especificas e validacao tecnica.",
+        icon: FileText,
+    },
+]
+
 const specificationRows = [
-    ["Produto", "Suporte metalico para luminaria publica, definido por quantidade de luminarias e compatibilidade com poste."],
-    ["Modelos", "Suporte para 1, 2, 3 ou 4 luminarias, com configuracao confirmada conforme desenho e aplicacao."],
-    ["Poste", "Compatibilidade com poste metalico, teleconico, reto, curvo ou conjunto sob especificacao."],
-    ["Fixacao", "Encaixe, parafusos, base, sapata ou detalhe de montagem conforme diametro, carga e projeto."],
-    ["Acabamento", "Galvanizado, pintado ou galvanizado com pintura conforme ambiente e padrao visual."],
-    ["Compra", "Orcamento com modelo, quantidade, luminaria, poste, cidade/UF, acabamento, prazo e memorial quando existir."],
+    ["Produto", "Chumbador, base flangeada, gabarito ou conjunto de fixacao para poste metalico."],
+    ["Uso", "Postes flangeados para iluminacao publica, estacionamentos, loteamentos, condominios, pracas e areas industriais."],
+    ["Medidas", "Definidas por desenho, flange, furo, diametro, comprimento, rosca, carga e fundacao prevista."],
+    ["Compatibilidade", "Poste, altura, base, luminaria, braco/suporte, ambiente, manutencao e projeto civil."],
+    ["Acabamento", "Galvanizado, pintado ou conforme especificacao do conjunto e ambiente externo."],
+    ["Compra", "Orcamento com desenho, quantidade, modelo do poste, cidade/UF, prazo, acabamento e responsavel tecnico quando houver."],
 ]
 
 const decisionRows = [
     [
-        "1 luminaria",
-        "Ponto simples em poste existente ou novo",
-        "Quando a area exige um foco principal e o conjunto precisa ser direto para manutencao.",
+        "Poste flangeado",
+        "Base aparafusada com chumbadores",
+        "Quando a obra civil preve fundacao e interface desmontavel conforme projeto.",
     ],
     [
-        "2 luminarias",
-        "Avenidas, canteiros, acessos e patios",
-        "Quando o poste precisa atender dois lados ou ampliar a cobertura sem duplicar estrutura.",
+        "Poste engastado",
+        "Trecho embutido no concreto ou solo",
+        "Quando a fixacao nao usa base aparafusada e depende de profundidade/fundacao especifica.",
     ],
     [
-        "3 luminarias",
-        "Pracas, cruzamentos internos e areas abertas",
-        "Quando a distribuicao de luz exige mais angulos em torno do mesmo ponto de instalacao.",
+        "Base existente",
+        "Checar furo, prumo, espacamento e carga",
+        "Quando a compra e reposicao ou adequacao a uma estrutura ja instalada.",
     ],
     [
-        "4 luminarias",
-        "Estacionamentos, patios e pontos centrais",
-        "Quando a prioridade e cobertura em multiplas direcoes a partir de uma estrutura central.",
+        "Obra nova",
+        "Definir gabarito antes da concretagem",
+        "Quando a fundacao ainda sera executada e precisa receber os chumbadores na posicao correta.",
     ],
     [
-        "Sob desenho",
-        "Obras com memorial ou padrao existente",
-        "Quando o suporte precisa seguir medida, encaixe, luminaria ou padrao definido pelo projeto.",
+        "Projeto indefinido",
+        "Enviar fotos, planta e dados de uso",
+        "Quando ainda nao ha desenho de flange, fundacao ou responsavel tecnico definido.",
     ],
+]
+
+const quoteRows = [
+    ["Poste", "Modelo, altura, diametro, tipo de base, peso/carga estimada e se sera flangeado ou engastado."],
+    ["Base", "Desenho da flange, quantidade de furos, espacamento, diametro, espessura e padrao do conjunto."],
+    ["Chumbador", "Bitola, comprimento, rosca, quantidade por poste, material/acabamento e gabarito quando existir."],
+    ["Obra civil", "Tipo de fundacao, concreto, base existente, restricoes de piso, acesso e etapa da obra."],
+    ["Aplicacao", "Via, praca, estacionamento, condominio, loteamento, patio, industria ou area operacional."],
+    ["Documentos", "Projeto, memorial, foto, croqui, lista de materiais, edital ou referencia visual."],
+    ["Entrega", "Cidade, UF, prazo, quantidade total e responsavel pela compra/especificacao."],
 ]
 
 const applicationCards = [
     {
         title: "Iluminacao publica",
-        description: "Vias, avenidas, canteiros e areas urbanas que precisam de compatibilidade entre poste e luminaria.",
+        description: "Bases para postes em vias, avenidas, acessos e obras urbanas com especificacao formal.",
         href: "/postes-para-iluminacao-publica",
         icon: Landmark,
     },
     {
         title: "Estacionamentos",
-        description: "Pontos centrais, vagas abertas, acessos e patios com necessidade de cobertura em mais direcoes.",
+        description: "Postes flangeados em areas abertas, patios, vagas, docas e pontos com manutencao futura.",
         href: "/postes-para-estacionamentos",
         icon: Truck,
     },
     {
-        title: "Condominios",
-        description: "Ruas internas, portarias, pracas, areas comuns e circulacao noturna com padrao visual.",
-        href: "/postes-para-condominios",
+        title: "Loteamentos",
+        description: "Fornecimento em volume com repetibilidade de base, gabarito e padrao de instalacao.",
+        href: "/postes-para-loteamentos",
         icon: Building2,
     },
     {
-        title: "Areas industriais",
-        description: "Galpoes, docas, patios e circulacao operacional que pedem robustez e manutencao planejada.",
-        href: "/postes-metalicos",
+        title: "Fabrica e estruturas",
+        description: "Compra direta com fabricante para alinhar poste, base, chumbador e acabamento.",
+        href: "/fabrica-de-postes-metalicos",
         icon: Factory,
     },
 ]
 
-const quoteRows = [
-    ["Modelo", "1, 2, 3 ou 4 luminarias, ou suporte sob desenho."],
-    ["Quantidade", "Quantidade por modelo, etapa, obra ou local de instalacao."],
-    ["Poste", "Tipo de poste, diametro, altura, fixacao e se ja existe poste instalado."],
-    ["Luminaria", "Modelo, peso, encaixe, quantidade por suporte e orientacao desejada."],
-    ["Acabamento", "Galvanizado, pintado, galvanizado com pintura, cor ou padrao do memorial."],
-    ["Documentos", "Foto, desenho, memorial, planta, referencia visual ou lista de materiais."],
-    ["Entrega", "Cidade, UF, prazo, responsavel pela compra e condicao de recebimento."],
-]
-
 const internalLinks = [
-    ["Braco para luminaria publica", "/produtos/braco-para-luminaria-publica"],
+    ["Poste flangeado ou engastado", "/blog/poste-flangeado-ou-engastado"],
     ["Postes para iluminacao publica", "/postes-para-iluminacao-publica"],
     ["Postes para estacionamentos", "/postes-para-estacionamentos"],
+    ["Postes para loteamentos", "/postes-para-loteamentos"],
+    ["Postes para condominios", "/postes-para-condominios"],
     ["Postes metalicos", "/postes-metalicos"],
     ["Poste teleconico", "/produtos/poste-teleconico"],
     ["Poste metalico galvanizado", "/produtos/poste-metalico-galvanizado"],
     ["Poste curvo simples", "/produtos/poste-curvo-simples"],
     ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
-    ["Poste flangeado ou engastado", "/blog/poste-flangeado-ou-engastado"],
-    ["Chumbador para poste metalico", "/produtos/chumbador-para-poste-metalico"],
-    ["Poste galvanizado ou pintado", "/blog/poste-galvanizado-ou-pintado"],
-    ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
+    ["Braco para luminaria publica", "/produtos/braco-para-luminaria-publica"],
+    ["Suporte para luminaria publica", "/produtos/suporte-para-luminaria-publica"],
     ["Catalogos e downloads", "/downloads"],
 ]
 
 const faq = [
     {
-        question: "A B&B fornece suporte para luminaria publica?",
+        question: "A B&B fornece chumbador para poste metalico?",
         answer:
-            "Sim. A B&B fabrica e orienta suportes metalicos para luminaria publica, incluindo configuracoes para 1, 2, 3 ou 4 luminarias conforme projeto, poste e aplicacao.",
+            "A B&B orienta e cota conjuntos de base, flange, chumbadores ou gabarito conforme especificacao do poste, desenho, memorial e projeto da obra.",
     },
     {
-        question: "Qual a diferenca entre braco e suporte para luminaria?",
+        question: "Chumbador e usado em qualquer poste?",
         answer:
-            "O braco normalmente define o avanco da luminaria em relacao ao poste. O suporte ou nucleo organiza uma ou mais luminarias no mesmo conjunto, podendo atender multiplas direcoes.",
+            "Nao. Chumbador esta associado a postes flangeados ou bases aparafusadas. Postes engastados seguem outra logica de fundacao e profundidade.",
     },
     {
-        question: "Como escolher suporte para 2, 3 ou 4 luminarias?",
+        question: "Quais medidas preciso informar?",
         answer:
-            "A escolha depende da area a iluminar, poste, altura, luminaria, peso, angulos, manutencao, fixacao e memoriais tecnicos quando existirem.",
+            "Informe desenho da flange, quantidade de furos, espacamento, bitola, comprimento, rosca, quantidade por poste, altura/modelo do poste e dados da fundacao.",
     },
     {
-        question: "O suporte precisa ser galvanizado?",
+        question: "A pagina substitui projeto estrutural?",
         answer:
-            "Para uso externo, galvanizacao e uma opcao relevante para durabilidade. A decisao final depende de ambiente, acabamento desejado, memorial, prazo e compatibilidade de processo.",
+            "Nao. A pagina organiza a compra e o briefing. A definicao final de base, chumbadores e fundacao deve respeitar projeto civil/estrutural, memorial e responsavel tecnico.",
     },
     {
-        question: "O que enviar para cotar suporte para luminaria publica?",
+        question: "O que enviar para cotar base ou chumbador?",
         answer:
-            "Envie modelo desejado, quantidade, poste, luminaria, cidade e UF, acabamento, prazo, fotos, desenho, memorial ou referencia visual.",
+            "Envie modelo do poste, aplicacao, quantidade, cidade/UF, desenho, memorial, fotos, base existente ou nova, acabamento e prazo.",
     },
 ]
 
@@ -239,15 +236,15 @@ function getSchema() {
     return createSchemaGraph([
         createProductSchema({
             url: pageUrl,
-            name: "Suporte para Luminaria Publica",
+            name: "Chumbador para Poste Metalico",
             description: pageDescription,
             image: heroImage,
-            category: "Suportes metalicos para luminaria publica",
+            category: "Base e chumbadores para postes metalicos",
             properties: specificationRows.map(([name, value]) => ({ name, value })),
         }),
         createWebPageSchema({
             url: pageUrl,
-            name: "Suporte para Luminaria Publica",
+            name: "Chumbador para Poste Metalico",
             description: pageDescription,
             image: heroImage,
             mainEntityId: `${pageUrl}#product`,
@@ -255,14 +252,14 @@ function getSchema() {
         createBreadcrumbSchema(pageUrl, [
             { name: "Inicio", item: SITE_URL },
             { name: "Produtos", item: `${SITE_URL}/produtos` },
-            { name: "Suporte para Luminaria Publica", item: pageUrl },
+            { name: "Chumbador para Poste Metalico", item: pageUrl },
         ]),
         createItemListSchema({
-            id: `${pageUrl}#modelos`,
-            name: "Modelos de suporte para luminaria publica",
-            items: supportModels.map((model) => ({
-                name: model.title,
-                description: model.description,
+            id: `${pageUrl}#opcoes`,
+            name: "Opcoes de base e chumbador para poste metalico",
+            items: productOptions.map((option) => ({
+                name: option.title,
+                description: option.description,
             })),
         }),
         createFaqSchema(pageUrl, faq),
@@ -277,90 +274,65 @@ function SectionLabel({ children }: { children: ReactNode }) {
     )
 }
 
-export default function SuporteParaLuminariaPublicaPage() {
+export default function ChumbadorParaPosteMetalicoPage() {
     return (
         <main className="min-h-screen bg-white text-industrial-950">
-            <SchemaOrg id="suporte-luminaria-publica-schema" data={getSchema()} />
+            <SchemaOrg id="chumbador-poste-metalico-schema" data={getSchema()} />
             <Header />
             <div className="hidden 2xl:block">
                 <FloatingWhatsApp
                     message={whatsappMessage}
-                    eventLabel="Solicitar orcamento de suporte para luminaria publica"
-                    eventSource="floating_suporte_luminaria_publica"
+                    eventLabel="Solicitar orcamento de chumbador para poste metalico"
+                    eventSource="floating_chumbador_poste_metalico"
                 />
             </div>
 
             <section className="relative overflow-hidden bg-industrial-950 pt-28 md:pt-36">
                 <div className="absolute inset-0" aria-hidden="true">
                     <Image
-                        src={backgroundImage}
-                        alt=""
-                        fill
-                        priority
-                        className="object-cover opacity-55"
-                        sizes="100vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-industrial-950 via-industrial-950/82 to-industrial-950/24" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-industrial-950/72 via-industrial-950/10 to-transparent" />
-                </div>
-
-                <div className="pointer-events-none absolute bottom-0 right-0 hidden h-[76%] w-[42%] md:block" aria-hidden="true">
-                    <Image
                         src={heroImage}
                         alt=""
                         fill
                         priority
-                        className="object-contain object-bottom opacity-95 drop-shadow-2xl"
-                        sizes="42vw"
+                        className="object-cover opacity-85"
+                        sizes="100vw"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-r from-industrial-950 via-industrial-950/76 to-industrial-950/18" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-industrial-950/70 via-industrial-950/12 to-transparent" />
                 </div>
 
                 <div className="container relative z-10 mx-auto px-4 pb-20 pt-12 md:pb-28">
                     <div className="max-w-4xl">
                         <div className="mb-6 inline-flex max-w-full items-center gap-3 border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.18em] text-white md:tracking-[0.22em]">
                             <Wrench className="size-4 shrink-0 text-accent-premium" aria-hidden="true" />
-                            Nucleos para 1, 2, 3 ou 4 luminarias
+                            Base, flange, chumbador e gabarito
                         </div>
                         <h1 className="max-w-4xl text-4xl font-black uppercase leading-[0.95] text-white md:text-6xl lg:text-7xl">
-                            Suporte para Luminaria Publica
+                            Chumbador para Poste Metalico
                         </h1>
                         <p className="mt-8 max-w-3xl text-base font-medium leading-relaxed text-industrial-200 md:text-xl">
-                            Suportes metalicos para luminarias publicas em postes de ruas, avenidas, pracas,
-                            estacionamentos, condominios e areas industriais, com especificacao por modelo, fixacao,
-                            acabamento e quantidade de pontos de luz.
+                            Orientacao para cotar chumbadores, bases flangeadas e gabaritos de fixacao para postes
+                            metalicos, sem substituir projeto civil, memorial ou responsavel tecnico da obra.
                         </p>
                         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                             <WhatsAppLink
                                 message={whatsappMessage}
-                                eventLabel="Solicitar orcamento de suporte para luminaria publica"
-                                eventSource="hero_suporte_luminaria_publica"
+                                eventLabel="Solicitar orcamento de chumbador para poste metalico"
+                                eventSource="hero_chumbador_poste_metalico"
                                 className="inline-flex h-14 items-center justify-center gap-3 bg-accent-premium px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-yellow-300"
-                                aria-label="Solicitar orcamento de suporte para luminaria publica pelo WhatsApp"
+                                aria-label="Solicitar orcamento de chumbador para poste metalico pelo WhatsApp"
                             >
                                 <MessageCircle className="size-5" aria-hidden="true" />
                                 Solicitar orcamento
                             </WhatsAppLink>
                             <Link
-                                href="/downloads"
+                                href="/blog/poste-flangeado-ou-engastado"
                                 className="inline-flex h-14 items-center justify-center gap-3 border border-white/25 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-industrial-950"
                             >
-                                <Download className="size-5" aria-hidden="true" />
-                                Baixar catalogos
+                                <FileText className="size-5" aria-hidden="true" />
+                                Ver guia de fixacao
                             </Link>
                         </div>
-                    </div>
-
-                    <div className="mt-12 grid max-w-3xl grid-cols-2 gap-3 sm:grid-cols-4 md:hidden">
-                        {supportModels.map((item) => (
-                            <div key={item.title} className="border border-white/15 bg-white/90 p-3">
-                                <div className="relative aspect-square">
-                                    <Image src={item.image} alt={item.title} fill className="object-contain" sizes="25vw" />
-                                </div>
-                                <p className="mt-2 text-center text-[9px] font-black uppercase tracking-widest text-industrial-700">
-                                    {item.title}
-                                </p>
-                            </div>
-                        ))}
                     </div>
                 </div>
             </section>
@@ -389,16 +361,15 @@ export default function SuporteParaLuminariaPublicaPage() {
                     <div className="space-y-6">
                         <SectionLabel>Produto tecnico</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            O suporte organiza quantas luminarias o poste vai receber
+                            Chumbador e base so fazem sentido junto do poste e da fundacao
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-600 md:text-lg">
-                            A especificacao nao deve partir apenas do nome do acessorio. Ela precisa considerar quantas
-                            luminarias serao instaladas, quais angulos precisam ser atendidos, o tipo de poste, a carga,
-                            a fixacao, o acabamento e a manutencao.
+                            Em poste flangeado, a conversa envolve flange, furos, chumbadores, gabarito, fundacao,
+                            altura, carga, ambiente e manutencao. O mesmo nome pode representar pecas diferentes.
                         </p>
                         <p className="text-base leading-relaxed text-industrial-600 md:text-lg">
-                            Esta pagina existe para transformar uma busca generica por suporte em briefing tecnico para
-                            compra direta com fabricante.
+                            Por isso, a B&B trata a cotacao como conjunto tecnico: poste, base, chumbador, acabamento,
+                            cidade de entrega, prazo e documentos da obra.
                         </p>
                     </div>
 
@@ -420,38 +391,29 @@ export default function SuporteParaLuminariaPublicaPage() {
             <section className="bg-industrial-950 py-20 text-white md:py-28">
                 <div className="container mx-auto px-4">
                     <div className="mb-12 max-w-3xl space-y-5">
-                        <SectionLabel>Modelos</SectionLabel>
+                        <SectionLabel>Opcoes de fixacao</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Suportes para 1, 2, 3 ou 4 luminarias
+                            Base, chumbador e gabarito nao devem ser comprados no escuro
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-300">
-                            A quantidade de luminarias muda a distribuicao de luz, a carga, a fixacao e a forma de
-                            manutencao do conjunto.
+                            A pagina organiza a conversa comercial sem prometer medida padrao universal.
                         </p>
                     </div>
                     <div className="grid gap-5 md:grid-cols-4">
-                        {supportModels.map((model) => (
-                            <div key={model.title} className="border border-white/15 bg-white/5">
-                                <div className="relative aspect-[4/3] bg-white p-5">
-                                    <Image
-                                        src={model.image}
-                                        alt={model.title}
-                                        fill
-                                        className="object-contain p-5"
-                                        sizes="(min-width: 768px) 25vw, 100vw"
-                                    />
-                                </div>
-                                <div className="p-6">
-                                    <p className="text-[10px] font-black uppercase tracking-widest text-accent-premium">
-                                        {model.use}
-                                    </p>
-                                    <h3 className="mt-3 text-lg font-black uppercase tracking-tight text-white">
-                                        {model.title}
+                        {productOptions.map((option) => {
+                            const Icon = option.icon
+                            return (
+                                <div key={option.title} className="border border-white/15 bg-white/5 p-6">
+                                    <div className="mb-6 flex size-12 items-center justify-center bg-accent-premium text-industrial-950">
+                                        <Icon className="size-6" aria-hidden="true" />
+                                    </div>
+                                    <h3 className="text-lg font-black uppercase tracking-tight text-white">
+                                        {option.title}
                                     </h3>
-                                    <p className="mt-3 text-sm leading-relaxed text-industrial-300">{model.description}</p>
+                                    <p className="mt-3 text-sm leading-relaxed text-industrial-300">{option.description}</p>
                                 </div>
-                            </div>
-                        ))}
+                            )
+                        })}
                     </div>
                 </div>
             </section>
@@ -459,13 +421,13 @@ export default function SuporteParaLuminariaPublicaPage() {
             <section className="py-20 md:py-28">
                 <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
                     <div className="space-y-5">
-                        <SectionLabel>Escolha por configuracao</SectionLabel>
+                        <SectionLabel>Escolha por contexto</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Cada quantidade muda a aplicacao do conjunto
+                            Flangeado, engastado e base existente mudam a cotacao
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-600">
-                            A tabela ajuda o comprador a diferenciar nucleo simples, duplo e multiplo antes de solicitar
-                            preco.
+                            Antes de pedir preco, confirme se a obra realmente usa base aparafusada ou se o poste sera
+                            engastado.
                         </p>
                     </div>
                     <div className="overflow-hidden border border-industrial-200">
@@ -491,11 +453,11 @@ export default function SuporteParaLuminariaPublicaPage() {
                     <div className="mb-12 max-w-3xl space-y-5">
                         <SectionLabel>Aplicacoes</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Onde suportes para luminarias entram no projeto
+                            Onde base e chumbadores entram no projeto
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-600">
-                            Suportes e nucleos aparecem quando um poste precisa atender uma area mais ampla, multiplas
-                            direcoes ou um padrao de manutencao mais previsivel.
+                            A fixacao aparece nas paginas de aplicacao, mas aqui o foco e transformar a duvida em dados
+                            para cotacao.
                         </p>
                     </div>
                     <div className="grid gap-4 md:grid-cols-4">
@@ -530,11 +492,11 @@ export default function SuporteParaLuminariaPublicaPage() {
                     <div className="space-y-5">
                         <SectionLabel>Dados para cotacao</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            O que enviar para cotar suporte para luminaria
+                            O que enviar para cotar chumbador ou base flangeada
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-600">
-                            Quanto mais claro o conjunto poste + luminaria + suporte, menor a chance de comparar pecas
-                            diferentes pelo mesmo nome.
+                            O ideal e enviar desenho ou memorial. Se ainda nao existir, fotos e contexto da obra ajudam a
+                            organizar a proxima conversa tecnica.
                         </p>
                     </div>
                     <div className="overflow-hidden border border-industrial-200">
@@ -555,13 +517,13 @@ export default function SuporteParaLuminariaPublicaPage() {
             <section className="bg-industrial-950 py-20 text-white md:py-28">
                 <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
                     <div className="space-y-5">
-                        <SectionLabel>Interlinking P1</SectionLabel>
+                        <SectionLabel>Interlinking tecnico</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Caminhos relacionados para especificar o conjunto completo
+                            Caminhos relacionados para fechar poste, base e acessorios
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-300">
-                            A pagina de suporte conecta acessorio, poste, aplicacao, acabamento e catalogos para reduzir
-                            ambiguidade no pedido.
+                            A pagina de chumbador conecta fixacao, modelos de poste, aplicacoes, bracos, suportes e
+                            catalogos.
                         </p>
                     </div>
                     <div className="grid gap-3 sm:grid-cols-2">
@@ -584,10 +546,10 @@ export default function SuporteParaLuminariaPublicaPage() {
                     <div className="space-y-5">
                         <SectionLabel>Perguntas frequentes</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Duvidas comuns antes de cotar suporte para luminaria publica
+                            Duvidas comuns antes de cotar chumbador para poste
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-600">
-                            Respostas para separar braco, suporte, nucleo, quantidade de luminarias e compatibilidade.
+                            Respostas para diferenciar chumbador, base, flange, gabarito e engastamento.
                         </p>
                     </div>
                     <div className="space-y-4">
@@ -608,20 +570,20 @@ export default function SuporteParaLuminariaPublicaPage() {
                 <div className="container mx-auto grid gap-8 px-4 lg:grid-cols-[1fr_auto] lg:items-center">
                     <div>
                         <h2 className="text-3xl font-black uppercase leading-tight text-industrial-950 md:text-5xl">
-                            Envie o modelo de suporte e a quantidade de luminarias
+                            Envie desenho, memorial ou fotos da base
                         </h2>
                         <p className="mt-4 max-w-3xl text-base font-bold leading-relaxed text-industrial-800">
-                            Informe se precisa de suporte para 1, 2, 3 ou 4 luminarias, poste, luminaria, acabamento,
-                            cidade de entrega e prazo. Se houver desenho ou memorial, envie junto.
+                            Informe poste, altura, quantidade, flange, furos, chumbadores, acabamento, cidade e prazo. Se
+                            a obra ainda nao tem projeto, envie o contexto para triagem comercial.
                         </p>
                     </div>
                     <div className="flex flex-col gap-4 sm:flex-row lg:flex-col">
                         <WhatsAppLink
                             message={whatsappMessage}
-                            eventLabel="Enviar dados de suporte para luminaria publica"
-                            eventSource="final_suporte_luminaria_publica"
+                            eventLabel="Enviar dados de chumbador para poste metalico"
+                            eventSource="final_chumbador_poste_metalico"
                             className="inline-flex h-14 items-center justify-center gap-3 bg-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-industrial-800"
-                            aria-label="Enviar dados de suporte para luminaria publica pelo WhatsApp"
+                            aria-label="Enviar dados de chumbador para poste metalico pelo WhatsApp"
                         >
                             <MessageCircle className="size-5" aria-hidden="true" />
                             Falar com especialista
@@ -630,7 +592,7 @@ export default function SuporteParaLuminariaPublicaPage() {
                             href="/downloads"
                             className="inline-flex h-14 items-center justify-center gap-3 border-2 border-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-white"
                         >
-                            <FileText className="size-5" aria-hidden="true" />
+                            <Download className="size-5" aria-hidden="true" />
                             Ver catalogos
                         </Link>
                     </div>
@@ -639,13 +601,13 @@ export default function SuporteParaLuminariaPublicaPage() {
 
             <section className="border-b border-industrial-200 bg-white py-10">
                 <div className="container mx-auto grid gap-4 px-4 md:grid-cols-3">
-                    <Link href="/produtos/braco-para-luminaria-publica" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950">
-                        <Wrench className="size-6 text-accent-dark" aria-hidden="true" />
-                        <span className="text-sm font-black uppercase tracking-widest">Ver braco para luminaria</span>
+                    <Link href="/blog/poste-flangeado-ou-engastado" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950">
+                        <FileText className="size-6 text-accent-dark" aria-hidden="true" />
+                        <span className="text-sm font-black uppercase tracking-widest">Guia flangeado ou engastado</span>
                     </Link>
-                    <Link href="/postes-para-iluminacao-publica" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950">
-                        <Landmark className="size-6 text-accent-dark" aria-hidden="true" />
-                        <span className="text-sm font-black uppercase tracking-widest">Ver iluminacao publica</span>
+                    <Link href="/produtos/poste-teleconico" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950">
+                        <Ruler className="size-6 text-accent-dark" aria-hidden="true" />
+                        <span className="text-sm font-black uppercase tracking-widest">Ver poste teleconico</span>
                     </Link>
                     <Link href="/downloads" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950">
                         <Download className="size-6 text-accent-dark" aria-hidden="true" />
