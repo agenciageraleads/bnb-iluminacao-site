@@ -33,6 +33,7 @@ import {
     createSchemaGraph,
     createWebPageSchema,
 } from "@/lib/seo/schema"
+import { createSeoImage } from "@/lib/seo/images"
 
 const pageUrl = "https://bebiluminacao.com.br/fabrica-de-postes-metalicos"
 const pageDescription =
@@ -179,26 +180,19 @@ const applications = [
 ]
 
 const gallery = [
-    {
-        src: "/images/seo/postes-metalicos/estacionamento-industrial-postes-retos.jpg",
+    createSeoImage("estacionamentoIndustrialPostesRetos", {
         alt: "Postes metalicos em area industrial iluminada",
         title: "Areas industriais",
-    },
-    {
-        src: "/images/seo/postes-metalicos/via-publica-postes-retos-dois-lados.jpg",
+    }),
+    createSeoImage("viaPublicaPostesRetosDoisLados", {
         alt: "Postes metalicos em via publica nos dois sentidos",
         title: "Vias publicas",
-    },
-    {
-        src: "/images/seo/postes-metalicos/praca-iluminada-luminaria-redonda.jpg",
+    }),
+    createSeoImage("pracaIluminadaLuminariaRedonda", {
         alt: "Postes metalicos em praca iluminada",
         title: "Pracas e urbanismo",
-    },
-    {
-        src: "/images/servicos/corte-laser.jpg",
-        alt: "Processo industrial de corte metalico",
-        title: "Processo industrial",
-    },
+    }),
+    createSeoImage("corteLaserIndustrial"),
 ]
 
 const primaryInternalLinks = [

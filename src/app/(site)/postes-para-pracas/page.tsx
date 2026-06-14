@@ -26,6 +26,7 @@ import { Header } from "@/components/layout/header"
 import { SchemaOrg } from "@/components/seo/schema-org"
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
 import { WhatsAppLink } from "@/components/ui/whatsapp-link"
+import { createSeoImage } from "@/lib/seo/images"
 import {
     SITE_URL,
     absoluteUrl,
@@ -240,26 +241,22 @@ const relatedPages = [
 ]
 
 const gallery = [
-    {
-        src: "/images/seo/postes-metalicos/praca-iluminada-luminaria-redonda.jpg",
+    createSeoImage("pracaIluminadaLuminariaRedonda", {
         alt: "Postes ornamentais para praca e area de convivencia",
         title: "Pracas e convivencia",
-    },
-    {
-        src: "/images/seo/postes-metalicos/rua-iluminada-poste-curvo.jpg",
+    }),
+    createSeoImage("ruaIluminadaPosteCurvo", {
         alt: "Poste curvo em area arborizada e caminho de pedestres",
         title: "Caminhos arborizados",
-    },
-    {
-        src: "/images/seo/postes-metalicos/via-urbana-iluminada-postes.jpg",
+    }),
+    createSeoImage("viaUrbanaIluminadaPostes", {
         alt: "Postes metalicos para area urbana e circulacao publica",
         title: "Areas urbanas",
-    },
-    {
-        src: "/images/seo/postes-metalicos/via-publica-postes-retos-dois-lados.jpg",
+    }),
+    createSeoImage("viaPublicaPostesRetosDoisLados", {
         alt: "Postes metalicos para vias e acessos proximos a pracas",
         title: "Acessos e vias",
-    },
+    }),
 ]
 
 const internalLinks = [

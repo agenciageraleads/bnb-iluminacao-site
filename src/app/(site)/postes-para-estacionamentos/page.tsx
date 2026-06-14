@@ -26,6 +26,7 @@ import { Header } from "@/components/layout/header"
 import { SchemaOrg } from "@/components/seo/schema-org"
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
 import { WhatsAppLink } from "@/components/ui/whatsapp-link"
+import { createSeoImage } from "@/lib/seo/images"
 import {
     SITE_URL,
     absoluteUrl,
@@ -234,26 +235,22 @@ const relatedPages = [
 ]
 
 const gallery = [
-    {
-        src: "/images/seo/postes-metalicos/estacionamento-industrial-postes-retos.jpg",
+    createSeoImage("estacionamentoIndustrialPostesRetos", {
         alt: "Postes metalicos retos para estacionamento industrial e patio amplo",
         title: "Patios e industrias",
-    },
-    {
-        src: "/images/seo/postes-metalicos/estacionamento-hospital-postes.jpg",
+    }),
+    createSeoImage("estacionamentoHospitalPostes", {
         alt: "Postes metalicos para estacionamento de hospital e area de acesso",
         title: "Hospitais e acessos",
-    },
-    {
-        src: "/images/seo/postes-metalicos/via-publica-postes-retos-dois-lados.jpg",
+    }),
+    createSeoImage("viaPublicaPostesRetosDoisLados", {
         alt: "Postes metalicos para vias de acesso e estacionamento aberto",
         title: "Vias e acessos",
-    },
-    {
-        src: "/images/seo/postes-metalicos/rua-iluminada-poste-curvo.jpg",
+    }),
+    createSeoImage("ruaIluminadaPosteCurvo", {
         alt: "Poste curvo para estacionamento residencial e area arborizada",
         title: "Areas residenciais",
-    },
+    }),
 ]
 
 const internalLinks = [

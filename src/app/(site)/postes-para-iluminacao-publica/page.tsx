@@ -33,6 +33,7 @@ import {
     createSchemaGraph,
     createWebPageSchema,
 } from "@/lib/seo/schema"
+import { createSeoImage } from "@/lib/seo/images"
 
 export const dynamic = "force-dynamic"
 
@@ -155,26 +156,19 @@ const relatedLines = [
 ]
 
 const gallery = [
-    {
-        src: "/images/seo/postes-metalicos/via-publica-postes-retos-dois-lados.jpg",
+    createSeoImage("viaPublicaPostesRetosDoisLados", {
         alt: "Postes para iluminacao publica em via urbana nos dois sentidos",
-        title: "Via publica",
-    },
-    {
-        src: "/images/seo/postes-metalicos/rua-iluminada-poste-curvo.jpg",
+    }),
+    createSeoImage("ruaIluminadaPosteCurvo", {
         alt: "Poste curvo para iluminacao publica em rua arborizada",
-        title: "Rua com poste curvo",
-    },
-    {
-        src: "/images/seo/postes-metalicos/praca-iluminada-luminaria-redonda.jpg",
+    }),
+    createSeoImage("pracaIluminadaLuminariaRedonda", {
         alt: "Poste ornamental para iluminacao publica em praca",
-        title: "Praca iluminada",
-    },
-    {
-        src: "/images/seo/postes-metalicos/via-urbana-iluminada-postes.jpg",
+    }),
+    createSeoImage("viaUrbanaIluminadaPostes", {
         alt: "Postes metalicos para iluminacao urbana com trafego noturno",
         title: "Iluminacao urbana",
-    },
+    }),
 ]
 
 const internalLinks = [

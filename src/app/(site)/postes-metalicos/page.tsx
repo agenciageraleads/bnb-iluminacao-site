@@ -31,6 +31,7 @@ import {
     createSchemaGraph,
     createWebPageSchema,
 } from "@/lib/seo/schema"
+import { createSeoImage } from "@/lib/seo/images"
 
 export const dynamic = "force-dynamic"
 
@@ -154,36 +155,12 @@ const finishOptions = [
 ]
 
 const gallery = [
-    {
-        src: "/images/seo/postes-metalicos/via-urbana-iluminada-postes.jpg",
-        alt: "Postes metalicos em via urbana iluminada durante a noite",
-        title: "Via urbana",
-    },
-    {
-        src: "/images/seo/postes-metalicos/estacionamento-industrial-postes-retos.jpg",
-        alt: "Postes metalicos retos iluminando area de estacionamento e circulacao industrial",
-        title: "Estacionamento industrial",
-    },
-    {
-        src: "/images/seo/postes-metalicos/estacionamento-hospital-postes.jpg",
-        alt: "Postes metalicos aplicados em estacionamento hospitalar iluminado",
-        title: "Estacionamento hospitalar",
-    },
-    {
-        src: "/images/seo/postes-metalicos/praca-iluminada-luminaria-redonda.jpg",
-        alt: "Postes ornamentais com luminaria redonda em praca iluminada",
-        title: "Praca iluminada",
-    },
-    {
-        src: "/images/seo/postes-metalicos/rua-iluminada-poste-curvo.jpg",
-        alt: "Poste metalico curvo iluminando rua arborizada ao anoitecer",
-        title: "Rua com poste curvo",
-    },
-    {
-        src: "/images/seo/postes-metalicos/via-publica-postes-retos-dois-lados.jpg",
-        alt: "Postes metalicos retos em via publica iluminada nos dois sentidos",
-        title: "Via publica",
-    },
+    createSeoImage("viaUrbanaIluminadaPostes"),
+    createSeoImage("estacionamentoIndustrialPostesRetos"),
+    createSeoImage("estacionamentoHospitalPostes"),
+    createSeoImage("pracaIluminadaLuminariaRedonda"),
+    createSeoImage("ruaIluminadaPosteCurvo"),
+    createSeoImage("viaPublicaPostesRetosDoisLados"),
 ]
 
 const internalLinks = [
