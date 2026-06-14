@@ -16,6 +16,7 @@ const paths = [
   '/lp/postes-metalicos',
   '/produtos',
   '/blog',
+  '/blog/altura-de-poste-para-iluminacao-publica',
   '/representantes',
   '/downloads',
 ]

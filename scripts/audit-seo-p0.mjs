@@ -46,6 +46,10 @@ const pages = [
     path: '/fabrica-de-postes-metalicos',
     types: ['WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'FAQPage'],
   },
+  {
+    path: '/blog/altura-de-poste-para-iluminacao-publica',
+    types: ['Article', 'WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'FAQPage'],
+  },
 ]
 
 const redirects = [

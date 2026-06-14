@@ -31,6 +31,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/servicos',
     '/produtos',
     '/blog',
+    '/blog/altura-de-poste-para-iluminacao-publica',
     '/downloads',
     '/lp/mastros-para-bandeira',
   ].map((route) => ({

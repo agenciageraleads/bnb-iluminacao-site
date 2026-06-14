@@ -181,6 +181,7 @@ const internalLinks = [
     ["Fabrica de postes metalicos", "/fabrica-de-postes-metalicos"],
     ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
     ["Postes metalicos", "/postes-metalicos"],
+    ["Altura de poste para iluminacao publica", "/blog/altura-de-poste-para-iluminacao-publica"],
     ["Poste teleconico", "/produtos/poste-teleconico"],
     ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
     ["Fabricante de postes metalicos", "/fabricante-de-postes-metalicos"],
