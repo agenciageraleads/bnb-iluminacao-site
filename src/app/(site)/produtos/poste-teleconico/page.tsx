@@ -209,6 +209,7 @@ const primaryInternalLinks = [
 const secondaryInternalLinks = [
     ["Fabricante de postes teleconicos", "/fabricante-de-postes-teleconicos"],
     ["Altura de poste para iluminacao publica", "/blog/altura-de-poste-para-iluminacao-publica"],
+    ["Normas para postes de iluminacao", "/blog/normas-para-postes-de-iluminacao"],
     ["Poste curvo simples", "/produtos/poste-curvo-simples"],
     ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
     ["Poste metalico galvanizado", "/produtos/poste-metalico-galvanizado"],

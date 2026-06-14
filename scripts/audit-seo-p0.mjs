@@ -50,6 +50,10 @@ const pages = [
     path: '/blog/altura-de-poste-para-iluminacao-publica',
     types: ['Article', 'WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'FAQPage'],
   },
+  {
+    path: '/blog/normas-para-postes-de-iluminacao',
+    types: ['Article', 'WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'FAQPage'],
+  },
 ]
 
 const redirects = [

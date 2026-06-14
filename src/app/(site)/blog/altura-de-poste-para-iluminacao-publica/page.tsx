@@ -603,10 +603,11 @@ export default function AlturaDePosteParaIluminacaoPublicaPage() {
                     {[
                         ["Poste metalico galvanizado", "/produtos/poste-metalico-galvanizado"],
                         ["Fabricante de postes teleconicos", "/fabricante-de-postes-teleconicos"],
-                        ["Catalogos e downloads", "/downloads"],
+                        ["Normas para postes de iluminacao", "/blog/normas-para-postes-de-iluminacao"],
                         ["Poste curvo simples", "/produtos/poste-curvo-simples"],
                         ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
                         ["Braco para luminaria publica", "/produtos/braco-para-luminaria-publica"],
+                        ["Catalogos e downloads", "/downloads"],
                     ].map(([label, href]) => (
                         <Link
                             key={href}

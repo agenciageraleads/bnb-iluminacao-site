@@ -187,6 +187,7 @@ const internalLinks = [
     ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
     ["Poste teleconico", "/produtos/poste-teleconico"],
     ["Postes para iluminacao publica", "/postes-para-iluminacao-publica"],
+    ["Normas para postes de iluminacao", "/blog/normas-para-postes-de-iluminacao"],
     ["Pintura eletrostatica", "/servicos/pintura-eletrostatica"],
     ["Catalogos e downloads", "/downloads"],
     ["Obras realizadas", "/obras"],
