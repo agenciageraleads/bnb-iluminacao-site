@@ -134,6 +134,31 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/poste-metalico-galvanizado',
+        destination: '/produtos/poste-metalico-galvanizado',
+        permanent: true,
+      },
+      {
+        source: '/postes-metalicos-galvanizados',
+        destination: '/produtos/poste-metalico-galvanizado',
+        permanent: true,
+      },
+      {
+        source: '/poste-de-aco-galvanizado',
+        destination: '/produtos/poste-metalico-galvanizado',
+        permanent: true,
+      },
+      {
+        source: '/poste-galvanizado-para-iluminacao',
+        destination: '/produtos/poste-metalico-galvanizado',
+        permanent: true,
+      },
+      {
+        source: '/poste-galvanizado-com-base',
+        destination: '/produtos/poste-metalico-galvanizado',
+        permanent: true,
+      },
+      {
         source: '/fabrica-postes-metalicos',
         destination: '/fabrica-de-postes-metalicos',
         permanent: true,
@@ -212,6 +237,16 @@ const nextConfig: NextConfig = {
       {
         source: '/produtos/poste-teleconico-galvanizado',
         destination: '/produtos/poste-teleconico',
+        permanent: true,
+      },
+      {
+        source: '/produtos/poste-galvanizado',
+        destination: '/produtos/poste-metalico-galvanizado',
+        permanent: true,
+      },
+      {
+        source: '/produtos/postes-metalicos-galvanizados',
+        destination: '/produtos/poste-metalico-galvanizado',
         permanent: true,
       },
       {

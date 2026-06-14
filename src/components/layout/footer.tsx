@@ -39,6 +39,7 @@ export function Footer() {
                             <li><Link href="/postes-para-iluminacao-publica" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Iluminação Pública</Link></li>
                             <li><Link href="/fabricante-de-postes-teleconicos" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Fabricante Telecônico</Link></li>
                             <li><Link href="/produtos/poste-teleconico" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Poste Telecônico</Link></li>
+                            <li><Link href="/produtos/poste-metalico-galvanizado" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Poste Galvanizado</Link></li>
                             <li><Link href="/produtos/braco-para-luminaria-publica" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Braços e Suportes</Link></li>
                             <li><Link href="/produtos/linha-urban" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Urban</Link></li>
                             <li><Link href="/produtos/linha-versa" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Versa</Link></li>

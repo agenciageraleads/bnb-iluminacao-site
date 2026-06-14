@@ -192,6 +192,7 @@ const internalLinks = [
     ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
     ["Postes para iluminacao publica", "/postes-para-iluminacao-publica"],
     ["Poste teleconico", "/produtos/poste-teleconico"],
+    ["Poste metalico galvanizado", "/produtos/poste-metalico-galvanizado"],
     ["Braco para luminaria publica", "/produtos/braco-para-luminaria-publica"],
     ["Catalogo de produtos", "/produtos"],
     ["Linha Urban", "/produtos/linha-urban"],

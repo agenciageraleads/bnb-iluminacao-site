@@ -22,6 +22,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/postes-metalicos',
     '/postes-para-iluminacao-publica',
     '/produtos/poste-teleconico',
+    '/produtos/poste-metalico-galvanizado',
     '/produtos/braco-para-luminaria-publica',
     '/quem-somos',
     '/contato',
