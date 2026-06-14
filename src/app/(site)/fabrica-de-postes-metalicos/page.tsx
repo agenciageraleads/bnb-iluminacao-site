@@ -208,6 +208,11 @@ const primaryInternalLinks = [
         icon: Factory,
     },
     {
+        label: "Fornecedor de postes metalicos",
+        href: "/fornecedor-de-postes-metalicos",
+        icon: ClipboardCheck,
+    },
+    {
         label: "Modelos de postes metalicos",
         href: "/postes-metalicos",
         icon: Zap,

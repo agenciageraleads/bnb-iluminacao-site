@@ -134,6 +134,21 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/fornecedor-postes-metalicos',
+        destination: '/fornecedor-de-postes-metalicos',
+        permanent: true,
+      },
+      {
+        source: '/fornecedores-de-postes-metalicos',
+        destination: '/fornecedor-de-postes-metalicos',
+        permanent: true,
+      },
+      {
+        source: '/comprar-poste-metalico',
+        destination: '/fornecedor-de-postes-metalicos',
+        permanent: true,
+      },
+      {
         source: '/poste-teleconico',
         destination: '/produtos/poste-teleconico',
         permanent: true,

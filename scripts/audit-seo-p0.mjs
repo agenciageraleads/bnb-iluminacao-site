@@ -7,6 +7,10 @@ const pages = [
     types: ['WebPage', 'BreadcrumbList', 'ItemList', 'FAQPage'],
   },
   {
+    path: '/fornecedor-de-postes-metalicos',
+    types: ['WebPage', 'BreadcrumbList', 'ItemList', 'FAQPage'],
+  },
+  {
     path: '/postes-metalicos',
     types: ['WebPage', 'BreadcrumbList', 'ItemList', 'FAQPage'],
   },
@@ -40,6 +44,9 @@ const redirects = [
   ['/fabricas-de-postes-metalicos', '/fabrica-de-postes-metalicos'],
   ['/industria-de-postes-metalicos', '/fabrica-de-postes-metalicos'],
   ['/postes-metalicos-direto-da-fabrica', '/fabrica-de-postes-metalicos'],
+  ['/fornecedor-postes-metalicos', '/fornecedor-de-postes-metalicos'],
+  ['/fornecedores-de-postes-metalicos', '/fornecedor-de-postes-metalicos'],
+  ['/comprar-poste-metalico', '/fornecedor-de-postes-metalicos'],
 ]
 
 const sitemapForbiddenPaths = [

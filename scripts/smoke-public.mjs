@@ -4,6 +4,7 @@ const paths = [
   '/',
   '/fabrica-de-postes-metalicos',
   '/fabricante-de-postes-metalicos',
+  '/fornecedor-de-postes-metalicos',
   '/postes-metalicos',
   '/postes-para-iluminacao-publica',
   '/produtos/poste-teleconico',

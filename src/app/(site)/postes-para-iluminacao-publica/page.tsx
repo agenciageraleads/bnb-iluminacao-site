@@ -179,6 +179,7 @@ const gallery = [
 
 const internalLinks = [
     ["Fabrica de postes metalicos", "/fabrica-de-postes-metalicos"],
+    ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
     ["Postes metalicos", "/postes-metalicos"],
     ["Poste teleconico", "/produtos/poste-teleconico"],
     ["Fabricante de postes metalicos", "/fabricante-de-postes-metalicos"],
