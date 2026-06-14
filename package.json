@@ -10,6 +10,7 @@
     "lint": "eslint",
     "typecheck": "tsc --project tsconfig.typecheck.json --noEmit --incremental false",
     "smoke:public": "node scripts/smoke-public.mjs",
+    "seo:audit:p0": "node scripts/audit-seo-p0.mjs",
     "test:validate": "npm run typecheck && npm run lint && npm run build && npm run smoke:public"
   },
   "dependencies": {

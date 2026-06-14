@@ -14,6 +14,8 @@ interface WhatsAppLinkProps {
   className?: string
   children: ReactNode
   onClick?: MouseEventHandler<HTMLAnchorElement>
+  eventLabel?: string
+  eventSource?: string
   'aria-label'?: string
 }
 
@@ -23,6 +25,8 @@ export function WhatsAppLink({
   className,
   children,
   onClick,
+  eventLabel,
+  eventSource = "inline_whatsapp",
   'aria-label': ariaLabel,
 }: WhatsAppLinkProps) {
   const url = message
@@ -32,7 +36,16 @@ export function WhatsAppLink({
   const handleClick: MouseEventHandler<HTMLAnchorElement> = (event) => {
     if (typeof window !== 'undefined') {
       window.dataLayer = window.dataLayer || []
-      window.dataLayer.push({ event: 'whatsapp_click' })
+      window.dataLayer.push({
+        event: 'whatsapp_click',
+        cta_channel: 'whatsapp',
+        cta_source: eventSource,
+        cta_label: eventLabel ?? ariaLabel ?? 'WhatsApp',
+        page_path: window.location.pathname,
+        page_location: window.location.href,
+        whatsapp_phone: phoneNumber,
+        has_prefilled_message: Boolean(message),
+      })
     }
     onClick?.(event)
   }

@@ -5,18 +5,31 @@ import { MessageCircle } from "lucide-react"
 interface FloatingWhatsAppProps {
     phoneNumber?: string
     message?: string
+    eventLabel?: string
+    eventSource?: string
 }
 
 export function FloatingWhatsApp({
     phoneNumber = "556235761988",
     message = "Olá! Gostaria de solicitar um orçamento de postes metálicos.",
+    eventLabel = "Solicitar orcamento",
+    eventSource = "floating_whatsapp",
 }: FloatingWhatsAppProps) {
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
 
     function handleClick() {
         if (typeof window !== 'undefined') {
             (window as any).dataLayer = (window as any).dataLayer || []
-            ;(window as any).dataLayer.push({ event: 'whatsapp_click' })
+            ;(window as any).dataLayer.push({
+                event: 'whatsapp_click',
+                cta_channel: 'whatsapp',
+                cta_source: eventSource,
+                cta_label: eventLabel,
+                page_path: window.location.pathname,
+                page_location: window.location.href,
+                whatsapp_phone: phoneNumber,
+                has_prefilled_message: Boolean(message),
+            })
         }
     }
 

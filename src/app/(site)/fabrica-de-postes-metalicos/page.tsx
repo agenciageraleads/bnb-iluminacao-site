@@ -22,7 +22,17 @@ import {
 
 import { Footer } from "@/components/layout/footer"
 import { Header } from "@/components/layout/header"
+import { SchemaOrg } from "@/components/seo/schema-org"
 import { WhatsAppLink } from "@/components/ui/whatsapp-link"
+import {
+    SITE_URL,
+    createBreadcrumbSchema,
+    createFactoryOrganizationSchema,
+    createFaqSchema,
+    createItemListSchema,
+    createSchemaGraph,
+    createWebPageSchema,
+} from "@/lib/seo/schema"
 
 const pageUrl = "https://bebiluminacao.com.br/fabrica-de-postes-metalicos"
 const pageDescription =
@@ -245,78 +255,28 @@ const faq = [
 ]
 
 function getSchema() {
-    return {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "WebPage",
-                "@id": `${pageUrl}#webpage`,
-                url: pageUrl,
-                name: "Fabrica de Postes Metalicos",
-                description: pageDescription,
-                isPartOf: {
-                    "@id": "https://bebiluminacao.com.br/#organization",
-                },
-                primaryImageOfPage: {
-                    "@type": "ImageObject",
-                    url: `https://bebiluminacao.com.br${heroImage}`,
-                },
-            },
-            {
-                "@type": "Organization",
-                "@id": "https://bebiluminacao.com.br/#organization",
-                name: "B&B Iluminacao",
-                url: "https://bebiluminacao.com.br",
-                address: {
-                    "@type": "PostalAddress",
-                    addressLocality: "Goiania",
-                    addressRegion: "GO",
-                    addressCountry: "BR",
-                },
-            },
-            {
-                "@type": "BreadcrumbList",
-                "@id": `${pageUrl}#breadcrumb`,
-                itemListElement: [
-                    {
-                        "@type": "ListItem",
-                        position: 1,
-                        name: "Inicio",
-                        item: "https://bebiluminacao.com.br",
-                    },
-                    {
-                        "@type": "ListItem",
-                        position: 2,
-                        name: "Fabrica de Postes Metalicos",
-                        item: pageUrl,
-                    },
-                ],
-            },
-            {
-                "@type": "ItemList",
-                "@id": `${pageUrl}#processo`,
-                name: "Processo de fabrica de postes metalicos",
-                itemListElement: processSteps.map((step, index) => ({
-                    "@type": "ListItem",
-                    position: index + 1,
-                    name: step.title,
-                    description: step.description,
-                })),
-            },
-            {
-                "@type": "FAQPage",
-                "@id": `${pageUrl}#faq`,
-                mainEntity: faq.map((item) => ({
-                    "@type": "Question",
-                    name: item.question,
-                    acceptedAnswer: {
-                        "@type": "Answer",
-                        text: item.answer,
-                    },
-                })),
-            },
-        ],
-    }
+    return createSchemaGraph([
+        createWebPageSchema({
+            url: pageUrl,
+            name: "Fabrica de Postes Metalicos",
+            description: pageDescription,
+            image: heroImage,
+        }),
+        createFactoryOrganizationSchema(),
+        createBreadcrumbSchema(pageUrl, [
+            { name: "Inicio", item: SITE_URL },
+            { name: "Fabrica de Postes Metalicos", item: pageUrl },
+        ]),
+        createItemListSchema({
+            id: `${pageUrl}#processo`,
+            name: "Processo de fabrica de postes metalicos",
+            items: processSteps.map((step) => ({
+                name: step.title,
+                description: step.description,
+            })),
+        }),
+        createFaqSchema(pageUrl, faq),
+    ])
 }
 
 function SectionLabel({ children }: { children: ReactNode }) {
@@ -330,11 +290,7 @@ function SectionLabel({ children }: { children: ReactNode }) {
 export default function FabricaDePostesMetalicosPage() {
     return (
         <main className="min-h-screen bg-white text-industrial-950">
-            <script
-                id="fabrica-postes-metalicos-schema"
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(getSchema()) }}
-            />
+            <SchemaOrg id="fabrica-postes-metalicos-schema" data={getSchema()} />
             <Header />
 
             <section className="relative overflow-hidden bg-industrial-950 pt-28 md:pt-36">

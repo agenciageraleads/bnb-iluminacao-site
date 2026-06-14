@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
+import { SchemaOrg } from "@/components/seo/schema-org";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -127,11 +127,7 @@ export default function RootLayout({
         className={`${inter.variable} ${outfit.variable} font-sans antialiased bg-industrial-50 text-industrial-950`}
       >
         <GoogleTagManager gtmId={gtmId} adsId={adsId} gaId={gaId} fbPixelId={fbPixelId} />
-        <Script
-            id="global-schema"
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <SchemaOrg id="global-schema" data={jsonLd} />
         {children}
       </body>
     </html>

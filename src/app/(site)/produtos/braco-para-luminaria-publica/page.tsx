@@ -20,8 +20,18 @@ import {
 
 import { Footer } from "@/components/layout/footer"
 import { Header } from "@/components/layout/header"
+import { SchemaOrg } from "@/components/seo/schema-org"
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
 import { WhatsAppLink } from "@/components/ui/whatsapp-link"
+import {
+    SITE_URL,
+    createBreadcrumbSchema,
+    createFaqSchema,
+    createItemListSchema,
+    createProductSchema,
+    createSchemaGraph,
+    createWebPageSchema,
+} from "@/lib/seo/schema"
 
 const pageUrl = "https://bebiluminacao.com.br/produtos/braco-para-luminaria-publica"
 const pageDescription =
@@ -236,88 +246,36 @@ const faq = [
 ]
 
 function getSchema() {
-    return {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "Product",
-                "@id": `${pageUrl}#product`,
-                name: "Braco para Luminaria Publica",
-                description: pageDescription,
-                image: heroImage,
-                brand: {
-                    "@type": "Brand",
-                    name: "B&B Iluminacao",
-                },
-                category: "Bracos e suportes metalicos para iluminacao publica",
-                additionalProperty: specificationRows.map(([name, value]) => ({
-                    "@type": "PropertyValue",
-                    name,
-                    value,
-                })),
-            },
-            {
-                "@type": "WebPage",
-                "@id": `${pageUrl}#webpage`,
-                url: pageUrl,
-                name: "Braco para Luminaria Publica",
-                description: pageDescription,
-                isPartOf: {
-                    "@id": "https://bebiluminacao.com.br/#organization",
-                },
-                mainEntity: {
-                    "@id": `${pageUrl}#product`,
-                },
-            },
-            {
-                "@type": "BreadcrumbList",
-                "@id": `${pageUrl}#breadcrumb`,
-                itemListElement: [
-                    {
-                        "@type": "ListItem",
-                        position: 1,
-                        name: "Inicio",
-                        item: "https://bebiluminacao.com.br",
-                    },
-                    {
-                        "@type": "ListItem",
-                        position: 2,
-                        name: "Produtos",
-                        item: "https://bebiluminacao.com.br/produtos",
-                    },
-                    {
-                        "@type": "ListItem",
-                        position: 3,
-                        name: "Braco para Luminaria Publica",
-                        item: pageUrl,
-                    },
-                ],
-            },
-            {
-                "@type": "ItemList",
-                "@id": `${pageUrl}#modelos`,
-                name: "Modelos de braco e suporte para luminaria publica",
-                itemListElement: productModels.map((model, index) => ({
-                    "@type": "ListItem",
-                    position: index + 1,
-                    name: model.title,
-                    description: model.description,
-                })),
-            },
-            {
-                "@type": "FAQPage",
-                "@id": `${pageUrl}#faq`,
-                mainEntity: faq.map((item) => ({
-                    "@type": "Question",
-                    name: item.question,
-                    acceptedAnswer: {
-                        "@type": "Answer",
-                        text: item.answer,
-                    },
-                })),
-            },
-        ],
-    }
+    return createSchemaGraph([
+        createProductSchema({
+            url: pageUrl,
+            name: "Braco para Luminaria Publica",
+            description: pageDescription,
+            image: heroImage,
+            category: "Bracos e suportes metalicos para iluminacao publica",
+            properties: specificationRows.map(([name, value]) => ({ name, value })),
+        }),
+        createWebPageSchema({
+            url: pageUrl,
+            name: "Braco para Luminaria Publica",
+            description: pageDescription,
+            mainEntityId: `${pageUrl}#product`,
+        }),
+        createBreadcrumbSchema(pageUrl, [
+            { name: "Inicio", item: SITE_URL },
+            { name: "Produtos", item: `${SITE_URL}/produtos` },
+            { name: "Braco para Luminaria Publica", item: pageUrl },
+        ]),
+        createItemListSchema({
+            id: `${pageUrl}#modelos`,
+            name: "Modelos de braco e suporte para luminaria publica",
+            items: productModels.map((model) => ({
+                name: model.title,
+                description: model.description,
+            })),
+        }),
+        createFaqSchema(pageUrl, faq),
+    ])
 }
 
 function SectionLabel({ children }: { children: ReactNode }) {
@@ -331,11 +289,7 @@ function SectionLabel({ children }: { children: ReactNode }) {
 export default function BracoParaLuminariaPublicaPage() {
     return (
         <main className="min-h-screen bg-white text-industrial-950">
-            <script
-                id="braco-luminaria-publica-schema"
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(getSchema()) }}
-            />
+            <SchemaOrg id="braco-luminaria-publica-schema" data={getSchema()} />
             <Header />
             <div className="hidden md:block">
                 <FloatingWhatsApp message={whatsappMessage} />

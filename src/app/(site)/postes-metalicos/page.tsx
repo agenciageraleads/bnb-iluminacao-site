@@ -18,9 +18,19 @@ import {
 
 import { Footer } from "@/components/layout/footer"
 import { Header } from "@/components/layout/header"
+import { SchemaOrg } from "@/components/seo/schema-org"
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
 import { WhatsAppLink } from "@/components/ui/whatsapp-link"
 import { getPortfolioProjects, getProducts } from "@/lib/data"
+import {
+    SITE_URL,
+    createBreadcrumbSchema,
+    createFaqSchema,
+    createImageSchemas,
+    createItemListSchema,
+    createSchemaGraph,
+    createWebPageSchema,
+} from "@/lib/seo/schema"
 
 export const dynamic = "force-dynamic"
 
@@ -219,68 +229,27 @@ const faq = [
 ]
 
 function getSchema() {
-    return {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "WebPage",
-                "@id": `${pageUrl}#webpage`,
-                url: pageUrl,
-                name: "Postes Metalicos",
-                description: pageDescription,
-                isPartOf: {
-                    "@id": "https://bebiluminacao.com.br/#organization",
-                },
-            },
-            {
-                "@type": "BreadcrumbList",
-                "@id": `${pageUrl}#breadcrumb`,
-                itemListElement: [
-                    {
-                        "@type": "ListItem",
-                        position: 1,
-                        name: "Inicio",
-                        item: "https://bebiluminacao.com.br",
-                    },
-                    {
-                        "@type": "ListItem",
-                        position: 2,
-                        name: "Postes Metalicos",
-                        item: pageUrl,
-                    },
-                ],
-            },
-            {
-                "@type": "ItemList",
-                "@id": `${pageUrl}#modelos`,
-                name: "Modelos de postes metalicos",
-                itemListElement: models.map((model, index) => ({
-                    "@type": "ListItem",
-                    position: index + 1,
-                    name: model.title,
-                    url: `https://bebiluminacao.com.br${model.href}`,
-                })),
-            },
-            ...gallery.map((image) => ({
-                "@type": "ImageObject",
-                contentUrl: `https://bebiluminacao.com.br${image.src}`,
-                name: image.title,
-                description: image.alt,
+    return createSchemaGraph([
+        createWebPageSchema({
+            url: pageUrl,
+            name: "Postes Metalicos",
+            description: pageDescription,
+        }),
+        createBreadcrumbSchema(pageUrl, [
+            { name: "Inicio", item: SITE_URL },
+            { name: "Postes Metalicos", item: pageUrl },
+        ]),
+        createItemListSchema({
+            id: `${pageUrl}#modelos`,
+            name: "Modelos de postes metalicos",
+            items: models.map((model) => ({
+                name: model.title,
+                url: model.href,
             })),
-            {
-                "@type": "FAQPage",
-                "@id": `${pageUrl}#faq`,
-                mainEntity: faq.map((item) => ({
-                    "@type": "Question",
-                    name: item.question,
-                    acceptedAnswer: {
-                        "@type": "Answer",
-                        text: item.answer,
-                    },
-                })),
-            },
-        ],
-    }
+        }),
+        ...createImageSchemas(gallery),
+        createFaqSchema(pageUrl, faq),
+    ])
 }
 
 function SectionLabel({ children }: { children: ReactNode }) {
@@ -304,11 +273,7 @@ export default async function PostesMetalicosPage() {
 
     return (
         <main className="min-h-screen bg-white text-industrial-950">
-            <script
-                id="postes-metalicos-schema"
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(getSchema()) }}
-            />
+            <SchemaOrg id="postes-metalicos-schema" data={getSchema()} />
             <Header />
             <div className="hidden md:block">
                 <FloatingWhatsApp message={whatsappMessage} />
