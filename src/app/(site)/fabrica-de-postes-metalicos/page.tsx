@@ -226,6 +226,7 @@ const primaryInternalLinks = [
 
 const secondaryInternalLinks = [
     ["Postes para loteamentos", "/postes-para-loteamentos"],
+    ["Postes para condominios", "/postes-para-condominios"],
     ["Poste teleconico", "/produtos/poste-teleconico"],
     ["Braco para luminaria publica", "/produtos/braco-para-luminaria-publica"],
     ["Catalogos e downloads", "/downloads"],

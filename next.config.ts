@@ -134,6 +134,26 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/postes-condominios',
+        destination: '/postes-para-condominios',
+        permanent: true,
+      },
+      {
+        source: '/postes-para-condominio',
+        destination: '/postes-para-condominios',
+        permanent: true,
+      },
+      {
+        source: '/poste-para-condominio',
+        destination: '/postes-para-condominios',
+        permanent: true,
+      },
+      {
+        source: '/iluminacao-para-condominios',
+        destination: '/postes-para-condominios',
+        permanent: true,
+      },
+      {
         source: '/fabricante-postes-teleconicos',
         destination: '/fabricante-de-postes-teleconicos',
         permanent: true,

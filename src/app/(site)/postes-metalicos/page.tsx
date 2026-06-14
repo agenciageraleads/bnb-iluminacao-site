@@ -192,6 +192,7 @@ const internalLinks = [
     ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
     ["Postes para iluminacao publica", "/postes-para-iluminacao-publica"],
     ["Postes para loteamentos", "/postes-para-loteamentos"],
+    ["Postes para condominios", "/postes-para-condominios"],
     ["Altura de poste para iluminacao publica", "/blog/altura-de-poste-para-iluminacao-publica"],
     ["Poste teleconico", "/produtos/poste-teleconico"],
     ["Poste teleconico ou reto", "/blog/poste-teleconico-ou-reto"],

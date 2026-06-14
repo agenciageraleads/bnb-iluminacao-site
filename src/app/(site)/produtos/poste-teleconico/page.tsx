@@ -209,6 +209,7 @@ const primaryInternalLinks = [
 const secondaryInternalLinks = [
     ["Fabricante de postes teleconicos", "/fabricante-de-postes-teleconicos"],
     ["Postes para loteamentos", "/postes-para-loteamentos"],
+    ["Postes para condominios", "/postes-para-condominios"],
     ["Altura de poste para iluminacao publica", "/blog/altura-de-poste-para-iluminacao-publica"],
     ["Poste teleconico ou reto", "/blog/poste-teleconico-ou-reto"],
     ["Poste flangeado ou engastado", "/blog/poste-flangeado-ou-engastado"],

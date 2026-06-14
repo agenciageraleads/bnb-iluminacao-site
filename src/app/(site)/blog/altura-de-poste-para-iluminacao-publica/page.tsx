@@ -605,6 +605,7 @@ export default function AlturaDePosteParaIluminacaoPublicaPage() {
                         ["Poste galvanizado ou pintado", "/blog/poste-galvanizado-ou-pintado"],
                         ["Poste flangeado ou engastado", "/blog/poste-flangeado-ou-engastado"],
                         ["Postes para loteamentos", "/postes-para-loteamentos"],
+                        ["Postes para condominios", "/postes-para-condominios"],
                         ["Fabricante de postes teleconicos", "/fabricante-de-postes-teleconicos"],
                         ["Normas para postes de iluminacao", "/blog/normas-para-postes-de-iluminacao"],
                         ["Poste curvo simples", "/produtos/poste-curvo-simples"],
