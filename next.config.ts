@@ -154,6 +154,26 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/postes-pracas',
+        destination: '/postes-para-pracas',
+        permanent: true,
+      },
+      {
+        source: '/postes-para-praca',
+        destination: '/postes-para-pracas',
+        permanent: true,
+      },
+      {
+        source: '/poste-para-praca',
+        destination: '/postes-para-pracas',
+        permanent: true,
+      },
+      {
+        source: '/iluminacao-para-pracas',
+        destination: '/postes-para-pracas',
+        permanent: true,
+      },
+      {
         source: '/fabricante-postes-teleconicos',
         destination: '/fabricante-de-postes-teleconicos',
         permanent: true,

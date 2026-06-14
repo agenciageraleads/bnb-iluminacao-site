@@ -5,21 +5,19 @@ import type { ReactNode } from "react"
 import {
     ArrowRight,
     Building2,
-    Car,
     ClipboardCheck,
     Download,
     Factory,
     FileText,
-    Home,
+    Flower2,
     Landmark,
     MapPin,
     MessageCircle,
     Ruler,
     ShieldCheck,
-    Truck,
+    Trees,
     Users,
     Wrench,
-    Zap,
 } from "lucide-react"
 
 import { Footer } from "@/components/layout/footer"
@@ -39,23 +37,23 @@ import {
     createWebPageSchema,
 } from "@/lib/seo/schema"
 
-const pageUrl = "https://bebiluminacao.com.br/postes-para-condominios"
+const pageUrl = "https://bebiluminacao.com.br/postes-para-pracas"
 const pageDescription =
-    "Postes para condominios residenciais, horizontais e comerciais com padronizacao visual, suporte tecnico, acabamento e atendimento nacional."
+    "Postes para pracas, parques, jardins e areas de convivencia com modelos urbanos, ornamentais, acabamento e atendimento nacional."
 const whatsappMessage =
-    "Ola, vim pela pagina de postes para condominios e quero ajuda para especificar modelos, quantidades e orcamento tecnico."
-const heroImage = "/images/seo/postes-metalicos/rua-iluminada-poste-curvo.jpg"
+    "Ola, vim pela pagina de postes para pracas e quero ajuda para especificar modelos, quantidades e orcamento tecnico."
+const heroImage = "/images/seo/postes-metalicos/praca-iluminada-luminaria-redonda.jpg"
 
 export const metadata: Metadata = {
     title: {
-        absolute: "Postes para Condominios | Modelos e Orcamento B&B",
+        absolute: "Postes para Pracas | Modelos Urbanos e Orcamento B&B",
     },
     description: pageDescription,
     alternates: {
         canonical: pageUrl,
     },
     openGraph: {
-        title: "Postes para Condominios | Modelos e Orcamento B&B",
+        title: "Postes para Pracas | Modelos Urbanos e Orcamento B&B",
         description: pageDescription,
         url: pageUrl,
         type: "website",
@@ -64,7 +62,7 @@ export const metadata: Metadata = {
                 url: absoluteUrl(heroImage),
                 width: 1200,
                 height: 630,
-                alt: "Postes metalicos para ruas internas de condominios",
+                alt: "Postes ornamentais e urbanos para praca iluminada",
             },
         ],
     },
@@ -72,169 +70,163 @@ export const metadata: Metadata = {
 
 const priorities = [
     {
-        title: "Padrao visual",
+        title: "Conforto visual",
         description:
-            "Ruas, portarias, pracas, estacionamentos e areas comuns precisam manter a mesma linguagem de poste, luminaria e acabamento.",
-        icon: Ruler,
+            "Pracas pedem iluminacao agradavel, segura e coerente com paisagismo, mobiliario urbano e circulacao de pessoas.",
+        icon: Flower2,
     },
     {
-        title: "Seguranca e circulacao",
+        title: "Seguranca urbana",
         description:
-            "A especificacao deve considerar pedestres, veiculos, acesso de visitantes, garagens, portarias e pontos de maior permanencia.",
+            "A especificacao deve considerar permanencia noturna, visibilidade, caminhos, bancos, playgrounds e travessias.",
         icon: ShieldCheck,
     },
     {
-        title: "Manutencao previsivel",
+        title: "Modelo certo",
         description:
-            "Modelos, fixacao, altura, pintura e galvanizacao devem facilitar reposicao futura e rotina de manutencao do condominio.",
-        icon: Wrench,
+            "Postes ornamentais, retos, teleconicos ou curvos podem fazer sentido conforme area, altura e identidade visual.",
+        icon: Ruler,
     },
     {
-        title: "Compra orientada",
+        title: "Origem fabril",
         description:
-            "A B&B ajuda a transformar lista de areas, quantidades e memorias de projeto em cotacao tecnica comparavel.",
-        icon: ClipboardCheck,
+            "A B&B fabrica postes e orienta acabamento, fixacao, bracos, luminarias e briefing de compra em todo o Brasil.",
+        icon: Factory,
     },
 ]
 
 const applicationCards = [
     {
-        title: "Ruas internas",
+        title: "Pracas publicas",
         description:
-            "Postes retos, teleconicos ou curvos simples para circulacao de moradores, visitantes e servicos internos.",
-        icon: MapPin,
+            "Postes urbanos ou ornamentais para areas abertas, circulacao de pedestres, bancos, jardins e convivencia.",
+        icon: Landmark,
     },
     {
-        title: "Portarias e acessos",
+        title: "Parques e jardins",
         description:
-            "Iluminacao de entrada, cancelas, guaritas e acessos exige boa leitura visual e compatibilidade com seguranca patrimonial.",
-        icon: Home,
+            "Modelos que precisam dialogar com paisagismo, caminhos, areas verdes e manutencao recorrente.",
+        icon: Trees,
     },
     {
-        title: "Estacionamentos",
+        title: "Areas de lazer",
         description:
-            "Postes para vagas, bolsões, garagens externas e patios com foco em visibilidade, circulacao e manutencao.",
-        icon: Car,
-    },
-    {
-        title: "Areas de convivencia",
-        description:
-            "Pracas, jardins, quadras e espacos de lazer podem pedir postes ornamentais, retos ou urbanos.",
+            "Quadras, playgrounds, academias ao ar livre e areas de permanencia pedem criterios de seguranca e conforto.",
         icon: Users,
     },
     {
-        title: "Condominios horizontais",
+        title: "Condominios e loteamentos",
         description:
-            "Padronizacao por rua, fase ou setor para manter repetibilidade tecnica e visual em todo o empreendimento.",
+            "Pracas internas precisam manter padrao visual com ruas, portarias, acessos e areas comuns do empreendimento.",
         icon: Building2,
     },
     {
-        title: "Condominios comerciais",
+        title: "Centros urbanos",
         description:
-            "Acesso, estacionamento, fachada e circulacao interna pedem criterios diferentes de um condominio residencial.",
-        icon: Landmark,
+            "Calçadas, canteiros, praças secas e areas comerciais exigem resistencia, manutencao e boa leitura visual.",
+        icon: MapPin,
+    },
+    {
+        title: "Compra sob projeto",
+        description:
+            "Quando existe memorial, o orcamento deve partir de desenhos, altura, luminaria, acabamento e fixacao.",
+        icon: FileText,
     },
 ]
 
 const decisionRows = [
     [
-        "Rua interna",
-        "Poste teleconico, reto ou curvo simples",
-        "Altura, espacamento, luminaria, padrao visual e circulacao de moradores.",
+        "Praca publica",
+        "Poste ornamental, urbano ou teleconico",
+        "Paisagismo, seguranca, vandalismo, manutencao, altura e distribuicao da luz.",
     ],
     [
-        "Portaria",
-        "Poste reto, teleconico ou ornamental",
-        "Visibilidade, controle de acesso, fachada, cameras, cancelas e seguranca.",
+        "Caminho de pedestres",
+        "Poste baixo, urbano ou ornamental",
+        "Conforto visual, continuidade da rota, pontos escuros e interferencia com arvores.",
     ],
     [
-        "Estacionamento",
-        "Poste reto, teleconico ou curvo duplo",
-        "Area de cobertura, fluxo de veiculos, vagas, reflexo, manutencao e base.",
+        "Area de lazer",
+        "Poste reto, curvo ou conjunto com braco",
+        "Uso noturno, quadra, playground, bancos, fluxo de pessoas e orientacao da luminaria.",
     ],
     [
-        "Praca interna",
-        "Poste ornamental, urbano ou curvo simples",
-        "Convivencia, paisagismo, conforto visual, seguranca e identidade do condominio.",
+        "Jardim ou paisagismo",
+        "Poste ornamental ou decorativo",
+        "Identidade visual, proporcao, cor, acabamento e manutencao da area verde.",
     ],
     [
-        "Condominio horizontal",
-        "Familia padronizada de postes",
-        "Repetibilidade, reposicao futura, acabamento, fases e memoriais de implantacao.",
+        "Praca de loteamento",
+        "Familia padronizada com ruas internas",
+        "Repetibilidade, acabamento, reposicao futura e compatibilidade com o empreendimento.",
     ],
     [
-        "Area comercial",
-        "Poste reto, teleconico ou conjunto com braco",
-        "Fachada, acesso de clientes, estacionamento, docas e circulacao compartilhada.",
+        "Area comercial aberta",
+        "Poste reto, teleconico ou urbano",
+        "Fachadas, vitrines, estacionamento, circulacao e seguranca patrimonial.",
     ],
 ]
 
 const processSteps = [
     {
-        title: "1. Separe as areas",
+        title: "1. Defina a area",
         description:
-            "Liste ruas internas, portaria, estacionamento, praca, jardim, quadra, fachada e areas tecnicas.",
+            "Separe praca, jardim, parque, caminho, area de lazer, quadra, estacionamento ou canteiro.",
         icon: MapPin,
     },
     {
-        title: "2. Defina o padrao",
+        title: "2. Escolha o efeito visual",
         description:
-            "Escolha familias de postes, altura, luminaria, braco, cor e acabamento para manter unidade visual.",
-        icon: Ruler,
+            "A decisao nao e so tecnica: modelo, altura, luminaria e cor precisam conversar com o ambiente.",
+        icon: Flower2,
     },
     {
         title: "3. Revise fixacao",
         description:
-            "Confirme base, chumbadores, engastamento, fundacao existente e interferencias de obra civil.",
+            "Confirme base, chumbadores, engastamento, fundacao, piso, jardins e interferencias no local.",
         icon: Wrench,
     },
     {
-        title: "4. Planeje compra",
+        title: "4. Envie memorial ou fotos",
         description:
-            "Informe quantidade por area, fase, cidade de entrega, prazo, documentos e necessidade de reposicao futura.",
-        icon: Truck,
+            "Projeto, planta, referencia visual e fotos ajudam a transformar a demanda em orcamento comparavel.",
+        icon: ClipboardCheck,
     },
 ]
 
 const quoteData = [
-    ["Condominio", "Nome, cidade, UF, tipo de empreendimento e responsavel pelo contato."],
-    ["Tipo de area", "Rua interna, portaria, estacionamento, praca, jardim, quadra, fachada ou area comercial."],
-    ["Quantidade", "Quantidade por area, modelo, fase, setor ou prioridade de instalacao."],
-    ["Modelo e altura", "Poste reto, teleconico, curvo simples, curvo duplo, ornamental ou modelo ainda indefinido."],
-    ["Luminaria e braco", "Tipo de luminaria, potencia, avanco, suporte, quantidade por poste e padrao desejado."],
-    ["Fixacao", "Flangeado, engastado, base com chumbador, fundacao existente ou decisao pendente."],
-    ["Acabamento", "Galvanizado, pintado, galvanizado com pintura ou cor padrao do condominio."],
-    ["Documentos", "Planta, memorial, fotos, referencia visual, lista de materiais ou projeto luminotecnico."],
+    ["Local", "Nome da praca, parque, condominio, loteamento, cidade, UF e responsavel pelo contato."],
+    ["Tipo de area", "Praca publica, jardim, parque, caminho, area de lazer, quadra, canteiro ou area comercial."],
+    ["Quantidade", "Quantidade total e separacao por area, modelo, fase ou prioridade de instalacao."],
+    ["Modelo e altura", "Poste ornamental, reto, teleconico, curvo simples, curvo duplo ou modelo indefinido."],
+    ["Luminaria e braco", "Tipo de luminaria, quantidade por poste, orientacao da luz, avanco e suporte desejado."],
+    ["Fixacao", "Flangeado, engastado, base com chumbador, fundacao existente, piso pronto ou decisao pendente."],
+    ["Acabamento", "Galvanizado, pintado, galvanizado com pintura ou cor definida pelo projeto urbano/paisagistico."],
+    ["Documentos", "Memorial, planta, desenho, fotos, referencia visual, edital ou projeto luminotecnico."],
 ]
 
 const relatedPages = [
     {
-        title: "Postes metalicos",
-        description: "Hub para escolher modelos, aplicacoes, acabamento e caminhos de compra.",
-        href: "/postes-metalicos",
-        icon: Zap,
+        title: "Postes para iluminacao publica",
+        description: "Base para vias, pracas, parques, areas institucionais e obras urbanas.",
+        href: "/postes-para-iluminacao-publica",
+        icon: Landmark,
     },
     {
-        title: "Postes para loteamentos",
-        description: "Referencia para ruas internas, empreendimentos por etapa e padronizacao em volume.",
-        href: "/postes-para-loteamentos",
+        title: "Postes para condominios",
+        description: "Referencia para pracas internas, jardins, portarias e areas comuns.",
+        href: "/postes-para-condominios",
         icon: Building2,
     },
     {
-        title: "Postes para pracas",
-        description: "Caminho para jardins, pracinhas internas, areas de convivencia e paisagismo.",
-        href: "/postes-para-pracas",
-        icon: Users,
-    },
-    {
         title: "Poste flangeado ou engastado",
-        description: "Compare fixacao, base, chumbadores e fundacao antes de fechar a proposta.",
+        description: "Compare fixacao, base, chumbadores e fundacao antes da proposta.",
         href: "/blog/poste-flangeado-ou-engastado",
         icon: Wrench,
     },
     {
         title: "Poste galvanizado ou pintado",
-        description: "Ajuda a decidir durabilidade, acabamento visual e manutencao do condominio.",
+        description: "Ajuda a decidir durabilidade, acabamento visual e manutencao.",
         href: "/blog/poste-galvanizado-ou-pintado",
         icon: ShieldCheck,
     },
@@ -242,32 +234,32 @@ const relatedPages = [
 
 const gallery = [
     {
-        src: "/images/seo/postes-metalicos/rua-iluminada-poste-curvo.jpg",
-        alt: "Postes metalicos em rua interna de condominio residencial",
-        title: "Ruas internas",
-    },
-    {
         src: "/images/seo/postes-metalicos/praca-iluminada-luminaria-redonda.jpg",
-        alt: "Postes ornamentais para praca e area de convivencia em condominio",
-        title: "Areas de convivencia",
+        alt: "Postes ornamentais para praca e area de convivencia",
+        title: "Pracas e convivencia",
     },
     {
-        src: "/images/seo/postes-metalicos/estacionamento-hospital-postes.jpg",
-        alt: "Postes metalicos para estacionamento e areas de acesso",
-        title: "Estacionamentos",
+        src: "/images/seo/postes-metalicos/rua-iluminada-poste-curvo.jpg",
+        alt: "Poste curvo em area arborizada e caminho de pedestres",
+        title: "Caminhos arborizados",
+    },
+    {
+        src: "/images/seo/postes-metalicos/via-urbana-iluminada-postes.jpg",
+        alt: "Postes metalicos para area urbana e circulacao publica",
+        title: "Areas urbanas",
     },
     {
         src: "/images/seo/postes-metalicos/via-publica-postes-retos-dois-lados.jpg",
-        alt: "Postes metalicos padronizados para vias internas e acessos",
+        alt: "Postes metalicos para vias e acessos proximos a pracas",
         title: "Acessos e vias",
     },
 ]
 
 const internalLinks = [
     ["Postes metalicos", "/postes-metalicos"],
-    ["Postes para loteamentos", "/postes-para-loteamentos"],
-    ["Postes para pracas", "/postes-para-pracas"],
     ["Postes para iluminacao publica", "/postes-para-iluminacao-publica"],
+    ["Postes para condominios", "/postes-para-condominios"],
+    ["Postes para loteamentos", "/postes-para-loteamentos"],
     ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
     ["Fabrica de postes metalicos", "/fabrica-de-postes-metalicos"],
     ["Poste teleconico", "/produtos/poste-teleconico"],
@@ -277,35 +269,35 @@ const internalLinks = [
     ["Braco para luminaria publica", "/produtos/braco-para-luminaria-publica"],
     ["Poste flangeado ou engastado", "/blog/poste-flangeado-ou-engastado"],
     ["Poste galvanizado ou pintado", "/blog/poste-galvanizado-ou-pintado"],
-    ["Altura de poste para iluminacao publica", "/blog/altura-de-poste-para-iluminacao-publica"],
+    ["Normas para postes de iluminacao", "/blog/normas-para-postes-de-iluminacao"],
     ["Catalogos e downloads", "/downloads"],
 ]
 
 const faq = [
     {
-        question: "A B&B fabrica postes para condominios?",
+        question: "A B&B fabrica postes para pracas?",
         answer:
-            "Sim. A B&B fabrica postes metalicos para condominios residenciais, horizontais, verticais e comerciais, com atendimento nacional e suporte para organizar a cotacao tecnica.",
+            "Sim. A B&B fabrica postes metalicos para pracas, parques, jardins, areas de lazer e convivencia, com atendimento nacional e suporte para organizar a cotacao tecnica.",
     },
     {
-        question: "Qual poste usar em condominio?",
+        question: "Qual modelo de poste usar em praca?",
         answer:
-            "A escolha depende da area: ruas internas, portarias, estacionamentos, pracas, jardins e fachadas podem pedir modelos, alturas, bracos, luminarias, fixacao e acabamento diferentes.",
+            "Depende da area, altura desejada, luminaria, paisagismo, fluxo de pessoas, seguranca, acabamento e fixacao. Postes ornamentais, retos, teleconicos e curvos podem ser avaliados conforme o projeto.",
     },
     {
-        question: "Poste para condominio precisa ser galvanizado?",
+        question: "Poste ornamental serve para praca publica?",
         answer:
-            "Depende do ambiente, durabilidade esperada, exposicao, padrao visual e manutencao. Galvanizacao, pintura ou galvanizado com pintura podem ser avaliados conforme o projeto.",
+            "Pode servir quando o projeto pede identidade visual e compatibilidade com paisagismo, mas a escolha deve considerar resistencia, manutencao, luminaria, fundacao e ambiente.",
     },
     {
-        question: "A B&B atende administradoras e sindicatos?",
+        question: "A B&B atende projetos de pracas em todo o Brasil?",
         answer:
-            "Sim. O atendimento pode apoiar administradoras, sindicos, construtoras, incorporadoras e equipes de manutencao com briefing, modelos e orcamento.",
+            "Sim. Goiania e Goias comprovam origem fabril, mas a estrategia comercial e nacional para obras urbanas, condominios, loteamentos e areas publicas.",
     },
     {
-        question: "A pagina atende so Goias?",
+        question: "O que enviar para orcar postes para praca?",
         answer:
-            "Nao. Goiania e Goias comprovam origem fabril, mas a estrategia comercial e nacional para condominios em diferentes regioes do Brasil.",
+            "Envie cidade, UF, quantidade, area de aplicacao, altura, modelo desejado, luminaria, fixacao, acabamento, prazo, fotos, planta, memorial ou referencia visual.",
     },
 ]
 
@@ -314,17 +306,17 @@ function getSchema() {
         createFactoryOrganizationSchema(),
         createWebPageSchema({
             url: pageUrl,
-            name: "Postes para Condominios",
+            name: "Postes para Pracas",
             description: pageDescription,
             image: heroImage,
         }),
         createBreadcrumbSchema(pageUrl, [
             { name: "Inicio", item: SITE_URL },
-            { name: "Postes para Condominios", item: pageUrl },
+            { name: "Postes para Pracas", item: pageUrl },
         ]),
         createItemListSchema({
             id: `${pageUrl}#aplicacoes`,
-            name: "Aplicacoes de postes para condominios",
+            name: "Aplicacoes de postes para pracas",
             items: applicationCards.map((application) => ({
                 name: application.title,
                 description: application.description,
@@ -343,16 +335,16 @@ function SectionLabel({ children }: { children: ReactNode }) {
     )
 }
 
-export default function PostesParaCondominiosPage() {
+export default function PostesParaPracasPage() {
     return (
         <main className="min-h-screen bg-white text-industrial-950">
-            <SchemaOrg id="postes-para-condominios-schema" data={getSchema()} />
+            <SchemaOrg id="postes-para-pracas-schema" data={getSchema()} />
             <Header />
             <div className="hidden 2xl:block">
                 <FloatingWhatsApp
                     message={whatsappMessage}
-                    eventLabel="Solicitar orcamento de postes para condominios"
-                    eventSource="floating_postes_condominios"
+                    eventLabel="Solicitar orcamento de postes para pracas"
+                    eventSource="floating_postes_pracas"
                 />
             </div>
 
@@ -367,30 +359,30 @@ export default function PostesParaCondominiosPage() {
                         sizes="100vw"
                         style={{ objectPosition: "center center" }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-industrial-950/92 via-industrial-950/58 to-industrial-950/16" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-industrial-950/90 via-industrial-950/56 to-industrial-950/14" />
                     <div className="absolute inset-0 bg-gradient-to-t from-industrial-950/54 via-industrial-950/8 to-transparent" />
                 </div>
 
                 <div className="container relative z-10 mx-auto px-4 pb-20 pt-12 md:pb-28">
                     <div className="max-w-4xl">
                         <div className="mb-6 inline-flex max-w-full items-center gap-3 border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.2em] text-white">
-                            <Home className="size-4 shrink-0 text-accent-premium" aria-hidden="true" />
-                            Condominios residenciais, horizontais e comerciais
+                            <Flower2 className="size-4 shrink-0 text-accent-premium" aria-hidden="true" />
+                            Pracas, parques, jardins e areas de convivencia
                         </div>
                         <h1 className="max-w-4xl text-4xl font-black uppercase leading-[0.95] text-white md:text-6xl lg:text-7xl">
-                            Postes para Condominios
+                            Postes para Pracas
                         </h1>
                         <p className="mt-8 max-w-3xl text-base font-medium leading-relaxed text-industrial-200 md:text-xl">
-                            Postes metalicos para ruas internas, portarias, estacionamentos, fachadas e areas comuns
-                            de condominios, com fabricacao propria, suporte tecnico e atendimento nacional.
+                            Postes metalicos para pracas, parques, jardins, caminhos e areas de convivencia, com
+                            modelos urbanos ou ornamentais, fabricacao propria e atendimento nacional.
                         </p>
                         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                             <WhatsAppLink
                                 message={whatsappMessage}
-                                eventLabel="Solicitar orcamento de postes para condominios"
-                                eventSource="hero_postes_condominios"
+                                eventLabel="Solicitar orcamento de postes para pracas"
+                                eventSource="hero_postes_pracas"
                                 className="inline-flex h-14 items-center justify-center gap-3 bg-accent-premium px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-yellow-300"
-                                aria-label="Solicitar orcamento de postes para condominios pelo WhatsApp"
+                                aria-label="Solicitar orcamento de postes para pracas pelo WhatsApp"
                             >
                                 <MessageCircle className="size-5" aria-hidden="true" />
                                 Solicitar orcamento
@@ -429,17 +421,17 @@ export default function PostesParaCondominiosPage() {
             <section className="py-20 md:py-28">
                 <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
                     <div className="space-y-6">
-                        <SectionLabel>Aplicacao em condominios</SectionLabel>
+                        <SectionLabel>Aplicacao em pracas</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            A compra precisa equilibrar visual, seguranca e manutencao
+                            Praca precisa iluminar circulacao, permanencia e paisagismo
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-600 md:text-lg">
-                            Condominios raramente precisam de um unico poste isolado. A decisao envolve circulacao,
-                            areas comuns, portarias, estacionamentos, fachadas, reposicao futura e padrao visual.
+                            A escolha do poste para praca envolve conforto visual, seguranca, distribuicao da luz,
+                            resistencia, manutencao, fundacao, interferencia com arvores e identidade urbana.
                         </p>
                         <p className="text-base leading-relaxed text-industrial-600 md:text-lg">
-                            A pagina organiza a conversa entre sindico, administradora, construtora, manutencao e
-                            fornecedor para chegar a uma cotacao com modelo, altura, fixacao, acabamento e quantidade.
+                            A pagina organiza o briefing para prefeituras, construtoras, condominios, loteadoras e
+                            equipes de engenharia que precisam transformar uma area aberta em cotacao tecnica.
                         </p>
                     </div>
 
@@ -465,13 +457,12 @@ export default function PostesParaCondominiosPage() {
             <section className="bg-industrial-950 py-20 text-white md:py-28">
                 <div className="container mx-auto px-4">
                     <div className="mb-12 max-w-3xl space-y-5">
-                        <SectionLabel>Escolha por area</SectionLabel>
+                        <SectionLabel>Escolha por contexto</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Cada area do condominio pede um criterio de especificacao
+                            Cada trecho da praca pede um criterio diferente
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-300">
-                            Esta tabela ajuda a separar a conversa antes do pedido de preco e evita comparar propostas
-                            com escopos diferentes.
+                            A tabela ajuda a separar modelo, aplicacao e criterio tecnico antes do pedido de preco.
                         </p>
                     </div>
 
@@ -498,11 +489,11 @@ export default function PostesParaCondominiosPage() {
                     <div className="mb-12 max-w-3xl space-y-5">
                         <SectionLabel>Fluxo de compra</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Como preparar uma cotacao para condominio
+                            Como preparar uma cotacao para praca
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-600">
-                            Quanto melhor a separacao por area e prioridade, mais objetiva fica a proposta de postes,
-                            acessorios e acabamento.
+                            Quanto mais clara a separacao por area e efeito visual, mais objetiva fica a proposta de
+                            poste, luminaria, acabamento e fixacao.
                         </p>
                     </div>
                     <div className="grid gap-5 md:grid-cols-4">
@@ -529,11 +520,11 @@ export default function PostesParaCondominiosPage() {
                     <div className="space-y-5">
                         <SectionLabel>Dados para cotacao</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            O que enviar para cotar postes para condominios
+                            O que enviar para cotar postes para pracas
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-600">
-                            Se o projeto ainda nao esta fechado, envie fotos e referencias. A primeira resposta pode
-                            separar modelos provaveis e apontar o que falta para fechar a proposta.
+                            Se ainda nao existe projeto completo, fotos e referencias ja ajudam a orientar modelos
+                            provaveis e lacunas de especificacao.
                         </p>
                     </div>
                     <div className="overflow-hidden border border-industrial-200 bg-white">
@@ -556,11 +547,11 @@ export default function PostesParaCondominiosPage() {
                     <div className="mb-12 max-w-3xl space-y-5">
                         <SectionLabel>Cluster tecnico</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Paginas que ajudam a fechar modelo, fixacao e acabamento
+                            Paginas que ajudam a fechar modelo, acabamento e fixacao
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-600">
-                            Condominios conectam uso, visual, manutencao e compra. Estes caminhos mantem o comprador no
-                            cluster certo antes do contato comercial.
+                            Pracas conectam paisagismo, iluminacao publica, modelo ornamental, manutencao e obra civil.
+                            Estes caminhos mantem a especificacao dentro do cluster certo.
                         </p>
                     </div>
                     <div className="grid gap-4 md:grid-cols-4">
@@ -593,11 +584,11 @@ export default function PostesParaCondominiosPage() {
                     <div className="mb-12 max-w-3xl space-y-5">
                         <SectionLabel>Galeria indexavel</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Referencias visuais para ruas, portarias e areas comuns
+                            Referencias visuais para pracas, jardins e caminhos
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-600">
-                            Imagens por contexto ajudam a discutir padrao visual, aplicacao, altura, luminaria e
-                            manutencao com menos ambiguidade.
+                            Imagens por contexto reduzem ambiguidade entre poste ornamental, urbano, reto, curvo e
+                            aplicacoes de convivencia.
                         </p>
                     </div>
                     <div className="grid gap-5 md:grid-cols-4">
@@ -627,11 +618,11 @@ export default function PostesParaCondominiosPage() {
                     <div className="space-y-5">
                         <SectionLabel>Interlinking P1</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Caminhos relacionados para compradores de condominios
+                            Caminhos relacionados para compradores de pracas
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-300">
-                            A pagina de condominios distribui autoridade para aplicacao, fabricante, modelo, acabamento,
-                            fixacao e catalogos.
+                            A pagina de pracas distribui autoridade para aplicacao publica, loteamentos, condominios,
+                            produto, acabamento, fixacao e catalogos.
                         </p>
                     </div>
                     <div className="grid gap-3 sm:grid-cols-2">
@@ -654,10 +645,10 @@ export default function PostesParaCondominiosPage() {
                     <div className="space-y-5">
                         <SectionLabel>Perguntas frequentes</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Duvidas comuns antes de cotar postes para condominios
+                            Duvidas comuns antes de cotar postes para pracas
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-600">
-                            Respostas para transformar uma demanda de administracao, obra ou manutencao em briefing
+                            Respostas para transformar uma demanda urbana, paisagistica ou condominial em briefing
                             tecnico de compra.
                         </p>
                     </div>
@@ -679,20 +670,20 @@ export default function PostesParaCondominiosPage() {
                 <div className="container mx-auto grid gap-8 px-4 lg:grid-cols-[1fr_auto] lg:items-center">
                     <div>
                         <h2 className="text-3xl font-black uppercase leading-tight text-industrial-950 md:text-5xl">
-                            Envie as areas e a lista de postes do condominio
+                            Envie o projeto ou fotos da praca
                         </h2>
                         <p className="mt-4 max-w-3xl text-base font-bold leading-relaxed text-industrial-800">
-                            Informe tipo de condominio, cidade, areas, quantidade, modelos, altura, luminarias, fixacao,
+                            Informe cidade, area de aplicacao, quantidade, modelo desejado, altura, luminaria, fixacao,
                             acabamento e prazo. A B&B ajuda a organizar o orcamento tecnico.
                         </p>
                     </div>
                     <div className="flex flex-col gap-4 sm:flex-row lg:flex-col">
                         <WhatsAppLink
                             message={whatsappMessage}
-                            eventLabel="Enviar dados de postes para condominio"
-                            eventSource="final_postes_condominios"
+                            eventLabel="Enviar dados de postes para praca"
+                            eventSource="final_postes_pracas"
                             className="inline-flex h-14 items-center justify-center gap-3 bg-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-industrial-800"
-                            aria-label="Enviar dados de postes para condominio pelo WhatsApp"
+                            aria-label="Enviar dados de postes para praca pelo WhatsApp"
                         >
                             <MessageCircle className="size-5" aria-hidden="true" />
                             Falar com especialista
@@ -710,13 +701,13 @@ export default function PostesParaCondominiosPage() {
 
             <section className="border-b border-industrial-200 bg-white py-10">
                 <div className="container mx-auto grid gap-4 px-4 md:grid-cols-3">
-                    <Link href="/postes-para-loteamentos" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950">
-                        <Building2 className="size-6 text-accent-dark" aria-hidden="true" />
-                        <span className="text-sm font-black uppercase tracking-widest">Ver postes para loteamentos</span>
+                    <Link href="/postes-para-iluminacao-publica" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950">
+                        <Landmark className="size-6 text-accent-dark" aria-hidden="true" />
+                        <span className="text-sm font-black uppercase tracking-widest">Ver iluminacao publica</span>
                     </Link>
-                    <Link href="/fornecedor-de-postes-metalicos" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950">
-                        <Factory className="size-6 text-accent-dark" aria-hidden="true" />
-                        <span className="text-sm font-black uppercase tracking-widest">Comprar direto de fornecedor</span>
+                    <Link href="/postes-para-condominios" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950">
+                        <Building2 className="size-6 text-accent-dark" aria-hidden="true" />
+                        <span className="text-sm font-black uppercase tracking-widest">Ver postes para condominios</span>
                     </Link>
                     <Link href="/downloads" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950">
                         <FileText className="size-6 text-accent-dark" aria-hidden="true" />

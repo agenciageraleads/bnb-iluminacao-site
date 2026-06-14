@@ -23,6 +23,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/postes-para-iluminacao-publica',
     '/postes-para-loteamentos',
     '/postes-para-condominios',
+    '/postes-para-pracas',
     '/produtos/poste-teleconico',
     '/produtos/poste-metalico-galvanizado',
     '/produtos/poste-curvo-simples',

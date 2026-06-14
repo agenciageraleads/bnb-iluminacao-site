@@ -225,6 +225,12 @@ const relatedPages = [
         icon: Building2,
     },
     {
+        title: "Postes para pracas",
+        description: "Referencia para pracas, jardins, areas verdes e convivencia em empreendimentos.",
+        href: "/postes-para-pracas",
+        icon: Landmark,
+    },
+    {
         title: "Poste flangeado ou engastado",
         description: "Compare fixacao, base, chumbadores e fundacao antes de fechar a compra.",
         href: "/blog/poste-flangeado-ou-engastado",
@@ -265,6 +271,7 @@ const internalLinks = [
     ["Postes metalicos", "/postes-metalicos"],
     ["Postes para iluminacao publica", "/postes-para-iluminacao-publica"],
     ["Postes para condominios", "/postes-para-condominios"],
+    ["Postes para pracas", "/postes-para-pracas"],
     ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
     ["Fabrica de postes metalicos", "/fabrica-de-postes-metalicos"],
     ["Fabricante de postes metalicos", "/fabricante-de-postes-metalicos"],

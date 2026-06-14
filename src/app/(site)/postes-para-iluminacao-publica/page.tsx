@@ -183,6 +183,7 @@ const internalLinks = [
     ["Postes metalicos", "/postes-metalicos"],
     ["Postes para loteamentos", "/postes-para-loteamentos"],
     ["Postes para condominios", "/postes-para-condominios"],
+    ["Postes para pracas", "/postes-para-pracas"],
     ["Altura de poste para iluminacao publica", "/blog/altura-de-poste-para-iluminacao-publica"],
     ["Normas para postes de iluminacao", "/blog/normas-para-postes-de-iluminacao"],
     ["Poste galvanizado ou pintado", "/blog/poste-galvanizado-ou-pintado"],
