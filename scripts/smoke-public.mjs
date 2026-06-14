@@ -11,6 +11,7 @@ const paths = [
   '/postes-para-loteamentos',
   '/postes-para-condominios',
   '/postes-para-pracas',
+  '/postes-para-estacionamentos',
   '/produtos/poste-teleconico',
   '/produtos/poste-metalico-galvanizado',
   '/produtos/poste-curvo-simples',

@@ -16,6 +16,7 @@ import {
     Ruler,
     ShieldCheck,
     Trees,
+    Truck,
     Users,
     Wrench,
 } from "lucide-react"
@@ -219,6 +220,12 @@ const relatedPages = [
         icon: Building2,
     },
     {
+        title: "Postes para estacionamentos",
+        description: "Caminho para vagas, acessos e areas abertas proximas a pracas e convivencia.",
+        href: "/postes-para-estacionamentos",
+        icon: Truck,
+    },
+    {
         title: "Poste flangeado ou engastado",
         description: "Compare fixacao, base, chumbadores e fundacao antes da proposta.",
         href: "/blog/poste-flangeado-ou-engastado",
@@ -260,6 +267,7 @@ const internalLinks = [
     ["Postes para iluminacao publica", "/postes-para-iluminacao-publica"],
     ["Postes para condominios", "/postes-para-condominios"],
     ["Postes para loteamentos", "/postes-para-loteamentos"],
+    ["Postes para estacionamentos", "/postes-para-estacionamentos"],
     ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
     ["Fabrica de postes metalicos", "/fabrica-de-postes-metalicos"],
     ["Poste teleconico", "/produtos/poste-teleconico"],

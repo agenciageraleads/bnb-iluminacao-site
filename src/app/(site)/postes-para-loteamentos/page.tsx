@@ -231,6 +231,12 @@ const relatedPages = [
         icon: Landmark,
     },
     {
+        title: "Postes para estacionamentos",
+        description: "Caminho para vagas externas, areas comerciais, patios e acessos de empreendimentos.",
+        href: "/postes-para-estacionamentos",
+        icon: Truck,
+    },
+    {
         title: "Poste flangeado ou engastado",
         description: "Compare fixacao, base, chumbadores e fundacao antes de fechar a compra.",
         href: "/blog/poste-flangeado-ou-engastado",
@@ -272,6 +278,7 @@ const internalLinks = [
     ["Postes para iluminacao publica", "/postes-para-iluminacao-publica"],
     ["Postes para condominios", "/postes-para-condominios"],
     ["Postes para pracas", "/postes-para-pracas"],
+    ["Postes para estacionamentos", "/postes-para-estacionamentos"],
     ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
     ["Fabrica de postes metalicos", "/fabrica-de-postes-metalicos"],
     ["Fabricante de postes metalicos", "/fabricante-de-postes-metalicos"],

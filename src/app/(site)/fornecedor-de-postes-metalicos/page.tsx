@@ -159,6 +159,7 @@ const internalLinks = [
     ["Postes para loteamentos", "/postes-para-loteamentos"],
     ["Postes para condominios", "/postes-para-condominios"],
     ["Postes para pracas", "/postes-para-pracas"],
+    ["Postes para estacionamentos", "/postes-para-estacionamentos"],
     ["Poste teleconico", "/produtos/poste-teleconico"],
     ["Braco para luminaria publica", "/produtos/braco-para-luminaria-publica"],
     ["Catalogos e downloads", "/downloads"],

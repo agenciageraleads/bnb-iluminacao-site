@@ -607,6 +607,7 @@ export default function AlturaDePosteParaIluminacaoPublicaPage() {
                         ["Postes para loteamentos", "/postes-para-loteamentos"],
                         ["Postes para condominios", "/postes-para-condominios"],
                         ["Postes para pracas", "/postes-para-pracas"],
+                        ["Postes para estacionamentos", "/postes-para-estacionamentos"],
                         ["Fabricante de postes teleconicos", "/fabricante-de-postes-teleconicos"],
                         ["Normas para postes de iluminacao", "/blog/normas-para-postes-de-iluminacao"],
                         ["Poste curvo simples", "/produtos/poste-curvo-simples"],

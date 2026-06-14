@@ -174,6 +174,26 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/postes-estacionamentos',
+        destination: '/postes-para-estacionamentos',
+        permanent: true,
+      },
+      {
+        source: '/postes-para-estacionamento',
+        destination: '/postes-para-estacionamentos',
+        permanent: true,
+      },
+      {
+        source: '/poste-para-estacionamento',
+        destination: '/postes-para-estacionamentos',
+        permanent: true,
+      },
+      {
+        source: '/iluminacao-para-estacionamentos',
+        destination: '/postes-para-estacionamentos',
+        permanent: true,
+      },
+      {
         source: '/fabricante-postes-teleconicos',
         destination: '/fabricante-de-postes-teleconicos',
         permanent: true,

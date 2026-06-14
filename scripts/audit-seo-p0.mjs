@@ -35,6 +35,10 @@ const pages = [
     types: ['WebPage', 'Organization', 'LocalBusiness', 'BreadcrumbList', 'ItemList', 'ImageObject', 'FAQPage'],
   },
   {
+    path: '/postes-para-estacionamentos',
+    types: ['WebPage', 'Organization', 'LocalBusiness', 'BreadcrumbList', 'ItemList', 'ImageObject', 'FAQPage'],
+  },
+  {
     path: '/produtos/poste-teleconico',
     types: ['Product', 'WebPage', 'BreadcrumbList', 'ItemList', 'FAQPage'],
   },
@@ -96,6 +100,10 @@ const redirects = [
   ['/postes-para-praca', '/postes-para-pracas'],
   ['/poste-para-praca', '/postes-para-pracas'],
   ['/iluminacao-para-pracas', '/postes-para-pracas'],
+  ['/postes-estacionamentos', '/postes-para-estacionamentos'],
+  ['/postes-para-estacionamento', '/postes-para-estacionamentos'],
+  ['/poste-para-estacionamento', '/postes-para-estacionamentos'],
+  ['/iluminacao-para-estacionamentos', '/postes-para-estacionamentos'],
   ['/fabricante-postes-teleconicos', '/fabricante-de-postes-teleconicos'],
   ['/fabricantes-de-postes-teleconicos', '/fabricante-de-postes-teleconicos'],
   ['/fabricante-de-poste-teleconico', '/fabricante-de-postes-teleconicos'],

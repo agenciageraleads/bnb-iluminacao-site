@@ -194,6 +194,7 @@ const internalLinks = [
     ["Postes para loteamentos", "/postes-para-loteamentos"],
     ["Postes para condominios", "/postes-para-condominios"],
     ["Postes para pracas", "/postes-para-pracas"],
+    ["Postes para estacionamentos", "/postes-para-estacionamentos"],
     ["Altura de poste para iluminacao publica", "/blog/altura-de-poste-para-iluminacao-publica"],
     ["Poste teleconico", "/produtos/poste-teleconico"],
     ["Poste teleconico ou reto", "/blog/poste-teleconico-ou-reto"],
