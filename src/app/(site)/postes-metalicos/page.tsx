@@ -89,7 +89,7 @@ const models = [
         title: "Bracos e suportes",
         description: "Acessorios metalicos para compatibilizar luminarias, postes existentes e projetos especiais.",
         use: "Luminarias publicas",
-        href: "/produtos/linha-nexo",
+        href: "/produtos/braco-para-luminaria-publica",
     },
 ]
 
@@ -180,10 +180,11 @@ const internalLinks = [
     ["Fabricante de postes metalicos", "/fabricante-de-postes-metalicos"],
     ["Postes para iluminacao publica", "/postes-para-iluminacao-publica"],
     ["Poste teleconico", "/produtos/poste-teleconico"],
+    ["Braco para luminaria publica", "/produtos/braco-para-luminaria-publica"],
     ["Catalogo de produtos", "/produtos"],
     ["Linha Urban", "/produtos/linha-urban"],
     ["Linha Forza", "/produtos/linha-forza"],
-    ["Bracos e suportes", "/produtos/linha-nexo"],
+    ["Linha Nexo", "/produtos/linha-nexo"],
     ["Catalogos e downloads", "/downloads"],
     ["Obras realizadas", "/obras"],
 ]

@@ -6,6 +6,7 @@ const paths = [
   '/postes-metalicos',
   '/postes-para-iluminacao-publica',
   '/produtos/poste-teleconico',
+  '/produtos/braco-para-luminaria-publica',
   '/lp/postes-metalicos',
   '/produtos',
   '/blog',

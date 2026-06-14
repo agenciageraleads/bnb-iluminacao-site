@@ -70,7 +70,17 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/braco-para-luminaria',
-        destination: '/lp/braco-para-luminaria',
+        destination: '/produtos/braco-para-luminaria-publica',
+        permanent: true,
+      },
+      {
+        source: '/braco-para-luminaria-publica',
+        destination: '/produtos/braco-para-luminaria-publica',
+        permanent: true,
+      },
+      {
+        source: '/bracos-para-luminaria-publica',
+        destination: '/produtos/braco-para-luminaria-publica',
         permanent: true,
       },
       {
@@ -157,6 +167,16 @@ const nextConfig: NextConfig = {
       {
         source: '/produtos/acessorios',
         destination: '/produtos/linha-nexo',
+        permanent: true,
+      },
+      {
+        source: '/produtos/braco-para-luminaria',
+        destination: '/produtos/braco-para-luminaria-publica',
+        permanent: true,
+      },
+      {
+        source: '/produtos/bracos-para-luminaria-publica',
+        destination: '/produtos/braco-para-luminaria-publica',
         permanent: true,
       },
       // Categorias removidas

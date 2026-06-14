@@ -138,9 +138,9 @@ const relatedLines = [
         href: "/produtos/linha-orna",
     },
     {
-        title: "Linha Nexo",
+        title: "Bracos e suportes",
         description: "Bracos, suportes e acessorios metalicos para compatibilizacao com luminarias.",
-        href: "/produtos/linha-nexo",
+        href: "/produtos/braco-para-luminaria-publica",
     },
 ]
 
@@ -173,7 +173,8 @@ const internalLinks = [
     ["Fabricante de postes metalicos", "/fabricante-de-postes-metalicos"],
     ["Linha Urban", "/produtos/linha-urban"],
     ["Linha Orna", "/produtos/linha-orna"],
-    ["Bracos e suportes", "/produtos/linha-nexo"],
+    ["Braco para luminaria publica", "/produtos/braco-para-luminaria-publica"],
+    ["Linha Nexo", "/produtos/linha-nexo"],
     ["Catalogos e downloads", "/downloads"],
 ]
 
