@@ -11,6 +11,18 @@ const Representatives: CollectionConfig = {
     },
     fields: [
         {
+            name: 'crmUserId',
+            type: 'text',
+            required: false,
+            unique: true,
+            label: 'ID do usuário no CRM',
+            admin: {
+                position: 'sidebar',
+                readOnly: true,
+                description: 'Usado para sincronização automática do onboarding do CRM.',
+            },
+        },
+        {
             name: 'displayOrder',
             type: 'number',
             defaultValue: 999,
