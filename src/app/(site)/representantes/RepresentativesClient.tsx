@@ -16,6 +16,8 @@ const MARKET_LABELS: Record<string, string> = {
     industria: 'Indústria / Corporativo',
 };
 
+const MAX_VISIBLE_MARKETS = 3;
+
 export function RepresentativesClient({ representatives }: { representatives: Representative[] }) {
     // Estado selecionado (UF)
     const [selectedState, setSelectedState] = useState<string | null>(null);
@@ -107,11 +109,6 @@ export function RepresentativesClient({ representatives }: { representatives: Re
                                             <div className="pl-4">
                                                 <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
                                                     <div>
-                                                        {rep.region && (
-                                                            <span className="inline-block px-2 py-1 bg-industrial-100 text-industrial-600 text-[10px] font-bold uppercase tracking-wider mb-3">
-                                                                Região: {rep.region}
-                                                            </span>
-                                                        )}
                                                         <h4 className="text-2xl font-bold text-industrial-950 uppercase leading-none mb-1">{rep.name}</h4>
                                                         {rep.company && (
                                                             <div className="text-sm font-medium text-industrial-500 uppercase tracking-wide">
@@ -121,8 +118,8 @@ export function RepresentativesClient({ representatives }: { representatives: Re
 
                                                         {/* Canais/Mercados de Atuação do Representante */}
                                                         {rep.markets && rep.markets.length > 0 && (
-                                                            <div className="flex flex-wrap gap-1.5 mt-3 max-w-xs md:max-w-md">
-                                                                {rep.markets.map((marketValue) => {
+                                                            <div className="mt-4 flex max-w-xs flex-wrap gap-1.5 md:max-w-md">
+                                                                {rep.markets.slice(0, MAX_VISIBLE_MARKETS).map((marketValue) => {
                                                                     const label = MARKET_LABELS[marketValue] || marketValue;
                                                                     return (
                                                                         <span 
@@ -133,6 +130,11 @@ export function RepresentativesClient({ representatives }: { representatives: Re
                                                                         </span>
                                                                     );
                                                                 })}
+                                                                {rep.markets.length > MAX_VISIBLE_MARKETS && (
+                                                                    <span className="inline-flex items-center px-2 py-0.5 rounded-sm text-[10px] font-extrabold uppercase bg-industrial-100 text-industrial-500 border border-industrial-200 tracking-wider">
+                                                                        +{rep.markets.length - MAX_VISIBLE_MARKETS}
+                                                                    </span>
+                                                                )}
                                                             </div>
                                                         )}
                                                     </div>
