@@ -56,3 +56,14 @@ export function getUrbanDownloads(model?: string) {
         desenhos: alturas.map(h => ({ altura: h, href: desenhoTecnicoHref(familia.sigla, h, mount) })),
     }
 }
+
+// Datasheet da Linha NEXO — Suporte para Luminárias (cabeçote), modelos BB-NEX-S1..S4.
+const SUPORTE_DATASHEET = '/downloads/datasheets/DATASHEET-BB-SUPORTE-PARA-LUMINARIAS.pdf'
+
+/** Downloads de acessórios derivados do código do produto (ex.: BB-NEX-S2 → datasheet do suporte). */
+export function getAccessoryDownloads(model?: string) {
+    if (model && /^BB-NEX-S[1-4]$/i.test(model)) {
+        return { datasheet: SUPORTE_DATASHEET }
+    }
+    return null
+}

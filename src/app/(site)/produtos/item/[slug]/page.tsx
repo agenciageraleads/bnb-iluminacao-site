@@ -8,7 +8,7 @@ import Link from "next/link"
 import { getProducts, getCategories } from "@/lib/data"
 import { ProductGallery } from "@/components/ui/product-gallery"
 
-import { getUrbanDownloads } from "@/lib/urban-downloads"
+import { getUrbanDownloads, getAccessoryDownloads } from "@/lib/urban-downloads"
 
 export const dynamic = 'force-dynamic'
 
@@ -46,6 +46,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
         .slice(0, 4);
 
     const urbanDownloads = getUrbanDownloads(product.model);
+    const accessoryDownloads = getAccessoryDownloads(product.model);
 
     const defaultBadges = ["NBR 6323", "Qualidade ISO", "Garantia B&B"];
     const productBadges = product.badges ?? defaultBadges;
@@ -258,9 +259,9 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                         </div>
 
                         <div className="space-y-4">
-                            {(urbanDownloads?.datasheet || product.datasheet) && (
+                            {(urbanDownloads?.datasheet || accessoryDownloads?.datasheet || product.datasheet) && (
                                 <a
-                                    href={urbanDownloads?.datasheet ?? product.datasheet}
+                                    href={urbanDownloads?.datasheet ?? accessoryDownloads?.datasheet ?? product.datasheet}
                                     download
                                     className="w-full flex items-center justify-center gap-3 bg-industrial-100 text-industrial-900 border border-industrial-200 font-black uppercase tracking-widest h-14 hover:bg-industrial-200 transition-colors group"
                                 >
