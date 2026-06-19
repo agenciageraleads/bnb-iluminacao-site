@@ -8,10 +8,10 @@ import Image from "next/image"
 
 export const metadata = {
     title: "Corte a Laser Industrial — Fibra Óptica 3kW | B&B Iluminação",
-    description: "Serviço de corte a laser para construtoras, metalúrgicas e indústrias. Fibra óptica 3kW, até 19mm de espessura, chapas e tubos. Goiânia e região.",
+    description: "Serviço de corte a laser exclusivamente em aço carbono para construtoras, metalúrgicas e indústrias. Fibra óptica 3kW, até 19mm, chapas e tubos.",
 }
 
-const WA_MSG = "Olá, preciso de orçamento para corte a laser industrial."
+const WA_MSG = "Olá, preciso de orçamento para corte a laser industrial em aço carbono."
 
 export default async function CorteLaserLP() {
     const clients = await getClientLogos()
@@ -50,14 +50,14 @@ export default async function CorteLaserLP() {
                         <div className="flex-1 text-center lg:text-left">
                             <div className="inline-flex items-center gap-2 px-4 py-2 bg-industrial-50 border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-widest uppercase mb-8">
                                 <span className="size-2 bg-green-500 rounded-full animate-pulse" aria-hidden="true" />
-                                Para construtoras, metalúrgicas e indústrias
+                                Somente aço carbono
                             </div>
                             <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-industrial-950 leading-[0.9] mb-6 uppercase tracking-tighter">
                                 Corte a Laser <br />
                                 <span className="text-accent-premium">Industrial</span>
                             </h1>
                             <p className="text-industrial-500 text-lg font-medium leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">
-                                Fibra óptica de alta potência para cortes de precisão em chapas e tubos de aço. Peças prontas para uso, sem rebarbas, com tolerâncias milimétricas. Atendemos projetos técnicos e lotes repetitivos.
+                                Fibra óptica de alta potência para cortes de precisão em chapas e tubos de aço carbono. Não realizamos corte de inox ou alumínio. Atendemos projetos técnicos e lotes repetitivos com peças prontas para uso, sem rebarbas, com tolerâncias milimétricas.
                             </p>
 
                             {/* Stats técnicos */}
@@ -66,7 +66,7 @@ export default async function CorteLaserLP() {
                                     { value: "3kW", label: "Potência" },
                                     { value: "19mm", label: "Espessura máx." },
                                     { value: "3×1,5m", label: "Área de mesa" },
-                                    { value: "100%", label: "Sem rebarbas" },
+                                    { value: "Aço carbono", label: "Material" },
                                 ].map((stat) => (
                                     <div key={stat.label} className="bg-industrial-50 border border-industrial-200 p-4 text-center">
                                         <p className="text-2xl font-black text-industrial-950">{stat.value}</p>
@@ -82,8 +82,8 @@ export default async function CorteLaserLP() {
                                 <h2 className="text-lg font-black text-industrial-950 uppercase tracking-tight mb-1">
                                     Solicite sua Cotação
                                 </h2>
-                                                <p className="text-industrial-500 text-xs mb-6">
-                                    Anexe o DXF, PDF ou foto da peça diretamente no formulário.
+                                <p className="text-industrial-500 text-xs mb-6">
+                                    Atendimento exclusivo para aço carbono. Anexe o DXF, PDF ou foto da peça diretamente no formulário.
                                 </p>
                                 <LaserQuoteForm />
                             </div>
@@ -110,7 +110,7 @@ export default async function CorteLaserLP() {
                             Fibra óptica 3kW<br />para chapas e tubos<br />até 19mm
                         </h2>
                         <p className="text-white/70 text-sm mt-4 max-w-sm font-medium">
-                            Cortes de precisão milimétrica, sem rebarbas, prontos para solda ou dobra.
+                            Cortes de precisão milimétrica em aço carbono, sem rebarbas, prontos para solda ou dobra.
                         </p>
                     </div>
                 </div>
@@ -129,7 +129,7 @@ export default async function CorteLaserLP() {
                         {[
                             { icon: <Cpu />, title: "Agilidade", desc: "Ciclos de produção até 5× mais rápidos que plasma ou oxicorte convencional." },
                             { icon: <ShieldCheck />, title: "Consistência", desc: "Repetibilidade garantida em lotes de alto volume, peça a peça idêntica." },
-                            { icon: <Maximize2 />, title: "Versatilidade", desc: "Tubos, chapas e perfis até 19mm. Geometrias complexas sem retrabalho." },
+                            { icon: <Maximize2 />, title: "Capacidade", desc: "Tubos, chapas e perfis de aço carbono até 19mm. Geometrias complexas sem retrabalho." },
                             { icon: <FileCheck />, title: "Pronto para Uso", desc: "Peças saem direto para dobra ou soldagem — sem acabamento manual." },
                         ].map((item, i) => (
                             <div key={i} className="bg-white border border-industrial-200 p-8 hover:border-accent-premium transition-colors">
@@ -154,7 +154,7 @@ export default async function CorteLaserLP() {
                         <span className="text-accent-premium">NA SUA OBRA</span>
                     </h2>
                     <p className="text-industrial-400 font-medium text-lg max-w-xl mx-auto">
-                        Precisão laser economiza material e tempo de montagem. Peça uma cotação técnica agora.
+                        Precisão laser em aço carbono economiza material e tempo de montagem. Peça uma cotação técnica agora.
                     </p>
                     <WhatsAppLink
                         message={WA_MSG}

@@ -3,6 +3,7 @@
 import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+const LASER_MATERIAL = 'Aço carbono'
 
 export interface ServiceQuoteFormData {
   empresa: string
@@ -77,7 +78,7 @@ export async function sendLaserQuote(formData: FormData) {
   const empresa = formData.get('empresa') as string
   const nome = formData.get('nome') as string
   const telefone = formData.get('telefone') as string
-  const materialLaser = formData.get('materialLaser') as string
+  const materialLaser = LASER_MATERIAL
   const espessura = formData.get('espessura') as string
   const quantidade = formData.get('quantidade') as string
   const mensagem = formData.get('mensagem') as string
