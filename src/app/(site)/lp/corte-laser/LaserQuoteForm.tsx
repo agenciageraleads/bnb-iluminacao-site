@@ -106,21 +106,18 @@ export function LaserQuoteForm({ cidade }: Props) {
         </div>
 
         <div className="space-y-1.5">
-          <label htmlFor="l-material" className="text-[11px] font-bold uppercase tracking-widest text-industrial-600 block">
-            Material a Cortar
-          </label>
-          <select
-            id="l-material"
-            name="materialLaser"
-            className="w-full bg-white border border-industrial-300 focus:border-industrial-900 px-4 h-12 text-sm text-industrial-900 outline-none transition-colors appearance-none"
+          <p className="text-[11px] font-bold uppercase tracking-widest text-industrial-600">
+            Material atendido
+          </p>
+          <input type="hidden" name="materialLaser" value="Aço carbono" />
+          <div
+            className="w-full bg-white border border-industrial-300 px-4 min-h-12 text-sm text-industrial-900 font-bold flex items-center"
           >
-            <option value="">Selecione…</option>
-            <option value="Aço carbono">Aço carbono</option>
-            <option value="Aço galvanizado">Aço galvanizado</option>
-            <option value="Aço inox">Aço inox</option>
-            <option value="Alumínio">Alumínio</option>
-            <option value="Outro">Outro</option>
-          </select>
+            Aço carbono
+          </div>
+          <p className="text-[10px] text-industrial-400 leading-relaxed">
+            No momento, não realizamos corte de aço inox ou alumínio.
+          </p>
         </div>
 
         <div className="space-y-1.5">
@@ -218,7 +215,7 @@ export function LaserQuoteForm({ cidade }: Props) {
       </button>
 
       <p className="text-[11px] text-industrial-400 text-center leading-relaxed">
-        Trabalhamos com projetos técnicos e lotes repetitivos. Para envio de DXF, entre em contato via WhatsApp após preencher o formulário.
+        Trabalhamos somente com aço carbono em projetos técnicos e lotes repetitivos.
       </p>
     </form>
   )

@@ -6,7 +6,7 @@ import Image from "next/image"
 
 export const metadata: Metadata = {
     title: "Serviços Industriais de Alta Performance | B&B Iluminação",
-    description: "Processamento de metais, corte a laser de precisão milimétrica e acabamento em pintura eletrostática a pó poliéster premium para todo o Brasil.",
+    description: "Processamento de aço carbono, corte a laser de precisão milimétrica e acabamento em pintura eletrostática a pó poliéster premium para todo o Brasil.",
     alternates: {
         canonical: "https://bebiluminacao.com.br/servicos",
     }
@@ -18,8 +18,8 @@ export default function ServicesPage() {
             id: "corte-laser",
             title: "Corte a Laser",
             icon: <Scissors className="size-8" />,
-            description: "Tecnologia de ponta em fibra óptica para cortes de precisão milimétrica em aço carbono e outras ligas.",
-            features: ["Precisão de 0.1mm", "Alta Produtividade", "Sem necessidade de retrabalho"],
+            description: "Tecnologia de ponta em fibra óptica para cortes de precisão milimétrica exclusivamente em aço carbono.",
+            features: ["Somente aço carbono", "Precisão de 0.1mm", "Sem inox ou alumínio"],
             href: "/servicos/corte-laser",
             image: "/images/servicos/corte-laser.jpg"
         },
