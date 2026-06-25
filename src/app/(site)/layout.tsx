@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
+import { SchemaOrg } from "@/components/seo/schema-org";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -16,15 +16,15 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SERVER_URL || 'https://bebiluminacao.com.br'),
   title: {
-    default: "B&B Iluminação | Postes Metálicos de Alta Performance",
+    default: "B&B Iluminação | Soluções Metálicas para Urbanismo",
     template: "%s | B&B Iluminação",
   },
-  description: "Líder nacional em postes metálicos certificados ABNT. Iluminação pública, industrial e decorativa com máxima durabilidade e tecnologia.",
-  keywords: ["postes metálicos", "iluminação pública", "aço galvanizado", "B&B Iluminação", "postes decorativos", "Goiania"],
-  authors: [{ name: "B&B Engenharia" }],
+  description: "Postes metálicos, braços, suportes e estruturas para iluminação pública, urbanismo, segurança e projetos industriais. Na medida. No prazo. Na norma.",
+  keywords: ["postes metálicos", "iluminação pública", "estruturas metálicas", "braços para luminária", "B&B Iluminação", "Goiânia"],
+  authors: [{ name: "B&B Iluminação" }],
   openGraph: {
-    title: "B&B Iluminação | Postes Metálicos",
-    description: "Qualidade superior em engenharia de postes e iluminação LED para projetos estruturais.",
+    title: "B&B Iluminação | Soluções Metálicas para Urbanismo",
+    description: "Postes metálicos, braços, suportes e estruturas para iluminação, urbanismo e segurança.",
     url: "https://bebiluminacao.com.br",
     siteName: "B&B Iluminação",
     locale: "pt_BR",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "B&B Iluminação",
-    description: "Fabricante líder em postes metálicos galvanizados.",
+    description: "Soluções metálicas para urbanismo. Na medida. No prazo. Na norma.",
   },
   robots: {
     index: true,
@@ -71,39 +71,6 @@ const jsonLd = {
         "availableLanguage": "Portuguese",
         "email": "contato@bebiluminacao.com"
       }
-    },
-    {
-      "@type": "LocalBusiness",
-      "@id": "https://bebiluminacao.com.br/#localbusiness",
-      "name": "B&B Iluminação Comercial",
-      "url": "https://bebiluminacao.com.br/",
-      "telephone": "+55 62 3576-1988",
-      "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Rua CV 10, 324",
-        "addressLocality": "Goiânia",
-        "addressRegion": "GO",
-        "postalCode": "74463-310",
-        "addressCountry": "BR"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "-16.6869",
-        "longitude": "-49.2643"
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday"
-        ],
-        "opens": "08:00",
-        "closes": "18:00"
-      }
     }
   ]
 };
@@ -120,18 +87,21 @@ export default function RootLayout({
   const adsId = process.env.NEXT_PUBLIC_ADS_ID || '';
   const gaId = process.env.NEXT_PUBLIC_GA_ID || '';
   const fbPixelId = process.env.NEXT_PUBLIC_FB_PIXEL_ID || '';
+  const apolloAppId = process.env.NEXT_PUBLIC_APOLLO_APP_ID || '6a3aa1ba9c16ed00206f1cd6';
 
   return (
     <html lang="pt-BR">
       <body
         className={`${inter.variable} ${outfit.variable} font-sans antialiased bg-industrial-50 text-industrial-950`}
       >
-        <GoogleTagManager gtmId={gtmId} adsId={adsId} gaId={gaId} fbPixelId={fbPixelId} />
-        <Script
-            id="global-schema"
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        <GoogleTagManager
+          gtmId={gtmId}
+          adsId={adsId}
+          gaId={gaId}
+          fbPixelId={fbPixelId}
+          apolloAppId={apolloAppId}
         />
+        <SchemaOrg id="global-schema" data={jsonLd} />
         {children}
       </body>
     </html>

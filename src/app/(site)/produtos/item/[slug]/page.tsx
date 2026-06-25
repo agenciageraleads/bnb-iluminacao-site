@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import Script from 'next/script'
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
@@ -7,12 +8,74 @@ import { Check, MessageCircle, Phone, ShieldCheck, Truck, Calendar, Download, Fa
 import Link from "next/link"
 import { getProducts, getCategories } from "@/lib/data"
 import { ProductGallery } from "@/components/ui/product-gallery"
+import { getProductLineHref } from "@/lib/seo/product-line-links"
 
 import { getUrbanDownloads } from "@/lib/urban-downloads"
+import { SITE_URL, absoluteUrl } from "@/lib/seo/schema"
 
 export const dynamic = 'force-dynamic'
 
-export default async function ProductDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+interface ProductDetailPageProps {
+    params: Promise<{ slug: string }>
+}
+
+export async function generateMetadata({ params }: ProductDetailPageProps): Promise<Metadata> {
+    const { slug } = await params
+    const allProducts = await getProducts()
+    const product = allProducts.find(p => p.id === slug)
+
+    if (!product) {
+        return {
+            title: "Produto nao encontrado",
+            robots: {
+                index: false,
+                follow: false,
+            },
+            alternates: {
+                canonical: `${SITE_URL}/produtos`,
+            },
+        }
+    }
+
+    const allCategories = await getCategories()
+    const category = allCategories.find(c => c.slug === product.category)
+    const pageUrl = `${SITE_URL}/produtos/item/${product.id}`
+    const image = product.image ? absoluteUrl(product.image) : undefined
+
+    return {
+        title: {
+            absolute: `${product.name} | Produto B&B Iluminacao`,
+        },
+        description: product.description,
+        alternates: {
+            canonical: pageUrl,
+        },
+        openGraph: {
+            title: product.name,
+            description: product.description,
+            url: pageUrl,
+            type: "website",
+            ...(image
+                ? {
+                      images: [
+                          {
+                              url: image,
+                              width: 1200,
+                              height: 630,
+                              alt: product.name,
+                          },
+                      ],
+                  }
+                : {}),
+        },
+        other: {
+            ...(category ? { category: category.title } : {}),
+            ...(product.model ? { "product:model": product.model } : {}),
+        },
+    }
+}
+
+export default async function ProductDetailPage({ params }: ProductDetailPageProps) {
     const { slug } = await params;
     const allProducts = await getProducts();
     const product = allProducts.find(p => p.id === slug);
@@ -129,7 +192,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                     <span aria-hidden="true" className="shrink-0">›</span>
                     {category && (
                         <>
-                            <Link href={`/produtos/${category.slug}`} className="hover:text-industrial-900 transition-colors">{category.title}</Link>
+                            <Link href={getProductLineHref(category.slug)} className="hover:text-industrial-900 transition-colors">{category.title}</Link>
                             <span aria-hidden="true" className="shrink-0">›</span>
                         </>
                     )}

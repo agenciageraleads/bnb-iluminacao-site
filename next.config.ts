@@ -70,7 +70,72 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/braco-para-luminaria',
-        destination: '/lp/braco-para-luminaria',
+        destination: '/produtos/braco-para-luminaria-publica',
+        permanent: true,
+      },
+      {
+        source: '/braco-para-luminaria-publica',
+        destination: '/produtos/braco-para-luminaria-publica',
+        permanent: true,
+      },
+      {
+        source: '/bracos-para-luminaria-publica',
+        destination: '/produtos/braco-para-luminaria-publica',
+        permanent: true,
+      },
+      {
+        source: '/suporte-para-luminaria-publica',
+        destination: '/produtos/suporte-para-luminaria-publica',
+        permanent: true,
+      },
+      {
+        source: '/suportes-para-luminaria-publica',
+        destination: '/produtos/suporte-para-luminaria-publica',
+        permanent: true,
+      },
+      {
+        source: '/suporte-para-luminarias-publicas',
+        destination: '/produtos/suporte-para-luminaria-publica',
+        permanent: true,
+      },
+      {
+        source: '/nucleo-para-luminaria-publica',
+        destination: '/produtos/suporte-para-luminaria-publica',
+        permanent: true,
+      },
+      {
+        source: '/nucleo-para-luminarias-publicas',
+        destination: '/produtos/suporte-para-luminaria-publica',
+        permanent: true,
+      },
+      {
+        source: '/chumbador-para-poste-metalico',
+        destination: '/produtos/chumbador-para-poste-metalico',
+        permanent: true,
+      },
+      {
+        source: '/chumbadores-para-poste-metalico',
+        destination: '/produtos/chumbador-para-poste-metalico',
+        permanent: true,
+      },
+      {
+        source: '/chumbador-para-poste',
+        destination: '/produtos/chumbador-para-poste-metalico',
+        permanent: true,
+      },
+      {
+        source: '/base-flangeada-para-poste',
+        destination: '/produtos/chumbador-para-poste-metalico',
+        permanent: true,
+      },
+      {
+        source: '/base-para-poste-metalico',
+        destination: '/produtos/chumbador-para-poste-metalico',
+        permanent: true,
+      },
+      {
+        source: '/gabarito-para-chumbador',
+        destination: '/produtos/chumbador-para-poste-metalico',
         permanent: true,
       },
       {
@@ -84,39 +149,389 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/lp/postes-metalicos',
+        destination: '/postes-metalicos',
+        permanent: true,
+      },
+      {
         source: '/iluminacao',
-        destination: '/lp/postes-metalicos',
+        destination: '/postes-para-iluminacao-publica',
+        permanent: true,
+      },
+      {
+        source: '/iluminacao-publica',
+        destination: '/postes-para-iluminacao-publica',
+        permanent: true,
+      },
+      {
+        source: '/postes-de-iluminacao-publica',
+        destination: '/postes-para-iluminacao-publica',
+        permanent: true,
+      },
+      {
+        source: '/postes-loteamentos',
+        destination: '/postes-para-loteamentos',
+        permanent: true,
+      },
+      {
+        source: '/postes-para-loteamento',
+        destination: '/postes-para-loteamentos',
+        permanent: true,
+      },
+      {
+        source: '/poste-para-loteamento',
+        destination: '/postes-para-loteamentos',
+        permanent: true,
+      },
+      {
+        source: '/iluminacao-para-loteamentos',
+        destination: '/postes-para-loteamentos',
+        permanent: true,
+      },
+      {
+        source: '/postes-condominios',
+        destination: '/postes-para-condominios',
+        permanent: true,
+      },
+      {
+        source: '/postes-para-condominio',
+        destination: '/postes-para-condominios',
+        permanent: true,
+      },
+      {
+        source: '/poste-para-condominio',
+        destination: '/postes-para-condominios',
+        permanent: true,
+      },
+      {
+        source: '/iluminacao-para-condominios',
+        destination: '/postes-para-condominios',
+        permanent: true,
+      },
+      {
+        source: '/postes-pracas',
+        destination: '/postes-para-pracas',
+        permanent: true,
+      },
+      {
+        source: '/postes-para-praca',
+        destination: '/postes-para-pracas',
+        permanent: true,
+      },
+      {
+        source: '/poste-para-praca',
+        destination: '/postes-para-pracas',
+        permanent: true,
+      },
+      {
+        source: '/iluminacao-para-pracas',
+        destination: '/postes-para-pracas',
+        permanent: true,
+      },
+      {
+        source: '/postes-estacionamentos',
+        destination: '/postes-para-estacionamentos',
+        permanent: true,
+      },
+      {
+        source: '/postes-para-estacionamento',
+        destination: '/postes-para-estacionamentos',
+        permanent: true,
+      },
+      {
+        source: '/poste-para-estacionamento',
+        destination: '/postes-para-estacionamentos',
+        permanent: true,
+      },
+      {
+        source: '/iluminacao-para-estacionamentos',
+        destination: '/postes-para-estacionamentos',
+        permanent: true,
+      },
+      {
+        source: '/fabricante-postes-teleconicos',
+        destination: '/fabricante-de-postes-teleconicos',
+        permanent: true,
+      },
+      {
+        source: '/fabricantes-de-postes-teleconicos',
+        destination: '/fabricante-de-postes-teleconicos',
+        permanent: true,
+      },
+      {
+        source: '/fabricante-de-poste-teleconico',
+        destination: '/fabricante-de-postes-teleconicos',
+        permanent: true,
+      },
+      {
+        source: '/fabricante-poste-teleconico',
+        destination: '/fabricante-de-postes-teleconicos',
+        permanent: true,
+      },
+      {
+        source: '/poste-metalico-galvanizado',
+        destination: '/produtos/poste-metalico-galvanizado',
+        permanent: true,
+      },
+      {
+        source: '/postes-metalicos-galvanizados',
+        destination: '/produtos/poste-metalico-galvanizado',
+        permanent: true,
+      },
+      {
+        source: '/poste-de-aco-galvanizado',
+        destination: '/produtos/poste-metalico-galvanizado',
+        permanent: true,
+      },
+      {
+        source: '/poste-galvanizado-para-iluminacao',
+        destination: '/produtos/poste-metalico-galvanizado',
+        permanent: true,
+      },
+      {
+        source: '/poste-galvanizado-com-base',
+        destination: '/produtos/poste-metalico-galvanizado',
+        permanent: true,
+      },
+      {
+        source: '/poste-curvo-simples',
+        destination: '/produtos/poste-curvo-simples',
+        permanent: true,
+      },
+      {
+        source: '/postes-curvos-simples',
+        destination: '/produtos/poste-curvo-simples',
+        permanent: true,
+      },
+      {
+        source: '/poste-teleconico-curvo-simples',
+        destination: '/produtos/poste-curvo-simples',
+        permanent: true,
+      },
+      {
+        source: '/poste-curvo-simples-galvanizado',
+        destination: '/produtos/poste-curvo-simples',
+        permanent: true,
+      },
+      {
+        source: '/poste-curvo-simples-com-base',
+        destination: '/produtos/poste-curvo-simples',
+        permanent: true,
+      },
+      {
+        source: '/poste-curvo-simples-engastado',
+        destination: '/produtos/poste-curvo-simples',
+        permanent: true,
+      },
+      {
+        source: '/poste-curvo-duplo',
+        destination: '/produtos/poste-curvo-duplo',
+        permanent: true,
+      },
+      {
+        source: '/postes-curvos-duplos',
+        destination: '/produtos/poste-curvo-duplo',
+        permanent: true,
+      },
+      {
+        source: '/poste-teleconico-curvo-duplo',
+        destination: '/produtos/poste-curvo-duplo',
+        permanent: true,
+      },
+      {
+        source: '/poste-curvo-duplo-galvanizado',
+        destination: '/produtos/poste-curvo-duplo',
+        permanent: true,
+      },
+      {
+        source: '/poste-curvo-duplo-com-base',
+        destination: '/produtos/poste-curvo-duplo',
+        permanent: true,
+      },
+      {
+        source: '/poste-curvo-duplo-engastado',
+        destination: '/produtos/poste-curvo-duplo',
+        permanent: true,
+      },
+      {
+        source: '/fabrica-postes-metalicos',
+        destination: '/fabrica-de-postes-metalicos',
+        permanent: true,
+      },
+      {
+        source: '/fabricas-de-postes-metalicos',
+        destination: '/fabrica-de-postes-metalicos',
+        permanent: true,
+      },
+      {
+        source: '/industria-de-postes-metalicos',
+        destination: '/fabrica-de-postes-metalicos',
+        permanent: true,
+      },
+      {
+        source: '/postes-metalicos-direto-da-fabrica',
+        destination: '/fabrica-de-postes-metalicos',
+        permanent: true,
+      },
+      {
+        source: '/fornecedor-postes-metalicos',
+        destination: '/fornecedor-de-postes-metalicos',
+        permanent: true,
+      },
+      {
+        source: '/fornecedores-de-postes-metalicos',
+        destination: '/fornecedor-de-postes-metalicos',
+        permanent: true,
+      },
+      {
+        source: '/comprar-poste-metalico',
+        destination: '/fornecedor-de-postes-metalicos',
+        permanent: true,
+      },
+      {
+        source: '/poste-teleconico',
+        destination: '/produtos/poste-teleconico',
+        permanent: true,
+      },
+      {
+        source: '/postes-teleconicos',
+        destination: '/produtos/poste-teleconico',
         permanent: true,
       },
       {
         source: '/para-raio',
-        destination: '/produtos/poste-metalico',
+        destination: '/postes-metalicos',
         permanent: true,
       },
       {
         source: '/pergolado-de-ferro',
-        destination: '/produtos/linha-garden',
+        destination: '/postes-para-pracas',
         permanent: true,
       },
       // Consolidação de Categorias Legadas
       {
+        source: '/produtos/linha-urban',
+        destination: '/produtos/poste-teleconico',
+        permanent: true,
+      },
+      {
+        source: '/produtos/linha-versa',
+        destination: '/postes-para-pracas',
+        permanent: true,
+      },
+      {
+        source: '/produtos/linha-forza',
+        destination: '/postes-metalicos',
+        permanent: true,
+      },
+      {
+        source: '/produtos/linha-civis',
+        destination: '/lp/mastros-para-bandeira',
+        permanent: true,
+      },
+      {
+        source: '/produtos/linha-vigia',
+        destination: '/postes-metalicos',
+        permanent: true,
+      },
+      {
+        source: '/produtos/linha-nexo',
+        destination: '/produtos/braco-para-luminaria-publica',
+        permanent: true,
+      },
+      {
+        source: '/produtos/linha-orna',
+        destination: '/postes-para-pracas',
+        permanent: true,
+      },
+      {
         source: '/produtos/postes',
-        destination: '/produtos/poste-metalico',
+        destination: '/postes-metalicos',
         permanent: true,
       },
       {
         source: '/produtos/postes-de-iluminacao',
-        destination: '/produtos/poste-metalico',
+        destination: '/postes-para-iluminacao-publica',
+        permanent: true,
+      },
+      {
+        source: '/produtos/postes-de-iluminacao-publica',
+        destination: '/postes-para-iluminacao-publica',
+        permanent: true,
+      },
+      {
+        source: '/produtos/postes-teleconicos',
+        destination: '/produtos/poste-teleconico',
+        permanent: true,
+      },
+      {
+        source: '/produtos/poste-teleconico-galvanizado',
+        destination: '/produtos/poste-teleconico',
+        permanent: true,
+      },
+      {
+        source: '/produtos/poste-galvanizado',
+        destination: '/produtos/poste-metalico-galvanizado',
+        permanent: true,
+      },
+      {
+        source: '/produtos/postes-metalicos-galvanizados',
+        destination: '/produtos/poste-metalico-galvanizado',
+        permanent: true,
+      },
+      {
+        source: '/produtos/poste-curvo-simples-galvanizado',
+        destination: '/produtos/poste-curvo-simples',
+        permanent: true,
+      },
+      {
+        source: '/produtos/poste-curvo-duplo-galvanizado',
+        destination: '/produtos/poste-curvo-duplo',
         permanent: true,
       },
       {
         source: '/produtos/postes-decorativos',
-        destination: '/produtos/poste-metalico/decorativo',
+        destination: '/postes-para-pracas',
         permanent: true,
       },
       {
         source: '/produtos/acessorios',
-        destination: '/produtos/bracos',
+        destination: '/produtos/braco-para-luminaria-publica',
+        permanent: true,
+      },
+      {
+        source: '/produtos/braco-para-luminaria',
+        destination: '/produtos/braco-para-luminaria-publica',
+        permanent: true,
+      },
+      {
+        source: '/produtos/bracos-para-luminaria-publica',
+        destination: '/produtos/braco-para-luminaria-publica',
+        permanent: true,
+      },
+      {
+        source: '/produtos/suportes-para-luminaria-publica',
+        destination: '/produtos/suporte-para-luminaria-publica',
+        permanent: true,
+      },
+      {
+        source: '/produtos/suporte-para-luminarias-publicas',
+        destination: '/produtos/suporte-para-luminaria-publica',
+        permanent: true,
+      },
+      {
+        source: '/produtos/chumbadores-para-poste-metalico',
+        destination: '/produtos/chumbador-para-poste-metalico',
+        permanent: true,
+      },
+      {
+        source: '/produtos/base-flangeada-para-poste',
+        destination: '/produtos/chumbador-para-poste-metalico',
+        permanent: true,
+      },
+      {
+        source: '/produtos/gabarito-para-chumbador',
+        destination: '/produtos/chumbador-para-poste-metalico',
         permanent: true,
       },
       // Categorias removidas

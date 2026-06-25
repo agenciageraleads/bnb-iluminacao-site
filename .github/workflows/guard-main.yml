@@ -1,0 +1,38 @@
+name: Guard main
+
+# Plano free não tem branch protection. Este guard é DETECTIVO: marca a `main`
+# em vermelho quando um commit chega sem ter vindo de um PR (push direto),
+# sinalizando violação da regra "toda mudança via PR".
+# Não impede o push — apenas torna a violação visível.
+on:
+  push:
+    branches: [main]
+
+jobs:
+  no-direct-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Commit veio de um PR?
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          sha='${{ github.sha }}'
+          # 1) squash/merge pela UI do GitHub anexa "(#N)" ao título — sinal direto de PR.
+          title=$(gh api "repos/${{ github.repository }}/commits/${sha}" --jq '.commit.message' 2>/dev/null | head -1)
+          if printf '%s' "$title" | grep -qE '\(#[0-9]+\)[[:space:]]*$'; then
+            echo "OK: commit ${sha} referencia um PR no título (\"${title}\")."
+            exit 0
+          fi
+          # 2) senão, consulta a API com retries — a associação PR<->commit costuma
+          #    levar alguns segundos para indexar logo após o merge.
+          for i in 1 2 3 4 5 6; do
+            n=$(gh api "repos/${{ github.repository }}/commits/${sha}/pulls" --jq 'length' 2>/dev/null || echo 0)
+            if [ "${n:-0}" -gt 0 ]; then
+              echo "OK: commit ${sha} associado a ${n} PR(s)."
+              exit 0
+            fi
+            echo "tentativa ${i}/6: ainda sem PR associado; aguardando 10s…"
+            sleep 10
+          done
+          echo "::error::Push DIRETO na main: commit ${sha} sem PR associado. Toda mudança deve ir via PR."
+          exit 1

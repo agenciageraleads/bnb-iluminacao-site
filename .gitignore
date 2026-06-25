@@ -12,6 +12,7 @@
 
 # testing
 /coverage
+/output
 
 # next.js
 /.next/
@@ -75,3 +76,4 @@ validacao_imagens.html
 /fix-docker.sh
 /fix-dockerfile.sh
 /src/scripts/list-users.ts
+downloads-prototipo.html

@@ -3,6 +3,8 @@
 import Image from "next/image"
 import { useState, useEffect } from "react"
 
+import { getProductImageAlt } from "@/lib/seo/images"
+
 interface ProductGalleryProps {
   mainImage: string
   model: string
@@ -13,6 +15,7 @@ interface ProductGalleryProps {
 export function ProductGallery({ mainImage, model, categoryTitle, gallery }: ProductGalleryProps) {
   const allImages = [mainImage, ...gallery].filter(Boolean)
   const initialImage = allImages.length > 0 ? allImages[0] : ""
+  const imageAlt = getProductImageAlt(model, categoryTitle)
   
   const [activeImage, setActiveImage] = useState(initialImage)
 
@@ -48,7 +51,7 @@ export function ProductGallery({ mainImage, model, categoryTitle, gallery }: Pro
               <Image
                   key={activeImage}
                   src={activeImage}
-                  alt={model}
+                  alt={imageAlt}
                   fill
                   className="object-contain transition-transform duration-700 animate-in fade-in duration-500"
                   priority
@@ -73,7 +76,7 @@ export function ProductGallery({ mainImage, model, categoryTitle, gallery }: Pro
                   >
                       <Image 
                         src={img} 
-                        alt={`Miniatura ${index + 1}`} 
+                        alt={`Imagem ${index + 1} de ${imageAlt}`} 
                         fill 
                         className={`object-contain transition-opacity ${activeImage === img ? 'opacity-100' : 'opacity-60 group-hover:opacity-100'}`} 
                       />

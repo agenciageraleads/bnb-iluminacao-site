@@ -6,6 +6,7 @@ import { Filter, Search } from "lucide-react"
 import Link from "next/link"
 import { getProducts, getCategories } from "@/lib/data"
 import { CategoryOverview } from "@/components/products/CategoryOverview"
+import { getProductLineHref } from "@/lib/seo/product-line-links"
 
 export const metadata: Metadata = {
     title: "Catálogo de Produtos | B&B Iluminação",
@@ -83,7 +84,7 @@ export default async function ProdutosPage() {
                     {categoriesList.map((cat) => (
                         <Link
                             key={cat.slug}
-                            href={`/produtos/${cat.slug}`}
+                            href={getProductLineHref(cat.slug)}
                             className="whitespace-nowrap px-5 py-2.5 bg-white border border-industrial-200 text-industrial-700 text-[11px] font-bold uppercase tracking-widest hover:bg-industrial-900 hover:text-white hover:border-industrial-900 flex-shrink-0 transition-all"
                         >
                             {cat.title}
@@ -146,4 +147,3 @@ export default async function ProdutosPage() {
         </main>
     )
 }
-

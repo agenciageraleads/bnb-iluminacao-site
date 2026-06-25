@@ -152,9 +152,9 @@ export default async function CatalogExportPage({ params }: { params: Promise<{ 
                         <Image src="/logo.png" alt="B&B" width={300} height={100} className="mx-auto mb-16" />
                         <h2 className="text-2xl font-bold uppercase tracking-widest mb-8">Solicite seu Orçamento</h2>
                         <div className="space-y-4 text-industrial-300">
-                            <p className="text-lg">comercial@bebiluminacao.com.br</p>
+                            <p className="text-lg">contato@bebiluminacao.com</p>
                             <p className="text-lg">+55 (62) 3576-1988</p>
-                            <p className="text-base">Goiânia - GO | Brasil</p>
+                            <p className="text-base">Rua CV10, Qd 26 Lt 02, Residencial Centerville, Goiania, GO</p>
                         </div>
                     </div>
                     <div className="absolute bottom-0 w-full h-4 bg-accent-premium" />

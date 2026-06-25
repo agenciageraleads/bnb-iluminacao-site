@@ -135,37 +135,37 @@ export const portfolioItems = [
         image: "/portfolio/quadras-arapora.webp",
     },
     {
-        title: "Burger King",
+        title: "Estacionamento Comercial",
         category: "Comercial / Fast Food",
         location: "Rio Verde, GO",
         image: "/portfolio/burger-king-rv.webp",
     },
     {
-        title: "Centro de Esportes UFG",
+        title: "Centro Esportivo Institucional",
         category: "Esportivo / Público",
         location: "Goiânia, GO",
         image: "/portfolio/centro-esportes-ufg.webp",
     },
     {
-        title: "Portal do Sol Mendanha",
+        title: "Condominio Residencial",
         category: "Condomínio Residencial",
         location: "Goiânia, GO",
         image: "/portfolio/portal-do-sol.webp",
     },
     {
-        title: "Maternidade Célia Câmara",
+        title: "Area Hospitalar",
         category: "Saúde e Hospitalar",
         location: "Goiânia, GO",
         image: "/portfolio/maternidade-celia.webp",
     },
     {
-        title: "Sistema FIEAC SENAI",
+        title: "Unidade Institucional de Ensino",
         category: "Educação / Institucional",
         location: "Rio Branco, AC",
         image: "/portfolio/senai-ac.webp",
     },
     {
-        title: "Reserva do Parque",
+        title: "Condominio em Rio Verde",
         category: "Condomínio Residencial",
         location: "Rio Verde, GO",
         image: "/portfolio/reserva-parque.webp",
@@ -177,7 +177,7 @@ export const catalogs: Catalog[] = [
         id: "catalogo-geral-bb",
         title: "Catálogo Geral B&B Iluminação",
         description: "Especificações completas de postes telecônicos, decorativos e braços metálicos com padrão de engenharia.",
-        thumbnail: "/portfolio/reserva-parque.webp", 
+        thumbnail: "/portfolio/reserva-parque.webp",
         fileUrl: "/downloads/catalogo-bb-iluminacao.pdf",
         category: "Postes e Estruturas"
     }
