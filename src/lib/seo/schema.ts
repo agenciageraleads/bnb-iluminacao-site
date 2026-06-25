@@ -167,14 +167,49 @@ export function createProductSchema({
     }
 }
 
+const SHARED_ORG_FIELDS = {
+    "@type": "Organization",
+    "@id": ORGANIZATION_ID,
+    name: "B&B Iluminacao",
+    url: SITE_URL,
+    foundingDate: "2017",
+    telephone: "+55-62-3576-1988",
+    email: "contato@bebiluminacao.com.br",
+    description: "Fabricante brasileira de postes metalicos, bracos e estruturas para urbanismo. Na medida. No prazo. Na norma.",
+    knowsAbout: [
+        "postes metalicos galvanizados",
+        "iluminacao publica",
+        "mastros para bandeira",
+        "ABNT NBR 10621",
+        "postes teleconicos",
+    ],
+    sameAs: [
+        "https://www.instagram.com/bebiluminacao",
+    ],
+}
+
+export function createNationalOrganizationSchema(): SchemaNode {
+    return {
+        ...SHARED_ORG_FIELDS,
+        logo: `${SITE_URL}/logo.png`,
+        areaServed: {
+            "@type": "Country",
+            name: "Brasil",
+        },
+        numberOfEmployees: {
+            "@type": "QuantitativeValue",
+            minValue: 10,
+            maxValue: 50,
+        },
+    }
+}
+
 export function createFactoryOrganizationSchema(): SchemaNode {
     return {
-        "@type": "Organization",
-        "@id": ORGANIZATION_ID,
-        name: "B&B Iluminacao",
-        url: SITE_URL,
+        ...SHARED_ORG_FIELDS,
         address: {
             "@type": "PostalAddress",
+            streetAddress: "Rua CV10, Qd 26 Lt 02, Residencial Centerville",
             addressLocality: "Goiania",
             addressRegion: "GO",
             addressCountry: "BR",

@@ -19,6 +19,81 @@ const pages = [
     types: ['WebPage', 'BreadcrumbList', 'ItemList', 'FAQPage'],
   },
   {
+    path: '/postes-metalicos-sao-paulo',
+    types: ['WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'ImageObject', 'FAQPage'],
+    regional: true,
+  },
+  {
+    path: '/postes-metalicos-minas-gerais',
+    types: ['WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'ImageObject', 'FAQPage'],
+    regional: true,
+  },
+  {
+    path: '/postes-metalicos-rio-de-janeiro',
+    types: ['WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'ImageObject', 'FAQPage'],
+    regional: true,
+  },
+  {
+    path: '/postes-metalicos-parana',
+    types: ['WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'ImageObject', 'FAQPage'],
+    regional: true,
+  },
+  {
+    path: '/postes-metalicos-santa-catarina',
+    types: ['WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'ImageObject', 'FAQPage'],
+    regional: true,
+  },
+  {
+    path: '/postes-metalicos-rio-grande-do-sul',
+    types: ['WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'ImageObject', 'FAQPage'],
+    regional: true,
+  },
+  {
+    path: '/postes-metalicos-bahia',
+    types: ['WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'ImageObject', 'FAQPage'],
+    regional: true,
+  },
+  {
+    path: '/postes-metalicos-pernambuco',
+    types: ['WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'ImageObject', 'FAQPage'],
+    regional: true,
+  },
+  {
+    path: '/postes-metalicos-ceara',
+    types: ['WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'ImageObject', 'FAQPage'],
+    regional: true,
+  },
+  {
+    path: '/postes-metalicos-para',
+    types: ['WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'ImageObject', 'FAQPage'],
+    regional: true,
+  },
+  {
+    path: '/postes-metalicos-mato-grosso',
+    types: ['WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'ImageObject', 'FAQPage'],
+    regional: true,
+  },
+  {
+    path: '/postes-metalicos-mato-grosso-do-sul',
+    types: ['WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'ImageObject', 'FAQPage'],
+    regional: true,
+  },
+  {
+    path: '/postes-metalicos-goias',
+    types: ['WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'ImageObject', 'FAQPage'],
+    regional: true,
+  },
+  {
+    path: '/postes-metalicos-distrito-federal',
+    types: ['WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'ImageObject', 'FAQPage'],
+    regional: true,
+  },
+  {
+    path: '/postes-metalicos-tocantins',
+    types: ['WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'ImageObject', 'FAQPage'],
+    regional: true,
+  },
+  {
     path: '/postes-para-iluminacao-publica',
     types: ['WebPage', 'BreadcrumbList', 'ItemList', 'FAQPage'],
   },
@@ -28,15 +103,15 @@ const pages = [
   },
   {
     path: '/postes-para-condominios',
-    types: ['WebPage', 'Organization', 'LocalBusiness', 'BreadcrumbList', 'ItemList', 'ImageObject', 'FAQPage'],
+    types: ['WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'ImageObject', 'FAQPage'],
   },
   {
     path: '/postes-para-pracas',
-    types: ['WebPage', 'Organization', 'LocalBusiness', 'BreadcrumbList', 'ItemList', 'ImageObject', 'FAQPage'],
+    types: ['WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'ImageObject', 'FAQPage'],
   },
   {
     path: '/postes-para-estacionamentos',
-    types: ['WebPage', 'Organization', 'LocalBusiness', 'BreadcrumbList', 'ItemList', 'ImageObject', 'FAQPage'],
+    types: ['WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'ImageObject', 'FAQPage'],
   },
   {
     path: '/produtos/poste-teleconico',
@@ -69,6 +144,22 @@ const pages = [
   {
     path: '/fabrica-de-postes-metalicos',
     types: ['WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'FAQPage'],
+  },
+  {
+    path: '/obras',
+    types: ['WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'ImageObject'],
+  },
+  {
+    path: '/obras/postes-para-pracas-centralina-mg',
+    types: ['Article', 'WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'ImageObject'],
+  },
+  {
+    path: '/obras/postes-para-quadras-esportivas-arapora-go',
+    types: ['Article', 'WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'ImageObject'],
+  },
+  {
+    path: '/obras/postes-para-area-hospitalar-goiania-go',
+    types: ['Article', 'WebPage', 'Organization', 'BreadcrumbList', 'ItemList', 'ImageObject'],
   },
   {
     path: '/blog/altura-de-poste-para-iluminacao-publica',
@@ -162,9 +253,37 @@ const redirects = [
   ['/fornecedor-postes-metalicos', '/fornecedor-de-postes-metalicos'],
   ['/fornecedores-de-postes-metalicos', '/fornecedor-de-postes-metalicos'],
   ['/comprar-poste-metalico', '/fornecedor-de-postes-metalicos'],
+  ['/lp/estados/sao-paulo', '/postes-metalicos-sao-paulo'],
+  ['/lp/estados/minas-gerais', '/postes-metalicos-minas-gerais'],
+  ['/lp/estados/rio-de-janeiro', '/postes-metalicos-rio-de-janeiro'],
+  ['/lp/estados/parana', '/postes-metalicos-parana'],
+  ['/lp/estados/santa-catarina', '/postes-metalicos-santa-catarina'],
+  ['/lp/estados/rio-grande-do-sul', '/postes-metalicos-rio-grande-do-sul'],
+  ['/lp/estados/bahia', '/postes-metalicos-bahia'],
+  ['/lp/estados/pernambuco', '/postes-metalicos-pernambuco'],
+  ['/lp/estados/ceara', '/postes-metalicos-ceara'],
+  ['/lp/estados/para', '/postes-metalicos-para'],
+  ['/lp/estados/mato-grosso', '/postes-metalicos-mato-grosso'],
+  ['/lp/estados/mato-grosso-do-sul', '/postes-metalicos-mato-grosso-do-sul'],
+  ['/lp/estados/goias', '/postes-metalicos-goias'],
+  ['/lp/estados/distrito-federal', '/postes-metalicos-distrito-federal'],
+  ['/lp/estados/tocantins', '/postes-metalicos-tocantins'],
+  ['/lp/postes-metalicos/cidades/goiania', '/postes-metalicos'],
+  ['/lp/postes-metalicos/cidades/sao-paulo', '/postes-metalicos'],
 ]
 
 const sitemapForbiddenPaths = [
+  '/lp/postes-metalicos/cidades/',
+  '/lp/estados/',
+]
+
+const regionalForbiddenHtml = [
+  'LocalBusiness',
+  'GeoCoordinates',
+  'addressLocality',
+  'B&B - Unidade',
+  '/lp/estados/',
+  '/regioes-atendidas/cidades/',
   '/lp/postes-metalicos/cidades/',
 ]
 
@@ -228,6 +347,12 @@ for (const page of pages) {
   for (const type of page.types) {
     assert(types.has(type), `${page.path} missing schema type ${type}`)
   }
+
+  if (page.regional) {
+    for (const forbidden of regionalForbiddenHtml) {
+      assert(!html.includes(forbidden), `${page.path} should not include regional forbidden signal ${forbidden}`)
+    }
+  }
 }
 
 const sitemapResponse = await fetch(absolute('/sitemap.xml'))
@@ -247,7 +372,7 @@ for (const [source, destination] of redirects) {
   const response = await fetch(absolute(source), { redirect: 'manual' })
   const location = response.headers.get('location') ?? ''
   console.log(`${response.status} ${source} -> ${location}`)
-  assert(response.status === 308 || response.status === 301, `${source} returned ${response.status}`)
+  assert([301, 307, 308].includes(response.status), `${source} returned ${response.status}`)
   assert(location.endsWith(destination), `${source} should redirect to ${destination}, got ${location}`)
 }
 

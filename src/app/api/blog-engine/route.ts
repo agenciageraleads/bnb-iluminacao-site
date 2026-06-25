@@ -109,46 +109,10 @@ export async function POST(req: Request) {
 
         const restRedator = await model.generateContent({
             contents: [{ role: 'user', parts: [{ text: promptRedator }] }],
-            tools: [{ googleSearch: {} }] as any
+            generationConfig: { responseMimeType: "application/json" }
         });
-        
-        const rawText = restRedator.response.text().trim();
-        
-        // Limpeza resiliente de JSON (Extrai apenas o bloco { ... })
-        let textoGeradoJson = "";
-        const jsonMatch = rawText.match(/\{[\s\S]*\}/);
-        if (jsonMatch) {
-            textoGeradoJson = jsonMatch[0];
-        } else {
-            textoGeradoJson = rawText;
-        }
 
-        // Removendo possíveis blocos de código markdown se ainda existirem
-        textoGeradoJson = textoGeradoJson.replace(/\`\`\`json/g, '').replace(/\`\`\`/g, '').trim();
-        
-        // Limpeza de caracteres de controle invisíveis e quebras de linha dentro do JSON que quebram o parse
-        let cleanedJson = textoGeradoJson
-            .replace(/[\u0000-\u001F\u007F-\u009F]/g, "") 
-            .replace(/\n/g, "\\n") 
-            .replace(/\\n\\n/g, "\\n");
-            
-        // Corrige vírgulas sobrando no final
-        cleanedJson = cleanedJson.replace(/,\s*([\]}])/g, '$1');
-
-        // Tentativa de parse robusto
-        let conteudoAgente;
-        try {
-            conteudoAgente = JSON.parse(cleanedJson);
-        } catch (e) {
-            console.warn("Falha no parse inicial, tentando limpeza agressiva...");
-            try {
-                // Se falhar de novo, usa o textoGerado original mas arruma quebras de linha
-                const altJson = textoGeradoJson.replace(/\n/g, ' ').replace(/,\s*([\]}])/g, '$1');
-                conteudoAgente = JSON.parse(altJson);
-            } catch (e2) {
-                const parseMessage = e2 instanceof Error ? e2.message : String(e2);
-                throw new Error(`Erro no parsing do JSON gerado pela IA: ${parseMessage}`);
-            }
+        const conteudoAgente = JSON.parse(restRedator.response.text());
         }
 
         // --------------------------------------------------------------------------------
@@ -177,13 +141,11 @@ export async function POST(req: Request) {
                 "motivo_reprovacao": "se houver"
             }
         `;
-        const resRevisor = await model.generateContent(promptRevisor);
-        let decisaoRevisor = resRevisor.response.text().trim();
-        if (decisaoRevisor.startsWith('\`\`\`json')) {
-            decisaoRevisor = decisaoRevisor.replace(/\`\`\`json/g, '').replace(/\`\`\`/g, '').trim();
-        }
-        
-        const veredicto = JSON.parse(decisaoRevisor);
+        const resRevisor = await model.generateContent({
+            contents: [{ role: 'user', parts: [{ text: promptRevisor }] }],
+            generationConfig: { responseMimeType: "application/json" }
+        });
+        const veredicto = JSON.parse(resRevisor.response.text());
 
         if (!veredicto.aprovado) {
             // Em um fluxo vivo, acionaríamos um retry ou loop para o Redator consertar.

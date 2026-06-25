@@ -487,10 +487,20 @@ export default function NormasParaPostesDeIluminacaoPage() {
 
                         <div className="mt-6 flex items-start gap-3 border border-white/15 bg-white/5 p-5 text-sm leading-relaxed text-industrial-300">
                             <AlertTriangle className="mt-0.5 size-5 shrink-0 text-accent-premium" aria-hidden="true" />
-                            <p>
-                                As normas citadas devem ser verificadas em fonte oficial. O papel da B&B aqui e ajudar a
-                                transformar requisito em briefing de fabricacao, cotacao e atendimento tecnico.
-                            </p>
+                            <div>
+                                <p>
+                                    As normas citadas devem ser verificadas em fonte oficial. O papel da B&B aqui e ajudar a
+                                    transformar requisito em briefing de fabricacao, cotacao e atendimento tecnico.
+                                </p>
+                                <p className="mt-3 text-xs text-industrial-400">
+                                    Fontes tecnicas:{" "}
+                                    <a href="https://www.abnt.org.br/" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">ABNT</a>
+                                    {" · "}
+                                    <a href="https://abrasip.org.br/" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">ABRASIP — Associação Brasileira de Iluminação Pública</a>
+                                    {" · "}
+                                    <a href="https://www.inmetro.gov.br/" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">INMETRO</a>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </section>

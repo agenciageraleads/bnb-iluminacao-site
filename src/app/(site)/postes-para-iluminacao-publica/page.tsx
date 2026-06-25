@@ -42,7 +42,7 @@ const pageDescription =
     "Postes para iluminacao publica e urbana com modelos teleconicos, retos e curvos. Fabricacao propria, suporte tecnico, catalogos e entrega nacional."
 const whatsappMessage =
     "Ola, vim pela pagina de postes para iluminacao publica e quero solicitar um orcamento tecnico."
-const heroImage = "/images/seo/postes-metalicos/via-publica-postes-retos-dois-lados.jpg"
+const heroImage = "/images/seo/postes-metalicos/via-iluminada-poste-teleconico-reto.webp"
 
 export const metadata: Metadata = {
     title: {
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
                 url: `https://bebiluminacao.com.br${heroImage}`,
                 width: 1200,
                 height: 630,
-                alt: "Postes para iluminacao publica em via urbana",
+                alt: "Poste teleconico reto para iluminacao publica em via urbana",
             },
         ],
     },
@@ -134,19 +134,19 @@ const quoteData = [
 
 const relatedLines = [
     {
-        title: "Linha Urban",
+        title: "Poste teleconico",
         description: "Postes teleconicos e urbanos para vias, loteamentos e iluminacao publica.",
-        href: "/produtos/linha-urban",
+        href: "/produtos/poste-teleconico",
     },
     {
-        title: "Linha Forza",
+        title: "Poste curvo duplo",
         description: "Postes especiais para projetos com maiores alturas, esforcos e complexidade tecnica.",
-        href: "/produtos/linha-forza",
+        href: "/produtos/poste-curvo-duplo",
     },
     {
-        title: "Linha Orna",
+        title: "Postes para pracas",
         description: "Postes ornamentais para pracas, parques, jardins e areas urbanas com exigencia visual.",
-        href: "/produtos/linha-orna",
+        href: "/postes-para-pracas",
     },
     {
         title: "Bracos e suportes",
@@ -156,18 +156,21 @@ const relatedLines = [
 ]
 
 const gallery = [
-    createSeoImage("viaPublicaPostesRetosDoisLados", {
-        alt: "Postes para iluminacao publica em via urbana nos dois sentidos",
+    createSeoImage("viaIluminadaPosteTeleconicoReto", {
+        alt: "Poste teleconico reto para iluminacao publica em via com trafego noturno",
+        title: "Poste teleconico em via",
     }),
-    createSeoImage("ruaIluminadaPosteCurvo", {
-        alt: "Poste curvo para iluminacao publica em rua arborizada",
+    createSeoImage("viaIluminadaPosteTeleconicoCurvo", {
+        alt: "Postes teleconicos curvos para iluminacao publica em via urbana",
+        title: "Postes curvos em via",
     }),
-    createSeoImage("pracaIluminadaLuminariaRedonda", {
-        alt: "Poste ornamental para iluminacao publica em praca",
+    createSeoImage("pracaIluminadaPostesJardim", {
+        alt: "Postes para iluminacao publica em praca e area de convivencia",
+        title: "Praca iluminada",
     }),
-    createSeoImage("viaUrbanaIluminadaPostes", {
-        alt: "Postes metalicos para iluminacao urbana com trafego noturno",
-        title: "Iluminacao urbana",
+    createSeoImage("avenidaDuasPistasIluminadaPostes", {
+        alt: "Postes para iluminacao publica em avenida de duas pistas",
+        title: "Avenida iluminada",
     }),
 ]
 
@@ -187,12 +190,12 @@ const internalLinks = [
     ["Poste flangeado ou engastado", "/blog/poste-flangeado-ou-engastado"],
     ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
     ["Fabricante de postes metalicos", "/fabricante-de-postes-metalicos"],
-    ["Linha Urban", "/produtos/linha-urban"],
-    ["Linha Orna", "/produtos/linha-orna"],
+    ["Poste teleconico", "/produtos/poste-teleconico"],
+    ["Postes para pracas", "/postes-para-pracas"],
     ["Braco para luminaria publica", "/produtos/braco-para-luminaria-publica"],
     ["Suporte para luminaria publica", "/produtos/suporte-para-luminaria-publica"],
     ["Chumbador para poste metalico", "/produtos/chumbador-para-poste-metalico"],
-    ["Linha Nexo", "/produtos/linha-nexo"],
+    ["Braco para luminaria publica", "/produtos/braco-para-luminaria-publica"],
     ["Catalogos e downloads", "/downloads"],
 ]
 

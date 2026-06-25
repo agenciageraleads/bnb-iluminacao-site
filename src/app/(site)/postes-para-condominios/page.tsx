@@ -45,7 +45,7 @@ const pageDescription =
     "Postes para condominios residenciais, horizontais e comerciais com padronizacao visual, suporte tecnico, acabamento e atendimento nacional."
 const whatsappMessage =
     "Ola, vim pela pagina de postes para condominios e quero ajuda para especificar modelos, quantidades e orcamento tecnico."
-const heroImage = "/images/seo/postes-metalicos/rua-iluminada-poste-curvo.jpg"
+const heroImage = "/images/seo/postes-metalicos/condominio-estacionamento-poste-metalico.webp"
 
 export const metadata: Metadata = {
     title: {
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
                 url: absoluteUrl(heroImage),
                 width: 1200,
                 height: 630,
-                alt: "Postes metalicos para ruas internas de condominios",
+                alt: "Poste metalico para estacionamento e area comum de condominio",
             },
         ],
     },
@@ -248,21 +248,25 @@ const relatedPages = [
 ]
 
 const gallery = [
-    createSeoImage("ruaIluminadaPosteCurvo", {
+    createSeoImage("condominioEstacionamentoPosteMetalico", {
         alt: "Postes metalicos em rua interna de condominio residencial",
-        title: "Ruas internas",
+        title: "Area residencial",
     }),
-    createSeoImage("pracaIluminadaLuminariaRedonda", {
-        alt: "Postes ornamentais para praca e area de convivencia em condominio",
+    createSeoImage("pracaIluminadaPostesJardim", {
+        alt: "Postes para praca e area de convivencia em condominio",
         title: "Areas de convivencia",
     }),
-    createSeoImage("estacionamentoHospitalPostes", {
-        alt: "Postes metalicos para estacionamento e areas de acesso",
+    createSeoImage("estacionamentoNoturnoPosteReto", {
+        alt: "Poste metalico para estacionamento e areas de acesso em condominio",
         title: "Estacionamentos",
     }),
-    createSeoImage("viaPublicaPostesRetosDoisLados", {
+    createSeoImage("avenidaDuasPistasIluminadaPostes", {
         alt: "Postes metalicos padronizados para vias internas e acessos",
         title: "Acessos e vias",
+    }),
+    createSeoImage("condominioAldeiaDoValeIluminacaoNoturna", {
+        alt: "Lago e vias internas de condominio com iluminacao noturna",
+        title: "Iluminacao de areas comuns",
     }),
 ]
 
@@ -511,7 +515,7 @@ export default function PostesParaCondominiosPage() {
                             acessorios e acabamento.
                         </p>
                     </div>
-                    <div className="grid gap-5 md:grid-cols-4">
+                    <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-5">
                         {processSteps.map((step) => {
                             const Icon = step.icon
                             return (

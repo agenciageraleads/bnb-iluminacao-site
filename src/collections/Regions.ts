@@ -54,8 +54,8 @@ const Regions: CollectionConfig = {
                 {
                     name: 'deliveryTime',
                     type: 'text',
-                    label: 'Prazo Estimado',
-                    admin: { placeholder: 'Ex: 7 a 15 dias úteis.' },
+                    label: 'Condição de Prazo',
+                    admin: { placeholder: 'Ex: Prazo e frete confirmados no orçamento conforme volume e cidade de entrega.' },
                 },
                 {
                     name: 'warranty',

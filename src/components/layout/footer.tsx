@@ -45,13 +45,9 @@ export function Footer() {
                             <li><Link href="/produtos/braco-para-luminaria-publica" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Braços e Suportes</Link></li>
                             <li><Link href="/produtos/suporte-para-luminaria-publica" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Suporte para Luminária</Link></li>
                             <li><Link href="/produtos/chumbador-para-poste-metalico" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Chumbador para Poste</Link></li>
-                            <li><Link href="/produtos/linha-urban" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Urban</Link></li>
-                            <li><Link href="/produtos/linha-versa" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Versa</Link></li>
-                            <li><Link href="/produtos/linha-forza" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Forza</Link></li>
-                            <li><Link href="/produtos/linha-civis" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Civis</Link></li>
-                            <li><Link href="/produtos/linha-vigia" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Vigia</Link></li>
-                            <li><Link href="/produtos/linha-nexo" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Nexo</Link></li>
-                            <li><Link href="/produtos/linha-orna" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Orna</Link></li>
+                            <li><Link href="/postes-para-pracas" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Postes para Praças</Link></li>
+                            <li><Link href="/postes-para-estacionamentos" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Postes para Estacionamentos</Link></li>
+                            <li><Link href="/lp/mastros-para-bandeira" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Mastros para Bandeira</Link></li>
                         </ul>
                     </div>
 
@@ -87,7 +83,7 @@ export function Footer() {
                             <div className="flex items-start justify-center md:justify-start gap-4 group">
                                 <MapPin className="size-5 text-accent-premium shrink-0" />
                                 <p className="text-sm text-industrial-400 leading-tight font-medium">
-                                    Rua CV 10, 324, Qd 10 Lt 17 <br /> Res. Center Ville - Goiânia - GO
+                                    Rua CV10, Qd 26 Lt 02 <br /> Residencial Centerville - Goiania, GO
                                 </p>
                             </div>
                             <div className="flex items-center justify-center md:justify-start gap-4 group">
@@ -107,8 +103,8 @@ export function Footer() {
                 <div className="pt-10 border-t border-industrial-900 flex flex-col md:flex-row items-center justify-between gap-6 text-[10px] sm:text-[11px] font-bold text-industrial-600 uppercase tracking-widest">
                     <p>© {currentYear} B&B ILUMINAÇÃO. TODOS OS DIREITOS RESERVADOS.</p>
                     <div className="flex items-center gap-6">
-                        <span>CNPJ: 14.401.288/0001-10</span>
-                        <span className="hidden sm:inline">GOIÂNIA / GO</span>
+                        <span>CNPJ: 14.401.288/0002-00</span>
+                        <span className="hidden sm:inline">GOIANIA / GO</span>
                     </div>
                 </div>
             </div>

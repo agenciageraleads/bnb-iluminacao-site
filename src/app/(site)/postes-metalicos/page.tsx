@@ -76,7 +76,7 @@ const models = [
         title: "Poste reto metalico",
         description: "Solucao objetiva para patios, galpoes, estacionamentos e areas com layout tecnico simples.",
         use: "Patios, acessos e galpoes",
-        href: "/produtos/linha-urban",
+        href: "/produtos/poste-metalico-galvanizado",
     },
     {
         title: "Poste curvo simples",
@@ -94,7 +94,7 @@ const models = [
         title: "Poste ornamental",
         description: "Alternativa para pracas, jardins, condominios e areas urbanas com exigencia visual.",
         use: "Pracas e paisagismo",
-        href: "/produtos/linha-orna",
+        href: "/postes-para-pracas",
     },
     {
         title: "Bracos e suportes",
@@ -158,6 +158,7 @@ const gallery = [
     createSeoImage("viaUrbanaIluminadaPostes"),
     createSeoImage("estacionamentoIndustrialPostesRetos"),
     createSeoImage("estacionamentoHospitalPostes"),
+    createSeoImage("areaInstitucionalPostesMetalicosGalvanizados"),
     createSeoImage("pracaIluminadaLuminariaRedonda"),
     createSeoImage("ruaIluminadaPosteCurvo"),
     createSeoImage("viaPublicaPostesRetosDoisLados"),
@@ -184,9 +185,9 @@ const internalLinks = [
     ["Suporte para luminaria publica", "/produtos/suporte-para-luminaria-publica"],
     ["Chumbador para poste metalico", "/produtos/chumbador-para-poste-metalico"],
     ["Catalogo de produtos", "/produtos"],
-    ["Linha Urban", "/produtos/linha-urban"],
-    ["Linha Forza", "/produtos/linha-forza"],
-    ["Linha Nexo", "/produtos/linha-nexo"],
+    ["Poste teleconico", "/produtos/poste-teleconico"],
+    ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
+    ["Braco para luminaria publica", "/produtos/braco-para-luminaria-publica"],
     ["Catalogos e downloads", "/downloads"],
     ["Obras realizadas", "/obras"],
 ]

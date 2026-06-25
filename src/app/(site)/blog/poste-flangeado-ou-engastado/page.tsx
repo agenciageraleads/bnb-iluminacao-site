@@ -450,6 +450,14 @@ export default function PosteFlangeadoOuEngastadoPage() {
                                 </div>
                             ))}
                         </div>
+                        <p className="mt-4 text-xs text-industrial-400">
+                            Fontes tecnicas:{" "}
+                            <a href="https://www.abnt.org.br/" target="_blank" rel="noopener noreferrer" className="underline hover:text-industrial-800">ABNT</a>
+                            {" · "}
+                            <a href="https://abrasip.org.br/" target="_blank" rel="noopener noreferrer" className="underline hover:text-industrial-800">ABRASIP — Associação Brasileira de Iluminação Pública</a>
+                            {" · "}
+                            <a href="https://www.inmetro.gov.br/" target="_blank" rel="noopener noreferrer" className="underline hover:text-industrial-800">INMETRO</a>
+                        </p>
                     </div>
                 </section>
 

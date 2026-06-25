@@ -20,6 +20,7 @@ import {
 
 import { Footer } from "@/components/layout/footer"
 import { Header } from "@/components/layout/header"
+import { SeoProductGallery } from "@/components/seo/seo-product-gallery"
 import { SchemaOrg } from "@/components/seo/schema-org"
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
 import { WhatsAppLink } from "@/components/ui/whatsapp-link"
@@ -27,6 +28,7 @@ import {
     SITE_URL,
     createBreadcrumbSchema,
     createFaqSchema,
+    createImageSchemas,
     createItemListSchema,
     createProductSchema,
     createSchemaGraph,
@@ -40,6 +42,33 @@ const whatsappMessage =
     "Ola, vim pela pagina de braco para luminaria publica e quero solicitar um orcamento tecnico."
 const heroImage = "https://bebiluminacao.com.br/api/media/file/braco-reto-luminaria.png"
 const backgroundImage = "/images/seo/postes-metalicos/praca-iluminada-luminaria-redonda.jpg"
+const productGallery = [
+    {
+        src: "https://bebiluminacao.com.br/api/media/file/braco-reto-luminaria.png",
+        alt: "Braco reto metalico para luminaria publica em poste de iluminacao",
+        title: "Braco reto para luminaria",
+    },
+    {
+        src: "https://bebiluminacao.com.br/api/media/file/braco-curvo-luminaria.png",
+        alt: "Braco curvo metalico para luminaria publica e vias urbanas",
+        title: "Braco curvo para luminaria",
+    },
+    {
+        src: "https://bebiluminacao.com.br/api/media/file/suporte-1-luminaria.png",
+        alt: "Suporte metalico para uma luminaria publica",
+        title: "Suporte para uma luminaria",
+    },
+    {
+        src: "https://bebiluminacao.com.br/api/media/file/suporte-2-luminarias.png",
+        alt: "Suporte metalico para duas luminarias publicas",
+        title: "Suporte para duas luminarias",
+    },
+    {
+        src: "https://bebiluminacao.com.br/api/media/file/suporte-4-luminarias.png",
+        alt: "Suporte metalico para quatro luminarias em area ampla",
+        title: "Suporte para quatro luminarias",
+    },
+]
 
 export const metadata: Metadata = {
     title: {
@@ -215,7 +244,7 @@ const secondaryInternalLinks = [
     ["Suporte para luminaria publica", "/produtos/suporte-para-luminaria-publica"],
     ["Chumbador para poste metalico", "/produtos/chumbador-para-poste-metalico"],
     ["Poste teleconico", "/produtos/poste-teleconico"],
-    ["Linha Nexo", "/produtos/linha-nexo"],
+    ["Suporte para luminaria publica", "/produtos/suporte-para-luminaria-publica"],
     ["Catalogos e downloads", "/downloads"],
 ]
 
@@ -276,6 +305,7 @@ function getSchema() {
                 description: model.description,
             })),
         }),
+        ...createImageSchemas(productGallery),
         createFaqSchema(pageUrl, faq),
     ])
 }
@@ -459,6 +489,13 @@ export default function BracoParaLuminariaPublicaPage() {
                     </div>
                 </div>
             </section>
+
+            <SeoProductGallery
+                title="Galeria de bracos e suportes para luminaria"
+                description="Imagens para diferenciar braco reto, braco curvo e suportes de uma ou mais luminarias na compra tecnica do conjunto poste, braco e luminaria."
+                images={productGallery}
+                imageClassName="object-contain p-5"
+            />
 
             <section className="py-20 md:py-28">
                 <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">

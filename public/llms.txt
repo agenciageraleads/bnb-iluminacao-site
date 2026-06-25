@@ -1,0 +1,47 @@
+# B&B Iluminação
+> Fabricante brasileira de postes metálicos, braços, suportes e estruturas para urbanismo.
+> Fundada em 2017 em Goiânia-GO. Atende 26 estados. +30.000 postes fabricados.
+> Tagline: "Na medida. No prazo. Na norma."
+> Contato: (62) 3576-1988 | contato@bebiluminacao.com.br
+
+## Produtos
+
+- Postes telecônicos galvanizados: reto (TR), curvo simples (TCS), curvo duplo (TCD)
+- Variantes de fixação: engastado (-E) e flangeado (-F)
+- Alturas disponíveis: 6m, 7m, 8m, 9m, 10m, 11m, 12m, 14m e 16m
+- Acessórios Nexo: braços, suportes e chumbadores para postes
+- Linha Versa: mastros para bandeira e soluções versáteis
+- Acabamento: galvanização a fogo + pintura eletrostática in-house
+
+## Aplicações
+
+- Iluminação pública viária e de avenidas
+- Praças, loteamentos, condomínios e estacionamentos
+- Projetos esportivos e industriais
+- Obras públicas com exigência de norma ABNT
+
+## Normas aplicáveis
+
+- ABNT NBR 10621 — postes de aço para distribuição e transmissão de energia
+- ABNT NBR 7008 — chapas e tiras de aço
+- Especificações de concessionárias de pedágio e distribuidoras de energia
+
+## Documentação técnica
+
+- /downloads — datasheets, catálogos e memoriais descritivos
+- /blog/normas-para-postes-de-iluminacao — guia de normas ABNT
+- /blog/altura-de-poste-para-iluminacao-publica — guia de alturas
+- /blog/poste-flangeado-ou-engastado — diferença entre fixações
+- /blog/poste-teleconico-ou-reto — comparativo de tipos
+- /blog/poste-galvanizado-ou-pintado — diferença de acabamentos
+
+## Páginas principais
+
+- / — página inicial
+- /produtos/poste-teleconico — postes telecônicos (produto principal)
+- /produtos/poste-curvo-simples — poste curvo simples
+- /produtos/poste-curvo-duplo — poste curvo duplo
+- /produtos/braco-para-luminaria-publica — braços para luminária
+- /quem-somos — histórico, capacidade fabril e valores
+- /obras — portfólio de obras realizadas
+- /contato — fale com um especialista

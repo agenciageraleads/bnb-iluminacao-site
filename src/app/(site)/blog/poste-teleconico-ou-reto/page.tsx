@@ -445,6 +445,14 @@ export default function PosteTeleconicoOuRetoPage() {
                                 </div>
                             ))}
                         </div>
+                        <p className="mt-4 text-xs text-industrial-400">
+                            Fontes tecnicas:{" "}
+                            <a href="https://www.abnt.org.br/" target="_blank" rel="noopener noreferrer" className="underline hover:text-industrial-800">ABNT — NBR 14744 (postes de aço para iluminação)</a>
+                            {" · "}
+                            <a href="https://abrasip.org.br/" target="_blank" rel="noopener noreferrer" className="underline hover:text-industrial-800">ABRASIP</a>
+                            {" · "}
+                            <a href="https://www.inmetro.gov.br/" target="_blank" rel="noopener noreferrer" className="underline hover:text-industrial-800">INMETRO</a>
+                        </p>
                     </div>
                 </section>
 

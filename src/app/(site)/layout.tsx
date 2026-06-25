@@ -71,39 +71,6 @@ const jsonLd = {
         "availableLanguage": "Portuguese",
         "email": "contato@bebiluminacao.com"
       }
-    },
-    {
-      "@type": "LocalBusiness",
-      "@id": "https://bebiluminacao.com.br/#localbusiness",
-      "name": "B&B Iluminação Comercial",
-      "url": "https://bebiluminacao.com.br/",
-      "telephone": "+55 62 3576-1988",
-      "priceRange": "$$",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Rua CV 10, 324",
-        "addressLocality": "Goiânia",
-        "addressRegion": "GO",
-        "postalCode": "74463-310",
-        "addressCountry": "BR"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "-16.6869",
-        "longitude": "-49.2643"
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday"
-        ],
-        "opens": "08:00",
-        "closes": "18:00"
-      }
     }
   ]
 };
@@ -120,13 +87,20 @@ export default function RootLayout({
   const adsId = process.env.NEXT_PUBLIC_ADS_ID || '';
   const gaId = process.env.NEXT_PUBLIC_GA_ID || '';
   const fbPixelId = process.env.NEXT_PUBLIC_FB_PIXEL_ID || '';
+  const apolloAppId = process.env.NEXT_PUBLIC_APOLLO_APP_ID || '6a3aa1ba9c16ed00206f1cd6';
 
   return (
     <html lang="pt-BR">
       <body
         className={`${inter.variable} ${outfit.variable} font-sans antialiased bg-industrial-50 text-industrial-950`}
       >
-        <GoogleTagManager gtmId={gtmId} adsId={adsId} gaId={gaId} fbPixelId={fbPixelId} />
+        <GoogleTagManager
+          gtmId={gtmId}
+          adsId={adsId}
+          gaId={gaId}
+          fbPixelId={fbPixelId}
+          apolloAppId={apolloAppId}
+        />
         <SchemaOrg id="global-schema" data={jsonLd} />
         {children}
       </body>

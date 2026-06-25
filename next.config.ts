@@ -405,10 +405,45 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/pergolado-de-ferro',
-        destination: '/produtos/linha-orna',
+        destination: '/postes-para-pracas',
         permanent: true,
       },
       // Consolidação de Categorias Legadas
+      {
+        source: '/produtos/linha-urban',
+        destination: '/produtos/poste-teleconico',
+        permanent: true,
+      },
+      {
+        source: '/produtos/linha-versa',
+        destination: '/postes-para-pracas',
+        permanent: true,
+      },
+      {
+        source: '/produtos/linha-forza',
+        destination: '/postes-metalicos',
+        permanent: true,
+      },
+      {
+        source: '/produtos/linha-civis',
+        destination: '/lp/mastros-para-bandeira',
+        permanent: true,
+      },
+      {
+        source: '/produtos/linha-vigia',
+        destination: '/postes-metalicos',
+        permanent: true,
+      },
+      {
+        source: '/produtos/linha-nexo',
+        destination: '/produtos/braco-para-luminaria-publica',
+        permanent: true,
+      },
+      {
+        source: '/produtos/linha-orna',
+        destination: '/postes-para-pracas',
+        permanent: true,
+      },
       {
         source: '/produtos/postes',
         destination: '/postes-metalicos',
@@ -456,12 +491,12 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/produtos/postes-decorativos',
-        destination: '/produtos/linha-orna',
+        destination: '/postes-para-pracas',
         permanent: true,
       },
       {
         source: '/produtos/acessorios',
-        destination: '/produtos/linha-nexo',
+        destination: '/produtos/braco-para-luminaria-publica',
         permanent: true,
       },
       {

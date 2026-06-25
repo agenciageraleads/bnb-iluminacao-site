@@ -44,7 +44,7 @@ const pageDescription =
     "Postes para pracas, parques, jardins e areas de convivencia com modelos urbanos, ornamentais, acabamento e atendimento nacional."
 const whatsappMessage =
     "Ola, vim pela pagina de postes para pracas e quero ajuda para especificar modelos, quantidades e orcamento tecnico."
-const heroImage = "/images/seo/postes-metalicos/praca-iluminada-luminaria-redonda.jpg"
+const heroImage = "/images/seo/iluminacao-publica/praca-iluminada-postes-jardim.webp"
 
 export const metadata: Metadata = {
     title: {
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
                 url: absoluteUrl(heroImage),
                 width: 1200,
                 height: 630,
-                alt: "Postes ornamentais e urbanos para praca iluminada",
+                alt: "Postes metalicos para praca, jardim e area de convivencia iluminada",
             },
         ],
     },
@@ -241,21 +241,33 @@ const relatedPages = [
 ]
 
 const gallery = [
-    createSeoImage("pracaIluminadaLuminariaRedonda", {
-        alt: "Postes ornamentais para praca e area de convivencia",
+    createSeoImage("pracaIluminadaPostesJardim", {
+        alt: "Postes metalicos para praca e area de convivencia",
         title: "Pracas e convivencia",
     }),
-    createSeoImage("ruaIluminadaPosteCurvo", {
-        alt: "Poste curvo em area arborizada e caminho de pedestres",
-        title: "Caminhos arborizados",
+    createSeoImage("pracaPublicaPostesIluminacaoDia", {
+        alt: "Postes para praca publica, caminhos e areas de lazer",
+        title: "Praca publica",
     }),
-    createSeoImage("viaUrbanaIluminadaPostes", {
-        alt: "Postes metalicos para area urbana e circulacao publica",
-        title: "Areas urbanas",
+    createSeoImage("pracaBelaVistaPostesOrnamentais", {
+        alt: "Postes ornamentais em praca ajardinada com circulacao urbana",
+        title: "Praca ajardinada",
     }),
-    createSeoImage("viaPublicaPostesRetosDoisLados", {
-        alt: "Postes metalicos para vias e acessos proximos a pracas",
-        title: "Acessos e vias",
+    createSeoImage("pracaEstacaoFerroviariaPosteUrbano", {
+        alt: "Poste urbano em caminho de praca com area aberta para pedestres",
+        title: "Caminhos e calçadas",
+    }),
+    createSeoImage("pracaGoiatubaIluminacaoNoturna", {
+        alt: "Praca iluminada a noite com postes em area de convivencia",
+        title: "Iluminacao noturna",
+    }),
+    createSeoImage("quadraAreiaIluminadaPostes", {
+        alt: "Postes para area de lazer com quadra de areia iluminada",
+        title: "Areas de lazer",
+    }),
+    createSeoImage("quadraPoliesportivaPostes", {
+        alt: "Postes para quadra poliesportiva e convivencia em areas publicas",
+        title: "Quadra e convivencia",
     }),
 ]
 
@@ -503,7 +515,7 @@ export default function PostesParaPracasPage() {
                             poste, luminaria, acabamento e fixacao.
                         </p>
                     </div>
-                    <div className="grid gap-5 md:grid-cols-4">
+                    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                         {processSteps.map((step) => {
                             const Icon = step.icon
                             return (

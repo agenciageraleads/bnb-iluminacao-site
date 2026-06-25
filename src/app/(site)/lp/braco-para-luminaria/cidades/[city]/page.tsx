@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!city) return {}
 
   const title = `Braços para Luminária Pública em ${city.cityName} - ${city.uf} | B&B Iluminação`
-  const description = `Procurando braços para luminária pública em ${city.cityName}? A B&B Iluminação fornece suportes metálicos galvanizados direto da fábrica, com entrega rápida em ${city.cityName} e região.`
+  const description = `Braços para luminária pública em ${city.cityName} com fabricação própria, atendimento técnico e prazo confirmado em orçamento conforme volume e rota.`
 
   return {
     title,
@@ -44,8 +44,8 @@ export default async function BracoCityLP({ params }: Props) {
     getRegions(),
   ])
 
-  const deliveryTime = city.trust?.deliveryTime || "7 a 15 dias úteis"
-  const logisticsText = city.trust?.logistics || "Logística própria e parceiros especializados para entrega no prazo."
+  const deliveryCondition = city.trust?.deliveryTime || "Prazo e frete confirmados no orçamento conforme volume, rota e cidade de entrega."
+  const logisticsText = city.trust?.logistics || "Logística avaliada por projeto, com rota, volume e descarga confirmados na proposta."
 
   const WA_MSG = `Olá, estou em ${city.cityName} e preciso de um orçamento de braços para luminária pública.`
 
@@ -82,7 +82,7 @@ export default async function BracoCityLP({ params }: Props) {
               </h1>
               <p className="text-industrial-500 text-lg md:text-xl font-medium leading-relaxed mb-10 max-w-2xl mx-auto lg:mx-0">
                 A B&B Iluminação fornece braços e suportes metálicos galvanizados para {city.cityName}. Solução completa para projetos de iluminação pública, construtoras e prefeituras.{' '}
-                Prazo de entrega estimado: <span className="text-industrial-950 font-bold">{deliveryTime}</span>.
+                <span className="text-industrial-950 font-bold">{deliveryCondition}</span>
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <WhatsAppLink
@@ -136,7 +136,7 @@ export default async function BracoCityLP({ params }: Props) {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { title: "Entrega Rápida", desc: `Prazo otimizado para ${city.cityName} com parceiros logísticos especializados.`, icon: <Zap /> },
+              { title: "Prazo sob orçamento", desc: `Frete, rota e prazo para ${city.cityName} são confirmados conforme volume e cronograma da obra.`, icon: <Zap /> },
               { title: "Galvanização", desc: "Proteção superior a fogo contra corrosão, maresia e intempéries.", icon: <Shield /> },
               { title: "NBR ABNT", desc: "Braços dimensionados conforme NBR 6123 para máxima segurança estrutural.", icon: <Check /> },
               { title: "Fábrica Direta", desc: "Sem intermediários. Melhor preço e suporte técnico especializado.", icon: <Calculator /> },
@@ -186,7 +186,7 @@ export default async function BracoCityLP({ params }: Props) {
             PROJETO EM {city.cityName}?<br />PEÇA SEU ORÇAMENTO
           </h2>
           <p className="text-black/80 font-medium text-lg md:text-xl max-w-2xl mx-auto">
-            Nossa equipe responde em até 24h com proposta técnica para {city.cityName} e região.
+            Nossa equipe organiza a proposta técnica para {city.cityName} conforme modelo, quantidade, acabamento, rota e prazo desejado.
           </p>
           <WhatsAppLink
             message={WA_MSG}

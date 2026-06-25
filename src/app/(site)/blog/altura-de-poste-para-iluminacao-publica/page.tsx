@@ -423,6 +423,14 @@ export default function AlturaDePosteParaIluminacaoPublicaPage() {
                                 </div>
                             ))}
                         </div>
+                        <p className="mt-4 text-xs text-industrial-400">
+                            Fontes tecnicas:{" "}
+                            <a href="https://www.abnt.org.br/" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">ABNT — NBR 5101 (iluminação pública) e NBR 14744 (postes de aço)</a>
+                            {" · "}
+                            <a href="https://abrasip.org.br/" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">ABRASIP</a>
+                            {" · "}
+                            <a href="https://www.inmetro.gov.br/" target="_blank" rel="noopener noreferrer" className="underline hover:text-white">INMETRO</a>
+                        </p>
                     </div>
                 </section>
 
