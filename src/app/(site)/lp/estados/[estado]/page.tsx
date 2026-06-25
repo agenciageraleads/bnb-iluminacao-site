@@ -118,7 +118,7 @@ export default async function EstadoLP({ params }: { params: Promise<{ estado: s
                 </div>
 
                 <div className="container mx-auto px-4 relative z-10 text-center">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 text-accent-premium text-[10px] font-black tracking-[0.3em] uppercase mb-8">
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 text-accent-premium text-[10px] font-black tracking-[0.3em] uppercase rounded-md mb-8">
                         <MapPin className="size-3" />
                         {stateData.region} · Entrega em {stateData.estimatedDelivery}
                     </div>
@@ -137,14 +137,14 @@ export default async function EstadoLP({ params }: { params: Promise<{ estado: s
                             href={`https://wa.me/556235761988?text=Olá! Estou em ${stateData.name} e preciso de um orçamento para postes/mastros.`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="bg-accent-premium text-industrial-950 px-8 h-14 flex items-center justify-center font-black uppercase tracking-widest text-xs hover:bg-yellow-400 transition-all active:scale-95 gap-3"
+                            className="bg-accent-premium text-industrial-950 px-8 h-14 flex items-center justify-center font-black uppercase tracking-widest text-xs rounded-lg hover:bg-yellow-400 transition-all active:scale-95 gap-3"
                         >
                             <MessageCircle className="size-5" />
                             Solicitar Orçamento
                         </a>
                         <a
                             href="tel:+556235761988"
-                            className="border border-white/20 text-white px-8 h-14 flex items-center justify-center font-black uppercase tracking-widest text-xs hover:bg-white/5 transition-all gap-3"
+                            className="border border-white/20 text-white px-8 h-14 flex items-center justify-center font-black uppercase tracking-widest text-xs rounded-lg hover:bg-white/5 transition-all gap-3"
                         >
                             <Phone className="size-5" />
                             Falar com Especialista
@@ -157,21 +157,21 @@ export default async function EstadoLP({ params }: { params: Promise<{ estado: s
             <section className="py-12 border-b border-industrial-100 bg-industrial-50">
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div className="flex items-center gap-5 p-6 bg-white border border-industrial-200 shadow-sm">
+                        <div className="flex items-center gap-5 p-6 bg-white border border-industrial-200 rounded-2xl shadow-sm">
                             <Truck className="size-10 text-accent-premium shrink-0" />
                             <div>
                                 <h4 className="font-black text-xs uppercase tracking-widest text-industrial-950">Logística {stateData.uf}</h4>
                                 <p className="text-industrial-500 text-xs mt-1 font-bold">Entrega em {stateData.estimatedDelivery} para {stateData.capital} e cidades do interior.</p>
                             </div>
                         </div>
-                        <div className="flex items-center gap-5 p-6 bg-white border border-industrial-200 shadow-sm">
+                        <div className="flex items-center gap-5 p-6 bg-white border border-industrial-200 rounded-2xl shadow-sm">
                             <Shield className="size-10 text-accent-premium shrink-0" />
                             <div>
                                 <h4 className="font-black text-xs uppercase tracking-widest text-industrial-950">Garantia Técnica</h4>
                                 <p className="text-industrial-500 text-xs mt-1 font-bold">Produtos certificados com normas NBR 14744 e NBR 6323.</p>
                             </div>
                         </div>
-                        <div className="flex items-center gap-5 p-6 bg-white border border-industrial-200 shadow-sm">
+                        <div className="flex items-center gap-5 p-6 bg-white border border-industrial-200 rounded-2xl shadow-sm">
                             <Calculator className="size-10 text-accent-premium shrink-0" />
                             <div>
                                 <h4 className="font-black text-xs uppercase tracking-widest text-industrial-950">Orçamento Rápido</h4>
@@ -195,8 +195,8 @@ export default async function EstadoLP({ params }: { params: Promise<{ estado: s
 
                     <div className="grid md:grid-cols-3 gap-6">
                         {solutions.map((sol, i) => (
-                            <a key={i} href={sol.href} className="block bg-industrial-50 border border-industrial-200 p-8 hover:border-accent-premium hover:shadow-lg transition-all group">
-                                <div className="size-14 bg-industrial-950 text-white flex items-center justify-center mb-6 group-hover:bg-accent-premium group-hover:text-black transition-colors">
+                            <a key={i} href={sol.href} className="block bg-industrial-50 border border-industrial-200 rounded-2xl p-8 hover:border-accent-premium hover:shadow-lg transition-all group">
+                                <div className="size-14 bg-industrial-950 text-white rounded-lg flex items-center justify-center mb-6 group-hover:bg-accent-premium group-hover:text-black transition-colors">
                                     {sol.icon}
                                 </div>
                                 <h3 className="font-black text-industrial-950 uppercase tracking-widest text-sm mb-3">{sol.title}</h3>
@@ -227,8 +227,8 @@ export default async function EstadoLP({ params }: { params: Promise<{ estado: s
                             { title: "Normas ABNT", desc: "Cálculos estruturais que superam as exigências da NBR 6123 para forças de vento.", icon: <CheckCircle2 /> },
                             { title: "Solução Completa", desc: "Do poste à luminária LED, do mastro à bandeira. Tudo em um só fornecedor.", icon: <Calculator /> },
                         ].map((item, i) => (
-                            <div key={i} className="bg-white border border-industrial-200 p-8 hover:border-accent-premium transition-colors hover:shadow-md">
-                                <div className="size-12 bg-industrial-950 text-white flex items-center justify-center mb-6">
+                            <div key={i} className="bg-white border border-industrial-200 rounded-2xl p-8 hover:border-accent-premium transition-colors hover:shadow-md">
+                                <div className="size-12 bg-industrial-950 text-white rounded-lg flex items-center justify-center mb-6">
                                     {item.icon}
                                 </div>
                                 <h3 className="font-black text-industrial-950 uppercase mb-3 text-xs tracking-widest">{item.title}</h3>
@@ -252,7 +252,7 @@ export default async function EstadoLP({ params }: { params: Promise<{ estado: s
 
                         <div className="grid sm:grid-cols-2 gap-6">
                             {stateReps.map((rep, i) => (
-                                <div key={i} className="border border-industrial-700 p-8 hover:border-accent-premium transition-colors">
+                                <div key={i} className="border border-industrial-700 rounded-2xl p-8 hover:border-accent-premium transition-colors">
                                     <h3 className="font-black text-lg mb-1">{rep.name}</h3>
                                     {rep.company && <p className="text-industrial-400 text-sm mb-4">{rep.company}</p>}
                                     <div className="space-y-2">
@@ -283,9 +283,9 @@ export default async function EstadoLP({ params }: { params: Promise<{ estado: s
 
                     <div className="space-y-4">
                         {stateData.faq.map((item, i) => (
-                            <div key={i} className="bg-white border border-industrial-200 p-8 hover:border-accent-premium transition-colors">
+                            <div key={i} className="bg-white border border-industrial-200 rounded-2xl p-8 hover:border-accent-premium transition-colors">
                                 <h4 className="font-black text-industrial-950 uppercase text-sm mb-3 flex items-center gap-3">
-                                    <span className="size-6 bg-accent-premium text-industrial-950 flex items-center justify-center text-[10px] shrink-0 font-black">Q</span>
+                                    <span className="size-6 bg-accent-premium text-industrial-950 flex items-center justify-center text-[10px] rounded-md shrink-0 font-black">Q</span>
                                     {item.question}
                                 </h4>
                                 <p className="text-industrial-600 text-sm leading-relaxed pl-9">{item.answer}</p>
@@ -313,7 +313,7 @@ export default async function EstadoLP({ params }: { params: Promise<{ estado: s
                             href={`https://wa.me/556235761988?text=Olá! Estou em ${stateData.name} e gostaria de um orçamento para postes/mastros. Podem me ajudar?`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-4 bg-black text-white px-12 h-20 font-black uppercase tracking-[0.2em] text-sm hover:bg-industrial-800 transition-all hover:scale-105 active:scale-95"
+                            className="inline-flex items-center gap-4 bg-black text-white px-12 h-20 font-black uppercase tracking-[0.2em] text-sm rounded-lg hover:bg-industrial-800 transition-all hover:scale-105 active:scale-95"
                         >
                             <MessageCircle className="size-7" />
                             Falar no WhatsApp

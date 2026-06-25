@@ -356,7 +356,7 @@ export default function PosteGalvanizadoOuPintadoPage() {
 
                 <div className="container relative z-10 mx-auto px-4 pb-20 pt-12 md:pb-28">
                     <div className="max-w-4xl">
-                        <div className="mb-6 inline-flex items-center gap-3 border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.22em] text-white">
+                        <div className="mb-6 inline-flex items-center gap-3 border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.22em] text-white rounded-md">
                             <Paintbrush className="size-4 text-accent-premium" aria-hidden="true" />
                             Guia tecnico de acabamento
                         </div>
@@ -373,7 +373,7 @@ export default function PosteGalvanizadoOuPintadoPage() {
                                 message={whatsappMessage}
                                 eventLabel="Solicitar orcamento pelo comparativo de acabamento"
                                 eventSource="hero_acabamento_postes"
-                                className="inline-flex h-14 items-center justify-center gap-3 bg-accent-premium px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-yellow-300"
+                                className="inline-flex h-14 items-center justify-center gap-3 bg-accent-premium px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-yellow-300 rounded-lg"
                                 aria-label="Solicitar orcamento de poste com acabamento pelo WhatsApp"
                             >
                                 <MessageCircle className="size-5" aria-hidden="true" />
@@ -381,7 +381,7 @@ export default function PosteGalvanizadoOuPintadoPage() {
                             </WhatsAppLink>
                             <Link
                                 href="/produtos/poste-metalico-galvanizado"
-                                className="inline-flex h-14 items-center justify-center gap-3 border border-white/25 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-industrial-950"
+                                className="inline-flex h-14 items-center justify-center gap-3 border border-white/25 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-industrial-950 rounded-lg"
                             >
                                 <ShieldCheck className="size-5" aria-hidden="true" />
                                 Ver poste galvanizado
@@ -396,8 +396,8 @@ export default function PosteGalvanizadoOuPintadoPage() {
                     {decisionCards.map((card) => {
                         const Icon = card.icon
                         return (
-                            <div key={card.title} className="flex items-start gap-4 bg-white p-5">
-                                <div className="flex size-11 shrink-0 items-center justify-center bg-industrial-950 text-accent-premium">
+                            <div key={card.title} className="flex items-start gap-4 bg-white p-5 rounded-lg">
+                                <div className="flex size-11 shrink-0 items-center justify-center bg-industrial-950 text-accent-premium rounded-lg">
                                     <Icon className="size-5" aria-hidden="true" />
                                 </div>
                                 <div>
@@ -430,7 +430,7 @@ export default function PosteGalvanizadoOuPintadoPage() {
                             </p>
                         </div>
 
-                        <div className="overflow-hidden border border-industrial-200">
+                        <div className="overflow-hidden border border-industrial-200 rounded-2xl">
                             {comparisonRows.map(([finish, use, note]) => (
                                 <div key={finish} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[220px_1fr]">
                                     <div className="bg-industrial-950 px-5 py-4 text-xs font-black uppercase tracking-widest text-white">
@@ -462,8 +462,8 @@ export default function PosteGalvanizadoOuPintadoPage() {
                             {factorCards.map((factor) => {
                                 const Icon = factor.icon
                                 return (
-                                    <div key={factor.title} className="border border-white/15 bg-white/5 p-6">
-                                        <div className="mb-6 flex size-12 items-center justify-center bg-white text-industrial-950">
+                                    <div key={factor.title} className="border border-white/15 bg-white/5 p-6 rounded-2xl">
+                                        <div className="mb-6 flex size-12 items-center justify-center bg-white text-industrial-950 rounded-lg">
                                             <Icon className="size-6 text-accent-dark" aria-hidden="true" />
                                         </div>
                                         <h3 className="text-base font-black uppercase tracking-tight text-white">
@@ -494,8 +494,8 @@ export default function PosteGalvanizadoOuPintadoPage() {
                             {choiceGuide.map((group) => {
                                 const Icon = group.icon
                                 return (
-                                    <div key={group.title} className="border border-industrial-200 p-6">
-                                        <div className="mb-6 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium">
+                                    <div key={group.title} className="border border-industrial-200 p-6 rounded-2xl">
+                                        <div className="mb-6 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium rounded-lg">
                                             <Icon className="size-6" aria-hidden="true" />
                                         </div>
                                         <h3 className="text-base font-black uppercase tracking-tight text-industrial-950">
@@ -530,7 +530,7 @@ export default function PosteGalvanizadoOuPintadoPage() {
                         </div>
                         <div className="grid gap-3">
                             {quoteChecklist.map((item) => (
-                                <div key={item} className="flex items-start gap-4 border border-industrial-200 bg-white p-5">
+                                <div key={item} className="flex items-start gap-4 border border-industrial-200 bg-white p-5 rounded-lg">
                                     <ClipboardCheck className="mt-0.5 size-5 shrink-0 text-accent-dark" aria-hidden="true" />
                                     <p className="text-sm font-medium leading-relaxed text-industrial-700">{item}</p>
                                 </div>
@@ -558,7 +558,7 @@ export default function PosteGalvanizadoOuPintadoPage() {
                                     href={file.href}
                                     target={file.href === "/downloads" ? undefined : "_blank"}
                                     rel={file.href === "/downloads" ? undefined : "noopener noreferrer"}
-                                    className="group flex items-center justify-between gap-4 border border-industrial-200 p-5 text-sm font-black uppercase tracking-widest text-industrial-800 transition-colors hover:border-industrial-950"
+                                    className="group flex items-center justify-between gap-4 border border-industrial-200 p-5 text-sm font-black uppercase tracking-widest text-industrial-800 transition-colors hover:border-industrial-950 rounded-lg"
                                 >
                                     <span className="inline-flex items-center gap-3">
                                         <Download className="size-5 text-accent-dark" aria-hidden="true" />
@@ -585,7 +585,7 @@ export default function PosteGalvanizadoOuPintadoPage() {
                         </div>
                         <div className="space-y-4">
                             {faq.map((item) => (
-                                <details key={item.question} className="group border border-white/15 bg-white/5 p-6" open={item === faq[0]}>
+                                <details key={item.question} className="group border border-white/15 bg-white/5 p-6 rounded-2xl" open={item === faq[0]}>
                                     <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-base font-black uppercase text-white">
                                         {item.question}
                                         <span className="text-accent-premium transition-transform group-open:rotate-45" aria-hidden="true">+</span>
@@ -614,7 +614,7 @@ export default function PosteGalvanizadoOuPintadoPage() {
                             message={whatsappMessage}
                             eventLabel="Enviar dados para orcamento de acabamento"
                             eventSource="final_acabamento_postes"
-                            className="inline-flex h-14 items-center justify-center gap-3 bg-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-industrial-800"
+                            className="inline-flex h-14 items-center justify-center gap-3 bg-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-industrial-800 rounded-lg"
                             aria-label="Enviar dados para orcamento de acabamento de poste pelo WhatsApp"
                         >
                             <MessageCircle className="size-5" aria-hidden="true" />
@@ -622,7 +622,7 @@ export default function PosteGalvanizadoOuPintadoPage() {
                         </WhatsAppLink>
                         <Link
                             href="/postes-metalicos"
-                            className="inline-flex h-14 items-center justify-center gap-3 border-2 border-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-white"
+                            className="inline-flex h-14 items-center justify-center gap-3 border-2 border-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-white rounded-lg"
                         >
                             <Factory className="size-5" aria-hidden="true" />
                             Ver postes metalicos
@@ -636,7 +636,7 @@ export default function PosteGalvanizadoOuPintadoPage() {
                     {internalLinks.map((item) => {
                         const Icon = item.icon
                         return (
-                            <Link key={item.href} href={item.href} className="group border border-industrial-200 p-5 hover:border-industrial-950">
+                            <Link key={item.href} href={item.href} className="group border border-industrial-200 p-5 hover:border-industrial-950 rounded-lg">
                                 <Icon className="mb-5 size-6 text-accent-dark" aria-hidden="true" />
                                 <h3 className="text-sm font-black uppercase tracking-widest text-industrial-950">{item.title}</h3>
                                 <p className="mt-3 text-sm leading-relaxed text-industrial-600">{item.description}</p>
@@ -664,7 +664,7 @@ export default function PosteGalvanizadoOuPintadoPage() {
                         <Link
                             key={href}
                             href={href}
-                            className="group flex items-center justify-between gap-4 border border-industrial-200 p-5 text-sm font-black uppercase tracking-widest text-industrial-800 transition-colors hover:border-industrial-950"
+                            className="group flex items-center justify-between gap-4 border border-industrial-200 p-5 text-sm font-black uppercase tracking-widest text-industrial-800 transition-colors hover:border-industrial-950 rounded-lg"
                         >
                             {label}
                             <ArrowRight className="size-4 shrink-0 text-accent-dark transition-transform group-hover:translate-x-1" aria-hidden="true" />

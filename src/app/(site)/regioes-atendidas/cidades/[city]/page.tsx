@@ -91,10 +91,10 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
                     </p>
                     
                     <div className="flex flex-wrap justify-center gap-4">
-                        <a href="#contato" className="bg-accent-premium text-industrial-950 px-8 h-14 flex items-center justify-center font-black uppercase tracking-widest text-xs hover:bg-yellow-400 transition-all active:scale-95">
+                        <a href="#contato" className="bg-accent-premium text-industrial-950 px-8 h-14 flex items-center justify-center font-black uppercase tracking-widest text-xs hover:bg-yellow-400 transition-all active:scale-95 rounded-lg">
                             Solicitar Orçamento
                         </a>
-                        <a href="tel:+556235761988" className="border border-white/20 text-white px-8 h-14 flex items-center justify-center font-black uppercase tracking-widest text-xs hover:bg-white/5 transition-all">
+                        <a href="tel:+556235761988" className="border border-white/20 text-white px-8 h-14 flex items-center justify-center font-black uppercase tracking-widest text-xs hover:bg-white/5 transition-all rounded-lg">
                             Falar com Especialista
                         </a>
                     </div>
@@ -105,21 +105,21 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
             <section className="py-12 border-b border-industrial-100 bg-industrial-50">
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div className="flex items-center gap-5 p-6 bg-white border border-industrial-200 shadow-sm">
+                        <div className="flex items-center gap-5 p-6 bg-white border border-industrial-200 shadow-sm rounded-2xl">
                             <Truck className="size-10 text-accent-premium shrink-0" />
                             <div>
                                 <h4 className="font-black text-xs uppercase tracking-widest text-industrial-950">Logística {cityName}</h4>
                                 <p className="text-industrial-500 text-xs mt-1 font-bold">{region?.trust?.logistics || 'Logística facilitada com parceiros especializados.'}</p>
                             </div>
                         </div>
-                        <div className="flex items-center gap-5 p-6 bg-white border border-industrial-200 shadow-sm">
+                        <div className="flex items-center gap-5 p-6 bg-white border border-industrial-200 shadow-sm rounded-2xl">
                             <Clock className="size-10 text-accent-premium shrink-0" />
                             <div>
                                 <h4 className="font-black text-xs uppercase tracking-widest text-industrial-950">Prazo de Entrega</h4>
                                 <p className="text-industrial-500 text-xs mt-1 font-bold">{region?.trust?.deliveryTime || '7 a 15 dias úteis para fabricação.'}</p>
                             </div>
                         </div>
-                        <div className="flex items-center gap-5 p-6 bg-white border border-industrial-200 shadow-sm">
+                        <div className="flex items-center gap-5 p-6 bg-white border border-industrial-200 shadow-sm rounded-2xl">
                             <ShieldCheck className="size-10 text-accent-premium shrink-0" />
                             <div>
                                 <h4 className="font-black text-xs uppercase tracking-widest text-industrial-950">Garantia Técnica</h4>
@@ -156,7 +156,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
                                 ))}
                             </ul>
                         </div>
-                        <div className="relative aspect-video bg-industrial-900 border-8 border-industrial-100 overflow-hidden group">
+                        <div className="relative aspect-video bg-industrial-900 border-8 border-industrial-100 overflow-hidden group rounded-2xl">
                              {region?.featuredImage?.url ? (
                                 <Image 
                                     src={region.featuredImage.url} 
@@ -192,9 +192,9 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
                             { question: "Vocês fazem a instalação no local?", answer: "Somos fabricantes. Fornecemos todo o suporte técnico e manuais para que sua equipe execute a instalação com perfeição." },
                             { question: "Os postes possuem certificação?", answer: "Sim, os produtos seguem as normas técnicas NBR vigentes. Certificados e laudos podem ser solicitados sob consulta para seu projeto." }
                         ]).map((item, i) => (
-                            <div key={i} className="bg-white border border-industrial-200 p-8">
+                            <div key={i} className="bg-white border border-industrial-200 p-8 rounded-2xl">
                                 <h4 className="font-black text-industrial-950 uppercase text-sm mb-3 flex items-center gap-3">
-                                    <span className="size-6 bg-accent-premium text-industrial-950 flex items-center justify-center text-[10px] shrink-0">Q</span>
+                                    <span className="size-6 bg-accent-premium text-industrial-950 flex items-center justify-center text-[10px] shrink-0 rounded-md">Q</span>
                                     {item.question}
                                 </h4>
                                 <p className="text-industrial-600 text-sm leading-relaxed pl-9">
@@ -220,7 +220,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
                             href={`https://wa.me/556235761988?text=Olá! Estou em ${cityName} e gostaria de um orçamento técnico para meu projeto de iluminação.`}
 
                             target="_blank"
-                            className="inline-flex items-center gap-4 bg-accent-premium text-industrial-950 px-12 h-20 font-black uppercase tracking-[0.2em] text-sm hover:bg-yellow-400 transition-all hover:scale-105 active:scale-95"
+                            className="inline-flex items-center gap-4 bg-accent-premium text-industrial-950 px-12 h-20 font-black uppercase tracking-[0.2em] text-sm hover:bg-yellow-400 transition-all hover:scale-105 active:scale-95 rounded-lg"
                         >
                             <MessageCircle className="size-7" />
                             Falar no WhatsApp

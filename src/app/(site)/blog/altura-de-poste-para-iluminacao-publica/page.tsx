@@ -283,7 +283,7 @@ export default function AlturaDePosteParaIluminacaoPublicaPage() {
 
                 <div className="container relative z-10 mx-auto px-4 pb-20 pt-12 md:pb-28">
                     <div className="max-w-4xl">
-                        <div className="mb-6 inline-flex items-center gap-3 border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.22em] text-white">
+                        <div className="mb-6 inline-flex items-center gap-3 border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.22em] text-white rounded-md">
                             <Ruler className="size-4 text-accent-premium" aria-hidden="true" />
                             Guia tecnico para briefing e orcamento
                         </div>
@@ -300,7 +300,7 @@ export default function AlturaDePosteParaIluminacaoPublicaPage() {
                                 message={whatsappMessage}
                                 eventLabel="Solicitar orcamento pelo guia de altura"
                                 eventSource="hero_altura_poste_ip"
-                                className="inline-flex h-14 items-center justify-center gap-3 bg-accent-premium px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-yellow-300"
+                                className="inline-flex h-14 items-center justify-center gap-3 bg-accent-premium px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-yellow-300 rounded-lg"
                                 aria-label="Solicitar orcamento de postes para iluminacao publica pelo WhatsApp"
                             >
                                 <MessageCircle className="size-5" aria-hidden="true" />
@@ -308,7 +308,7 @@ export default function AlturaDePosteParaIluminacaoPublicaPage() {
                             </WhatsAppLink>
                             <Link
                                 href="/postes-para-iluminacao-publica"
-                                className="inline-flex h-14 items-center justify-center gap-3 border border-white/25 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-industrial-950"
+                                className="inline-flex h-14 items-center justify-center gap-3 border border-white/25 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-industrial-950 rounded-lg"
                             >
                                 <Landmark className="size-5" aria-hidden="true" />
                                 Ver aplicacao
@@ -320,8 +320,8 @@ export default function AlturaDePosteParaIluminacaoPublicaPage() {
 
             <section className="border-b border-industrial-200 bg-industrial-50 py-8">
                 <div className="container mx-auto grid gap-4 px-4 md:grid-cols-3">
-                    <div className="flex items-start gap-4 bg-white p-5">
-                        <div className="flex size-11 shrink-0 items-center justify-center bg-industrial-950 text-accent-premium">
+                    <div className="flex items-start gap-4 bg-white p-5 rounded-lg">
+                        <div className="flex size-11 shrink-0 items-center justify-center bg-industrial-950 text-accent-premium rounded-lg">
                             <AlertTriangle className="size-5" aria-hidden="true" />
                         </div>
                         <div>
@@ -331,8 +331,8 @@ export default function AlturaDePosteParaIluminacaoPublicaPage() {
                             </p>
                         </div>
                     </div>
-                    <div className="flex items-start gap-4 bg-white p-5">
-                        <div className="flex size-11 shrink-0 items-center justify-center bg-industrial-950 text-accent-premium">
+                    <div className="flex items-start gap-4 bg-white p-5 rounded-lg">
+                        <div className="flex size-11 shrink-0 items-center justify-center bg-industrial-950 text-accent-premium rounded-lg">
                             <Lightbulb className="size-5" aria-hidden="true" />
                         </div>
                         <div>
@@ -342,8 +342,8 @@ export default function AlturaDePosteParaIluminacaoPublicaPage() {
                             </p>
                         </div>
                     </div>
-                    <div className="flex items-start gap-4 bg-white p-5">
-                        <div className="flex size-11 shrink-0 items-center justify-center bg-industrial-950 text-accent-premium">
+                    <div className="flex items-start gap-4 bg-white p-5 rounded-lg">
+                        <div className="flex size-11 shrink-0 items-center justify-center bg-industrial-950 text-accent-premium rounded-lg">
                             <Factory className="size-5" aria-hidden="true" />
                         </div>
                         <div>
@@ -380,8 +380,8 @@ export default function AlturaDePosteParaIluminacaoPublicaPage() {
                             {decidingFactors.map((factor) => {
                                 const Icon = factor.icon
                                 return (
-                                    <div key={factor.title} className="border border-industrial-200 p-6">
-                                        <div className="mb-6 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium">
+                                    <div key={factor.title} className="border border-industrial-200 p-6 rounded-2xl">
+                                        <div className="mb-6 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium rounded-lg">
                                             <Icon className="size-6" aria-hidden="true" />
                                         </div>
                                         <h3 className="text-base font-black uppercase tracking-tight text-industrial-950">
@@ -408,7 +408,7 @@ export default function AlturaDePosteParaIluminacaoPublicaPage() {
                             </p>
                         </div>
 
-                        <div className="overflow-hidden border border-white/15">
+                        <div className="overflow-hidden border border-white/15 rounded-2xl">
                             {heightRows.map(([application, range, note]) => (
                                 <div key={application} className="grid border-b border-white/15 last:border-b-0 md:grid-cols-[260px_160px_1fr]">
                                     <div className="bg-white/10 px-5 py-4 text-xs font-black uppercase tracking-widest text-white">
@@ -446,9 +446,9 @@ export default function AlturaDePosteParaIluminacaoPublicaPage() {
                                     <Link
                                         key={model.href}
                                         href={model.href}
-                                        className="group border border-industrial-200 p-6 transition-colors hover:border-industrial-950"
+                                        className="group border border-industrial-200 p-6 transition-colors hover:border-industrial-950 rounded-2xl"
                                     >
-                                        <div className="mb-6 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium">
+                                        <div className="mb-6 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium rounded-lg">
                                             <Icon className="size-6" aria-hidden="true" />
                                         </div>
                                         <h3 className="text-base font-black uppercase tracking-tight text-industrial-950">
@@ -480,7 +480,7 @@ export default function AlturaDePosteParaIluminacaoPublicaPage() {
                         </div>
                         <div className="grid gap-3">
                             {quoteChecklist.map((item) => (
-                                <div key={item} className="flex items-start gap-4 border border-industrial-200 bg-white p-5">
+                                <div key={item} className="flex items-start gap-4 border border-industrial-200 bg-white p-5 rounded-lg">
                                     <ClipboardCheck className="mt-0.5 size-5 shrink-0 text-accent-dark" aria-hidden="true" />
                                     <p className="text-sm font-medium leading-relaxed text-industrial-700">{item}</p>
                                 </div>
@@ -508,7 +508,7 @@ export default function AlturaDePosteParaIluminacaoPublicaPage() {
                                     href={file.href}
                                     target={file.href === "/downloads" ? undefined : "_blank"}
                                     rel={file.href === "/downloads" ? undefined : "noopener noreferrer"}
-                                    className="group flex items-center justify-between gap-4 border border-industrial-200 p-5 text-sm font-black uppercase tracking-widest text-industrial-800 transition-colors hover:border-industrial-950"
+                                    className="group flex items-center justify-between gap-4 border border-industrial-200 p-5 text-sm font-black uppercase tracking-widest text-industrial-800 transition-colors hover:border-industrial-950 rounded-lg"
                                 >
                                     <span className="inline-flex items-center gap-3">
                                         <Download className="size-5 text-accent-dark" aria-hidden="true" />
@@ -535,7 +535,7 @@ export default function AlturaDePosteParaIluminacaoPublicaPage() {
                         </div>
                         <div className="space-y-4">
                             {faq.map((item) => (
-                                <details key={item.question} className="group border border-white/15 bg-white/5 p-6" open={item === faq[0]}>
+                                <details key={item.question} className="group border border-white/15 bg-white/5 p-6 rounded-2xl" open={item === faq[0]}>
                                     <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-base font-black uppercase text-white">
                                         {item.question}
                                         <span className="text-accent-premium transition-transform group-open:rotate-45" aria-hidden="true">+</span>
@@ -564,7 +564,7 @@ export default function AlturaDePosteParaIluminacaoPublicaPage() {
                             message={whatsappMessage}
                             eventLabel="Enviar dados para orcamento de altura de poste"
                             eventSource="final_altura_poste_ip"
-                            className="inline-flex h-14 items-center justify-center gap-3 bg-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-industrial-800"
+                            className="inline-flex h-14 items-center justify-center gap-3 bg-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-industrial-800 rounded-lg"
                             aria-label="Enviar dados para orcamento de poste de iluminacao publica"
                         >
                             <MessageCircle className="size-5" aria-hidden="true" />
@@ -572,7 +572,7 @@ export default function AlturaDePosteParaIluminacaoPublicaPage() {
                         </WhatsAppLink>
                         <Link
                             href="/fabricante-de-postes-metalicos"
-                            className="inline-flex h-14 items-center justify-center gap-3 border-2 border-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-white"
+                            className="inline-flex h-14 items-center justify-center gap-3 border-2 border-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-white rounded-lg"
                         >
                             <Factory className="size-5" aria-hidden="true" />
                             Ver fabricante
@@ -583,15 +583,15 @@ export default function AlturaDePosteParaIluminacaoPublicaPage() {
 
             <section className="border-b border-industrial-200 bg-white py-10">
                 <div className="container mx-auto grid gap-4 px-4 md:grid-cols-3">
-                    <Link href="/postes-metalicos" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950">
+                    <Link href="/postes-metalicos" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950 rounded-lg">
                         <Building2 className="size-6 text-accent-dark" aria-hidden="true" />
                         <span className="text-sm font-black uppercase tracking-widest">Hub de postes metalicos</span>
                     </Link>
-                    <Link href="/postes-para-iluminacao-publica" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950">
+                    <Link href="/postes-para-iluminacao-publica" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950 rounded-lg">
                         <Landmark className="size-6 text-accent-dark" aria-hidden="true" />
                         <span className="text-sm font-black uppercase tracking-widest">Postes para iluminacao publica</span>
                     </Link>
-                    <Link href="/fornecedor-de-postes-metalicos" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950">
+                    <Link href="/fornecedor-de-postes-metalicos" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950 rounded-lg">
                         <Truck className="size-6 text-accent-dark" aria-hidden="true" />
                         <span className="text-sm font-black uppercase tracking-widest">Fornecedor nacional</span>
                     </Link>

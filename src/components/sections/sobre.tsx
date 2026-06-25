@@ -10,7 +10,7 @@ export function Sobre() {
 
                     {/* Lado Esquerdo: Imagem da Fábrica / Autoridade */}
                     <div className="relative order-2 lg:order-1">
-                        <div className="aspect-video lg:aspect-square relative overflow-hidden border-[8px] border-white shadow-2xl">
+                        <div className="aspect-video lg:aspect-square relative overflow-hidden border-[8px] border-white shadow-2xl rounded-2xl">
                             <Image
                                 src="/images/fachada-bb.jpg" 
                                 alt="Fábrica da B&B Iluminação"
@@ -19,7 +19,7 @@ export function Sobre() {
                             />
                         </div>
                         {/* Badge flutuante de autoridade */}
-                        <div className="absolute -bottom-6 -right-6 md:translate-x-0 bg-industrial-950 text-white p-8 border-t-4 border-white shadow-2xl z-10 max-w-[200px] text-center">
+                        <div className="absolute -bottom-6 -right-6 md:translate-x-0 bg-industrial-950 text-white p-8 border-t-4 border-white shadow-2xl z-10 max-w-[200px] text-center rounded-md">
                             <span className="text-4xl font-black block mb-1">09+</span>
                             <span className="text-[10px] font-bold uppercase tracking-widest leading-tight block">
                                 ANOS DE EXPERIÊNCIA <br /> NO MERCADO
@@ -50,7 +50,7 @@ export function Sobre() {
 
                         <Link
                             href="/quem-somos"
-                            className="inline-flex items-center gap-3 bg-industrial-950 text-white font-black uppercase tracking-widest px-8 h-14 hover:bg-industrial-800 active:scale-95 transition-all text-xs group"
+                            className="inline-flex items-center gap-3 bg-industrial-950 text-white font-black uppercase tracking-widest px-8 h-14 hover:bg-industrial-800 active:scale-95 transition-all text-xs group rounded-lg"
                         >
                             CONHECER NOSSA HISTÓRIA
                             <ArrowRight className="size-4 group-hover:translate-x-2 transition-transform" />

@@ -33,7 +33,7 @@ export default async function ObrasPage() {
                         {projects.map((project, index) => (
                             <div 
                                 key={index} 
-                                className="group bg-industrial-900 border border-industrial-800 overflow-hidden transition-all hover:border-accent-premium/30"
+                                className="group bg-industrial-900 border border-industrial-800 overflow-hidden transition-all hover:border-accent-premium/30 rounded-2xl"
                             >
                                 {/* Imagem */}
                                 <div className="aspect-video relative overflow-hidden">
@@ -53,7 +53,7 @@ export default async function ObrasPage() {
                                 {/* Conteúdo */}
                                 <div className="p-8 space-y-4">
                                     <div className="flex items-center gap-3">
-                                        <span className="px-3 py-1 bg-industrial-800 border border-industrial-700 text-accent-premium text-[10px] font-black uppercase tracking-widest">
+                                        <span className="px-3 py-1 bg-industrial-800 border border-industrial-700 text-accent-premium text-[10px] font-black uppercase tracking-widest rounded-md">
                                             {project.category}
                                         </span>
                                     </div>

@@ -83,7 +83,7 @@ export function Portfolio({ projects = [] }: { projects?: Project[] }) {
                     
                     {/* Card 1: Principal (Esquerda - Grande) */}
                     <div 
-                        className="md:col-span-8 md:row-span-2 relative group overflow-hidden border border-industrial-100 cursor-pointer"
+                        className="md:col-span-8 md:row-span-2 relative group overflow-hidden border border-industrial-100 cursor-pointer rounded-2xl"
                         onClick={() => openGallery(mainProject)}
                     >
                         <Image
@@ -108,7 +108,7 @@ export function Portfolio({ projects = [] }: { projects?: Project[] }) {
 
                     {/* Card 2: Direita Superior */}
                     <div 
-                        className="md:col-span-4 md:row-span-1 relative group overflow-hidden border border-industrial-100 cursor-pointer"
+                        className="md:col-span-4 md:row-span-1 relative group overflow-hidden border border-industrial-100 cursor-pointer rounded-2xl"
                         onClick={() => openGallery(sideProject1)}
                     >
                         <Image
@@ -133,7 +133,7 @@ export function Portfolio({ projects = [] }: { projects?: Project[] }) {
 
                     {/* Card 3: Direita Inferior */}
                     <div 
-                        className="md:col-span-4 md:row-span-1 relative group overflow-hidden border border-industrial-100 cursor-pointer"
+                        className="md:col-span-4 md:row-span-1 relative group overflow-hidden border border-industrial-100 cursor-pointer rounded-2xl"
                         onClick={() => openGallery(sideProject2)}
                     >
                         <Image
@@ -163,14 +163,14 @@ export function Portfolio({ projects = [] }: { projects?: Project[] }) {
                             href="https://wa.me/556235761988?text=Olá! Vi o portfólio de vocês e gostaria de solicitar um orçamento para um projeto."
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-3 bg-industrial-950 text-white font-black uppercase tracking-widest px-10 h-16 hover:bg-industrial-800 active:scale-95 transition-all text-sm group"
+                            className="inline-flex items-center gap-3 bg-industrial-950 text-white font-black uppercase tracking-widest px-10 h-16 hover:bg-industrial-800 active:scale-95 transition-all text-sm group rounded-lg"
                         >
                             <MessageCircle className="size-5 text-accent-premium group-hover:scale-110 transition-transform" />
                             QUERO EXECUTAR MEU PROJETO
                         </a>
                         <Link
                             href="/obras"
-                            className="inline-flex items-center justify-center gap-3 bg-white border border-industrial-200 text-industrial-950 font-black uppercase tracking-widest px-10 h-16 hover:bg-industrial-50 active:scale-95 transition-all text-sm group"
+                            className="inline-flex items-center justify-center gap-3 bg-white border border-industrial-200 text-industrial-950 font-black uppercase tracking-widest px-10 h-16 hover:bg-industrial-50 active:scale-95 transition-all text-sm group rounded-lg"
                         >
                             VER TODAS AS OBRAS
                         </Link>
@@ -248,7 +248,7 @@ export function Portfolio({ projects = [] }: { projects?: Project[] }) {
                                             <button 
                                                 key={idx}
                                                 onClick={() => setCurrentGalleryIndex(idx)}
-                                                className={`relative size-12 md:size-16 overflow-hidden border-2 transition-all ${currentGalleryIndex === idx ? 'border-accent-premium scale-110' : 'border-transparent opacity-40 hover:opacity-100'}`}
+                                                className={`relative size-12 md:size-16 overflow-hidden border-2 rounded-lg transition-all ${currentGalleryIndex === idx ? 'border-accent-premium scale-110' : 'border-transparent opacity-40 hover:opacity-100'}`}
                                             >
                                                 <Image src={img} alt={`Thumb ${idx}`} fill className="object-cover" />
                                             </button>

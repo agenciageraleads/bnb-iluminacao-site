@@ -95,7 +95,7 @@ export default async function BlogPage() {
                             <Link
                                 key={guide.href}
                                 href={guide.href}
-                                className="group grid overflow-hidden border border-industrial-200 bg-white transition-colors hover:border-industrial-950 lg:grid-cols-[0.9fr_1.1fr]"
+                                className="group grid overflow-hidden border border-industrial-200 bg-white transition-colors hover:border-industrial-950 lg:grid-cols-[0.9fr_1.1fr] rounded-2xl"
                             >
                                 <div className="relative min-h-[280px] bg-industrial-100">
                                     <Image
@@ -107,7 +107,7 @@ export default async function BlogPage() {
                                     />
                                 </div>
                                 <div className="flex flex-col justify-center p-8 md:p-10">
-                                    <div className="mb-5 inline-flex w-fit items-center gap-3 bg-industrial-950 px-4 py-2 text-[10px] font-black uppercase tracking-widest text-white">
+                                    <div className="mb-5 inline-flex w-fit items-center gap-3 bg-industrial-950 px-4 py-2 text-[10px] font-black uppercase tracking-widest text-white rounded-md">
                                         <Icon className="size-4 text-accent-premium" aria-hidden="true" />
                                         {guide.tier}
                                     </div>
@@ -149,7 +149,7 @@ export default async function BlogPage() {
                                         </div>
                                     )}
                                     <div className="absolute top-4 left-4">
-                                        <span className="bg-accent-premium text-black px-3 py-1 text-[10px] font-black uppercase tracking-widest">Técnico</span>
+                                        <span className="bg-accent-premium text-black px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded-md">Técnico</span>
                                     </div>
                                 </div>
                                 <div className="p-8 flex-1 flex flex-col">

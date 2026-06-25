@@ -324,7 +324,7 @@ export default function BracoParaLuminariaPublicaPage() {
 
                 <div className="container relative z-10 mx-auto px-4 pb-20 pt-12 md:pb-28">
                     <div className="max-w-4xl">
-                        <div className="mb-6 inline-flex items-center gap-3 border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.22em] text-white">
+                        <div className="mb-6 inline-flex items-center gap-3 border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.22em] text-white rounded-md">
                             <Wrench className="size-4 text-accent-premium" aria-hidden="true" />
                             Acessorio para postes e luminarias
                         </div>
@@ -339,7 +339,7 @@ export default function BracoParaLuminariaPublicaPage() {
                         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                             <WhatsAppLink
                                 message={whatsappMessage}
-                                className="inline-flex h-14 items-center justify-center gap-3 bg-accent-premium px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-yellow-300"
+                                className="inline-flex h-14 items-center justify-center gap-3 bg-accent-premium px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-yellow-300 rounded-lg"
                                 aria-label="Solicitar orcamento de braco para luminaria publica pelo WhatsApp"
                             >
                                 <MessageCircle className="size-5" aria-hidden="true" />
@@ -347,7 +347,7 @@ export default function BracoParaLuminariaPublicaPage() {
                             </WhatsAppLink>
                             <Link
                                 href="/downloads"
-                                className="inline-flex h-14 items-center justify-center gap-3 border border-white/25 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-industrial-950"
+                                className="inline-flex h-14 items-center justify-center gap-3 border border-white/25 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-industrial-950 rounded-lg"
                             >
                                 <Download className="size-5" aria-hidden="true" />
                                 Baixar catalogos
@@ -357,7 +357,7 @@ export default function BracoParaLuminariaPublicaPage() {
 
                     <div className="mt-12 grid max-w-3xl grid-cols-2 gap-3 sm:grid-cols-4 md:hidden">
                         {supportImages.map((item) => (
-                            <div key={item.title} className="border border-white/15 bg-white/90 p-3">
+                            <div key={item.title} className="border border-white/15 bg-white/90 p-3 rounded-lg">
                                 <div className="relative aspect-square">
                                     <Image src={item.image} alt={item.title} fill className="object-contain" sizes="25vw" />
                                 </div>
@@ -375,8 +375,8 @@ export default function BracoParaLuminariaPublicaPage() {
                     {highlights.map((item) => {
                         const Icon = item.icon
                         return (
-                            <div key={item.title} className="flex items-start gap-4 bg-white p-5">
-                                <div className="flex size-11 shrink-0 items-center justify-center bg-industrial-950 text-accent-premium">
+                            <div key={item.title} className="flex items-start gap-4 bg-white p-5 rounded-2xl">
+                                <div className="flex size-11 shrink-0 items-center justify-center bg-industrial-950 text-accent-premium rounded-lg">
                                     <Icon className="size-5" aria-hidden="true" />
                                 </div>
                                 <div>
@@ -408,7 +408,7 @@ export default function BracoParaLuminariaPublicaPage() {
 
                     <div className="grid gap-4">
                         {specificationRows.map(([label, value]) => (
-                            <div key={label} className="grid border border-industrial-200 md:grid-cols-[180px_1fr]">
+                            <div key={label} className="grid border border-industrial-200 md:grid-cols-[180px_1fr] rounded-2xl overflow-hidden">
                                 <div className="bg-industrial-50 px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-600">
                                     {label}
                                 </div>
@@ -435,7 +435,7 @@ export default function BracoParaLuminariaPublicaPage() {
                     </div>
                     <div className="grid gap-5 md:grid-cols-3">
                         {productModels.map((model) => (
-                            <div key={model.title} className="border border-white/15 bg-white/5">
+                            <div key={model.title} className="border border-white/15 bg-white/5 rounded-2xl overflow-hidden">
                                 <div className="relative aspect-[4/3] bg-white p-6">
                                     <Image
                                         src={model.image}
@@ -472,7 +472,7 @@ export default function BracoParaLuminariaPublicaPage() {
                             compatibilidade com poste e luminaria.
                         </p>
                     </div>
-                    <div className="overflow-hidden border border-industrial-200">
+                    <div className="overflow-hidden border border-industrial-200 rounded-2xl">
                         {decisionRows.map(([item, use, criterion]) => (
                             <div key={item} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[180px_1fr_1fr]">
                                 <div className="bg-industrial-50 px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-600">
@@ -504,7 +504,7 @@ export default function BracoParaLuminariaPublicaPage() {
                     </div>
                     <div className="grid gap-4 md:grid-cols-2">
                         {supportImages.map((item) => (
-                            <div key={item.title} className="border border-industrial-200 bg-white p-5">
+                            <div key={item.title} className="border border-industrial-200 bg-white p-5 rounded-2xl">
                                 <div className="relative aspect-[4/3]">
                                     <Image src={item.image} alt={item.title} fill className="object-contain" sizes="(min-width: 768px) 50vw, 100vw" />
                                 </div>
@@ -536,9 +536,9 @@ export default function BracoParaLuminariaPublicaPage() {
                                 <Link
                                     key={card.title}
                                     href={card.href}
-                                    className="group border border-industrial-200 p-6 transition-colors hover:border-industrial-950"
+                                    className="group border border-industrial-200 p-6 transition-colors hover:border-industrial-950 rounded-2xl"
                                 >
-                                    <div className="mb-6 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium">
+                                    <div className="mb-6 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium rounded-lg">
                                         <Icon className="size-6" aria-hidden="true" />
                                     </div>
                                     <h3 className="text-base font-black uppercase tracking-tight text-industrial-950">
@@ -572,8 +572,8 @@ export default function BracoParaLuminariaPublicaPage() {
                         {finishOptions.map((item) => {
                             const Icon = item.icon
                             return (
-                                <div key={item.title} className="border border-industrial-200 bg-white p-6">
-                                    <div className="mb-6 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium">
+                                <div key={item.title} className="border border-industrial-200 bg-white p-6 rounded-2xl">
+                                    <div className="mb-6 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium rounded-lg">
                                         <Icon className="size-6" aria-hidden="true" />
                                     </div>
                                     <h3 className="text-base font-black uppercase tracking-tight text-industrial-950">
@@ -602,7 +602,7 @@ export default function BracoParaLuminariaPublicaPage() {
                     <div className="grid gap-3">
                         <Link
                             href="/downloads"
-                            className="group flex items-center justify-between gap-4 border border-white/10 bg-white/5 p-5 text-sm font-black uppercase tracking-widest text-white transition-colors hover:border-accent-premium"
+                            className="group flex items-center justify-between gap-4 border border-white/10 bg-white/5 p-5 text-sm font-black uppercase tracking-widest text-white transition-colors hover:border-accent-premium rounded-lg"
                         >
                             <span className="inline-flex items-center gap-3">
                                 <Download className="size-5 text-accent-premium" aria-hidden="true" />
@@ -614,7 +614,7 @@ export default function BracoParaLuminariaPublicaPage() {
                             href="/downloads/catalogo-bb-iluminacao.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="group flex items-center justify-between gap-4 border border-white/10 bg-white/5 p-5 text-sm font-black uppercase tracking-widest text-white transition-colors hover:border-accent-premium"
+                            className="group flex items-center justify-between gap-4 border border-white/10 bg-white/5 p-5 text-sm font-black uppercase tracking-widest text-white transition-colors hover:border-accent-premium rounded-lg"
                         >
                             Catalogo geral B&B
                             <ArrowRight className="size-4 shrink-0 text-accent-premium transition-transform group-hover:translate-x-1" aria-hidden="true" />
@@ -636,7 +636,7 @@ export default function BracoParaLuminariaPublicaPage() {
                     </div>
                     <div className="space-y-4">
                         {faq.map((item) => (
-                            <details key={item.question} className="group border border-industrial-200 bg-white p-6" open={item === faq[0]}>
+                            <details key={item.question} className="group border border-industrial-200 bg-white p-6 rounded-2xl" open={item === faq[0]}>
                                 <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-base font-black uppercase text-industrial-950">
                                     {item.question}
                                     <span className="text-accent-dark transition-transform group-open:rotate-45" aria-hidden="true">+</span>
@@ -662,7 +662,7 @@ export default function BracoParaLuminariaPublicaPage() {
                     <div className="flex flex-col gap-4 sm:flex-row lg:flex-col">
                         <WhatsAppLink
                             message={whatsappMessage}
-                            className="inline-flex h-14 items-center justify-center gap-3 bg-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-industrial-800"
+                            className="inline-flex h-14 items-center justify-center gap-3 bg-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-industrial-800 rounded-lg"
                             aria-label="Falar com especialista sobre braco para luminaria publica"
                         >
                             <MessageCircle className="size-5" aria-hidden="true" />
@@ -670,7 +670,7 @@ export default function BracoParaLuminariaPublicaPage() {
                         </WhatsAppLink>
                         <Link
                             href="/downloads"
-                            className="inline-flex h-14 items-center justify-center gap-3 border-2 border-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-white"
+                            className="inline-flex h-14 items-center justify-center gap-3 border-2 border-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-white rounded-lg"
                         >
                             <Download className="size-5" aria-hidden="true" />
                             Baixar catalogos
@@ -682,7 +682,7 @@ export default function BracoParaLuminariaPublicaPage() {
             <section className="border-b border-industrial-200 bg-white py-10">
                 <div className="container mx-auto grid gap-4 px-4 md:grid-cols-3">
                     {primaryInternalLinks.map(({ label, href, icon: Icon }) => (
-                        <Link key={href} href={href} className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950">
+                        <Link key={href} href={href} className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950 rounded-lg">
                             <Icon className="size-6 text-accent-dark" aria-hidden="true" />
                             <span className="text-sm font-black uppercase tracking-widest">{label}</span>
                         </Link>
@@ -696,7 +696,7 @@ export default function BracoParaLuminariaPublicaPage() {
                         <Link
                             key={href}
                             href={href}
-                            className="group flex items-center justify-between gap-4 border border-industrial-200 p-5 text-sm font-black uppercase tracking-widest text-industrial-800 transition-colors hover:border-industrial-950"
+                            className="group flex items-center justify-between gap-4 border border-industrial-200 p-5 text-sm font-black uppercase tracking-widest text-industrial-800 transition-colors hover:border-industrial-950 rounded-lg"
                         >
                             {label}
                             <ArrowRight className="size-4 shrink-0 text-accent-dark transition-transform group-hover:translate-x-1" aria-hidden="true" />

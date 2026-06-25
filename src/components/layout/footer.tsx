@@ -19,13 +19,13 @@ export function Footer() {
                             Soluções metálicas para urbanismo. Na medida. No prazo. Na norma.
                         </p>
                         <div className="flex items-center justify-center md:justify-start gap-4">
-                            <a href="https://instagram.com/bebiluminacao" target="_blank" className="p-3 bg-industrial-900 hover:bg-accent-premium hover:text-industrial-950 transition-all">
+                            <a href="https://instagram.com/bebiluminacao" target="_blank" className="p-3 bg-industrial-900 hover:bg-accent-premium hover:text-industrial-950 transition-all rounded-lg">
                                 <Instagram className="size-5" />
                             </a>
-                            <a href="https://facebook.com/bebiluminacao" target="_blank" className="p-3 bg-industrial-900 hover:bg-accent-premium hover:text-industrial-950 transition-all">
+                            <a href="https://facebook.com/bebiluminacao" target="_blank" className="p-3 bg-industrial-900 hover:bg-accent-premium hover:text-industrial-950 transition-all rounded-lg">
                                 <Facebook className="size-5" />
                             </a>
-                            <a href="https://linkedin.com/company/bebiluminacao" target="_blank" className="p-3 bg-industrial-900 hover:bg-accent-premium hover:text-industrial-950 transition-all">
+                            <a href="https://linkedin.com/company/bebiluminacao" target="_blank" className="p-3 bg-industrial-900 hover:bg-accent-premium hover:text-industrial-950 transition-all rounded-lg">
                                 <Linkedin className="size-5" />
                             </a>
                         </div>
