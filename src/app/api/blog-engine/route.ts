@@ -113,7 +113,6 @@ export async function POST(req: Request) {
         });
 
         const conteudoAgente = JSON.parse(restRedator.response.text());
-        }
 
         // --------------------------------------------------------------------------------
         // 3. O AGENTE REVISOR (O "Chefe" Fact-Checker das NBRs)
