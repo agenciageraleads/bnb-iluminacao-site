@@ -6,7 +6,7 @@ import Image from "next/image"
 
 export const metadata: Metadata = {
     title: "Serviços Industriais de Alta Performance | B&B Iluminação",
-    description: "Processamento de aço carbono, corte a laser de precisão milimétrica e acabamento em pintura eletrostática a pó poliéster premium para todo o Brasil.",
+    description: "Processamento de metais, corte a laser de precisão milimétrica e acabamento em pintura eletrostática a pó poliéster premium para todo o Brasil.",
     alternates: {
         canonical: "https://bebiluminacao.com.br/servicos",
     }
@@ -18,8 +18,8 @@ export default function ServicesPage() {
             id: "corte-laser",
             title: "Corte a Laser",
             icon: <Scissors className="size-8" />,
-            description: "Tecnologia de ponta em fibra óptica para cortes de precisão milimétrica exclusivamente em aço carbono.",
-            features: ["Somente aço carbono", "Precisão de 0.1mm", "Sem inox ou alumínio"],
+            description: "Tecnologia de ponta em fibra óptica para cortes de precisão milimétrica em aço carbono e outras ligas.",
+            features: ["Precisão de 0.1mm", "Alta Produtividade", "Sem necessidade de retrabalho"],
             href: "/servicos/corte-laser",
             image: "/images/servicos/corte-laser.jpg"
         },
@@ -65,7 +65,7 @@ export default function ServicesPage() {
                             <Link 
                                 key={service.id} 
                                 href={service.href}
-                                className="group bg-white border border-industrial-200 overflow-hidden hover:border-accent-premium transition-all duration-500 shadow-2xl hover:-translate-y-2"
+                                className="group bg-white border border-industrial-200 rounded-2xl overflow-hidden hover:border-accent-premium transition-all duration-500 shadow-2xl hover:-translate-y-2"
                             >
                                 <div className="h-64 relative overflow-hidden">
                                     <Image 
@@ -77,7 +77,7 @@ export default function ServicesPage() {
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-industrial-950/80 via-industrial-950/20 to-transparent" />
                                     <div className="absolute bottom-6 left-6 flex items-center gap-4">
-                                        <div className="size-14 bg-accent-premium flex items-center justify-center text-industrial-950">
+                                        <div className="size-14 bg-accent-premium rounded-lg flex items-center justify-center text-industrial-950">
                                             {service.icon}
                                         </div>
                                         <h2 className="text-3xl font-black uppercase text-white tracking-tighter">
@@ -131,8 +131,8 @@ export default function ServicesPage() {
                             { title: "Luminotécnica", icon: <Cog />, desc: "Cálculos Dialux para máxima eficiência em projetos externos." },
                             { title: "Logística Nacional", icon: <Truck className="size-6" />, desc: "Frota própria e parceiros para entrega em todo o Brasil." }
                         ].map((s, i) => (
-                            <div key={i} className="p-8 bg-industrial-50 border border-industrial-100 hover:bg-white hover:shadow-xl transition-all group">
-                                <div className="size-12 bg-industrial-900 text-accent-premium flex items-center justify-center mb-6 group-hover:bg-accent-premium group-hover:text-industrial-900 transition-colors">
+                            <div key={i} className="p-8 bg-industrial-50 border border-industrial-100 rounded-2xl hover:bg-white hover:shadow-xl transition-all group">
+                                <div className="size-12 bg-industrial-900 text-accent-premium rounded-lg flex items-center justify-center mb-6 group-hover:bg-accent-premium group-hover:text-industrial-900 transition-colors">
                                     {s.icon}
                                 </div>
                                 <h3 className="text-lg font-black uppercase text-industrial-900 mb-3">{s.title}</h3>
@@ -151,7 +151,7 @@ export default function ServicesPage() {
                     </h2>
                     <Link 
                         href="/contato" 
-                        className="inline-flex items-center gap-4 bg-accent-premium text-black h-16 px-12 font-black uppercase tracking-widest text-xs hover:bg-white transition-all shadow-xl"
+                        className="inline-flex items-center gap-4 bg-accent-premium text-black h-16 px-12 font-black uppercase tracking-widest text-xs rounded-lg hover:bg-white transition-all shadow-xl"
                     >
                         Falar com Consultor Técnico
                         <ArrowRight className="size-5" />

@@ -5,7 +5,7 @@ import Image from "next/image"
 
 export const metadata = {
     title: "Corte a Laser de Alta Precisão | B&B Iluminação",
-    description: "Serviço industrial de corte a laser em fibra óptica exclusivamente para chapas e tubos de aço carbono. Não cortamos inox ou alumínio.",
+    description: "Serviço industrial de corte a laser em fibra óptica para chapas de aço. Precisão milimétrica e acabamento superior.",
 }
 
 export default function CorteLaserPage() {
@@ -32,10 +32,10 @@ export default function CorteLaserPage() {
                             <span className="text-accent-premium">Industrial</span>
                         </h1>
                         <p className="text-industrial-400 text-xl max-w-2xl leading-relaxed mb-10">
-                            Equipamentos de fibra óptica de última geração para cortes complexos e de alta precisão em <strong className="text-white">tubos e chapas de aço carbono</strong>. Trabalhamos somente com aço carbono, com espessuras de até <strong className="text-white">19mm</strong>; não realizamos corte de inox ou alumínio.
+                            Equipamentos de fibra óptica de última geração para cortes complexos e de alta precisão em <strong className="text-white">tubos e chapas</strong>. Cortamos metais com espessuras de até <strong className="text-white">19mm</strong> com a agilidade que sua obra precisa e a qualidade que só a B&B entrega.
                         </p>
                         <div className="flex flex-wrap gap-4">
-                            <Link href="/contato?servico=laser" className="bg-accent-premium text-black h-16 px-10 flex items-center justify-center font-black uppercase tracking-widest text-xs hover:bg-white transition-all shadow-xl">
+                            <Link href="/contato?servico=laser" className="bg-accent-premium text-black h-16 px-10 flex items-center justify-center font-black uppercase tracking-widest text-xs rounded-lg hover:bg-white transition-all shadow-xl">
                                 Solicitar Orçamento Laser
                             </Link>
                         </div>
@@ -48,7 +48,7 @@ export default function CorteLaserPage() {
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                         {[
-                            { value: "Aço carbono", label: "Material Atendido" },
+                            { value: "Tubos & Chapas", label: "Formatos Suportados" },
                             { value: "3kW", label: "Potência" },
                             { value: "Até 19mm", label: "Espessura Máxima" },
                             { value: "3x1.5m", label: "Área de Mesa" }
@@ -67,7 +67,7 @@ export default function CorteLaserPage() {
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                         <div className="relative">
-                            <div className="aspect-square bg-industrial-100 relative overflow-hidden group">
+                            <div className="aspect-square bg-industrial-100 rounded-2xl relative overflow-hidden group">
                                 <Image 
                                     src="/images/servicos/corte-laser.jpg" 
                                     alt="Processo de Corte a Laser Industrial B&B" 
@@ -77,7 +77,7 @@ export default function CorteLaserPage() {
                                 />
                                 <div className="absolute inset-0 bg-industrial-950/20 mix-blend-overlay" />
                             </div>
-                            <div className="absolute -bottom-8 -right-8 size-40 bg-accent-premium flex flex-col items-center justify-center text-center p-4 shadow-2xl">
+                            <div className="absolute -bottom-8 -right-8 size-40 bg-accent-premium rounded-2xl flex flex-col items-center justify-center text-center p-4 shadow-2xl">
                                 <p className="text-4xl font-black text-industrial-950">100%</p>
                                 <p className="text-[10px] font-black uppercase tracking-tight text-industrial-950 leading-none">Sem rebarbas ou retrabalho</p>
                             </div>
@@ -116,11 +116,11 @@ export default function CorteLaserPage() {
                     <h2 className="text-3xl font-black uppercase text-industrial-900 text-center mb-16">Aplicações Reais</h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {[
-                            { title: "Chapas de Aço Carbono", tag: "Corte Plano" },
-                            { title: "Tubos de Aço Carbono", tag: "Corte Tubular" },
-                            { title: "Peças Sob Medida em Aço Carbono", tag: "Especial" }
+                            { title: "Chapas Metálicas", tag: "Corte Plano" },
+                            { title: "Tubos de Aço", tag: "Corte Tubular" },
+                            { title: "Peças Sob Medida", tag: "Especial" }
                         ].map((app, i) => (
-                            <div key={i} className="bg-white p-8 border border-industrial-200">
+                            <div key={i} className="bg-white p-8 border border-industrial-200 rounded-2xl">
                                 <div className="text-accent-premium text-[10px] font-black uppercase tracking-widest mb-4">{app.tag}</div>
                                 <h3 className="text-xl font-black uppercase text-industrial-900 mb-4">{app.title}</h3>
                                 <div className="h-1 w-12 bg-industrial-100" />
@@ -142,7 +142,7 @@ export default function CorteLaserPage() {
                     </p>
                     <Link 
                         href="/contato?servico=laser" 
-                        className="inline-flex items-center gap-4 bg-industrial-900 text-white h-16 px-12 font-black uppercase tracking-widest text-xs hover:bg-accent-premium hover:text-black transition-all shadow-2xl"
+                        className="inline-flex items-center gap-4 bg-industrial-900 text-white h-16 px-12 font-black uppercase tracking-widest text-xs rounded-lg hover:bg-accent-premium hover:text-black transition-all shadow-2xl"
                     >
                         Solicitar Cotação
                         <ArrowRight className="size-5" />

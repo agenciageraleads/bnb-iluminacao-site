@@ -17,25 +17,26 @@ export function Hero() {
                     <div className="space-y-8 order-2 lg:order-1">
                         <div className="space-y-5">
                             {/* Badge de credibilidade */}
-                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-[0.2em] uppercase">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-[0.2em] uppercase rounded-md">
                                 <span className="size-2 bg-accent-premium rounded-full animate-pulse" aria-hidden="true" />
                                 Fabricação Própria • Goiânia, GO
                             </div>
 
                             {/* H1: Tipografia Responsiva Centralizada */}
                             <h1 className="responsive-title">
-                                ILUMINAÇÃO <br className="hidden sm:block" />
+                                SOLUÇÕES <br className="hidden sm:block" />
                                 <span className="relative inline-block">
-                                    PÚBLICA
+                                    METÁLICAS
                                     {/* Sublinhado decorativo amarelo */}
                                     <span className="absolute -bottom-1 left-0 w-full h-1 bg-accent-premium" aria-hidden="true" />
                                 </span>
-                                <br /> DE ALTO IMPACTO
+                                <br /> PARA URBANISMO
                             </h1>
 
                             <p className="text-industrial-500 text-base md:text-lg max-w-xl leading-relaxed">
-                                Especialistas em postes metálicos, braços e soluções customizadas
-                                para grandes obras, indústrias e projetos públicos em todo o Brasil.
+                                Postes metálicos, braços, suportes e estruturas para iluminação, segurança,
+                                mastros e projetos públicos ou privados em todo o Brasil.
+                                Na medida. No prazo. Na norma.
                             </p>
                         </div>
 
@@ -43,7 +44,7 @@ export function Hero() {
                         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                             <Link
                                 href="/contato"
-                                className="flex items-center justify-center gap-2 bg-industrial-950 text-white hover:bg-industrial-800 active:bg-industrial-900 font-black uppercase tracking-widest h-14 px-8 w-full sm:w-auto transition-colors group"
+                                className="flex items-center justify-center gap-2 bg-industrial-950 text-white hover:bg-industrial-800 active:bg-industrial-900 font-black uppercase tracking-widest h-14 px-8 w-full sm:w-auto transition-colors group rounded-lg"
                                 aria-label="Solicitar orçamento rápido"
                             >
                                 <Calculator className="size-5" aria-hidden="true" />
@@ -52,7 +53,7 @@ export function Hero() {
                             </Link>
                             <Link
                                 href="/downloads"
-                                className="flex items-center justify-center gap-2 bg-white text-industrial-800 hover:bg-industrial-50 active:bg-industrial-100 border border-industrial-300 font-black uppercase tracking-widest h-14 px-8 w-full sm:w-auto transition-colors"
+                                className="flex items-center justify-center gap-2 bg-white text-industrial-800 hover:bg-industrial-50 active:bg-industrial-100 border border-industrial-300 font-black uppercase tracking-widest h-14 px-8 w-full sm:w-auto transition-colors rounded-lg"
                                 aria-label="Baixar catálogos em PDF"
                             >
                                 <FileText className="size-5" aria-hidden="true" />
@@ -76,7 +77,7 @@ export function Hero() {
 
                         {/* Trust indicators pequenos — mobile friendly */}
                         <div className="flex flex-wrap gap-3">
-                            {["Pintura Eletrostática", "Prazo Garantido", "Logística Facilitada"].map((item) => (
+                            {["Postes e Braços", "Pintura Eletrostática", "Atendimento Nacional"].map((item) => (
                                 <div key={item} className="flex items-center gap-1.5 text-[11px] font-bold text-industrial-600 uppercase tracking-wide">
                                     <CheckCircle2 className="size-4 text-accent-dark shrink-0" aria-hidden="true" />
                                     {item}
@@ -87,7 +88,7 @@ export function Hero() {
 
                     {/* Visual do produto — visível em TODOS os tamanhos (mobile também) */}
                     <div className="relative order-1 lg:order-2">
-                        <div className="aspect-[4/3] sm:aspect-[4/4] bg-industrial-900 border border-industrial-200 relative overflow-hidden group">
+                        <div className="aspect-[4/3] sm:aspect-[4/4] bg-industrial-900 border border-industrial-200 relative overflow-hidden group rounded-2xl">
                             <Image
                                 src="/hero-industrial.jpg"
                                 alt="Postes de Iluminação B&B"
@@ -104,9 +105,9 @@ export function Hero() {
                         </div>
 
                         {/* Selo de qualidade — posicionado fora da imagem para ser legível em mobile */}
-                        <div className="absolute -bottom-4 -right-2 md:-bottom-6 md:-left-6 bg-accent-premium text-black p-3 md:p-4 text-center shadow-md max-w-[120px] md:max-w-none">
+                        <div className="absolute -bottom-4 -right-2 md:-bottom-6 md:-left-6 bg-accent-premium text-black p-3 md:p-4 text-center shadow-md max-w-[120px] md:max-w-none rounded-md">
                             <span className="font-black text-[9px] md:text-[11px] uppercase tracking-tight leading-tight block">
-                                Executamos o seu<br />projeto de iluminação
+                                Na medida<br />No prazo<br />Na norma
                             </span>
                         </div>
                     </div>

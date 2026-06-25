@@ -31,7 +31,7 @@ export default async function PinturaEletrostaticaLP() {
                     </div>
                     <WhatsAppLink
                         message={WA_MSG}
-                        className="flex items-center gap-2 bg-industrial-950 text-white hover:bg-industrial-800 active:bg-industrial-700 font-black uppercase tracking-widest text-[10px] px-4 h-10 transition-colors"
+                        className="flex items-center gap-2 bg-industrial-950 text-white hover:bg-industrial-800 active:bg-industrial-700 font-black uppercase tracking-widest text-[10px] px-4 h-10 rounded-lg transition-colors"
                         aria-label="Solicitar orçamento de pintura pelo WhatsApp"
                     >
                         <Phone className="size-4" aria-hidden="true" />
@@ -48,7 +48,7 @@ export default async function PinturaEletrostaticaLP() {
                     <div className="flex flex-col lg:flex-row items-start gap-12 lg:gap-20">
                         {/* Copy */}
                         <div className="flex-1 text-center lg:text-left">
-                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-50 border border-yellow-200 text-yellow-800 text-[11px] font-bold tracking-widest uppercase mb-8">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-50 border border-yellow-200 text-yellow-800 text-[11px] font-bold tracking-widest uppercase rounded-md mb-8">
                                 <span className="size-2 bg-yellow-500 rounded-full" aria-hidden="true" />
                                 Para construtoras, indústrias e prefeituras
                             </div>
@@ -76,7 +76,7 @@ export default async function PinturaEletrostaticaLP() {
 
                         {/* Formulário B2B */}
                         <div className="w-full lg:w-[480px] shrink-0">
-                            <div className="bg-industrial-50 border border-industrial-200 p-6 md:p-8">
+                            <div className="bg-industrial-50 border border-industrial-200 rounded-2xl p-6 md:p-8">
                                 <h2 className="text-lg font-black text-industrial-950 uppercase tracking-tight mb-1">
                                     Solicite sua Cotação
                                 </h2>
@@ -130,8 +130,8 @@ export default async function PinturaEletrostaticaLP() {
                             { icon: <Layers />, title: "Cura em Estufa", desc: "Polimerização a 200°C. Camada contínua, sem bolhas, sem escorrimentos." },
                             { icon: <Zap />, title: "Alta Capacidade", desc: "Linha de produção para lotes industriais. Prazo curto mesmo em grandes volumes." },
                         ].map((item, i) => (
-                            <div key={i} className="bg-industrial-50 border border-industrial-200 p-8 hover:border-accent-premium transition-colors">
-                                <div className="size-12 bg-industrial-950 text-white flex items-center justify-center mb-6">
+                            <div key={i} className="bg-industrial-50 border border-industrial-200 rounded-2xl p-8 hover:border-accent-premium transition-colors">
+                                <div className="size-12 bg-industrial-950 text-white rounded-lg flex items-center justify-center mb-6">
                                     {item.icon}
                                 </div>
                                 <h3 className="font-black text-industrial-950 uppercase mb-3 text-sm">{item.title}</h3>
@@ -156,7 +156,7 @@ export default async function PinturaEletrostaticaLP() {
                     </p>
                     <WhatsAppLink
                         message={WA_MSG}
-                        className="inline-flex items-center justify-center gap-3 bg-accent-premium text-black hover:bg-yellow-300 font-black h-16 w-full sm:w-auto px-12 uppercase tracking-widest transition-transform hover:scale-105 shadow-2xl"
+                        className="inline-flex items-center justify-center gap-3 bg-accent-premium text-black hover:bg-yellow-300 font-black h-16 w-full sm:w-auto px-12 uppercase tracking-widest rounded-lg transition-transform hover:scale-105 shadow-2xl"
                         aria-label="Falar com especialista em pintura eletrostática pelo WhatsApp"
                     >
                         <Phone className="size-5" />

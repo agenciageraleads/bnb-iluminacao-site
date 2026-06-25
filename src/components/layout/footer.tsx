@@ -16,16 +16,16 @@ export function Footer() {
                             <Image src="/logo.png" alt="B&B Iluminação" width={200} height={64} className="h-16 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity" />
                         </Link>
                         <p className="text-industrial-400 text-sm leading-relaxed max-w-xs mx-auto md:mx-0 font-medium">
-                            Especialista em soluções de iluminação pública e industrial desde 2017. Qualidade, durabilidade e engenharia de precisão.
+                            Soluções metálicas para urbanismo. Na medida. No prazo. Na norma.
                         </p>
                         <div className="flex items-center justify-center md:justify-start gap-4">
-                            <a href="https://instagram.com/bebiluminacao" target="_blank" className="p-3 bg-industrial-900 hover:bg-accent-premium hover:text-industrial-950 transition-all">
+                            <a href="https://instagram.com/bebiluminacao" target="_blank" className="p-3 bg-industrial-900 hover:bg-accent-premium hover:text-industrial-950 transition-all rounded-lg">
                                 <Instagram className="size-5" />
                             </a>
-                            <a href="https://facebook.com/bebiluminacao" target="_blank" className="p-3 bg-industrial-900 hover:bg-accent-premium hover:text-industrial-950 transition-all">
+                            <a href="https://facebook.com/bebiluminacao" target="_blank" className="p-3 bg-industrial-900 hover:bg-accent-premium hover:text-industrial-950 transition-all rounded-lg">
                                 <Facebook className="size-5" />
                             </a>
-                            <a href="https://linkedin.com/company/bebiluminacao" target="_blank" className="p-3 bg-industrial-900 hover:bg-accent-premium hover:text-industrial-950 transition-all">
+                            <a href="https://linkedin.com/company/bebiluminacao" target="_blank" className="p-3 bg-industrial-900 hover:bg-accent-premium hover:text-industrial-950 transition-all rounded-lg">
                                 <Linkedin className="size-5" />
                             </a>
                         </div>
@@ -35,13 +35,23 @@ export function Footer() {
                     <div className="space-y-6 text-center md:text-left">
                         <h3 className="text-sm font-black uppercase tracking-[0.2em] text-accent-premium">Nossos Produtos</h3>
                         <ul className="space-y-3">
-                            <li><Link href="/produtos/urban" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Urban</Link></li>
-                            <li><Link href="/produtos/versa" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Versa</Link></li>
-                            <li><Link href="/produtos/forza" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Forza</Link></li>
-                            <li><Link href="/produtos/civis" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Civis</Link></li>
-                            <li><Link href="/produtos/vigia" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Vigia</Link></li>
-                            <li><Link href="/produtos/nexo" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Nexo</Link></li>
-                            <li><Link href="/produtos/orna" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Orna</Link></li>
+                            <li><Link href="/postes-metalicos" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Postes Metálicos</Link></li>
+                            <li><Link href="/postes-para-iluminacao-publica" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Iluminação Pública</Link></li>
+                            <li><Link href="/fabricante-de-postes-teleconicos" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Fabricante Telecônico</Link></li>
+                            <li><Link href="/produtos/poste-teleconico" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Poste Telecônico</Link></li>
+                            <li><Link href="/produtos/poste-curvo-simples" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Poste Curvo Simples</Link></li>
+                            <li><Link href="/produtos/poste-curvo-duplo" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Poste Curvo Duplo</Link></li>
+                            <li><Link href="/produtos/poste-metalico-galvanizado" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Poste Galvanizado</Link></li>
+                            <li><Link href="/produtos/braco-para-luminaria-publica" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Braços e Suportes</Link></li>
+                            <li><Link href="/produtos/suporte-para-luminaria-publica" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Suporte para Luminária</Link></li>
+                            <li><Link href="/produtos/chumbador-para-poste-metalico" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Chumbador para Poste</Link></li>
+                            <li><Link href="/produtos/linha-urban" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Urban</Link></li>
+                            <li><Link href="/produtos/linha-versa" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Versa</Link></li>
+                            <li><Link href="/produtos/linha-forza" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Forza</Link></li>
+                            <li><Link href="/produtos/linha-civis" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Civis</Link></li>
+                            <li><Link href="/produtos/linha-vigia" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Vigia</Link></li>
+                            <li><Link href="/produtos/linha-nexo" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Nexo</Link></li>
+                            <li><Link href="/produtos/linha-orna" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Linha Orna</Link></li>
                         </ul>
                     </div>
 
@@ -60,6 +70,9 @@ export function Footer() {
                         <h3 className="text-sm font-black uppercase tracking-[0.2em] text-accent-premium">B&B Iluminação</h3>
                         <ul className="space-y-3">
                             <li><Link href="/quem-somos" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">A Empresa</Link></li>
+                            <li><Link href="/fabrica-de-postes-metalicos" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Fábrica de Postes</Link></li>
+                            <li><Link href="/fabricante-de-postes-metalicos" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Fabricante</Link></li>
+                            <li><Link href="/fornecedor-de-postes-metalicos" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Fornecedor</Link></li>
                             <li><Link href="/obras" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Nosso Portfólio</Link></li>
                             <li><Link href="/downloads" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Catálogos</Link></li>
                             <li><Link href="/contato" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Fale Conosco</Link></li>

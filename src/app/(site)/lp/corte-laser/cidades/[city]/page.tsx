@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!label) return {}
 
   const title = `Corte a Laser Industrial em ${label.name} - ${label.uf} | B&B Iluminação`
-  const description = `Serviço de corte a laser fibra óptica 3kW exclusivamente em aço carbono para indústrias e metalúrgicas em ${label.name}. Chapas e tubos até 19mm.`
+  const description = `Serviço de corte a laser fibra óptica 3kW para indústrias e metalúrgicas em ${label.name}. Chapas e tubos até 19mm. Precisão milimétrica, sem rebarbas.`
 
   return {
     title,
@@ -51,7 +51,7 @@ export default async function LaserCityLP({ params }: Props) {
   const cityName = region?.cityName || label.name
   const uf = label.uf
 
-  const WA_MSG = `Olá, estou em ${cityName} e preciso de orçamento para corte a laser industrial em aço carbono.`
+  const WA_MSG = `Olá, estou em ${cityName} e preciso de orçamento para corte a laser industrial.`
 
   return (
     <main className="min-h-screen bg-white">
@@ -62,7 +62,7 @@ export default async function LaserCityLP({ params }: Props) {
           </div>
           <WhatsAppLink
             message={WA_MSG}
-            className="flex items-center gap-2 bg-industrial-950 text-white hover:bg-industrial-800 font-black uppercase tracking-widest text-[10px] px-4 h-10 transition-colors"
+            className="flex items-center gap-2 bg-industrial-950 text-white hover:bg-industrial-800 font-black uppercase tracking-widest text-[10px] px-4 h-10 transition-colors rounded-lg"
           >
             <Phone className="size-4" />
             <span className="hidden sm:inline">ORÇAMENTO RÁPIDO</span>
@@ -76,16 +76,16 @@ export default async function LaserCityLP({ params }: Props) {
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex flex-col lg:flex-row items-start gap-12 lg:gap-20">
             <div className="flex-1 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-industrial-50 border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-widest uppercase mb-8">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-industrial-50 border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-widest uppercase mb-8 rounded-md">
                 <span className="size-2 bg-green-500 rounded-full animate-pulse" aria-hidden="true" />
-                Somente aço carbono em {cityName}, {uf}
+                Atendemos {cityName}, {uf}
               </div>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-industrial-950 leading-[0.9] mb-6 uppercase tracking-tighter">
                 Corte a Laser <br />
                 em <span className="text-accent-premium">{cityName}</span>
               </h1>
               <p className="text-industrial-500 text-lg font-medium leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">
-                Serviço de corte a laser fibra óptica para metalúrgicas, construtoras e indústrias em {cityName}. Trabalhamos exclusivamente com aço carbono em chapas e tubos até 19mm. Não cortamos inox ou alumínio.
+                Serviço de corte a laser fibra óptica para metalúrgicas, construtoras e indústrias em {cityName}. Chapas e tubos até 19mm. Precisão milimétrica, sem rebarbas.
               </p>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-xl mx-auto lg:mx-0 mb-6">
@@ -93,9 +93,9 @@ export default async function LaserCityLP({ params }: Props) {
                   { value: "3kW", label: "Potência" },
                   { value: "19mm", label: "Espessura máx." },
                   { value: "3×1,5m", label: "Área de mesa" },
-                  { value: "Aço carbono", label: "Material" },
+                  { value: "100%", label: "Sem rebarbas" },
                 ].map((stat) => (
-                  <div key={stat.label} className="bg-industrial-50 border border-industrial-200 p-4 text-center">
+                  <div key={stat.label} className="bg-industrial-50 border border-industrial-200 p-4 text-center rounded-lg">
                     <p className="text-xl font-black text-industrial-950">{stat.value}</p>
                     <p className="text-[10px] font-bold text-industrial-400 uppercase tracking-widest mt-1">{stat.label}</p>
                   </div>
@@ -104,12 +104,12 @@ export default async function LaserCityLP({ params }: Props) {
             </div>
 
             <div className="w-full lg:w-[480px] shrink-0">
-              <div className="bg-industrial-50 border border-industrial-200 p-6 md:p-8">
+              <div className="bg-industrial-50 border border-industrial-200 p-6 md:p-8 rounded-2xl">
                 <h2 className="text-lg font-black text-industrial-950 uppercase tracking-tight mb-1">
                   Cotação para {cityName}
                 </h2>
                 <p className="text-industrial-500 text-xs mb-6">
-                  Atendimento exclusivo para aço carbono. Descreva sua peça ou envie DXF via WhatsApp após preencher.
+                  Descreva sua peça ou envie DXF via WhatsApp após preencher.
                 </p>
                 <LaserQuoteForm cidade={cityName} />
               </div>
@@ -151,7 +151,7 @@ export default async function LaserCityLP({ params }: Props) {
           </h2>
           <WhatsAppLink
             message={WA_MSG}
-            className="inline-flex items-center justify-center gap-3 bg-accent-premium text-black hover:bg-yellow-300 font-black h-16 w-full sm:w-auto px-12 uppercase tracking-widest transition-transform hover:scale-105 shadow-2xl"
+            className="inline-flex items-center justify-center gap-3 bg-accent-premium text-black hover:bg-yellow-300 font-black h-16 w-full sm:w-auto px-12 uppercase tracking-widest transition-transform hover:scale-105 shadow-2xl rounded-lg"
           >
             <Phone className="size-5" />
             FALAR PELO WHATSAPP

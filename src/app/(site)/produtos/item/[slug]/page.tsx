@@ -153,7 +153,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                         <div>
                             <div className="flex flex-wrap gap-2 mb-4">
                                 {productBadges.map((badge, i) => (
-                                    <span key={i} className="inline-flex items-center gap-1.5 bg-industrial-50 text-industrial-700 text-[10px] font-black uppercase tracking-widest px-2.5 py-1.5 border border-industrial-100 rounded-sm">
+                                    <span key={i} className="inline-flex items-center gap-1.5 bg-industrial-50 text-industrial-700 text-[10px] font-black uppercase tracking-widest px-2.5 py-1.5 border border-industrial-100 rounded-md">
                                         <ShieldCheck className="size-3 text-accent-premium" />
                                         {badge}
                                     </span>
@@ -164,7 +164,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                                 {product.name}
                             </h1>
                             <div className="flex items-center gap-3">
-                                <span className="bg-industrial-100 text-industrial-900 border border-industrial-200 text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded-sm">
+                                <span className="bg-industrial-100 text-industrial-900 border border-industrial-200 text-[10px] font-black uppercase tracking-widest px-2 py-0.5 rounded-md">
                                     {product.model}
                                 </span>
                                 <p className="text-industrial-500 text-xs font-bold uppercase tracking-widest">Código Original</p>
@@ -181,7 +181,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                             </h3>
                             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                                 {productApplications.map((app, i) => (
-                                    <div key={i} className="bg-industrial-50 p-3 border border-industrial-100 flex items-center gap-3 group hover:border-accent-premium transition-colors">
+                                    <div key={i} className="bg-industrial-50 p-3 border border-industrial-100 flex items-center gap-3 group hover:border-accent-premium transition-colors rounded-lg">
                                         <Check className="size-4 text-accent-premium shrink-0" />
                                         <span className="text-[11px] font-bold text-industrial-700 group-hover:text-industrial-950 transition-colors uppercase tracking-tight">{app}</span>
                                     </div>
@@ -241,14 +241,14 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
 
                         {/* Logística e Download */}
                         <div className="grid sm:grid-cols-2 gap-4">
-                            <div className="bg-industrial-50 p-4 border border-industrial-100 flex items-start gap-3">
+                            <div className="bg-industrial-50 p-4 border border-industrial-100 flex items-start gap-3 rounded-lg">
                                 <Calendar className="size-5 text-industrial-900 shrink-0" />
                                 <div>
                                     <p className="text-[10px] font-black uppercase tracking-widest text-industrial-400 mb-1">Prazo de Produção</p>
                                     <p className="text-sm font-bold text-industrial-900">{product.leadTime ?? "15 a 30 dias úteis"}</p>
                                 </div>
                             </div>
-                            <div className="bg-industrial-50 p-4 border border-industrial-100 flex items-start gap-3">
+                            <div className="bg-industrial-50 p-4 border border-industrial-100 flex items-start gap-3 rounded-lg">
                                 <Truck className="size-5 text-industrial-900 shrink-0" />
                                 <div>
                                     <p className="text-[10px] font-black uppercase tracking-widest text-industrial-400 mb-1">Logística</p>
@@ -262,7 +262,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                                 <a
                                     href={urbanDownloads?.datasheet ?? product.datasheet}
                                     download
-                                    className="w-full flex items-center justify-center gap-3 bg-industrial-100 text-industrial-900 border border-industrial-200 font-black uppercase tracking-widest h-14 hover:bg-industrial-200 transition-colors group"
+                                    className="w-full flex items-center justify-center gap-3 bg-industrial-100 text-industrial-900 border border-industrial-200 font-black uppercase tracking-widest h-14 hover:bg-industrial-200 transition-colors group rounded-lg"
                                 >
                                     <Download className="size-5 group-hover:translate-y-0.5 transition-transform" />
                                     Baixar Datasheet (PDF)
@@ -270,7 +270,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                             )}
 
                             {urbanDownloads?.desenhos && (
-                                <div className="bg-industrial-50 border border-industrial-100 p-4 space-y-3">
+                                <div className="bg-industrial-50 border border-industrial-100 p-4 space-y-3 rounded-lg">
                                     <p className="text-[10px] font-black uppercase tracking-widest text-industrial-400 flex items-center gap-2">
                                         <Download className="size-4 text-industrial-900" />
                                         Desenho Técnico por Altura (PDF)
@@ -281,7 +281,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                                                 key={altura}
                                                 href={href}
                                                 download
-                                                className="px-3 py-1.5 bg-white border border-industrial-200 text-[11px] font-black text-industrial-700 uppercase tracking-widest hover:border-industrial-900 hover:text-industrial-950 transition-colors"
+                                                className="px-3 py-1.5 bg-white border border-industrial-200 text-[11px] font-black text-industrial-700 uppercase tracking-widest hover:border-industrial-900 hover:text-industrial-950 transition-colors rounded-md"
                                             >
                                                 {altura}m
                                             </a>
@@ -296,14 +296,14 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                                     href={`https://wa.me/556235761988?text=Olá! Tenho interesse no produto ${product.name} (${product.model}).`}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center justify-center gap-3 bg-industrial-950 text-white hover:bg-industrial-800 font-black uppercase tracking-widest h-16 px-6 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-industrial-950/20"
+                                    className="flex items-center justify-center gap-3 bg-industrial-950 text-white hover:bg-industrial-800 font-black uppercase tracking-widest h-16 px-6 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-industrial-950/20 rounded-lg"
                                 >
                                     <MessageCircle className="size-6" />
                                     Solicitar Cotação
                                 </a>
                                 <a
                                     href="tel:+556235761988"
-                                    className="flex items-center justify-center gap-3 bg-white text-industrial-950 border-2 border-industrial-950 hover:bg-industrial-50 font-black uppercase tracking-widest h-16 px-6 transition-all"
+                                    className="flex items-center justify-center gap-3 bg-white text-industrial-950 border-2 border-industrial-950 hover:bg-industrial-50 font-black uppercase tracking-widest h-16 px-6 transition-all rounded-lg"
                                 >
                                     <Phone className="size-5" />
                                     Ligar Agora
@@ -330,10 +330,10 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
 
                         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
                             {relatedProducts.map((rel) => (
-                                <Link key={rel.id} href={`/produtos/item/${rel.id}`} className="group bg-white border border-industrial-100 hover:border-industrial-900 transition-all shadow-sm flex flex-col h-full">
+                                <Link key={rel.id} href={`/produtos/item/${rel.id}`} className="group bg-white border border-industrial-100 hover:border-industrial-900 transition-all shadow-sm flex flex-col h-full rounded-2xl overflow-hidden">
                                     <div className="aspect-square relative overflow-hidden bg-industrial-50 border-b border-industrial-50">
                                         <Image src={rel.image} alt={rel.name} fill className="object-contain transition-transform duration-500" />
-                                        <div className="absolute top-3 left-3 bg-industrial-950/80 backdrop-blur-sm text-white text-[8px] font-black uppercase px-2 py-1">
+                                        <div className="absolute top-3 left-3 bg-industrial-950/80 backdrop-blur-sm text-white text-[8px] font-black uppercase px-2 py-1 rounded-md">
                                             {rel.model}
                                         </div>
                                     </div>
@@ -359,7 +359,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                     href={`https://wa.me/556235761988?text=Olá! Tenho interesse no produto ${product.name} (${product.model}).`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-3 bg-industrial-950 text-white font-black uppercase tracking-widest h-16 w-full transition-all active:scale-95 shadow-xl shadow-industrial-950/20"
+                    className="flex items-center justify-center gap-3 bg-industrial-950 text-white font-black uppercase tracking-widest h-16 w-full transition-all active:scale-95 shadow-xl shadow-industrial-950/20 rounded-lg"
                 >
                     <MessageCircle className="size-6" />
                     SOLICITAR COTAÇÃO AGORA

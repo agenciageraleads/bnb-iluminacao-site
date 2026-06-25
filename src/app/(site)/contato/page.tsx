@@ -91,7 +91,7 @@ function ContatoContent() {
                         <h2 className="text-lg font-black text-industrial-950 uppercase tracking-tight mb-6">Envie sua Mensagem</h2>
                         
                         {status === 'success' ? (
-                            <div className="bg-green-50 border border-green-200 p-8 text-center space-y-4 animate-in fade-in zoom-in duration-300">
+                            <div className="bg-green-50 border border-green-200 rounded-2xl p-8 text-center space-y-4 animate-in fade-in zoom-in duration-300">
                                 <CheckCircle2 className="size-12 text-green-600 mx-auto" />
                                 <h3 className="text-xl font-black text-green-900 uppercase">Mensagem Enviada!</h3>
                                 <p className="text-green-700 text-sm">Recebemos seu contato. Nossa equipe retornará em breve no e-mail informado.</p>
@@ -110,7 +110,7 @@ function ContatoContent() {
                                 aria-label="Formulário de contato"
                             >
                                 {status === 'error' && (
-                                    <div className="bg-red-50 border border-red-200 p-4 flex items-center gap-3 text-red-700 text-sm font-medium">
+                                    <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-center gap-3 text-red-700 text-sm font-medium">
                                         <AlertCircle className="size-5 shrink-0" />
                                         {message}
                                     </div>
@@ -126,7 +126,7 @@ function ContatoContent() {
                                         name="nome"
                                         required
                                         autoComplete="name"
-                                        className="w-full bg-white border border-industrial-300 focus:border-industrial-900 px-4 h-14 text-sm text-industrial-900 placeholder:text-industrial-400 outline-none transition-colors"
+                                        className="w-full bg-white border border-industrial-300 focus:border-industrial-900 rounded-lg px-4 h-14 text-sm text-industrial-900 placeholder:text-industrial-400 outline-none transition-colors"
                                         placeholder="Ex: João da Silva"
                                     />
                                 </div>
@@ -142,7 +142,7 @@ function ContatoContent() {
                                             required
                                             autoComplete="email"
                                             spellCheck={false}
-                                            className="w-full bg-white border border-industrial-300 focus:border-industrial-900 px-4 h-14 text-sm text-industrial-900 placeholder:text-industrial-400 outline-none transition-colors"
+                                            className="w-full bg-white border border-industrial-300 focus:border-industrial-900 rounded-lg px-4 h-14 text-sm text-industrial-900 placeholder:text-industrial-400 outline-none transition-colors"
                                             placeholder="seu@email.com"
                                         />
                                     </div>
@@ -155,7 +155,7 @@ function ContatoContent() {
                                             type="tel"
                                             name="telefone"
                                             autoComplete="tel"
-                                            className="w-full bg-white border border-industrial-300 focus:border-industrial-900 px-4 h-14 text-sm text-industrial-900 placeholder:text-industrial-400 outline-none transition-colors"
+                                            className="w-full bg-white border border-industrial-300 focus:border-industrial-900 rounded-lg px-4 h-14 text-sm text-industrial-900 placeholder:text-industrial-400 outline-none transition-colors"
                                             placeholder="(62) 90000-0000"
                                         />
                                     </div>
@@ -169,7 +169,7 @@ function ContatoContent() {
                                         type="text"
                                         name="empresa"
                                         autoComplete="organization"
-                                        className="w-full bg-white border border-industrial-300 focus:border-industrial-900 px-4 h-14 text-sm text-industrial-900 placeholder:text-industrial-400 outline-none transition-colors"
+                                        className="w-full bg-white border border-industrial-300 focus:border-industrial-900 rounded-lg px-4 h-14 text-sm text-industrial-900 placeholder:text-industrial-400 outline-none transition-colors"
                                         placeholder="Ex: Prefeitura de Goiânia"
                                     />
                                 </div>
@@ -183,7 +183,7 @@ function ContatoContent() {
                                         required
                                         value={assunto}
                                         onChange={e => setAssunto(e.target.value)}
-                                        className="w-full bg-white border border-industrial-300 focus:border-industrial-900 px-4 h-14 text-sm text-industrial-900 outline-none transition-colors appearance-none"
+                                        className="w-full bg-white border border-industrial-300 focus:border-industrial-900 rounded-lg px-4 h-14 text-sm text-industrial-900 outline-none transition-colors appearance-none"
                                     >
                                         <option value="">Selecione um assunto…</option>
                                         <option value="orcamento">Solicitação de Orçamento</option>
@@ -202,14 +202,14 @@ function ContatoContent() {
                                         name="mensagem"
                                         required
                                         rows={5}
-                                        className="w-full bg-white border border-industrial-300 focus:border-industrial-900 px-4 py-4 text-sm text-industrial-900 placeholder:text-industrial-400 outline-none transition-colors resize-vertical min-h-[140px]"
+                                        className="w-full bg-white border border-industrial-300 focus:border-industrial-900 rounded-lg px-4 py-4 text-sm text-industrial-900 placeholder:text-industrial-400 outline-none transition-colors resize-vertical min-h-[140px]"
                                         placeholder="Descreva seu projeto, quantidade estimada, prazo…"
                                     />
                                 </div>
                                 <button
                                     type="submit"
                                     disabled={status === 'loading'}
-                                    className="flex items-center justify-center gap-2 w-full h-14 bg-industrial-950 text-white hover:bg-industrial-800 disabled:bg-industrial-400 active:bg-industrial-700 font-black uppercase tracking-widest text-sm transition-colors"
+                                    className="flex items-center justify-center gap-2 w-full h-14 bg-industrial-950 text-white hover:bg-industrial-800 disabled:bg-industrial-400 active:bg-industrial-700 rounded-lg font-black uppercase tracking-widest text-sm transition-colors"
                                     aria-label={status === 'loading' ? "Enviando..." : "Enviar mensagem"}
                                 >
                                     {status === 'loading' ? (
@@ -228,8 +228,8 @@ function ContatoContent() {
                         <h2 className="text-lg font-black text-industrial-950 uppercase tracking-tight">Informações de Contato</h2>
                         <div className="space-y-4">
                             {infos.map((info, i) => (
-                                <div key={i} className="flex items-start gap-4 p-4 bg-industrial-50 border border-industrial-200">
-                                    <div className="size-10 bg-industrial-950 flex items-center justify-center text-white shrink-0">
+                                <div key={i} className="flex items-start gap-4 p-4 bg-industrial-50 border border-industrial-200 rounded-2xl">
+                                    <div className="size-10 bg-industrial-950 flex items-center justify-center text-white shrink-0 rounded-lg">
                                         {info.icon}
                                     </div>
                                     <div>
@@ -251,7 +251,7 @@ function ContatoContent() {
                             href="https://wa.me/556235761988"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-3 w-full p-5 bg-industrial-950 text-white hover:bg-industrial-800 active:bg-industrial-700 transition-colors group"
+                            className="flex items-center gap-3 w-full p-5 bg-industrial-950 text-white hover:bg-industrial-800 active:bg-industrial-700 rounded-2xl transition-colors group"
                             aria-label="Atendimento via WhatsApp — abre em nova aba"
                         >
                             <MessageCircle className="size-7 shrink-0" aria-hidden="true" />

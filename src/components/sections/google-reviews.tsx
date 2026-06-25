@@ -45,7 +45,7 @@ export function GoogleReviews() {
                     </div>
 
                     {/* Google Badge */}
-                    <div className="bg-white p-6 border border-industrial-200 shadow-xl flex flex-col items-center md:items-start gap-2">
+                    <div className="bg-white p-6 border border-industrial-200 shadow-xl flex flex-col items-center md:items-start gap-2 rounded-2xl">
                         <div className="flex items-center gap-2">
                             <svg viewBox="0 0 24 24" className="size-6" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -71,7 +71,7 @@ export function GoogleReviews() {
                     {REVIEWS.map((review, i) => (
                         <div 
                             key={i} 
-                            className="bg-white p-8 border border-industrial-200 relative group hover:border-accent-premium transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-xl"
+                            className="bg-white p-8 border border-industrial-200 relative group hover:border-accent-premium transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-xl rounded-2xl"
                         >
                             <Quote className="absolute top-4 right-4 size-8 text-industrial-50 opacity-0 group-hover:opacity-100 transition-opacity" />
                             

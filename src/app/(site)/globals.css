@@ -22,6 +22,20 @@
 
   --font-sans: "Inter", var(--font-geist-sans);
   --font-display: "Outfit", var(--font-geist-sans);
+
+  /* ──────────────────────────────────────────────────────────────
+     Sistema de Border-Radius (Manual da Marca B&B)
+     "Cantos arredondados — sem quinas vivas."
+     Escala alinhada ao protótipo de referência (downloads-prototipo.html):
+       rounded-md  (6px)  → chips, badges, code tags
+       rounded-lg  (9px)  → botões, inputs, selects, toggles, caixas internas
+       rounded-2xl (14px) → cards, contêineres grandes, modais, imagens em card
+       rounded-full       → pills (badges hero)
+     ────────────────────────────────────────────────────────────── */
+  --radius-md: 6px;
+  --radius-lg: 9px;
+  --radius-xl: 11px;
+  --radius-2xl: 14px;
 }
 
 :root {

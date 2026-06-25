@@ -40,7 +40,7 @@ export function LaserQuoteForm({ cidade }: Props) {
 
   if (status === 'success') {
     return (
-      <div className="bg-green-50 border border-green-200 p-10 text-center space-y-4 animate-in fade-in zoom-in duration-300">
+      <div className="bg-green-50 border border-green-200 rounded-2xl p-10 text-center space-y-4 animate-in fade-in zoom-in duration-300">
         <CheckCircle2 className="size-14 text-green-600 mx-auto" />
         <h3 className="text-xl font-black text-green-900 uppercase">Cotação Enviada!</h3>
         <p className="text-green-700 text-sm leading-relaxed">
@@ -53,7 +53,7 @@ export function LaserQuoteForm({ cidade }: Props) {
   return (
     <form action={handleSubmit} className="space-y-4" noValidate>
       {status === 'error' && (
-        <div className="bg-red-50 border border-red-200 p-4 flex items-center gap-3 text-red-700 text-sm font-medium">
+        <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-center gap-3 text-red-700 text-sm font-medium">
           <AlertCircle className="size-5 shrink-0" />
           {errorMsg}
         </div>
@@ -70,7 +70,7 @@ export function LaserQuoteForm({ cidade }: Props) {
             name="empresa"
             required
             autoComplete="organization"
-            className="w-full bg-white border border-industrial-300 focus:border-industrial-900 px-4 h-12 text-sm text-industrial-900 placeholder:text-industrial-400 outline-none transition-colors"
+            className="w-full bg-white border border-industrial-300 focus:border-industrial-900 rounded-lg px-4 h-12 text-sm text-industrial-900 placeholder:text-industrial-400 outline-none transition-colors"
             placeholder="Ex: Metalúrgica Delta S.A."
           />
         </div>
@@ -85,7 +85,7 @@ export function LaserQuoteForm({ cidade }: Props) {
             name="nome"
             required
             autoComplete="name"
-            className="w-full bg-white border border-industrial-300 focus:border-industrial-900 px-4 h-12 text-sm text-industrial-900 placeholder:text-industrial-400 outline-none transition-colors"
+            className="w-full bg-white border border-industrial-300 focus:border-industrial-900 rounded-lg px-4 h-12 text-sm text-industrial-900 placeholder:text-industrial-400 outline-none transition-colors"
             placeholder="Ex: Ana Lima"
           />
         </div>
@@ -100,24 +100,27 @@ export function LaserQuoteForm({ cidade }: Props) {
             name="telefone"
             required
             autoComplete="tel"
-            className="w-full bg-white border border-industrial-300 focus:border-industrial-900 px-4 h-12 text-sm text-industrial-900 placeholder:text-industrial-400 outline-none transition-colors"
+            className="w-full bg-white border border-industrial-300 focus:border-industrial-900 rounded-lg px-4 h-12 text-sm text-industrial-900 placeholder:text-industrial-400 outline-none transition-colors"
             placeholder="(62) 90000-0000"
           />
         </div>
 
         <div className="space-y-1.5">
-          <p className="text-[11px] font-bold uppercase tracking-widest text-industrial-600">
-            Material atendido
-          </p>
-          <input type="hidden" name="materialLaser" value="Aço carbono" />
-          <div
-            className="w-full bg-white border border-industrial-300 px-4 min-h-12 text-sm text-industrial-900 font-bold flex items-center"
+          <label htmlFor="l-material" className="text-[11px] font-bold uppercase tracking-widest text-industrial-600 block">
+            Material a Cortar
+          </label>
+          <select
+            id="l-material"
+            name="materialLaser"
+            className="w-full bg-white border border-industrial-300 focus:border-industrial-900 rounded-lg px-4 h-12 text-sm text-industrial-900 outline-none transition-colors appearance-none"
           >
-            Aço carbono
-          </div>
-          <p className="text-[10px] text-industrial-400 leading-relaxed">
-            No momento, não realizamos corte de aço inox ou alumínio.
-          </p>
+            <option value="">Selecione…</option>
+            <option value="Aço carbono">Aço carbono</option>
+            <option value="Aço galvanizado">Aço galvanizado</option>
+            <option value="Aço inox">Aço inox</option>
+            <option value="Alumínio">Alumínio</option>
+            <option value="Outro">Outro</option>
+          </select>
         </div>
 
         <div className="space-y-1.5">
@@ -127,7 +130,7 @@ export function LaserQuoteForm({ cidade }: Props) {
           <select
             id="l-espessura"
             name="espessura"
-            className="w-full bg-white border border-industrial-300 focus:border-industrial-900 px-4 h-12 text-sm text-industrial-900 outline-none transition-colors appearance-none"
+            className="w-full bg-white border border-industrial-300 focus:border-industrial-900 rounded-lg px-4 h-12 text-sm text-industrial-900 outline-none transition-colors appearance-none"
           >
             <option value="">Selecione…</option>
             <option value="Até 3mm">Até 3mm</option>
@@ -145,7 +148,7 @@ export function LaserQuoteForm({ cidade }: Props) {
             id="l-quantidade"
             type="text"
             name="quantidade"
-            className="w-full bg-white border border-industrial-300 focus:border-industrial-900 px-4 h-12 text-sm text-industrial-900 placeholder:text-industrial-400 outline-none transition-colors"
+            className="w-full bg-white border border-industrial-300 focus:border-industrial-900 rounded-lg px-4 h-12 text-sm text-industrial-900 placeholder:text-industrial-400 outline-none transition-colors"
             placeholder="Ex: 200 peças por semana, lote único de 500…"
           />
         </div>
@@ -158,7 +161,7 @@ export function LaserQuoteForm({ cidade }: Props) {
             id="l-mensagem"
             name="mensagem"
             rows={3}
-            className="w-full bg-white border border-industrial-300 focus:border-industrial-900 px-4 py-3 text-sm text-industrial-900 placeholder:text-industrial-400 outline-none transition-colors resize-none"
+            className="w-full bg-white border border-industrial-300 focus:border-industrial-900 rounded-lg px-4 py-3 text-sm text-industrial-900 placeholder:text-industrial-400 outline-none transition-colors resize-none"
             placeholder="Geometria, tolerâncias, acabamento desejado, etc."
           />
         </div>
@@ -170,7 +173,7 @@ export function LaserQuoteForm({ cidade }: Props) {
           </label>
           <div
             onClick={() => fileRef.current?.click()}
-            className="w-full border border-dashed border-industrial-300 hover:border-industrial-700 bg-white cursor-pointer transition-colors px-4 py-4 flex items-center gap-3"
+            className="w-full border border-dashed border-industrial-300 hover:border-industrial-700 bg-white rounded-lg cursor-pointer transition-colors px-4 py-4 flex items-center gap-3"
           >
             <Paperclip className="size-4 text-industrial-400 shrink-0" />
             {arquivo ? (
@@ -204,7 +207,7 @@ export function LaserQuoteForm({ cidade }: Props) {
       <button
         type="submit"
         disabled={status === 'loading'}
-        className="flex items-center justify-center gap-2 w-full h-14 bg-industrial-950 text-white hover:bg-industrial-800 disabled:bg-industrial-400 font-black uppercase tracking-widest text-sm transition-colors"
+        className="flex items-center justify-center gap-2 w-full h-14 bg-industrial-950 text-white hover:bg-industrial-800 disabled:bg-industrial-400 rounded-lg font-black uppercase tracking-widest text-sm transition-colors"
       >
         {status === 'loading' ? (
           <div className="size-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -215,7 +218,7 @@ export function LaserQuoteForm({ cidade }: Props) {
       </button>
 
       <p className="text-[11px] text-industrial-400 text-center leading-relaxed">
-        Trabalhamos somente com aço carbono em projetos técnicos e lotes repetitivos.
+        Trabalhamos com projetos técnicos e lotes repetitivos. Para envio de DXF, entre em contato via WhatsApp após preencher o formulário.
       </p>
     </form>
   )

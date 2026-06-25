@@ -1,4 +1,5 @@
-import { Check, Phone, Shield, Truck, Zap, Calculator, ArrowRight, FileText } from "lucide-react"
+import { Check, Phone, Shield, Truck, Zap, Calculator, FileText } from "lucide-react"
+import type { Metadata } from "next"
 import { ClientsMarquee } from "@/components/sections/clients-marquee"
 import { Portfolio } from "@/components/sections/portfolio"
 import { GoogleReviews } from "@/components/sections/google-reviews"
@@ -6,6 +7,16 @@ import { FaqSection } from "@/components/sections/faq"
 import { getPortfolioProjects, getClientLogos } from "@/lib/data"
 
 import Image from "next/image"
+
+export const metadata: Metadata = {
+    title: {
+        absolute: "Postes Metalicos | B&B Iluminacao",
+    },
+    description: "Postes metalicos para iluminacao publica, condominios, loteamentos e industrias. Solicite orcamento com a B&B.",
+    alternates: {
+        canonical: "https://bebiluminacao.com.br/postes-metalicos",
+    },
+}
 
 export default async function PostesMetalicosLP() {
     // Buscar dados do Payload CMS para injetar nas seções de prova social
@@ -31,7 +42,7 @@ export default async function PostesMetalicosLP() {
                         href="https://wa.me/556235761988"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 bg-industrial-950 text-white hover:bg-industrial-800 active:bg-industrial-700 font-black uppercase tracking-widest text-[10px] px-4 h-10 transition-colors"
+                        className="flex items-center gap-2 bg-industrial-950 text-white hover:bg-industrial-800 active:bg-industrial-700 font-black uppercase tracking-widest text-[10px] px-4 h-10 rounded-lg transition-colors"
                         aria-label="Solicitar orçamento pelo WhatsApp"
                     >
                         <Phone className="size-4" aria-hidden="true" />
@@ -49,7 +60,7 @@ export default async function PostesMetalicosLP() {
                     <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
                         {/* Texto */}
                         <div className="flex-1 text-center lg:text-left">
-                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-industrial-50 border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-widest uppercase mb-8">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-industrial-50 border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-widest uppercase rounded-md mb-8">
                                 <span className="size-2 bg-green-500 rounded-full animate-pulse" aria-hidden="true"></span>
                                 Direto da Fábrica — Goiânia, GO
                             </div>
@@ -69,14 +80,14 @@ export default async function PostesMetalicosLP() {
                                     href="https://wa.me/556235761988?text=Olá, vim pela página de postes metálicos e quero solicitar um orçamento."
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center justify-center gap-3 bg-industrial-950 text-white hover:bg-industrial-800 active:bg-industrial-700 font-black h-16 px-10 w-full sm:w-auto uppercase tracking-widest transition-transform hover:-translate-y-1 shadow-xl shadow-industrial-950/20 group"
+                                    className="flex items-center justify-center gap-3 bg-industrial-950 text-white hover:bg-industrial-800 active:bg-industrial-700 font-black h-16 px-10 w-full sm:w-auto uppercase tracking-widest rounded-lg transition-transform hover:-translate-y-1 shadow-xl shadow-industrial-950/20 group"
                                 >
                                     <Calculator className="size-5" aria-hidden="true" />
                                     SOLICITAR ORÇAMENTO
                                 </a>
                                 <a
                                     href="/downloads"
-                                    className="flex items-center justify-center gap-2 bg-white border-2 border-industrial-200 text-industrial-800 hover:border-industrial-950 hover:text-industrial-950 font-black h-16 px-8 w-full sm:w-auto uppercase tracking-widest transition-colors"
+                                    className="flex items-center justify-center gap-2 bg-white border-2 border-industrial-200 text-industrial-800 hover:border-industrial-950 hover:text-industrial-950 font-black h-16 px-8 w-full sm:w-auto uppercase tracking-widest rounded-lg transition-colors"
                                 >
                                     <FileText className="size-5" aria-hidden="true" />
                                     BAIXAR CATÁLOGOS PDF
@@ -91,15 +102,15 @@ export default async function PostesMetalicosLP() {
 
                         {/* Imagem de Produto (Impacto Visual) */}
                         <div className="flex-1 w-full max-w-2xl lg:max-w-none">
-                            <div className="relative aspect-[4/3] lg:aspect-square bg-industrial-100 border-8 border-white shadow-2xl skew-y-2 lg:skew-y-0 lg:-rotate-2 hover:rotate-0 transition-transform duration-500">
-                                <Image 
-                                    src="/portfolio/reserva-parque.webp" 
-                                    alt="Postes Metálicos B&B Iluminação" 
-                                    fill 
+                            <div className="relative aspect-[4/3] lg:aspect-square bg-industrial-100 border-8 border-white rounded-2xl shadow-2xl skew-y-2 lg:skew-y-0 lg:-rotate-2 hover:rotate-0 transition-transform duration-500">
+                                <Image
+                                    src="/portfolio/reserva-parque.webp"
+                                    alt="Postes Metálicos B&B Iluminação"
+                                    fill
                                     className="object-cover"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-industrial-950/40 to-transparent" />
-                                <div className="absolute top-4 right-4 bg-accent-premium text-black font-black text-[10px] tracking-widest px-4 py-2 uppercase">
+                                <div className="absolute top-4 right-4 bg-accent-premium text-black font-black text-[10px] tracking-widest px-4 py-2 rounded-md uppercase">
                                     Padrão Engenharia
                                 </div>
                             </div>
@@ -128,8 +139,8 @@ export default async function PostesMetalicosLP() {
                             { title: "Normas da ABNT", desc: "Cálculos estruturais rigorosos que superam as exigências da norma NBR 6123 para forças de vento.", icon: <Check /> },
                             { title: "Solução Completa", desc: "Do poste à luminária LED e cabeamento elétrico, compre tudo em um só lugar.", icon: <Calculator /> },
                         ].map((item, i) => (
-                            <div key={i} className="bg-white border border-industrial-200 p-8 hover:border-accent-premium transition-colors hover:shadow-md">
-                                <div className="size-12 bg-industrial-950 text-white flex items-center justify-center mb-6">
+                            <div key={i} className="bg-white border border-industrial-200 rounded-2xl p-8 hover:border-accent-premium transition-colors hover:shadow-md">
+                                <div className="size-12 bg-industrial-950 text-white rounded-lg flex items-center justify-center mb-6">
                                     {item.icon}
                                 </div>
                                 <h3 className="font-black text-industrial-950 uppercase mb-3">{item.title}</h3>
@@ -167,7 +178,7 @@ export default async function PostesMetalicosLP() {
                         href="https://wa.me/556235761988"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-3 bg-black text-white hover:bg-industrial-800 font-black h-16 w-full sm:w-auto px-12 text-lg uppercase tracking-widest transition-transform hover:scale-105 shadow-2xl"
+                        className="inline-flex items-center justify-center gap-3 bg-black text-white hover:bg-industrial-800 font-black h-16 w-full sm:w-auto px-12 text-lg uppercase tracking-widest rounded-lg transition-transform hover:scale-105 shadow-2xl"
                         aria-label="Solicitar orçamento pelo WhatsApp agora"
                     >
                         <Phone className="size-5" />

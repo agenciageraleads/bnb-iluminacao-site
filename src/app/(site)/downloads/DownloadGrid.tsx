@@ -27,7 +27,7 @@ export function DownloadGrid({ catalogs }: DownloadGridProps) {
         <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {catalogs.map((catalog) => (
-                    <div key={catalog.id} className="group bg-white border border-industrial-200 overflow-hidden hover:border-accent-premium transition-all duration-300 shadow-sm hover:shadow-xl">
+                    <div key={catalog.id} className="group bg-white border border-industrial-200 rounded-2xl overflow-hidden hover:border-accent-premium transition-all duration-300 shadow-sm hover:shadow-xl">
                         <div className="relative aspect-[3/4] bg-industrial-100 overflow-hidden">
                             {catalog.thumbnail ? (
                                 <Image 
@@ -40,7 +40,7 @@ export function DownloadGrid({ catalogs }: DownloadGridProps) {
                                 <div className="absolute inset-0 flex items-center justify-center text-industrial-300 font-bold uppercase tracking-widest text-xs">Sem Capa</div>
                             )}
                             <div className="absolute inset-0 bg-industrial-950/20 group-hover:bg-industrial-950/0 transition-colors" />
-                            <div className="absolute top-4 left-4 bg-accent-premium text-black px-3 py-1 text-[10px] font-black uppercase tracking-widest">
+                            <div className="absolute top-4 left-4 bg-accent-premium text-black rounded-md px-3 py-1 text-[10px] font-black uppercase tracking-widest">
                                 {catalog.category}
                             </div>
                         </div>
@@ -51,7 +51,7 @@ export function DownloadGrid({ catalogs }: DownloadGridProps) {
                             
                             <button
                                 onClick={() => handleDownloadClick(catalog)}
-                                className="w-full flex items-center justify-center gap-2 bg-industrial-950 text-white font-black uppercase text-xs tracking-widest py-4 hover:bg-industrial-800 transition-colors"
+                                className="w-full flex items-center justify-center gap-2 bg-industrial-950 text-white font-black uppercase text-xs tracking-widest py-4 rounded-lg hover:bg-industrial-800 transition-colors"
                             >
                                 <Download className="size-4" />
                                 Baixar Catálogo
@@ -69,7 +69,7 @@ export function DownloadGrid({ catalogs }: DownloadGridProps) {
                         onClick={() => setSelectedCatalog(null)}
                     />
                     
-                    <div className="relative w-full max-w-lg bg-white border border-industrial-200 shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
+                    <div className="relative w-full max-w-lg bg-white border border-industrial-200 rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
                         <button 
                             onClick={() => setSelectedCatalog(null)}
                             className="absolute top-4 right-4 text-industrial-400 hover:text-industrial-950 transition-colors"
@@ -79,7 +79,7 @@ export function DownloadGrid({ catalogs }: DownloadGridProps) {
 
                         <div className="p-8">
                             <div className="flex items-center gap-3 mb-6">
-                                <div className="size-10 bg-accent-premium flex items-center justify-center">
+                                <div className="size-10 bg-accent-premium flex items-center justify-center rounded-lg">
                                     <FileText className="size-5 text-black" />
                                 </div>
                                 <div>
@@ -101,7 +101,7 @@ export function DownloadGrid({ catalogs }: DownloadGridProps) {
                                                 name="name"
                                                 type="text" 
                                                 placeholder="Seu nome"
-                                                className="w-full h-12 bg-industrial-50 border border-industrial-200 pl-11 pr-4 focus:outline-none focus:border-accent-premium font-medium text-sm"
+                                                className="w-full h-12 bg-industrial-50 border border-industrial-200 rounded-lg pl-11 pr-4 focus:outline-none focus:border-accent-premium font-medium text-sm"
                                             />
                                         </div>
                                     </div>
@@ -116,7 +116,7 @@ export function DownloadGrid({ catalogs }: DownloadGridProps) {
                                                     name="email"
                                                     type="email" 
                                                     placeholder="empresa@exemplo.com"
-                                                    className="w-full h-12 bg-industrial-50 border border-industrial-200 pl-11 pr-4 focus:outline-none focus:border-accent-premium font-medium text-sm"
+                                                    className="w-full h-12 bg-industrial-50 border border-industrial-200 rounded-lg pl-11 pr-4 focus:outline-none focus:border-accent-premium font-medium text-sm"
                                                 />
                                             </div>
                                         </div>
@@ -129,7 +129,7 @@ export function DownloadGrid({ catalogs }: DownloadGridProps) {
                                                     name="phone"
                                                     type="tel" 
                                                     placeholder="(00) 00000-0000"
-                                                    className="w-full h-12 bg-industrial-50 border border-industrial-200 pl-11 pr-4 focus:outline-none focus:border-accent-premium font-medium text-sm"
+                                                    className="w-full h-12 bg-industrial-50 border border-industrial-200 rounded-lg pl-11 pr-4 focus:outline-none focus:border-accent-premium font-medium text-sm"
                                                 />
                                             </div>
                                         </div>
@@ -145,7 +145,7 @@ export function DownloadGrid({ catalogs }: DownloadGridProps) {
                                                     name="company"
                                                     type="text" 
                                                     placeholder="Razão Social ou Fantasia"
-                                                    className="w-full h-12 bg-industrial-50 border border-industrial-200 pl-11 pr-4 focus:outline-none focus:border-accent-premium font-medium text-sm"
+                                                    className="w-full h-12 bg-industrial-50 border border-industrial-200 rounded-lg pl-11 pr-4 focus:outline-none focus:border-accent-premium font-medium text-sm"
                                                 />
                                             </div>
                                         </div>
@@ -158,7 +158,7 @@ export function DownloadGrid({ catalogs }: DownloadGridProps) {
                                                     name="companyCnpj"
                                                     type="text" 
                                                     placeholder="00.000.000/0000-00"
-                                                    className="w-full h-12 bg-industrial-50 border border-industrial-200 pl-11 pr-4 focus:outline-none focus:border-accent-premium font-medium text-sm"
+                                                    className="w-full h-12 bg-industrial-50 border border-industrial-200 rounded-lg pl-11 pr-4 focus:outline-none focus:border-accent-premium font-medium text-sm"
                                                 />
                                             </div>
                                         </div>
@@ -171,7 +171,7 @@ export function DownloadGrid({ catalogs }: DownloadGridProps) {
                                     <button
                                         type="submit"
                                         disabled={isSubmitting}
-                                        className="w-full h-14 bg-industrial-950 text-white font-black uppercase tracking-widest hover:bg-industrial-800 transition-all flex items-center justify-center gap-3 mt-4"
+                                        className="w-full h-14 bg-industrial-950 text-white font-black uppercase tracking-widest rounded-lg hover:bg-industrial-800 transition-all flex items-center justify-center gap-3 mt-4"
                                     >
                                         {isSubmitting ? (
                                             <Loader2 className="size-5 animate-spin" />
@@ -201,7 +201,7 @@ export function DownloadGrid({ catalogs }: DownloadGridProps) {
                                         download
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex h-14 px-10 bg-industrial-950 text-white font-black uppercase tracking-widest hover:bg-industrial-800 transition-all items-center gap-3"
+                                        className="inline-flex h-14 px-10 bg-industrial-950 text-white font-black uppercase tracking-widest rounded-lg hover:bg-industrial-800 transition-all items-center gap-3"
                                         onClick={() => {
                                             // Fecha o modal após o clique no download final
                                             setTimeout(() => setSelectedCatalog(null), 2000)

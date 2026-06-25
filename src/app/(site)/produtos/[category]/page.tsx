@@ -63,7 +63,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                             )}
                         </div>
                         <button
-                            className="flex items-center justify-center gap-3 h-14 px-8 bg-accent-premium hover:bg-yellow-400 text-industrial-950 font-black uppercase tracking-widest text-[11px] transition-all w-full md:w-auto shrink-0 shadow-[0_0_20px_rgba(253,224,71,0.3)] hover:shadow-[0_0_30px_rgba(253,224,71,0.5)] hover:-translate-y-0.5"
+                            className="flex items-center justify-center gap-3 h-14 px-8 bg-accent-premium hover:bg-yellow-400 text-industrial-950 font-black uppercase tracking-widest text-[11px] transition-all w-full md:w-auto shrink-0 shadow-[0_0_20px_rgba(253,224,71,0.3)] hover:shadow-[0_0_30px_rgba(253,224,71,0.5)] hover:-translate-y-0.5 rounded-lg"
                             aria-label="Filtrar produtos desta categoria"
                         >
                             <Filter className="size-4" aria-hidden="true" /> FILTRAR PRODUTOS
@@ -79,7 +79,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                             <Link
                                 key={product.id}
                                 href={`/produtos/item/${product.id}`}
-                                className="group flex flex-col bg-white border border-industrial-200 hover:border-industrial-950 shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden"
+                                className="group flex flex-col bg-white border border-industrial-200 hover:border-industrial-950 shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden rounded-2xl"
                                 role="listitem"
                                 aria-label={`Ver detalhes de ${product.name}`}
                             >
@@ -100,7 +100,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                                         </div>
                                     )}
                                     <div className="absolute inset-0 bg-industrial-950/0 group-hover:bg-industrial-950/10 transition-colors duration-500" aria-hidden="true" />
-                                    <span className="absolute top-4 right-4 bg-industrial-950 text-accent-premium shadow-lg text-[9px] font-black uppercase tracking-widest px-3 py-1.5 z-20">
+                                    <span className="absolute top-4 right-4 bg-industrial-950 text-accent-premium shadow-lg text-[9px] font-black uppercase tracking-widest px-3 py-1.5 z-20 rounded-md">
                                         {categoryName}
                                     </span>
                                 </div>
@@ -110,7 +110,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                                     </h2>
                                     <p className="text-industrial-500 text-xs leading-relaxed flex-1 mb-6 font-medium">{product.description}</p>
                                     <div className="flex items-center justify-between pt-4 border-t border-industrial-100">
-                                        <span className="text-[10px] text-industrial-400 font-black uppercase tracking-[0.2em] bg-industrial-50 px-2 py-1">REF: {product.model}</span>
+                                        <span className="text-[10px] text-industrial-400 font-black uppercase tracking-[0.2em] bg-industrial-50 px-2 py-1 rounded-md">REF: {product.model}</span>
                                         <span className="text-[11px] text-industrial-950 font-black uppercase tracking-widest flex items-center gap-2 group-hover:text-accent-premium transition-colors">
                                             Detalhes
                                             <ArrowLeft className="size-3 rotate-180 group-hover:translate-x-1 transition-transform" />
@@ -121,7 +121,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                         ))}
                     </div>
                 ) : (
-                    <div className="py-32 flex flex-col items-center justify-center border-2 border-dashed border-industrial-200 bg-white">
+                    <div className="py-32 flex flex-col items-center justify-center border-2 border-dashed border-industrial-200 bg-white rounded-2xl">
                         <div className="size-16 bg-industrial-50 rounded-full flex items-center justify-center mb-6">
                             <Filter className="size-6 text-industrial-300" />
                         </div>
@@ -131,7 +131,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
                         <p className="text-industrial-500 font-medium text-sm mb-6 w-full max-w-sm text-center">
                             Nenhuma especificação disponível para esta linha no momento. Nossa engenharia está mapeando os itens.
                         </p>
-                        <Link href="/produtos" className="h-12 px-6 flex items-center justify-center bg-industrial-950 text-white font-black uppercase tracking-widest text-[11px] hover:bg-industrial-800 transition-colors">
+                        <Link href="/produtos" className="h-12 px-6 flex items-center justify-center bg-industrial-950 text-white font-black uppercase tracking-widest text-[11px] hover:bg-industrial-800 transition-colors rounded-lg">
                             Retornar ao Catálogo
                         </Link>
                     </div>
