@@ -101,7 +101,7 @@ export async function POST(req: Request) {
             {
                 "title": "${pauta}",
                 "slug": "slug-curto-com-3-a-5-palavras-chave",
-                "summary": "Resumo executivo de 50 palavras...",
+                "summary": "Resumo executivo de 50 palavras em TEXTO PURO, sem nenhuma tag HTML (nada de <strong>, <em>, <p> etc.)",
                 "bodyHtml": "Conteúdo rico em HTML estruturado aqui...",
                 "faqs": [ {"question": "...", "answer": "..."} ]
             }
@@ -115,6 +115,12 @@ export async function POST(req: Request) {
         });
 
         const conteudoAgente = JSON.parse(restRedator.response.text());
+
+        // Defesa: o summary é renderizado como texto puro na página (não via dangerouslySetInnerHTML),
+        // então qualquer tag HTML apareceria literal (ex.: "<strong>NBR</strong>"). Removemos as tags.
+        if (typeof conteudoAgente.summary === 'string') {
+            conteudoAgente.summary = conteudoAgente.summary.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+        }
 
         // --------------------------------------------------------------------------------
         // 3. O AGENTE REVISOR (O "Chefe" Fact-Checker das NBRs)
