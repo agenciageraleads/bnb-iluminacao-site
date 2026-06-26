@@ -1,0 +1,46 @@
+name: Deploy
+
+# Auto-deploy de produção: dispara quando o workflow "Validate" termina com
+# SUCESSO na branch main. Serializado por `concurrency` para nunca haver
+# dois deploys ao mesmo tempo.
+# Pré-requisito: secret VPS_SSH_KEY (chave privada SSH da VPS) configurado no repo.
+on:
+  workflow_run:
+    workflows: ["Validate"]
+    types: [completed]
+
+concurrency:
+  group: deploy-prod
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    # Só deploya se o validate passou E foi na main.
+    if: >-
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.head_branch == 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (commit validado)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          fetch-depth: 0
+
+      - name: Configurar chave SSH
+        env:
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$VPS_SSH_KEY" > ~/.ssh/vps_2_25_144_65
+          chmod 600 ~/.ssh/vps_2_25_144_65
+
+      - name: Deploy na VPS
+        env:
+          VPS_KEY: /home/runner/.ssh/vps_2_25_144_65
+          # Em checkout detached a branch não é "main", então liberamos o
+          # guard-rail de branch — a segurança é o gatilho workflow_run acima.
+          ALLOW_BRANCH_DEPLOY: "1"
+        run: |
+          chmod +x scripts/deploy-vps.sh
+          ./scripts/deploy-vps.sh
