@@ -32,7 +32,7 @@ import {
     createFaqSchema,
     createItemListSchema,
     createSchemaGraph,
-    createArticleSchema,
+    createWebPageSchema,
 } from "@/lib/seo/schema"
 
 const pageUrl = "https://bebiluminacao.com.br/blog/poste-teleconico-ou-reto"
@@ -293,6 +293,33 @@ function createArticleSchema() {
     }
 }
 
+function getSchema() {
+    return createSchemaGraph([
+        createFactoryOrganizationSchema(),
+        createArticleSchema(),
+        createWebPageSchema({
+            url: pageUrl,
+            name: pageTitle,
+            description: pageDescription,
+            image: heroImage,
+            mainEntityId: `${pageUrl}#article`,
+        }),
+        createBreadcrumbSchema(pageUrl, [
+            { name: "Inicio", item: SITE_URL },
+            { name: "Blog", item: `${SITE_URL}/blog` },
+            { name: pageTitle, item: pageUrl },
+        ]),
+        createItemListSchema({
+            id: `${pageUrl}#modelos`,
+            name: "Comparativo de modelos de postes metalicos",
+            items: vocabularyRows.map(([name, definition, use]) => ({
+                name,
+                description: `${definition} ${use}`,
+            })),
+        }),
+        createFaqSchema(pageUrl, faq),
+    ])
+}
 
 function SectionLabel({ children }: { children: ReactNode }) {
     return (
@@ -305,11 +332,13 @@ function SectionLabel({ children }: { children: ReactNode }) {
 export default function PosteTeleconicoOuRetoPage() {
     return (
         <main className="min-h-screen bg-white text-industrial-950">
-            <SchemaOrg data={{}} />
+            <SchemaOrg id="poste-teleconico-ou-reto-schema" data={getSchema()} />
             <Header />
             <div className="hidden 2xl:block">
                 <FloatingWhatsApp
                     message={whatsappMessage}
+                    eventLabel="Solicitar orcamento pelo guia teleconico ou reto"
+                    eventSource="floating_teleconico_ou_reto"
                 />
             </div>
 
@@ -345,6 +374,8 @@ export default function PosteTeleconicoOuRetoPage() {
                         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                             <WhatsAppLink
                                 message={whatsappMessage}
+                                eventLabel="Solicitar orcamento pelo guia teleconico ou reto"
+                                eventSource="hero_teleconico_ou_reto"
                                 className="inline-flex h-14 items-center justify-center gap-3 bg-accent-premium px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-yellow-300"
                                 aria-label="Solicitar orcamento de poste teleconico ou reto pelo WhatsApp"
                             >
@@ -595,6 +626,8 @@ export default function PosteTeleconicoOuRetoPage() {
                     <div className="flex flex-col gap-4 sm:flex-row lg:flex-col">
                         <WhatsAppLink
                             message={whatsappMessage}
+                            eventLabel="Enviar dados para escolher modelo de poste"
+                            eventSource="final_teleconico_ou_reto"
                             className="inline-flex h-14 items-center justify-center gap-3 bg-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-industrial-800"
                             aria-label="Enviar dados para escolher poste teleconico ou reto pelo WhatsApp"
                         >
