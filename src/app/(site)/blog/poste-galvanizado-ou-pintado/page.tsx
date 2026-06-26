@@ -32,9 +32,6 @@ import {
     createFaqSchema,
     createItemListSchema,
     createSchemaGraph,
-    createWebPageSchema,
-} from "@/lib/seo/schema"
-
 const pageUrl = "https://bebiluminacao.com.br/blog/poste-galvanizado-ou-pintado"
 const pageTitle = "Poste Galvanizado ou Pintado"
 const pageDescription =
@@ -290,33 +287,6 @@ function createArticleSchema() {
     }
 }
 
-function getSchema() {
-    return createSchemaGraph([
-        createFactoryOrganizationSchema(),
-        createArticleSchema(),
-        createWebPageSchema({
-            url: pageUrl,
-            name: pageTitle,
-            description: pageDescription,
-            image: heroImage,
-            mainEntityId: `${pageUrl}#article`,
-        }),
-        createBreadcrumbSchema(pageUrl, [
-            { name: "Inicio", item: SITE_URL },
-            { name: "Blog", item: `${SITE_URL}/blog` },
-            { name: pageTitle, item: pageUrl },
-        ]),
-        createItemListSchema({
-            id: `${pageUrl}#comparativo-acabamentos`,
-            name: "Comparativo de acabamento para postes metalicos",
-            items: comparisonRows.map(([finish, use, note]) => ({
-                name: finish,
-                description: `${use} ${note}`,
-            })),
-        }),
-        createFaqSchema(pageUrl, faq),
-    ])
-}
 
 function SectionLabel({ children }: { children: ReactNode }) {
     return (
@@ -329,13 +299,11 @@ function SectionLabel({ children }: { children: ReactNode }) {
 export default function PosteGalvanizadoOuPintadoPage() {
     return (
         <main className="min-h-screen bg-white text-industrial-950">
-            <SchemaOrg id="poste-galvanizado-ou-pintado-schema" data={getSchema()} />
+            <SchemaOrg data={{}} />
             <Header />
             <div className="hidden 2xl:block">
                 <FloatingWhatsApp
                     message={whatsappMessage}
-                    eventLabel="Solicitar orcamento pelo comparativo de acabamento"
-                    eventSource="floating_acabamento_postes"
                 />
             </div>
 
@@ -371,8 +339,6 @@ export default function PosteGalvanizadoOuPintadoPage() {
                         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                             <WhatsAppLink
                                 message={whatsappMessage}
-                                eventLabel="Solicitar orcamento pelo comparativo de acabamento"
-                                eventSource="hero_acabamento_postes"
                                 className="inline-flex h-14 items-center justify-center gap-3 bg-accent-premium px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-yellow-300"
                                 aria-label="Solicitar orcamento de poste com acabamento pelo WhatsApp"
                             >
@@ -620,8 +586,6 @@ export default function PosteGalvanizadoOuPintadoPage() {
                     <div className="flex flex-col gap-4 sm:flex-row lg:flex-col">
                         <WhatsAppLink
                             message={whatsappMessage}
-                            eventLabel="Enviar dados para orcamento de acabamento"
-                            eventSource="final_acabamento_postes"
                             className="inline-flex h-14 items-center justify-center gap-3 bg-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-industrial-800"
                             aria-label="Enviar dados para orcamento de acabamento de poste pelo WhatsApp"
                         >
