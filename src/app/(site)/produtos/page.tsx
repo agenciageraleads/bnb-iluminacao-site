@@ -6,6 +6,7 @@ import { Filter, Search } from "lucide-react"
 import Link from "next/link"
 import { getProducts, getCategories } from "@/lib/data"
 import { CategoryOverview } from "@/components/products/CategoryOverview"
+import { getProductLineHref } from "@/lib/seo/product-line-links"
 
 export const metadata: Metadata = {
     title: "Catálogo de Produtos | B&B Iluminação",
@@ -60,11 +61,11 @@ export default async function ProdutosPage() {
                             type="search"
                             placeholder="Buscar produtos…"
                             aria-label="Buscar produtos"
-                            className="w-full bg-white border border-industrial-300 rounded-lg pl-11 pr-4 h-12 text-sm text-industrial-900 placeholder:text-industrial-400 focus:outline-none focus:border-industrial-700 transition-colors"
+                            className="w-full bg-white border border-industrial-300 pl-11 pr-4 h-12 text-sm text-industrial-900 placeholder:text-industrial-400 focus:outline-none focus:border-industrial-700 transition-colors"
                         />
                     </div>
                     <button
-                        className="flex items-center justify-center gap-2 h-12 px-5 bg-white border border-industrial-300 rounded-lg hover:bg-industrial-50 active:bg-industrial-100 text-industrial-700 font-bold tracking-widest uppercase text-[11px] transition-colors"
+                        className="flex items-center justify-center gap-2 h-12 px-5 bg-white border border-industrial-300 hover:bg-industrial-50 active:bg-industrial-100 text-industrial-700 font-bold tracking-widest uppercase text-[11px] transition-colors"
                         aria-label="Filtrar produtos"
                     >
                         <Filter className="size-4" aria-hidden="true" />
@@ -76,15 +77,15 @@ export default async function ProdutosPage() {
                 <nav aria-label="Categorias de produtos" className="flex overflow-x-auto pb-4 mb-10 gap-2 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
                     <Link
                         href="/produtos"
-                        className="whitespace-nowrap px-5 py-2.5 bg-industrial-950 text-white text-[11px] font-bold uppercase tracking-widest flex-shrink-0 rounded-lg transition-colors"
+                        className="whitespace-nowrap px-5 py-2.5 bg-industrial-950 text-white text-[11px] font-bold uppercase tracking-widest flex-shrink-0 transition-colors"
                     >
                         Todos
                     </Link>
                     {categoriesList.map((cat) => (
                         <Link
                             key={cat.slug}
-                            href={`/produtos/${cat.slug}`}
-                            className="whitespace-nowrap px-5 py-2.5 bg-white border border-industrial-200 text-industrial-700 text-[11px] font-bold uppercase tracking-widest hover:bg-industrial-900 hover:text-white hover:border-industrial-900 flex-shrink-0 rounded-lg transition-all"
+                            href={getProductLineHref(cat.slug)}
+                            className="whitespace-nowrap px-5 py-2.5 bg-white border border-industrial-200 text-industrial-700 text-[11px] font-bold uppercase tracking-widest hover:bg-industrial-900 hover:text-white hover:border-industrial-900 flex-shrink-0 transition-all"
                         >
                             {cat.title}
                         </Link>
@@ -97,7 +98,7 @@ export default async function ProdutosPage() {
                         <Link
                             key={product.id}
                             href={`/produtos/item/${product.id}`}
-                            className="group flex flex-col bg-white border border-industrial-200 rounded-2xl overflow-hidden hover:border-industrial-800 hover:shadow-md active:shadow-sm transition-all"
+                            className="group flex flex-col bg-white border border-industrial-200 hover:border-industrial-800 hover:shadow-md active:shadow-sm transition-all"
                             role="listitem"
                             aria-label={`Ver detalhes de ${product.name}`}
                         >
@@ -119,7 +120,7 @@ export default async function ProdutosPage() {
                                         {product.model}
                                     </span>
                                 )}
-                                <span className="absolute top-3 right-3 bg-industrial-950 text-white text-[9px] font-black uppercase tracking-tight px-2 py-1 rounded-md">
+                                <span className="absolute top-3 right-3 bg-industrial-950 text-white text-[9px] font-black uppercase tracking-tight px-2 py-1">
                                     {categoriesList.find(c => c.slug === product.category)?.title || product.category}
                                 </span>
                             </div>
@@ -146,4 +147,3 @@ export default async function ProdutosPage() {
         </main>
     )
 }
-

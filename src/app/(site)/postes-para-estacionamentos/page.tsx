@@ -44,7 +44,7 @@ const pageDescription =
     "Postes para estacionamentos de condominios, hospitais, industrias, galpoes e areas comerciais com suporte tecnico e atendimento nacional."
 const whatsappMessage =
     "Ola, vim pela pagina de postes para estacionamentos e quero ajuda para especificar modelos, quantidades e orcamento tecnico."
-const heroImage = "/images/seo/postes-metalicos/estacionamento-industrial-postes-retos.jpg"
+const heroImage = "/images/seo/postes-metalicos/estacionamento-externo-postes-metalicos.webp"
 
 export const metadata: Metadata = {
     title: {
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
                 url: absoluteUrl(heroImage),
                 width: 1200,
                 height: 630,
-                alt: "Postes metalicos para estacionamento iluminado",
+                alt: "Postes metalicos para estacionamento externo iluminado",
             },
         ],
     },
@@ -235,21 +235,41 @@ const relatedPages = [
 ]
 
 const gallery = [
-    createSeoImage("estacionamentoIndustrialPostesRetos", {
+    createSeoImage("estacionamentoExternoPostesMetalicos", {
         alt: "Postes metalicos retos para estacionamento industrial e patio amplo",
         title: "Patios e industrias",
     }),
-    createSeoImage("estacionamentoHospitalPostes", {
-        alt: "Postes metalicos para estacionamento de hospital e area de acesso",
-        title: "Hospitais e acessos",
+    createSeoImage("estacionamentoCobertoPostesRetos", {
+        alt: "Postes metalicos retos para estacionamento externo e area coberta",
+        title: "Estacionamento coberto",
     }),
-    createSeoImage("viaPublicaPostesRetosDoisLados", {
-        alt: "Postes metalicos para vias de acesso e estacionamento aberto",
-        title: "Vias e acessos",
+    createSeoImage("estacionamentoNoturnoPosteReto", {
+        alt: "Poste metalico reto para estacionamento externo durante a noite",
+        title: "Estacionamento noturno",
     }),
-    createSeoImage("ruaIluminadaPosteCurvo", {
-        alt: "Poste curvo para estacionamento residencial e area arborizada",
+    createSeoImage("condominioEstacionamentoPosteMetalico", {
+        alt: "Poste metalico para estacionamento residencial em condominio",
         title: "Areas residenciais",
+    }),
+    createSeoImage("estacionamentoShoppingSingapuraPostesCurvos", {
+        alt: "Postes metalicos curvos em estacionamento comercial com vagas e paisagismo",
+        title: "Comercio e varejo",
+    }),
+    createSeoImage("estacionamentoOutletPremiumPostesIluminacao", {
+        alt: "Postes metalicos para estacionamento amplo de centro comercial",
+        title: "Estacionamento amplo",
+    }),
+    createSeoImage("estacionamentoComercialNoturnoPostesIluminacao", {
+        alt: "Postes metalicos iluminando acesso e estacionamento comercial a noite",
+        title: "Acesso comercial noturno",
+    }),
+    createSeoImage("estacionamentoHospitalarNoturnoPostesIluminacao", {
+        alt: "Postes metalicos iluminando estacionamento hospitalar durante a noite",
+        title: "Estacionamento hospitalar",
+    }),
+    createSeoImage("areaExternaHospitalarPostesMetalicos", {
+        alt: "Postes metalicos em area externa hospitalar com circulacao e acesso",
+        title: "Area externa hospitalar",
     }),
 ]
 
@@ -495,7 +515,7 @@ export default function PostesParaEstacionamentosPage() {
                             Quanto mais clara a separacao por area, fluxo e fixacao, mais objetiva fica a proposta.
                         </p>
                     </div>
-                    <div className="grid gap-5 md:grid-cols-4">
+                    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                         {processSteps.map((step) => {
                             const Icon = step.icon
                             return (

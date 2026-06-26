@@ -66,9 +66,9 @@ export const metadata: Metadata = {
 
 const models = [
     {
-        title: "Linha Urban",
+        title: "Poste teleconico",
         description: "Postes teleconicos circulares para iluminacao publica, vias, condominios, patios e areas industriais.",
-        href: "/produtos/linha-urban",
+        href: "/produtos/poste-teleconico",
     },
     {
         title: "Poste curvo duplo",
@@ -76,29 +76,29 @@ const models = [
         href: "/produtos/poste-curvo-duplo",
     },
     {
-        title: "Linha Orna",
+        title: "Postes para pracas",
         description: "Postes ornamentais para pracas, jardins, condominios e areas urbanas com exigencia visual.",
-        href: "/produtos/linha-orna",
+        href: "/postes-para-pracas",
     },
     {
-        title: "Linha Nexo",
+        title: "Bracos para luminaria",
         description: "Bracos, suportes e acessorios metalicos para luminarias publicas e projetos de iluminacao.",
-        href: "/produtos/linha-nexo",
+        href: "/produtos/braco-para-luminaria-publica",
     },
     {
-        title: "Linha Versa",
+        title: "Postes para pracas e jardins",
         description: "Postes decorativos que combinam design urbano, eficiencia luminosa e acabamento tecnico.",
-        href: "/produtos/linha-versa",
+        href: "/postes-para-pracas",
     },
     {
-        title: "Linha Vigia",
+        title: "Postes metalicos",
         description: "Postes para sistemas de video monitoramento, seguranca patrimonial e areas controladas.",
-        href: "/produtos/linha-vigia",
+        href: "/postes-metalicos",
     },
     {
-        title: "Linha Civis",
+        title: "Mastros para bandeira",
         description: "Mastros metalicos teleconicos para bandeiras e estruturas institucionais.",
-        href: "/produtos/linha-civis",
+        href: "/lp/mastros-para-bandeira",
     },
 ]
 

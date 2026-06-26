@@ -1,4 +1,5 @@
 export const dynamic = 'force-dynamic';
+import type { Metadata } from "next"
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { getBlogPostBySlug } from "@/lib/data"
@@ -7,14 +8,77 @@ import Image from "next/image"
 import Script from "next/script"
 import { Calendar, User, ArrowLeft, CheckCircle2 } from "lucide-react"
 import Link from "next/link"
+import { SITE_URL, absoluteUrl } from "@/lib/seo/schema"
 
-export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+interface BlogPostPageProps {
+    params: Promise<{ slug: string }>
+}
+
+export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+    const { slug } = await params
+    const post = await getBlogPostBySlug(slug)
+
+    if (!post) {
+        return {
+            title: "Artigo nao encontrado",
+            robots: {
+                index: false,
+                follow: false,
+            },
+            alternates: {
+                canonical: `${SITE_URL}/blog`,
+            },
+        }
+    }
+
+    const pageUrl = `${SITE_URL}/blog/${slug}`
+    const image = post.image ? absoluteUrl(post.image) : undefined
+
+    return {
+        title: {
+            absolute: `${post.title} | Blog B&B Iluminacao`,
+        },
+        description: post.summary,
+        alternates: {
+            canonical: pageUrl,
+        },
+        openGraph: {
+            title: post.title,
+            description: post.summary,
+            url: pageUrl,
+            type: "article",
+            ...(image
+                ? {
+                      images: [
+                          {
+                              url: image,
+                              width: 1200,
+                              height: 630,
+                              alt: post.title,
+                          },
+                      ],
+                  }
+                : {}),
+        },
+        twitter: {
+            card: "summary_large_image",
+            title: post.title,
+            description: post.summary,
+            ...(image ? { images: [image] } : {}),
+        },
+    }
+}
+
+export default async function BlogPostPage({ params }: BlogPostPageProps) {
     const { slug } = await params;
     const post = await getBlogPostBySlug(slug);
 
     if (!post) {
         notFound();
     }
+
+    const authorId = `${SITE_URL}/#person-${post.author.replace(/\s+/g, '-').toLowerCase()}`
+    const pageUrl = `${SITE_URL}/blog/${slug}`
 
     const jsonLd = {
       "@context": "https://schema.org",
@@ -25,23 +89,35 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           "description": post.summary,
           "image": post.image,
           "datePublished": post.date,
-          "dateModified": post.date, // Assumindo mesma data caso não tenha update
-          "author": {
-            "@id": `https://bebiluminacao.com.br/#person-${post.author.replace(/\s+/g, '-').toLowerCase()}`
-          },
-          "publisher": {
-            "@id": "https://bebiluminacao.com.br/#organization"
-          }
+          "dateModified": post.date,
+          "author": { "@id": authorId },
+          "publisher": { "@id": `${SITE_URL}/#organization` }
         },
         {
           "@type": "Person",
-          "@id": `https://bebiluminacao.com.br/#person-${post.author.replace(/\s+/g, '-').toLowerCase()}`,
+          "@id": authorId,
           "name": post.author,
           "jobTitle": "Especialista em Iluminação",
-          "worksFor": {
-            "@id": "https://bebiluminacao.com.br/#organization"
-          }
-        }
+          "worksFor": { "@id": `${SITE_URL}/#organization` }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": `${pageUrl}#breadcrumb`,
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Início", "item": SITE_URL },
+            { "@type": "ListItem", "position": 2, "name": "Blog", "item": `${SITE_URL}/blog` },
+            { "@type": "ListItem", "position": 3, "name": post.title, "item": pageUrl },
+          ]
+        },
+        ...(post.faqs?.length ? [{
+          "@type": "FAQPage",
+          "@id": `${pageUrl}#faq`,
+          "mainEntity": post.faqs.map((faq: { question: string; answer: string }) => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": { "@type": "Answer", "text": faq.answer }
+          }))
+        }] : [])
       ]
     };
 

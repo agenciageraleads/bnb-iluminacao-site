@@ -21,13 +21,16 @@ import {
 
 import { Footer } from "@/components/layout/footer"
 import { Header } from "@/components/layout/header"
+import { SeoProductGallery } from "@/components/seo/seo-product-gallery"
 import { SchemaOrg } from "@/components/seo/schema-org"
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
 import { WhatsAppLink } from "@/components/ui/whatsapp-link"
+import { createSeoImage } from "@/lib/seo/images"
 import {
     SITE_URL,
     createBreadcrumbSchema,
     createFaqSchema,
+    createImageSchemas,
     createItemListSchema,
     createProductSchema,
     createSchemaGraph,
@@ -40,6 +43,24 @@ const pageDescription =
 const whatsappMessage =
     "Ola, vim pela pagina de poste curvo duplo e quero solicitar um orcamento tecnico."
 const heroImage = "/images/produtos/poste-curvo-duplo-avenida-dia.png"
+const productGallery = [
+    createSeoImage("posteCurvoDuploAvenidaDia", {
+        alt: "Poste curvo duplo para avenida e canteiro central durante o dia",
+        title: "Poste curvo duplo em avenida",
+    }),
+    createSeoImage("posteCurvoDuploAvenidaNoite", {
+        alt: "Poste curvo duplo em avenida iluminada durante a noite",
+        title: "Poste curvo duplo noturno",
+    }),
+    createSeoImage("viaPublicaPostesRetosDoisLados", {
+        alt: "Postes metalicos em via publica iluminando dois sentidos",
+        title: "Iluminacao em dois sentidos",
+    }),
+    createSeoImage("estacionamentoIndustrialPostesRetos", {
+        alt: "Postes metalicos em area ampla de estacionamento industrial",
+        title: "Area ampla iluminada",
+    }),
+]
 
 export const metadata: Metadata = {
     title: {
@@ -289,6 +310,7 @@ function getSchema() {
                 url: item.href,
             })),
         }),
+        ...createImageSchemas(productGallery),
         createFaqSchema(pageUrl, faq),
     ])
 }
@@ -484,6 +506,12 @@ export default function PosteCurvoDuploPage() {
                     </div>
                 </div>
             </section>
+
+            <SeoProductGallery
+                title="Galeria de poste curvo duplo"
+                description="Imagens para diferenciar o poste curvo duplo em avenidas, canteiros centrais e areas amplas que exigem iluminacao para dois sentidos."
+                images={productGallery}
+            />
 
             <section className="bg-industrial-50 py-20 md:py-28">
                 <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">

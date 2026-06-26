@@ -20,13 +20,16 @@ import {
 
 import { Footer } from "@/components/layout/footer"
 import { Header } from "@/components/layout/header"
+import { SeoProductGallery } from "@/components/seo/seo-product-gallery"
 import { SchemaOrg } from "@/components/seo/schema-org"
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
 import { WhatsAppLink } from "@/components/ui/whatsapp-link"
+import { createSeoImage } from "@/lib/seo/images"
 import {
     SITE_URL,
     createBreadcrumbSchema,
     createFaqSchema,
+    createImageSchemas,
     createItemListSchema,
     createProductSchema,
     createSchemaGraph,
@@ -39,6 +42,24 @@ const pageDescription =
 const whatsappMessage =
     "Ola, vim pela pagina de poste teleconico e quero solicitar um orcamento tecnico."
 const heroImage = "/images/produtos/poste-reto-avenida-dia.png"
+const productGallery = [
+    createSeoImage("posteRetoAvenidaDia", {
+        alt: "Poste teleconico reto para avenida e iluminacao publica",
+        title: "Poste teleconico reto",
+    }),
+    createSeoImage("viaIluminadaPosteTeleconicoReto", {
+        alt: "Poste teleconico reto em via publica iluminada a noite",
+        title: "Poste teleconico reto em via",
+    }),
+    createSeoImage("viaIluminadaPosteTeleconicoCurvo", {
+        alt: "Postes teleconicos curvos em via publica com iluminacao noturna",
+        title: "Poste teleconico curvo em via",
+    }),
+    createSeoImage("posteMetalicoCurvoInstaladoViaUrbana", {
+        alt: "Poste metalico curvo instalado em via urbana com rede aerea ao fundo",
+        title: "Poste curvo instalado",
+    }),
+]
 
 export const metadata: Metadata = {
     title: {
@@ -222,7 +243,7 @@ const secondaryInternalLinks = [
     ["Chumbador para poste metalico", "/produtos/chumbador-para-poste-metalico"],
     ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
     ["Poste metalico galvanizado", "/produtos/poste-metalico-galvanizado"],
-    ["Linha Urban", "/produtos/linha-urban"],
+    ["Poste metalico galvanizado", "/produtos/poste-metalico-galvanizado"],
     ["Catalogos e downloads", "/downloads"],
     ["Obras realizadas", "/obras"],
 ]
@@ -284,6 +305,7 @@ function getSchema() {
                 description: model.description,
             })),
         }),
+        ...createImageSchemas(productGallery),
         createFaqSchema(pageUrl, faq),
     ])
 }
@@ -445,6 +467,12 @@ export default function PosteTeleconicoPage() {
                     </div>
                 </div>
             </section>
+
+            <SeoProductGallery
+                title="Galeria de poste teleconico"
+                description="Imagens usadas para diferenciar o poste teleconico reto, curvo simples e curvo duplo em contextos de via, avenida e rua iluminada."
+                images={productGallery}
+            />
 
             <section className="py-20 md:py-28">
                 <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">

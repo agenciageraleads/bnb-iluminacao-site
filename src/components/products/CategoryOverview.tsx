@@ -4,6 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
+import { getProductLineHref } from "@/lib/seo/product-line-links"
 
 interface Category {
     title: string
@@ -41,8 +42,8 @@ export function CategoryOverview({ categories }: CategoryOverviewProps) {
                             viewport={{ once: true }}
                         >
                             <Link
-                                href={`/produtos/${category.slug}`}
-                                className="group relative block aspect-[4/5] overflow-hidden bg-industrial-900 rounded-2xl"
+                                href={getProductLineHref(category.slug)}
+                                className="group relative block aspect-[4/5] overflow-hidden bg-industrial-900 rounded-sm"
                             >
                                 {/* Imagem de Fundo com Overlay */}
                                 {category.image ? (
@@ -80,7 +81,7 @@ export function CategoryOverview({ categories }: CategoryOverviewProps) {
                                 </div>
 
                                 {/* Borda Decorativa */}
-                                <div className="absolute inset-0 border border-white/10 group-hover:border-accent-premium/30 transition-colors pointer-events-none rounded-2xl" />
+                                <div className="absolute inset-0 border border-white/10 group-hover:border-accent-premium/30 transition-colors pointer-events-none" />
                             </Link>
                         </motion.div>
                     ))}

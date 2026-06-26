@@ -1,23 +1,25 @@
-'use client'
-
-import Script from 'next/script'
-
 interface TrackingProps {
     gtmId?: string
     adsId?: string
     gaId?: string
     fbPixelId?: string
+    apolloAppId?: string
 }
 
-export function GoogleTagManager({ gtmId, adsId, gaId, fbPixelId }: TrackingProps) {
+function isSafeApolloAppId(appId: string) {
+    return /^[a-zA-Z0-9_-]+$/.test(appId)
+}
+
+export function GoogleTagManager({ gtmId, adsId, gaId, fbPixelId, apolloAppId }: TrackingProps) {
+    const googleTagId = adsId || gaId
+    const safeApolloAppId = apolloAppId && isSafeApolloAppId(apolloAppId) ? apolloAppId : ''
+
     return (
         <>
-            {/* Meta Pixel Code */}
             {fbPixelId && (
                 <>
-                    <Script
+                    <script
                         id="fb-pixel"
-                        strategy="afterInteractive"
                         dangerouslySetInnerHTML={{
                             __html: `
                                 !function(f,b,e,v,n,t,s)
@@ -45,22 +47,17 @@ export function GoogleTagManager({ gtmId, adsId, gaId, fbPixelId }: TrackingProp
                 </>
             )}
 
-            {/* Google Tag (gtag.js) - Google Ads & GA4 */}
-            {(adsId || gaId) && (
+            {googleTagId && (
                 <>
-                    <Script
-                        strategy="afterInteractive"
-                        src={`https://www.googletagmanager.com/gtag/js?id=${adsId || gaId}`}
-                    />
-                    <Script
+                    <script async src={`https://www.googletagmanager.com/gtag/js?id=${googleTagId}`} />
+                    <script
                         id="google-ads-tag"
-                        strategy="afterInteractive"
                         dangerouslySetInnerHTML={{
                             __html: `
                                 window.dataLayer = window.dataLayer || [];
                                 function gtag(){dataLayer.push(arguments);}
                                 gtag('js', new Date());
-                                gtag('config', '${adsId || gaId}');
+                                gtag('config', '${googleTagId}');
                                 ${gaId && adsId ? `gtag('config', '${gaId}');` : ''}
                             `,
                         }}
@@ -68,12 +65,10 @@ export function GoogleTagManager({ gtmId, adsId, gaId, fbPixelId }: TrackingProp
                 </>
             )}
 
-            {/* Google Tag Manager - Head */}
             {gtmId && (
                 <>
-                    <Script
+                    <script
                         id="gtm-script"
-                        strategy="afterInteractive"
                         dangerouslySetInnerHTML={{
                             __html: `
                                 (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -93,6 +88,27 @@ export function GoogleTagManager({ gtmId, adsId, gaId, fbPixelId }: TrackingProp
                         />
                     </noscript>
                 </>
+            )}
+
+            {safeApolloAppId && (
+                <script
+                    id="apollo-website-tracker"
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                            (function initApollo() {
+                                var cacheBust = Math.random().toString(36).substring(7);
+                                var apolloScript = document.createElement("script");
+                                apolloScript.src = "https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache=" + cacheBust;
+                                apolloScript.async = true;
+                                apolloScript.defer = true;
+                                apolloScript.onload = function () {
+                                    window.trackingFunctions.onLoad({ appId: "${safeApolloAppId}" });
+                                };
+                                document.head.appendChild(apolloScript);
+                            })();
+                        `,
+                    }}
+                />
             )}
         </>
     )

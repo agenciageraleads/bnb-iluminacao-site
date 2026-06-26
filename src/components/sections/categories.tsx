@@ -3,6 +3,7 @@ import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 
 import { getCategories } from "@/lib/data"
+import { getProductLineHref } from "@/lib/seo/product-line-links"
 
 export async function Categories() {
     const categoriesList = await getCategories();
@@ -20,8 +21,8 @@ export async function Categories() {
                     {categoriesList.map((cat, index) => (
                         <Link
                             key={index}
-                            href={`/produtos/${cat.slug}`}
-                            className="group relative block aspect-[4/5] overflow-hidden rounded-2xl"
+                            href={getProductLineHref(cat.slug)}
+                            className="group relative block aspect-[4/5] overflow-hidden"
                         >
                             {/* Imagem de Fundo do CMS */}
                             {cat.image ? (
@@ -63,4 +64,3 @@ export async function Categories() {
         </section>
     )
 }
-

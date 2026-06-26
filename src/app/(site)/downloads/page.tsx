@@ -65,7 +65,7 @@ export default async function DownloadsPage() {
                     )}
 
                     {/* Datasheets e Desenhos Técnicos — Linha Urban */}
-                    <div className="max-w-6xl mx-auto mt-24">
+                    <div id="linha-urban" className="max-w-6xl mx-auto mt-24 scroll-mt-32">
                         <div className="text-center mb-12">
                             <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-industrial-200 rounded-md text-industrial-600 text-[11px] font-bold tracking-[0.2em] uppercase mb-6">
                                 <Ruler className="size-4 text-accent-dark" />
@@ -121,6 +121,59 @@ export default async function DownloadsPage() {
                                                 </div>
                                             ))}
                                         </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Materiais Técnicos — Demais Linhas (em desenvolvimento) */}
+                    <div className="max-w-6xl mx-auto mt-24">
+                        <div className="text-center mb-12">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-[0.2em] uppercase mb-6">
+                                <Ruler className="size-4 text-accent-dark" />
+                                Demais Linhas
+                            </div>
+                            <h2 className="text-3xl md:text-5xl font-black text-industrial-950 uppercase tracking-tighter leading-none mb-4">
+                                Materiais Técnicos <span className="text-accent-premium">por Linha</span>
+                            </h2>
+                            <p className="text-industrial-500 text-base md:text-lg font-medium max-w-2xl mx-auto">
+                                Datasheets e desenhos técnicos das demais linhas estão em desenvolvimento.
+                                Precisa de uma especificação agora? Fale com a nossa engenharia.
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {([
+                                { slug: 'orna', nome: 'Orna', desc: 'Postes ornamentais que trazem identidade ao ambiente.' },
+                                { slug: 'versa', nome: 'Versa', desc: 'Postes decorativos — girafa LED e rebatedor.' },
+                                { slug: 'forza', nome: 'Forza', desc: 'Projetos especiais e estruturas reforçadas.' },
+                                { slug: 'vigia', nome: 'Vigia', desc: 'Postes para segurança e monitoramento (CFTV).' },
+                                { slug: 'nexo', nome: 'Nexo', desc: 'Acessórios: braços, suportes e chumbadores.' },
+                                { slug: 'civis', nome: 'Civis', desc: 'Mastros para bandeiras.' },
+                            ]).map((linha) => (
+                                <div
+                                    key={linha.slug}
+                                    id={`linha-${linha.slug}`}
+                                    className="scroll-mt-32 bg-white border border-industrial-200 flex flex-col"
+                                >
+                                    <div className="p-6 border-b border-industrial-100">
+                                        <div className="bg-industrial-100 text-industrial-500 inline-block px-3 py-1 text-[10px] font-black uppercase tracking-widest mb-3">
+                                            Em Desenvolvimento
+                                        </div>
+                                        <h3 className="font-black text-industrial-950 uppercase text-lg leading-tight">Linha {linha.nome}</h3>
+                                    </div>
+                                    <div className="p-6 flex flex-col flex-1">
+                                        <p className="text-industrial-500 text-sm font-medium leading-relaxed flex-1">{linha.desc}</p>
+                                        <p className="text-[11px] font-black uppercase tracking-widest text-industrial-400 mt-6">
+                                            Datasheet e desenhos técnicos em breve
+                                        </p>
+                                        <a
+                                            href="/contato"
+                                            className="mt-4 w-full flex items-center justify-center gap-2 border border-industrial-300 text-industrial-700 font-black uppercase text-xs tracking-widest py-3 hover:border-industrial-900 hover:text-industrial-950 transition-colors"
+                                        >
+                                            Solicitar à engenharia
+                                        </a>
                                     </div>
                                 </div>
                             ))}

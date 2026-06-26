@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { Header } from "@/components/layout/header"
 import Image from "next/image"
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
@@ -5,10 +6,80 @@ import { ArrowLeft, Filter } from "lucide-react"
 import Link from "next/link"
 import { getProducts, getCategories } from "@/lib/data"
 import { redirect } from "next/navigation"
+import { SITE_URL, absoluteUrl } from "@/lib/seo/schema"
 
 export const dynamic = 'force-dynamic'
 
-export default async function CategoryPage({ params }: { params: Promise<{ category: string }> }) {
+interface CategoryPageProps {
+    params: Promise<{ category: string }>
+}
+
+export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
+    const { category: categorySlug } = await params
+    const allCategories = await getCategories()
+    const category = allCategories.find(c => c.slug === categorySlug)
+
+    if (category) {
+        const pageUrl = `${SITE_URL}/produtos/${category.slug}`
+        const image = category.image ? absoluteUrl(category.image) : undefined
+
+        return {
+            title: {
+                absolute: `${category.title} | Produtos B&B Iluminacao`,
+            },
+            description: category.description,
+            alternates: {
+                canonical: pageUrl,
+            },
+            openGraph: {
+                title: category.title,
+                description: category.description,
+                url: pageUrl,
+                type: "website",
+                ...(image
+                    ? {
+                          images: [
+                              {
+                                  url: image,
+                                  width: 1200,
+                                  height: 630,
+                                  alt: category.title,
+                              },
+                          ],
+                      }
+                    : {}),
+            },
+        }
+    }
+
+    const allProducts = await getProducts()
+    const productAsCategory = allProducts.find(p => p.id === categorySlug)
+
+    if (productAsCategory) {
+        return {
+            title: {
+                absolute: `${productAsCategory.name} | B&B Iluminacao`,
+            },
+            description: productAsCategory.description,
+            alternates: {
+                canonical: `${SITE_URL}/produtos/item/${productAsCategory.id}`,
+            },
+        }
+    }
+
+    return {
+        title: "Linha de produtos nao encontrada",
+        robots: {
+            index: false,
+            follow: false,
+        },
+        alternates: {
+            canonical: `${SITE_URL}/produtos`,
+        },
+    }
+}
+
+export default async function CategoryPage({ params }: CategoryPageProps) {
     const { category: categorySlug } = await params;
     
     // Tentar encontrar se é uma categoria

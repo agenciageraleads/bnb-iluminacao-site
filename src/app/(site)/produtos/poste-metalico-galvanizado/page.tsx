@@ -21,13 +21,16 @@ import {
 
 import { Footer } from "@/components/layout/footer"
 import { Header } from "@/components/layout/header"
+import { SeoProductGallery } from "@/components/seo/seo-product-gallery"
 import { SchemaOrg } from "@/components/seo/schema-org"
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
 import { WhatsAppLink } from "@/components/ui/whatsapp-link"
+import { createSeoImage } from "@/lib/seo/images"
 import {
     SITE_URL,
     createBreadcrumbSchema,
     createFaqSchema,
+    createImageSchemas,
     createItemListSchema,
     createProductSchema,
     createSchemaGraph,
@@ -40,6 +43,32 @@ const pageDescription =
 const whatsappMessage =
     "Ola, vim pela pagina de poste metalico galvanizado e quero solicitar um orcamento tecnico."
 const heroImage = "/images/seo/postes-metalicos/estacionamento-industrial-postes-retos.jpg"
+const productGallery = [
+    createSeoImage("posteMetalicoGalvanizadoInstaladoAreaExterna", {
+        alt: "Poste metalico galvanizado instalado em area externa com luminaria",
+        title: "Poste galvanizado instalado",
+    }),
+    createSeoImage("posteMetalicoGalvanizadoSuporteEquipamentoUrbano", {
+        alt: "Poste metalico galvanizado com suporte para equipamento em area urbana",
+        title: "Poste galvanizado com suporte",
+    }),
+    createSeoImage("posteRetoAvenidaDia", {
+        alt: "Poste metalico galvanizado reto para avenida e iluminacao publica",
+        title: "Poste galvanizado reto",
+    }),
+    createSeoImage("posteRetoAvenidaNoite", {
+        alt: "Poste metalico galvanizado em avenida iluminada a noite",
+        title: "Poste galvanizado em avenida",
+    }),
+    createSeoImage("viaPublicaPostesRetosDoisLados", {
+        alt: "Postes metalicos galvanizados em via publica com iluminacao nos dois sentidos",
+        title: "Postes galvanizados em via publica",
+    }),
+    createSeoImage("estacionamentoNoturnoPosteReto", {
+        alt: "Poste metalico galvanizado para estacionamento externo durante a noite",
+        title: "Postes galvanizados em estacionamento",
+    }),
+]
 
 export const metadata: Metadata = {
     title: {
@@ -270,6 +299,7 @@ function getSchema() {
                 url: item.href,
             })),
         }),
+        ...createImageSchemas(productGallery),
         createFaqSchema(pageUrl, faq),
     ])
 }
@@ -462,6 +492,12 @@ export default function PosteMetalicoGalvanizadoPage() {
                     </div>
                 </div>
             </section>
+
+            <SeoProductGallery
+                title="Galeria de poste metalico galvanizado"
+                description="Imagens para reforcar aplicacoes externas em vias, estacionamentos e areas industriais, onde o acabamento galvanizado costuma entrar como requisito de durabilidade."
+                images={productGallery}
+            />
 
             <section className="bg-industrial-50 py-20 md:py-28">
                 <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">

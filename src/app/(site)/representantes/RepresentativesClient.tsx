@@ -16,6 +16,8 @@ const MARKET_LABELS: Record<string, string> = {
     industria: 'Indústria / Corporativo',
 };
 
+const MAX_VISIBLE_MARKETS = 3;
+
 export function RepresentativesClient({ representatives }: { representatives: Representative[] }) {
     // Estado selecionado (UF)
     const [selectedState, setSelectedState] = useState<string | null>(null);
@@ -53,7 +55,7 @@ export function RepresentativesClient({ representatives }: { representatives: Re
 
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
                     {/* Mapa Geográfico na Esquerda */}
-                    <div className="sticky top-28 bg-white p-6 md:p-10 border border-industrial-200 rounded-2xl">
+                    <div className="sticky top-28 bg-white p-6 md:p-10 border border-industrial-200">
                         <div className="mb-6 border-b-2 border-industrial-200 pb-3 flex items-center justify-between">
                             <h3 className="text-xl font-black text-industrial-950 uppercase tracking-tight">
                                 Selecione seu <span className="text-accent-dark">Estado</span>
@@ -70,7 +72,7 @@ export function RepresentativesClient({ representatives }: { representatives: Re
                     {/* Resultados à Direita */}
                     <div className="space-y-8 min-h-[400px]">
                         {!selectedState ? (
-                            <div className="h-full flex flex-col items-center justify-center text-center p-12 border-2 border-dashed border-industrial-200 rounded-2xl bg-white/50 space-y-4">
+                            <div className="h-full flex flex-col items-center justify-center text-center p-12 border-2 border-dashed border-industrial-200 bg-white/50 space-y-4">
                                 <div className="size-16 rounded-full bg-industrial-100 flex items-center justify-center">
                                     <MapPin className="size-8 text-industrial-400" />
                                 </div>
@@ -82,7 +84,7 @@ export function RepresentativesClient({ representatives }: { representatives: Re
                                 </p>
                             </div>
                         ) : filteredReps.length === 0 ? (
-                            <div className="p-8 border border-industrial-200 bg-white rounded-2xl">
+                            <div className="p-8 border border-industrial-200 bg-white">
                                 <p className="text-xl font-bold text-industrial-950 uppercase mb-2">
                                     Nenhum representante encontrado em {selectedState}.
                                 </p>
@@ -100,18 +102,13 @@ export function RepresentativesClient({ representatives }: { representatives: Re
 
                                 <div className="space-y-4">
                                     {filteredReps.map((rep, idx) => (
-                                        <div key={idx} className="bg-white p-6 md:p-8 border border-industrial-200 rounded-2xl hover:border-accent-premium transition-colors group relative overflow-hidden shadow-sm hover:shadow-md">
+                                        <div key={idx} className="bg-white p-6 md:p-8 border border-industrial-200 hover:border-accent-premium transition-colors group relative overflow-hidden shadow-sm hover:shadow-md">
                                             {/* Accent line left */}
                                             <div className="absolute top-0 left-0 h-full w-1.5 bg-industrial-200 group-hover:bg-accent-premium transition-colors" />
                                             
                                             <div className="pl-4">
                                                 <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
                                                     <div>
-                                                        {rep.region && (
-                                                            <span className="inline-block px-2 py-1 bg-industrial-100 text-industrial-600 text-[10px] font-bold uppercase tracking-wider mb-3 rounded-md">
-                                                                Região: {rep.region}
-                                                            </span>
-                                                        )}
                                                         <h4 className="text-2xl font-bold text-industrial-950 uppercase leading-none mb-1">{rep.name}</h4>
                                                         {rep.company && (
                                                             <div className="text-sm font-medium text-industrial-500 uppercase tracking-wide">
@@ -121,27 +118,32 @@ export function RepresentativesClient({ representatives }: { representatives: Re
 
                                                         {/* Canais/Mercados de Atuação do Representante */}
                                                         {rep.markets && rep.markets.length > 0 && (
-                                                            <div className="flex flex-wrap gap-1.5 mt-3 max-w-xs md:max-w-md">
-                                                                {rep.markets.map((marketValue) => {
+                                                            <div className="mt-4 flex max-w-xs flex-wrap gap-1.5 md:max-w-md">
+                                                                {rep.markets.slice(0, MAX_VISIBLE_MARKETS).map((marketValue) => {
                                                                     const label = MARKET_LABELS[marketValue] || marketValue;
                                                                     return (
                                                                         <span 
                                                                             key={marketValue} 
-                                                                            className="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-extrabold uppercase bg-accent-premium/15 text-accent-dark border border-accent-premium/25 tracking-wider"
+                                                                            className="inline-flex items-center px-2 py-0.5 rounded-sm text-[10px] font-extrabold uppercase bg-accent-premium/15 text-accent-dark border border-accent-premium/25 tracking-wider"
                                                                         >
                                                                             {label}
                                                                         </span>
                                                                     );
                                                                 })}
+                                                                {rep.markets.length > MAX_VISIBLE_MARKETS && (
+                                                                    <span className="inline-flex items-center px-2 py-0.5 rounded-sm text-[10px] font-extrabold uppercase bg-industrial-100 text-industrial-500 border border-industrial-200 tracking-wider">
+                                                                        +{rep.markets.length - MAX_VISIBLE_MARKETS}
+                                                                    </span>
+                                                                )}
                                                             </div>
                                                         )}
                                                     </div>
                                                     
-                                                    <div className="flex flex-col gap-3 shrink-0 bg-industrial-50 p-4 border border-industrial-100 min-w-[240px] rounded-lg">
+                                                    <div className="flex flex-col gap-3 shrink-0 bg-industrial-50 p-4 border border-industrial-100 min-w-[240px]">
                                                         {!isContactRevealed ? (
                                                             <button 
                                                                 onClick={() => setDialogRepName(rep.name)}
-                                                                className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-industrial-950 text-white rounded-lg text-sm font-bold uppercase tracking-wide hover:bg-accent-dark transition-colors"
+                                                                className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-industrial-950 text-white rounded-md text-sm font-bold uppercase tracking-wide hover:bg-accent-dark transition-colors"
                                                             >
                                                                 <Lock className="size-4 text-accent-premium" />
                                                                 Mostrar Contatos
@@ -149,13 +151,13 @@ export function RepresentativesClient({ representatives }: { representatives: Re
                                                         ) : (
                                                             <>
                                                                 <a href={`tel:${rep.phone.replace(/[^0-9]/g, '')}`} className="flex items-center gap-3 text-industrial-600 hover:text-industrial-950 transition-colors text-sm font-medium">
-                                                                    <div className="size-8 bg-white flex items-center justify-center rounded-lg border border-industrial-200">
+                                                                    <div className="size-8 bg-white flex items-center justify-center rounded-sm border border-industrial-200">
                                                                         <Phone className="size-4 text-accent-dark" />
                                                                     </div>
                                                                     {rep.phone}
                                                                 </a>
                                                                 <a href={`mailto:${rep.email}`} className="flex items-center gap-3 text-industrial-600 hover:text-industrial-950 transition-colors text-sm font-medium">
-                                                                    <div className="size-8 bg-white flex items-center justify-center rounded-lg border border-industrial-200">
+                                                                    <div className="size-8 bg-white flex items-center justify-center rounded-sm border border-industrial-200">
                                                                         <Mail className="size-4 text-accent-dark" />
                                                                     </div>
                                                                     <span className="break-all">{rep.email}</span>
@@ -164,7 +166,7 @@ export function RepresentativesClient({ representatives }: { representatives: Re
                                                                     href={`https://api.whatsapp.com/send?phone=55${rep.phone.replace(/[^0-9]/g, '')}&text=Ol%C3%A1%2C%20encontrei%20seu%20contato%20no%20site%20da%20B%26B%20Ilumina%C3%A7%C3%A3o.`} 
                                                                     target="_blank" 
                                                                     rel="noopener noreferrer"
-                                                                    className="mt-2 w-full flex items-center justify-center gap-2 py-2 px-4 bg-[#25D366] text-white rounded-lg text-sm font-bold uppercase tracking-wide hover:bg-[#1DA851] transition-colors"
+                                                                    className="mt-2 w-full flex items-center justify-center gap-2 py-2 px-4 bg-[#25D366] text-white rounded-md text-sm font-bold uppercase tracking-wide hover:bg-[#1DA851] transition-colors"
                                                                 >
                                                                     WhatsApp
                                                                 </a>
