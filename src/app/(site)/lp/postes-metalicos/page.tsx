@@ -1,4 +1,5 @@
-import { Check, Phone, Shield, Truck, Zap, Calculator, ArrowRight, FileText } from "lucide-react"
+import { Check, Phone, Shield, Truck, Zap, Calculator, FileText } from "lucide-react"
+import type { Metadata } from "next"
 import { ClientsMarquee } from "@/components/sections/clients-marquee"
 import { Portfolio } from "@/components/sections/portfolio"
 import { GoogleReviews } from "@/components/sections/google-reviews"
@@ -6,6 +7,16 @@ import { FaqSection } from "@/components/sections/faq"
 import { getPortfolioProjects, getClientLogos } from "@/lib/data"
 
 import Image from "next/image"
+
+export const metadata: Metadata = {
+    title: {
+        absolute: "Postes Metalicos | B&B Iluminacao",
+    },
+    description: "Postes metalicos para iluminacao publica, condominios, loteamentos e industrias. Solicite orcamento com a B&B.",
+    alternates: {
+        canonical: "https://bebiluminacao.com.br/postes-metalicos",
+    },
+}
 
 export default async function PostesMetalicosLP() {
     // Buscar dados do Payload CMS para injetar nas seções de prova social

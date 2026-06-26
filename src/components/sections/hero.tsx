@@ -24,18 +24,19 @@ export function Hero() {
 
                             {/* H1: Tipografia Responsiva Centralizada */}
                             <h1 className="responsive-title">
-                                ILUMINAÇÃO <br className="hidden sm:block" />
+                                SOLUÇÕES <br className="hidden sm:block" />
                                 <span className="relative inline-block">
-                                    PÚBLICA
+                                    METÁLICAS
                                     {/* Sublinhado decorativo amarelo */}
                                     <span className="absolute -bottom-1 left-0 w-full h-1 bg-accent-premium" aria-hidden="true" />
                                 </span>
-                                <br /> DE ALTO IMPACTO
+                                <br /> PARA URBANISMO
                             </h1>
 
                             <p className="text-industrial-500 text-base md:text-lg max-w-xl leading-relaxed">
-                                Especialistas em postes metálicos, braços e soluções customizadas
-                                para grandes obras, indústrias e projetos públicos em todo o Brasil.
+                                Postes metálicos, braços, suportes e estruturas para iluminação, segurança,
+                                mastros e projetos públicos ou privados em todo o Brasil.
+                                Na medida. No prazo. Na norma.
                             </p>
                         </div>
 
@@ -76,7 +77,7 @@ export function Hero() {
 
                         {/* Trust indicators pequenos — mobile friendly */}
                         <div className="flex flex-wrap gap-3">
-                            {["Pintura Eletrostática", "Prazo Garantido", "Logística Facilitada"].map((item) => (
+                            {["Postes e Braços", "Pintura Eletrostática", "Atendimento Nacional"].map((item) => (
                                 <div key={item} className="flex items-center gap-1.5 text-[11px] font-bold text-industrial-600 uppercase tracking-wide">
                                     <CheckCircle2 className="size-4 text-accent-dark shrink-0" aria-hidden="true" />
                                     {item}
@@ -106,7 +107,7 @@ export function Hero() {
                         {/* Selo de qualidade — posicionado fora da imagem para ser legível em mobile */}
                         <div className="absolute -bottom-4 -right-2 md:-bottom-6 md:-left-6 bg-accent-premium text-black p-3 md:p-4 text-center shadow-md max-w-[120px] md:max-w-none">
                             <span className="font-black text-[9px] md:text-[11px] uppercase tracking-tight leading-tight block">
-                                Executamos o seu<br />projeto de iluminação
+                                Na medida<br />No prazo<br />Na norma
                             </span>
                         </div>
                     </div>

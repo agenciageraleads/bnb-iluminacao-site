@@ -4,6 +4,7 @@ import * as React from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Menu, X, Phone } from "lucide-react"
+import { WhatsAppLink } from "@/components/ui/whatsapp-link"
 
 const navigation = [
     { name: "Quem Somos", href: "/quem-somos" },
@@ -16,6 +17,7 @@ const navigation = [
 
 export function Header() {
     const [isOpen, setIsOpen] = React.useState(false)
+    const whatsappMessage = "Ola, vim pelo site da B&B e quero solicitar um orcamento tecnico."
 
     /* Bloqueia o scroll do body quando o menu mobile está aberto */
     React.useEffect(() => {
@@ -45,16 +47,14 @@ export function Header() {
                                     {item.name}
                                 </Link>
                             ))}
-                            <a
-                                href="https://wa.me/556235761988"
-                                target="_blank"
-                                rel="noopener noreferrer"
+                            <WhatsAppLink
+                                message={whatsappMessage}
                                 className="flex items-center gap-2 bg-industrial-900 text-white hover:bg-accent-premium hover:text-black font-black tracking-widest uppercase text-[11px] px-5 h-10 transition-all"
                                 aria-label="Fale conosco pelo WhatsApp"
                             >
                                 <Phone className="size-4" aria-hidden="true" />
                                 Fale Conosco
-                            </a>
+                            </WhatsAppLink>
                         </nav>
 
                         {/* Botão hambúrguer com touch target ≥ 44px (p-3 + ícone 24px = 48px) */}
@@ -109,17 +109,15 @@ export function Header() {
 
                     {/* CTA WhatsApp no fundo do menu — thumb zone */}
                     <div className="p-5 border-t border-industrial-100 pb-safe">
-                        <a
-                            href="https://wa.me/556235761988"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                        <WhatsAppLink
+                            message={whatsappMessage}
                             className="flex items-center justify-center gap-2 w-full h-14 bg-industrial-900 text-white font-black uppercase tracking-widest text-sm active:bg-industrial-700 transition-colors"
                             onClick={() => setIsOpen(false)}
                             aria-label="Solicitar orçamento pelo WhatsApp"
                         >
                             <Phone className="size-5" aria-hidden="true" />
                             SOLICITAR ORÇAMENTO
-                        </a>
+                        </WhatsAppLink>
                     </div>
                 </nav>
             </div>

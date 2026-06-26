@@ -4,6 +4,8 @@ import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
 import { CheckCircle2, Target, Eye, CheckSquare, KeyRound } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { SchemaOrg } from "@/components/seo/schema-org"
+import { createSchemaGraph, createFactoryOrganizationSchema, createWebPageSchema, SITE_URL } from "@/lib/seo/schema"
 
 export const metadata: Metadata = {
     title: "Quem Somos | B&B Iluminação",
@@ -41,8 +43,19 @@ export default function QuemSomosPage() {
         "Se você pode resolver o problema, resolva!",
     ];
 
+    const pageUrl = `${SITE_URL}/quem-somos`
+    const quemSomosSchema = createSchemaGraph([
+        createFactoryOrganizationSchema(),
+        createWebPageSchema({
+            url: pageUrl,
+            name: "Quem Somos | B&B Iluminação",
+            description: "Conheça a B&B Iluminação, fabricante de postes metálicos fundada em 2017 em Goiânia. +30.000 postes fabricados, 26 estados atendidos.",
+        }),
+    ])
+
     return (
         <main className="min-h-screen bg-white">
+            <SchemaOrg data={quemSomosSchema} />
             <Header />
             <FloatingWhatsApp />
 

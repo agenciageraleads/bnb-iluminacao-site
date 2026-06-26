@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!label) return {}
 
   const title = `Corte a Laser Industrial em ${label.name} - ${label.uf} | B&B Iluminação`
-  const description = `Serviço de corte a laser fibra óptica 3kW exclusivamente em aço carbono para indústrias e metalúrgicas em ${label.name}. Chapas e tubos até 19mm.`
+  const description = `Serviço de corte a laser fibra óptica 3kW para indústrias e metalúrgicas em ${label.name}. Chapas e tubos até 19mm. Precisão milimétrica, sem rebarbas.`
 
   return {
     title,
@@ -51,7 +51,7 @@ export default async function LaserCityLP({ params }: Props) {
   const cityName = region?.cityName || label.name
   const uf = label.uf
 
-  const WA_MSG = `Olá, estou em ${cityName} e preciso de orçamento para corte a laser industrial em aço carbono.`
+  const WA_MSG = `Olá, estou em ${cityName} e preciso de orçamento para corte a laser industrial.`
 
   return (
     <main className="min-h-screen bg-white">
@@ -78,14 +78,14 @@ export default async function LaserCityLP({ params }: Props) {
             <div className="flex-1 text-center lg:text-left">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-industrial-50 border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-widest uppercase mb-8">
                 <span className="size-2 bg-green-500 rounded-full animate-pulse" aria-hidden="true" />
-                Somente aço carbono em {cityName}, {uf}
+                Atendemos {cityName}, {uf}
               </div>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-industrial-950 leading-[0.9] mb-6 uppercase tracking-tighter">
                 Corte a Laser <br />
                 em <span className="text-accent-premium">{cityName}</span>
               </h1>
               <p className="text-industrial-500 text-lg font-medium leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">
-                Serviço de corte a laser fibra óptica para metalúrgicas, construtoras e indústrias em {cityName}. Trabalhamos exclusivamente com aço carbono em chapas e tubos até 19mm. Não cortamos inox ou alumínio.
+                Serviço de corte a laser fibra óptica para metalúrgicas, construtoras e indústrias em {cityName}. Chapas e tubos até 19mm. Precisão milimétrica, sem rebarbas.
               </p>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-xl mx-auto lg:mx-0 mb-6">
@@ -93,7 +93,7 @@ export default async function LaserCityLP({ params }: Props) {
                   { value: "3kW", label: "Potência" },
                   { value: "19mm", label: "Espessura máx." },
                   { value: "3×1,5m", label: "Área de mesa" },
-                  { value: "Aço carbono", label: "Material" },
+                  { value: "100%", label: "Sem rebarbas" },
                 ].map((stat) => (
                   <div key={stat.label} className="bg-industrial-50 border border-industrial-200 p-4 text-center">
                     <p className="text-xl font-black text-industrial-950">{stat.value}</p>
@@ -109,7 +109,7 @@ export default async function LaserCityLP({ params }: Props) {
                   Cotação para {cityName}
                 </h2>
                 <p className="text-industrial-500 text-xs mb-6">
-                  Atendimento exclusivo para aço carbono. Descreva sua peça ou envie DXF via WhatsApp após preencher.
+                  Descreva sua peça ou envie DXF via WhatsApp após preencher.
                 </p>
                 <LaserQuoteForm cidade={cityName} />
               </div>

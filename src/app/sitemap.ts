@@ -1,29 +1,64 @@
 export const dynamic = 'force-dynamic'
 
 import { MetadataRoute } from 'next'
-import { getCategories, getProducts, getBlogPosts, getCatalogs } from '@/lib/data'
-import { getAllStateSlugs } from '@/lib/states-data'
-import { getRegions } from '@/lib/data'
+import { getCategories, getProducts, getBlogPosts } from '@/lib/data'
+import { caseStudies } from '@/lib/seo/cases'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || 'https://bebiluminacao.com.br'
-  const [products, posts, categoriesList, regions] = await Promise.all([
+  const [products, posts, categoriesList] = await Promise.all([
     getProducts(),
     getBlogPosts(1000),
     getCategories(),
-    getRegions()
   ])
 
   // Rotas Estáticas
   const staticRoutes = [
     '',
+    '/fabrica-de-postes-metalicos',
+    '/fabricante-de-postes-metalicos',
+    '/fabricante-de-postes-teleconicos',
+    '/fornecedor-de-postes-metalicos',
+    '/postes-metalicos',
+    '/postes-metalicos-sao-paulo',
+    '/postes-metalicos-minas-gerais',
+    '/postes-metalicos-rio-de-janeiro',
+    '/postes-metalicos-parana',
+    '/postes-metalicos-santa-catarina',
+    '/postes-metalicos-rio-grande-do-sul',
+    '/postes-metalicos-bahia',
+    '/postes-metalicos-pernambuco',
+    '/postes-metalicos-ceara',
+    '/postes-metalicos-para',
+    '/postes-metalicos-mato-grosso',
+    '/postes-metalicos-mato-grosso-do-sul',
+    '/postes-metalicos-goias',
+    '/postes-metalicos-distrito-federal',
+    '/postes-metalicos-tocantins',
+    '/postes-para-iluminacao-publica',
+    '/postes-para-loteamentos',
+    '/postes-para-condominios',
+    '/postes-para-pracas',
+    '/postes-para-estacionamentos',
+    '/produtos/poste-teleconico',
+    '/produtos/poste-metalico-galvanizado',
+    '/produtos/poste-curvo-simples',
+    '/produtos/poste-curvo-duplo',
+    '/produtos/braco-para-luminaria-publica',
+    '/produtos/suporte-para-luminaria-publica',
+    '/produtos/chumbador-para-poste-metalico',
     '/quem-somos',
     '/contato',
     '/servicos',
     '/produtos',
+    '/obras',
     '/blog',
+    '/blog/altura-de-poste-para-iluminacao-publica',
+    '/blog/normas-para-postes-de-iluminacao',
+    '/blog/poste-galvanizado-ou-pintado',
+    '/blog/poste-teleconico-ou-reto',
+    '/blog/poste-flangeado-ou-engastado',
     '/downloads',
-    '/lp/postes-metalicos',
     '/lp/mastros-para-bandeira',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
@@ -48,6 +83,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }))
 
+  const caseRoutes = caseStudies.map((caseStudy) => ({
+    url: `${baseUrl}/obras/${caseStudy.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.75,
+  }))
+
   // Rotas de Blog Posts
   const blogRoutes = posts.map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
@@ -56,21 +98,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.8, // Prioridade alta para GEO (Artigos Autorais)
   }))
 
-  // Rotas de LPs Estaduais (27 estados)
-  const stateRoutes = getAllStateSlugs().map((slug) => ({
-    url: `${baseUrl}/lp/estados/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }))
-
-  // Rotas de LPs de Cidades (GEO-Targeting via CMS)
-  const cityRoutes = regions.map((region) => ({
-    url: `${baseUrl}/lp/postes-metalicos/cidades/${region.slug}`,
-    lastModified: new Date(),
-    changeFrequency: 'weekly' as const,
-    priority: 0.9,
-  }))
-
-  return [...staticRoutes, ...categoryRoutes, ...productRoutes, ...blogRoutes, ...stateRoutes, ...cityRoutes]
+  return [...staticRoutes, ...categoryRoutes, ...productRoutes, ...blogRoutes, ...caseRoutes]
 }

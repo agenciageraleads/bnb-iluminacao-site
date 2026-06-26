@@ -4,6 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
+import { getProductLineHref } from "@/lib/seo/product-line-links"
 
 interface Category {
     title: string
@@ -41,7 +42,7 @@ export function CategoryOverview({ categories }: CategoryOverviewProps) {
                             viewport={{ once: true }}
                         >
                             <Link
-                                href={`/produtos/${category.slug}`}
+                                href={getProductLineHref(category.slug)}
                                 className="group relative block aspect-[4/5] overflow-hidden bg-industrial-900 rounded-sm"
                             >
                                 {/* Imagem de Fundo com Overlay */}

@@ -42,7 +42,7 @@ export async function createCatalogLead(prevState: any, formData: FormData) {
         try {
             await resend.emails.send({
                 from: 'Leads B&B <leads@bebiluminacao.com.br>',
-                to: ['contato@bebiluminacao.com.br'], // Substitua pelo e-mail do comercial
+                to: ['contato@bebiluminacao.com'],
                 subject: `Novo Lead B2B: Catálogo ${catalogId}`,
                 html: `
                     <h2>Novo Lead Interessado em Catálogo</h2>

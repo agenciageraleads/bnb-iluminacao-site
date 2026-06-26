@@ -4,6 +4,8 @@ WORKDIR /app
 ENV NEXT_TELEMETRY_DISABLED=1
 ARG PAYLOAD_SECRET
 ENV PAYLOAD_SECRET=${PAYLOAD_SECRET}
+ARG PAYLOAD_NO_PUSH=true
+ENV PAYLOAD_NO_PUSH=${PAYLOAD_NO_PUSH}
 # NEXT_PUBLIC_* precisam existir no build: paginas estaticas (LPs) sao
 # pre-renderizadas aqui e ficam sem tags se as vars chegarem so em runtime
 ARG NEXT_PUBLIC_GTM_ID

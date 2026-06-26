@@ -3,7 +3,7 @@ import { Header } from "@/components/layout/header"
 import { getBlogPosts, Post } from "@/lib/data"
 import Link from "next/link"
 import Image from "next/image"
-import { Calendar, ArrowRight } from "lucide-react"
+import { Calendar, ArrowRight, Anchor, BookOpen, Paintbrush, Ruler, Zap } from "lucide-react"
 import { unstable_noStore as noStore } from "next/cache"
 
 export const metadata: Metadata = {
@@ -15,6 +15,59 @@ export const metadata: Metadata = {
 }
 
 export const dynamic = 'force-dynamic'
+
+const featuredGuides = [
+    {
+        title: "Altura de Poste para Iluminacao Publica",
+        summary:
+            "Guia tecnico para orientar altura por aplicacao, via, luminaria, braco, fixacao e dados para orcamento.",
+        href: "/blog/altura-de-poste-para-iluminacao-publica",
+        image: "/images/seo/postes-metalicos/via-publica-postes-retos-dois-lados.jpg",
+        date: "14/06/2026",
+        tier: "Guia tecnico P0",
+        icon: Ruler,
+    },
+    {
+        title: "Normas para Postes de Iluminacao Publica",
+        summary:
+            "Guia autoral para organizar normas, memoriais, padroes locais e documentos antes da cotacao tecnica.",
+        href: "/blog/normas-para-postes-de-iluminacao",
+        image: "/images/seo/postes-metalicos/rua-iluminada-poste-curvo.jpg",
+        date: "14/06/2026",
+        tier: "Guia tecnico P0",
+        icon: BookOpen,
+    },
+    {
+        title: "Poste Galvanizado ou Pintado",
+        summary:
+            "Comparativo tecnico para escolher acabamento por ambiente, durabilidade, visual, memorial e prazo.",
+        href: "/blog/poste-galvanizado-ou-pintado",
+        image: "/images/seo/postes-metalicos/estacionamento-industrial-postes-retos.jpg",
+        date: "14/06/2026",
+        tier: "Guia tecnico P0",
+        icon: Paintbrush,
+    },
+    {
+        title: "Poste Teleconico ou Reto",
+        summary:
+            "Guia para entender nomenclatura, geometria, avanco de luminaria e modelo correto antes da cotacao.",
+        href: "/blog/poste-teleconico-ou-reto",
+        image: "/images/produtos/poste-reto-avenida-dia.png",
+        date: "14/06/2026",
+        tier: "Guia tecnico P0",
+        icon: Zap,
+    },
+    {
+        title: "Poste Flangeado ou Engastado",
+        summary:
+            "Comparativo para alinhar fixacao, base, chumbadores, fundacao e dados de cotacao antes da compra.",
+        href: "/blog/poste-flangeado-ou-engastado",
+        image: "/images/seo/postes-metalicos/estacionamento-industrial-postes-retos.jpg",
+        date: "14/06/2026",
+        tier: "Guia tecnico P1",
+        icon: Anchor,
+    },
+]
 
 export default async function BlogPage() {
     noStore();
@@ -33,6 +86,50 @@ export default async function BlogPage() {
                         Dicas, guias e as últimas notícias do setor de iluminação externa e engenharia industrial.
                     </p>
                 </header>
+
+                <section className="mb-14 grid gap-5">
+                    {featuredGuides.map((guide) => {
+                        const Icon = guide.icon
+
+                        return (
+                            <Link
+                                key={guide.href}
+                                href={guide.href}
+                                className="group grid overflow-hidden border border-industrial-200 bg-white transition-colors hover:border-industrial-950 lg:grid-cols-[0.9fr_1.1fr]"
+                            >
+                                <div className="relative min-h-[280px] bg-industrial-100">
+                                    <Image
+                                        src={guide.image}
+                                        alt={guide.title}
+                                        fill
+                                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                        sizes="(min-width: 1024px) 45vw, 100vw"
+                                    />
+                                </div>
+                                <div className="flex flex-col justify-center p-8 md:p-10">
+                                    <div className="mb-5 inline-flex w-fit items-center gap-3 bg-industrial-950 px-4 py-2 text-[10px] font-black uppercase tracking-widest text-white">
+                                        <Icon className="size-4 text-accent-premium" aria-hidden="true" />
+                                        {guide.tier}
+                                    </div>
+                                    <div className="mb-4 flex items-center gap-3 text-industrial-500 text-[10px] font-bold uppercase tracking-widest">
+                                        <Calendar className="size-3 text-accent-premium" />
+                                        {guide.date}
+                                    </div>
+                                    <h2 className="text-3xl font-black uppercase leading-tight text-industrial-950 transition-colors group-hover:text-accent-dark md:text-5xl">
+                                        {guide.title}
+                                    </h2>
+                                    <p className="mt-5 max-w-2xl text-base leading-relaxed text-industrial-600">
+                                        {guide.summary}
+                                    </p>
+                                    <span className="mt-7 inline-flex items-center gap-2 text-xs font-black uppercase tracking-widest text-industrial-700">
+                                        Ler guia tecnico
+                                        <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                                    </span>
+                                </div>
+                            </Link>
+                        )
+                    })}
+                </section>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                     {posts.length > 0 ? (

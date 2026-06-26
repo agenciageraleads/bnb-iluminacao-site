@@ -39,8 +39,8 @@ function ContatoContent() {
         {
             icon: <MapPin className="size-5" aria-hidden="true" />,
             label: "Endereço",
-            value: "Goiânia, GO — Brasil",
-            href: "https://maps.google.com/?q=Goiânia,GO",
+            value: "Rua CV10, Qd 26 Lt 02, Residencial Centerville, Goiania, GO",
+            href: "https://maps.google.com/?q=Rua%20CV10%20Qd%2026%20Lt%2002%20Residencial%20Centerville%20Goiania%20GO",
         },
         {
             icon: <Clock className="size-5" aria-hidden="true" />,
