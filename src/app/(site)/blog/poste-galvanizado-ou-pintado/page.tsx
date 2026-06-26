@@ -32,6 +32,9 @@ import {
     createFaqSchema,
     createItemListSchema,
     createSchemaGraph,
+    createArticleSchema,
+} from "@/lib/seo/schema"
+
 const pageUrl = "https://bebiluminacao.com.br/blog/poste-galvanizado-ou-pintado"
 const pageTitle = "Poste Galvanizado ou Pintado"
 const pageDescription =

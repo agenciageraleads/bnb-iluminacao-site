@@ -32,6 +32,9 @@ import {
     createFaqSchema,
     createItemListSchema,
     createSchemaGraph,
+    createArticleSchema,
+} from "@/lib/seo/schema"
+
 const pageUrl = "https://bebiluminacao.com.br/blog/poste-teleconico-ou-reto"
 const pageTitle = "Poste Teleconico ou Reto"
 const pageDescription =
