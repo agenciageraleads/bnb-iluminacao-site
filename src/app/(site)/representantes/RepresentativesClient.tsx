@@ -55,7 +55,7 @@ export function RepresentativesClient({ representatives }: { representatives: Re
 
                 <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
                     {/* Mapa Geográfico na Esquerda */}
-                    <div className="sticky top-28 bg-white p-6 md:p-10 border border-industrial-200">
+                    <div className="sticky top-28 bg-white p-6 md:p-10 border border-industrial-200 rounded-2xl">
                         <div className="mb-6 border-b-2 border-industrial-200 pb-3 flex items-center justify-between">
                             <h3 className="text-xl font-black text-industrial-950 uppercase tracking-tight">
                                 Selecione seu <span className="text-accent-dark">Estado</span>
@@ -72,7 +72,7 @@ export function RepresentativesClient({ representatives }: { representatives: Re
                     {/* Resultados à Direita */}
                     <div className="space-y-8 min-h-[400px]">
                         {!selectedState ? (
-                            <div className="h-full flex flex-col items-center justify-center text-center p-12 border-2 border-dashed border-industrial-200 bg-white/50 space-y-4">
+                            <div className="h-full flex flex-col items-center justify-center text-center p-12 border-2 border-dashed border-industrial-200 rounded-2xl bg-white/50 space-y-4">
                                 <div className="size-16 rounded-full bg-industrial-100 flex items-center justify-center">
                                     <MapPin className="size-8 text-industrial-400" />
                                 </div>
@@ -84,7 +84,7 @@ export function RepresentativesClient({ representatives }: { representatives: Re
                                 </p>
                             </div>
                         ) : filteredReps.length === 0 ? (
-                            <div className="p-8 border border-industrial-200 bg-white">
+                            <div className="p-8 border border-industrial-200 bg-white rounded-2xl">
                                 <p className="text-xl font-bold text-industrial-950 uppercase mb-2">
                                     Nenhum representante encontrado em {selectedState}.
                                 </p>
@@ -102,7 +102,7 @@ export function RepresentativesClient({ representatives }: { representatives: Re
 
                                 <div className="space-y-4">
                                     {filteredReps.map((rep, idx) => (
-                                        <div key={idx} className="bg-white p-6 md:p-8 border border-industrial-200 hover:border-accent-premium transition-colors group relative overflow-hidden shadow-sm hover:shadow-md">
+                                        <div key={idx} className="bg-white p-6 md:p-8 border border-industrial-200 rounded-2xl hover:border-accent-premium transition-colors group relative overflow-hidden shadow-sm hover:shadow-md">
                                             {/* Accent line left */}
                                             <div className="absolute top-0 left-0 h-full w-1.5 bg-industrial-200 group-hover:bg-accent-premium transition-colors" />
                                             
@@ -139,7 +139,7 @@ export function RepresentativesClient({ representatives }: { representatives: Re
                                                         )}
                                                     </div>
                                                     
-                                                    <div className="flex flex-col gap-3 shrink-0 bg-industrial-50 p-4 border border-industrial-100 min-w-[240px]">
+                                                    <div className="flex flex-col gap-3 shrink-0 bg-industrial-50 p-4 border border-industrial-100 min-w-[240px] rounded-lg">
                                                         {!isContactRevealed ? (
                                                             <button 
                                                                 onClick={() => setDialogRepName(rep.name)}

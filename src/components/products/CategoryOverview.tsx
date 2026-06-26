@@ -81,7 +81,7 @@ export function CategoryOverview({ categories }: CategoryOverviewProps) {
                                 </div>
 
                                 {/* Borda Decorativa */}
-                                <div className="absolute inset-0 border border-white/10 group-hover:border-accent-premium/30 transition-colors pointer-events-none" />
+                                <div className="absolute inset-0 border border-white/10 group-hover:border-accent-premium/30 transition-colors pointer-events-none rounded-2xl" />
                             </Link>
                         </motion.div>
                     ))}

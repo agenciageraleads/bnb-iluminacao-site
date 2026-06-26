@@ -180,7 +180,7 @@ export default async function ObrasPage() {
                             <Link
                                 key={caseStudy.slug}
                                 href={`/obras/${caseStudy.slug}`}
-                                className="group flex min-h-[520px] flex-col border border-industrial-200 bg-white transition-colors hover:border-industrial-950"
+                                className="group flex min-h-[520px] flex-col border border-industrial-200 bg-white transition-colors hover:border-industrial-950 rounded-2xl overflow-hidden"
                             >
                                 <div className="relative aspect-[4/3] bg-industrial-100">
                                     <Image

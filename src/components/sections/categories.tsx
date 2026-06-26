@@ -22,7 +22,7 @@ export async function Categories() {
                         <Link
                             key={index}
                             href={getProductLineHref(cat.slug)}
-                            className="group relative block aspect-[4/5] overflow-hidden"
+                            className="group relative block aspect-[4/5] overflow-hidden rounded-2xl"
                         >
                             {/* Imagem de Fundo do CMS */}
                             {cat.image ? (
