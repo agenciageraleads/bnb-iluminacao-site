@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 import Script from "next/script"
 import Image from "next/image"
-import { Phone, Shield, Truck, Flag, Ruler, Sun, CheckCircle2, Paintbrush, MessageCircle, ArrowRight } from "lucide-react"
+import { Phone, Shield, Truck, Flag, Ruler, Sun, CheckCircle2, Paintbrush, MessageCircle, ArrowRight, Store, Landmark, Factory, Scale, Building2, Construction } from "lucide-react"
 import { ClientsMarquee } from "@/components/sections/clients-marquee"
 import { Portfolio } from "@/components/sections/portfolio"
 import { GoogleReviews } from "@/components/sections/google-reviews"
@@ -47,12 +47,12 @@ const productSchema = {
 
 // Alturas disponíveis de mastros
 const mastroHeights = [
-    { height: "3m", use: "Fachadas comerciais e entradas", icon: "🏪" },
-    { height: "5m", use: "Praças e áreas públicas", icon: "🏛️" },
-    { height: "7m", use: "Indústrias e condomínios", icon: "🏭" },
-    { height: "9m", use: "Órgãos públicos e quartéis", icon: "⚖️" },
-    { height: "10m", use: "Centros cívicos e estádios", icon: "🏟️" },
-    { height: "12m", use: "Grandes empreendimentos", icon: "🏗️" },
+    { height: "3m", use: "Fachadas comerciais e entradas", icon: Store },
+    { height: "5m", use: "Praças e áreas públicas", icon: Landmark },
+    { height: "7m", use: "Indústrias e condomínios", icon: Factory },
+    { height: "9m", use: "Órgãos públicos e quartéis", icon: Scale },
+    { height: "10m", use: "Centros cívicos e estádios", icon: Building2 },
+    { height: "12m", use: "Grandes empreendimentos", icon: Construction },
 ]
 
 // FAQ específico de mastros
@@ -111,7 +111,7 @@ export default async function MastrosLP() {
                         href="https://wa.me/556235761988?text=Olá, quero um orçamento para mastros de bandeira."
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 bg-industrial-950 text-white hover:bg-industrial-800 active:bg-industrial-700 font-black uppercase tracking-widest text-[10px] px-4 h-10 transition-colors"
+                        className="flex items-center gap-2 bg-industrial-950 text-white hover:bg-industrial-800 active:bg-industrial-700 font-black uppercase tracking-widest text-[10px] px-4 h-10 rounded-lg transition-colors"
                         aria-label="Solicitar orçamento pelo WhatsApp"
                     >
                         <Phone className="size-4" aria-hidden="true" />
@@ -128,7 +128,7 @@ export default async function MastrosLP() {
                     <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
                         {/* Texto */}
                         <div className="flex-1 text-center lg:text-left">
-                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-industrial-50 border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-widest uppercase mb-8">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-industrial-50 border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-widest uppercase rounded-md mb-8">
                                 <span className="size-2 bg-green-500 rounded-full animate-pulse" aria-hidden="true" />
                                 Kit Completo: Mastro + Bandeira
                             </div>
@@ -149,14 +149,14 @@ export default async function MastrosLP() {
                                     href="https://wa.me/556235761988?text=Olá, vim pela página de mastros para bandeira e quero solicitar um orçamento."
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center justify-center gap-3 bg-industrial-950 text-white hover:bg-industrial-800 active:bg-industrial-700 font-black h-16 px-10 w-full sm:w-auto uppercase tracking-widest transition-transform hover:-translate-y-1 shadow-xl shadow-industrial-950/20 group text-xs"
+                                    className="flex items-center justify-center gap-3 bg-industrial-950 text-white hover:bg-industrial-800 active:bg-industrial-700 font-black h-16 px-10 w-full sm:w-auto uppercase tracking-widest rounded-lg transition-transform hover:-translate-y-1 shadow-xl shadow-industrial-950/20 group text-xs"
                                 >
                                     <MessageCircle className="size-5" aria-hidden="true" />
                                     SOLICITAR ORÇAMENTO
                                 </a>
                                 <a
                                     href="/downloads"
-                                    className="flex items-center justify-center gap-2 bg-white border-2 border-industrial-200 text-industrial-800 hover:border-industrial-950 hover:text-industrial-950 font-black h-16 px-8 w-full sm:w-auto uppercase tracking-widest transition-colors text-xs"
+                                    className="flex items-center justify-center gap-2 bg-white border-2 border-industrial-200 text-industrial-800 hover:border-industrial-950 hover:text-industrial-950 font-black h-16 px-8 w-full sm:w-auto uppercase tracking-widest rounded-lg transition-colors text-xs"
                                 >
                                     <Flag className="size-5" aria-hidden="true" />
                                     VER CATÁLOGO
@@ -171,7 +171,7 @@ export default async function MastrosLP() {
 
                         {/* Imagem de impacto — Mastro ao ar livre */}
                         <div className="flex-1 w-full max-w-2xl lg:max-w-none">
-                            <div className="relative aspect-[4/3] lg:aspect-square bg-industrial-100 border-8 border-white shadow-2xl skew-y-2 lg:skew-y-0 lg:-rotate-2 hover:rotate-0 transition-transform duration-500">
+                            <div className="relative aspect-[4/3] lg:aspect-square bg-industrial-100 border-8 border-white rounded-2xl shadow-2xl skew-y-2 lg:skew-y-0 lg:-rotate-2 hover:rotate-0 transition-transform duration-500">
                                 <Image
                                     src="/portfolio/reserva-parque.webp"
                                     alt="Mastro para bandeira em aço galvanizado instalado em área externa"
@@ -179,10 +179,10 @@ export default async function MastrosLP() {
                                     className="object-cover"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-industrial-950/40 to-transparent" />
-                                <div className="absolute top-4 right-4 bg-accent-premium text-black font-black text-[10px] tracking-widest px-4 py-2 uppercase">
+                                <div className="absolute top-4 right-4 bg-accent-premium text-black font-black text-[10px] tracking-widest px-4 py-2 rounded-md uppercase">
                                     Uso Externo
                                 </div>
-                                <div className="absolute bottom-4 left-4 bg-black/80 text-white font-black text-[10px] tracking-widest px-4 py-2 uppercase">
+                                <div className="absolute bottom-4 left-4 bg-black/80 text-white font-black text-[10px] tracking-widest px-4 py-2 rounded-md uppercase">
                                     3m a 12m de altura
                                 </div>
                             </div>
@@ -195,21 +195,21 @@ export default async function MastrosLP() {
             <section className="py-10 border-y border-industrial-100 bg-industrial-50">
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div className="flex items-center gap-5 p-6 bg-white border border-industrial-200 shadow-sm">
+                        <div className="flex items-center gap-5 p-6 bg-white border border-industrial-200 rounded-2xl shadow-sm">
                             <Sun className="size-10 text-accent-premium shrink-0" />
                             <div>
                                 <h4 className="font-black text-xs uppercase tracking-widest text-industrial-950">Área Externa</h4>
                                 <p className="text-industrial-500 text-xs mt-1 font-bold">Projetado exclusivamente para uso ao ar livre. Resistente a sol, chuva e vento.</p>
                             </div>
                         </div>
-                        <div className="flex items-center gap-5 p-6 bg-white border border-industrial-200 shadow-sm">
+                        <div className="flex items-center gap-5 p-6 bg-white border border-industrial-200 rounded-2xl shadow-sm">
                             <Truck className="size-10 text-accent-premium shrink-0" />
                             <div>
                                 <h4 className="font-black text-xs uppercase tracking-widest text-industrial-950">Envio Nacional</h4>
                                 <p className="text-industrial-500 text-xs mt-1 font-bold">Entregamos para todos os 26 estados + DF com logística própria.</p>
                             </div>
                         </div>
-                        <div className="flex items-center gap-5 p-6 bg-white border border-industrial-200 shadow-sm">
+                        <div className="flex items-center gap-5 p-6 bg-white border border-industrial-200 rounded-2xl shadow-sm">
                             <Flag className="size-10 text-accent-premium shrink-0" />
                             <div>
                                 <h4 className="font-black text-xs uppercase tracking-widest text-industrial-950">Kit Completo</h4>
@@ -237,10 +237,12 @@ export default async function MastrosLP() {
                     </div>
 
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                        {mastroHeights.map((item, i) => (
-                            <div key={i} className="bg-industrial-50 border border-industrial-200 p-6 hover:border-accent-premium transition-colors hover:shadow-md group">
+                        {mastroHeights.map((item, i) => {
+                            const Icon = item.icon
+                            return (
+                            <div key={i} className="bg-industrial-50 border border-industrial-200 rounded-2xl p-6 hover:border-accent-premium transition-colors hover:shadow-md group">
                                 <div className="flex items-center gap-4 mb-3">
-                                    <span className="text-3xl" aria-hidden="true">{item.icon}</span>
+                                    <Icon className="size-8 text-accent-dark" aria-hidden="true" />
                                     <span className="text-3xl font-black text-industrial-950">{item.height}</span>
                                 </div>
                                 <p className="text-industrial-600 text-sm font-medium">{item.use}</p>
@@ -249,7 +251,8 @@ export default async function MastrosLP() {
                                     Solicitar orçamento
                                 </div>
                             </div>
-                        ))}
+                            )
+                        })}
                     </div>
                 </div>
             </section>
@@ -287,8 +290,8 @@ export default async function MastrosLP() {
                                 icon: <Ruler />,
                             },
                         ].map((item, i) => (
-                            <div key={i} className="flex gap-6 p-8 border border-industrial-800 hover:border-accent-premium transition-colors">
-                                <div className="size-14 bg-accent-premium text-black flex items-center justify-center shrink-0">
+                            <div key={i} className="flex gap-6 p-8 border border-industrial-800 rounded-2xl hover:border-accent-premium transition-colors">
+                                <div className="size-14 bg-accent-premium text-black flex items-center justify-center rounded-lg shrink-0">
                                     {item.icon}
                                 </div>
                                 <div>
@@ -319,9 +322,9 @@ export default async function MastrosLP() {
 
                     <div className="space-y-4">
                         {faqMastros.map((item, i) => (
-                            <div key={i} className="bg-white border border-industrial-200 p-8 hover:border-accent-premium transition-colors">
+                            <div key={i} className="bg-white border border-industrial-200 rounded-2xl p-8 hover:border-accent-premium transition-colors">
                                 <h4 className="font-black text-industrial-950 uppercase text-sm mb-3 flex items-center gap-3">
-                                    <span className="size-6 bg-accent-premium text-industrial-950 flex items-center justify-center text-[10px] shrink-0 font-black">Q</span>
+                                    <span className="size-6 bg-accent-premium text-industrial-950 flex items-center justify-center text-[10px] rounded-md shrink-0 font-black">Q</span>
                                     {item.question}
                                 </h4>
                                 <p className="text-industrial-600 text-sm leading-relaxed pl-9">
@@ -350,7 +353,7 @@ export default async function MastrosLP() {
                         href="https://wa.me/556235761988?text=Olá! Quero um orçamento para mastros de bandeira. Podem me ajudar?"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-3 bg-black text-white hover:bg-industrial-800 font-black h-16 w-full sm:w-auto px-12 text-lg uppercase tracking-widest transition-transform hover:scale-105 shadow-2xl"
+                        className="inline-flex items-center justify-center gap-3 bg-black text-white hover:bg-industrial-800 font-black h-16 w-full sm:w-auto px-12 text-lg uppercase tracking-widest rounded-lg transition-transform hover:scale-105 shadow-2xl"
                         aria-label="Solicitar orçamento pelo WhatsApp agora"
                     >
                         <Phone className="size-5" />

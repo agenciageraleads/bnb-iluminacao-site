@@ -342,7 +342,7 @@ export default function PosteMetalicoGalvanizadoPage() {
 
                 <div className="container relative z-10 mx-auto px-4 pb-20 pt-12 md:pb-28">
                     <div className="max-w-4xl">
-                        <div className="mb-6 inline-flex items-center gap-3 border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.22em] text-white">
+                        <div className="mb-6 inline-flex items-center gap-3 border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.22em] text-white rounded-md">
                             <ShieldCheck className="size-4 text-accent-premium" aria-hidden="true" />
                             Acabamento tecnico para uso externo
                         </div>
@@ -359,7 +359,7 @@ export default function PosteMetalicoGalvanizadoPage() {
                                 message={whatsappMessage}
                                 eventLabel="Solicitar orcamento de poste metalico galvanizado"
                                 eventSource="hero_poste_metalico_galvanizado"
-                                className="inline-flex h-14 items-center justify-center gap-3 bg-accent-premium px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-yellow-300"
+                                className="inline-flex h-14 items-center justify-center gap-3 bg-accent-premium px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-yellow-300 rounded-lg"
                                 aria-label="Solicitar orcamento de poste metalico galvanizado pelo WhatsApp"
                             >
                                 <MessageCircle className="size-5" aria-hidden="true" />
@@ -367,7 +367,7 @@ export default function PosteMetalicoGalvanizadoPage() {
                             </WhatsAppLink>
                             <Link
                                 href="/downloads"
-                                className="inline-flex h-14 items-center justify-center gap-3 border border-white/25 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-industrial-950"
+                                className="inline-flex h-14 items-center justify-center gap-3 border border-white/25 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-industrial-950 rounded-lg"
                             >
                                 <Download className="size-5" aria-hidden="true" />
                                 Baixar catalogos
@@ -382,8 +382,8 @@ export default function PosteMetalicoGalvanizadoPage() {
                     {highlights.map((item) => {
                         const Icon = item.icon
                         return (
-                            <div key={item.title} className="flex items-start gap-4 bg-white p-5">
-                                <div className="flex size-11 shrink-0 items-center justify-center bg-industrial-950 text-accent-premium">
+                            <div key={item.title} className="flex items-start gap-4 bg-white p-5 rounded-2xl">
+                                <div className="flex size-11 shrink-0 items-center justify-center bg-industrial-950 text-accent-premium rounded-lg">
                                     <Icon className="size-5" aria-hidden="true" />
                                 </div>
                                 <div>
@@ -417,7 +417,7 @@ export default function PosteMetalicoGalvanizadoPage() {
 
                     <div className="grid gap-4">
                         {specificationRows.map(([label, value]) => (
-                            <div key={label} className="grid border border-industrial-200 md:grid-cols-[180px_1fr]">
+                            <div key={label} className="grid border border-industrial-200 md:grid-cols-[180px_1fr] rounded-2xl overflow-hidden">
                                 <div className="bg-industrial-50 px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-600">
                                     {label}
                                 </div>
@@ -442,7 +442,7 @@ export default function PosteMetalicoGalvanizadoPage() {
                             padrao visual, manutencao esperada e requisitos do projeto.
                         </p>
                     </div>
-                    <div className="overflow-hidden border border-white/15">
+                    <div className="overflow-hidden border border-white/15 rounded-2xl">
                         {comparisonRows.map(([option, use, note]) => (
                             <div key={option} className="grid border-b border-white/15 last:border-b-0 md:grid-cols-[220px_1fr_1fr]">
                                 <div className="bg-white/10 px-5 py-5 text-xs font-black uppercase tracking-widest text-accent-premium">
@@ -477,7 +477,7 @@ export default function PosteMetalicoGalvanizadoPage() {
                             <Link
                                 key={model.title}
                                 href={model.href}
-                                className="group border border-industrial-200 p-7 transition-colors hover:border-industrial-950"
+                                className="group border border-industrial-200 p-7 transition-colors hover:border-industrial-950 rounded-2xl"
                             >
                                 <h3 className="text-lg font-black uppercase tracking-tight text-industrial-950">
                                     {model.title}
@@ -513,8 +513,8 @@ export default function PosteMetalicoGalvanizadoPage() {
                     </div>
                     <div className="grid gap-4 md:grid-cols-2">
                         {buyingSteps.map((step) => (
-                            <div key={step.title} className="border border-industrial-200 bg-white p-6">
-                                <div className="mb-5 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium">
+                            <div key={step.title} className="border border-industrial-200 bg-white p-6 rounded-2xl">
+                                <div className="mb-5 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium rounded-lg">
                                     <Wrench className="size-6" aria-hidden="true" />
                                 </div>
                                 <h3 className="text-base font-black uppercase tracking-tight text-industrial-950">
@@ -546,9 +546,9 @@ export default function PosteMetalicoGalvanizadoPage() {
                                 <Link
                                     key={card.title}
                                     href={card.href}
-                                    className="group border border-industrial-200 p-6 transition-colors hover:border-industrial-950"
+                                    className="group border border-industrial-200 p-6 transition-colors hover:border-industrial-950 rounded-2xl"
                                 >
-                                    <div className="mb-6 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium">
+                                    <div className="mb-6 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium rounded-lg">
                                         <Icon className="size-6" aria-hidden="true" />
                                     </div>
                                     <h3 className="text-base font-black uppercase tracking-tight text-industrial-950">
@@ -583,7 +583,7 @@ export default function PosteMetalicoGalvanizadoPage() {
                             <Link
                                 key={download.href}
                                 href={download.href}
-                                className="group flex items-center justify-between gap-5 border border-white/15 bg-white/5 p-5 transition-colors hover:bg-white hover:text-industrial-950"
+                                className="group flex items-center justify-between gap-5 border border-white/15 bg-white/5 p-5 transition-colors hover:bg-white hover:text-industrial-950 rounded-lg"
                             >
                                 <span className="text-sm font-black uppercase tracking-widest">{download.title}</span>
                                 <Download className="size-5 text-accent-premium transition-transform group-hover:translate-y-0.5" aria-hidden="true" />
@@ -603,7 +603,7 @@ export default function PosteMetalicoGalvanizadoPage() {
                     </div>
                     <div className="space-y-4">
                         {faq.map((item) => (
-                            <div key={item.question} className="border border-industrial-200 p-6">
+                            <div key={item.question} className="border border-industrial-200 p-6 rounded-2xl">
                                 <h3 className="text-base font-black uppercase tracking-tight text-industrial-950">
                                     {item.question}
                                 </h3>
@@ -631,7 +631,7 @@ export default function PosteMetalicoGalvanizadoPage() {
                                     message={whatsappMessage}
                                     eventLabel="Solicitar cotacao de poste metalico galvanizado"
                                     eventSource="final_poste_metalico_galvanizado"
-                                    className="inline-flex h-14 items-center justify-center gap-3 bg-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-accent-premium hover:text-industrial-950"
+                                    className="inline-flex h-14 items-center justify-center gap-3 bg-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-accent-premium hover:text-industrial-950 rounded-lg"
                                     aria-label="Solicitar cotacao de poste metalico galvanizado pelo WhatsApp"
                                 >
                                     <MessageCircle className="size-5" aria-hidden="true" />
@@ -639,7 +639,7 @@ export default function PosteMetalicoGalvanizadoPage() {
                                 </WhatsAppLink>
                                 <Link
                                     href="/fornecedor-de-postes-metalicos"
-                                    className="inline-flex h-14 items-center justify-center gap-3 border border-industrial-300 px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:border-industrial-950"
+                                    className="inline-flex h-14 items-center justify-center gap-3 border border-industrial-300 px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:border-industrial-950 rounded-lg"
                                 >
                                     <FileText className="size-5" aria-hidden="true" />
                                     Ver fornecedor
@@ -651,7 +651,7 @@ export default function PosteMetalicoGalvanizadoPage() {
                                 <Link
                                     key={href}
                                     href={href}
-                                    className="group flex items-center justify-between gap-4 border border-industrial-200 bg-white p-5 text-sm font-black uppercase tracking-widest text-industrial-950 transition-colors hover:border-industrial-950"
+                                    className="group flex items-center justify-between gap-4 border border-industrial-200 bg-white p-5 text-sm font-black uppercase tracking-widest text-industrial-950 transition-colors hover:border-industrial-950 rounded-lg"
                                 >
                                     <span>{label}</span>
                                     <ArrowRight className="size-4 text-accent-dark transition-transform group-hover:translate-x-1" aria-hidden="true" />

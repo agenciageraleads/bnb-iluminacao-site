@@ -33,7 +33,7 @@ export default function PinturaEletrostaticaPage() {
                             A tecnologia de pintura a pó poliéster aplicada pela B&B oferece uma blindagem estética e funcional, protegendo o aço contra intempéries e garantindo um visual impecável por anos.
                         </p>
                         <div className="flex flex-wrap gap-4">
-                            <Link href="/contato?servico=pintura" className="bg-accent-premium text-black h-16 px-10 flex items-center justify-center font-black uppercase tracking-widest text-xs hover:bg-white transition-all shadow-xl">
+                            <Link href="/contato?servico=pintura" className="bg-accent-premium text-black h-16 px-10 flex items-center justify-center font-black uppercase tracking-widest text-xs rounded-lg hover:bg-white transition-all shadow-xl">
                                 Obter Orçamento de Pintura
                             </Link>
                         </div>
@@ -51,7 +51,7 @@ export default function PinturaEletrostaticaPage() {
                             { icon: <Paintbrush />, title: "Acabamento Ideal", desc: "Uniformidade total, sem escorrimentos ou bolhas." }
                         ].map((item, i) => (
                             <div key={i} className="flex items-start gap-4 text-industrial-950">
-                                <div className="p-2 bg-industrial-950 text-accent-premium rounded-none">
+                                <div className="p-2 bg-industrial-950 text-accent-premium rounded-lg">
                                     {item.icon}
                                 </div>
                                 <div>
@@ -84,7 +84,7 @@ export default function PinturaEletrostaticaPage() {
                                     { icon: <Layers />, title: "Cura em Estufa", desc: "Polimerização a 200°C para máxima ancoragem e vitrificação." }
                                 ].map((benefit, i) => (
                                     <div key={i} className="flex gap-6 group">
-                                        <div className="size-12 shrink-0 border border-industrial-200 flex items-center justify-center text-industrial-900 group-hover:bg-accent-premium group-hover:border-accent-premium transition-all">
+                                        <div className="size-12 shrink-0 border border-industrial-200 rounded-lg flex items-center justify-center text-industrial-900 group-hover:bg-accent-premium group-hover:border-accent-premium transition-all">
                                             {benefit.icon}
                                         </div>
                                         <div>
@@ -97,7 +97,7 @@ export default function PinturaEletrostaticaPage() {
                         </div>
 
                         <div className="order-1 lg:order-2 relative">
-                            <div className="aspect-[4/5] bg-industrial-100 overflow-hidden relative">
+                            <div className="aspect-[4/5] bg-industrial-100 rounded-2xl overflow-hidden relative">
                                 <Image 
                                     src="/images/servicos/pintura-eletrostatica.jpg" 
                                     alt="Peças em Processo de Pintura Eletrostática" 
@@ -122,7 +122,7 @@ export default function PinturaEletrostaticaPage() {
                 </div>
                 <div className="flex flex-wrap justify-center gap-4 px-4 opacity-70 hover:opacity-100 transition-opacity">
                     {["bg-[#000000]", "bg-[#333333]", "bg-[#FFFFFF]", "bg-[#C0C0C0]", "bg-[#0b5394]", "bg-[#38761d]", "bg-[#990000]"].map((color, i) => (
-                        <div key={i} className={`size-16 sm:size-24 ${color} border border-white/10`} />
+                        <div key={i} className={`size-16 sm:size-24 ${color} border border-white/10 rounded-md`} />
                     ))}
                 </div>
             </section>
@@ -140,7 +140,7 @@ export default function PinturaEletrostaticaPage() {
                         </p>
                         <Link 
                             href="/contato?servico=pintura" 
-                            className="bg-industrial-900 text-white h-20 px-16 inline-flex items-center justify-center font-black uppercase tracking-[0.2em] text-sm hover:bg-accent-premium hover:text-black transition-all shadow-2xl"
+                            className="bg-industrial-900 text-white h-20 px-16 inline-flex items-center justify-center font-black uppercase tracking-[0.2em] text-sm rounded-lg hover:bg-accent-premium hover:text-black transition-all shadow-2xl"
                         >
                             Solicitar Orçamento de Pintura
                         </Link>

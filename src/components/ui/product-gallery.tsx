@@ -27,13 +27,13 @@ export function ProductGallery({ mainImage, model, categoryTitle, gallery }: Pro
   if (allImages.length === 0) {
     return (
       <div className="space-y-4 lg:sticky lg:top-24">
-          <div className="group aspect-square bg-industrial-100 border border-industrial-200 flex items-center justify-center relative overflow-hidden rounded-sm shadow-sm">
+          <div className="group aspect-square bg-industrial-100 border border-industrial-200 flex items-center justify-center relative overflow-hidden rounded-2xl shadow-sm">
               <div className="absolute top-0 left-0 w-full h-1 bg-accent-premium z-10" aria-hidden="true" />
               <span className="text-industrial-200 font-black text-[100px] select-none italic" aria-label="Imagem do produto">
                   {model}
               </span>
               {categoryTitle && (
-                <div className="absolute top-4 right-4 bg-industrial-950/80 backdrop-blur-sm text-white text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-sm">
+                <div className="absolute top-4 right-4 bg-industrial-950/80 backdrop-blur-sm text-white text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-md">
                     {categoryTitle}
                 </div>
               )}
@@ -45,7 +45,7 @@ export function ProductGallery({ mainImage, model, categoryTitle, gallery }: Pro
   return (
     <div className="space-y-4 lg:sticky lg:top-24">
         {/* Imagem Principal */}
-        <div className="group aspect-square bg-industrial-100 border border-industrial-200 flex items-center justify-center relative overflow-hidden rounded-sm shadow-sm">
+        <div className="group aspect-square bg-industrial-100 border border-industrial-200 flex items-center justify-center relative overflow-hidden rounded-2xl shadow-sm">
             <div className="absolute top-0 left-0 w-full h-1 bg-accent-premium z-10" aria-hidden="true" />
             {activeImage && (
               <Image
@@ -58,7 +58,7 @@ export function ProductGallery({ mainImage, model, categoryTitle, gallery }: Pro
               />
             )}
             {categoryTitle && (
-              <div className="absolute top-4 right-4 bg-industrial-950/80 backdrop-blur-sm text-white text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-sm">
+              <div className="absolute top-4 right-4 bg-industrial-950/80 backdrop-blur-sm text-white text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-md">
                   {categoryTitle}
               </div>
             )}
@@ -71,7 +71,7 @@ export function ProductGallery({ mainImage, model, categoryTitle, gallery }: Pro
                   <button
                       key={index}
                       onClick={() => setActiveImage(img)}
-                      className={`aspect-square w-20 shrink-0 bg-industrial-50 border-2 transition-all relative overflow-hidden group shadow-sm ${activeImage === img ? 'border-accent-premium' : 'border-transparent hover:border-industrial-300'}`}
+                      className={`aspect-square w-20 shrink-0 bg-industrial-50 border-2 transition-all relative overflow-hidden group shadow-sm rounded-lg ${activeImage === img ? 'border-accent-premium' : 'border-transparent hover:border-industrial-300'}`}
                       aria-label={`Visualizar foto ${index + 1} do produto`}
                   >
                       <Image 

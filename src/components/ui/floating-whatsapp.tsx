@@ -36,7 +36,7 @@ export function FloatingWhatsApp({
                     bg-[#25D366] text-white
                     font-black uppercase tracking-widest text-[11px]
                     h-14 md:h-16 px-5 md:px-6
-                    rounded-full md:rounded-xl
+                    rounded-full md:rounded-lg
                     shadow-2xl shadow-green-600/20
                     hover:scale-105 active:scale-95 transition-all duration-200
                     touch-action:manipulation

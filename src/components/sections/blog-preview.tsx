@@ -28,10 +28,10 @@ export function BlogPreview({ posts = [] }: BlogPreviewProps) {
                     {posts.length > 0 ? (
                         posts.map((post, index) => (
                             <Link key={index} href={`/blog/${post.slug}`} className="group space-y-6">
-                                <div className="aspect-[16/10] bg-industrial-900 border border-industrial-800 overflow-hidden relative">
+                                <div className="aspect-[16/10] bg-industrial-900 border border-industrial-800 overflow-hidden relative rounded-2xl">
                                     <div className="absolute inset-0 bg-accent-premium/20 opacity-0 group-hover:opacity-100 transition-opacity z-10" />
                                     <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20">
-                                        <span className="text-black bg-accent-premium px-4 py-2 font-bold uppercase tracking-widest text-xs">Ler artigo completo</span>
+                                        <span className="text-black bg-accent-premium px-4 py-2 font-bold uppercase tracking-widest text-xs rounded-md">Ler artigo completo</span>
                                     </div>
                                     
                                     {post.image ? (
@@ -62,7 +62,7 @@ export function BlogPreview({ posts = [] }: BlogPreviewProps) {
                             </Link>
                         ))
                     ) : (
-                        <div className="col-span-full py-12 text-center border border-dashed border-industrial-800 rounded-xl">
+                        <div className="col-span-full py-12 text-center border border-dashed border-industrial-800 rounded-2xl">
                              <p className="text-industrial-500 font-outfit uppercase tracking-widest">Iniciando Sala de Redação... Novas pautas em breve.</p>
                         </div>
                     )}

@@ -94,7 +94,7 @@ export default function QuemSomosPage() {
                         {/* Linha do tempo visual de fachada */}
                         <div className="relative group">
                             {/* Imagem Atual (Principal) */}
-                            <div className="aspect-[4/3] bg-industrial-50 border border-industrial-200 relative overflow-hidden" aria-labelledby="fachada-atual-label">
+                            <div className="aspect-[4/3] bg-industrial-50 border border-industrial-200 relative overflow-hidden rounded-2xl" aria-labelledby="fachada-atual-label">
                                 <Image 
                                     src="/images/fachada-bb.jpg" 
                                     alt="Fachada atual da B&B Iluminação"
@@ -103,13 +103,13 @@ export default function QuemSomosPage() {
                                     priority
                                 />
                                 <div className="absolute top-0 w-full h-1 bg-accent-premium z-10" />
-                                <span id="fachada-atual-label" className="absolute bottom-4 right-4 bg-industrial-950 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 z-10">
+                                <span id="fachada-atual-label" className="absolute bottom-4 right-4 bg-industrial-950 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 z-10 rounded-md">
                                     Hoje: Sede Própria
                                 </span>
                             </div>
 
                             {/* Imagem Antiga (Sobreposta/Sutil) */}
-                            <div className="absolute -bottom-10 -left-6 md:-left-12 w-1/2 aspect-video bg-white border-4 border-white shadow-2xl overflow-hidden z-20 group-hover:-translate-y-2 transition-transform duration-500">
+                            <div className="absolute -bottom-10 -left-6 md:-left-12 w-1/2 aspect-video bg-white border-4 border-white shadow-2xl overflow-hidden z-20 group-hover:-translate-y-2 transition-transform duration-500 rounded-2xl">
                                 <Image 
                                     src="/images/fachada-antiga.jpg" 
                                     alt="Fachada da B&B Iluminação em 2017"
@@ -117,7 +117,7 @@ export default function QuemSomosPage() {
                                     className="object-cover"
                                 />
                                 <div className="absolute inset-0 bg-industrial-950/20 group-hover:bg-transparent transition-colors" />
-                                <span className="absolute bottom-2 left-2 bg-accent-premium text-black text-[9px] font-black uppercase tracking-widest px-2 py-1">
+                                <span className="absolute bottom-2 left-2 bg-accent-premium text-black text-[9px] font-black uppercase tracking-widest px-2 py-1 rounded-md">
                                     Início (2017)
                                 </span>
                             </div>
@@ -156,7 +156,7 @@ export default function QuemSomosPage() {
                     <div className="grid md:grid-cols-2 gap-8">
                         
                         {/* Missão */}
-                        <div className="bg-white p-8 border-l-4 border-industrial-950 shadow-sm relative overflow-hidden group flex flex-col justify-center h-full">
+                        <div className="bg-white p-8 border-l-4 border-industrial-950 shadow-sm relative overflow-hidden group flex flex-col justify-center h-full rounded-2xl">
                             <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
                                 <Target className="size-24" />
                             </div>
@@ -170,7 +170,7 @@ export default function QuemSomosPage() {
                         </div>
 
                         {/* Chaves (movido para o lado da Missão / Cima dos Valores) */}
-                        <div className="bg-industrial-950 p-8 shadow-sm flex flex-col justify-center h-full">
+                        <div className="bg-industrial-950 p-8 shadow-sm flex flex-col justify-center h-full rounded-2xl">
                             <h3 className="text-xl font-black text-white uppercase tracking-tight mb-6 flex items-center gap-2">
                                 <KeyRound className="size-5 text-accent-premium" />
                                 Nossas Chaves
@@ -186,7 +186,7 @@ export default function QuemSomosPage() {
                         </div>
 
                         {/* Visão */}
-                        <div className="bg-white p-8 border-l-4 border-accent-premium shadow-sm relative overflow-hidden group flex flex-col justify-center h-full">
+                        <div className="bg-white p-8 border-l-4 border-accent-premium shadow-sm relative overflow-hidden group flex flex-col justify-center h-full rounded-2xl">
                             <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                                 <Eye className="size-24 text-accent-premium" />
                             </div>
@@ -200,7 +200,7 @@ export default function QuemSomosPage() {
                         </div>
 
                         {/* Valores (Baixo / Lado da Visão) */}
-                        <div className="bg-white p-8 border border-industrial-200 shadow-sm flex flex-col justify-center h-full">
+                        <div className="bg-white p-8 border border-industrial-200 shadow-sm flex flex-col justify-center h-full rounded-2xl">
                             <h3 className="text-xl font-black text-industrial-950 uppercase tracking-tight mb-6 flex items-center gap-2">
                                 <CheckCircle2 className="size-5 text-accent-dark" />
                                 Nossos Valores
@@ -230,7 +230,7 @@ export default function QuemSomosPage() {
                     </p>
                     <Link
                         href="/contato"
-                        className="inline-flex items-center justify-center gap-2 bg-black text-white hover:bg-industrial-800 font-black uppercase tracking-widest h-14 px-10 transition-colors w-full sm:w-auto"
+                        className="inline-flex items-center justify-center gap-2 bg-black text-white hover:bg-industrial-800 font-black uppercase tracking-widest h-14 px-10 transition-colors w-full sm:w-auto rounded-lg"
                         aria-label="Entrar em contato com a B&B Iluminação"
                     >
                         ENTRAR EM CONTATO

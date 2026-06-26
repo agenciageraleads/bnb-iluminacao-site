@@ -363,7 +363,7 @@ export default function NormasParaPostesDeIluminacaoPage() {
 
                 <div className="container relative z-10 mx-auto px-4 pb-20 pt-12 md:pb-28">
                     <div className="max-w-4xl">
-                        <div className="mb-6 inline-flex items-center gap-3 border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.22em] text-white">
+                        <div className="mb-6 inline-flex items-center gap-3 border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.22em] text-white rounded-md">
                             <BookOpen className="size-4 text-accent-premium" aria-hidden="true" />
                             Guia tecnico para briefing e compra
                         </div>
@@ -380,7 +380,7 @@ export default function NormasParaPostesDeIluminacaoPage() {
                                 message={whatsappMessage}
                                 eventLabel="Solicitar orcamento pelo guia de normas"
                                 eventSource="hero_normas_postes_ip"
-                                className="inline-flex h-14 items-center justify-center gap-3 bg-accent-premium px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-yellow-300"
+                                className="inline-flex h-14 items-center justify-center gap-3 bg-accent-premium px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-yellow-300 rounded-lg"
                                 aria-label="Solicitar orcamento de postes conforme briefing tecnico pelo WhatsApp"
                             >
                                 <MessageCircle className="size-5" aria-hidden="true" />
@@ -388,7 +388,7 @@ export default function NormasParaPostesDeIluminacaoPage() {
                             </WhatsAppLink>
                             <Link
                                 href="/downloads"
-                                className="inline-flex h-14 items-center justify-center gap-3 border border-white/25 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-industrial-950"
+                                className="inline-flex h-14 items-center justify-center gap-3 border border-white/25 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-industrial-950 rounded-lg"
                             >
                                 <Download className="size-5" aria-hidden="true" />
                                 Ver catalogos
@@ -403,8 +403,8 @@ export default function NormasParaPostesDeIluminacaoPage() {
                     {decisionCards.map((card) => {
                         const Icon = card.icon
                         return (
-                            <div key={card.title} className="flex items-start gap-4 bg-white p-5">
-                                <div className="flex size-11 shrink-0 items-center justify-center bg-industrial-950 text-accent-premium">
+                            <div key={card.title} className="flex items-start gap-4 bg-white p-5 rounded-lg">
+                                <div className="flex size-11 shrink-0 items-center justify-center bg-industrial-950 text-accent-premium rounded-lg">
                                     <Icon className="size-5" aria-hidden="true" />
                                 </div>
                                 <div>
@@ -441,8 +441,8 @@ export default function NormasParaPostesDeIluminacaoPage() {
                             {documentChecklist.map((item) => {
                                 const Icon = item.icon
                                 return (
-                                    <div key={item.title} className="border border-industrial-200 p-6">
-                                        <div className="mb-6 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium">
+                                    <div key={item.title} className="border border-industrial-200 p-6 rounded-2xl">
+                                        <div className="mb-6 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium rounded-lg">
                                             <Icon className="size-6" aria-hidden="true" />
                                         </div>
                                         <h3 className="text-base font-black uppercase tracking-tight text-industrial-950">
@@ -469,7 +469,7 @@ export default function NormasParaPostesDeIluminacaoPage() {
                             </p>
                         </div>
 
-                        <div className="overflow-hidden border border-white/15">
+                        <div className="overflow-hidden border border-white/15 rounded-2xl">
                             {standardRows.map(([standard, scope, note]) => (
                                 <div key={standard} className="grid border-b border-white/15 last:border-b-0 md:grid-cols-[260px_270px_1fr]">
                                     <div className="bg-white/10 px-5 py-4 text-xs font-black uppercase tracking-widest text-white">
@@ -485,7 +485,7 @@ export default function NormasParaPostesDeIluminacaoPage() {
                             ))}
                         </div>
 
-                        <div className="mt-6 flex items-start gap-3 border border-white/15 bg-white/5 p-5 text-sm leading-relaxed text-industrial-300">
+                        <div className="mt-6 flex items-start gap-3 border border-white/15 bg-white/5 p-5 text-sm leading-relaxed text-industrial-300 rounded-lg">
                             <AlertTriangle className="mt-0.5 size-5 shrink-0 text-accent-premium" aria-hidden="true" />
                             <div>
                                 <p>
@@ -519,8 +519,8 @@ export default function NormasParaPostesDeIluminacaoPage() {
                         </div>
                         <div className="grid gap-4 md:grid-cols-2">
                             {riskCards.map((risk) => (
-                                <div key={risk.title} className="border border-industrial-200 p-6">
-                                    <div className="mb-5 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium">
+                                <div key={risk.title} className="border border-industrial-200 p-6 rounded-2xl">
+                                    <div className="mb-5 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium rounded-lg">
                                         <AlertTriangle className="size-6" aria-hidden="true" />
                                     </div>
                                     <h3 className="text-base font-black uppercase tracking-tight text-industrial-950">
@@ -547,7 +547,7 @@ export default function NormasParaPostesDeIluminacaoPage() {
                         </div>
                         <div className="grid gap-3">
                             {quoteChecklist.map((item) => (
-                                <div key={item} className="flex items-start gap-4 border border-industrial-200 bg-white p-5">
+                                <div key={item} className="flex items-start gap-4 border border-industrial-200 bg-white p-5 rounded-lg">
                                     <ClipboardCheck className="mt-0.5 size-5 shrink-0 text-accent-dark" aria-hidden="true" />
                                     <p className="text-sm font-medium leading-relaxed text-industrial-700">{item}</p>
                                 </div>
@@ -575,7 +575,7 @@ export default function NormasParaPostesDeIluminacaoPage() {
                                     href={file.href}
                                     target={file.href === "/downloads" ? undefined : "_blank"}
                                     rel={file.href === "/downloads" ? undefined : "noopener noreferrer"}
-                                    className="group flex items-center justify-between gap-4 border border-industrial-200 p-5 text-sm font-black uppercase tracking-widest text-industrial-800 transition-colors hover:border-industrial-950"
+                                    className="group flex items-center justify-between gap-4 border border-industrial-200 p-5 text-sm font-black uppercase tracking-widest text-industrial-800 transition-colors hover:border-industrial-950 rounded-lg"
                                 >
                                     <span className="inline-flex items-center gap-3">
                                         <Download className="size-5 text-accent-dark" aria-hidden="true" />
@@ -602,7 +602,7 @@ export default function NormasParaPostesDeIluminacaoPage() {
                         </div>
                         <div className="space-y-4">
                             {faq.map((item) => (
-                                <details key={item.question} className="group border border-white/15 bg-white/5 p-6" open={item === faq[0]}>
+                                <details key={item.question} className="group border border-white/15 bg-white/5 p-6 rounded-2xl" open={item === faq[0]}>
                                     <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-base font-black uppercase text-white">
                                         {item.question}
                                         <span className="text-accent-premium transition-transform group-open:rotate-45" aria-hidden="true">+</span>
@@ -631,7 +631,7 @@ export default function NormasParaPostesDeIluminacaoPage() {
                             message={whatsappMessage}
                             eventLabel="Enviar dados para orcamento conforme normas"
                             eventSource="final_normas_postes_ip"
-                            className="inline-flex h-14 items-center justify-center gap-3 bg-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-industrial-800"
+                            className="inline-flex h-14 items-center justify-center gap-3 bg-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-industrial-800 rounded-lg"
                             aria-label="Enviar dados para orcamento de poste conforme normas pelo WhatsApp"
                         >
                             <MessageCircle className="size-5" aria-hidden="true" />
@@ -639,7 +639,7 @@ export default function NormasParaPostesDeIluminacaoPage() {
                         </WhatsAppLink>
                         <Link
                             href="/postes-para-iluminacao-publica"
-                            className="inline-flex h-14 items-center justify-center gap-3 border-2 border-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-white"
+                            className="inline-flex h-14 items-center justify-center gap-3 border-2 border-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-white rounded-lg"
                         >
                             <Landmark className="size-5" aria-hidden="true" />
                             Ver aplicacoes
@@ -653,7 +653,7 @@ export default function NormasParaPostesDeIluminacaoPage() {
                     {internalLinks.map((item) => {
                         const Icon = item.icon
                         return (
-                            <Link key={item.href} href={item.href} className="group border border-industrial-200 p-5 hover:border-industrial-950">
+                            <Link key={item.href} href={item.href} className="group border border-industrial-200 p-5 hover:border-industrial-950 rounded-lg">
                                 <Icon className="mb-5 size-6 text-accent-dark" aria-hidden="true" />
                                 <h3 className="text-sm font-black uppercase tracking-widest text-industrial-950">{item.title}</h3>
                                 <p className="mt-3 text-sm leading-relaxed text-industrial-600">{item.description}</p>

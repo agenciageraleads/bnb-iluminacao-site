@@ -62,7 +62,7 @@ export default async function PinturaCityLP({ params }: Props) {
           </div>
           <WhatsAppLink
             message={WA_MSG}
-            className="flex items-center gap-2 bg-industrial-950 text-white hover:bg-industrial-800 font-black uppercase tracking-widest text-[10px] px-4 h-10 transition-colors"
+            className="flex items-center gap-2 bg-industrial-950 text-white hover:bg-industrial-800 font-black uppercase tracking-widest text-[10px] px-4 h-10 transition-colors rounded-lg"
           >
             <Phone className="size-4" />
             <span className="hidden sm:inline">ORÇAMENTO RÁPIDO</span>
@@ -76,7 +76,7 @@ export default async function PinturaCityLP({ params }: Props) {
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex flex-col lg:flex-row items-start gap-12 lg:gap-20">
             <div className="flex-1 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-50 border border-yellow-200 text-yellow-800 text-[11px] font-bold tracking-widest uppercase mb-8">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-50 border border-yellow-200 text-yellow-800 text-[11px] font-bold tracking-widest uppercase mb-8 rounded-md">
                 <MapPin className="size-3" aria-hidden="true" />
                 Atendemos {cityName}, {uf}
               </div>
@@ -93,7 +93,7 @@ export default async function PinturaCityLP({ params }: Props) {
             </div>
 
             <div className="w-full lg:w-[480px] shrink-0">
-              <div className="bg-industrial-50 border border-industrial-200 p-6 md:p-8">
+              <div className="bg-industrial-50 border border-industrial-200 p-6 md:p-8 rounded-2xl">
                 <h2 className="text-lg font-black text-industrial-950 uppercase tracking-tight mb-1">
                   Cotação para {cityName}
                 </h2>
@@ -140,7 +140,7 @@ export default async function PinturaCityLP({ params }: Props) {
           </h2>
           <WhatsAppLink
             message={WA_MSG}
-            className="inline-flex items-center justify-center gap-3 bg-accent-premium text-black hover:bg-yellow-300 font-black h-16 w-full sm:w-auto px-12 uppercase tracking-widest transition-transform hover:scale-105 shadow-2xl"
+            className="inline-flex items-center justify-center gap-3 bg-accent-premium text-black hover:bg-yellow-300 font-black h-16 w-full sm:w-auto px-12 uppercase tracking-widest transition-transform hover:scale-105 shadow-2xl rounded-lg"
           >
             <Phone className="size-5" />
             FALAR PELO WHATSAPP

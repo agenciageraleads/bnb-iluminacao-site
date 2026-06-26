@@ -353,7 +353,7 @@ export default function PosteCurvoDuploPage() {
 
                 <div className="container relative z-10 mx-auto px-4 pb-20 pt-12 md:pb-28">
                     <div className="max-w-4xl">
-                        <div className="mb-6 inline-flex items-center gap-3 border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.22em] text-white">
+                        <div className="mb-6 inline-flex items-center gap-3 border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.22em] text-white rounded-md">
                             <Zap className="size-4 text-accent-premium" aria-hidden="true" />
                             Dois avancos para vias e canteiros
                         </div>
@@ -369,7 +369,7 @@ export default function PosteCurvoDuploPage() {
                                 message={whatsappMessage}
                                 eventLabel="Solicitar orcamento de poste curvo duplo"
                                 eventSource="hero_poste_curvo_duplo"
-                                className="inline-flex h-14 items-center justify-center gap-3 bg-accent-premium px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-yellow-300"
+                                className="inline-flex h-14 items-center justify-center gap-3 bg-accent-premium px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-yellow-300 rounded-lg"
                                 aria-label="Solicitar orcamento de poste curvo duplo pelo WhatsApp"
                             >
                                 <MessageCircle className="size-5" aria-hidden="true" />
@@ -377,7 +377,7 @@ export default function PosteCurvoDuploPage() {
                             </WhatsAppLink>
                             <Link
                                 href="/downloads/datasheets/DATASHEET-BB-POSTE-CURVO-DUPLO.pdf"
-                                className="inline-flex h-14 items-center justify-center gap-3 border border-white/25 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-industrial-950"
+                                className="inline-flex h-14 items-center justify-center gap-3 border border-white/25 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-industrial-950 rounded-lg"
                             >
                                 <Download className="size-5" aria-hidden="true" />
                                 Baixar datasheet
@@ -392,8 +392,8 @@ export default function PosteCurvoDuploPage() {
                     {highlights.map((item) => {
                         const Icon = item.icon
                         return (
-                            <div key={item.title} className="flex items-start gap-4 bg-white p-5">
-                                <div className="flex size-11 shrink-0 items-center justify-center bg-industrial-950 text-accent-premium">
+                            <div key={item.title} className="flex items-start gap-4 bg-white p-5 rounded-2xl">
+                                <div className="flex size-11 shrink-0 items-center justify-center bg-industrial-950 text-accent-premium rounded-lg">
                                     <Icon className="size-5" aria-hidden="true" />
                                 </div>
                                 <div>
@@ -425,7 +425,7 @@ export default function PosteCurvoDuploPage() {
 
                     <div className="grid gap-4">
                         {specificationRows.map((row) => (
-                            <div key={row.label} className="grid border border-industrial-200 md:grid-cols-[180px_1fr]">
+                            <div key={row.label} className="grid border border-industrial-200 md:grid-cols-[180px_1fr] rounded-2xl overflow-hidden">
                                 <div className="bg-industrial-50 px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-600">
                                     {row.label}
                                 </div>
@@ -450,7 +450,7 @@ export default function PosteCurvoDuploPage() {
                             Separar bem os modelos reduz retrabalho na compra e na obra.
                         </p>
                     </div>
-                    <div className="overflow-hidden border border-white/15">
+                    <div className="overflow-hidden border border-white/15 rounded-2xl">
                         {comparisonRows.map((row) => (
                             <div key={row.model} className="grid border-b border-white/15 last:border-b-0 md:grid-cols-[190px_1fr_1.2fr]">
                                 <div className="bg-white/10 px-5 py-5 text-xs font-black uppercase tracking-widest text-accent-premium">
@@ -487,9 +487,9 @@ export default function PosteCurvoDuploPage() {
                                 <Link
                                     key={card.title}
                                     href={card.href}
-                                    className="group border border-industrial-200 p-6 transition-colors hover:border-industrial-950"
+                                    className="group border border-industrial-200 p-6 transition-colors hover:border-industrial-950 rounded-2xl"
                                 >
-                                    <div className="mb-6 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium">
+                                    <div className="mb-6 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium rounded-lg">
                                         <Icon className="size-6" aria-hidden="true" />
                                     </div>
                                     <h3 className="text-base font-black uppercase tracking-tight text-industrial-950">
@@ -527,8 +527,8 @@ export default function PosteCurvoDuploPage() {
                     </div>
                     <div className="grid gap-4 md:grid-cols-2">
                         {buyingSteps.map((step) => (
-                            <div key={step.title} className="border border-industrial-200 bg-white p-6">
-                                <div className="mb-5 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium">
+                            <div key={step.title} className="border border-industrial-200 bg-white p-6 rounded-2xl">
+                                <div className="mb-5 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium rounded-lg">
                                     <ClipboardCheck className="size-6" aria-hidden="true" />
                                 </div>
                                 <h3 className="text-base font-black uppercase tracking-tight text-industrial-950">
@@ -557,8 +557,8 @@ export default function PosteCurvoDuploPage() {
                         {finishOptions.map((item) => {
                             const Icon = item.icon
                             return (
-                                <div key={item.title} className="border border-industrial-200 p-6">
-                                    <div className="mb-6 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium">
+                                <div key={item.title} className="border border-industrial-200 p-6 rounded-2xl">
+                                    <div className="mb-6 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium rounded-lg">
                                         <Icon className="size-6" aria-hidden="true" />
                                     </div>
                                     <h3 className="text-base font-black uppercase tracking-tight text-industrial-950">
@@ -588,7 +588,7 @@ export default function PosteCurvoDuploPage() {
                             <Link
                                 key={download.href}
                                 href={download.href}
-                                className="group flex items-center justify-between gap-5 border border-white/15 bg-white/5 p-5 transition-colors hover:bg-white hover:text-industrial-950"
+                                className="group flex items-center justify-between gap-5 border border-white/15 bg-white/5 p-5 transition-colors hover:bg-white hover:text-industrial-950 rounded-lg"
                             >
                                 <span className="text-sm font-black uppercase tracking-widest">{download.title}</span>
                                 <Download className="size-5 text-accent-premium transition-transform group-hover:translate-y-0.5" aria-hidden="true" />
@@ -608,7 +608,7 @@ export default function PosteCurvoDuploPage() {
                     </div>
                     <div className="space-y-4">
                         {faq.map((item) => (
-                            <div key={item.question} className="border border-industrial-200 p-6">
+                            <div key={item.question} className="border border-industrial-200 p-6 rounded-2xl">
                                 <h3 className="text-base font-black uppercase tracking-tight text-industrial-950">
                                     {item.question}
                                 </h3>
@@ -636,7 +636,7 @@ export default function PosteCurvoDuploPage() {
                                     message={whatsappMessage}
                                     eventLabel="Solicitar cotacao de poste curvo duplo"
                                     eventSource="final_poste_curvo_duplo"
-                                    className="inline-flex h-14 items-center justify-center gap-3 bg-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-accent-premium hover:text-industrial-950"
+                                    className="inline-flex h-14 items-center justify-center gap-3 bg-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-accent-premium hover:text-industrial-950 rounded-lg"
                                     aria-label="Solicitar cotacao de poste curvo duplo pelo WhatsApp"
                                 >
                                     <MessageCircle className="size-5" aria-hidden="true" />
@@ -644,7 +644,7 @@ export default function PosteCurvoDuploPage() {
                                 </WhatsAppLink>
                                 <Link
                                     href="/produtos/poste-curvo-simples"
-                                    className="inline-flex h-14 items-center justify-center gap-3 border border-industrial-300 px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:border-industrial-950"
+                                    className="inline-flex h-14 items-center justify-center gap-3 border border-industrial-300 px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:border-industrial-950 rounded-lg"
                                 >
                                     <Ruler className="size-5" aria-hidden="true" />
                                     Ver curvo simples
@@ -656,7 +656,7 @@ export default function PosteCurvoDuploPage() {
                                 <Link
                                     key={href}
                                     href={href}
-                                    className="group flex items-center justify-between gap-4 border border-industrial-200 bg-white p-5 text-sm font-black uppercase tracking-widest text-industrial-950 transition-colors hover:border-industrial-950"
+                                    className="group flex items-center justify-between gap-4 border border-industrial-200 bg-white p-5 text-sm font-black uppercase tracking-widest text-industrial-950 transition-colors hover:border-industrial-950 rounded-lg"
                                 >
                                     <span>{label}</span>
                                     <ArrowRight className="size-4 text-accent-dark transition-transform group-hover:translate-x-1" aria-hidden="true" />

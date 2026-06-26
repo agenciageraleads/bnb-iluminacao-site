@@ -23,7 +23,7 @@ export default async function DownloadsPage() {
                 <div className="container mx-auto px-4">
                     {/* Header da Página */}
                     <div className="max-w-4xl mx-auto text-center mb-16">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-[0.2em] uppercase mb-6">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-industrial-200 rounded-md text-industrial-600 text-[11px] font-bold tracking-[0.2em] uppercase mb-6">
                             <FileText className="size-4 text-accent-dark" />
                             Área Técnica e Comercial
                         </div>
@@ -43,8 +43,8 @@ export default async function DownloadsPage() {
                             { title: "Especificações NBR", desc: "Desenhos técnicos e dimensões oficiais.", icon: <FileText className="size-6" /> },
                             { title: "Download em PDF", desc: "Versão otimizada para visualização digital.", icon: <Download className="size-6" /> },
                         ].map((item, i) => (
-                            <div key={i} className="flex flex-col items-center text-center p-6 bg-white border border-industrial-200">
-                                <div className="size-12 bg-industrial-950 text-accent-premium flex items-center justify-center mb-4">
+                            <div key={i} className="flex flex-col items-center text-center p-6 bg-white border border-industrial-200 rounded-2xl">
+                                <div className="size-12 bg-industrial-950 text-accent-premium flex items-center justify-center mb-4 rounded-lg">
                                     {item.icon}
                                 </div>
                                 <h3 className="font-black text-industrial-950 uppercase text-xs tracking-widest mb-2">{item.title}</h3>
@@ -57,7 +57,7 @@ export default async function DownloadsPage() {
                     {catalogs.length > 0 ? (
                         <DownloadGrid catalogs={catalogs} />
                     ) : (
-                        <div className="text-center py-20 bg-white border-2 border-dashed border-industrial-300 max-w-3xl mx-auto">
+                        <div className="text-center py-20 bg-white border-2 border-dashed border-industrial-300 rounded-2xl max-w-3xl mx-auto">
                             <FileText className="size-16 text-industrial-300 mx-auto mb-4" />
                             <h2 className="text-xl font-black text-industrial-400 uppercase tracking-widest">Nenhum catálogo disponível no momento</h2>
                             <p className="text-industrial-400 text-sm mt-2">Estamos atualizando nossos materiais técnicos.</p>
@@ -67,7 +67,7 @@ export default async function DownloadsPage() {
                     {/* Datasheets e Desenhos Técnicos — Linha Urban */}
                     <div id="linha-urban" className="max-w-6xl mx-auto mt-24 scroll-mt-32">
                         <div className="text-center mb-12">
-                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-[0.2em] uppercase mb-6">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-industrial-200 rounded-md text-industrial-600 text-[11px] font-bold tracking-[0.2em] uppercase mb-6">
                                 <Ruler className="size-4 text-accent-dark" />
                                 Linha Urban
                             </div>
@@ -81,9 +81,9 @@ export default async function DownloadsPage() {
 
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                             {URBAN_FAMILIES.map((familia) => (
-                                <div key={familia.sigla} className="bg-white border border-industrial-200 hover:border-accent-premium transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col">
+                                <div key={familia.sigla} className="bg-white border border-industrial-200 rounded-2xl hover:border-accent-premium transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col">
                                     <div className="p-6 border-b border-industrial-100">
-                                        <div className="bg-accent-premium text-black inline-block px-3 py-1 text-[10px] font-black uppercase tracking-widest mb-3">
+                                        <div className="bg-accent-premium text-black inline-block rounded-md px-3 py-1 text-[10px] font-black uppercase tracking-widest mb-3">
                                             BB-URB-{familia.sigla}
                                         </div>
                                         <h3 className="font-black text-industrial-950 uppercase text-lg leading-tight">{familia.nome}</h3>
@@ -92,7 +92,7 @@ export default async function DownloadsPage() {
                                         <a
                                             href={familia.datasheet}
                                             download
-                                            className="w-full flex items-center justify-center gap-2 bg-industrial-950 text-white font-black uppercase text-xs tracking-widest py-4 hover:bg-industrial-800 transition-colors"
+                                            className="w-full flex items-center justify-center gap-2 bg-industrial-950 text-white font-black uppercase text-xs tracking-widest py-4 rounded-lg hover:bg-industrial-800 transition-colors"
                                         >
                                             <Download className="size-4" />
                                             Baixar Datasheet
@@ -112,7 +112,7 @@ export default async function DownloadsPage() {
                                                                 key={altura}
                                                                 href={desenhoTecnicoHref(familia.sigla, altura, grupo.mount)}
                                                                 download
-                                                                className="px-3 py-1.5 bg-industrial-50 border border-industrial-200 text-[11px] font-black text-industrial-700 uppercase tracking-widest hover:border-industrial-900 hover:text-industrial-950 transition-colors"
+                                                                className="px-3 py-1.5 bg-industrial-50 border border-industrial-200 rounded-md text-[11px] font-black text-industrial-700 uppercase tracking-widest hover:border-industrial-900 hover:text-industrial-950 transition-colors"
                                                             >
                                                                 {altura}m
                                                             </a>

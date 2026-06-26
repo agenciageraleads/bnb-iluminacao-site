@@ -52,7 +52,7 @@ export default async function RepresentantesPage() {
                 
                 <div className="container mx-auto px-4 relative z-10 flex flex-col md:flex-row items-center justify-between gap-10">
                     <div className="max-w-xl space-y-6 text-center md:text-left">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 border border-industrial-800 text-industrial-400 text-[11px] font-bold tracking-[0.2em] uppercase bg-black/50 backdrop-blur-sm">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 border border-industrial-800 text-industrial-400 text-[11px] font-bold tracking-[0.2em] uppercase bg-black/50 backdrop-blur-sm rounded-md">
                             <span className="size-2 bg-accent-premium rounded-full animate-pulse" aria-hidden="true" />
                             Oportunidade Comercial
                         </div>
@@ -68,7 +68,7 @@ export default async function RepresentantesPage() {
                     <div className="flex flex-col gap-4 w-full md:w-auto">
                         <Link
                             href="/contato?assunto=representante"
-                            className="flex items-center justify-center gap-3 bg-accent-premium text-black hover:bg-yellow-400 active:bg-yellow-500 font-black uppercase tracking-widest h-16 px-10 transition-colors w-full md:w-auto hover:-translate-y-1 transform duration-300 shadow-xl shadow-accent-premium/20"
+                            className="flex items-center justify-center gap-3 bg-accent-premium text-black hover:bg-yellow-400 active:bg-yellow-500 font-black uppercase tracking-widest h-16 px-10 rounded-lg transition-colors w-full md:w-auto hover:-translate-y-1 transform duration-300 shadow-xl shadow-accent-premium/20"
                         >
                             <UserPlus className="size-5" />
                             Quero ser Representante
@@ -79,7 +79,7 @@ export default async function RepresentantesPage() {
                             href="https://crm.bebiluminacao.com/login"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center justify-center gap-3 bg-transparent border border-industrial-700 text-industrial-400 hover:text-white hover:border-white font-bold uppercase tracking-widest h-12 px-10 transition-all w-full md:w-auto text-xs"
+                            className="flex items-center justify-center gap-3 bg-transparent border border-industrial-700 text-industrial-400 hover:text-white hover:border-white font-bold uppercase tracking-widest h-12 px-10 rounded-lg transition-all w-full md:w-auto text-xs"
                         >
                             Portal do Representante (Acessar CRM)
                         </a>

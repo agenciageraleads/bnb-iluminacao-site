@@ -67,7 +67,7 @@ export function FaqSection({ items }: FaqSectionProps) {
         <section className="py-20 bg-industrial-950 border-t border-industrial-900" aria-labelledby="faq-heading">
             <div className="container mx-auto px-4 max-w-4xl">
                 <div className="text-center mb-12">
-                    <div className="inline-flex items-center justify-center size-12 bg-industrial-900 mb-4 border border-industrial-800">
+                    <div className="inline-flex items-center justify-center size-12 bg-industrial-900 mb-4 border border-industrial-800 rounded-lg">
                         <HelpCircle className="size-6 text-accent-premium" />
                     </div>
                     <h2 id="faq-heading" className="text-3xl md:text-5xl font-black text-white uppercase tracking-tight mb-4">
@@ -85,7 +85,7 @@ export function FaqSection({ items }: FaqSectionProps) {
                         return (
                             <div 
                                 key={index} 
-                                className={`border transition-all duration-300 ${isOpen ? 'border-accent-premium bg-industrial-900/50' : 'border-industrial-800 bg-industrial-950 hover:border-industrial-700'}`}
+                                className={`border rounded-2xl transition-all duration-300 ${isOpen ? 'border-accent-premium bg-industrial-900/50' : 'border-industrial-800 bg-industrial-950 hover:border-industrial-700'}`}
                             >
                                 <button
                                     onClick={() => toggleFaq(index)}
@@ -95,7 +95,7 @@ export function FaqSection({ items }: FaqSectionProps) {
                                     <span className={`font-bold text-lg md:text-xl pr-6 transition-colors ${isOpen ? 'text-white' : 'text-industrial-300'}`}>
                                         {faq.question}
                                     </span>
-                                    <div className={`shrink-0 flex items-center justify-center size-8 border transition-colors ${isOpen ? 'border-accent-premium bg-accent-premium text-black' : 'border-industrial-700 text-industrial-400'}`}>
+                                    <div className={`shrink-0 flex items-center justify-center size-8 border rounded-lg transition-colors ${isOpen ? 'border-accent-premium bg-accent-premium text-black' : 'border-industrial-700 text-industrial-400'}`}>
                                         {isOpen ? <Minus className="size-4" /> : <Plus className="size-4" />}
                                     </div>
                                 </button>

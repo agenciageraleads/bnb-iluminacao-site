@@ -257,7 +257,7 @@ export default function FornecedorDePostesMetalicosPage() {
 
                 <div className="container relative z-10 mx-auto grid gap-12 px-4 pb-20 pt-12 md:pb-28 lg:grid-cols-[1fr_0.72fr] lg:items-end">
                     <div className="max-w-4xl">
-                        <div className="mb-6 inline-flex items-center gap-3 border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.22em] text-white">
+                        <div className="mb-6 inline-flex items-center gap-3 border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.22em] text-white rounded-md">
                             <Truck className="size-4 text-accent-premium" aria-hidden="true" />
                             Compra tecnica, atendimento nacional
                         </div>
@@ -274,7 +274,7 @@ export default function FornecedorDePostesMetalicosPage() {
                                 message={whatsappMessage}
                                 eventLabel="Solicitar orcamento fornecedor"
                                 eventSource="hero_fornecedor_postes"
-                                className="inline-flex h-14 items-center justify-center gap-3 bg-accent-premium px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-yellow-300"
+                                className="inline-flex h-14 items-center justify-center gap-3 bg-accent-premium px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-yellow-300 rounded-lg"
                                 aria-label="Solicitar orcamento de fornecedor de postes metalicos pelo WhatsApp"
                             >
                                 <MessageCircle className="size-5" aria-hidden="true" />
@@ -282,7 +282,7 @@ export default function FornecedorDePostesMetalicosPage() {
                             </WhatsAppLink>
                             <Link
                                 href="/downloads"
-                                className="inline-flex h-14 items-center justify-center gap-3 border border-white/25 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-industrial-950"
+                                className="inline-flex h-14 items-center justify-center gap-3 border border-white/25 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-industrial-950 rounded-lg"
                             >
                                 <Download className="size-5" aria-hidden="true" />
                                 Baixar catalogos
@@ -294,7 +294,7 @@ export default function FornecedorDePostesMetalicosPage() {
                         {differentiators.map((item) => {
                             const Icon = item.icon
                             return (
-                                <div key={item.title} className="border border-white/15 bg-white/10 p-5 text-white backdrop-blur-sm">
+                                <div key={item.title} className="border border-white/15 bg-white/10 p-5 text-white backdrop-blur-sm rounded-2xl">
                                     <Icon className="mb-4 size-5 text-accent-premium" aria-hidden="true" />
                                     <h2 className="text-xs font-black uppercase tracking-widest">{item.title}</h2>
                                     <p className="mt-3 text-sm leading-relaxed text-industrial-200">{item.description}</p>
@@ -310,8 +310,8 @@ export default function FornecedorDePostesMetalicosPage() {
                     {buyerSegments.map((segment) => {
                         const Icon = segment.icon
                         return (
-                            <div key={segment.title} className="flex items-start gap-4 bg-white p-5">
-                                <div className="flex size-11 shrink-0 items-center justify-center bg-industrial-950 text-accent-premium">
+                            <div key={segment.title} className="flex items-start gap-4 bg-white p-5 rounded-2xl">
+                                <div className="flex size-11 shrink-0 items-center justify-center bg-industrial-950 text-accent-premium rounded-lg">
                                     <Icon className="size-5" aria-hidden="true" />
                                 </div>
                                 <div>
@@ -349,9 +349,9 @@ export default function FornecedorDePostesMetalicosPage() {
                                 <Link
                                     key={item.title}
                                     href={item.href}
-                                    className="group border border-industrial-200 p-6 transition-colors hover:border-industrial-950"
+                                    className="group border border-industrial-200 p-6 transition-colors hover:border-industrial-950 rounded-2xl"
                                 >
-                                    <div className="mb-5 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium">
+                                    <div className="mb-5 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium rounded-lg">
                                         <Icon className="size-6" aria-hidden="true" />
                                     </div>
                                     <h3 className="text-base font-black uppercase tracking-tight text-industrial-950">
@@ -382,7 +382,7 @@ export default function FornecedorDePostesMetalicosPage() {
                                 acabamento, fixacao, quantidade e prazo.
                             </p>
                         </div>
-                        <div className="overflow-hidden border border-white/15">
+                        <div className="overflow-hidden border border-white/15 rounded-2xl">
                             {comparisonRows.map(([type, role, fit]) => (
                                 <div key={type} className="grid border-b border-white/15 last:border-b-0 md:grid-cols-[190px_1fr_0.8fr]">
                                     <div className="bg-white/10 px-5 py-4 text-xs font-black uppercase tracking-widest text-white">
@@ -415,7 +415,7 @@ export default function FornecedorDePostesMetalicosPage() {
                     </div>
                     <div className="grid gap-4">
                         {quoteChecklist.map(([label, value]) => (
-                            <div key={label} className="grid border border-industrial-200 md:grid-cols-[190px_1fr]">
+                            <div key={label} className="grid border border-industrial-200 md:grid-cols-[190px_1fr] rounded-2xl">
                                 <div className="bg-industrial-50 px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-600">
                                     {label}
                                 </div>
@@ -445,7 +445,7 @@ export default function FornecedorDePostesMetalicosPage() {
                             <Link
                                 key={href}
                                 href={href}
-                                className="group border border-industrial-200 bg-white p-6 transition-colors hover:border-industrial-950"
+                                className="group border border-industrial-200 bg-white p-6 transition-colors hover:border-industrial-950 rounded-2xl"
                             >
                                 <h3 className="text-sm font-black uppercase tracking-widest text-industrial-950">{label}</h3>
                                 <span className="mt-5 inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-industrial-500 group-hover:text-industrial-950">
@@ -471,7 +471,7 @@ export default function FornecedorDePostesMetalicosPage() {
                     </div>
                     <div className="space-y-4">
                         {faq.map((item) => (
-                            <div key={item.question} className="border border-industrial-200 p-6">
+                            <div key={item.question} className="border border-industrial-200 p-6 rounded-2xl">
                                 <h3 className="text-base font-black uppercase tracking-tight text-industrial-950">
                                     {item.question}
                                 </h3>
@@ -501,7 +501,7 @@ export default function FornecedorDePostesMetalicosPage() {
                             message={whatsappMessage}
                             eventLabel="CTA final fornecedor"
                             eventSource="final_fornecedor_postes"
-                            className="inline-flex h-14 items-center justify-center gap-3 bg-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-industrial-800"
+                            className="inline-flex h-14 items-center justify-center gap-3 bg-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-industrial-800 rounded-lg"
                             aria-label="Falar com fornecedor de postes metalicos pelo WhatsApp"
                         >
                             <MessageCircle className="size-5" aria-hidden="true" />
@@ -509,7 +509,7 @@ export default function FornecedorDePostesMetalicosPage() {
                         </WhatsAppLink>
                         <Link
                             href="/downloads"
-                            className="inline-flex h-14 items-center justify-center gap-3 border border-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-industrial-950 hover:text-white"
+                            className="inline-flex h-14 items-center justify-center gap-3 border border-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-industrial-950 hover:text-white rounded-lg"
                         >
                             <FileText className="size-5" aria-hidden="true" />
                             Ver catalogos

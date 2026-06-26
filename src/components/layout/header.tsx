@@ -49,7 +49,7 @@ export function Header() {
                             ))}
                             <WhatsAppLink
                                 message={whatsappMessage}
-                                className="flex items-center gap-2 bg-industrial-900 text-white hover:bg-accent-premium hover:text-black font-black tracking-widest uppercase text-[11px] px-5 h-10 transition-all"
+                                className="flex items-center gap-2 bg-industrial-900 text-white hover:bg-accent-premium hover:text-black font-black tracking-widest uppercase text-[11px] px-5 h-10 transition-all rounded-lg"
                                 aria-label="Fale conosco pelo WhatsApp"
                             >
                                 <Phone className="size-4" aria-hidden="true" />
@@ -89,7 +89,7 @@ export function Header() {
 
                 {/* Drawer lateral da direita */}
                 <nav
-                    className={`absolute top-0 right-0 h-full w-4/5 max-w-xs bg-white flex flex-col pt-20 pb-safe shadow-2xl transition-transform duration-300 ease-out ${isOpen ? "translate-x-0" : "translate-x-full"}`}
+                    className={`absolute top-0 right-0 h-full w-4/5 max-w-xs bg-white flex flex-col pt-20 pb-safe shadow-2xl transition-transform duration-300 ease-out rounded-2xl ${isOpen ? "translate-x-0" : "translate-x-full"}`}
                     aria-label="Menu de navegação mobile"
                 >
                     <div className="flex-1 overflow-y-auto">
@@ -111,7 +111,7 @@ export function Header() {
                     <div className="p-5 border-t border-industrial-100 pb-safe">
                         <WhatsAppLink
                             message={whatsappMessage}
-                            className="flex items-center justify-center gap-2 w-full h-14 bg-industrial-900 text-white font-black uppercase tracking-widest text-sm active:bg-industrial-700 transition-colors"
+                            className="flex items-center justify-center gap-2 w-full h-14 bg-industrial-900 text-white font-black uppercase tracking-widest text-sm active:bg-industrial-700 transition-colors rounded-lg"
                             onClick={() => setIsOpen(false)}
                             aria-label="Solicitar orçamento pelo WhatsApp"
                         >

@@ -242,7 +242,7 @@ export default async function FabricanteDePostesMetalicosPage() {
 
                 <div className="container relative z-10 mx-auto px-4 pb-20 pt-12 md:pb-28">
                     <div className="max-w-4xl">
-                        <div className="mb-6 inline-flex items-center gap-3 border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.22em] text-white">
+                        <div className="mb-6 inline-flex items-center gap-3 border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.22em] text-white rounded-md">
                             <Factory className="size-4 text-accent-premium" aria-hidden="true" />
                             Fabrica em Goiania, atendimento nacional
                         </div>
@@ -257,7 +257,7 @@ export default async function FabricanteDePostesMetalicosPage() {
                         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                             <WhatsAppLink
                                 message={whatsappMessage}
-                                className="inline-flex h-14 items-center justify-center gap-3 bg-accent-premium px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-yellow-300"
+                                className="inline-flex h-14 items-center justify-center gap-3 bg-accent-premium px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-yellow-300 rounded-lg"
                                 aria-label="Solicitar orcamento de postes metalicos pelo WhatsApp"
                             >
                                 <MessageCircle className="size-5" aria-hidden="true" />
@@ -265,7 +265,7 @@ export default async function FabricanteDePostesMetalicosPage() {
                             </WhatsAppLink>
                             <Link
                                 href="/downloads"
-                                className="inline-flex h-14 items-center justify-center gap-3 border border-white/25 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-industrial-950"
+                                className="inline-flex h-14 items-center justify-center gap-3 border border-white/25 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-industrial-950 rounded-lg"
                             >
                                 <Download className="size-5" aria-hidden="true" />
                                 Baixar catalogos
@@ -280,8 +280,8 @@ export default async function FabricanteDePostesMetalicosPage() {
                     {differentiators.map((item) => {
                         const Icon = item.icon
                         return (
-                            <div key={item.title} className="flex items-start gap-4 bg-white p-5">
-                                <div className="flex size-11 shrink-0 items-center justify-center bg-industrial-950 text-accent-premium">
+                            <div key={item.title} className="flex items-start gap-4 bg-white p-5 rounded-2xl">
+                                <div className="flex size-11 shrink-0 items-center justify-center bg-industrial-950 text-accent-premium rounded-lg">
                                     <Icon className="size-5" aria-hidden="true" />
                                 </div>
                                 <div>
@@ -318,7 +318,7 @@ export default async function FabricanteDePostesMetalicosPage() {
                             <Link
                                 key={model.title}
                                 href={model.href}
-                                className="group border border-industrial-200 p-6 transition-colors hover:border-industrial-950"
+                                className="group border border-industrial-200 p-6 transition-colors hover:border-industrial-950 rounded-2xl"
                             >
                                 <h3 className="text-base font-black uppercase tracking-tight text-industrial-950">
                                     {model.title}
@@ -350,7 +350,7 @@ export default async function FabricanteDePostesMetalicosPage() {
                         </div>
                         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                             {applications.map((application) => (
-                                <div key={application} className="border border-white/10 bg-white/5 p-5">
+                                <div key={application} className="border border-white/10 bg-white/5 p-5 rounded-2xl">
                                     <CheckCircle2 className="mb-4 size-5 text-accent-premium" aria-hidden="true" />
                                     <h3 className="text-sm font-black uppercase tracking-widest">{application}</h3>
                                 </div>
@@ -372,7 +372,7 @@ export default async function FabricanteDePostesMetalicosPage() {
                             para a aplicacao.
                         </p>
                     </div>
-                    <div className="overflow-hidden border border-industrial-200">
+                    <div className="overflow-hidden border border-industrial-200 rounded-2xl">
                         {technicalRows.map(([label, value]) => (
                             <div key={label} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[240px_1fr]">
                                 <div className="bg-industrial-50 px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-600">
@@ -399,7 +399,7 @@ export default async function FabricanteDePostesMetalicosPage() {
                             </div>
                             <Link
                                 href="/produtos"
-                                className="inline-flex h-12 items-center justify-center gap-2 border border-industrial-300 px-5 text-xs font-black uppercase tracking-widest text-industrial-800 hover:border-industrial-950"
+                                className="inline-flex h-12 items-center justify-center gap-2 border border-industrial-300 px-5 text-xs font-black uppercase tracking-widest text-industrial-800 hover:border-industrial-950 rounded-lg"
                             >
                                 Ver catalogo
                                 <ArrowRight className="size-4" aria-hidden="true" />
@@ -410,7 +410,7 @@ export default async function FabricanteDePostesMetalicosPage() {
                                 <Link
                                     key={product.id}
                                     href={`/produtos/item/${product.id}`}
-                                    className="group flex min-h-[340px] flex-col border border-industrial-200 bg-white transition-colors hover:border-industrial-950"
+                                    className="group flex min-h-[340px] flex-col border border-industrial-200 bg-white transition-colors hover:border-industrial-950 rounded-2xl"
                                 >
                                     <div className="relative aspect-[4/3] border-b border-industrial-100 bg-industrial-50">
                                         {product.image ? (
@@ -464,7 +464,7 @@ export default async function FabricanteDePostesMetalicosPage() {
                             {featuredClients.length > 0 && (
                                 <div className="grid grid-cols-3 gap-3 sm:grid-cols-4">
                                     {featuredClients.map((client) => (
-                                        <div key={client.name} className="relative h-16 border border-industrial-200 bg-white">
+                                        <div key={client.name} className="relative h-16 border border-industrial-200 bg-white rounded-lg">
                                             <Image
                                                 src={client.logoUrl}
                                                 alt={client.name}
@@ -480,7 +480,7 @@ export default async function FabricanteDePostesMetalicosPage() {
 
                         <div className="grid gap-5 md:grid-cols-3">
                             {featuredProjects.map((project) => (
-                                <div key={project.title} className="border border-industrial-200 bg-white">
+                                <div key={project.title} className="border border-industrial-200 bg-white rounded-2xl">
                                     <div className="relative aspect-[4/3] bg-industrial-50">
                                         <Image
                                             src={project.image}
@@ -523,7 +523,7 @@ export default async function FabricanteDePostesMetalicosPage() {
                     </div>
                     <div className="space-y-4">
                         {faq.map((item) => (
-                            <details key={item.question} className="group border border-industrial-200 bg-white p-6" open={item === faq[0]}>
+                            <details key={item.question} className="group border border-industrial-200 bg-white p-6 rounded-2xl" open={item === faq[0]}>
                                 <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-base font-black uppercase text-industrial-950">
                                     {item.question}
                                     <span className="text-accent-dark transition-transform group-open:rotate-45" aria-hidden="true">+</span>
@@ -549,7 +549,7 @@ export default async function FabricanteDePostesMetalicosPage() {
                     <div className="flex flex-col gap-4 sm:flex-row lg:flex-col">
                         <WhatsAppLink
                             message={whatsappMessage}
-                            className="inline-flex h-14 items-center justify-center gap-3 bg-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-industrial-800"
+                            className="inline-flex h-14 items-center justify-center gap-3 bg-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-industrial-800 rounded-lg"
                             aria-label="Solicitar orcamento tecnico pelo WhatsApp"
                         >
                             <MessageCircle className="size-5" aria-hidden="true" />
@@ -557,7 +557,7 @@ export default async function FabricanteDePostesMetalicosPage() {
                         </WhatsAppLink>
                         <Link
                             href="/contato?assunto=orcamento"
-                            className="inline-flex h-14 items-center justify-center gap-3 border-2 border-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-white"
+                            className="inline-flex h-14 items-center justify-center gap-3 border-2 border-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-white rounded-lg"
                         >
                             <FileText className="size-5" aria-hidden="true" />
                             Enviar briefing
@@ -568,27 +568,27 @@ export default async function FabricanteDePostesMetalicosPage() {
 
             <section className="border-b border-industrial-200 bg-white py-10">
                 <div className="container mx-auto grid gap-4 px-4 md:grid-cols-2 lg:grid-cols-6">
-                    <Link href="/fabrica-de-postes-metalicos" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950">
+                    <Link href="/fabrica-de-postes-metalicos" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950 rounded-2xl">
                         <Factory className="size-6 text-accent-dark" aria-hidden="true" />
                         <span className="text-sm font-black uppercase tracking-widest">Fabrica de postes</span>
                     </Link>
-                    <Link href="/postes-metalicos" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950">
+                    <Link href="/postes-metalicos" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950 rounded-2xl">
                         <Ruler className="size-6 text-accent-dark" aria-hidden="true" />
                         <span className="text-sm font-black uppercase tracking-widest">Modelos de postes metalicos</span>
                     </Link>
-                    <Link href="/produtos/poste-metalico-galvanizado" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950">
+                    <Link href="/produtos/poste-metalico-galvanizado" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950 rounded-2xl">
                         <ShieldCheck className="size-6 text-accent-dark" aria-hidden="true" />
                         <span className="text-sm font-black uppercase tracking-widest">Poste galvanizado</span>
                     </Link>
-                    <Link href="/downloads" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950">
+                    <Link href="/downloads" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950 rounded-2xl">
                         <Download className="size-6 text-accent-dark" aria-hidden="true" />
                         <span className="text-sm font-black uppercase tracking-widest">Catalogos e desenhos tecnicos</span>
                     </Link>
-                    <Link href="/obras" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950">
+                    <Link href="/obras" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950 rounded-2xl">
                         <Building2 className="size-6 text-accent-dark" aria-hidden="true" />
                         <span className="text-sm font-black uppercase tracking-widest">Obras realizadas</span>
                     </Link>
-                    <Link href="/blog" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950">
+                    <Link href="/blog" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950 rounded-2xl">
                         <FileText className="size-6 text-accent-dark" aria-hidden="true" />
                         <span className="text-sm font-black uppercase tracking-widest">Guias tecnicos</span>
                     </Link>

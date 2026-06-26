@@ -58,7 +58,7 @@ export default async function BracoCityLP({ params }: Props) {
           </div>
           <WhatsAppLink
             message={WA_MSG}
-            className="flex items-center gap-2 bg-industrial-950 text-white hover:bg-industrial-800 font-black uppercase tracking-widest text-[10px] px-4 h-10 transition-colors"
+            className="flex items-center gap-2 bg-industrial-950 text-white hover:bg-industrial-800 font-black uppercase tracking-widest text-[10px] px-4 h-10 transition-colors rounded-lg"
           >
             <Phone className="size-4" />
             <span className="hidden sm:inline">ORÇAMENTO RÁPIDO</span>
@@ -72,7 +72,7 @@ export default async function BracoCityLP({ params }: Props) {
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
             <div className="flex-1 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-industrial-50 border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-widest uppercase mb-8">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-industrial-50 border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-widest uppercase mb-8 rounded-md">
                 <span className="size-2 bg-green-500 rounded-full animate-pulse" />
                 Atendimento Especializado em {city.cityName}, {city.uf}
               </div>
@@ -87,14 +87,14 @@ export default async function BracoCityLP({ params }: Props) {
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <WhatsAppLink
                   message={WA_MSG}
-                  className="flex items-center justify-center gap-3 bg-industrial-950 text-white hover:bg-industrial-800 font-black h-16 px-10 w-full sm:w-auto uppercase tracking-widest transition-transform hover:-translate-y-1 shadow-xl shadow-industrial-950/20"
+                  className="flex items-center justify-center gap-3 bg-industrial-950 text-white hover:bg-industrial-800 font-black h-16 px-10 w-full sm:w-auto uppercase tracking-widest transition-transform hover:-translate-y-1 shadow-xl shadow-industrial-950/20 rounded-lg"
                 >
                   <Calculator className="size-5" />
                   SOLICITAR ORÇAMENTO
                 </WhatsAppLink>
                 <a
                   href="/downloads"
-                  className="flex items-center justify-center gap-2 bg-white border-2 border-industrial-200 text-industrial-800 hover:border-industrial-950 font-black h-16 px-8 w-full sm:w-auto uppercase tracking-widest transition-colors"
+                  className="flex items-center justify-center gap-2 bg-white border-2 border-industrial-200 text-industrial-800 hover:border-industrial-950 font-black h-16 px-8 w-full sm:w-auto uppercase tracking-widest transition-colors rounded-lg"
                 >
                   <FileText className="size-5" />
                   CATÁLOGOS PDF
@@ -107,7 +107,7 @@ export default async function BracoCityLP({ params }: Props) {
             </div>
 
             <div className="flex-1 w-full max-w-2xl lg:max-w-none">
-              <div className="relative aspect-[4/3] lg:aspect-square bg-industrial-100 border-8 border-white shadow-2xl skew-y-2 lg:skew-y-0 lg:-rotate-2 hover:rotate-0 transition-transform duration-500">
+              <div className="relative aspect-[4/3] lg:aspect-square bg-industrial-100 border-8 border-white shadow-2xl skew-y-2 lg:skew-y-0 lg:-rotate-2 hover:rotate-0 transition-transform duration-500 rounded-2xl">
                 <Image
                   src={(city.featuredImage as any)?.url || "/portfolio/reserva-parque.webp"}
                   alt={`Braços para Luminária em ${city.cityName}`}
@@ -115,7 +115,7 @@ export default async function BracoCityLP({ params }: Props) {
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-industrial-950/40 to-transparent" />
-                <div className="absolute top-4 right-4 bg-accent-premium text-black font-black text-[10px] tracking-widest px-4 py-2 uppercase">
+                <div className="absolute top-4 right-4 bg-accent-premium text-black font-black text-[10px] tracking-widest px-4 py-2 uppercase rounded-md">
                   {city.cityName === "Goiânia" ? "Fábrica Própria" : "Atendimento Direto"}
                 </div>
               </div>
@@ -141,8 +141,8 @@ export default async function BracoCityLP({ params }: Props) {
               { title: "NBR ABNT", desc: "Braços dimensionados conforme NBR 6123 para máxima segurança estrutural.", icon: <Check /> },
               { title: "Fábrica Direta", desc: "Sem intermediários. Melhor preço e suporte técnico especializado.", icon: <Calculator /> },
             ].map((item, i) => (
-              <div key={i} className="bg-white border border-industrial-200 p-8 hover:border-accent-premium transition-colors hover:shadow-md">
-                <div className="size-12 bg-industrial-950 text-white flex items-center justify-center mb-6">
+              <div key={i} className="bg-white border border-industrial-200 p-8 hover:border-accent-premium transition-colors hover:shadow-md rounded-2xl">
+                <div className="size-12 bg-industrial-950 text-white flex items-center justify-center mb-6 rounded-lg">
                   {item.icon}
                 </div>
                 <h3 className="font-black text-industrial-950 uppercase mb-3 text-sm">{item.title}</h3>
@@ -190,7 +190,7 @@ export default async function BracoCityLP({ params }: Props) {
           </p>
           <WhatsAppLink
             message={WA_MSG}
-            className="inline-flex items-center justify-center gap-3 bg-black text-white hover:bg-industrial-800 font-black h-16 w-full sm:w-auto px-12 text-lg uppercase tracking-widest transition-transform hover:scale-105 shadow-2xl"
+            className="inline-flex items-center justify-center gap-3 bg-black text-white hover:bg-industrial-800 font-black h-16 w-full sm:w-auto px-12 text-lg uppercase tracking-widest transition-transform hover:scale-105 shadow-2xl rounded-lg"
           >
             <Phone className="size-5" />
             FALAR COM UM ESPECIALISTA

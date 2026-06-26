@@ -33,7 +33,7 @@ export default async function BracoParaLuminariaLP() {
                     </div>
                     <WhatsAppLink
                         message={WA_MSG}
-                        className="flex items-center gap-2 bg-industrial-950 text-white hover:bg-industrial-800 active:bg-industrial-700 font-black uppercase tracking-widest text-[10px] px-4 h-10 transition-colors"
+                        className="flex items-center gap-2 bg-industrial-950 text-white hover:bg-industrial-800 active:bg-industrial-700 font-black uppercase tracking-widest text-[10px] px-4 h-10 rounded-lg transition-colors"
                         aria-label="Solicitar orçamento pelo WhatsApp"
                     >
                         <Phone className="size-4" aria-hidden="true" />
@@ -48,7 +48,7 @@ export default async function BracoParaLuminariaLP() {
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
                         <div className="flex-1 text-center lg:text-left">
-                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-industrial-50 border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-widest uppercase mb-8">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-industrial-50 border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-widest uppercase rounded-md mb-8">
                                 <span className="size-2 bg-green-500 rounded-full animate-pulse" aria-hidden="true" />
                                 Direto da Fábrica — Goiânia, GO
                             </div>
@@ -62,7 +62,7 @@ export default async function BracoParaLuminariaLP() {
                             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                                 <WhatsAppLink
                                     message={WA_MSG}
-                                    className="flex items-center justify-center gap-3 bg-industrial-950 text-white hover:bg-industrial-800 active:bg-industrial-700 font-black h-16 px-10 w-full sm:w-auto uppercase tracking-widest transition-transform hover:-translate-y-1 shadow-xl shadow-industrial-950/20"
+                                    className="flex items-center justify-center gap-3 bg-industrial-950 text-white hover:bg-industrial-800 active:bg-industrial-700 font-black h-16 px-10 w-full sm:w-auto uppercase tracking-widest rounded-lg transition-transform hover:-translate-y-1 shadow-xl shadow-industrial-950/20"
                                     aria-label="Solicitar orçamento de braços para luminária pelo WhatsApp"
                                 >
                                     <Calculator className="size-5" aria-hidden="true" />
@@ -70,7 +70,7 @@ export default async function BracoParaLuminariaLP() {
                                 </WhatsAppLink>
                                 <a
                                     href="/downloads"
-                                    className="flex items-center justify-center gap-2 bg-white border-2 border-industrial-200 text-industrial-800 hover:border-industrial-950 hover:text-industrial-950 font-black h-16 px-8 w-full sm:w-auto uppercase tracking-widest transition-colors"
+                                    className="flex items-center justify-center gap-2 bg-white border-2 border-industrial-200 text-industrial-800 hover:border-industrial-950 hover:text-industrial-950 font-black h-16 px-8 w-full sm:w-auto uppercase tracking-widest rounded-lg transition-colors"
                                 >
                                     <FileText className="size-5" aria-hidden="true" />
                                     BAIXAR CATÁLOGOS PDF
@@ -92,7 +92,7 @@ export default async function BracoParaLuminariaLP() {
                                     { src: "https://bebiluminacao.com.br/api/media/file/suporte-3-luminarias.png", nome: "Suporte 3 Luminárias" },
                                     { src: "https://bebiluminacao.com.br/api/media/file/suporte-4-luminarias.png", nome: "Suporte 4 Luminárias" },
                                 ].map((produto) => (
-                                    <div key={produto.src} className="bg-industrial-50 border border-industrial-200 hover:border-accent-premium transition-colors p-4 flex flex-col items-center gap-3 group">
+                                    <div key={produto.src} className="bg-industrial-50 border border-industrial-200 rounded-lg hover:border-accent-premium transition-colors p-4 flex flex-col items-center gap-3 group">
                                         <div className="relative w-full aspect-square">
                                             <Image
                                                 src={produto.src}
@@ -130,8 +130,8 @@ export default async function BracoParaLuminariaLP() {
                             { title: "Normas ABNT", desc: "Braços dimensionados conforme NBR 6123, garantindo segurança estrutural ao projeto.", icon: <Check /> },
                             { title: "Solução Completa", desc: "Braço, poste, luminária LED — compre tudo em um só fornecedor e simplifique a obra.", icon: <Calculator /> },
                         ].map((item, i) => (
-                            <div key={i} className="bg-white border border-industrial-200 p-8 hover:border-accent-premium transition-colors hover:shadow-md">
-                                <div className="size-12 bg-industrial-950 text-white flex items-center justify-center mb-6">
+                            <div key={i} className="bg-white border border-industrial-200 rounded-2xl p-8 hover:border-accent-premium transition-colors hover:shadow-md">
+                                <div className="size-12 bg-industrial-950 text-white rounded-lg flex items-center justify-center mb-6">
                                     {item.icon}
                                 </div>
                                 <h3 className="font-black text-industrial-950 uppercase mb-3 text-sm">{item.title}</h3>
@@ -159,7 +159,7 @@ export default async function BracoParaLuminariaLP() {
                     </p>
                     <WhatsAppLink
                         message={WA_MSG}
-                        className="inline-flex items-center justify-center gap-3 bg-black text-white hover:bg-industrial-800 font-black h-16 w-full sm:w-auto px-12 text-lg uppercase tracking-widest transition-transform hover:scale-105 shadow-2xl"
+                        className="inline-flex items-center justify-center gap-3 bg-black text-white hover:bg-industrial-800 font-black h-16 w-full sm:w-auto px-12 text-lg uppercase tracking-widest rounded-lg transition-transform hover:scale-105 shadow-2xl"
                         aria-label="Falar com especialista em braços para luminária pelo WhatsApp"
                     >
                         <Phone className="size-5" />
