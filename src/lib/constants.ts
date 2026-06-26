@@ -177,7 +177,7 @@ export const catalogs: Catalog[] = [
         id: "catalogo-geral-bb",
         title: "Catálogo Geral B&B Iluminação",
         description: "Especificações completas de postes telecônicos, decorativos e braços metálicos com padrão de engenharia.",
-        thumbnail: "/portfolio/reserva-parque.webp",
+        thumbnail: "/images/produtos/poste-curvo-duplo-avenida-noite.png",
         fileUrl: "/downloads/catalogo-bb-iluminacao.pdf",
         category: "Postes e Estruturas"
     }
