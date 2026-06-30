@@ -2,6 +2,7 @@ export const dynamic = 'force-dynamic'
 
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
+import Link from "next/link"
 import { getCatalogs } from "@/lib/data"
 import { DownloadGrid } from "./DownloadGrid"
 import { FileText, ShieldCheck, Download, Ruler } from "lucide-react"
@@ -108,12 +109,12 @@ export default async function DownloadsPage() {
                                         <Download className="size-4" />
                                         Baixar o Guia
                                     </a>
-                                    <a
+                                    <Link
                                         href="/blog/durabilidade-dos-postes-metalicos"
                                         className="flex-1 flex items-center justify-center gap-2 border border-industrial-300 text-industrial-700 font-black uppercase text-xs tracking-widest py-4 hover:border-industrial-900 hover:text-industrial-950 transition-colors"
                                     >
                                         Ler o artigo
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
