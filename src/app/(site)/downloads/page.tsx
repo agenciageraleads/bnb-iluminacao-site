@@ -2,6 +2,7 @@ export const dynamic = 'force-dynamic'
 
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
+import Image from "next/image"
 import Link from "next/link"
 import { getCatalogs } from "@/lib/data"
 import { DownloadGrid } from "./DownloadGrid"
@@ -81,17 +82,20 @@ export default async function DownloadsPage() {
                             </p>
                         </div>
 
-                        <div id="guia-durabilidade" className="scroll-mt-32 max-w-4xl mx-auto bg-white border border-industrial-200 shadow-sm grid md:grid-cols-[280px_1fr]">
-                            <div className="bg-industrial-950 p-10 flex flex-col items-center justify-center text-center gap-4">
-                                <div className="size-16 bg-accent-premium text-industrial-950 flex items-center justify-center">
-                                    <ShieldCheck className="size-8" />
-                                </div>
-                                <div>
-                                    <p className="text-accent-premium text-[10px] font-black uppercase tracking-[0.2em]">E-book · PDF</p>
-                                    <p className="text-white text-xs font-bold uppercase tracking-widest mt-1">19 páginas</p>
-                                </div>
+                        <div id="guia-durabilidade" className="scroll-mt-32 max-w-4xl mx-auto bg-white border border-industrial-200 shadow-sm overflow-hidden grid md:grid-cols-[280px_1fr]">
+                            <div className="relative bg-industrial-950 min-h-[320px] md:min-h-0">
+                                <Image
+                                    src="/images/guias/guia-durabilidade-postes-capa.png"
+                                    alt="Capa do Guia Técnico de Durabilidade dos Postes Metálicos"
+                                    fill
+                                    className="object-cover object-top"
+                                    sizes="(min-width: 768px) 280px, 100vw"
+                                />
                             </div>
                             <div className="p-8 flex flex-col">
+                                <div className="bg-accent-premium text-black inline-block self-start px-3 py-1 text-[10px] font-black uppercase tracking-widest mb-4">
+                                    E-book · PDF · 19 páginas
+                                </div>
                                 <h3 className="font-black text-industrial-950 uppercase text-xl leading-tight">
                                     Durabilidade dos Postes Metálicos
                                 </h3>
