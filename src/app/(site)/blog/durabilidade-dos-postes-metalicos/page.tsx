@@ -12,8 +12,8 @@ import {
     Landmark,
     MessageCircle,
     Paintbrush,
-    Ruler,
     ShieldCheck,
+    Sparkles,
     Waves,
     Wrench,
 } from "lucide-react"
@@ -35,24 +35,26 @@ import {
     createWebPageSchema,
 } from "@/lib/seo/schema"
 
-const pageUrl = "https://bebiluminacao.com.br/blog/poste-galvanizado-ou-pintado"
-const pageTitle = "Poste Galvanizado ou Pintado"
+const pageUrl = "https://bebiluminacao.com.br/blog/durabilidade-dos-postes-metalicos"
+const pageTitle = "Durabilidade de Postes Metalicos"
 const pageDescription =
-    "Compare poste galvanizado, pintado e galvanizado com pintura para escolher acabamento conforme ambiente, durabilidade, visual e memorial tecnico."
-const heroImage = "/images/seo/postes-metalicos/estacionamento-industrial-postes-retos.jpg"
+    "Quanto dura um poste metalico? Entenda corrosao, preparo de superficie, pintura eletrostatica, galvanizacao e como escolher o acabamento certo por ambiente."
+const heroImage = "/images/seo/postes-metalicos/poste-metalico-galvanizado-instalado-em-area-externa.webp"
+const ebookHref = "/downloads/guia-bb-durabilidade-postes-metalicos.pdf"
+const ebookFileName = "B&B - Guia de Durabilidade dos Postes Metalicos.pdf"
 const whatsappMessage =
-    "Ola, vim pelo comparativo de poste galvanizado ou pintado e quero ajuda para definir acabamento e orcamento tecnico."
+    "Ola, vim pelo guia de durabilidade de postes metalicos e quero ajuda para definir o acabamento certo para o ambiente da minha obra."
 
 export const metadata: Metadata = {
     title: {
-        absolute: "Poste Galvanizado ou Pintado | Comparativo Tecnico B&B",
+        absolute: "Durabilidade de Postes Metalicos | Guia Tecnico B&B",
     },
     description: pageDescription,
     alternates: {
         canonical: pageUrl,
     },
     openGraph: {
-        title: "Poste Galvanizado ou Pintado | Comparativo Tecnico B&B",
+        title: "Durabilidade de Postes Metalicos | Guia Tecnico B&B",
         description: pageDescription,
         url: pageUrl,
         type: "article",
@@ -61,7 +63,7 @@ export const metadata: Metadata = {
                 url: absoluteUrl(heroImage),
                 width: 1200,
                 height: 630,
-                alt: "Postes metalicos externos em estacionamento industrial",
+                alt: "Poste metalico galvanizado instalado em area externa",
             },
         ],
     },
@@ -69,149 +71,159 @@ export const metadata: Metadata = {
 
 const decisionCards = [
     {
-        title: "Ambiente primeiro",
+        title: "O ambiente decide",
         description:
-            "Umidade, maresia, agentes agressivos, manutencao e exposicao externa pesam mais que uma escolha puramente estetica.",
+            "Umidade, maresia, poluicao, produtos quimicos e manutencao pesam mais que o preco inicial. Nao existe 'dura X anos': depende de onde o poste fica.",
         icon: Waves,
     },
     {
-        title: "Visual tambem importa",
+        title: "A preparacao define",
         description:
-            "Cor, identidade do empreendimento e padronizacao urbana podem pedir pintura mesmo quando a protecao ja foi considerada.",
-        icon: Paintbrush,
+            "Limpeza, desengraxe e fosfatizacao antes da tinta determinam a aderencia e a vida util. Acabamento bom sobre aco mal preparado falha cedo.",
+        icon: Sparkles,
     },
     {
-        title: "Memorial fecha a regra",
+        title: "O acabamento certo",
         description:
-            "Projeto, edital, norma citada, prazo, processo e documentos de recebimento devem definir o acabamento de compra.",
-        icon: ClipboardCheck,
+            "Pintura eletrostatica, galvanizacao a fogo ou galvanizado com pintura: cada um resiste de um jeito ao mesmo ambiente.",
+        icon: ShieldCheck,
     },
 ]
 
 const comparisonRows = [
     [
-        "Poste galvanizado",
-        "Quando a prioridade e protecao contra corrosao em area externa, loteamentos, industrias, vias e ambientes mais exigentes.",
-        "Confirme processo, dimensoes, prazo, necessidade de pintura complementar e requisito do memorial.",
+        "Pintura liquida",
+        "Acabamento comum de serralheria, com menor custo inicial e mais dependente da mao de obra e da preparacao.",
+        "Menor padronizacao e mais manutencao ao longo do tempo. Em poste externo permanente, tende a render menos.",
     ],
     [
-        "Poste pintado",
-        "Quando a prioridade e padrao visual, cor, arquitetura, identidade do condominio, praca ou empreendimento.",
-        "Confirme preparo de superficie, tipo de pintura, cor, ambiente e expectativa de manutencao.",
+        "Pintura eletrostatica",
+        "Tinta em po com cura em estufa, camada uniforme e resistente a risco e abrasao. Tinta poliester para uso externo.",
+        "Excelente custo-beneficio no ambiente urbano sem maresia forte. Sozinha, nao e a melhor opcao em litoral.",
+    ],
+    [
+        "Galvanizacao a fogo",
+        "Aco mergulhado em zinco fundido (NBR 6323). O zinco se sacrifica antes do aco e protege ate em riscos pequenos.",
+        "Maxima resistencia a corrosao e baixa manutencao. Indicada para litoral, rodovia, obra publica e industria.",
     ],
     [
         "Galvanizado + pintura",
-        "Quando o projeto precisa combinar protecao anticorrosiva com acabamento visual especifico.",
-        "Confirme compatibilidade entre processos, sequencia de fabricacao, aderencia, cor e prazo.",
-    ],
-    [
-        "Sob memorial",
-        "Quando edital, concessionaria, cliente ou engenharia ja definiram requisito tecnico de acabamento.",
-        "Envie o documento antes da cotacao para evitar preco incompleto ou retrabalho.",
+        "Combina a protecao anticorrosiva da galvanizacao com a cor e o acabamento da pintura eletrostatica.",
+        "Sistema premium: estetica + durabilidade. Indicado para alto padrao, orla e projetos arquitetonicos.",
     ],
 ]
 
 const factorCards = [
     {
-        title: "Corrosao e intemperie",
-        description: "Exposicao a chuva, umidade, maresia, poluicao, produtos quimicos e manutencao muda a necessidade de protecao.",
+        title: "Corrosao e ambiente",
+        description: "Umidade, oxigenio, sais, poluicao e produtos quimicos definem a agressividade. A ISO 12944 classifica de C1 a CX.",
         icon: ShieldCheck,
     },
     {
-        title: "Aplicacao do poste",
-        description: "Via publica, loteamento, praca, condominio, estacionamento e patio industrial pedem decisoes diferentes.",
-        icon: Landmark,
+        title: "Preparo de superficie",
+        description: "Limpeza e desengraxe removem oleo e carepa. Tinta sobre superficie mal preparada desplaca e corroi por baixo.",
+        icon: Sparkles,
     },
     {
-        title: "Modelo e geometria",
-        description: "Poste reto, teleconico, curvo simples, curvo duplo, base e bracos podem interferir no processo e no prazo.",
-        icon: Ruler,
-    },
-    {
-        title: "Fixacao e manutencao",
-        description: "Engastado, flangeado, base, chumbadores e acesso de manutencao devem entrar no briefing.",
-        icon: Wrench,
-    },
-    {
-        title: "Padrao visual",
-        description: "Cores, identidade urbana e compatibilidade com luminarias, fachadas e paisagismo podem justificar pintura.",
+        title: "Fosfatizacao",
+        description: "Camada microscopica entre o aco e a tinta que melhora a aderencia e aumenta a resistencia a corrosao.",
         icon: Paintbrush,
     },
     {
-        title: "Documentos tecnicos",
-        description: "Memorial, projeto, edital e requisitos de recebimento devem ser enviados antes de fechar acabamento.",
-        icon: FileText,
+        title: "Acabamento adequado",
+        description: "Eletrostatica para o urbano; galvanizacao para ambiente agressivo; combinado quando se quer estetica e protecao.",
+        icon: Landmark,
     },
+    {
+        title: "Dano mecanico",
+        description: "Escada, batida de veiculo, rocadeira e corrente danificam qualquer acabamento e abrem ponto de corrosao.",
+        icon: Wrench,
+    },
+    {
+        title: "Manutencao preventiva",
+        description: "Lavar, corrigir riscos cedo e inspecionar anualmente faz um arranhao pequeno nao virar ferrugem grande.",
+        icon: ClipboardCheck,
+    },
+]
+
+const processSteps = [
+    "Limpeza das impurezas maiores",
+    "Limpeza das impurezas menores",
+    "Desengraxe (remocao de oleo e oleosidade)",
+    "Fosfatizacao (preparacao da peca)",
+    "Secagem",
+    "Pintura eletrostatica a po",
+    "Cura em estufa",
+    "Inspecao visual antes da expedicao",
 ]
 
 const choiceGuide = [
     {
-        title: "Escolha galvanizado quando",
+        title: "Pintura eletrostatica quando",
         items: [
-            "o poste ficara exposto ao tempo;",
-            "o ambiente exige maior protecao anticorrosiva;",
-            "o memorial cita galvanizacao ou durabilidade externa;",
-            "a obra prioriza vida util e reducao de manutencao.",
-        ],
-        icon: ShieldCheck,
-    },
-    {
-        title: "Escolha pintado quando",
-        items: [
-            "o padrao visual e decisivo;",
-            "a cor precisa seguir arquitetura ou identidade do empreendimento;",
-            "o ambiente e menos agressivo ou ja tem protecao definida;",
-            "o memorial especifica pintura, cor ou acabamento visual.",
+            "o ambiente e urbano, sem maresia forte;",
+            "a prioridade e estetica com bom custo-beneficio;",
+            "o local permite manutencao futura;",
+            "condominios, estacionamentos, pracas e fachadas.",
         ],
         icon: Paintbrush,
     },
     {
-        title: "Combine processos quando",
+        title: "Galvanizacao quando",
         items: [
-            "a obra exige protecao e cor especifica;",
+            "o ambiente e agressivo (litoral, industria, rural pesado);",
+            "a manutencao futura e dificil ou cara;",
+            "a prioridade e vida util longa e baixa manutencao;",
+            "rodovias, obras publicas e prefeituras.",
+        ],
+        icon: ShieldCheck,
+    },
+    {
+        title: "Galvanizado + pintura quando",
+        items: [
+            "o projeto precisa de protecao maxima e cor especifica;",
+            "ha exigencia estetica em ambiente proximo ao litoral;",
             "o cliente quer durabilidade com identidade visual;",
-            "o memorial pede sistema de acabamento combinado;",
-            "engenharia validou compatibilidade, aderencia e prazo.",
+            "alto padrao, orla e fachadas corporativas.",
         ],
         icon: ClipboardCheck,
     },
 ]
 
 const quoteChecklist = [
-    "Cidade, UF e ambiente de instalacao: via, loteamento, condominio, praca, estacionamento ou industria.",
+    "Cidade, UF e ambiente de instalacao: via, loteamento, condominio, praca, estacionamento, industria ou litoral.",
     "Modelo do poste: reto, teleconico, curvo simples, curvo duplo, ornamental ou sob desenho.",
     "Altura, quantidade, luminaria, braco, fixacao e necessidade de base/chumbadores.",
-    "Acabamento desejado: galvanizado, pintado, galvanizado com pintura ou indefinido.",
-    "Cor, padrao visual, referencia arquitetonica ou identidade do empreendimento.",
+    "Acabamento desejado: pintura eletrostatica, galvanizado, galvanizado com pintura ou indefinido.",
+    "Cor, padrao visual ou referencia arquitetonica do empreendimento.",
     "Memorial, edital, projeto, norma citada ou documento de recebimento, quando houver.",
-    "Prazo esperado, cidade de entrega e restricoes de obra.",
-    "Fotos do local ou historico de corrosao/manutencao, quando existir.",
+    "Prazo esperado, cidade de entrega e condicoes de acesso para manutencao.",
 ]
 
 const internalLinks = [
     {
-        title: "Poste metalico galvanizado",
-        description: "Aprofunde a pagina comercial do acabamento galvanizado para iluminacao e areas externas.",
-        href: "/produtos/poste-metalico-galvanizado",
+        title: "Poste galvanizado ou pintado",
+        description: "Compare os acabamentos lado a lado para escolher conforme ambiente, durabilidade e memorial.",
+        href: "/blog/poste-galvanizado-ou-pintado",
         icon: ShieldCheck,
     },
     {
         title: "Pintura eletrostatica",
-        description: "Veja o servico de pintura para projetos que precisam de cor e acabamento visual.",
+        description: "Conheca o processo de pintura em po para projetos que precisam de cor e acabamento uniforme.",
         href: "/servicos/pintura-eletrostatica",
         icon: Paintbrush,
     },
     {
-        title: "Normas para postes",
-        description: "Organize normas, memoriais e documentos antes de fechar especificacao de compra.",
-        href: "/blog/normas-para-postes-de-iluminacao",
-        icon: FileText,
+        title: "Poste metalico galvanizado",
+        description: "Veja a pagina do acabamento galvanizado para areas externas e ambientes agressivos.",
+        href: "/produtos/poste-metalico-galvanizado",
+        icon: ShieldCheck,
     },
     {
-        title: "Poste flangeado ou engastado",
-        description: "Alinhe base, chumbadores, fundacao e manutencao antes de fechar o acabamento.",
-        href: "/blog/poste-flangeado-ou-engastado",
-        icon: Wrench,
+        title: "Normas para postes",
+        description: "Organize normas, memoriais e documentos antes de fechar a especificacao de compra.",
+        href: "/blog/normas-para-postes-de-iluminacao",
+        icon: FileText,
     },
     {
         title: "Postes metalicos",
@@ -221,50 +233,31 @@ const internalLinks = [
     },
 ]
 
-const downloadLinks = [
-    {
-        title: "Datasheet poste reto",
-        href: "/downloads/datasheets/DATASHEET-BB-POSTE-RETO.pdf",
-    },
-    {
-        title: "Datasheet poste curvo simples",
-        href: "/downloads/datasheets/DATASHEET-BB-POSTE-CURVO-SIMPLES.pdf",
-    },
-    {
-        title: "Datasheet poste curvo duplo",
-        href: "/downloads/datasheets/DATASHEET-BB-POSTE-CURVO-DUPLO.pdf",
-    },
-    {
-        title: "Catalogos e desenhos tecnicos",
-        href: "/downloads",
-    },
-]
-
 const faq = [
     {
-        question: "Poste galvanizado e sempre melhor que poste pintado?",
+        question: "Quanto tempo dura um poste metalico?",
         answer:
-            "Nao necessariamente. Galvanizacao costuma priorizar protecao contra corrosao. Pintura costuma priorizar padrao visual e cor. A melhor escolha depende do ambiente, memorial, manutencao e objetivo do projeto.",
+            "Nao existe um numero unico. A vida util depende do acabamento e, principalmente, da agressividade do ambiente e da manutencao. O mesmo poste dura muito mais numa cidade do que a beira-mar.",
     },
     {
-        question: "Quando usar poste galvanizado com pintura?",
+        question: "Qual e a garantia da B&B?",
         answer:
-            "Quando o projeto precisa combinar protecao anticorrosiva com acabamento visual especifico. A compatibilidade entre processos, aderencia, cor e prazo deve ser validada antes da compra.",
+            "5 anos para postes pintados e 10 anos para galvanizados, cobrindo a integridade estrutural da peca. O acabamento e item de conservacao e, conforme o ambiente, pode exigir manutencao antes desse prazo. Em resumo: estrutura e garantia, acabamento e cuidado.",
     },
     {
-        question: "Qual norma entra na galvanizacao de postes metalicos?",
+        question: "Pintura eletrostatica serve para o litoral?",
         answer:
-            "A ABNT NBR 6323 costuma aparecer quando o memorial exige galvanizacao por imersao a quente em produtos de aco ou ferro fundido. A edicao vigente e o escopo devem ser confirmados em fonte oficial e no memorial.",
+            "Sozinha, nao e a melhor escolha em exposicao direta a maresia. Para litoral, o indicado e galvanizado ou galvanizado com pintura. A pintura eletrostatica tem otimo desempenho no ambiente urbano sem maresia forte.",
     },
     {
-        question: "Pintura eletrostatica substitui galvanizacao?",
+        question: "O que e fosfatizacao e por que importa?",
         answer:
-            "Nao e uma substituicao automatica. A pintura pode atender padrao visual e protecao complementar, mas a decisao depende de ambiente, preparo de superficie, processo, durabilidade esperada e memorial.",
+            "E uma camada microscopica criada entre o aco e a tinta, que melhora a aderencia e aumenta a resistencia a corrosao. E uma das etapas que mais influenciam a durabilidade do acabamento pintado.",
     },
     {
-        question: "O que enviar para a B&B definir acabamento do poste?",
+        question: "O retoque em campo fica igual ao acabamento de fabrica?",
         answer:
-            "Envie aplicacao, cidade e UF, ambiente, quantidade, modelo, altura, fixacao, cor desejada, prazo e qualquer memorial, projeto, edital ou referencia tecnica disponivel.",
+            "O retoque protege a estrutura, mas pode ter diferenca visual em relacao ao acabamento original. Por isso, corrigir riscos profundos cedo, antes que virem corrosao, e a melhor estrategia de conservacao.",
     },
 ]
 
@@ -275,8 +268,8 @@ function createArticleSchema() {
         headline: pageTitle,
         description: pageDescription,
         image: absoluteUrl(heroImage),
-        datePublished: "2026-06-14",
-        dateModified: "2026-06-14",
+        datePublished: "2026-06-30",
+        dateModified: "2026-06-30",
         author: {
             "@id": ORGANIZATION_ID,
             name: "B&B Iluminacao",
@@ -307,8 +300,8 @@ function getSchema() {
             { name: pageTitle, item: pageUrl },
         ]),
         createItemListSchema({
-            id: `${pageUrl}#comparativo-acabamentos`,
-            name: "Comparativo de acabamento para postes metalicos",
+            id: `${pageUrl}#comparativo-durabilidade`,
+            name: "Acabamentos de postes metalicos por durabilidade",
             items: comparisonRows.map(([finish, use, note]) => ({
                 name: finish,
                 description: `${use} ${note}`,
@@ -326,16 +319,16 @@ function SectionLabel({ children }: { children: ReactNode }) {
     )
 }
 
-export default function PosteGalvanizadoOuPintadoPage() {
+export default function DurabilidadeDosPostesMetalicosPage() {
     return (
         <main className="min-h-screen bg-white text-industrial-950">
-            <SchemaOrg id="poste-galvanizado-ou-pintado-schema" data={getSchema()} />
+            <SchemaOrg id="durabilidade-dos-postes-metalicos-schema" data={getSchema()} />
             <Header />
             <div className="hidden 2xl:block">
                 <FloatingWhatsApp
                     message={whatsappMessage}
-                    eventLabel="Solicitar orcamento pelo comparativo de acabamento"
-                    eventSource="floating_acabamento_postes"
+                    eventLabel="Solicitar orcamento pelo guia de durabilidade"
+                    eventSource="floating_durabilidade_postes"
                 />
             </div>
 
@@ -357,35 +350,37 @@ export default function PosteGalvanizadoOuPintadoPage() {
                 <div className="container relative z-10 mx-auto px-4 pb-20 pt-12 md:pb-28">
                     <div className="max-w-4xl">
                         <div className="mb-6 inline-flex items-center gap-3 border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.22em] text-white">
-                            <Paintbrush className="size-4 text-accent-premium" aria-hidden="true" />
-                            Guia tecnico de acabamento
+                            <ShieldCheck className="size-4 text-accent-premium" aria-hidden="true" />
+                            Guia tecnico de durabilidade
                         </div>
                         <h1 className="max-w-4xl text-4xl font-black uppercase leading-[0.95] tracking-tight text-white md:text-6xl lg:text-7xl">
-                            Poste Galvanizado ou Pintado: Como Escolher
+                            Durabilidade de Postes Metalicos: O Que Define a Vida Util
                         </h1>
                         <p className="mt-8 max-w-3xl text-base font-medium leading-relaxed text-industrial-200 md:text-xl">
-                            O acabamento do poste nao deve ser definido so por preco ou aparencia. Compare galvanizado,
-                            pintado e galvanizado com pintura para alinhar durabilidade, ambiente, padrao visual, memorial
-                            tecnico e prazo de fornecimento.
+                            Por que dois postes iguais duram tempos diferentes? A resposta esta no ambiente, no preparo da
+                            superficie e no acabamento. Entenda a corrosao e escolha entre pintura eletrostatica,
+                            galvanizacao e galvanizado com pintura.
                         </p>
                         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+                            <a
+                                href={ebookHref}
+                                download={ebookFileName}
+                                className="inline-flex h-14 items-center justify-center gap-3 bg-accent-premium px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-yellow-300"
+                                aria-label="Baixar o guia tecnico de durabilidade de postes em PDF"
+                            >
+                                <Download className="size-5" aria-hidden="true" />
+                                Baixar o guia (PDF)
+                            </a>
                             <WhatsAppLink
                                 message={whatsappMessage}
-                                eventLabel="Solicitar orcamento pelo comparativo de acabamento"
-                                eventSource="hero_acabamento_postes"
-                                className="inline-flex h-14 items-center justify-center gap-3 bg-accent-premium px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-yellow-300"
-                                aria-label="Solicitar orcamento de poste com acabamento pelo WhatsApp"
+                                eventLabel="Solicitar orcamento pelo guia de durabilidade"
+                                eventSource="hero_durabilidade_postes"
+                                className="inline-flex h-14 items-center justify-center gap-3 border border-white/25 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-industrial-950"
+                                aria-label="Falar com a engenharia da B&B pelo WhatsApp"
                             >
                                 <MessageCircle className="size-5" aria-hidden="true" />
-                                Solicitar orcamento
+                                Falar com a engenharia
                             </WhatsAppLink>
-                            <Link
-                                href="/produtos/poste-metalico-galvanizado"
-                                className="inline-flex h-14 items-center justify-center gap-3 border border-white/25 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-industrial-950"
-                            >
-                                <ShieldCheck className="size-5" aria-hidden="true" />
-                                Ver poste galvanizado
-                            </Link>
                         </div>
                     </div>
                 </div>
@@ -414,19 +409,19 @@ export default function PosteGalvanizadoOuPintadoPage() {
                 <section className="py-20 md:py-28">
                     <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
                         <div className="space-y-6">
-                            <SectionLabel>Comparativo rapido</SectionLabel>
+                            <SectionLabel>O que faz um poste enferrujar</SectionLabel>
                             <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                                Galvanizar, pintar ou combinar processos
+                                Durabilidade e uma conversa entre o aco e o ambiente
                             </h2>
                             <p className="text-base leading-relaxed text-industrial-600 md:text-lg">
-                                Em postes metalicos, acabamento e especificacao caminham juntos. A galvanizacao costuma
-                                aparecer quando a conversa e durabilidade externa e protecao anticorrosiva. A pintura
-                                aparece quando cor, identidade visual e padronizacao do empreendimento sao decisivas.
+                                O aco enferruja quando o ambiente lhe da os ingredientes: umidade, oxigenio, sais, poluicao,
+                                produtos quimicos e dano mecanico no acabamento. Por isso a especificacao correta sempre
+                                comeca pelo ambiente, nao pelo produto.
                             </p>
                             <p className="text-base leading-relaxed text-industrial-600 md:text-lg">
-                                Em muitos projetos, a decisao correta nao e "um contra o outro", mas entender se o poste
-                                deve ser galvanizado, pintado ou galvanizado com pintura complementar conforme ambiente,
-                                memorial, prazo e processo de fabricacao.
+                                Nao existe resposta unica do tipo "dura X anos". A norma internacional ISO 12944 classifica
+                                os ambientes por agressividade corrosiva, de C1 (interno seco) a CX (marinho ou industrial
+                                extremo). O mesmo poste, com o mesmo acabamento, dura muito mais numa praca do que a beira-mar.
                             </p>
                         </div>
 
@@ -447,9 +442,7 @@ export default function PosteGalvanizadoOuPintadoPage() {
                             Fontes tecnicas:{" "}
                             <a href="https://www.abnt.org.br/" target="_blank" rel="noopener noreferrer" className="underline hover:text-industrial-800">ABNT — NBR 6323 (galvanização) e NBR 14744 (postes de aço)</a>
                             {" · "}
-                            <a href="https://abrasip.org.br/" target="_blank" rel="noopener noreferrer" className="underline hover:text-industrial-800">ABRASIP</a>
-                            {" · "}
-                            <a href="https://www.inmetro.gov.br/" target="_blank" rel="noopener noreferrer" className="underline hover:text-industrial-800">INMETRO</a>
+                            <a href="https://www.iso.org/standard/64809.html" target="_blank" rel="noopener noreferrer" className="underline hover:text-industrial-800">ISO 12944 (corrosividade)</a>
                         </p>
                     </div>
                 </section>
@@ -457,13 +450,13 @@ export default function PosteGalvanizadoOuPintadoPage() {
                 <section className="bg-industrial-950 py-20 text-white md:py-28">
                     <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
                         <div className="space-y-5">
-                            <SectionLabel>Fatores de decisao</SectionLabel>
+                            <SectionLabel>Fatores de durabilidade</SectionLabel>
                             <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                                O acabamento depende do uso real do poste
+                                Por que dois postes iguais duram tempos diferentes
                             </h2>
                             <p className="text-base leading-relaxed text-industrial-300">
-                                Uma escolha bem feita considera ambiente, processo, visual, manutencao, fixacao, modelo do
-                                poste e exigencias do memorial. Essa triagem reduz retrabalho no orcamento.
+                                A vida util de um poste e decidida antes de aplicar a cor — e depende de quem o instala e
+                                cuida. Estes sao os fatores que mais pesam.
                             </p>
                         </div>
                         <div className="grid gap-4 sm:grid-cols-2">
@@ -486,11 +479,45 @@ export default function PosteGalvanizadoOuPintadoPage() {
                 </section>
 
                 <section className="py-20 md:py-28">
+                    <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+                        <div className="space-y-6">
+                            <SectionLabel>Por tras da pintura B&B</SectionLabel>
+                            <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
+                                Pintar nao e so passar tinta
+                            </h2>
+                            <p className="text-base leading-relaxed text-industrial-600 md:text-lg">
+                                Na B&B, a pintura comeca muito antes da tinta. Cada etapa existe por um motivo de engenharia
+                                — e e isso que faz o acabamento durar. A tinta e poliester para uso externo, indicada para
+                                resistir ao sol em ambiente urbano.
+                            </p>
+                            <div className="border border-industrial-200 bg-industrial-50 p-6">
+                                <p className="text-[11px] font-black uppercase tracking-[0.2em] text-accent-dark">Garantia B&B</p>
+                                <p className="mt-3 text-sm font-bold leading-relaxed text-industrial-800">
+                                    5 anos para postes pintados e 10 anos para galvanizados, cobrindo a integridade
+                                    estrutural da peca. O acabamento e item de conservacao: conforme o ambiente, pode pedir
+                                    manutencao antes desse prazo. Estrutura e garantia; acabamento e cuidado.
+                                </p>
+                            </div>
+                        </div>
+                        <div className="border border-industrial-200">
+                            {processSteps.map((step, index) => (
+                                <div key={step} className="flex items-center gap-4 border-b border-industrial-200 px-5 py-4 last:border-b-0">
+                                    <span className="flex size-9 shrink-0 items-center justify-center bg-accent-premium text-sm font-black text-industrial-950">
+                                        {index + 1}
+                                    </span>
+                                    <p className="text-sm font-bold leading-relaxed text-industrial-800">{step}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                <section className="py-20 md:py-28">
                     <div className="container mx-auto px-4">
                         <div className="mb-12 max-w-3xl space-y-5">
-                            <SectionLabel>Regra pratica</SectionLabel>
+                            <SectionLabel>Como escolher</SectionLabel>
                             <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                                Como orientar a primeira escolha
+                                Qual acabamento faz sentido para a sua obra
                             </h2>
                             <p className="text-base leading-relaxed text-industrial-600">
                                 Use estes cenarios como triagem inicial. A confirmacao final deve considerar memorial,
@@ -524,16 +551,41 @@ export default function PosteGalvanizadoOuPintadoPage() {
                     </div>
                 </section>
 
+                <section className="bg-accent-premium py-16 md:py-20">
+                    <div className="container mx-auto grid gap-8 px-4 lg:grid-cols-[1fr_auto] lg:items-center">
+                        <div>
+                            <SectionLabel>Material de referencia</SectionLabel>
+                            <h2 className="mt-3 text-3xl font-black uppercase leading-tight text-industrial-950 md:text-5xl">
+                                Baixe o Guia Tecnico da Durabilidade
+                            </h2>
+                            <p className="mt-4 max-w-3xl text-base font-bold leading-relaxed text-industrial-800">
+                                E-book completo em PDF: o que faz um poste enferrujar, comparativo de acabamentos, o segredo
+                                da preparacao de superficie, galvanizacao, manutencao e como escolher. Guarde e use no proximo
+                                projeto.
+                            </p>
+                        </div>
+                        <a
+                            href={ebookHref}
+                            download={ebookFileName}
+                            className="inline-flex h-14 items-center justify-center gap-3 bg-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-industrial-800"
+                            aria-label="Baixar o guia tecnico de durabilidade de postes em PDF"
+                        >
+                            <Download className="size-5" aria-hidden="true" />
+                            Baixar o guia (PDF)
+                        </a>
+                    </div>
+                </section>
+
                 <section className="bg-industrial-50 py-20 md:py-28">
                     <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
                         <div className="space-y-5">
                             <SectionLabel>Dados para cotacao</SectionLabel>
                             <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                                O que enviar para a B&B definir acabamento
+                                O que enviar para a B&B indicar o acabamento
                             </h2>
                             <p className="text-base leading-relaxed text-industrial-600">
-                                Se o acabamento nao estiver fechado, envie o contexto da obra. A B&B consegue orientar a
-                                conversa comercial para chegar em uma cotacao mais objetiva.
+                                Antes de decidir pelo preco, descreva onde o poste vai ficar. A engenharia da B&B orienta o
+                                acabamento certo para o ambiente.
                             </p>
                         </div>
                         <div className="grid gap-3">
@@ -552,15 +604,19 @@ export default function PosteGalvanizadoOuPintadoPage() {
                         <div className="space-y-5">
                             <SectionLabel>Arquivos tecnicos</SectionLabel>
                             <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                                Datasheets ajudam a comparar modelo e acabamento
+                                Datasheets e desenhos por modelo
                             </h2>
                             <p className="text-base leading-relaxed text-industrial-600">
-                                Antes de fechar galvanizado, pintado ou combinado, compare modelo, altura, braco, fixacao
-                                e aplicacao do poste.
+                                Compare modelo, altura, braco e fixacao da Linha Urban antes de fechar o acabamento.
                             </p>
                         </div>
                         <div className="grid gap-3">
-                            {downloadLinks.map((file) => (
+                            {[
+                                { title: "Datasheet poste reto", href: "/downloads/datasheets/DATASHEET-BB-POSTE-RETO.pdf" },
+                                { title: "Datasheet poste curvo simples", href: "/downloads/datasheets/DATASHEET-BB-POSTE-CURVO-SIMPLES.pdf" },
+                                { title: "Datasheet poste curvo duplo", href: "/downloads/datasheets/DATASHEET-BB-POSTE-CURVO-DUPLO.pdf" },
+                                { title: "Catalogos e desenhos tecnicos", href: "/downloads" },
+                            ].map((file) => (
                                 <a
                                     key={file.href}
                                     href={file.href}
@@ -584,11 +640,10 @@ export default function PosteGalvanizadoOuPintadoPage() {
                         <div className="space-y-5">
                             <SectionLabel>Perguntas frequentes</SectionLabel>
                             <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                                Duvidas comuns sobre acabamento de postes
+                                Duvidas comuns sobre durabilidade de postes
                             </h2>
                             <p className="text-base leading-relaxed text-industrial-300">
-                                Respostas para orientar a conversa entre compras, engenharia, obra e fornecedor antes de
-                                fechar o pedido.
+                                Respostas diretas para orientar a conversa entre compras, engenharia, obra e fornecedor.
                             </p>
                         </div>
                         <div className="space-y-4">
@@ -606,31 +661,31 @@ export default function PosteGalvanizadoOuPintadoPage() {
                 </section>
             </article>
 
-            <section className="bg-accent-premium py-16 md:py-20">
+            <section className="bg-white py-16 md:py-20">
                 <div className="container mx-auto grid gap-8 px-4 lg:grid-cols-[1fr_auto] lg:items-center">
                     <div>
                         <h2 className="text-3xl font-black uppercase leading-tight text-industrial-950 md:text-5xl">
-                            Defina o acabamento antes de comprar
+                            Escolha pelo ambiente, nao so pelo preco
                         </h2>
-                        <p className="mt-4 max-w-3xl text-base font-bold leading-relaxed text-industrial-800">
-                            Envie ambiente, modelo, quantidade, fixacao, cor desejada e memorial. A B&B ajuda a transformar
-                            acabamento em especificacao de cotacao.
+                        <p className="mt-4 max-w-3xl text-base font-bold leading-relaxed text-industrial-700">
+                            Envie ambiente, modelo, quantidade, fixacao e prazo. A B&B ajuda a transformar acabamento em
+                            especificacao de cotacao.
                         </p>
                     </div>
                     <div className="flex flex-col gap-4 sm:flex-row lg:flex-col">
                         <WhatsAppLink
                             message={whatsappMessage}
-                            eventLabel="Enviar dados para orcamento de acabamento"
-                            eventSource="final_acabamento_postes"
+                            eventLabel="Enviar dados para orcamento de durabilidade"
+                            eventSource="final_durabilidade_postes"
                             className="inline-flex h-14 items-center justify-center gap-3 bg-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-industrial-800"
-                            aria-label="Enviar dados para orcamento de acabamento de poste pelo WhatsApp"
+                            aria-label="Enviar dados para orcamento de poste pelo WhatsApp"
                         >
                             <MessageCircle className="size-5" aria-hidden="true" />
                             Falar com especialista
                         </WhatsAppLink>
                         <Link
                             href="/postes-metalicos"
-                            className="inline-flex h-14 items-center justify-center gap-3 border-2 border-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-white"
+                            className="inline-flex h-14 items-center justify-center gap-3 border-2 border-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-industrial-50"
                         >
                             <Factory className="size-5" aria-hidden="true" />
                             Ver postes metalicos
@@ -639,7 +694,7 @@ export default function PosteGalvanizadoOuPintadoPage() {
                 </div>
             </section>
 
-            <section className="border-b border-industrial-200 bg-white py-10">
+            <section className="border-b border-t border-industrial-200 bg-white py-10">
                 <div className="container mx-auto grid gap-4 px-4 md:grid-cols-4">
                     {internalLinks.map((item) => {
                         const Icon = item.icon
@@ -655,30 +710,6 @@ export default function PosteGalvanizadoOuPintadoPage() {
                             </Link>
                         )
                     })}
-                </div>
-            </section>
-
-            <section className="bg-white py-10">
-                <div className="container mx-auto grid gap-3 px-4 sm:grid-cols-2 lg:grid-cols-3">
-                    {[
-                        ["Postes para iluminacao publica", "/postes-para-iluminacao-publica"],
-                        ["Poste teleconico", "/produtos/poste-teleconico"],
-                        ["Poste curvo simples", "/produtos/poste-curvo-simples"],
-                        ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
-                        ["Poste flangeado ou engastado", "/blog/poste-flangeado-ou-engastado"],
-                        ["Durabilidade dos postes metalicos", "/blog/durabilidade-dos-postes-metalicos"],
-                        ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
-                        ["Catalogos e downloads", "/downloads"],
-                    ].map(([label, href]) => (
-                        <Link
-                            key={href}
-                            href={href}
-                            className="group flex items-center justify-between gap-4 border border-industrial-200 p-5 text-sm font-black uppercase tracking-widest text-industrial-800 transition-colors hover:border-industrial-950"
-                        >
-                            {label}
-                            <ArrowRight className="size-4 shrink-0 text-accent-dark transition-transform group-hover:translate-x-1" aria-hidden="true" />
-                        </Link>
-                    ))}
                 </div>
             </section>
 
