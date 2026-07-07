@@ -24,6 +24,7 @@ import { SchemaOrg } from "@/components/seo/schema-org"
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
 import { WhatsAppLink } from "@/components/ui/whatsapp-link"
 import { getPortfolioProjects, getProducts } from "@/lib/data"
+import { getPrimaryCatalogProducts } from "@/lib/catalog-curation"
 import {
     SITE_URL,
     createBreadcrumbSchema,
@@ -266,7 +267,7 @@ export default async function PostesParaIluminacaoPublicaPage() {
         getPortfolioProjects(),
     ])
 
-    const featuredProducts = products
+    const featuredProducts = getPrimaryCatalogProducts(products)
         .filter((product) => /poste|braco|suporte/i.test(`${product.name} ${product.model}`))
         .slice(0, 6)
     const featuredProjects = projects.filter((project) => project.image).slice(0, 3)

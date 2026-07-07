@@ -3,10 +3,11 @@ import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 
 import { getCategories } from "@/lib/data"
+import { getPrimaryCatalogCategories } from "@/lib/catalog-curation"
 import { getProductLineHref } from "@/lib/seo/product-line-links"
 
 export async function Categories() {
-    const categoriesList = await getCategories();
+    const categoriesList = getPrimaryCatalogCategories(await getCategories());
     return (
         <section className="py-24 bg-industrial-950">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">

@@ -7,6 +7,7 @@ import Link from "next/link"
 import { getProducts, getCategories } from "@/lib/data"
 import { redirect } from "next/navigation"
 import { SITE_URL, absoluteUrl } from "@/lib/seo/schema"
+import { isPrimaryCatalogCategory } from "@/lib/catalog-curation"
 
 export const dynamic = 'force-dynamic'
 
@@ -28,6 +29,12 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
                 absolute: `${category.title} | Produtos B&B Iluminacao`,
             },
             description: category.description,
+            robots: isPrimaryCatalogCategory(category.slug)
+                ? undefined
+                : {
+                    index: false,
+                    follow: true,
+                },
             alternates: {
                 canonical: pageUrl,
             },

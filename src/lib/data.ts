@@ -28,8 +28,22 @@ export interface Representative {
     phone: string
     states: string[]
     region?: string
+    territories?: RepresentativeTerritory[]
     displayOrder?: number | null
     markets?: string[] | null
+}
+
+export interface RepresentativeTerritory {
+    key?: string | null
+    uf: string
+    macroRegion: string
+    cities: string[]
+    ibgeCodes?: string[]
+    dddCodes?: string[]
+    priority?: number
+    isExclusive?: boolean
+    status?: string
+    notes?: string | null
 }
 
 export interface ClientLogo {
@@ -172,6 +186,7 @@ export const getRepresentatives = async (): Promise<Representative[]> => {
       phone: doc.phone as string,
       states: doc.states as string[] || [],
       region: doc.region as string || '',
+      territories: Array.isArray(doc.territories) ? doc.territories as RepresentativeTerritory[] : [],
       displayOrder: doc.displayOrder as number | null,
       markets: doc.markets as string[] || [],
     }))

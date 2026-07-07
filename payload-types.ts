@@ -197,7 +197,9 @@ export interface Product {
         id?: string | null;
       }[]
     | null;
-  badges?: ('NBR 6323' | 'NBR 6123' | 'Qualidade ISO' | 'Garantia B&B' | 'Selo Próprio')[] | null;
+  badges?:
+    | ('NBR 6323' | 'NBR 6123' | 'NBR 14744' | 'Qualidade ISO' | 'Garantia B&B' | 'Selo Próprio' | 'LED Integrado' | 'Lançamento')[]
+    | null;
   applications?:
     | {
         app: string;
