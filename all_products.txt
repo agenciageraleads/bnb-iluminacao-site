@@ -26,7 +26,6 @@
  Poste Ornamental Zéfiro                  | poste-ornamental-zefiro                  | Geral
  Poste Ornamental Pyxis                   | poste-ornamental-pyxis                   | Geral
  Poste Ornamental Vela                    | poste-ornamental-vela                    | Geral
- Poste Ornamental Astrea                  | poste-ornamental-astrea                  | Geral
  Poste Ornamental Serena                  | poste-ornamental-serena                  | Geral
  Poste Solar para Cochos                  | poste-solar-agro                         | Linha Agro
  Lixeira Industrial                       | lixeira-industrial                       | Linha Garden
@@ -57,13 +56,16 @@
  Poste Telecônico Curvo Duplo Flangeado   | poste-teleconico-curvo-duplo-flangeado   | Urban
  Poste Telecônico Curvo Simples Engastado | poste-teleconico-curvo-simples-engastado | Urban
  Poste Telecônico Reto Flangeado          | poste-teleconico-reto-flangeado          | Urban
- Poste Girafa Led 2x50W Flangeado         | poste-girafa-led-2-50w-flangeado         | Versa
- Poste Girafa Led 2x50W Engastado         | poste-girafa-led-2-50w-engastado         | Versa
- Poste Girafa Led 1x50W Engastado         | poste-girafa-led-1-50w-engastado         | Versa
- Poste Girafa Led 1x50W Flangeado         | poste-girafa-led-1-50w-flangeado         | Versa
+ Poste Girafa LED 2x50W Flangeado         | poste-girafa-led-2-50w-flangeado         | Versa
+ Poste Girafa LED 2x50W Engastado         | poste-girafa-led-2-50w-engastado         | Versa
+ Poste Girafa LED 1x50W Engastado         | poste-girafa-led-1-50w-engastado         | Versa
+ Poste Girafa LED 1x50W Flangeado         | poste-girafa-led-1-50w-flangeado         | Versa
+ Poste Rebatedor Engastado                | poste-rebatedor-engastado                | Versa
+ Poste Rebatedor Flangeado                | poste-rebatedor-flangeado                | Versa
+ Poste EOS                                | poste-ornamental-eos                     | Versa
+ Poste Astrea                             | poste-ornamental-astrea                  | Versa
  Poste p/ Câmera Bullet Flangeado         | poste-camera-bullet-flangeado            | Vigia
  Poste p/ Câmera Dome Flangeado           | poste-camera-dome-flangeado              | Vigia
  Poste p/ Câmera Bullet Engastado         | poste-camera-bullet-engastado            | Vigia
  Poste p/ Câmera Dome Engastado           | poste-camera-dome-engastado              | Vigia
-(65 rows)
-
+(68 rows)

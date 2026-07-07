@@ -2,6 +2,7 @@ export const dynamic = 'force-dynamic'
 
 import { MetadataRoute } from 'next'
 import { getCategories, getProducts, getBlogPosts } from '@/lib/data'
+import { getPrimaryCatalogCategories, getPrimaryCatalogProducts } from '@/lib/catalog-curation'
 import { caseStudies } from '@/lib/seo/cases'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -11,6 +12,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     getBlogPosts(1000),
     getCategories(),
   ])
+  const primaryCategories = getPrimaryCatalogCategories(categoriesList)
+  const primaryProducts = getPrimaryCatalogProducts(products)
 
   // Rotas Estáticas
   const staticRoutes = [
@@ -68,7 +71,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }))
 
   // Rotas de Categorias
-  const categoryRoutes = categoriesList.map((cat) => ({
+  const categoryRoutes = primaryCategories.map((cat) => ({
     url: `${baseUrl}/produtos/${cat.slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
@@ -76,7 +79,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }))
 
   // Rotas de Produtos Individuais
-  const productRoutes = products.map((prod) => ({
+  const productRoutes = primaryProducts.map((prod) => ({
     url: `${baseUrl}/produtos/item/${prod.id}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,

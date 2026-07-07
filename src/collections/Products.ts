@@ -65,9 +65,12 @@ const Products: CollectionConfig = {
             options: [
                 { label: 'NBR 6323', value: 'NBR 6323' },
                 { label: 'NBR 6123', value: 'NBR 6123' },
+                { label: 'NBR 14744', value: 'NBR 14744' },
                 { label: 'Qualidade ISO', value: 'Qualidade ISO' },
                 { label: 'Garantia B&B', value: 'Garantia B&B' },
                 { label: 'Selo Próprio', value: 'Selo Próprio' },
+                { label: 'LED Integrado', value: 'LED Integrado' },
+                { label: 'Lançamento', value: 'Lançamento' },
             ],
         },
         {

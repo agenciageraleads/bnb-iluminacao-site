@@ -103,6 +103,14 @@ const Representatives: CollectionConfig = {
             }
         },
         {
+            name: 'territories',
+            type: 'json',
+            label: 'Macro-regiões estruturadas',
+            admin: {
+                description: 'Sincronizado pelo CRM. Mantém UF, macro-região, cidades, DDDs e status de revisão.',
+            },
+        },
+        {
             name: 'markets',
             type: 'select',
             hasMany: true,
