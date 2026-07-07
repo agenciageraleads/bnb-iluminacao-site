@@ -22,6 +22,17 @@ RELEASE_BRANCH="${RELEASE_BRANCH:-main}"
 SCRIPT_REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 CURRENT_BRANCH="$(git -C "${SCRIPT_REPO_ROOT}" rev-parse --abbrev-ref HEAD 2>/dev/null || echo '?')"
 
+# Working tree sujo é recusado SEMPRE — inclusive com ALLOW_BRANCH_DEPLOY=1.
+# O `git archive HEAD` não leva mudanças não commitadas, então um deploy de
+# árvore suja publica um estado que não existe em commit nenhum (incidente
+# de 06/07/2026: curadoria de catálogo deployada de árvore desatualizada
+# regrediu o site em produção).
+if [[ -n "$(git -C "${SCRIPT_REPO_ROOT}" status --porcelain 2>/dev/null)" ]]; then
+  echo "❌ Deploy recusado: working tree com mudanças não commitadas ou arquivos untracked."
+  echo "   Commite tudo, faça PR para '${RELEASE_BRANCH}' e deploye após o merge."
+  exit 1
+fi
+
 if [[ "${ALLOW_BRANCH_DEPLOY:-}" == "1" ]]; then
   echo "⚠️  ALLOW_BRANCH_DEPLOY=1 — guard-rail DESLIGADO (hotfix). Branch: ${CURRENT_BRANCH}"
 else
