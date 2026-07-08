@@ -17,7 +17,7 @@ export function Hero() {
                     <div className="space-y-8 order-2 lg:order-1">
                         <div className="space-y-5">
                             {/* Badge de credibilidade */}
-                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-[0.2em] uppercase">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-[0.2em] uppercase rounded-lg">
                                 <span className="size-2 bg-accent-premium rounded-full animate-pulse" aria-hidden="true" />
                                 Fabricação Própria • Goiânia, GO
                             </div>
@@ -44,7 +44,7 @@ export function Hero() {
                         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                             <Link
                                 href="/contato"
-                                className="flex items-center justify-center gap-2 bg-industrial-950 text-white hover:bg-industrial-800 active:bg-industrial-900 font-black uppercase tracking-widest h-14 px-8 w-full sm:w-auto transition-colors group"
+                                className="flex items-center justify-center gap-2 bg-industrial-950 text-white hover:bg-industrial-800 active:bg-industrial-900 font-black uppercase tracking-widest h-14 px-8 w-full sm:w-auto transition-colors group rounded-lg"
                                 aria-label="Solicitar orçamento rápido"
                             >
                                 <Calculator className="size-5" aria-hidden="true" />
@@ -53,7 +53,7 @@ export function Hero() {
                             </Link>
                             <Link
                                 href="/downloads"
-                                className="flex items-center justify-center gap-2 bg-white text-industrial-800 hover:bg-industrial-50 active:bg-industrial-100 border border-industrial-300 font-black uppercase tracking-widest h-14 px-8 w-full sm:w-auto transition-colors"
+                                className="flex items-center justify-center gap-2 bg-white text-industrial-800 hover:bg-industrial-50 active:bg-industrial-100 border border-industrial-300 font-black uppercase tracking-widest h-14 px-8 w-full sm:w-auto transition-colors rounded-lg"
                                 aria-label="Baixar catálogos em PDF"
                             >
                                 <FileText className="size-5" aria-hidden="true" />
@@ -88,7 +88,7 @@ export function Hero() {
 
                     {/* Visual do produto — visível em TODOS os tamanhos (mobile também) */}
                     <div className="relative order-1 lg:order-2">
-                        <div className="aspect-[4/3] sm:aspect-[4/4] bg-industrial-900 border border-industrial-200 relative overflow-hidden group">
+                        <div className="aspect-[4/3] sm:aspect-[4/4] bg-industrial-900 border border-industrial-200 relative overflow-hidden group rounded-2xl">
                             <Image
                                 src="/hero-industrial.jpg"
                                 alt="Postes de Iluminação B&B"
@@ -105,7 +105,7 @@ export function Hero() {
                         </div>
 
                         {/* Selo de qualidade — posicionado fora da imagem para ser legível em mobile */}
-                        <div className="absolute -bottom-4 left-4 right-4 md:-bottom-6 md:-left-6 md:-right-2 bg-accent-premium text-black px-4 py-3 md:px-8 md:py-5 text-center shadow-md">
+                        <div className="absolute -bottom-4 left-4 right-4 md:-bottom-6 md:-left-6 md:-right-2 bg-accent-premium text-black px-4 py-3 md:px-8 md:py-5 text-center shadow-md rounded-2xl">
                             <span className="block whitespace-nowrap font-black text-[10px] sm:text-xs md:text-sm lg:text-base tracking-[0.08em] leading-none">
                                 Na medida. No prazo. Na norma.
                             </span>
