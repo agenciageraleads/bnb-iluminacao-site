@@ -8,6 +8,7 @@ import { getCatalogs } from "@/lib/data"
 import { DownloadGrid } from "./DownloadGrid"
 import { FileText, ShieldCheck, Download, Ruler } from "lucide-react"
 import { URBAN_FAMILIES, desenhoTecnicoHref } from "@/lib/urban-downloads"
+import { VERSA_FAMILIES, VERSA_LUMINARIA, desenhoVersaHref } from "@/lib/versa-downloads"
 
 export const metadata = {
     title: "Downloads de Catálogos Técnicos | B&B Iluminação",
@@ -187,6 +188,88 @@ export default async function DownloadsPage() {
                         </div>
                     </div>
 
+                    {/* Datasheets e Desenhos Técnicos — Linha Versa */}
+                    <div id="linha-versa" className="max-w-6xl mx-auto mt-24 scroll-mt-32">
+                        <div className="text-center mb-12">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-[0.2em] uppercase mb-6">
+                                <Ruler className="size-4 text-accent-dark" />
+                                Linha Versa
+                            </div>
+                            <h2 className="text-3xl md:text-5xl font-black text-industrial-950 uppercase tracking-tighter leading-none mb-4">
+                                Datasheets <span className="text-accent-premium">&amp; Desenhos Técnicos</span>
+                            </h2>
+                            <p className="text-industrial-500 text-base md:text-lg font-medium max-w-2xl mx-auto">
+                                Ficha técnica completa e desenho técnico dimensional por altura dos postes decorativos
+                                Girafa LED, em PDF.
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                            {VERSA_FAMILIES.map((familia) => (
+                                <div key={familia.sigla} className="bg-white border border-industrial-200 hover:border-accent-premium transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col">
+                                    <div className="p-6 border-b border-industrial-100">
+                                        <div className="bg-accent-premium text-black inline-block px-3 py-1 text-[10px] font-black uppercase tracking-widest mb-3">
+                                            BB-VRS-{familia.sigla}
+                                        </div>
+                                        <h3 className="font-black text-industrial-950 uppercase text-lg leading-tight">{familia.nome}</h3>
+                                    </div>
+                                    <div className="p-6 space-y-5 flex flex-col flex-1">
+                                        <a
+                                            href={familia.datasheet}
+                                            download
+                                            className="w-full flex items-center justify-center gap-2 bg-industrial-950 text-white font-black uppercase text-xs tracking-widest py-4 hover:bg-industrial-800 transition-colors"
+                                        >
+                                            <Download className="size-4" />
+                                            Baixar Datasheet
+                                        </a>
+                                        <div className="space-y-5 flex-1">
+                                            {([
+                                                { label: 'engastado', alturas: familia.alturasEng, mount: 'E' as const },
+                                                { label: 'flangeado', alturas: familia.alturasFla, mount: 'F' as const },
+                                            ]).map((grupo) => (
+                                                <div key={grupo.mount} className="space-y-3">
+                                                    <p className="text-[10px] font-black uppercase tracking-widest text-industrial-400">
+                                                        Desenho técnico por altura ({grupo.label})
+                                                    </p>
+                                                    <div className="flex flex-wrap gap-2">
+                                                        {grupo.alturas.map((altura) => (
+                                                            <a
+                                                                key={altura}
+                                                                href={desenhoVersaHref(familia.sigla, altura, grupo.mount)}
+                                                                download
+                                                                className="px-3 py-1.5 bg-industrial-50 border border-industrial-200 text-[11px] font-black text-industrial-700 uppercase tracking-widest hover:border-industrial-900 hover:text-industrial-950 transition-colors"
+                                                            >
+                                                                {altura}m
+                                                            </a>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                            <div className="bg-white border border-industrial-200 hover:border-accent-premium transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col">
+                                <div className="p-6 border-b border-industrial-100">
+                                    <div className="bg-accent-premium text-black inline-block px-3 py-1 text-[10px] font-black uppercase tracking-widest mb-3">
+                                        {VERSA_LUMINARIA.codigo}
+                                    </div>
+                                    <h3 className="font-black text-industrial-950 uppercase text-lg leading-tight">{VERSA_LUMINARIA.nome}</h3>
+                                </div>
+                                <div className="p-6 flex flex-col flex-1 justify-end">
+                                    <a
+                                        href={VERSA_LUMINARIA.desenho}
+                                        download
+                                        className="w-full flex items-center justify-center gap-2 bg-industrial-950 text-white font-black uppercase text-xs tracking-widest py-4 hover:bg-industrial-800 transition-colors"
+                                    >
+                                        <Download className="size-4" />
+                                        Baixar Desenho Técnico
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     {/* Materiais Técnicos — Demais Linhas (em desenvolvimento) */}
                     <div className="max-w-6xl mx-auto mt-24">
                         <div className="text-center mb-12">
@@ -206,7 +289,6 @@ export default async function DownloadsPage() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                             {([
                                 { slug: 'orna', nome: 'Orna', desc: 'Postes ornamentais que trazem identidade ao ambiente.' },
-                                { slug: 'versa', nome: 'Versa', desc: 'Postes decorativos — girafa LED e rebatedor.' },
                                 { slug: 'forza', nome: 'Forza', desc: 'Projetos especiais e estruturas reforçadas.' },
                                 { slug: 'vigia', nome: 'Vigia', desc: 'Postes para segurança e monitoramento (CFTV).' },
                                 { slug: 'nexo', nome: 'Nexo', desc: 'Acessórios: braços, suportes e chumbadores.' },
