@@ -39,6 +39,11 @@
 ## Páginas principais
 
 - / — página inicial
+- /orcamento-poste-metalico — cotação técnica de poste metálico
+- /industria-de-postes-metalicos — prova industrial e fabricação nacional
+- /fabricante-de-postes-de-iluminacao — fabricante de postes de iluminação
+- /fabrica-de-postes-para-iluminacao-publica — fábrica para projetos de iluminação pública
+- /fornecedor-de-postes-para-iluminacao-publica — fornecimento técnico para iluminação pública
 - /produtos/poste-teleconico — postes telecônicos (produto principal)
 - /produtos/poste-curvo-simples — poste curvo simples
 - /produtos/poste-curvo-duplo — poste curvo duplo
