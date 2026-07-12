@@ -403,6 +403,11 @@ const nextConfig: NextConfig = {
         destination: '/postes-para-pracas',
         permanent: true,
       },
+      {
+        source: '/produtos/item/porte-ornamental-polaris',
+        destination: '/produtos/item/poste-ornamental-polaris',
+        permanent: true,
+      },
       // Consolidação de Categorias Legadas
       {
         source: '/produtos/linha-urban',

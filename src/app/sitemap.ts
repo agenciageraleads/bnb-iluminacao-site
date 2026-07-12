@@ -5,6 +5,10 @@ import { getCategories, getProducts, getBlogPosts } from '@/lib/data'
 import { getPrimaryCatalogCategories, getPrimaryCatalogProducts } from '@/lib/catalog-curation'
 import { caseStudies } from '@/lib/seo/cases'
 
+function hasCleanPathSegment(value: string): boolean {
+  return /^[a-z0-9][a-z0-9-]*[a-z0-9]$/.test(value)
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SERVER_URL || 'https://bebiluminacao.com.br'
   const [products, posts, categoriesList] = await Promise.all([
@@ -99,7 +103,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }))
 
   // Rotas de Blog Posts
-  const blogRoutes = posts.map((post) => ({
+  const blogRoutes = posts.filter((post) => hasCleanPathSegment(post.slug)).map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,

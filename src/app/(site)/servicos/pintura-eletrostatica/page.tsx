@@ -33,7 +33,7 @@ export default function PinturaEletrostaticaPage() {
                             A tecnologia de pintura a pó poliéster aplicada pela B&B oferece uma blindagem estética e funcional, protegendo o aço contra intempéries e garantindo um visual impecável por anos.
                         </p>
                         <div className="flex flex-wrap gap-4">
-                            <Link href="/contato?servico=pintura" className="bg-accent-premium text-black h-16 px-10 flex items-center justify-center font-black uppercase tracking-widest text-xs rounded-lg hover:bg-white transition-all shadow-xl">
+                            <Link href="/contato" className="bg-accent-premium text-black h-16 px-10 flex items-center justify-center font-black uppercase tracking-widest text-xs rounded-lg hover:bg-white transition-all shadow-xl">
                                 Obter Orçamento de Pintura
                             </Link>
                         </div>
@@ -139,7 +139,7 @@ export default function PinturaEletrostaticaPage() {
                             Eleve o padrão dos seus projetos com o acabamento eletrostático da B&B. Durabilidade industrial com estética impecável.
                         </p>
                         <Link 
-                            href="/contato?servico=pintura" 
+                            href="/contato" 
                             className="bg-industrial-900 text-white h-20 px-16 inline-flex items-center justify-center font-black uppercase tracking-[0.2em] text-sm rounded-lg hover:bg-accent-premium hover:text-black transition-all shadow-2xl"
                         >
                             Solicitar Orçamento de Pintura
