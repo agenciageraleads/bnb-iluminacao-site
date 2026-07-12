@@ -40,21 +40,21 @@ export const dynamic = "force-dynamic"
 
 const pageUrl = "https://bebiluminacao.com.br/postes-para-iluminacao-publica"
 const pageDescription =
-    "Postes de iluminacao publica e urbana: modelos retos, teleconicos, curvos, bracos e suportes. Fabricacao propria, NBR, catalogos e entrega nacional."
+    "Postes para iluminacao publica direto da fabrica: modelos retos, teleconicos, curvos, bracos e suportes com NBR, catalogo e orcamento tecnico."
 const whatsappMessage =
     "Ola, vim pela pagina de postes para iluminacao publica e quero solicitar um orcamento tecnico."
 const heroImage = "/images/seo/postes-metalicos/via-iluminada-poste-teleconico-reto.webp"
 
 export const metadata: Metadata = {
     title: {
-        absolute: "Postes de Iluminacao Publica | Fabricante B&B",
+        absolute: "Postes para Iluminacao Publica | Fabrica B&B",
     },
     description: pageDescription,
     alternates: {
         canonical: pageUrl,
     },
     openGraph: {
-        title: "Postes de Iluminacao Publica | Fabricante B&B",
+        title: "Postes para Iluminacao Publica | Fabrica B&B",
         description: pageDescription,
         url: pageUrl,
         type: "website",
@@ -170,6 +170,12 @@ const relatedLines = [
         description: "Bracos, suportes e acessorios metalicos para compatibilizacao com luminarias.",
         href: "/produtos/braco-para-luminaria-publica",
     },
+]
+
+const heroProofs = [
+    "Fabrica propria",
+    "NBR 14744 e NBR 6323 quando aplicavel",
+    "Orcamento tecnico para obras publicas e privadas",
 ]
 
 const gallery = [
@@ -331,10 +337,20 @@ export default async function PostesParaIluminacaoPublicaPage() {
                             Postes para Iluminacao Publica
                         </h1>
                         <p className="mt-8 max-w-3xl text-base font-medium leading-relaxed text-industrial-200 md:text-xl">
-                            Postes metalicos para vias, avenidas, pracas, loteamentos e areas institucionais, com
-                            fabricacao propria, apoio tecnico na especificacao e atendimento para projetos em todo o
-                            Brasil.
+                            Postes metalicos para vias, avenidas, pracas, loteamentos e areas institucionais. A B&B
+                            fabrica, orienta a especificacao por altura, fixacao e acabamento, e atende compras tecnicas
+                            em todo o Brasil.
                         </p>
+                        <div className="mt-6 flex flex-wrap gap-2">
+                            {heroProofs.map((proof) => (
+                                <span
+                                    key={proof}
+                                    className="rounded-md border border-white/15 bg-white/10 px-3 py-2 text-[11px] font-black uppercase tracking-widest text-white"
+                                >
+                                    {proof}
+                                </span>
+                            ))}
+                        </div>
                         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                             <WhatsAppLink
                                 message={whatsappMessage}
@@ -662,11 +678,11 @@ export default async function PostesParaIluminacaoPublicaPage() {
                     <div className="space-y-5">
                         <SectionLabel>Interlinking P0</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Caminhos para aprofundar a especificacao
+                            Proximos passos para comprar com especificacao tecnica
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-300">
-                            A pagina de iluminacao publica deve conectar hub, fabricante, linhas, bracos, catalogos e
-                            futuras paginas de produto.
+                            A pagina conecta fabricante, linhas de postes, bracos, catalogos, aplicacoes e artigos
+                            tecnicos para reduzir duvida antes da cotacao.
                         </p>
                     </div>
                     <div className="grid gap-3 sm:grid-cols-2">

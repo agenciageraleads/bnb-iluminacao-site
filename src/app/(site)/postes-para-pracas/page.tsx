@@ -41,21 +41,21 @@ import {
 
 const pageUrl = "https://bebiluminacao.com.br/postes-para-pracas"
 const pageDescription =
-    "Postes para pracas, parques, jardins e areas de convivencia com modelos urbanos, ornamentais, acabamento e atendimento nacional."
+    "Postes para pracas, parques e areas de convivencia: modelos urbanos e ornamentais fabricados pela B&B com acabamento, NBR e orcamento tecnico."
 const whatsappMessage =
     "Ola, vim pela pagina de postes para pracas e quero ajuda para especificar modelos, quantidades e orcamento tecnico."
 const heroImage = "/images/seo/iluminacao-publica/praca-iluminada-postes-jardim.webp"
 
 export const metadata: Metadata = {
     title: {
-        absolute: "Postes para Pracas | Modelos Urbanos e Orcamento B&B",
+        absolute: "Postes para Pracas e Parques | Fabrica B&B",
     },
     description: pageDescription,
     alternates: {
         canonical: pageUrl,
     },
     openGraph: {
-        title: "Postes para Pracas | Modelos Urbanos e Orcamento B&B",
+        title: "Postes para Pracas e Parques | Fabrica B&B",
         description: pageDescription,
         url: pageUrl,
         type: "website",
@@ -240,6 +240,12 @@ const relatedPages = [
     },
 ]
 
+const heroProofs = [
+    "Pracas publicas e privadas",
+    "Modelos urbanos e ornamentais",
+    "Cotacao por altura, luminaria e acabamento",
+]
+
 const gallery = [
     createSeoImage("pracaIluminadaPostesJardim", {
         alt: "Postes metalicos para praca e area de convivencia",
@@ -392,9 +398,20 @@ export default function PostesParaPracasPage() {
                             Postes para Pracas
                         </h1>
                         <p className="mt-8 max-w-3xl text-base font-medium leading-relaxed text-industrial-200 md:text-xl">
-                            Postes metalicos para pracas, parques, jardins, caminhos e areas de convivencia, com
-                            modelos urbanos ou ornamentais, fabricacao propria e atendimento nacional.
+                            Postes metalicos para pracas, parques, jardins, caminhos e areas de convivencia. A B&B
+                            fabrica modelos urbanos ou ornamentais e orienta a escolha por altura, luminaria, fixacao e
+                            acabamento.
                         </p>
+                        <div className="mt-6 flex flex-wrap gap-2">
+                            {heroProofs.map((proof) => (
+                                <span
+                                    key={proof}
+                                    className="rounded-md border border-white/15 bg-white/10 px-3 py-2 text-[11px] font-black uppercase tracking-widest text-white"
+                                >
+                                    {proof}
+                                </span>
+                            ))}
+                        </div>
                         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                             <WhatsAppLink
                                 message={whatsappMessage}
@@ -637,11 +654,11 @@ export default function PostesParaPracasPage() {
                     <div className="space-y-5">
                         <SectionLabel>Interlinking P1</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Caminhos relacionados para compradores de pracas
+                            Caminhos para especificar pracas com menos retrabalho
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-300">
-                            A pagina de pracas distribui autoridade para aplicacao publica, loteamentos, condominios,
-                            produto, acabamento, fixacao e catalogos.
+                            A pagina conecta aplicacao publica, loteamentos, condominios, produto, acabamento, fixacao e
+                            catalogos para transformar referencia visual em cotacao comparavel.
                         </p>
                     </div>
                     <div className="grid gap-3 sm:grid-cols-2">

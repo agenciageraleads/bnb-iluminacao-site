@@ -38,20 +38,20 @@ export const dynamic = "force-dynamic"
 
 const pageUrl = "https://bebiluminacao.com.br/postes-metalicos"
 const pageDescription =
-    "Postes metalicos, galvanizados e em aco para iluminacao publica, condominios, loteamentos e industrias. Modelos, acabamentos, NBR e orcamento B&B."
+    "Postes metalicos e galvanizados direto da fabrica: modelos retos, teleconicos, curvos e ornamentais para iluminacao publica, condominios e obras."
 const whatsappMessage = "Ola, vim pela pagina de postes metalicos e quero solicitar um orcamento tecnico."
 const heroImage = "/images/seo/postes-metalicos/via-urbana-iluminada-postes.jpg"
 
 export const metadata: Metadata = {
     title: {
-        absolute: "Postes Metalicos e Galvanizados | Fabricante B&B",
+        absolute: "Postes Metalicos e Galvanizados | Fabrica B&B",
     },
     description: pageDescription,
     alternates: {
         canonical: pageUrl,
     },
     openGraph: {
-        title: "Postes Metalicos e Galvanizados | Fabricante B&B",
+        title: "Postes Metalicos e Galvanizados | Fabrica B&B",
         description: pageDescription,
         url: pageUrl,
         type: "website",
@@ -170,6 +170,12 @@ const finishOptions = [
         description: "Definicao conforme memorial tecnico, ambiente, instalacao, quantidade e prazo do projeto.",
         icon: Ruler,
     },
+]
+
+const heroProofs = [
+    "Fabricacao propria",
+    "Galvanizacao e pintura sob especificacao",
+    "Compra tecnica para obras em escala",
 ]
 
 const gallery = [
@@ -324,10 +330,20 @@ export default async function PostesMetalicosPage() {
                             Postes Metalicos
                         </h1>
                         <p className="mt-8 max-w-3xl text-base font-medium leading-relaxed text-industrial-200 md:text-xl">
-                            Hub tecnico e comercial para escolher postes metalicos por modelo, aplicacao, acabamento e
-                            necessidade de instalacao. A B&B fabrica e orienta projetos de iluminacao publica, loteamentos,
+                            Hub tecnico e comercial para escolher postes metalicos e galvanizados por modelo, aplicacao,
+                            acabamento e instalacao. A B&B fabrica e orienta projetos de iluminacao publica, loteamentos,
                             condominios, estacionamentos e areas industriais.
                         </p>
+                        <div className="mt-6 flex flex-wrap gap-2">
+                            {heroProofs.map((proof) => (
+                                <span
+                                    key={proof}
+                                    className="rounded-md border border-white/15 bg-white/10 px-3 py-2 text-[11px] font-black uppercase tracking-widest text-white"
+                                >
+                                    {proof}
+                                </span>
+                            ))}
+                        </div>
                         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                             <WhatsAppLink
                                 message={whatsappMessage}
@@ -632,11 +648,11 @@ export default async function PostesMetalicosPage() {
                     <div className="space-y-5">
                         <SectionLabel>Interlinking P0</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                            Caminhos para aprofundar a especificacao
+                            Caminhos para sair do modelo generico para a compra tecnica
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-300">
-                            O hub precisa distribuir autoridade para fabricante, linhas, catalogos, obras e futuras paginas
-                            tecnicas do cluster.
+                            O hub distribui autoridade para fabricante, linhas, catalogos, obras e paginas tecnicas do
+                            cluster, ajudando compras e engenharia a comparar modelos antes da cotacao.
                         </p>
                     </div>
                     <div className="grid gap-3 sm:grid-cols-2">

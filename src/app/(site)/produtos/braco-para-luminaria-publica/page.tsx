@@ -37,7 +37,7 @@ import {
 
 const pageUrl = "https://bebiluminacao.com.br/produtos/braco-para-luminaria-publica"
 const pageDescription =
-    "Braco para luminaria publica em aco, com opcoes para postes de iluminacao, ruas, avenidas, pracas e condominios. Consulte medidas e orcamento tecnico."
+    "Braco para luminaria publica em aco: bracos retos, curvos e suportes para postes, ruas, pracas e condominios com orcamento tecnico B&B."
 const whatsappMessage =
     "Ola, vim pela pagina de braco para luminaria publica e quero solicitar um orcamento tecnico."
 const heroImage = "https://bebiluminacao.com.br/api/media/file/braco-reto-luminaria.png"
@@ -70,16 +70,22 @@ const productGallery = [
     },
 ]
 
+const heroProofs = [
+    "Braco reto, curvo e suporte",
+    "Compatibilidade com poste e luminaria",
+    "Galvanizado ou pintado sob especificacao",
+]
+
 export const metadata: Metadata = {
     title: {
-        absolute: "Braco para Luminaria Publica Galvanizado | B&B",
+        absolute: "Braco para Luminaria Publica | Fabricante B&B",
     },
     description: pageDescription,
     alternates: {
         canonical: pageUrl,
     },
     openGraph: {
-        title: "Braco para Luminaria Publica Galvanizado | B&B",
+        title: "Braco para Luminaria Publica | Fabricante B&B",
         description: pageDescription,
         url: pageUrl,
         type: "website",
@@ -364,8 +370,19 @@ export default function BracoParaLuminariaPublicaPage() {
                         </h1>
                         <p className="mt-8 max-w-3xl text-base font-medium leading-relaxed text-industrial-200 md:text-xl">
                             Bracos e suportes metalicos para compatibilizar luminarias com postes de iluminacao publica,
-                            ruas, avenidas, pracas, condominios, estacionamentos e areas industriais.
+                            ruas, avenidas, pracas, condominios, estacionamentos e areas industriais, com cotacao por
+                            medida, quantidade e acabamento.
                         </p>
+                        <div className="mt-6 flex flex-wrap gap-2">
+                            {heroProofs.map((proof) => (
+                                <span
+                                    key={proof}
+                                    className="rounded-md border border-white/15 bg-white/10 px-3 py-2 text-[11px] font-black uppercase tracking-widest text-white"
+                                >
+                                    {proof}
+                                </span>
+                            ))}
+                        </div>
                         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                             <WhatsAppLink
                                 message={whatsappMessage}
