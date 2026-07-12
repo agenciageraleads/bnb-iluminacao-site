@@ -638,7 +638,7 @@ export default async function FabricanteDePostesMetalicosPage() {
                             Falar com especialista
                         </WhatsAppLink>
                         <Link
-                            href="/contato?assunto=orcamento"
+                            href="/contato"
                             className="inline-flex h-14 items-center justify-center gap-3 border-2 border-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-white rounded-lg"
                         >
                             <FileText className="size-5" aria-hidden="true" />

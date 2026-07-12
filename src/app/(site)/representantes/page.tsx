@@ -67,7 +67,7 @@ export default async function RepresentantesPage() {
                     
                     <div className="flex flex-col gap-4 w-full md:w-auto">
                         <Link
-                            href="/contato?assunto=representante"
+                            href="/contato"
                             className="flex items-center justify-center gap-3 bg-accent-premium text-black hover:bg-yellow-400 active:bg-yellow-500 font-black uppercase tracking-widest h-16 px-10 rounded-lg transition-colors w-full md:w-auto hover:-translate-y-1 transform duration-300 shadow-xl shadow-accent-premium/20"
                         >
                             <UserPlus className="size-5" />

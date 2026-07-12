@@ -35,7 +35,7 @@ export default function CorteLaserPage() {
                             Equipamentos de fibra óptica de última geração para cortes complexos e de alta precisão em <strong className="text-white">tubos e chapas</strong>. Cortamos metais com espessuras de até <strong className="text-white">19mm</strong> com a agilidade que sua obra precisa e a qualidade que só a B&B entrega.
                         </p>
                         <div className="flex flex-wrap gap-4">
-                            <Link href="/contato?servico=laser" className="bg-accent-premium text-black h-16 px-10 flex items-center justify-center font-black uppercase tracking-widest text-xs rounded-lg hover:bg-white transition-all shadow-xl">
+                            <Link href="/contato" className="bg-accent-premium text-black h-16 px-10 flex items-center justify-center font-black uppercase tracking-widest text-xs rounded-lg hover:bg-white transition-all shadow-xl">
                                 Solicitar Orçamento Laser
                             </Link>
                         </div>
@@ -141,7 +141,7 @@ export default function CorteLaserPage() {
                         A precisão do laser economiza material e tempo de montagem. Peça um orçamento técnico hoje mesmo.
                     </p>
                     <Link 
-                        href="/contato?servico=laser" 
+                        href="/contato" 
                         className="inline-flex items-center gap-4 bg-industrial-900 text-white h-16 px-12 font-black uppercase tracking-widest text-xs rounded-lg hover:bg-accent-premium hover:text-black transition-all shadow-2xl"
                     >
                         Solicitar Cotação
