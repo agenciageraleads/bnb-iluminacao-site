@@ -364,11 +364,6 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: '/industria-de-postes-metalicos',
-        destination: '/fabrica-de-postes-metalicos',
-        permanent: true,
-      },
-      {
         source: '/postes-metalicos-direto-da-fabrica',
         destination: '/fabrica-de-postes-metalicos',
         permanent: true,
