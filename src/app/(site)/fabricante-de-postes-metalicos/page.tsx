@@ -37,19 +37,19 @@ export const dynamic = "force-dynamic"
 
 const pageUrl = "https://bebiluminacao.com.br/fabricante-de-postes-metalicos"
 const pageDescription =
-    "Fabricante de postes metalicos em aco para iluminacao publica, condominios, loteamentos e industrias. Producao propria, acabamento tecnico e entrega nacional."
+    "Fabricante nacional de postes metalicos em aco para iluminacao publica, condominios, loteamentos e industrias. Fabrica propria, NBR e entrega nacional."
 const whatsappMessage = "Ola, vim pela pagina de fabricante de postes metalicos e quero solicitar um orcamento tecnico."
 
 export const metadata: Metadata = {
     title: {
-        absolute: "Fabricante de Postes Metalicos | B&B Iluminacao",
+        absolute: "Fabricante de Postes Metalicos no Brasil | B&B",
     },
     description: pageDescription,
     alternates: {
         canonical: pageUrl,
     },
     openGraph: {
-        title: "Fabricante de Postes Metalicos | B&B Iluminacao",
+        title: "Fabricante de Postes Metalicos no Brasil | B&B",
         description:
             "Postes metalicos para iluminacao publica, condominios, loteamentos e industrias, com producao propria em Goiania e atendimento nacional.",
         url: pageUrl,
@@ -123,6 +123,22 @@ const technicalRows = [
     ["Documentos", "Catalogos, datasheets, desenhos tecnicos e orientacao de orcamento"],
 ]
 
+const manufacturerProofRows = [
+    ["Fabrica propria", "Producao em Goiania com atendimento comercial para projetos em todo o Brasil."],
+    ["Linha Urban", "Postes retos, teleconicos, curvos simples e curvos duplos para aplicacoes urbanas."],
+    ["Documentacao", "Catalogos, datasheets, desenhos tecnicos e briefing para cotacao sob projeto."],
+    ["Acabamento", "Galvanizacao, pintura eletrostatica e acabamento definido conforme ambiente e memorial."],
+    ["Compra B2B", "Atendimento para construtoras, concessionarias, industrias, condominios, loteamentos e obras publicas."],
+]
+
+const searchIntentRows = [
+    ["Fabricante de postes metalicos", "Encontrar quem produz, nao apenas revende."],
+    ["Fabricante de postes metalicos Brasil", "Validar atendimento nacional, capacidade e origem fabril."],
+    ["Fabrica de postes metalicos", "Entender processo, produto, acabamento e documentacao."],
+    ["Fornecedor de postes metalicos", "Cotacao, prazo, quantidade, entrega e suporte comercial."],
+    ["Industria de postes metalicos", "Prova de estrutura produtiva e especializacao tecnica."],
+]
+
 const differentiators = [
     {
         title: "Producao propria",
@@ -171,6 +187,16 @@ const faq = [
         question: "Quais informacoes enviar para cotar postes metalicos?",
         answer:
             "Informe produto desejado, altura aproximada, quantidade, cidade e UF, tipo de fixacao, acabamento, aplicacao, prazo e, se houver, desenho ou memorial tecnico.",
+    },
+    {
+        question: "Qual a diferenca entre fabricante, fabrica e fornecedor de postes metalicos?",
+        answer:
+            "Fabricante e fabrica indicam origem produtiva. Fornecedor pode ser fabricante, distribuidor ou revenda. A B&B se posiciona como fabricante com producao propria, suporte tecnico e atendimento nacional para compras B2B.",
+    },
+    {
+        question: "Por que comprar postes metalicos direto com fabricante?",
+        answer:
+            "A compra direta ajuda a alinhar especificacao, acabamento, fixacao, prazo, documentacao e volume antes da producao. Isso reduz risco de produto incompatível com memorial, obra civil ou fiscalizacao.",
     },
 ]
 
@@ -357,6 +383,61 @@ export default async function FabricanteDePostesMetalicosPage() {
                                 </div>
                             ))}
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="py-20 md:py-28">
+                <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+                    <div className="space-y-5">
+                        <SectionLabel>Prova de fabricante</SectionLabel>
+                        <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
+                            O que diferencia fabricante real de revenda
+                        </h2>
+                        <p className="text-base leading-relaxed text-industrial-600">
+                            Para o comprador B2B, ranquear como fabricante exige responder mais do que "vendemos postes".
+                            A pagina precisa provar origem produtiva, linha fabricada, documentacao, acabamento e suporte
+                            antes do pedido.
+                        </p>
+                    </div>
+                    <div className="overflow-hidden border border-industrial-200">
+                        {manufacturerProofRows.map(([label, value]) => (
+                            <div key={label} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[220px_1fr]">
+                                <div className="bg-industrial-50 px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-700">
+                                    {label}
+                                </div>
+                                <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-800">
+                                    {value}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="bg-industrial-50 py-20 md:py-28">
+                <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+                    <div className="space-y-5">
+                        <SectionLabel>Intencoes comerciais</SectionLabel>
+                        <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
+                            Buscas que esta pagina precisa responder
+                        </h2>
+                        <p className="text-base leading-relaxed text-industrial-600">
+                            O Google compara paginas pela utilidade para cada consulta. Por isso, a pagina de fabricante
+                            deve cobrir fabricante, fabrica, fornecedor, industria e atendimento nacional sem perder foco.
+                        </p>
+                    </div>
+                    <div className="overflow-hidden border border-industrial-200 bg-white">
+                        {searchIntentRows.map(([term, answer]) => (
+                            <div key={term} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[260px_1fr]">
+                                <div className="bg-white px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-600">
+                                    {term}
+                                </div>
+                                <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-800">
+                                    {answer}
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
