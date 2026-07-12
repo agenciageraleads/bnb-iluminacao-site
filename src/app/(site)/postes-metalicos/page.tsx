@@ -38,20 +38,20 @@ export const dynamic = "force-dynamic"
 
 const pageUrl = "https://bebiluminacao.com.br/postes-metalicos"
 const pageDescription =
-    "Postes metalicos para iluminacao publica, condominios, loteamentos e industrias. Veja modelos, acabamentos, aplicacoes e solicite orcamento direto com a B&B."
+    "Postes metalicos, galvanizados e em aco para iluminacao publica, condominios, loteamentos e industrias. Modelos, acabamentos, NBR e orcamento B&B."
 const whatsappMessage = "Ola, vim pela pagina de postes metalicos e quero solicitar um orcamento tecnico."
 const heroImage = "/images/seo/postes-metalicos/via-urbana-iluminada-postes.jpg"
 
 export const metadata: Metadata = {
     title: {
-        absolute: "Postes Metalicos: Modelos, Aplicacoes e Orcamento | B&B",
+        absolute: "Postes Metalicos e Galvanizados | Fabricante B&B",
     },
     description: pageDescription,
     alternates: {
         canonical: pageUrl,
     },
     openGraph: {
-        title: "Postes Metalicos: Modelos, Aplicacoes e Orcamento | B&B",
+        title: "Postes Metalicos e Galvanizados | Fabricante B&B",
         description: pageDescription,
         url: pageUrl,
         type: "website",
@@ -137,6 +137,23 @@ const comparisonRows = [
     ["Bracos e suportes", "Compatibilizacao de luminarias", "Adaptacao entre poste, luminaria e projeto"],
 ]
 
+const buyerIntentRows = [
+    ["Poste metalico", "Hub pilar", "Comparar modelos, aplicacoes, acabamento e caminho de cotacao"],
+    ["Postes metalicos galvanizados", "Produto/acabamento", "Entender durabilidade, ambiente, galvanizacao e vida util"],
+    ["Poste de aco galvanizado", "Produto tecnico", "Validar material, protecao contra corrosao e uso em area externa"],
+    ["Poste metalico para iluminacao", "Aplicacao", "Relacionar modelo do poste com luminaria, altura e fixacao"],
+    ["Postes metalicos direto da fabrica", "Compra B2B", "Comprar com fabricante, nao apenas revenda ou marketplace"],
+]
+
+const quoteRows = [
+    ["Modelo", "Reto, teleconico, curvo simples, curvo duplo, ornamental, suporte ou estrutura especial."],
+    ["Dimensoes", "Altura, diametro, espessura, avanco, quantidade de luminarias e detalhes do projeto."],
+    ["Fixacao", "Engastado, flangeado, base, chumbadores ou definicao a partir da obra civil."],
+    ["Acabamento", "Galvanizacao a fogo, pintura eletrostatica ou acabamento conforme ambiente e memorial."],
+    ["Aplicacao", "Iluminacao publica, condominio, loteamento, estacionamento, patio, galpao, praca ou industria."],
+    ["Entrega", "Cidade, UF, quantidade, prazo desejado e documentos tecnicos disponiveis."],
+]
+
 const finishOptions = [
     {
         title: "Galvanizacao",
@@ -218,6 +235,16 @@ const faq = [
         question: "Quais dados enviar para orcar postes metalicos?",
         answer:
             "Envie modelo desejado, altura, quantidade, cidade e UF, aplicacao, tipo de fixacao, acabamento, prazo e, se houver, desenho tecnico ou memorial do projeto.",
+    },
+    {
+        question: "Qual a diferenca entre poste metalico e poste metalico galvanizado?",
+        answer:
+            "Poste metalico descreve a estrutura fabricada em aco. Poste metalico galvanizado indica acabamento com protecao por galvanizacao, indicado quando o ambiente exige maior resistencia contra corrosao e vida util prolongada.",
+    },
+    {
+        question: "Comprar postes metalicos direto da fabrica muda o projeto?",
+        answer:
+            "Sim. Comprar direto com fabricante ajuda a alinhar modelo, altura, fixacao, acabamento, quantidade, prazo e documentacao tecnica antes da producao, reduzindo risco de retrabalho em compras B2B.",
     },
 ]
 
@@ -417,6 +444,37 @@ export default async function PostesMetalicosPage() {
             <section className="py-20 md:py-28">
                 <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
                     <div className="space-y-5">
+                        <SectionLabel>Intencao de busca</SectionLabel>
+                        <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
+                            O que cada busca por poste metalico tenta resolver
+                        </h2>
+                        <p className="text-base leading-relaxed text-industrial-600">
+                            Para disputar top 1, a pagina precisa cobrir as variacoes comerciais sem criar paginas
+                            duplicadas. A B&B organiza nesta pagina as buscas por poste metalico, poste galvanizado,
+                            poste de aco e compra direta com fabricante.
+                        </p>
+                    </div>
+                    <div className="overflow-hidden border border-industrial-200">
+                        {buyerIntentRows.map(([term, intent, answer]) => (
+                            <div key={term} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[230px_190px_1fr]">
+                                <div className="bg-industrial-50 px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-700">
+                                    {term}
+                                </div>
+                                <div className="px-5 py-4 text-sm font-black uppercase tracking-widest text-industrial-500">
+                                    {intent}
+                                </div>
+                                <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-800">
+                                    {answer}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="py-20 md:py-28">
+                <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+                    <div className="space-y-5">
                         <SectionLabel>Acabamento</SectionLabel>
                         <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
                             Galvanizacao, pintura e especificacao por ambiente
@@ -441,6 +499,34 @@ export default async function PostesMetalicosPage() {
                                 </div>
                             )
                         })}
+                    </div>
+                </div>
+            </section>
+
+            <section className="bg-industrial-50 py-20 md:py-28">
+                <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+                    <div className="space-y-5">
+                        <SectionLabel>Briefing tecnico</SectionLabel>
+                        <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
+                            Dados que transformam busca em orcamento
+                        </h2>
+                        <p className="text-base leading-relaxed text-industrial-600">
+                            O Google tende a premiar paginas que resolvem a tarefa do usuario. Para compras B2B, isso
+                            significa orientar exatamente o que engenharia e compras devem enviar para receber uma
+                            proposta comparavel.
+                        </p>
+                    </div>
+                    <div className="overflow-hidden border border-industrial-200 bg-white">
+                        {quoteRows.map(([label, value]) => (
+                            <div key={label} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[220px_1fr]">
+                                <div className="bg-white px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-600">
+                                    {label}
+                                </div>
+                                <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-800">
+                                    {value}
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>

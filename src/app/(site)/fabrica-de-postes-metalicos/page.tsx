@@ -37,7 +37,7 @@ import { createSeoImage } from "@/lib/seo/images"
 
 const pageUrl = "https://bebiluminacao.com.br/fabrica-de-postes-metalicos"
 const pageDescription =
-    "Fabrica de postes metalicos para iluminacao publica, condominios, loteamentos e industrias. Producao propria, acabamento tecnico e suporte para orcamento."
+    "Fabrica nacional de postes metalicos para iluminacao publica, condominios, loteamentos e industrias. Producao propria, NBR, acabamento e orcamento."
 const whatsappMessage =
     "Ola, vim pela pagina de fabrica de postes metalicos e quero solicitar um orcamento tecnico."
 const heroImage = "/hero-industrial.jpg"
@@ -152,6 +152,21 @@ const qualityRows = [
     ["Entrega", "Expedicao planejada por volume, destino, prazo e condicoes logisticas."],
 ]
 
+const factoryIntentRows = [
+    ["Fabrica de postes metalicos", "Provar producao propria, processo, modelos e atendimento direto."],
+    ["Fabrica de postes para iluminacao publica", "Conectar processo fabril com aplicacoes urbanas, normas e catalogo tecnico."],
+    ["Industria de postes metalicos", "Mostrar estrutura produtiva, acabamento, documentacao e capacidade para B2B."],
+    ["Postes metalicos direto da fabrica", "Reduzir intermedio de revenda e orientar briefing tecnico para cotacao."],
+]
+
+const complianceRows = [
+    ["Norma e memorial", "A producao deve respeitar o projeto, memoriais, cargas, fixacao e referencias tecnicas aplicaveis."],
+    ["NBR 14744", "Referencia para postes de aco quando aplicavel ao escopo e especificacao do produto."],
+    ["NBR 6323", "Referencia para galvanizacao a fogo quando o acabamento galvanizado fizer parte da especificacao."],
+    ["Controle de acabamento", "Galvanizacao, pintura eletrostatica ou pintura sob especificacao conforme ambiente e durabilidade esperada."],
+    ["Documentos tecnicos", "Catalogos, datasheets, desenhos e briefing reduzem incerteza para engenharia, compras e obra."],
+]
+
 const applications = [
     {
         title: "Iluminacao publica",
@@ -255,6 +270,16 @@ const faq = [
         question: "Quais dados enviar para cotar direto com a fabrica?",
         answer:
             "Envie aplicacao, modelo, altura aproximada, quantidade, cidade e UF, fixacao, acabamento, luminaria, prazo e desenho ou memorial quando houver.",
+    },
+    {
+        question: "A B&B e fabrica ou apenas fornecedora de postes metalicos?",
+        answer:
+            "A B&B se posiciona como fabrica de postes metalicos, com producao propria em Goiania e atendimento nacional. A pagina tambem atende quem pesquisa fornecedor porque a compra B2B envolve cotacao, prazo e entrega.",
+    },
+    {
+        question: "A fabrica produz postes para iluminacao publica?",
+        answer:
+            "Sim. A B&B fabrica postes metalicos para iluminacao publica e urbana, incluindo modelos retos, teleconicos, curvos, bracos e suportes conforme aplicacao, acabamento e projeto.",
     },
 ]
 
@@ -412,6 +437,34 @@ export default function FabricaDePostesMetalicosPage() {
                 </div>
             </section>
 
+            <section className="bg-industrial-50 py-20 md:py-28">
+                <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+                    <div className="space-y-5">
+                        <SectionLabel>Busca comercial</SectionLabel>
+                        <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
+                            Intencoes que uma fabrica precisa resolver
+                        </h2>
+                        <p className="text-base leading-relaxed text-industrial-600">
+                            Quem procura fabrica de postes metalicos quer validar origem, processo e capacidade de
+                            atendimento. A pagina tambem deve responder buscas por industria, fornecedor e postes direto
+                            da fabrica sem perder o foco produtivo.
+                        </p>
+                    </div>
+                    <div className="overflow-hidden border border-industrial-200 bg-white">
+                        {factoryIntentRows.map(([term, answer]) => (
+                            <div key={term} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[270px_1fr]">
+                                <div className="bg-white px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-600">
+                                    {term}
+                                </div>
+                                <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-800">
+                                    {answer}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             <section className="bg-industrial-950 py-20 text-white md:py-28">
                 <div className="container mx-auto px-4">
                     <div className="mb-12 max-w-3xl space-y-5">
@@ -466,6 +519,33 @@ export default function FabricaDePostesMetalicosPage() {
                         {qualityRows.map(([label, value]) => (
                             <div key={label} className="grid border border-industrial-200 md:grid-cols-[180px_1fr] rounded-2xl overflow-hidden">
                                 <div className="bg-industrial-50 px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-600">
+                                    {label}
+                                </div>
+                                <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-800">
+                                    {value}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="bg-industrial-50 py-20 md:py-28">
+                <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+                    <div className="space-y-5">
+                        <SectionLabel>Conformidade</SectionLabel>
+                        <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
+                            Fabricacao orientada por projeto, norma e acabamento
+                        </h2>
+                        <p className="text-base leading-relaxed text-industrial-600">
+                            Para competir com paginas antigas de concorrentes, a B&B precisa explicitar os criterios que
+                            uma obra avalia antes de comprar postes: norma, memorial, acabamento, documento e entrega.
+                        </p>
+                    </div>
+                    <div className="overflow-hidden border border-industrial-200 bg-white">
+                        {complianceRows.map(([label, value]) => (
+                            <div key={label} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[220px_1fr]">
+                                <div className="bg-white px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-600">
                                     {label}
                                 </div>
                                 <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-800">
