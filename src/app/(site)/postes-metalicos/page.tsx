@@ -109,21 +109,25 @@ const applications = [
     {
         title: "Iluminacao publica",
         description: "Postes para vias, avenidas, pracas e obras urbanas com especificacao tecnica.",
+        href: "/postes-para-iluminacao-publica",
         icon: Landmark,
     },
     {
         title: "Loteamentos",
         description: "Padronizacao visual, repetibilidade de fornecimento e apoio para definicao de modelos.",
+        href: "/postes-para-loteamentos",
         icon: Building2,
     },
     {
         title: "Condominios",
         description: "Modelos decorativos, retos ou teleconicos conforme arquitetura e necessidade luminotecnica.",
+        href: "/postes-para-condominios",
         icon: ShieldCheck,
     },
     {
-        title: "Areas industriais",
+        title: "Estacionamentos e areas industriais",
         description: "Postes para patios, galpoes, docas, estacionamentos e circulacao interna.",
+        href: "/postes-para-estacionamentos",
         icon: Factory,
     },
 ]
@@ -384,15 +388,19 @@ export default async function PostesMetalicosPage() {
                     {applications.map((item) => {
                         const Icon = item.icon
                         return (
-                            <div key={item.title} className="flex items-start gap-4 bg-white p-5 rounded-2xl">
+                            <Link
+                                key={item.title}
+                                href={item.href}
+                                className="group flex items-start gap-4 bg-white p-5 transition-colors hover:bg-industrial-950 rounded-2xl"
+                            >
                                 <div className="flex size-11 shrink-0 items-center justify-center bg-industrial-950 text-accent-premium rounded-lg">
                                     <Icon className="size-5" aria-hidden="true" />
                                 </div>
                                 <div>
-                                    <h2 className="text-sm font-black uppercase tracking-widest">{item.title}</h2>
-                                    <p className="mt-2 text-sm leading-relaxed text-industrial-600">{item.description}</p>
+                                    <h2 className="text-sm font-black uppercase tracking-widest group-hover:text-white">{item.title}</h2>
+                                    <p className="mt-2 text-sm leading-relaxed text-industrial-600 group-hover:text-industrial-200">{item.description}</p>
                                 </div>
-                            </div>
+                            </Link>
                         )
                     })}
                 </div>
