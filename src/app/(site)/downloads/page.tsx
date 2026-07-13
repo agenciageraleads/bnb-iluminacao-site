@@ -26,7 +26,7 @@ export default async function DownloadsPage() {
                 <div className="container mx-auto px-4">
                     {/* Header da Página */}
                     <div className="max-w-4xl mx-auto text-center mb-16">
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-[0.2em] uppercase mb-6">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-[0.2em] uppercase mb-6 rounded-full">
                             <FileText className="size-4 text-accent-dark" />
                             Área Técnica e Comercial
                         </div>
@@ -46,7 +46,7 @@ export default async function DownloadsPage() {
                             { title: "Especificações NBR", desc: "Desenhos técnicos e dimensões oficiais.", icon: <FileText className="size-6" /> },
                             { title: "Download em PDF", desc: "Versão otimizada para visualização digital.", icon: <Download className="size-6" /> },
                         ].map((item, i) => (
-                            <div key={i} className="flex flex-col items-center text-center p-6 bg-white border border-industrial-200">
+                            <div key={i} className="flex flex-col items-center text-center p-6 bg-white border border-industrial-200 rounded-2xl">
                                 <div className="size-12 bg-industrial-950 text-accent-premium flex items-center justify-center mb-4">
                                     {item.icon}
                                 </div>
@@ -70,7 +70,7 @@ export default async function DownloadsPage() {
                     {/* Guias Técnicos */}
                     <div id="guias" className="max-w-6xl mx-auto mt-24 scroll-mt-32">
                         <div className="text-center mb-12">
-                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-[0.2em] uppercase mb-6">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-[0.2em] uppercase mb-6 rounded-full">
                                 <FileText className="size-4 text-accent-dark" />
                                 Guias Técnicos
                             </div>
@@ -83,7 +83,7 @@ export default async function DownloadsPage() {
                             </p>
                         </div>
 
-                        <div id="guia-durabilidade" className="scroll-mt-32 max-w-4xl mx-auto bg-white border border-industrial-200 shadow-sm overflow-hidden grid md:grid-cols-[280px_1fr]">
+                        <div id="guia-durabilidade" className="scroll-mt-32 max-w-4xl mx-auto bg-white border border-industrial-200 shadow-sm overflow-hidden grid md:grid-cols-[280px_1fr] rounded-2xl">
                             <div className="relative bg-industrial-950 min-h-[320px] md:min-h-0">
                                 <Image
                                     src="/images/guias/guia-durabilidade-postes-capa.png"
@@ -116,7 +116,7 @@ export default async function DownloadsPage() {
                                     </a>
                                     <Link
                                         href="/blog/durabilidade-dos-postes-metalicos"
-                                        className="flex-1 flex items-center justify-center gap-2 border border-industrial-300 text-industrial-700 font-black uppercase text-xs tracking-widest py-4 hover:border-industrial-900 hover:text-industrial-950 transition-colors"
+                                        className="flex-1 flex items-center justify-center gap-2 border border-industrial-300 text-industrial-700 font-black uppercase text-xs tracking-widest py-4 hover:border-industrial-900 hover:text-industrial-950 transition-colors rounded-lg"
                                     >
                                         Ler o artigo
                                     </Link>
@@ -128,7 +128,7 @@ export default async function DownloadsPage() {
                     {/* Datasheets e Desenhos Técnicos — Linha Urban */}
                     <div id="linha-urban" className="max-w-6xl mx-auto mt-24 scroll-mt-32">
                         <div className="text-center mb-12">
-                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-[0.2em] uppercase mb-6">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-[0.2em] uppercase mb-6 rounded-full">
                                 <Ruler className="size-4 text-accent-dark" />
                                 Linha Urban
                             </div>
@@ -142,7 +142,7 @@ export default async function DownloadsPage() {
 
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                             {URBAN_FAMILIES.map((familia) => (
-                                <div key={familia.sigla} className="bg-white border border-industrial-200 hover:border-accent-premium transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col">
+                                <div key={familia.sigla} className="bg-white border border-industrial-200 hover:border-accent-premium transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col rounded-2xl">
                                     <div className="p-6 border-b border-industrial-100">
                                         <div className="bg-accent-premium text-black inline-block px-3 py-1 text-[10px] font-black uppercase tracking-widest mb-3">
                                             BB-URB-{familia.sigla}
@@ -173,7 +173,7 @@ export default async function DownloadsPage() {
                                                                 key={altura}
                                                                 href={desenhoTecnicoHref(familia.sigla, altura, grupo.mount)}
                                                                 download
-                                                                className="px-3 py-1.5 bg-industrial-50 border border-industrial-200 text-[11px] font-black text-industrial-700 uppercase tracking-widest hover:border-industrial-900 hover:text-industrial-950 transition-colors"
+                                                                className="px-3 py-1.5 bg-industrial-50 border border-industrial-200 text-[11px] font-black text-industrial-700 uppercase tracking-widest hover:border-industrial-900 hover:text-industrial-950 transition-colors rounded-md"
                                                             >
                                                                 {altura}m
                                                             </a>
@@ -191,7 +191,7 @@ export default async function DownloadsPage() {
                     {/* Datasheets e Desenhos Técnicos — Linha Versa */}
                     <div id="linha-versa" className="max-w-6xl mx-auto mt-24 scroll-mt-32">
                         <div className="text-center mb-12">
-                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-[0.2em] uppercase mb-6">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-[0.2em] uppercase mb-6 rounded-full">
                                 <Ruler className="size-4 text-accent-dark" />
                                 Linha Versa
                             </div>
@@ -206,7 +206,7 @@ export default async function DownloadsPage() {
 
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                             {VERSA_FAMILIES.map((familia) => (
-                                <div key={familia.sigla} className="bg-white border border-industrial-200 hover:border-accent-premium transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col">
+                                <div key={familia.sigla} className="bg-white border border-industrial-200 hover:border-accent-premium transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col rounded-2xl">
                                     <div className="p-6 border-b border-industrial-100">
                                         <div className="bg-accent-premium text-black inline-block px-3 py-1 text-[10px] font-black uppercase tracking-widest mb-3">
                                             BB-VRS-{familia.sigla}
@@ -237,7 +237,7 @@ export default async function DownloadsPage() {
                                                                 key={altura}
                                                                 href={desenhoVersaHref(familia.sigla, altura, grupo.mount)}
                                                                 download
-                                                                className="px-3 py-1.5 bg-industrial-50 border border-industrial-200 text-[11px] font-black text-industrial-700 uppercase tracking-widest hover:border-industrial-900 hover:text-industrial-950 transition-colors"
+                                                                className="px-3 py-1.5 bg-industrial-50 border border-industrial-200 text-[11px] font-black text-industrial-700 uppercase tracking-widest hover:border-industrial-900 hover:text-industrial-950 transition-colors rounded-md"
                                                             >
                                                                 {altura}m
                                                             </a>
@@ -249,7 +249,7 @@ export default async function DownloadsPage() {
                                     </div>
                                 </div>
                             ))}
-                            <div className="bg-white border border-industrial-200 hover:border-accent-premium transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col">
+                            <div className="bg-white border border-industrial-200 hover:border-accent-premium transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col rounded-2xl">
                                 <div className="p-6 border-b border-industrial-100">
                                     <div className="bg-accent-premium text-black inline-block px-3 py-1 text-[10px] font-black uppercase tracking-widest mb-3">
                                         {VERSA_LUMINARIA.codigo}
@@ -273,7 +273,7 @@ export default async function DownloadsPage() {
                     {/* Materiais Técnicos — Demais Linhas (em desenvolvimento) */}
                     <div className="max-w-6xl mx-auto mt-24">
                         <div className="text-center mb-12">
-                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-[0.2em] uppercase mb-6">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-[0.2em] uppercase mb-6 rounded-full">
                                 <Ruler className="size-4 text-accent-dark" />
                                 Demais Linhas
                             </div>
@@ -297,7 +297,7 @@ export default async function DownloadsPage() {
                                 <div
                                     key={linha.slug}
                                     id={`linha-${linha.slug}`}
-                                    className="scroll-mt-32 bg-white border border-industrial-200 flex flex-col"
+                                    className="scroll-mt-32 bg-white border border-industrial-200 flex flex-col rounded-2xl"
                                 >
                                     <div className="p-6 border-b border-industrial-100">
                                         <div className="bg-industrial-100 text-industrial-500 inline-block px-3 py-1 text-[10px] font-black uppercase tracking-widest mb-3">
@@ -312,7 +312,7 @@ export default async function DownloadsPage() {
                                         </p>
                                         <a
                                             href="/contato"
-                                            className="mt-4 w-full flex items-center justify-center gap-2 border border-industrial-300 text-industrial-700 font-black uppercase text-xs tracking-widest py-3 hover:border-industrial-900 hover:text-industrial-950 transition-colors"
+                                            className="mt-4 w-full flex items-center justify-center gap-2 border border-industrial-300 text-industrial-700 font-black uppercase text-xs tracking-widest py-3 hover:border-industrial-900 hover:text-industrial-950 transition-colors rounded-lg"
                                         >
                                             Solicitar à engenharia
                                         </a>

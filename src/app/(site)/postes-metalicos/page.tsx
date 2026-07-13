@@ -492,7 +492,7 @@ export default async function PostesMetalicosPage() {
                             poste de aco e compra direta com fabricante.
                         </p>
                     </div>
-                    <div className="overflow-hidden border border-industrial-200">
+                    <div className="overflow-hidden border border-industrial-200 rounded-2xl">
                         {buyerIntentRows.map(([term, intent, answer]) => (
                             <div key={term} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[230px_190px_1fr]">
                                 <div className="bg-industrial-50 px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-700">
@@ -522,7 +522,7 @@ export default async function PostesMetalicosPage() {
                             acabamento, norma, fixacao e compatibilidade com luminaria antes de comparar propostas.
                         </p>
                     </div>
-                    <div className="overflow-hidden border border-industrial-200 bg-white">
+                    <div className="overflow-hidden border border-industrial-200 bg-white rounded-2xl">
                         {technicalDecisionRows.map(([label, value]) => (
                             <div key={label} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[220px_1fr]">
                                 <div className="bg-white px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-600">
@@ -581,7 +581,7 @@ export default async function PostesMetalicosPage() {
                             proposta comparavel.
                         </p>
                     </div>
-                    <div className="overflow-hidden border border-industrial-200 bg-white">
+                    <div className="overflow-hidden border border-industrial-200 bg-white rounded-2xl">
                         {quoteRows.map(([label, value]) => (
                             <div key={label} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[220px_1fr]">
                                 <div className="bg-white px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-600">

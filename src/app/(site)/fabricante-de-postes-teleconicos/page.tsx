@@ -432,7 +432,7 @@ export default function FabricanteDePostesTeleconicosPage() {
                             siglas da linha, fixacao, documentos e compra direta com suporte tecnico.
                         </p>
                     </div>
-                    <div className="overflow-hidden border border-industrial-200 bg-white">
+                    <div className="overflow-hidden border border-industrial-200 bg-white rounded-2xl">
                         {manufacturerIntentRows.map(([term, answer]) => (
                             <div key={term} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[260px_1fr]">
                                 <div className="bg-white px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-600">
@@ -498,7 +498,7 @@ export default function FabricanteDePostesTeleconicosPage() {
                             aplicacao, fixacao e acabamento.
                         </p>
                     </div>
-                    <div className="overflow-hidden border border-industrial-200">
+                    <div className="overflow-hidden border border-industrial-200 rounded-2xl">
                         {productLineRows.map(([code, model, use]) => (
                             <div key={code} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[140px_260px_1fr]">
                                 <div className="bg-industrial-50 px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-700">

@@ -457,7 +457,7 @@ export default function FabricaDePostesMetalicosPage() {
                             da fabrica sem perder o foco produtivo.
                         </p>
                     </div>
-                    <div className="overflow-hidden border border-industrial-200 bg-white">
+                    <div className="overflow-hidden border border-industrial-200 bg-white rounded-2xl">
                         {factoryIntentRows.map(([term, answer]) => (
                             <div key={term} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[270px_1fr]">
                                 <div className="bg-white px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-600">
@@ -549,7 +549,7 @@ export default function FabricaDePostesMetalicosPage() {
                             uma obra avalia antes de comprar postes: norma, memorial, acabamento, documento e entrega.
                         </p>
                     </div>
-                    <div className="overflow-hidden border border-industrial-200 bg-white">
+                    <div className="overflow-hidden border border-industrial-200 bg-white rounded-2xl">
                         {complianceRows.map(([label, value]) => (
                             <div key={label} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[220px_1fr]">
                                 <div className="bg-white px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-600">

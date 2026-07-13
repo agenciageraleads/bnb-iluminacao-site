@@ -430,7 +430,7 @@ export default function PosteGalvanizadoOuPintadoPage() {
                             </p>
                         </div>
 
-                        <div className="overflow-hidden border border-industrial-200">
+                        <div className="overflow-hidden border border-industrial-200 rounded-2xl">
                             {comparisonRows.map(([finish, use, note]) => (
                                 <div key={finish} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[220px_1fr]">
                                     <div className="bg-industrial-950 px-5 py-4 text-xs font-black uppercase tracking-widest text-white">
@@ -502,7 +502,7 @@ export default function PosteGalvanizadoOuPintadoPage() {
                             {choiceGuide.map((group) => {
                                 const Icon = group.icon
                                 return (
-                                    <div key={group.title} className="border border-industrial-200 p-6">
+                                    <div key={group.title} className="border border-industrial-200 p-6 rounded-2xl">
                                         <div className="mb-6 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium">
                                             <Icon className="size-6" aria-hidden="true" />
                                         </div>
@@ -538,7 +538,7 @@ export default function PosteGalvanizadoOuPintadoPage() {
                         </div>
                         <div className="grid gap-3">
                             {quoteChecklist.map((item) => (
-                                <div key={item} className="flex items-start gap-4 border border-industrial-200 bg-white p-5">
+                                <div key={item} className="flex items-start gap-4 border border-industrial-200 bg-white p-5 rounded-2xl">
                                     <ClipboardCheck className="mt-0.5 size-5 shrink-0 text-accent-dark" aria-hidden="true" />
                                     <p className="text-sm font-medium leading-relaxed text-industrial-700">{item}</p>
                                 </div>
@@ -566,7 +566,7 @@ export default function PosteGalvanizadoOuPintadoPage() {
                                     href={file.href}
                                     target={file.href === "/downloads" ? undefined : "_blank"}
                                     rel={file.href === "/downloads" ? undefined : "noopener noreferrer"}
-                                    className="group flex items-center justify-between gap-4 border border-industrial-200 p-5 text-sm font-black uppercase tracking-widest text-industrial-800 transition-colors hover:border-industrial-950"
+                                    className="group flex items-center justify-between gap-4 border border-industrial-200 p-5 text-sm font-black uppercase tracking-widest text-industrial-800 transition-colors hover:border-industrial-950 rounded-lg"
                                 >
                                     <span className="inline-flex items-center gap-3">
                                         <Download className="size-5 text-accent-dark" aria-hidden="true" />
@@ -644,7 +644,7 @@ export default function PosteGalvanizadoOuPintadoPage() {
                     {internalLinks.map((item) => {
                         const Icon = item.icon
                         return (
-                            <Link key={item.href} href={item.href} className="group border border-industrial-200 p-5 hover:border-industrial-950">
+                            <Link key={item.href} href={item.href} className="group border border-industrial-200 p-5 hover:border-industrial-950 rounded-lg">
                                 <Icon className="mb-5 size-6 text-accent-dark" aria-hidden="true" />
                                 <h3 className="text-sm font-black uppercase tracking-widest text-industrial-950">{item.title}</h3>
                                 <p className="mt-3 text-sm leading-relaxed text-industrial-600">{item.description}</p>
@@ -673,7 +673,7 @@ export default function PosteGalvanizadoOuPintadoPage() {
                         <Link
                             key={href}
                             href={href}
-                            className="group flex items-center justify-between gap-4 border border-industrial-200 p-5 text-sm font-black uppercase tracking-widest text-industrial-800 transition-colors hover:border-industrial-950"
+                            className="group flex items-center justify-between gap-4 border border-industrial-200 p-5 text-sm font-black uppercase tracking-widest text-industrial-800 transition-colors hover:border-industrial-950 rounded-lg"
                         >
                             {label}
                             <ArrowRight className="size-4 shrink-0 text-accent-dark transition-transform group-hover:translate-x-1" aria-hidden="true" />

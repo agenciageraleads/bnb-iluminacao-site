@@ -441,7 +441,7 @@ export default async function FabricanteDePostesMetalicosPage() {
                             antes do pedido.
                         </p>
                     </div>
-                    <div className="overflow-hidden border border-industrial-200">
+                    <div className="overflow-hidden border border-industrial-200 rounded-2xl">
                         {manufacturerProofRows.map(([label, value]) => (
                             <div key={label} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[220px_1fr]">
                                 <div className="bg-industrial-50 px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-700">
@@ -468,7 +468,7 @@ export default async function FabricanteDePostesMetalicosPage() {
                             deve cobrir fabricante, fabrica, fornecedor, industria e atendimento nacional sem perder foco.
                         </p>
                     </div>
-                    <div className="overflow-hidden border border-industrial-200 bg-white">
+                    <div className="overflow-hidden border border-industrial-200 bg-white rounded-2xl">
                         {searchIntentRows.map(([term, answer]) => (
                             <div key={term} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[260px_1fr]">
                                 <div className="bg-white px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-600">
