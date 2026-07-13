@@ -209,6 +209,18 @@ const quoteData = [
 
 const relatedPages = [
     {
+        title: "Postes metalicos",
+        description: "Hub para escolher modelos, alturas, acabamento, fixacao e aplicacoes em areas abertas.",
+        href: "/postes-metalicos",
+        icon: Zap,
+    },
+    {
+        title: "Fabrica de postes metalicos",
+        description: "Origem fabril para compra tecnica de postes para estacionamentos, patios e acessos.",
+        href: "/fabrica-de-postes-metalicos",
+        icon: Factory,
+    },
+    {
         title: "Postes para condominios",
         description: "Referencia para vagas externas, acessos, portarias e areas comuns.",
         href: "/postes-para-condominios",
@@ -725,17 +737,17 @@ export default function PostesParaEstacionamentosPage() {
 
             <section className="border-b border-industrial-200 bg-white py-10">
                 <div className="container mx-auto grid gap-4 px-4 md:grid-cols-3">
-                    <Link href="/postes-para-condominios" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950 rounded-lg">
-                        <Building2 className="size-6 text-accent-dark" aria-hidden="true" />
-                        <span className="text-sm font-black uppercase tracking-widest">Ver postes para condominios</span>
+                    <Link href="/postes-metalicos" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950 rounded-lg">
+                        <Zap className="size-6 text-accent-dark" aria-hidden="true" />
+                        <span className="text-sm font-black uppercase tracking-widest">Comparar postes metalicos</span>
                     </Link>
                     <Link href="/produtos/poste-teleconico" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950 rounded-lg">
                         <Zap className="size-6 text-accent-dark" aria-hidden="true" />
                         <span className="text-sm font-black uppercase tracking-widest">Ver poste teleconico</span>
                     </Link>
-                    <Link href="/downloads" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950 rounded-lg">
-                        <FileText className="size-6 text-accent-dark" aria-hidden="true" />
-                        <span className="text-sm font-black uppercase tracking-widest">Catalogos e desenhos tecnicos</span>
+                    <Link href="/fabrica-de-postes-metalicos" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950 rounded-lg">
+                        <Factory className="size-6 text-accent-dark" aria-hidden="true" />
+                        <span className="text-sm font-black uppercase tracking-widest">Comprar direto da fabrica</span>
                     </Link>
                 </div>
             </section>

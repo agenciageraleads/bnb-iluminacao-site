@@ -16,7 +16,6 @@ import {
     Ruler,
     ShieldCheck,
     Trees,
-    Truck,
     Users,
     Wrench,
 } from "lucide-react"
@@ -209,6 +208,12 @@ const quoteData = [
 
 const relatedPages = [
     {
+        title: "Postes metalicos",
+        description: "Hub para comparar modelos, acabamento, fixacao e aplicacoes de postes metalicos.",
+        href: "/postes-metalicos",
+        icon: Trees,
+    },
+    {
         title: "Postes para iluminacao publica",
         description: "Base para vias, pracas, parques, areas institucionais e obras urbanas.",
         href: "/postes-para-iluminacao-publica",
@@ -221,10 +226,10 @@ const relatedPages = [
         icon: Building2,
     },
     {
-        title: "Postes para estacionamentos",
-        description: "Caminho para vagas, acessos e areas abertas proximas a pracas e convivencia.",
-        href: "/postes-para-estacionamentos",
-        icon: Truck,
+        title: "Fabrica de postes metalicos",
+        description: "Origem fabril para compra tecnica de postes urbanos, ornamentais e sob projeto.",
+        href: "/fabrica-de-postes-metalicos",
+        icon: Factory,
     },
     {
         title: "Poste flangeado ou engastado",
@@ -746,13 +751,13 @@ export default function PostesParaPracasPage() {
                         <Landmark className="size-6 text-accent-dark" aria-hidden="true" />
                         <span className="text-sm font-black uppercase tracking-widest">Ver iluminacao publica</span>
                     </Link>
-                    <Link href="/postes-para-condominios" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950 rounded-lg">
-                        <Building2 className="size-6 text-accent-dark" aria-hidden="true" />
-                        <span className="text-sm font-black uppercase tracking-widest">Ver postes para condominios</span>
+                    <Link href="/postes-metalicos" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950 rounded-lg">
+                        <Trees className="size-6 text-accent-dark" aria-hidden="true" />
+                        <span className="text-sm font-black uppercase tracking-widest">Comparar postes metalicos</span>
                     </Link>
-                    <Link href="/downloads" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950 rounded-lg">
-                        <FileText className="size-6 text-accent-dark" aria-hidden="true" />
-                        <span className="text-sm font-black uppercase tracking-widest">Catalogos e desenhos tecnicos</span>
+                    <Link href="/fabrica-de-postes-metalicos" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950 rounded-lg">
+                        <Factory className="size-6 text-accent-dark" aria-hidden="true" />
+                        <span className="text-sm font-black uppercase tracking-widest">Comprar direto da fabrica</span>
                     </Link>
                 </div>
             </section>
