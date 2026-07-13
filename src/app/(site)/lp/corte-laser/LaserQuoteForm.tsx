@@ -3,6 +3,7 @@
 import { useState, useRef } from "react"
 import { Send, CheckCircle2, AlertCircle, Paperclip, X } from "lucide-react"
 import { sendLaserQuote } from "@/app/actions/service-quote"
+import { LeadAttributionFields, pushLeadEvent } from "@/lib/lead-tracking"
 
 interface Props {
   cidade?: string
@@ -32,6 +33,14 @@ export function LaserQuoteForm({ cidade }: Props) {
     const result = await sendLaserQuote(formData)
     if (result.success) {
       setStatus('success')
+      pushLeadEvent({
+        event: 'service_quote_submit',
+        cta_channel: 'form',
+        cta_source: 'laser_quote_form',
+        cta_label: 'Corte a laser',
+        service_type: 'laser',
+        lead_cluster: 'servicos',
+      })
     } else {
       setStatus('error')
       setErrorMsg(result.error || 'Ocorreu um erro inesperado.')
@@ -52,6 +61,7 @@ export function LaserQuoteForm({ cidade }: Props) {
 
   return (
     <form action={handleSubmit} className="space-y-4" noValidate>
+      <LeadAttributionFields formType="service_quote_laser" cluster="servicos" />
       {status === 'error' && (
         <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-center gap-3 text-red-700 text-sm font-medium">
           <AlertCircle className="size-5 shrink-0" />

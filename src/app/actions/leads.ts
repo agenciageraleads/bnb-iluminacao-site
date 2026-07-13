@@ -11,6 +11,40 @@ export type LeadState = {
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
+const attributionFields = [
+    'formType',
+    'leadCluster',
+    'page_path',
+    'page_location',
+    'page_referrer',
+    'first_landing_page',
+    'first_referrer',
+    'utm_source',
+    'utm_medium',
+    'utm_campaign',
+    'utm_content',
+    'utm_term',
+    'gclid',
+    'fbclid',
+    'msclkid',
+]
+
+function readAttribution(formData: FormData) {
+    return Object.fromEntries(
+        attributionFields
+            .map((field) => [field, formData.get(field)])
+            .filter(([, value]) => Boolean(value)),
+    )
+}
+
+function renderAttribution(attribution: Record<string, FormDataEntryValue>) {
+    const rows = Object.entries(attribution)
+        .map(([field, value]) => `<p><strong>${field}:</strong> ${value}</p>`)
+        .join('')
+
+    return rows ? `<hr /><h3>Atribuição</h3>${rows}` : ''
+}
+
 export async function createCatalogLead(prevState: any, formData: FormData) {
     const payload = await getPayload({ config })
 
@@ -20,6 +54,7 @@ export async function createCatalogLead(prevState: any, formData: FormData) {
     const company = formData.get('company') as string
     const companyCnpj = formData.get('companyCnpj') as string
     const catalogId = formData.get('catalogId') as string
+    const attribution = readAttribution(formData)
 
     if (!name || !email || !phone || !company || !companyCnpj) {
         return { status: 'error', message: 'Todos os campos são obrigatórios.' }
@@ -35,6 +70,7 @@ export async function createCatalogLead(prevState: any, formData: FormData) {
                 company,
                 companyCnpj,
                 catalogDownloaded: catalogId,
+                attribution,
             },
         })
 
@@ -52,6 +88,7 @@ export async function createCatalogLead(prevState: any, formData: FormData) {
                     <p><strong>Empresa:</strong> ${company}</p>
                     <p><strong>CNPJ:</strong> ${companyCnpj}</p>
                     <p><strong>Catálogo Baixado:</strong> ${catalogId}</p>
+                    ${renderAttribution(attribution)}
                 `
             })
         } catch (mailError) {

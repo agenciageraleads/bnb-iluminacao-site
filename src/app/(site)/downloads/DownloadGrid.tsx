@@ -1,10 +1,11 @@
 'use client'
 
-import { useState, useActionState } from 'react'
+import { useEffect, useState, useActionState } from 'react'
 import Image from 'next/image'
 import { Catalog } from '../../../lib/data'
 import { createCatalogLead } from '../../actions/leads'
 import { Download, FileText, X, CheckCircle2, Loader2, Building2, User, Mail, Phone, Hash } from 'lucide-react'
+import { LeadAttributionFields, TrackedContactLink, pushLeadEvent } from '@/lib/lead-tracking'
 
 interface DownloadGridProps {
     catalogs: Catalog[]
@@ -22,6 +23,19 @@ export function DownloadGrid({ catalogs }: DownloadGridProps) {
     }
 
     const isSuccess = state.status === 'success'
+
+    useEffect(() => {
+        if (!isSuccess || !selectedCatalog) return
+
+        pushLeadEvent({
+            event: 'catalog_lead_submit',
+            cta_channel: 'form',
+            cta_source: 'downloads_modal',
+            cta_label: selectedCatalog.title,
+            catalog_id: selectedCatalog.id,
+            lead_cluster: 'catalogos',
+        })
+    }, [isSuccess, selectedCatalog])
 
     return (
         <div className="max-w-6xl mx-auto">
@@ -91,6 +105,7 @@ export function DownloadGrid({ catalogs }: DownloadGridProps) {
                             {!isSuccess ? (
                                 <form action={action} className="space-y-4">
                                     <input type="hidden" name="catalogId" value={selectedCatalog.id} />
+                                    <LeadAttributionFields formType="catalog_lead" cluster="catalogos" />
                                     
                                     <div className="space-y-1">
                                         <label className="text-[10px] font-black uppercase tracking-widest text-industrial-500 ml-1">Nome Completo</label>
@@ -196,11 +211,19 @@ export function DownloadGrid({ catalogs }: DownloadGridProps) {
                                         <p className="text-industrial-500 font-medium">O download do arquivo PDF começará em instantes.</p>
                                     </div>
                                     
-                                    <a 
+                                    <TrackedContactLink
                                         href={selectedCatalog.fileUrl} 
                                         download
                                         target="_blank"
                                         rel="noopener noreferrer"
+                                        channel="download"
+                                        eventName="catalog_download"
+                                        eventSource="downloads_modal_success"
+                                        eventLabel={selectedCatalog.title}
+                                        extraPayload={{
+                                            catalog_id: selectedCatalog.id,
+                                            lead_cluster: 'catalogos',
+                                        }}
                                         className="inline-flex h-14 px-10 bg-industrial-950 text-white font-black uppercase tracking-widest rounded-lg hover:bg-industrial-800 transition-all items-center gap-3"
                                         onClick={() => {
                                             // Fecha o modal após o clique no download final
@@ -209,7 +232,7 @@ export function DownloadGrid({ catalogs }: DownloadGridProps) {
                                     >
                                         <Download className="size-5 text-accent-premium" />
                                         Baixar Agora
-                                    </a>
+                                    </TrackedContactLink>
                                 </div>
                             )}
                         </div>

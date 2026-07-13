@@ -4,6 +4,35 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+const attributionFields = [
+  'formType',
+  'leadCluster',
+  'page_path',
+  'page_location',
+  'page_referrer',
+  'first_landing_page',
+  'first_referrer',
+  'utm_source',
+  'utm_medium',
+  'utm_campaign',
+  'utm_content',
+  'utm_term',
+  'gclid',
+  'fbclid',
+  'msclkid',
+]
+
+function renderAttribution(formData: FormData) {
+  const rows = attributionFields
+    .map((field) => {
+      const value = formData.get(field)
+      return value ? `<p><strong>${field}:</strong> ${String(value)}</p>` : ''
+    })
+    .join('')
+
+  return rows ? `<hr /><h3>Atribuição</h3>${rows}` : ''
+}
+
 export interface ServiceQuoteFormData {
   empresa: string
   nome: string
@@ -61,6 +90,7 @@ export async function sendPinturaQuote(formData: FormData) {
             ${attachments.length > 0 ? `<tr><td style="padding: 8px 0; font-size: 11px; font-weight: bold; text-transform: uppercase; color: #6b7280;">Anexo:</td><td style="padding: 8px 0; font-size: 14px; font-weight: bold;">${attachments[0].filename}</td></tr>` : ''}
           </table>
           ${mensagem ? `<div style="background-color: #f9fafb; padding: 20px; border-left: 4px solid #facc15;"><p style="font-size: 11px; font-weight: bold; text-transform: uppercase; color: #6b7280; margin-top: 0; margin-bottom: 8px;">Observações:</p><p style="font-size: 14px; line-height: 1.6; margin: 0; white-space: pre-wrap;">${mensagem}</p></div>` : ''}
+          ${renderAttribution(formData)}
           <p style="margin-top: 30px; font-size: 12px; color: #9ca3af; text-align: center;">Enviado pelo formulário de cotação de pintura eletrostática — B&B Iluminação</p>
         </div>
       `,
@@ -117,6 +147,7 @@ export async function sendLaserQuote(formData: FormData) {
             ${attachments.length > 0 ? `<tr><td style="padding: 8px 0; font-size: 11px; font-weight: bold; text-transform: uppercase; color: #6b7280;">Arquivo Técnico:</td><td style="padding: 8px 0; font-size: 14px; font-weight: bold;">${attachments[0].filename}</td></tr>` : ''}
           </table>
           ${mensagem ? `<div style="background-color: #f9fafb; padding: 20px; border-left: 4px solid #facc15;"><p style="font-size: 11px; font-weight: bold; text-transform: uppercase; color: #6b7280; margin-top: 0; margin-bottom: 8px;">Descrição da Peça:</p><p style="font-size: 14px; line-height: 1.6; margin: 0; white-space: pre-wrap;">${mensagem}</p></div>` : ''}
+          ${renderAttribution(formData)}
           <p style="margin-top: 30px; font-size: 12px; color: #9ca3af; text-align: center;">Enviado pelo formulário de cotação de corte a laser — B&B Iluminação</p>
         </div>
       `,

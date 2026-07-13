@@ -5,6 +5,8 @@ import { Phone, Mail, MapPin, Lock } from "lucide-react"
 import { useState, useEffect } from "react"
 import type { Representative, RepresentativeTerritory } from "../../../lib/data"
 import { LeadCaptureDialog } from "./LeadCaptureDialog";
+import { TrackedContactLink } from "@/lib/lead-tracking"
+import { WhatsAppLink } from "@/components/ui/whatsapp-link"
 
 // Mapeamento de canais/mercados de atuação para exibição no frontend (comentários em pt-br)
 const MARKET_LABELS: Record<string, string> = {
@@ -235,26 +237,41 @@ export function RepresentativesClient({ representatives }: { representatives: Re
                                                                         </button>
                                                                     ) : (
                                                                         <>
-                                                                            <a href={`tel:${rep.phone.replace(/[^0-9]/g, '')}`} className="flex items-center gap-3 text-industrial-600 hover:text-industrial-950 transition-colors text-sm font-medium">
+                                                                            <TrackedContactLink
+                                                                                href={`tel:${rep.phone.replace(/[^0-9]/g, '')}`}
+                                                                                channel="phone"
+                                                                                eventSource="representatives_revealed"
+                                                                                eventLabel={rep.name}
+                                                                                extraPayload={{ representative_state: selectedState, representative_name: rep.name, lead_cluster: 'representantes' }}
+                                                                                className="flex items-center gap-3 text-industrial-600 hover:text-industrial-950 transition-colors text-sm font-medium"
+                                                                            >
                                                                                 <div className="size-8 bg-white flex items-center justify-center rounded-sm border border-industrial-200">
                                                                                     <Phone className="size-4 text-accent-dark" />
                                                                                 </div>
                                                                                 {rep.phone}
-                                                                            </a>
-                                                                            <a href={`mailto:${rep.email}`} className="flex items-center gap-3 text-industrial-600 hover:text-industrial-950 transition-colors text-sm font-medium">
+                                                                            </TrackedContactLink>
+                                                                            <TrackedContactLink
+                                                                                href={`mailto:${rep.email}`}
+                                                                                channel="email"
+                                                                                eventSource="representatives_revealed"
+                                                                                eventLabel={rep.name}
+                                                                                extraPayload={{ representative_state: selectedState, representative_name: rep.name, lead_cluster: 'representantes' }}
+                                                                                className="flex items-center gap-3 text-industrial-600 hover:text-industrial-950 transition-colors text-sm font-medium"
+                                                                            >
                                                                                 <div className="size-8 bg-white flex items-center justify-center rounded-sm border border-industrial-200">
                                                                                     <Mail className="size-4 text-accent-dark" />
                                                                                 </div>
                                                                                 <span className="break-all">{rep.email}</span>
-                                                                            </a>
-                                                                            <a
-                                                                                href={`https://api.whatsapp.com/send?phone=55${rep.phone.replace(/[^0-9]/g, '')}&text=Ol%C3%A1%2C%20encontrei%20seu%20contato%20no%20site%20da%20B%26B%20Ilumina%C3%A7%C3%A3o.`}
-                                                                                target="_blank"
-                                                                                rel="noopener noreferrer"
+                                                                            </TrackedContactLink>
+                                                                            <WhatsAppLink
+                                                                                phoneNumber={`55${rep.phone.replace(/[^0-9]/g, '')}`}
+                                                                                message="Olá, encontrei seu contato no site da B&B Iluminação."
+                                                                                eventSource="representatives_revealed"
+                                                                                eventLabel={rep.name}
                                                                                 className="mt-2 w-full flex items-center justify-center gap-2 py-2 px-4 bg-[#25D366] text-white rounded-md text-sm font-bold uppercase tracking-wide hover:bg-[#1DA851] transition-colors"
                                                                             >
                                                                                 WhatsApp
-                                                                            </a>
+                                                                            </WhatsAppLink>
                                                                         </>
                                                                     )}
                                                                 </div>

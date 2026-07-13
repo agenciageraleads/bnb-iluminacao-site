@@ -12,6 +12,8 @@ import { getProductLineHref } from "@/lib/seo/product-line-links"
 
 import { getUrbanDownloads } from "@/lib/urban-downloads"
 import { SITE_URL, absoluteUrl } from "@/lib/seo/schema"
+import { WhatsAppLink } from "@/components/ui/whatsapp-link"
+import { TrackedContactLink } from "@/lib/lead-tracking"
 
 export const dynamic = 'force-dynamic'
 
@@ -355,22 +357,26 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
                             {/* Botões de Ação Desktop */}
                             <div className="hidden md:grid grid-cols-2 gap-4">
-                                <a
-                                    href={`https://wa.me/556235761988?text=Olá! Tenho interesse no produto ${product.name} (${product.model}).`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                <WhatsAppLink
+                                    message={`Olá! Tenho interesse no produto ${product.name} (${product.model}).`}
+                                    eventSource="product_detail"
+                                    eventLabel={product.name}
                                     className="flex items-center justify-center gap-3 bg-industrial-950 text-white hover:bg-industrial-800 font-black uppercase tracking-widest h-16 px-6 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-industrial-950/20 rounded-lg"
                                 >
                                     <MessageCircle className="size-6" />
                                     Solicitar Cotação
-                                </a>
-                                <a
+                                </WhatsAppLink>
+                                <TrackedContactLink
                                     href="tel:+556235761988"
+                                    channel="phone"
+                                    eventSource="product_detail"
+                                    eventLabel={product.name}
+                                    extraPayload={{ product_id: product.id, product_model: product.model, lead_cluster: product.category }}
                                     className="flex items-center justify-center gap-3 bg-white text-industrial-950 border-2 border-industrial-950 hover:bg-industrial-50 font-black uppercase tracking-widest h-16 px-6 transition-all rounded-lg"
                                 >
                                     <Phone className="size-5" />
                                     Ligar Agora
-                                </a>
+                                </TrackedContactLink>
                             </div>
                         </div>
                     </div>

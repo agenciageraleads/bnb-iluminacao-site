@@ -6,6 +6,8 @@ import { Phone, Mail, MapPin, Clock, MessageCircle, Send, CheckCircle2, AlertCir
 import { useState, useEffect, Suspense } from "react"
 import { useSearchParams } from "next/navigation"
 import { sendContactEmail } from "../../actions/contact"
+import { LeadAttributionFields, TrackedContactLink, pushLeadEvent } from "@/lib/lead-tracking"
+import { WhatsAppLink } from "@/components/ui/whatsapp-link"
 
 function ContatoContent() {
     const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
@@ -57,6 +59,14 @@ function ContatoContent() {
         if (result.success) {
             setStatus('success');
             setMessage(result.message || '');
+            pushLeadEvent({
+                event: 'form_submit',
+                cta_channel: 'form',
+                cta_source: 'contact_page',
+                cta_label: assunto || 'contato',
+                form_type: 'contact',
+                lead_cluster: 'contato',
+            });
             // Limpa o formulário após 2 segundos
             setTimeout(() => setStatus('idle'), 5000);
         } else {
@@ -109,6 +119,7 @@ function ContatoContent() {
                                 noValidate
                                 aria-label="Formulário de contato"
                             >
+                                <LeadAttributionFields formType="contact" cluster="contato" />
                                 {status === 'error' && (
                                     <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-center gap-3 text-red-700 text-sm font-medium">
                                         <AlertCircle className="size-5 shrink-0" />
@@ -235,9 +246,16 @@ function ContatoContent() {
                                     <div>
                                         <div className="text-[10px] font-bold uppercase tracking-widest text-industrial-500 mb-0.5">{info.label}</div>
                                         {info.href ? (
-                                            <a href={info.href} className="text-industrial-900 font-bold text-sm hover:underline active:opacity-80 transition-opacity">
+                                            <TrackedContactLink
+                                                href={info.href}
+                                                channel={info.href.startsWith('tel:') ? 'phone' : info.href.startsWith('mailto:') ? 'email' : 'maps'}
+                                                eventName={info.href.startsWith('https://maps') ? 'maps_click' : undefined}
+                                                eventSource="contact_page_info"
+                                                eventLabel={info.label}
+                                                className="text-industrial-900 font-bold text-sm hover:underline active:opacity-80 transition-opacity"
+                                            >
                                                 {info.value}
-                                            </a>
+                                            </TrackedContactLink>
                                         ) : (
                                             <span className="text-industrial-900 font-bold text-sm">{info.value}</span>
                                         )}
@@ -247,12 +265,11 @@ function ContatoContent() {
                         </div>
 
                         {/* Atalho para WhatsApp */}
-                        <a
-                            href="https://wa.me/556235761988"
-                            target="_blank"
-                            rel="noopener noreferrer"
+                        <WhatsAppLink
                             className="flex items-center gap-3 w-full p-5 bg-industrial-950 text-white hover:bg-industrial-800 active:bg-industrial-700 rounded-2xl transition-colors group"
                             aria-label="Atendimento via WhatsApp — abre em nova aba"
+                            eventSource="contact_page_quick"
+                            eventLabel="WhatsApp rápido"
                         >
                             <MessageCircle className="size-7 shrink-0" aria-hidden="true" />
                             <div>
@@ -260,7 +277,7 @@ function ContatoContent() {
                                 <div className="text-industrial-400 text-[11px]">Resposta em até 2 horas úteis</div>
                             </div>
                             <span className="ml-auto text-industrial-400 group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span>
-                        </a>
+                        </WhatsAppLink>
                     </div>
                 </div>
             </div>
