@@ -132,6 +132,15 @@ const technicalCatalogRows = [
     ["Braco ou suporte para luminaria publica", "NEX e suportes metalicos", "Compatibilizacao entre poste, luminaria e projeto luminotecnico"],
 ]
 
+const publicLightingIntentRows = [
+    ["Postes para iluminacao publica", "Busca aplicacao; precisa conectar via, praca, loteamento, estacionamento e obra urbana."],
+    ["Poste para iluminacao publica", "Busca produto; precisa orientar modelo, altura, fixacao, acabamento e luminaria."],
+    ["Fabrica de postes para iluminacao publica", "Busca origem fabril; precisa provar producao, modelos, acabamento e entrega nacional."],
+    ["Fornecedor de postes para iluminacao publica", "Busca compra; precisa explicar quantidade, prazo, documentos, logistica e suporte tecnico."],
+    ["Bracos e suportes para luminaria publica", "Busca conjunto; precisa conectar poste, luminaria, avanco, carga e manutencao."],
+    ["Normas para postes de iluminacao", "Busca seguranca tecnica; precisa citar referencias e remeter ao memorial da obra."],
+]
+
 const complianceRows = [
     ["Material", "Aco carbono ou estrutural conforme desenho, memoriais e solicitacao do projeto."],
     ["Acabamento", "Galvanizacao a fogo, pintura eletrostatica ou combinacao definida conforme ambiente e memorial."],
@@ -198,8 +207,13 @@ const gallery = [
 ]
 
 const internalLinks = [
+    ["Fabrica de postes para iluminacao publica", "/fabrica-de-postes-para-iluminacao-publica"],
+    ["Fornecedor de postes para iluminacao publica", "/fornecedor-de-postes-para-iluminacao-publica"],
     ["Fabrica de postes metalicos", "/fabrica-de-postes-metalicos"],
     ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
+    ["Fabricante de postes metalicos", "/fabricante-de-postes-metalicos"],
+    ["Industria de postes metalicos", "/industria-de-postes-metalicos"],
+    ["Orcamento de poste metalico", "/orcamento-poste-metalico"],
     ["Postes metalicos", "/postes-metalicos"],
     ["Postes para loteamentos", "/postes-para-loteamentos"],
     ["Postes para condominios", "/postes-para-condominios"],
@@ -212,13 +226,9 @@ const internalLinks = [
     ["Poste teleconico ou reto", "/blog/poste-teleconico-ou-reto"],
     ["Poste flangeado ou engastado", "/blog/poste-flangeado-ou-engastado"],
     ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
-    ["Fabricante de postes metalicos", "/fabricante-de-postes-metalicos"],
-    ["Poste teleconico", "/produtos/poste-teleconico"],
-    ["Postes para pracas", "/postes-para-pracas"],
     ["Braco para luminaria publica", "/produtos/braco-para-luminaria-publica"],
     ["Suporte para luminaria publica", "/produtos/suporte-para-luminaria-publica"],
     ["Chumbador para poste metalico", "/produtos/chumbador-para-poste-metalico"],
-    ["Braco para luminaria publica", "/produtos/braco-para-luminaria-publica"],
     ["Catalogos e downloads", "/downloads"],
 ]
 
@@ -483,6 +493,33 @@ export default async function PostesParaIluminacaoPublicaPage() {
                                 </div>
                                 <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-800">
                                     {use}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="bg-industrial-50 py-20 md:py-28">
+                <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+                    <div className="space-y-5">
+                        <SectionLabel>Intencao comercial</SectionLabel>
+                        <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
+                            Buscas que esta pagina precisa resolver
+                        </h2>
+                        <p className="text-base leading-relaxed text-industrial-600">
+                            A busca por postes para iluminacao publica mistura aplicacao, produto, fabrica, fornecedor,
+                            bracos, suportes e normas. Separar cada intencao reduz atrito antes do orcamento.
+                        </p>
+                    </div>
+                    <div className="overflow-hidden border border-industrial-200 bg-white">
+                        {publicLightingIntentRows.map(([term, answer]) => (
+                            <div key={term} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[270px_1fr]">
+                                <div className="bg-white px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-600">
+                                    {term}
+                                </div>
+                                <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-800">
+                                    {answer}
                                 </div>
                             </div>
                         ))}
