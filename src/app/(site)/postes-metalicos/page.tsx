@@ -134,6 +134,8 @@ const comparisonRows = [
     ["Curvo simples", "Ruas, acessos e calcadas", "Um avanco de luminaria para direcionamento lateral"],
     ["Curvo duplo", "Avenidas e canteiros centrais", "Dois pontos de iluminacao para sentidos opostos"],
     ["Ornamental", "Pracas, jardins e areas nobres", "Design urbano com acabamento visual mais relevante"],
+    ["Flangeado", "Bases, pisos e obras com chumbadores", "Facilita instalacao quando a fundacao ja esta preparada"],
+    ["Engastado", "Obras com fundacao direta no solo", "Depende de profundidade, solo, altura e memoriais da obra"],
     ["Bracos e suportes", "Compatibilizacao de luminarias", "Adaptacao entre poste, luminaria e projeto"],
 ]
 
@@ -157,7 +159,7 @@ const quoteRows = [
 const finishOptions = [
     {
         title: "Galvanizacao",
-        description: "Indicada quando o ambiente exige maior protecao contra corrosao e vida util prolongada.",
+        description: "Indicada quando o ambiente exige maior protecao contra corrosao e vida util prolongada, com referencia a NBR 6323 quando o memorial pedir galvanizacao a fogo.",
         icon: ShieldCheck,
     },
     {
@@ -170,6 +172,15 @@ const finishOptions = [
         description: "Definicao conforme memorial tecnico, ambiente, instalacao, quantidade e prazo do projeto.",
         icon: Ruler,
     },
+]
+
+const technicalDecisionRows = [
+    ["Material", "Poste de aco carbono com geometria e espessura definidas conforme modelo, altura e aplicacao."],
+    ["Acabamento galvanizado", "Usado quando a obra pede protecao anticorrosiva; confirmar processo, escopo e referencia do memorial."],
+    ["NBR 6323", "Referencia recorrente para galvanizacao a fogo em produtos de aco quando prevista no projeto."],
+    ["NBR 14744", "Referencia tecnica para postes de aco quando aplicavel ao produto, escopo e memoriais da obra."],
+    ["Fixacao", "Engastado, flangeado, base e chumbadores precisam ser definidos junto com altura e local de instalacao."],
+    ["Luminaria e braco", "Avanco, numero de pontos, carga, manutencao e compatibilidade visual interferem no conjunto."],
 ]
 
 const heroProofs = [
@@ -192,6 +203,8 @@ const internalLinks = [
     ["Fabrica de postes metalicos", "/fabrica-de-postes-metalicos"],
     ["Fabricante de postes metalicos", "/fabricante-de-postes-metalicos"],
     ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
+    ["Industria de postes metalicos", "/industria-de-postes-metalicos"],
+    ["Orcamento de poste metalico", "/orcamento-poste-metalico"],
     ["Postes para iluminacao publica", "/postes-para-iluminacao-publica"],
     ["Postes para loteamentos", "/postes-para-loteamentos"],
     ["Postes para condominios", "/postes-para-condominios"],
@@ -209,9 +222,6 @@ const internalLinks = [
     ["Suporte para luminaria publica", "/produtos/suporte-para-luminaria-publica"],
     ["Chumbador para poste metalico", "/produtos/chumbador-para-poste-metalico"],
     ["Catalogo de produtos", "/produtos"],
-    ["Poste teleconico", "/produtos/poste-teleconico"],
-    ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
-    ["Braco para luminaria publica", "/produtos/braco-para-luminaria-publica"],
     ["Catalogos e downloads", "/downloads"],
     ["Obras realizadas", "/obras"],
 ]
@@ -481,6 +491,33 @@ export default async function PostesMetalicosPage() {
                                 </div>
                                 <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-800">
                                     {answer}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="bg-industrial-50 py-20 md:py-28">
+                <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+                    <div className="space-y-5">
+                        <SectionLabel>Criterios tecnicos</SectionLabel>
+                        <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
+                            O que diferencia poste metalico, galvanizado e de aco
+                        </h2>
+                        <p className="text-base leading-relaxed text-industrial-600">
+                            A disputa organica nao e so por volume de texto. O comprador precisa entender material,
+                            acabamento, norma, fixacao e compatibilidade com luminaria antes de comparar propostas.
+                        </p>
+                    </div>
+                    <div className="overflow-hidden border border-industrial-200 bg-white">
+                        {technicalDecisionRows.map(([label, value]) => (
+                            <div key={label} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[220px_1fr]">
+                                <div className="bg-white px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-600">
+                                    {label}
+                                </div>
+                                <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-800">
+                                    {value}
                                 </div>
                             </div>
                         ))}

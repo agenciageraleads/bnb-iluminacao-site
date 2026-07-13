@@ -11,8 +11,6 @@ import {
     FileText,
     Landmark,
     MessageCircle,
-    Paintbrush,
-    Ruler,
     ShieldCheck,
     Truck,
     Waves,
@@ -39,7 +37,7 @@ import {
 
 const pageUrl = "https://bebiluminacao.com.br/produtos/poste-metalico-galvanizado"
 const pageDescription =
-    "Poste metalico galvanizado para iluminacao publica, condominios, loteamentos e industrias. Veja aplicacoes, acabamentos e solicite orcamento tecnico."
+    "Poste metalico galvanizado e poste de aco galvanizado para iluminacao publica, condominios, loteamentos e industrias. Solicite orcamento tecnico."
 const whatsappMessage =
     "Ola, vim pela pagina de poste metalico galvanizado e quero solicitar um orcamento tecnico."
 const heroImage = "/images/seo/postes-metalicos/estacionamento-industrial-postes-retos.jpg"
@@ -72,14 +70,14 @@ const productGallery = [
 
 export const metadata: Metadata = {
     title: {
-        absolute: "Poste Metalico Galvanizado para Iluminacao | B&B",
+        absolute: "Poste Metalico Galvanizado e de Aco | B&B",
     },
     description: pageDescription,
     alternates: {
         canonical: pageUrl,
     },
     openGraph: {
-        title: "Poste Metalico Galvanizado para Iluminacao | B&B",
+        title: "Poste Metalico Galvanizado e de Aco | B&B",
         description: pageDescription,
         url: pageUrl,
         type: "website",
@@ -145,12 +143,28 @@ const useCases = [
 ]
 
 const specificationRows = [
-    ["Produto", "Poste metalico com acabamento galvanizado, definido conforme modelo, aplicacao e memorial tecnico."],
+    ["Produto", "Poste metalico ou poste de aco com acabamento galvanizado, definido conforme modelo, aplicacao e memorial tecnico."],
     ["Modelos", "Reto, teleconico, curvo simples, curvo duplo ou solucao sob especificacao do projeto."],
     ["Fixacao", "Engastado, flangeado, base e chumbadores conforme projeto civil e condicao de instalacao."],
     ["Uso", "Iluminacao publica, loteamentos, condominios, industrias, patios, estacionamentos e areas externas."],
     ["Acabamento", "Galvanizacao e, quando necessario, pintura complementar conforme padrao visual e ambiente."],
     ["Compra", "Orcamento com modelo, quantidade, cidade/UF, prazo, fixacao, acabamento e documentos disponiveis."],
+]
+
+const searchIntentRows = [
+    ["Poste metalico galvanizado", "Busca produto/acabamento; precisa explicar durabilidade, ambiente, modelos e cotacao."],
+    ["Poste de aco galvanizado", "Busca material e protecao; precisa conectar aco, galvanizacao e uso externo."],
+    ["Postes metalicos galvanizados", "Busca compra em volume; precisa organizar modelos, aplicacoes e entrega nacional."],
+    ["Poste galvanizado para iluminacao publica", "Busca aplicacao urbana; precisa conectar luminaria, altura, fixacao e memorial."],
+    ["Galvanizacao NBR 6323", "Busca referencia tecnica; confirmar aplicacao no memorial e no escopo do acabamento."],
+]
+
+const standardsRows = [
+    ["NBR 6323", "Referencia para galvanizacao a fogo quando o projeto especifica esse acabamento em produto de aco."],
+    ["NBR 14744", "Referencia para postes de aco quando aplicavel ao escopo do produto e especificacao da obra."],
+    ["Memorial tecnico", "Documento que deve prevalecer para altura, fixacao, acabamento, luminaria, cargas e padrao visual."],
+    ["Ambiente externo", "Umidade, intemperies, agentes corrosivos e manutencao esperada ajudam a decidir o acabamento."],
+    ["Compatibilidade", "Base, chumbador, braco, luminaria e pintura complementar precisam ser avaliados como conjunto."],
 ]
 
 const comparisonRows = [
@@ -211,6 +225,10 @@ const buyingSteps = [
 const internalLinks = [
     ["Postes metalicos", "/postes-metalicos"],
     ["Fabricante de postes metalicos", "/fabricante-de-postes-metalicos"],
+    ["Fabrica de postes metalicos", "/fabrica-de-postes-metalicos"],
+    ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
+    ["Industria de postes metalicos", "/industria-de-postes-metalicos"],
+    ["Orcamento de poste metalico", "/orcamento-poste-metalico"],
     ["Fabricante de postes teleconicos", "/fabricante-de-postes-teleconicos"],
     ["Poste curvo simples", "/produtos/poste-curvo-simples"],
     ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
@@ -418,6 +436,60 @@ export default function PosteMetalicoGalvanizadoPage() {
                     <div className="grid gap-4">
                         {specificationRows.map(([label, value]) => (
                             <div key={label} className="grid border border-industrial-200 md:grid-cols-[180px_1fr] rounded-2xl overflow-hidden">
+                                <div className="bg-industrial-50 px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-600">
+                                    {label}
+                                </div>
+                                <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-800">
+                                    {value}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="bg-industrial-50 py-20 md:py-28">
+                <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+                    <div className="space-y-5">
+                        <SectionLabel>Intencao comercial</SectionLabel>
+                        <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
+                            Buscas que a pagina de galvanizado precisa responder
+                        </h2>
+                        <p className="text-base leading-relaxed text-industrial-600">
+                            O termo galvanizado mistura produto, material, acabamento e norma. A pagina precisa separar
+                            cada intencao para orientar compras, engenharia e obra sem criar pagina duplicada.
+                        </p>
+                    </div>
+                    <div className="overflow-hidden border border-industrial-200 bg-white">
+                        {searchIntentRows.map(([term, answer]) => (
+                            <div key={term} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[250px_1fr]">
+                                <div className="bg-white px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-600">
+                                    {term}
+                                </div>
+                                <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-800">
+                                    {answer}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="py-20 md:py-28">
+                <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+                    <div className="space-y-5">
+                        <SectionLabel>Norma e memorial</SectionLabel>
+                        <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
+                            Galvanizacao precisa ser confirmada no escopo tecnico
+                        </h2>
+                        <p className="text-base leading-relaxed text-industrial-600">
+                            A decisao de galvanizar deve vir do ambiente, do memorial e do uso esperado. A B&B orienta a
+                            compra, mas a especificacao final precisa respeitar os documentos da obra.
+                        </p>
+                    </div>
+                    <div className="overflow-hidden border border-industrial-200">
+                        {standardsRows.map(([label, value]) => (
+                            <div key={label} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[200px_1fr]">
                                 <div className="bg-industrial-50 px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-600">
                                     {label}
                                 </div>
