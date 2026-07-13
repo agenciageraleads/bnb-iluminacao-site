@@ -179,19 +179,19 @@ const applications = [
     {
         title: "Loteamentos",
         description: "Fornecimento padronizado para incorporadoras, construtoras e obras em volume.",
-        href: "/postes-metalicos",
+        href: "/postes-para-loteamentos",
         icon: Building2,
     },
     {
         title: "Patios e industrias",
         description: "Postes para galpoes, docas, estacionamentos, acessos e circulacao operacional.",
-        href: "/postes-metalicos",
+        href: "/postes-para-estacionamentos",
         icon: Factory,
     },
     {
         title: "Condominios",
         description: "Projetos residenciais e comerciais com durabilidade, acabamento e padrao visual.",
-        href: "/postes-metalicos",
+        href: "/postes-para-condominios",
         icon: ShieldCheck,
     },
 ]
