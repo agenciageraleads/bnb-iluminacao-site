@@ -37,21 +37,21 @@ import { createSeoImage } from "@/lib/seo/images"
 
 const pageUrl = "https://bebiluminacao.com.br/fabrica-de-postes-metalicos"
 const pageDescription =
-    "Fabrica nacional de postes metalicos para iluminacao publica, condominios, loteamentos e industrias. Producao propria, NBR, acabamento e orcamento."
+    "Fabrica nacional de postes metalicos direto da fabrica para iluminacao publica, condominios, loteamentos e industrias. Producao propria e orcamento."
 const whatsappMessage =
     "Ola, vim pela pagina de fabrica de postes metalicos e quero solicitar um orcamento tecnico."
 const heroImage = "/hero-industrial.jpg"
 
 export const metadata: Metadata = {
     title: {
-        absolute: "Fabrica de Postes Metalicos com Entrega Nacional | B&B",
+        absolute: "Fabrica de Postes Metalicos Direto da Fabrica | B&B",
     },
     description: pageDescription,
     alternates: {
         canonical: pageUrl,
     },
     openGraph: {
-        title: "Fabrica de Postes Metalicos com Entrega Nacional | B&B",
+        title: "Fabrica de Postes Metalicos Direto da Fabrica | B&B",
         description: pageDescription,
         url: pageUrl,
         type: "website",
@@ -157,6 +157,8 @@ const factoryIntentRows = [
     ["Fabrica de postes para iluminacao publica", "Conectar processo fabril com aplicacoes urbanas, normas e catalogo tecnico."],
     ["Industria de postes metalicos", "Mostrar estrutura produtiva, acabamento, documentacao e capacidade para B2B."],
     ["Postes metalicos direto da fabrica", "Reduzir intermedio de revenda e orientar briefing tecnico para cotacao."],
+    ["Fabricante de postes metalicos", "Amarrar origem produtiva com modelos, aplicacoes, acabamento e suporte comercial."],
+    ["Fornecedor de postes metalicos", "Responder a etapa de compra: quantidade, cidade, UF, prazo, logistica e proposta."],
 ]
 
 const complianceRows = [
@@ -234,6 +236,11 @@ const primaryInternalLinks = [
 ]
 
 const secondaryInternalLinks = [
+    ["Industria de postes metalicos", "/industria-de-postes-metalicos"],
+    ["Orcamento de poste metalico", "/orcamento-poste-metalico"],
+    ["Fabricante de postes de iluminacao", "/fabricante-de-postes-de-iluminacao"],
+    ["Fabrica de postes para iluminacao publica", "/fabrica-de-postes-para-iluminacao-publica"],
+    ["Fornecedor de postes para iluminacao publica", "/fornecedor-de-postes-para-iluminacao-publica"],
     ["Postes para loteamentos", "/postes-para-loteamentos"],
     ["Postes para condominios", "/postes-para-condominios"],
     ["Postes para pracas", "/postes-para-pracas"],
