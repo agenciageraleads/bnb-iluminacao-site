@@ -37,19 +37,19 @@ export const dynamic = "force-dynamic"
 
 const pageUrl = "https://bebiluminacao.com.br/fabricante-de-postes-metalicos"
 const pageDescription =
-    "Fabricante nacional de postes metalicos em aco para iluminacao publica, condominios, loteamentos e industrias. Fabrica propria, NBR e entrega nacional."
+    "Fabricante nacional de postes metalicos em aco. Fabrica propria para iluminacao publica, condominios, loteamentos, industrias e entrega nacional."
 const whatsappMessage = "Ola, vim pela pagina de fabricante de postes metalicos e quero solicitar um orcamento tecnico."
 
 export const metadata: Metadata = {
     title: {
-        absolute: "Fabricante de Postes Metalicos no Brasil | B&B",
+        absolute: "Fabricante de Postes Metalicos Direto da Fabrica | B&B",
     },
     description: pageDescription,
     alternates: {
         canonical: pageUrl,
     },
     openGraph: {
-        title: "Fabricante de Postes Metalicos no Brasil | B&B",
+        title: "Fabricante de Postes Metalicos Direto da Fabrica | B&B",
         description:
             "Postes metalicos para iluminacao publica, condominios, loteamentos e industrias, com producao propria em Goiania e atendimento nacional.",
         url: pageUrl,
@@ -129,14 +129,29 @@ const manufacturerProofRows = [
     ["Documentacao", "Catalogos, datasheets, desenhos tecnicos e briefing para cotacao sob projeto."],
     ["Acabamento", "Galvanizacao, pintura eletrostatica e acabamento definido conforme ambiente e memorial."],
     ["Compra B2B", "Atendimento para construtoras, concessionarias, industrias, condominios, loteamentos e obras publicas."],
+    ["Direto da fabrica", "Briefing tecnico antes da proposta para reduzir erro de modelo, fixacao, acabamento, quantidade e prazo."],
+    ["Presenca nacional", "Goiania comprova origem fabril; o conteudo deve sustentar buscas comerciais Brasil-first."],
 ]
 
 const searchIntentRows = [
     ["Fabricante de postes metalicos", "Encontrar quem produz, nao apenas revende."],
     ["Fabricante de postes metalicos Brasil", "Validar atendimento nacional, capacidade e origem fabril."],
     ["Fabrica de postes metalicos", "Entender processo, produto, acabamento e documentacao."],
+    ["Postes metalicos direto da fabrica", "Confirmar compra tecnica com origem produtiva e suporte antes da cotacao."],
     ["Fornecedor de postes metalicos", "Cotacao, prazo, quantidade, entrega e suporte comercial."],
     ["Industria de postes metalicos", "Prova de estrutura produtiva e especializacao tecnica."],
+    ["Fabricante de postes para iluminacao publica", "Conectar origem fabril com vias, pracas, avenidas e obras urbanas."],
+]
+
+const clusterLinks = [
+    ["Fabrica de postes metalicos", "/fabrica-de-postes-metalicos"],
+    ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
+    ["Industria de postes metalicos", "/industria-de-postes-metalicos"],
+    ["Orcamento de poste metalico", "/orcamento-poste-metalico"],
+    ["Fabricante de postes de iluminacao", "/fabricante-de-postes-de-iluminacao"],
+    ["Fabrica de postes para iluminacao publica", "/fabrica-de-postes-para-iluminacao-publica"],
+    ["Fornecedor de postes para iluminacao publica", "/fornecedor-de-postes-para-iluminacao-publica"],
+    ["Poste teleconico", "/produtos/poste-teleconico"],
 ]
 
 const differentiators = [
@@ -395,7 +410,7 @@ export default async function FabricanteDePostesMetalicosPage() {
                             O que diferencia fabricante real de revenda
                         </h2>
                         <p className="text-base leading-relaxed text-industrial-600">
-                            Para o comprador B2B, ranquear como fabricante exige responder mais do que "vendemos postes".
+                            Para o comprador B2B, ranquear como fabricante exige responder mais do que vender postes.
                             A pagina precisa provar origem produtiva, linha fabricada, documentacao, acabamento e suporte
                             antes do pedido.
                         </p>
@@ -464,6 +479,37 @@ export default async function FabricanteDePostesMetalicosPage() {
                                     {value}
                                 </div>
                             </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="bg-industrial-950 py-20 text-white md:py-28">
+                <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+                    <div className="space-y-5">
+                        <SectionLabel>Cluster nacional</SectionLabel>
+                        <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
+                            Caminhos comerciais para especificar direto com a fabrica
+                        </h2>
+                        <p className="text-base leading-relaxed text-industrial-300">
+                            A busca por fabricante quase sempre continua em fabrica, fornecedor, industria,
+                            orcamento, iluminacao publica e poste teleconico. Estes links conectam as paginas P0 da
+                            B&B e ajudam compras e engenharia a avancar pela intencao correta.
+                        </p>
+                    </div>
+                    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                        {clusterLinks.map(([label, href]) => (
+                            <Link
+                                key={href}
+                                href={href}
+                                className="group border border-white/15 bg-white/5 p-6 transition-colors hover:border-accent-premium rounded-2xl"
+                            >
+                                <h3 className="text-sm font-black uppercase tracking-widest text-white">{label}</h3>
+                                <span className="mt-5 inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-accent-premium">
+                                    Ver pagina
+                                    <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                                </span>
+                            </Link>
                         ))}
                     </div>
                 </div>
