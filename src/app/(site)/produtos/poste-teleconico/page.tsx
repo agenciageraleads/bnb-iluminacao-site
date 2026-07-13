@@ -202,19 +202,19 @@ const applicationCards = [
     {
         title: "Loteamentos",
         description: "Projetos em volume que pedem padronizacao visual, prazo e suporte para especificacao.",
-        href: "/postes-metalicos",
+        href: "/postes-para-loteamentos",
         icon: Building2,
     },
     {
         title: "Condominios",
         description: "Aplicacoes residenciais e comerciais com combinacao de durabilidade, acabamento e desenho urbano.",
-        href: "/postes-metalicos",
+        href: "/postes-para-condominios",
         icon: ShieldCheck,
     },
     {
-        title: "Areas industriais",
+        title: "Estacionamentos e areas industriais",
         description: "Patios, galpoes, estacionamentos, acessos e circulacao interna com demanda operacional.",
-        href: "/postes-metalicos",
+        href: "/postes-para-estacionamentos",
         icon: Factory,
     },
 ]
