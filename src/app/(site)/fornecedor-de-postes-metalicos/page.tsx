@@ -20,12 +20,15 @@ import {
 import { Footer } from "@/components/layout/footer"
 import { Header } from "@/components/layout/header"
 import { SchemaOrg } from "@/components/seo/schema-org"
+import { SeoProductGallery } from "@/components/seo/seo-product-gallery"
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
 import { WhatsAppLink } from "@/components/ui/whatsapp-link"
+import { createSeoImage } from "@/lib/seo/images"
 import {
     SITE_URL,
     createBreadcrumbSchema,
     createFaqSchema,
+    createImageSchemas,
     createItemListSchema,
     createSchemaGraph,
     createWebPageSchema,
@@ -37,6 +40,20 @@ const pageDescription =
 const whatsappMessage =
     "Ola, vim pela pagina de fornecedor de postes metalicos e quero solicitar um orcamento tecnico."
 const heroImage = "/images/seo/postes-metalicos/estacionamento-industrial-postes-retos.jpg"
+const supplyProofGallery = [
+    createSeoImage("estacionamentoIndustrialPostesRetos", {
+        alt: "Postes metalicos retos fornecidos para estacionamento e circulacao industrial",
+        title: "Fornecimento para estacionamento industrial",
+    }),
+    createSeoImage("estacionamentoOutletPremiumPostesIluminacao", {
+        alt: "Postes metalicos aplicados em estacionamento amplo de area comercial",
+        title: "Fornecimento para area comercial",
+    }),
+    createSeoImage("condominioEstacionamentoPosteMetalico", {
+        alt: "Poste metalico em condominio com estacionamento iluminado",
+        title: "Fornecimento para condominio",
+    }),
+]
 
 export const metadata: Metadata = {
     title: {
@@ -223,6 +240,7 @@ function getSchema() {
             })),
         }),
         createFaqSchema(pageUrl, faq),
+        ...createImageSchemas(supplyProofGallery),
     ])
 }
 
@@ -374,6 +392,13 @@ export default function FornecedorDePostesMetalicosPage() {
                     </div>
                 </div>
             </section>
+
+            <SeoProductGallery
+                eyebrow="Prova de fornecimento"
+                title="Postes metalicos aplicados em obras e areas externas"
+                description="A busca por fornecedor precisa enxergar aplicacoes reais: estacionamento, condominio, area comercial e obra com necessidade de prazo, acabamento e quantidade."
+                images={supplyProofGallery}
+            />
 
             <section className="bg-industrial-950 py-20 text-white md:py-28">
                 <div className="container mx-auto px-4">

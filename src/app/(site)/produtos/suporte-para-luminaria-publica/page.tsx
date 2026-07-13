@@ -19,12 +19,14 @@ import {
 import { Footer } from "@/components/layout/footer"
 import { Header } from "@/components/layout/header"
 import { SchemaOrg } from "@/components/seo/schema-org"
+import { SeoProductGallery } from "@/components/seo/seo-product-gallery"
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
 import { WhatsAppLink } from "@/components/ui/whatsapp-link"
 import {
     SITE_URL,
     createBreadcrumbSchema,
     createFaqSchema,
+    createImageSchemas,
     createItemListSchema,
     createProductSchema,
     createSchemaGraph,
@@ -93,6 +95,12 @@ const supportModels = [
         image: "https://bebiluminacao.com.br/api/media/file/suporte-4-luminarias.png",
     },
 ]
+
+const productGallery = supportModels.map((model) => ({
+    src: model.image,
+    title: model.title,
+    alt: `${model.title} da B&B para ${model.use.toLowerCase()} em projeto de iluminacao publica`,
+}))
 
 const highlights = [
     {
@@ -266,6 +274,7 @@ function getSchema() {
             })),
         }),
         createFaqSchema(pageUrl, faq),
+        ...createImageSchemas(productGallery),
     ])
 }
 
@@ -455,6 +464,14 @@ export default function SuporteParaLuminariaPublicaPage() {
                     </div>
                 </div>
             </section>
+
+            <SeoProductGallery
+                eyebrow="Galeria tecnica"
+                title="Modelos de suporte para luminaria publica"
+                description="Imagens dos suportes para 1, 2, 3 e 4 luminarias ajudam o comprador a diferenciar quantidade de pontos, aplicacao e briefing tecnico antes da cotacao."
+                images={productGallery}
+                imageClassName="object-contain p-6"
+            />
 
             <section className="py-20 md:py-28">
                 <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
