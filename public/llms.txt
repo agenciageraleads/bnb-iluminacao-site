@@ -41,13 +41,34 @@
 - / — página inicial
 - /orcamento-poste-metalico — cotação técnica de poste metálico
 - /industria-de-postes-metalicos — prova industrial e fabricação nacional
+- /postes-metalicos — hub nacional de postes metálicos, galvanizados, retos, curvos e telecônicos
+- /fabricante-de-postes-metalicos — fabricante nacional de postes metálicos
+- /fabrica-de-postes-metalicos — fábrica de postes metálicos com origem produtiva
+- /fornecedor-de-postes-metalicos — fornecimento B2B de postes metálicos
 - /fabricante-de-postes-de-iluminacao — fabricante de postes de iluminação
+- /postes-para-iluminacao-publica — hub técnico para postes de iluminação pública
 - /fabrica-de-postes-para-iluminacao-publica — fábrica para projetos de iluminação pública
 - /fornecedor-de-postes-para-iluminacao-publica — fornecimento técnico para iluminação pública
 - /produtos/poste-teleconico — postes telecônicos (produto principal)
+- /fabricante-de-postes-teleconicos — fabricante de postes telecônicos
+- /produtos/poste-metalico-galvanizado — poste metálico galvanizado e de aço
 - /produtos/poste-curvo-simples — poste curvo simples
 - /produtos/poste-curvo-duplo — poste curvo duplo
 - /produtos/braco-para-luminaria-publica — braços para luminária
+- /produtos/suporte-para-luminaria-publica — suportes para luminária pública
+- /produtos/chumbador-para-poste-metalico — chumbadores para poste metálico
+- /postes-para-pracas — postes para praças e áreas de convivência
+- /postes-para-condominios — postes para condomínios e áreas comuns
+- /postes-para-loteamentos — postes para loteamentos e vias internas
+- /postes-para-estacionamentos — postes para estacionamentos e áreas externas
 - /quem-somos — histórico, capacidade fabril e valores
 - /obras — portfólio de obras realizadas
 - /contato — fale com um especialista
+
+## Cluster P0 SEO nacional
+
+- Fabricante/fábrica/fornecedor: /fabricante-de-postes-metalicos, /fabrica-de-postes-metalicos, /fornecedor-de-postes-metalicos, /industria-de-postes-metalicos
+- Iluminação pública: /postes-para-iluminacao-publica, /fabrica-de-postes-para-iluminacao-publica, /fornecedor-de-postes-para-iluminacao-publica
+- Produtos técnicos: /produtos/poste-teleconico, /fabricante-de-postes-teleconicos, /produtos/poste-metalico-galvanizado, /produtos/braco-para-luminaria-publica, /produtos/suporte-para-luminaria-publica
+- Aplicações: /postes-para-pracas, /postes-para-condominios, /postes-para-loteamentos, /postes-para-estacionamentos
+- Guias de apoio: /blog/normas-para-postes-de-iluminacao, /blog/altura-de-poste-para-iluminacao-publica, /blog/poste-flangeado-ou-engastado, /blog/poste-galvanizado-ou-pintado, /blog/poste-teleconico-ou-reto

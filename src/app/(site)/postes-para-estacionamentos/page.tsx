@@ -279,6 +279,11 @@ const internalLinks = [
     ["Postes para loteamentos", "/postes-para-loteamentos"],
     ["Postes para pracas", "/postes-para-pracas"],
     ["Postes para iluminacao publica", "/postes-para-iluminacao-publica"],
+    ["Fabrica de postes para iluminacao publica", "/fabrica-de-postes-para-iluminacao-publica"],
+    ["Fornecedor de postes para iluminacao publica", "/fornecedor-de-postes-para-iluminacao-publica"],
+    ["Fabricante de postes de iluminacao", "/fabricante-de-postes-de-iluminacao"],
+    ["Industria de postes metalicos", "/industria-de-postes-metalicos"],
+    ["Orcamento de poste metalico", "/orcamento-poste-metalico"],
     ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
     ["Fabrica de postes metalicos", "/fabrica-de-postes-metalicos"],
     ["Poste teleconico", "/produtos/poste-teleconico"],
@@ -290,6 +295,7 @@ const internalLinks = [
     ["Poste flangeado ou engastado", "/blog/poste-flangeado-ou-engastado"],
     ["Chumbador para poste metalico", "/produtos/chumbador-para-poste-metalico"],
     ["Poste galvanizado ou pintado", "/blog/poste-galvanizado-ou-pintado"],
+    ["Normas para postes de iluminacao", "/blog/normas-para-postes-de-iluminacao"],
     ["Catalogos e downloads", "/downloads"],
 ]
 
