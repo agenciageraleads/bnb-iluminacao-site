@@ -87,21 +87,21 @@ const highlights = [
 
 const modelOptions = [
     {
-        title: "Poste teleconico reto",
+        title: "Poste teleconico reto (TR)",
         use: "Patios, condominios e estacionamentos",
         description:
             "Modelo indicado para areas que pedem geometria objetiva, instalacao limpa e compatibilidade com luminarias no topo ou em suporte.",
         image: "/images/produtos/poste-reto-avenida-dia.png",
     },
     {
-        title: "Poste teleconico curvo simples",
+        title: "Poste teleconico curvo simples (TCS)",
         use: "Ruas, acessos e calcadas",
         description:
             "Opcao para projetos em que a luminaria precisa avancar para um lado, direcionando a luz para a via ou area de circulacao.",
         image: "/images/produtos/poste-curvo-simples-rua-noite.png",
     },
     {
-        title: "Poste teleconico curvo duplo",
+        title: "Poste teleconico curvo duplo (TCD)",
         use: "Avenidas e canteiros centrais",
         description:
             "Aplicacao para iluminar dois sentidos, especialmente em canteiros, vias largas, avenidas e areas com dois fluxos.",
@@ -135,6 +135,22 @@ const buyingSteps = [
         title: "4. Fechar acabamento",
         description: "Galvanizado, pintado ou sob especificacao conforme ambiente, durabilidade e padrao visual.",
     },
+]
+
+const manufacturerIntentRows = [
+    ["Fabricante de postes teleconicos", "Validar origem fabril, modelos produzidos, acabamento e atendimento nacional."],
+    ["Fabrica de postes teleconicos", "Confirmar processo, siglas da linha, fixacao, documentos e briefing tecnico."],
+    ["Postes teleconicos direto da fabrica", "Comprar com suporte de especificacao antes da proposta, sem depender de revenda generica."],
+    ["Poste teleconico galvanizado", "Definir acabamento conforme ambiente, memorial e durabilidade esperada."],
+    ["TR, TCS e TCD", "Traduzir a busca em modelo reto, curvo simples ou curvo duplo para cotacao objetiva."],
+]
+
+const productLineRows = [
+    ["TR", "Poste teleconico reto", "Patios, estacionamentos, vias internas e areas com luminaria no topo ou suporte."],
+    ["TCS", "Poste teleconico curvo simples", "Ruas, acessos, calcadas e vias com avanco de luminaria para um lado."],
+    ["TCD", "Poste teleconico curvo duplo", "Avenidas, canteiros centrais e areas com iluminacao para dois sentidos."],
+    ["Engastado", "Fixacao no solo", "Configuracao definida pelo projeto civil e pela fundacao."],
+    ["Flangeado", "Base com chumbadores", "Configuracao usada quando a instalacao pede base aparafusada."],
 ]
 
 const finishOptions = [
@@ -222,6 +238,10 @@ const secondaryInternalLinks = [
     ["Poste metalico galvanizado", "/produtos/poste-metalico-galvanizado"],
     ["Fabrica de postes metalicos", "/fabrica-de-postes-metalicos"],
     ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
+    ["Industria de postes metalicos", "/industria-de-postes-metalicos"],
+    ["Orcamento de poste metalico", "/orcamento-poste-metalico"],
+    ["Poste teleconico ou reto", "/blog/poste-teleconico-ou-reto"],
+    ["Poste flangeado ou engastado", "/blog/poste-flangeado-ou-engastado"],
     ["Catalogos e downloads", "/downloads"],
 ]
 
@@ -400,6 +420,33 @@ export default function FabricanteDePostesTeleconicosPage() {
                 </div>
             </section>
 
+            <section className="bg-industrial-50 py-20 md:py-28">
+                <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+                    <div className="space-y-5">
+                        <SectionLabel>Intencao comercial</SectionLabel>
+                        <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
+                            O que a busca por fabricante precisa comprovar
+                        </h2>
+                        <p className="text-base leading-relaxed text-industrial-600">
+                            Para competir nacionalmente, a pagina precisa responder origem fabril, modelos, acabamento,
+                            siglas da linha, fixacao, documentos e compra direta com suporte tecnico.
+                        </p>
+                    </div>
+                    <div className="overflow-hidden border border-industrial-200 bg-white">
+                        {manufacturerIntentRows.map(([term, answer]) => (
+                            <div key={term} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[260px_1fr]">
+                                <div className="bg-white px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-600">
+                                    {term}
+                                </div>
+                                <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-800">
+                                    {answer}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             <section className="bg-industrial-950 py-20 text-white md:py-28">
                 <div className="container mx-auto px-4">
                     <div className="mb-12 max-w-3xl space-y-5">
@@ -432,6 +479,36 @@ export default function FabricanteDePostesTeleconicosPage() {
                                         {model.title}
                                     </h3>
                                     <p className="mt-3 text-sm leading-relaxed text-industrial-300">{model.description}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="py-20 md:py-28">
+                <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+                    <div className="space-y-5">
+                        <SectionLabel>Linha Urban</SectionLabel>
+                        <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
+                            TR, TCS e TCD para cotar com menos ambiguidade
+                        </h2>
+                        <p className="text-base leading-relaxed text-industrial-600">
+                            O papel da pagina de fabricante e transformar a busca ampla em um briefing: sigla, geometria,
+                            aplicacao, fixacao e acabamento.
+                        </p>
+                    </div>
+                    <div className="overflow-hidden border border-industrial-200">
+                        {productLineRows.map(([code, model, use]) => (
+                            <div key={code} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[140px_260px_1fr]">
+                                <div className="bg-industrial-50 px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-700">
+                                    {code}
+                                </div>
+                                <div className="px-5 py-4 text-sm font-black uppercase tracking-widest text-industrial-800">
+                                    {model}
+                                </div>
+                                <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-800">
+                                    {use}
                                 </div>
                             </div>
                         ))}

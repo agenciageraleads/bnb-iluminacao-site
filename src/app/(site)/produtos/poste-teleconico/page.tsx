@@ -110,21 +110,21 @@ const highlights = [
 
 const modelOptions = [
     {
-        title: "Poste teleconico reto",
+        title: "Poste teleconico reto (TR)",
         use: "Vias, patios e estacionamentos",
         description:
             "Solucao de geometria objetiva para areas que precisam de poste vertical, compatibilizacao de luminaria e instalacao limpa.",
         image: "/images/produtos/poste-reto-avenida-dia.png",
     },
     {
-        title: "Poste teleconico curvo simples",
+        title: "Poste teleconico curvo simples (TCS)",
         use: "Ruas, acessos e calcadas",
         description:
             "Aplicacao indicada quando a luminaria precisa avancar para um lado, ajudando a direcionar a iluminacao sobre a via ou passagem.",
         image: "/images/produtos/poste-curvo-simples-rua-noite.png",
     },
     {
-        title: "Poste teleconico curvo duplo",
+        title: "Poste teleconico curvo duplo (TCD)",
         use: "Avenidas e canteiros centrais",
         description:
             "Modelo usado quando o projeto pede iluminacao em dois sentidos, especialmente em canteiros, avenidas e areas amplas.",
@@ -154,6 +154,7 @@ const searchIntentRows = [
     ["Postes teleconicos", "Comparar familia de modelos para vias, loteamentos, condominios e estacionamentos."],
     ["Poste teleconico galvanizado", "Validar acabamento para durabilidade e resistencia em ambiente externo."],
     ["Fabricante de postes teleconicos", "Comprar com origem fabril, suporte tecnico e atendimento nacional."],
+    ["Postes teleconicos direto da fabrica", "Reduzir intermediacao e alinhar modelo, fixacao, acabamento e prazo antes da proposta."],
     ["Poste teleconico reto ou curvo", "Escolher geometria conforme luminaria, avanco, via e manutencao."],
 ]
 
@@ -163,6 +164,14 @@ const complianceRows = [
     ["NBR 6323", "Referencia para galvanizacao a fogo quando o projeto especifica poste teleconico galvanizado."],
     ["Fixacao", "Engastado ou flangeado conforme base, solo, chumbadores, manutencao e obra civil."],
     ["Briefing", "Modelo, altura, luminaria, quantidade, cidade/UF, acabamento, prazo e memorial quando houver."],
+]
+
+const productLineRows = [
+    ["TR", "Poste teleconico reto", "Patios, estacionamentos, vias internas e aplicacoes com luminaria no topo ou em suporte."],
+    ["TCS", "Poste teleconico curvo simples", "Ruas, acessos, calcadas e vias onde o ponto de luz precisa avancar para um lado."],
+    ["TCD", "Poste teleconico curvo duplo", "Avenidas, canteiros centrais e areas onde o projeto precisa iluminar dois sentidos."],
+    ["Engastado", "Fixacao no solo", "Quando o projeto civil preve parte do poste embutida na fundacao."],
+    ["Flangeado", "Base aparafusada", "Quando a instalacao usa base, chumbadores e manutencao planejada."],
 ]
 
 const finishOptions = [
@@ -245,6 +254,9 @@ const primaryInternalLinks = [
 
 const secondaryInternalLinks = [
     ["Fabricante de postes teleconicos", "/fabricante-de-postes-teleconicos"],
+    ["Fabrica de postes metalicos", "/fabrica-de-postes-metalicos"],
+    ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
+    ["Orcamento de poste metalico", "/orcamento-poste-metalico"],
     ["Postes para loteamentos", "/postes-para-loteamentos"],
     ["Postes para condominios", "/postes-para-condominios"],
     ["Postes para pracas", "/postes-para-pracas"],
@@ -258,7 +270,6 @@ const secondaryInternalLinks = [
     ["Suporte para luminaria publica", "/produtos/suporte-para-luminaria-publica"],
     ["Chumbador para poste metalico", "/produtos/chumbador-para-poste-metalico"],
     ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
-    ["Poste metalico galvanizado", "/produtos/poste-metalico-galvanizado"],
     ["Poste metalico galvanizado", "/produtos/poste-metalico-galvanizado"],
     ["Catalogos e downloads", "/downloads"],
     ["Obras realizadas", "/obras"],
@@ -514,6 +525,36 @@ export default function PosteTeleconicoPage() {
                                         {model.title}
                                     </h3>
                                     <p className="mt-3 text-sm leading-relaxed text-industrial-300">{model.description}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="py-20 md:py-28">
+                <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+                    <div className="space-y-5">
+                        <SectionLabel>Linha Urban</SectionLabel>
+                        <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
+                            TR, TCS e TCD na especificacao de postes teleconicos
+                        </h2>
+                        <p className="text-base leading-relaxed text-industrial-600">
+                            Em compra tecnica, o comprador precisa sair da busca ampla por poste teleconico para uma sigla, um modelo,
+                            uma aplicacao e uma forma de fixacao. Este mapa reduz ambiguidade antes do orcamento.
+                        </p>
+                    </div>
+                    <div className="overflow-hidden border border-industrial-200">
+                        {productLineRows.map(([code, model, use]) => (
+                            <div key={code} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[140px_260px_1fr]">
+                                <div className="bg-industrial-50 px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-700">
+                                    {code}
+                                </div>
+                                <div className="px-5 py-4 text-sm font-black uppercase tracking-widest text-industrial-800">
+                                    {model}
+                                </div>
+                                <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-800">
+                                    {use}
                                 </div>
                             </div>
                         ))}
