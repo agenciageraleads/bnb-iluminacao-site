@@ -482,7 +482,7 @@ export default function PosteTeleconicoPage() {
                             as variacoes principais em uma pagina tecnicamente completa, sem depender de texto generico.
                         </p>
                     </div>
-                    <div className="overflow-hidden border border-industrial-200 bg-white">
+                    <div className="overflow-hidden border border-industrial-200 bg-white rounded-2xl">
                         {searchIntentRows.map(([term, answer]) => (
                             <div key={term} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[260px_1fr]">
                                 <div className="bg-white px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-600">
@@ -548,7 +548,7 @@ export default function PosteTeleconicoPage() {
                             uma aplicacao e uma forma de fixacao. Este mapa reduz ambiguidade antes do orcamento.
                         </p>
                     </div>
-                    <div className="overflow-hidden border border-industrial-200">
+                    <div className="overflow-hidden border border-industrial-200 rounded-2xl">
                         {productLineRows.map(([code, model, use]) => (
                             <div key={code} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[140px_260px_1fr]">
                                 <div className="bg-industrial-50 px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-700">
@@ -614,7 +614,7 @@ export default function PosteTeleconicoPage() {
                             acabamento, norma aplicavel, fixacao, luminaria, altura e ambiente.
                         </p>
                     </div>
-                    <div className="overflow-hidden border border-industrial-200 bg-white">
+                    <div className="overflow-hidden border border-industrial-200 bg-white rounded-2xl">
                         {complianceRows.map(([label, value]) => (
                             <div key={label} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[220px_1fr]">
                                 <div className="bg-white px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-600">

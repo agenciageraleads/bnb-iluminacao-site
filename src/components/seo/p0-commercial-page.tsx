@@ -196,7 +196,7 @@ export function P0CommercialPage({ config }: { config: P0CommercialPageConfig })
                             </h2>
                             <p className="text-base leading-relaxed text-industrial-600">{table.body}</p>
                         </div>
-                        <div className="overflow-hidden border border-industrial-200 bg-white">
+                        <div className="overflow-hidden border border-industrial-200 bg-white rounded-2xl">
                             {table.rows.map(renderRow)}
                         </div>
                     </div>
@@ -242,7 +242,7 @@ export function P0CommercialPage({ config }: { config: P0CommercialPageConfig })
                     </div>
                     <div className="space-y-4">
                         {config.faq.map((item, index) => (
-                            <details key={item.question} className="group border border-industrial-200 bg-white p-6" open={index === 0}>
+                            <details key={item.question} className="group border border-industrial-200 bg-white p-6 rounded-2xl" open={index === 0}>
                                 <summary className="flex cursor-pointer list-none items-start justify-between gap-4 text-base font-black uppercase text-industrial-950">
                                     {item.question}
                                     <span className="text-accent-dark transition-transform group-open:rotate-45" aria-hidden="true">+</span>

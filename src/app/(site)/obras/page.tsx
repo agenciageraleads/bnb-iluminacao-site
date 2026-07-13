@@ -197,7 +197,7 @@ export default async function ObrasPage() {
                                             <MapPin className="size-3" aria-hidden="true" />
                                             {caseStudy.location}
                                         </span>
-                                        <span className="inline-flex items-center gap-2 border border-industrial-200 px-3 py-1.5 text-[10px] font-black uppercase tracking-widest text-industrial-600">
+                                        <span className="inline-flex items-center gap-2 border border-industrial-200 px-3 py-1.5 text-[10px] font-black uppercase tracking-widest text-industrial-600 rounded-full">
                                             <Tag className="size-3" aria-hidden="true" />
                                             {caseStudy.category}
                                         </span>
@@ -239,7 +239,7 @@ export default async function ObrasPage() {
                         {projects.map((project) => (
                             <article
                                 key={`${project.title}-${project.location}`}
-                                className="border border-industrial-200 bg-white"
+                                className="border border-industrial-200 bg-white rounded-2xl"
                             >
                                 <div className="relative aspect-video overflow-hidden bg-industrial-100">
                                     {project.image ? (

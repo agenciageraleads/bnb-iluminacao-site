@@ -76,8 +76,8 @@ export default async function CatalogExportPage({ params }: { params: Promise<{ 
 
                                 <div className="grid grid-cols-2 gap-x-12 gap-y-16">
                                     {block.products?.map((product: any) => (
-                                        <div key={product.id} className="flex flex-col border border-industrial-100 p-6 bg-industrial-50/30">
-                                            <div className="aspect-[4/3] relative mb-6 border border-industrial-200 bg-white">
+                                        <div key={product.id} className="flex flex-col border border-industrial-100 p-6 bg-industrial-50/30 rounded-2xl">
+                                            <div className="aspect-[4/3] relative mb-6 border border-industrial-200 bg-white rounded-2xl">
                                                 {product.mainImage && (
                                                     <Image 
                                                         src={product.mainImage.url} 
@@ -96,7 +96,7 @@ export default async function CatalogExportPage({ params }: { params: Promise<{ 
                                                 <span className="bg-industrial-900 text-white text-[10px] font-bold px-2 py-0.5 uppercase">
                                                     Ref: {product.model}
                                                 </span>
-                                                <span className="border border-industrial-300 text-industrial-500 text-[10px] font-bold px-2 py-0.5 uppercase">
+                                                <span className="border border-industrial-300 text-industrial-500 text-[10px] font-bold px-2 py-0.5 uppercase rounded-md">
                                                     Galvanizado a Fogo
                                                 </span>
                                             </div>

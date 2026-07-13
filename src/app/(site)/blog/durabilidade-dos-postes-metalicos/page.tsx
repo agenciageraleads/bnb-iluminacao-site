@@ -425,7 +425,7 @@ export default function DurabilidadeDosPostesMetalicosPage() {
                             </p>
                         </div>
 
-                        <div className="overflow-hidden border border-industrial-200">
+                        <div className="overflow-hidden border border-industrial-200 rounded-2xl">
                             {comparisonRows.map(([finish, use, note]) => (
                                 <div key={finish} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[220px_1fr]">
                                     <div className="bg-industrial-950 px-5 py-4 text-xs font-black uppercase tracking-widest text-white">
@@ -490,7 +490,7 @@ export default function DurabilidadeDosPostesMetalicosPage() {
                                 — e e isso que faz o acabamento durar. A tinta e poliester para uso externo, indicada para
                                 resistir ao sol em ambiente urbano.
                             </p>
-                            <div className="border border-industrial-200 bg-industrial-50 p-6">
+                            <div className="border border-industrial-200 bg-industrial-50 p-6 rounded-2xl">
                                 <p className="text-[11px] font-black uppercase tracking-[0.2em] text-accent-dark">Garantia B&B</p>
                                 <p className="mt-3 text-sm font-bold leading-relaxed text-industrial-800">
                                     5 anos para postes pintados e 10 anos para galvanizados, cobrindo a integridade
@@ -529,7 +529,7 @@ export default function DurabilidadeDosPostesMetalicosPage() {
                             {choiceGuide.map((group) => {
                                 const Icon = group.icon
                                 return (
-                                    <div key={group.title} className="border border-industrial-200 p-6">
+                                    <div key={group.title} className="border border-industrial-200 p-6 rounded-2xl">
                                         <div className="mb-6 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium">
                                             <Icon className="size-6" aria-hidden="true" />
                                         </div>
@@ -590,7 +590,7 @@ export default function DurabilidadeDosPostesMetalicosPage() {
                         </div>
                         <div className="grid gap-3">
                             {quoteChecklist.map((item) => (
-                                <div key={item} className="flex items-start gap-4 border border-industrial-200 bg-white p-5">
+                                <div key={item} className="flex items-start gap-4 border border-industrial-200 bg-white p-5 rounded-2xl">
                                     <ClipboardCheck className="mt-0.5 size-5 shrink-0 text-accent-dark" aria-hidden="true" />
                                     <p className="text-sm font-medium leading-relaxed text-industrial-700">{item}</p>
                                 </div>
@@ -622,7 +622,7 @@ export default function DurabilidadeDosPostesMetalicosPage() {
                                     href={file.href}
                                     target={file.href === "/downloads" ? undefined : "_blank"}
                                     rel={file.href === "/downloads" ? undefined : "noopener noreferrer"}
-                                    className="group flex items-center justify-between gap-4 border border-industrial-200 p-5 text-sm font-black uppercase tracking-widest text-industrial-800 transition-colors hover:border-industrial-950"
+                                    className="group flex items-center justify-between gap-4 border border-industrial-200 p-5 text-sm font-black uppercase tracking-widest text-industrial-800 transition-colors hover:border-industrial-950 rounded-lg"
                                 >
                                     <span className="inline-flex items-center gap-3">
                                         <Download className="size-5 text-accent-dark" aria-hidden="true" />
@@ -699,7 +699,7 @@ export default function DurabilidadeDosPostesMetalicosPage() {
                     {internalLinks.map((item) => {
                         const Icon = item.icon
                         return (
-                            <Link key={item.href} href={item.href} className="group border border-industrial-200 p-5 hover:border-industrial-950">
+                            <Link key={item.href} href={item.href} className="group border border-industrial-200 p-5 hover:border-industrial-950 rounded-lg">
                                 <Icon className="mb-5 size-6 text-accent-dark" aria-hidden="true" />
                                 <h3 className="text-sm font-black uppercase tracking-widest text-industrial-950">{item.title}</h3>
                                 <p className="mt-3 text-sm leading-relaxed text-industrial-600">{item.description}</p>
