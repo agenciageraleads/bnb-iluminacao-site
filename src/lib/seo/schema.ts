@@ -174,7 +174,7 @@ const SHARED_ORG_FIELDS = {
     url: SITE_URL,
     foundingDate: "2017",
     telephone: "+55-62-3576-1988",
-    email: "contato@bebiluminacao.com.br",
+    email: "contato@bebiluminacao.com",
     description: "Fabricante brasileira de postes metalicos, bracos e estruturas para urbanismo. Na medida. No prazo. Na norma.",
     knowsAbout: [
         "postes metalicos galvanizados",
