@@ -58,7 +58,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Dados incompletos' }, { status: 400 });
     }
 
-    const { name, phone, representativeName, representativeState } = data;
+    const { name, phone, representativeName, representativeState, attribution } = data;
 
     // Conectar ao CRM B&B
     const crmApiUrl = process.env.CRM_API_URL || 'https://crm.bebiluminacao.com';
@@ -75,6 +75,7 @@ export async function POST(req: Request) {
         source: 'Site B&B',
         source_reference: `representantes-${stateSegment}:${phoneDigits || Date.now()}`,
         demand: `Contato para Representante: ${representativeName} (Região: ${representativeState || 'Não informada'})`,
+        notes: attribution ? `Atribuição site: ${JSON.stringify(attribution)}` : undefined,
         pipeline_slug: 'leads',
         status: 'novo',
         ...assignment,

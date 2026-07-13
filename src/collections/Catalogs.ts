@@ -139,6 +139,11 @@ export const CatalogLeads: CollectionConfig = {
             name: 'catalogDownloaded',
             type: 'text',
             label: 'Catálogo Baixado',
+        },
+        {
+            name: 'attribution',
+            type: 'json',
+            label: 'Atribuição de Marketing',
         }
     ],
     timestamps: true,

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { X, LockOpen, Phone, User, Loader2 } from "lucide-react";
+import { getLeadAttributionPayload, pushLeadEvent } from "@/lib/lead-tracking";
 
 interface LeadCaptureDialogProps {
     isOpen: boolean;
@@ -40,7 +41,8 @@ export function LeadCaptureDialog({ isOpen, onClose, onSuccess, representativeSt
                     name,
                     phone,
                     representativeState,
-                    representativeName
+                    representativeName,
+                    attribution: getLeadAttributionPayload(),
                 }),
             });
 
@@ -48,7 +50,14 @@ export function LeadCaptureDialog({ isOpen, onClose, onSuccess, representativeSt
                 throw new Error("Erro ao enviar dados");
             }
 
-            // Sucesso!
+            pushLeadEvent({
+                event: 'representative_lead_submit',
+                cta_channel: 'form',
+                cta_source: 'representatives_dialog',
+                cta_label: representativeName,
+                representative_state: representativeState,
+                lead_cluster: 'representantes',
+            });
             onSuccess();
         } catch (err) {
             console.error(err);

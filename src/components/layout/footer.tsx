@@ -1,6 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { Instagram, Facebook, Linkedin, MapPin, Phone, Mail } from "lucide-react"
+import { TrackedContactLink } from "@/lib/lead-tracking"
 
 export function Footer() {
     const currentYear = new Date().getFullYear()
@@ -88,11 +89,11 @@ export function Footer() {
                             </div>
                             <div className="flex items-center justify-center md:justify-start gap-4 group">
                                 <Phone className="size-5 text-accent-premium shrink-0" />
-                                <a href="tel:+556235761988" className="text-sm text-industrial-400 hover:text-white transition-colors font-bold">(62) 3576-1988</a>
+                                <TrackedContactLink href="tel:+556235761988" channel="phone" eventSource="footer" eventLabel="Telefone footer" className="text-sm text-industrial-400 hover:text-white transition-colors font-bold">(62) 3576-1988</TrackedContactLink>
                             </div>
                             <div className="flex items-center justify-center md:justify-start gap-4 group">
                                 <Mail className="size-5 text-accent-premium shrink-0" />
-                                <a href="mailto:contato@bebiluminacao.com" className="text-sm text-industrial-400 hover:text-white transition-colors font-bold break-all">contato@bebiluminacao.com</a>
+                                <TrackedContactLink href="mailto:contato@bebiluminacao.com" channel="email" eventSource="footer" eventLabel="Email footer" className="text-sm text-industrial-400 hover:text-white transition-colors font-bold break-all">contato@bebiluminacao.com</TrackedContactLink>
                             </div>
                         </div>
                     </div>

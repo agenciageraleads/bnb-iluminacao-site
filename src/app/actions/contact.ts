@@ -4,6 +4,37 @@ import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+const attributionFieldLabels: Record<string, string> = {
+  formType: 'Tipo de formulário',
+  leadCluster: 'Cluster',
+  page_path: 'Página',
+  page_location: 'URL',
+  page_referrer: 'Referrer',
+  first_landing_page: 'Landing page original',
+  first_referrer: 'Referrer original',
+  utm_source: 'UTM source',
+  utm_medium: 'UTM medium',
+  utm_campaign: 'UTM campaign',
+  utm_content: 'UTM content',
+  utm_term: 'UTM term',
+  gclid: 'GCLID',
+  fbclid: 'FBCLID',
+  msclkid: 'MSCLKID',
+};
+
+function renderAttributionRows(formData: FormData) {
+  const rows = Object.entries(attributionFieldLabels)
+    .map(([field, label]) => {
+      const value = formData.get(field);
+      return value ? `<tr><td style="padding: 6px 0; font-size: 11px; font-weight: bold; text-transform: uppercase; color: #6b7280;">${label}:</td><td style="padding: 6px 0; font-size: 12px;">${value}</td></tr>` : '';
+    })
+    .join('');
+
+  return rows
+    ? `<h2 style="font-size: 14px; font-weight: 900; text-transform: uppercase; margin-top: 30px;">Atribuição</h2><table style="width: 100%; border-collapse: collapse;">${rows}</table>`
+    : '';
+}
+
 export async function sendContactEmail(formData: FormData) {
   const nome = formData.get('nome') as string;
   const email = formData.get('email') as string;
@@ -54,6 +85,8 @@ export async function sendContactEmail(formData: FormData) {
             <p style="font-size: 11px; font-weight: bold; text-transform: uppercase; color: #6b7280; margin-top: 0; margin-bottom: 10px;">Mensagem:</p>
             <p style="font-size: 15px; line-height: 1.6; margin: 0; white-space: pre-wrap;">${mensagem}</p>
           </div>
+
+          ${renderAttributionRows(formData)}
           
           <p style="margin-top: 40px; font-size: 12px; color: #9ca3af; text-align: center;">
             Este e-mail foi enviado automaticamente pelo formulário de contato do site B&B Iluminação.
