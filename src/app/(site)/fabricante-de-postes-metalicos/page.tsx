@@ -20,14 +20,17 @@ import {
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { SchemaOrg } from "@/components/seo/schema-org"
+import { SeoProductGallery } from "@/components/seo/seo-product-gallery"
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
 import { WhatsAppLink } from "@/components/ui/whatsapp-link"
 import { getClientLogos, getPortfolioProjects, getProducts } from "@/lib/data"
 import { getPrimaryCatalogProducts } from "@/lib/catalog-curation"
+import { createSeoImage } from "@/lib/seo/images"
 import {
     SITE_URL,
     createBreadcrumbSchema,
     createFaqSchema,
+    createImageSchemas,
     createItemListSchema,
     createSchemaGraph,
     createWebPageSchema,
@@ -39,6 +42,21 @@ const pageUrl = "https://bebiluminacao.com.br/fabricante-de-postes-metalicos"
 const pageDescription =
     "Fabricante nacional de postes metalicos em aco. Fabrica propria para iluminacao publica, condominios, loteamentos, industrias e entrega nacional."
 const whatsappMessage = "Ola, vim pela pagina de fabricante de postes metalicos e quero solicitar um orcamento tecnico."
+const heroImage = "/hero-industrial.jpg"
+const imageProofGallery = [
+    createSeoImage("posteMetalicoGalvanizadoInstaladoAreaExterna", {
+        alt: "Poste metalico galvanizado instalado em area externa como prova visual de fabricacao B&B",
+        title: "Poste galvanizado instalado",
+    }),
+    createSeoImage("posteMetalicoCurvoInstaladoViaUrbana", {
+        alt: "Poste metalico curvo instalado em via urbana para demonstrar aplicacao real de fabricante",
+        title: "Poste curvo instalado",
+    }),
+    createSeoImage("areaInstitucionalPostesMetalicosGalvanizados", {
+        alt: "Postes metalicos galvanizados em area institucional atendida pela B&B",
+        title: "Postes galvanizados em area institucional",
+    }),
+]
 
 export const metadata: Metadata = {
     title: {
@@ -221,7 +239,7 @@ function getSchema() {
             url: pageUrl,
             name: "Fabricante de Postes Metalicos",
             description: pageDescription,
-            image: "/hero-industrial.jpg",
+            image: heroImage,
         }),
         createBreadcrumbSchema(pageUrl, [
             { name: "Inicio", item: SITE_URL },
@@ -236,6 +254,7 @@ function getSchema() {
             })),
         }),
         createFaqSchema(pageUrl, faq),
+        ...createImageSchemas(imageProofGallery),
     ])
 }
 
@@ -401,6 +420,13 @@ export default async function FabricanteDePostesMetalicosPage() {
                     </div>
                 </div>
             </section>
+
+            <SeoProductGallery
+                eyebrow="Prova visual"
+                title="Postes metalicos fabricados e aplicados em obra"
+                description="Imagens reais ajudam compras e engenharia a validar acabamento, aplicacao e tipo de poste antes da cotacao tecnica."
+                images={imageProofGallery}
+            />
 
             <section className="py-20 md:py-28">
                 <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">

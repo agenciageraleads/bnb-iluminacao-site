@@ -311,6 +311,90 @@ export const seoImageAssets = {
         title: "Poste reto em rua",
         cluster: "produtos-postes",
     },
+    mastroBandeiraEngastado: {
+        src: "/images/produtos/mastro-bandeira-engastado.jpg",
+        alt: "Mastro metalico engastado para bandeira em aplicacao institucional",
+        title: "Mastro para bandeira engastado",
+        cluster: "mastros",
+    },
+    mastroBandeiraFlangeado: {
+        src: "/images/produtos/mastro-bandeira-flangeado.jpg",
+        alt: "Mastro metalico flangeado para bandeira com base aparafusada",
+        title: "Mastro para bandeira flangeado",
+        cluster: "mastros",
+    },
+    posteArticulado: {
+        src: "/images/produtos/poste-articulado.png",
+        alt: "Poste metalico articulado para manutencao e aplicacoes tecnicas",
+        title: "Poste articulado",
+        cluster: "produtos-postes",
+    },
+    posteAstrea: {
+        src: "/images/produtos/poste-astrea.png",
+        alt: "Poste decorativo Astrea da Linha Versa para urbanismo",
+        title: "Poste Astrea",
+        cluster: "produtos-versa",
+    },
+    posteCameraBullet: {
+        src: "/images/produtos/poste-camera-bullet.png",
+        alt: "Poste metalico para camera bullet em projeto de seguranca urbana",
+        title: "Poste para camera bullet",
+        cluster: "seguranca-urbana",
+    },
+    posteCameraDome: {
+        src: "/images/produtos/poste-camera-dome.png",
+        alt: "Poste metalico para camera dome em monitoramento urbano",
+        title: "Poste para camera dome",
+        cluster: "seguranca-urbana",
+    },
+    posteCruzetaRefletor: {
+        src: "/images/produtos/poste-cruzeta-refletor.png",
+        alt: "Poste metalico com cruzeta para refletores em area externa",
+        title: "Poste com cruzeta para refletor",
+        cluster: "iluminacao-esportiva",
+    },
+    posteEos: {
+        src: "/images/produtos/poste-eos.png",
+        alt: "Poste decorativo EOS da Linha Versa para areas urbanas",
+        title: "Poste EOS",
+        cluster: "produtos-versa",
+    },
+    posteGirafaLed1x50wReal: {
+        src: "/images/produtos/poste-girafa-led-1x50w-real.png",
+        alt: "Poste Girafa LED 1x50W em imagem real de aplicacao",
+        title: "Poste Girafa LED 1x50W real",
+        cluster: "produtos-versa",
+    },
+    posteGirafaLed1x50w: {
+        src: "/images/produtos/poste-girafa-led-1x50w.png",
+        alt: "Poste Girafa LED 1x50W da Linha Versa",
+        title: "Poste Girafa LED 1x50W",
+        cluster: "produtos-versa",
+    },
+    posteGirafaLed2x50wReal: {
+        src: "/images/produtos/poste-girafa-led-2x50w-real.png",
+        alt: "Poste Girafa LED 2x50W em imagem real de aplicacao",
+        title: "Poste Girafa LED 2x50W real",
+        cluster: "produtos-versa",
+    },
+    posteGirafaLed2x50w: {
+        src: "/images/produtos/poste-girafa-led-2x50w.png",
+        alt: "Poste Girafa LED 2x50W da Linha Versa",
+        title: "Poste Girafa LED 2x50W",
+        cluster: "produtos-versa",
+    },
+    postePlacaSolar: {
+        src: "/images/produtos/poste-placa-solar.png",
+        alt: "Poste metalico com placa solar para iluminacao externa",
+        title: "Poste com placa solar",
+        cluster: "energia-solar",
+    },
+    posteRebatedor: {
+        src: "/images/produtos/poste-rebatedor.png",
+        alt: "Poste Rebatedor da Linha Versa para iluminacao indireta",
+        title: "Poste Rebatedor",
+        cluster: "produtos-versa",
+    },
 } as const
 
 export type SeoImageKey = keyof typeof seoImageAssets
