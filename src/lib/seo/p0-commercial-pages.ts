@@ -4,12 +4,18 @@ const baseUrl = "https://bebiluminacao.com.br"
 
 const commonLinks = [
     { label: "Postes para iluminacao publica", href: "/postes-para-iluminacao-publica" },
+    { label: "Fabrica de postes para iluminacao publica", href: "/fabrica-de-postes-para-iluminacao-publica" },
+    { label: "Fornecedor de postes para iluminacao publica", href: "/fornecedor-de-postes-para-iluminacao-publica" },
     { label: "Postes metalicos", href: "/postes-metalicos" },
     { label: "Fabricante de postes metalicos", href: "/fabricante-de-postes-metalicos" },
     { label: "Fabrica de postes metalicos", href: "/fabrica-de-postes-metalicos" },
     { label: "Fornecedor de postes metalicos", href: "/fornecedor-de-postes-metalicos" },
+    { label: "Industria de postes metalicos", href: "/industria-de-postes-metalicos" },
+    { label: "Orcamento de poste metalico", href: "/orcamento-poste-metalico" },
     { label: "Poste teleconico", href: "/produtos/poste-teleconico" },
     { label: "Braco para luminaria publica", href: "/produtos/braco-para-luminaria-publica" },
+    { label: "Suporte para luminaria publica", href: "/produtos/suporte-para-luminaria-publica" },
+    { label: "Normas para postes de iluminacao", href: "/blog/normas-para-postes-de-iluminacao" },
     { label: "Catalogos e downloads", href: "/downloads" },
 ]
 
@@ -214,6 +220,29 @@ export const p0CommercialPages: Record<string, P0CommercialPageConfig> = {
                     ["Estacionamentos", "Postes retos ou teleconicos para cobertura de area externa."],
                 ],
             },
+            {
+                label: "Catalogo de fabrica",
+                title: "Modelos e conjuntos para iluminacao publica",
+                body: "A fabrica precisa orientar o conjunto, nao apenas vender um poste isolado.",
+                rows: [
+                    ["TR", "Poste teleconico reto", "Vias locais, estacionamentos, patios e areas institucionais."],
+                    ["TCS", "Poste teleconico curvo simples", "Ruas, acessos e calcadas com avanco de luminaria."],
+                    ["TCD", "Poste teleconico curvo duplo", "Avenidas, canteiros centrais e dois sentidos."],
+                    ["Bracos e suportes", "NEX e suportes metalicos", "Compatibilizacao entre poste, luminaria, avanco e manutencao."],
+                    ["Fixacao", "Engastado ou flangeado", "Definida pelo projeto civil, base, chumbadores e solo."],
+                ],
+            },
+            {
+                label: "Documentos",
+                title: "O que a fabrica precisa receber para cotar",
+                body: "O briefing reduz retrabalho entre compras, engenharia, obra e fiscalizacao.",
+                rows: [
+                    ["Aplicacao", "Via, avenida, praca, loteamento, estacionamento, patio ou area institucional."],
+                    ["Altura e luminaria", "Altura aproximada, quantidade de luminarias, braco/suporte e avanco."],
+                    ["Acabamento", "Galvanizado, pintado ou sob especificacao conforme memorial e ambiente."],
+                    ["Prazo e entrega", "Cidade, UF, quantidade, etapa da obra, descarga e condicoes logisticas."],
+                ],
+            },
         ],
         internalLinks: commonLinks,
         faq: [
@@ -264,6 +293,29 @@ export const p0CommercialPages: Record<string, P0CommercialPageConfig> = {
                     ["Acabamento", "Galvanizacao, pintura eletrostatica ou acabamento conforme ambiente."],
                     ["Entrega", "Cidade, UF, descarga, prazo e condicoes logisticas."],
                     ["Documentos", "Catalogos, datasheets, memoriais e dados para compra tecnica."],
+                ],
+            },
+            {
+                label: "Compra B2B",
+                title: "Como comparar fornecedor de postes para iluminacao publica",
+                body: "A comparacao deve separar revenda generica de fornecedor com origem fabril e suporte de especificacao.",
+                rows: [
+                    ["Origem", "Fabricante/fornecedor", "A B&B combina producao propria e atendimento comercial nacional."],
+                    ["Modelo", "Reto, teleconico, curvo simples ou curvo duplo", "A escolha depende de via, luminaria, altura e manutencao."],
+                    ["Conjunto", "Poste, braco, suporte, base e chumbador", "O fornecimento precisa considerar compatibilidade do conjunto."],
+                    ["Acabamento", "Galvanizado, pintado ou combinado", "Definido por ambiente, memorial, durabilidade e padrao visual."],
+                    ["Logistica", "Cidade, UF, lote e prazo", "Volume e entrega influenciam cronograma e proposta."],
+                ],
+            },
+            {
+                label: "Intencao comercial",
+                title: "Buscas que a pagina de fornecedor precisa responder",
+                body: "A pagina deve capturar quem esta pronto para comprar, mas ainda precisa organizar o briefing.",
+                rows: [
+                    ["Fornecedor de postes para iluminacao publica", "Compra por aplicacao, volume e prazo."],
+                    ["Postes para iluminacao publica direto da fabrica", "Compra com origem fabril e suporte tecnico."],
+                    ["Bracos para luminaria publica", "Compatibilizacao entre luminaria, avanco e poste."],
+                    ["Postes para loteamentos e condominios", "Aplicacoes urbanas privadas que tambem usam padrao de iluminacao publica."],
                 ],
             },
         ],
