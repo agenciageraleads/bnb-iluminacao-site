@@ -4,6 +4,7 @@ import * as React from "react"
 import Link from "next/link"
 import {
     FileText,
+    BookOpen,
     Download,
     RefreshCw,
     Send,
@@ -12,26 +13,42 @@ import {
     AlertTriangle,
     ChevronDown,
 } from "lucide-react"
-import {
-    URBAN_FAMILIES,
-    desenhoTecnicoHref,
-    type UrbanFamily,
-    type UrbanMount,
-} from "@/lib/urban-downloads"
+import { URBAN_FAMILIES, desenhoTecnicoHref } from "@/lib/urban-downloads"
+import { VERSA_FAMILIES, VERSA_LUMINARIA, desenhoVersaHref } from "@/lib/versa-downloads"
 
 type TabKey = "comerciais" | "tecnicos"
+type Mount = "E" | "F"
+
+type FamilyLike = {
+    sigla: string
+    nome: string
+    datasheet: string
+    alturasEng: number[]
+    alturasFla: number[]
+}
 
 /* -------------------------------------------------------------------------- */
 /*  Catálogos & Guias Comerciais — lista de arquivos (sem foto de preview)     */
 /* -------------------------------------------------------------------------- */
 
-const COMMERCIAL_FILES = [
+type CommercialFile = {
+    titulo: string
+    descricao: string
+    meta: string
+    href: string
+    icon: React.ReactNode
+    id?: string
+    artigo?: { label: string; href: string }
+}
+
+const COMMERCIAL_FILES: CommercialFile[] = [
     {
         titulo: "Guia Comercial de Produtos",
         descricao:
             "As 7 linhas (Urban, Orna, Versa, Forza, Vigia, Nexo, Civis) com altura, acabamento e fixação. Vitrine para o primeiro contato.",
         meta: "PDF · 11 páginas · 2026",
         href: "/downloads/guia-comercial-bb.pdf",
+        icon: <FileText className="size-6" />,
     },
     {
         titulo: "Catálogo Institucional",
@@ -39,6 +56,17 @@ const COMMERCIAL_FILES = [
             "Catálogo institucional com a apresentação da fábrica, processos e portfólio.",
         meta: "PDF · Institucional",
         href: "/downloads/catalogo-bb-iluminacao.pdf",
+        icon: <FileText className="size-6" />,
+    },
+    {
+        titulo: "Guia da Durabilidade dos Postes Metálicos",
+        descricao:
+            "Por que dois postes iguais duram tempos diferentes? Comparativo de acabamentos, preparação de superfície, galvanização e como escolher o acabamento certo por ambiente.",
+        meta: "E-book · PDF · 19 páginas",
+        href: "/downloads/guia-bb-durabilidade-postes-metalicos.pdf",
+        icon: <BookOpen className="size-6" />,
+        id: "guia-durabilidade",
+        artigo: { label: "Ler o artigo", href: "/blog/durabilidade-dos-postes-metalicos" },
     },
 ]
 
@@ -86,10 +114,13 @@ function CommercialPanel() {
                 {COMMERCIAL_FILES.map((file) => (
                     <div
                         key={file.titulo}
-                        className="flex flex-col sm:flex-row sm:items-center gap-5 bg-white border border-industrial-200 rounded-2xl p-6 transition-all hover:border-industrial-900 hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)]"
+                        id={file.id}
+                        className={`flex flex-col sm:flex-row sm:items-center gap-5 bg-white border border-industrial-200 rounded-2xl p-6 transition-all hover:border-industrial-900 hover:shadow-[0_8px_24px_rgba(0,0,0,0.06)]${
+                            file.id ? " scroll-mt-32" : ""
+                        }`}
                     >
                         <div className="size-[54px] shrink-0 bg-industrial-950 text-accent-premium flex items-center justify-center rounded-lg">
-                            <FileText className="size-6" />
+                            {file.icon}
                         </div>
                         <div className="flex-1 min-w-0">
                             <h3 className="font-display font-black text-industrial-950 uppercase text-lg leading-tight tracking-tight">
@@ -107,14 +138,24 @@ function CommercialPanel() {
                                 </span>
                             </div>
                         </div>
-                        <a
-                            href={file.href}
-                            download
-                            className="shrink-0 inline-flex items-center justify-center gap-2 bg-industrial-950 text-white font-display font-black uppercase text-[11.5px] tracking-widest px-5 py-3.5 rounded-lg hover:bg-industrial-800 transition-colors"
-                        >
-                            <Download className="size-4" />
-                            Baixar
-                        </a>
+                        <div className="flex flex-col sm:flex-row gap-2.5 shrink-0">
+                            <a
+                                href={file.href}
+                                download
+                                className="inline-flex items-center justify-center gap-2 bg-industrial-950 text-white font-display font-black uppercase text-[11.5px] tracking-widest px-5 py-3.5 rounded-lg hover:bg-industrial-800 transition-colors"
+                            >
+                                <Download className="size-4" />
+                                Baixar
+                            </a>
+                            {file.artigo && (
+                                <Link
+                                    href={file.artigo.href}
+                                    className="inline-flex items-center justify-center gap-2 bg-white text-industrial-700 border border-industrial-300 font-display font-black uppercase text-[11.5px] tracking-widest px-5 py-3.5 rounded-lg hover:border-industrial-900 hover:text-industrial-950 transition-colors"
+                                >
+                                    {file.artigo.label}
+                                </Link>
+                            )}
+                        </div>
                     </div>
                 ))}
             </div>
@@ -123,27 +164,36 @@ function CommercialPanel() {
 }
 
 /* -------------------------------------------------------------------------- */
-/*  Urban family card — datasheet + desenho técnico (toggle + dropdown)         */
+/*  Card de família técnica — datasheet + desenho (toggle + dropdown)          */
 /* -------------------------------------------------------------------------- */
 
-function UrbanFamilyCard({ familia }: { familia: UrbanFamily }) {
-    const [mount, setMount] = React.useState<UrbanMount>("E")
+function FamilyCard({
+    familia,
+    codePrefix,
+    hrefBuilder,
+}: {
+    familia: FamilyLike
+    codePrefix: string
+    hrefBuilder: (sigla: string, altura: number, mount: Mount) => string
+}) {
+    const [mount, setMount] = React.useState<Mount>("E")
     const alturas = mount === "E" ? familia.alturasEng : familia.alturasFla
     const [altura, setAltura] = React.useState<number>(alturas[0])
 
-    function handleMount(next: UrbanMount) {
+    function handleMount(next: Mount) {
         setMount(next)
         const disponiveis = next === "E" ? familia.alturasEng : familia.alturasFla
         if (!disponiveis.includes(altura)) setAltura(disponiveis[0])
     }
 
-    const href = desenhoTecnicoHref(familia.sigla, altura, mount)
+    const href = hrefBuilder(familia.sigla, altura, mount)
+    const selectId = `altura-${codePrefix}-${familia.sigla}`
 
     return (
         <div className="bg-white border border-industrial-200 rounded-2xl flex flex-col">
             <div className="p-5 border-b border-industrial-100">
                 <span className="inline-block bg-industrial-950 text-accent-premium font-display font-black text-[10px] tracking-widest uppercase px-2.5 py-1 rounded-md mb-2.5">
-                    BB-URB-{familia.sigla}
+                    {codePrefix}-{familia.sigla}
                 </span>
                 <h3 className="font-display font-black text-industrial-950 uppercase text-base leading-tight tracking-tight">
                     {familia.nome}
@@ -211,14 +261,14 @@ function UrbanFamilyCard({ familia }: { familia: UrbanFamily }) {
                     <div className="flex gap-2.5 items-end">
                         <div className="flex-1">
                             <label
-                                htmlFor={`altura-${familia.sigla}`}
+                                htmlFor={selectId}
                                 className="block font-display font-black text-[10px] tracking-widest uppercase text-industrial-400 mb-2"
                             >
                                 Altura do poste
                             </label>
                             <div className="relative">
                                 <select
-                                    id={`altura-${familia.sigla}`}
+                                    id={selectId}
                                     value={altura}
                                     onChange={(e) => setAltura(Number(e.target.value))}
                                     className="w-full font-sans font-bold text-sm py-2.5 pl-3 pr-9 border border-industrial-300 rounded-lg bg-white text-industrial-950 cursor-pointer appearance-none"
@@ -251,13 +301,27 @@ function UrbanFamilyCard({ familia }: { familia: UrbanFamily }) {
     )
 }
 
+/* Cabeçalho de linha (tag + título + régua) */
+function LineHead({ tag }: { tag: string }) {
+    return (
+        <div className="flex items-center gap-3.5 mb-5">
+            <span className="font-display font-black text-[13px] tracking-tight uppercase px-3 py-1.5 rounded-xs bg-accent-premium text-black">
+                {tag}
+            </span>
+            <h2 className="font-display font-black text-industrial-950 uppercase text-xl md:text-2xl tracking-tight">
+                Datasheets &amp; desenhos técnicos
+            </h2>
+            <span className="flex-1 h-px bg-industrial-200" />
+        </div>
+    )
+}
+
 /* -------------------------------------------------------------------------- */
 /*  Linhas em desenvolvimento                                                  */
 /* -------------------------------------------------------------------------- */
 
 const DEV_LINES = [
     { slug: "orna", nome: "Orna", desc: "Postes ornamentais que trazem identidade ao ambiente." },
-    { slug: "versa", nome: "Versa", desc: "Postes decorativos — girafa LED e rebatedor." },
     { slug: "forza", nome: "Forza", desc: "Projetos especiais e estruturas reforçadas." },
     { slug: "vigia", nome: "Vigia", desc: "Postes para segurança e monitoramento (CFTV)." },
     { slug: "nexo", nome: "Nexo", desc: "Acessórios: braços, suportes e chumbadores." },
@@ -269,19 +333,15 @@ function TechnicalPanel() {
         <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
             {/* URBAN */}
             <section id="linha-urban" className="scroll-mt-32 max-w-6xl mx-auto">
-                <div className="flex items-center gap-3.5 mb-5">
-                    <span className="font-display font-black text-[13px] tracking-tight uppercase bg-accent-premium text-black px-3 py-1.5 rounded-xs">
-                        Linha Urban
-                    </span>
-                    <h2 className="font-display font-black text-industrial-950 uppercase text-xl md:text-2xl tracking-tight">
-                        Datasheets &amp; desenhos técnicos
-                    </h2>
-                    <span className="flex-1 h-px bg-industrial-200" />
-                </div>
-
+                <LineHead tag="Linha Urban" />
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                     {URBAN_FAMILIES.map((familia) => (
-                        <UrbanFamilyCard key={familia.sigla} familia={familia} />
+                        <FamilyCard
+                            key={familia.sigla}
+                            familia={familia}
+                            codePrefix="BB-URB"
+                            hrefBuilder={desenhoTecnicoHref}
+                        />
                     ))}
                 </div>
 
@@ -292,6 +352,43 @@ function TechnicalPanel() {
                         fixação e a altura para baixar o desenho cotado correspondente. Curvos
                         (TCS/TCD) não têm 3 m flangeado; o curvo duplo também não tem 3 m engastado.
                     </p>
+                </div>
+            </section>
+
+            {/* VERSA */}
+            <section id="linha-versa" className="scroll-mt-32 max-w-6xl mx-auto mt-14">
+                <LineHead tag="Linha Versa" />
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                    {VERSA_FAMILIES.map((familia) => (
+                        <FamilyCard
+                            key={familia.sigla}
+                            familia={familia}
+                            codePrefix="BB-VRS"
+                            hrefBuilder={desenhoVersaHref}
+                        />
+                    ))}
+
+                    {/* Luminária Girafa LED — desenho único, sem variação de altura */}
+                    <div className="bg-white border border-industrial-200 rounded-2xl flex flex-col">
+                        <div className="p-5 border-b border-industrial-100">
+                            <span className="inline-block bg-industrial-950 text-accent-premium font-display font-black text-[10px] tracking-widest uppercase px-2.5 py-1 rounded-md mb-2.5">
+                                {VERSA_LUMINARIA.codigo}
+                            </span>
+                            <h3 className="font-display font-black text-industrial-950 uppercase text-base leading-tight tracking-tight">
+                                {VERSA_LUMINARIA.nome}
+                            </h3>
+                        </div>
+                        <div className="p-5 flex flex-col flex-1 justify-end">
+                            <a
+                                href={VERSA_LUMINARIA.desenho}
+                                download
+                                className="w-full inline-flex items-center justify-center gap-2 bg-industrial-950 text-white font-display font-black uppercase text-[11.5px] tracking-widest py-3.5 rounded-lg hover:bg-industrial-800 transition-colors"
+                            >
+                                <Download className="size-4" />
+                                Baixar Desenho Técnico
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -353,12 +450,19 @@ export function DownloadsTabs() {
     const [tab, setTab] = React.useState<TabKey>("comerciais")
     const pendingHash = React.useRef<string | null>(null)
 
-    // Deep-links dos QR codes impressos (/downloads#linha-<slug>) vivem na aba técnica.
+    // Deep-links dos QR codes impressos. As âncoras #linha-<slug> vivem na aba
+    // técnica; #guia-durabilidade vive na aba comercial (ativa por padrão).
     React.useEffect(() => {
         const hash = window.location.hash
+        if (!hash) return
+        const id = hash.slice(1)
         if (hash.startsWith("#linha-")) {
-            pendingHash.current = hash.slice(1)
+            pendingHash.current = id
             setTab("tecnicos")
+        } else {
+            requestAnimationFrame(() => {
+                document.getElementById(id)?.scrollIntoView({ block: "start" })
+            })
         }
     }, [])
 
