@@ -31,15 +31,15 @@ type RepresentativeTerritoryPayload = {
 }
 
 type ExistingRepresentative = {
-  id: string
+  id: number
   crmUserId?: string | null
   email?: string | null
 }
 
-type RepresentativeMatch = {
-  primary: ExistingRepresentative
-  duplicateIds: string[]
-}
+type RepresentativeResolution =
+  | { kind: 'create' }
+  | { kind: 'update'; representative: ExistingRepresentative }
+  | { kind: 'conflict' }
 
 function getBearerToken(value: string | null) {
   const match = value?.match(/^Bearer\s+(.+)$/i)
@@ -117,26 +117,10 @@ function isGenericContactEmail(email: string) {
   return email === 'contato@bebiluminacao.com'
 }
 
-function buildRepresentativeMatch(
-  docs: ExistingRepresentative[],
-  preferredId?: string,
-): RepresentativeMatch | undefined {
-  const primary =
-    docs.find((doc) => doc.id === preferredId) ??
-    docs.find((doc) => doc.crmUserId) ??
-    docs[0]
-
-  if (!primary) return undefined
-
-  return {
-    primary,
-    duplicateIds: docs
-      .filter((doc) => doc.id !== primary.id)
-      .map((doc) => doc.id),
-  }
-}
-
-async function findExistingRepresentative(crmUserId: string, email: string): Promise<RepresentativeMatch | undefined> {
+async function findExistingRepresentative(
+  crmUserId: string,
+  email: string,
+): Promise<RepresentativeResolution> {
   const payload = await getPayload({ config })
 
   const byCrmUser = await payload.find({
@@ -144,15 +128,20 @@ async function findExistingRepresentative(crmUserId: string, email: string): Pro
     where: {
       crmUserId: { equals: crmUserId },
     },
-    limit: 1,
+    limit: 2,
     overrideAccess: true,
   })
 
-  if (byCrmUser.docs[0]) {
-    const primary = byCrmUser.docs[0] as ExistingRepresentative
+  if (byCrmUser.docs.length > 1) {
+    return { kind: 'conflict' }
+  }
+
+  const primary = byCrmUser.docs[0] as ExistingRepresentative | undefined
+
+  if (primary) {
 
     if (isGenericContactEmail(email)) {
-      return { primary, duplicateIds: [] }
+      return { kind: 'update', representative: primary }
     }
 
     const byEmail = await payload.find({
@@ -164,14 +153,16 @@ async function findExistingRepresentative(crmUserId: string, email: string): Pro
       overrideAccess: true,
     })
 
-    return buildRepresentativeMatch(byEmail.docs as ExistingRepresentative[], primary.id) ?? {
-      primary,
-      duplicateIds: [],
-    }
+    const hasAnotherRecord = (byEmail.docs as ExistingRepresentative[])
+      .some((doc) => doc.id !== primary.id)
+
+    return hasAnotherRecord
+      ? { kind: 'conflict' }
+      : { kind: 'update', representative: primary }
   }
 
   if (isGenericContactEmail(email)) {
-    return undefined
+    return { kind: 'create' }
   }
 
   const byEmail = await payload.find({
@@ -179,29 +170,25 @@ async function findExistingRepresentative(crmUserId: string, email: string): Pro
     where: {
       email: { equals: email },
     },
-    limit: 20,
+    limit: 2,
     sort: 'createdAt',
     overrideAccess: true,
   })
 
-  return buildRepresentativeMatch(byEmail.docs as ExistingRepresentative[])
-}
+  if (byEmail.docs.length === 0) {
+    return { kind: 'create' }
+  }
 
-async function deleteDuplicateRepresentatives(ids: string[]) {
-  if (ids.length === 0) return 0
+  if (byEmail.docs.length > 1) {
+    return { kind: 'conflict' }
+  }
 
-  const payload = await getPayload({ config })
-  const results = await Promise.allSettled(
-    ids.map((id) =>
-      payload.delete({
-        collection: 'representatives' as any,
-        id,
-        overrideAccess: true,
-      }),
-    ),
-  )
+  const legacyRecord = byEmail.docs[0] as ExistingRepresentative
+  if (legacyRecord.crmUserId) {
+    return { kind: 'conflict' }
+  }
 
-  return results.filter((result) => result.status === 'fulfilled').length
+  return { kind: 'update', representative: legacyRecord }
 }
 
 export async function POST(request: Request) {
@@ -217,18 +204,24 @@ export async function POST(request: Request) {
   }
 
   const payload = await getPayload({ config })
-  const existing = await findExistingRepresentative(data.crmUserId, data.email)
+  const resolution = await findExistingRepresentative(data.crmUserId, data.email)
 
-  if (existing) {
+  if (resolution.kind === 'conflict') {
+    return NextResponse.json({
+      error: 'Conflito de identidade do representante. Revise os cadastros antes de sincronizar.',
+      code: 'REPRESENTATIVE_IDENTITY_CONFLICT',
+    }, { status: 409 })
+  }
+
+  if (resolution.kind === 'update') {
     const updated = await payload.update({
       collection: 'representatives' as any,
-      id: existing.primary.id,
+      id: resolution.representative.id,
       data: data as any,
       overrideAccess: true,
     })
-    const deduped = await deleteDuplicateRepresentatives(existing.duplicateIds)
 
-    return NextResponse.json({ ok: true, id: updated.id, action: 'updated', deduped })
+    return NextResponse.json({ ok: true, id: updated.id, action: 'updated' })
   }
 
   const created = await payload.create({
