@@ -9,6 +9,7 @@ import { DownloadGrid } from "./DownloadGrid"
 import { FileText, ShieldCheck, Download, Ruler } from "lucide-react"
 import { URBAN_FAMILIES, desenhoTecnicoHref } from "@/lib/urban-downloads"
 import { VERSA_FAMILIES, VERSA_LUMINARIA, desenhoVersaHref } from "@/lib/versa-downloads"
+import { NEXO_DATASHEETS } from "@/lib/nexo-downloads"
 
 export const metadata = {
     title: "Downloads de Catálogos Técnicos | B&B Iluminação",
@@ -270,6 +271,45 @@ export default async function DownloadsPage() {
                         </div>
                     </div>
 
+                    {/* Datasheets — Linha Nexo */}
+                    <div id="linha-nexo" className="max-w-6xl mx-auto mt-24 scroll-mt-32">
+                        <div className="text-center mb-12">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-[0.2em] uppercase mb-6 rounded-full">
+                                <Ruler className="size-4 text-accent-dark" />
+                                Linha Nexo
+                            </div>
+                            <h2 className="text-3xl md:text-5xl font-black text-industrial-950 uppercase tracking-tighter leading-none mb-4">
+                                Datasheets <span className="text-accent-premium">por Produto</span>
+                            </h2>
+                            <p className="text-industrial-500 text-base md:text-lg font-medium max-w-2xl mx-auto">
+                                Ficha técnica completa dos acessórios que conectam o poste ao projeto.
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                            {NEXO_DATASHEETS.map((item) => (
+                                <div key={item.codigo} className="bg-white border border-industrial-200 hover:border-accent-premium transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col rounded-2xl">
+                                    <div className="p-6 border-b border-industrial-100">
+                                        <div className="bg-accent-premium text-black inline-block px-3 py-1 text-[10px] font-black uppercase tracking-widest mb-3">
+                                            {item.codigo}
+                                        </div>
+                                        <h3 className="font-black text-industrial-950 uppercase text-lg leading-tight">{item.nome}</h3>
+                                    </div>
+                                    <div className="p-6 flex flex-col flex-1 justify-end">
+                                        <a
+                                            href={item.datasheet}
+                                            download
+                                            className="w-full flex items-center justify-center gap-2 bg-industrial-950 text-white font-black uppercase text-xs tracking-widest py-4 hover:bg-industrial-800 transition-colors"
+                                        >
+                                            <Download className="size-4" />
+                                            Baixar Datasheet
+                                        </a>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
                     {/* Materiais Técnicos — Demais Linhas (em desenvolvimento) */}
                     <div className="max-w-6xl mx-auto mt-24">
                         <div className="text-center mb-12">
@@ -291,7 +331,6 @@ export default async function DownloadsPage() {
                                 { slug: 'orna', nome: 'Orna', desc: 'Postes ornamentais que trazem identidade ao ambiente.' },
                                 { slug: 'forza', nome: 'Forza', desc: 'Projetos especiais e estruturas reforçadas.' },
                                 { slug: 'vigia', nome: 'Vigia', desc: 'Postes para segurança e monitoramento (CFTV).' },
-                                { slug: 'nexo', nome: 'Nexo', desc: 'Acessórios: braços, suportes e chumbadores.' },
                                 { slug: 'civis', nome: 'Civis', desc: 'Mastros para bandeiras.' },
                             ]).map((linha) => (
                                 <div
