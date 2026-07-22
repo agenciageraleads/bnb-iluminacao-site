@@ -8,7 +8,7 @@ import { getCatalogs } from "@/lib/data"
 import { DownloadGrid } from "./DownloadGrid"
 import { FileText, ShieldCheck, Download, Ruler } from "lucide-react"
 import { URBAN_FAMILIES, desenhoTecnicoHref } from "@/lib/urban-downloads"
-import { VERSA_FAMILIES, VERSA_LUMINARIA, desenhoVersaHref } from "@/lib/versa-downloads"
+import { VERSA_FAMILIES, VERSA_LUMINARIA, desenhoVersaHref, labelAlturaVersa } from "@/lib/versa-downloads"
 import { NEXO_DATASHEETS } from "@/lib/nexo-downloads"
 
 export const metadata = {
@@ -201,7 +201,7 @@ export default async function DownloadsPage() {
                             </h2>
                             <p className="text-industrial-500 text-base md:text-lg font-medium max-w-2xl mx-auto">
                                 Ficha técnica completa e desenho técnico dimensional por altura dos postes decorativos
-                                Girafa LED, em PDF.
+                                Girafa LED e Éos (globo), em PDF.
                             </p>
                         </div>
 
@@ -240,7 +240,7 @@ export default async function DownloadsPage() {
                                                                 download
                                                                 className="px-3 py-1.5 bg-industrial-50 border border-industrial-200 text-[11px] font-black text-industrial-700 uppercase tracking-widest hover:border-industrial-900 hover:text-industrial-950 transition-colors rounded-md"
                                                             >
-                                                                {altura}m
+                                                                {labelAlturaVersa(altura)}
                                                             </a>
                                                         ))}
                                                     </div>
