@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload'
+import { sanitizeBlogHtml } from '@/lib/blog-html'
 
 const Blog: CollectionConfig = {
     slug: 'blog',
@@ -6,7 +7,7 @@ const Blog: CollectionConfig = {
         useAsTitle: 'title',
     },
     access: {
-        read: () => true,
+        read: ({ req }) => req.user ? true : { status: { equals: 'published' } },
     },
     fields: [
         {
@@ -55,6 +56,9 @@ const Blog: CollectionConfig = {
             name: 'bodyHtml',
             type: 'textarea',
             label: 'Conteúdo IA (HTML)',
+            hooks: {
+                beforeChange: [({ value }) => sanitizeBlogHtml(value)],
+            },
             admin: {
                 description: 'Corpo do artigo gerado automaticamente com tags HTML e Tabelas.',
             }

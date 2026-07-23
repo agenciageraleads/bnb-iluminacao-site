@@ -90,6 +90,7 @@ export function DownloadGrid({ catalogs }: DownloadGridProps) {
 
                             {!isSuccess ? (
                                 <form action={action} className="space-y-4">
+                                    <input name="website" type="text" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
                                     <input type="hidden" name="catalogId" value={selectedCatalog.id} />
                                     
                                     <div className="space-y-1">

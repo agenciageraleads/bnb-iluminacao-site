@@ -52,6 +52,7 @@ export function LaserQuoteForm({ cidade }: Props) {
 
   return (
     <form action={handleSubmit} className="space-y-4" noValidate>
+      <input name="website" type="text" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
       {status === 'error' && (
         <div className="bg-red-50 border border-red-200 p-4 flex items-center gap-3 text-red-700 text-sm font-medium">
           <AlertCircle className="size-5 shrink-0" />
@@ -196,7 +197,7 @@ export function LaserQuoteForm({ cidade }: Props) {
             ref={fileRef}
             type="file"
             name="arquivo"
-            accept=".jpg,.jpeg,.png,.pdf,.dxf,.dwg,.svg"
+            accept=".jpg,.jpeg,.png,.pdf,.dxf,.dwg"
             onChange={handleFileChange}
             className="hidden"
           />

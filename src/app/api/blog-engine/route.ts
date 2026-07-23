@@ -100,11 +100,13 @@ export async function POST(req: Request) {
             RETORNE EXATAMENTE NESTE FORMATO JSON:
             {
                 "title": "${pauta}",
-                "slug": "slugify-o-titulo",
-                "summary": "Resumo executivo de 50 palavras...",
+                "slug": "slug-curto-com-3-a-5-palavras-chave",
+                "summary": "Resumo executivo de 50 palavras em TEXTO PURO, sem nenhuma tag HTML (nada de <strong>, <em>, <p> etc.)",
                 "bodyHtml": "Conteúdo rico em HTML estruturado aqui...",
                 "faqs": [ {"question": "...", "answer": "..."} ]
             }
+
+            REGRA DO SLUG: máximo 5 palavras, somente as palavras-chave do tema (sem artigos, preposições ou conjunções). Exemplos corretos: "postes-cameras-seguranca-vibracao", "galvanizacao-postes-externos", "nbr-14744-mastros-bandeira". Exemplos ERRADOS: "como-mitigar-vibracoes-e-garantir-imagens-nitidas-em-ambientes-externos", "como-a-nbr-14744-garante-qualidade-e-seguranca-na-fabricacao".
         `;
 
         const restRedator = await model.generateContent({
@@ -113,6 +115,12 @@ export async function POST(req: Request) {
         });
 
         const conteudoAgente = JSON.parse(restRedator.response.text());
+
+        // Defesa: o summary é renderizado como texto puro na página (não via dangerouslySetInnerHTML),
+        // então qualquer tag HTML apareceria literal (ex.: "<strong>NBR</strong>"). Removemos as tags.
+        if (typeof conteudoAgente.summary === 'string') {
+            conteudoAgente.summary = conteudoAgente.summary.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+        }
 
         // --------------------------------------------------------------------------------
         // 3. O AGENTE REVISOR (O "Chefe" Fact-Checker das NBRs)
@@ -178,7 +186,7 @@ export async function POST(req: Request) {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     instances: [{ prompt: finalImagePrompt }],
-                    parameters: { sampleCount: 1 }
+                    parameters: { sampleCount: 1, aspectRatio: "16:9" }
                 })
             });
 
@@ -209,14 +217,14 @@ export async function POST(req: Request) {
         }
 
         // --------------------------------------------------------------------------------
-        // 5. PUBLICAÇÃO FINAL
+        // 5. CRIAÇÃO DE RASCUNHO PARA REVISÃO HUMANA
         // --------------------------------------------------------------------------------
         const novoPost = await payload.create({
             collection: 'blog',
             data: {
                 title: conteudoAgente.title,
-                slug: conteudoAgente.slug + '-' + Date.now().toString().slice(-4),
-                status: 'published',
+                slug: conteudoAgente.slug.split('-').slice(0, 6).join('-') + '-' + Date.now().toString().slice(-4),
+                status: 'draft',
                 author: 'Eng. Lucas Borges',
                 summary: conteudoAgente.summary,
                 featuredImage: featuredImageId,
@@ -260,7 +268,7 @@ export async function POST(req: Request) {
 
         return NextResponse.json({
             success: true,
-            message: "Sala de Redação operou com sucesso e publicou a matéria com imagem real.",
+            message: "Sala de Redação criou um rascunho para revisão humana.",
             post: novoPost,
             revisorLog: "Aprovado com maestria em compliance com NBRs"
         });

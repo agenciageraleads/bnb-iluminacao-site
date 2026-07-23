@@ -10,6 +10,11 @@ services:
       - "9010:9010"
     environment:
       - POSTGRES_URL=postgresql://${POSTGRES_USER:-bnb_user}:${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}@postgres:5432/${POSTGRES_DB:-bnb_database}
+      - PAYLOAD_SECRET=${PAYLOAD_SECRET:?PAYLOAD_SECRET is required}
+      - BLOG_ENGINE_SECRET=${BLOG_ENGINE_SECRET:?BLOG_ENGINE_SECRET is required}
+      - REDIS_URL=redis://redis:6379
+      # Traefik must overwrite X-Real-IP and direct access to port 9010 must be blocked.
+      - PUBLIC_FORM_TRUSTED_IP_HEADER=x-real-ip
     depends_on:
       - postgres
       - redis

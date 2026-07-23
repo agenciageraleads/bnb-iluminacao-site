@@ -2,8 +2,6 @@
 FROM node:20-alpine AS builder
 WORKDIR /app
 ENV NEXT_TELEMETRY_DISABLED=1
-ARG PAYLOAD_SECRET
-ENV PAYLOAD_SECRET=${PAYLOAD_SECRET}
 ARG PAYLOAD_NO_PUSH=true
 ENV PAYLOAD_NO_PUSH=${PAYLOAD_NO_PUSH}
 # NEXT_PUBLIC_* precisam existir no build: paginas estaticas (LPs) sao
@@ -19,7 +17,9 @@ ENV NEXT_PUBLIC_GTM_ID=${NEXT_PUBLIC_GTM_ID} \
 COPY package*.json ./
 RUN npm ci --legacy-peer-deps
 COPY . .
-RUN npm run build
+# Payload loads its config while Next.js compiles. This non-secret marker only
+# exists for this process; production must inject the real secret at runtime.
+RUN PAYLOAD_SECRET=build-time-placeholder-not-for-runtime npm run build
 RUN npm prune --omit=dev --legacy-peer-deps
 
 # Estágio 2: Runner

@@ -49,7 +49,7 @@ export function Header() {
                             ))}
                             <WhatsAppLink
                                 message={whatsappMessage}
-                                className="flex items-center gap-2 bg-industrial-900 text-white hover:bg-accent-premium hover:text-black font-black tracking-widest uppercase text-[11px] px-5 h-10 transition-all"
+                                className="flex items-center gap-2 bg-industrial-900 text-white hover:bg-accent-premium hover:text-black font-black tracking-widest uppercase text-[11px] px-5 h-10 transition-all rounded-lg"
                                 aria-label="Fale conosco pelo WhatsApp"
                             >
                                 <Phone className="size-4" aria-hidden="true" />
@@ -60,7 +60,7 @@ export function Header() {
                         {/* Botão hambúrguer com touch target ≥ 44px (p-3 + ícone 24px = 48px) */}
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="flex md:hidden items-center justify-center p-3 -mr-2 text-industrial-700 hover:text-industrial-900 active:bg-industrial-100 transition-colors"
+                            className="flex md:hidden items-center justify-center p-3 -mr-2 text-industrial-700 hover:text-industrial-900 active:bg-industrial-100 transition-colors rounded-md"
                             aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
                             aria-expanded={isOpen}
                             aria-controls="mobile-menu"
@@ -111,7 +111,7 @@ export function Header() {
                     <div className="p-5 border-t border-industrial-100 pb-safe">
                         <WhatsAppLink
                             message={whatsappMessage}
-                            className="flex items-center justify-center gap-2 w-full h-14 bg-industrial-900 text-white font-black uppercase tracking-widest text-sm active:bg-industrial-700 transition-colors"
+                            className="flex items-center justify-center gap-2 w-full h-14 bg-industrial-900 text-white font-black uppercase tracking-widest text-sm active:bg-industrial-700 transition-colors rounded-lg"
                             onClick={() => setIsOpen(false)}
                             aria-label="Solicitar orçamento pelo WhatsApp"
                         >

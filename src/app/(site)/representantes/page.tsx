@@ -10,7 +10,7 @@ export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
     title: "Representantes Comerciais | B&B Iluminação",
-    description: "Encontre o representante comercial da B&B Iluminação mais próximo de você. Cobertura de ponta a ponta em todo o Brasil para atender seu projeto de iluminação pública ou industrial com excelência.",
+    description: "Encontre representantes comerciais da B&B Iluminação por estado e macro-região de atendimento para orientar seu projeto de iluminação pública ou industrial.",
     alternates: {
         canonical: 'https://bebiluminacao.com.br/representantes',
     },
@@ -37,7 +37,7 @@ export default async function RepresentantesPage() {
                     </h1>
                     <p className="text-industrial-500 text-lg md:text-xl leading-relaxed max-w-3xl">
                         A excelência da B&B Iluminação presente em todos os cantos do Brasil. 
-                        Encontre o representante comercial mais próximo da sua obra.
+                        Encontre representantes comerciais por estado e macro-região de atendimento.
                     </p>
                 </div>
             </section>

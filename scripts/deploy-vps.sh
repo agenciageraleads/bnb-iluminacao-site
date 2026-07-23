@@ -51,6 +51,11 @@ VPS_ENV_FILE="/opt/vps-bb/env/site-bb.env"
 SERVICE_NAME="site-bb_app"
 IMAGE_NAME="bnb-site"
 KEEP_IMAGES=2
+RELEASE_WINDOW_SECONDS="${RELEASE_WINDOW_SECONDS:-285}"
+ROLLOUT_TIMEOUT_SECONDS="${ROLLOUT_TIMEOUT_SECONDS:-150}"
+SMOKE_URL="${SMOKE_URL:-https://bebiluminacao.com.br/}"
+MEDIA_VOLUME="bnb-platform_media_data"
+MEDIA_TARGET="/app/media"
 
 TAG="${1:-$(git -C "${SCRIPT_REPO_ROOT}" rev-parse --short HEAD 2>/dev/null || echo 'latest')}"
 FULL_TAG="${IMAGE_NAME}:${TAG}"
@@ -77,9 +82,9 @@ echo "▶ [2/5] Construindo imagem na VPS (${TAG})..."
 ${SSH_CMD} "bash -c '
   set -euo pipefail
   set -a; source ${VPS_ENV_FILE}; set +a
+  : \"\${BLOG_ENGINE_SECRET:?BLOG_ENGINE_SECRET is required in ${VPS_ENV_FILE}}\"
   cd ${VPS_BUILD_DIR}
   docker build \
-    --build-arg PAYLOAD_SECRET=\"\${PAYLOAD_SECRET}\" \
     --build-arg NEXT_PUBLIC_GTM_ID=\"\${NEXT_PUBLIC_GTM_ID}\" \
     --build-arg NEXT_PUBLIC_ADS_ID=\"\${NEXT_PUBLIC_ADS_ID}\" \
     --build-arg NEXT_PUBLIC_GA_ID=\"\${NEXT_PUBLIC_GA_ID}\" \
@@ -88,17 +93,124 @@ ${SSH_CMD} "bash -c '
 '"
 echo "   ✓ Imagem construída"
 
-# ── 3. Deploy no Swarm ────────────────────────────────────────
+# ── 3. Preflight e deploy no Swarm ────────────────────────────
 echo ""
-echo "▶ [3/5] Atualizando serviço Swarm..."
-${SSH_CMD} "docker service update --image '${FULL_TAG}' ${SERVICE_NAME}"
-echo "   ✓ Serviço atualizado"
+echo "▶ [3/5] Validando contrato runtime e atualizando serviço Swarm..."
+
+# O preflight lê apenas nomes de variáveis e mounts. Valores de secrets nunca
+# saem da VPS. Falhar aqui preserva integralmente a imagem atual.
+${SSH_CMD} "bash -s -- '${SERVICE_NAME}' '${MEDIA_VOLUME}' '${MEDIA_TARGET}'" <<'REMOTE_PREFLIGHT'
+set -euo pipefail
+service="$1"
+media_volume="$2"
+media_target="$3"
+
+docker service inspect "$service" >/dev/null
+env_names="$(docker service inspect "$service" --format '{{range .Spec.TaskTemplate.ContainerSpec.Env}}{{println .}}{{end}}' | sed 's/=.*//')"
+service_env="$(docker service inspect "$service" --format '{{range .Spec.TaskTemplate.ContainerSpec.Env}}{{println .}}{{end}}')"
+for required in PAYLOAD_SECRET BLOG_ENGINE_SECRET REDIS_URL; do
+  if ! grep -Fxq "$required" <<<"$env_names"; then
+    echo "❌ Service spec sem variável obrigatória: $required" >&2
+    exit 1
+  fi
+done
+if ! grep -Fxq 'PUBLIC_FORM_TRUSTED_IP_HEADER=x-real-ip' <<<"$service_env"; then
+  echo "❌ Service spec exige PUBLIC_FORM_TRUSTED_IP_HEADER=x-real-ip (Traefik deve sobrescrever o header e a origem deve estar bloqueada)" >&2
+  exit 1
+fi
+
+mounts="$(docker service inspect "$service" --format '{{range .Spec.TaskTemplate.ContainerSpec.Mounts}}{{println .Source "|" .Target}}{{end}}')"
+if ! grep -Fxq "$media_volume | $media_target" <<<"$mounts"; then
+  echo "❌ Service spec sem volume obrigatório: $media_volume -> $media_target" >&2
+  exit 1
+fi
+REMOTE_PREFLIGHT
+
+RELEASE_DEADLINE=$((SECONDS + RELEASE_WINDOW_SECONDS))
+PREVIOUS_IMAGE="$(${SSH_CMD} "docker service inspect '${SERVICE_NAME}' --format '{{.Spec.TaskTemplate.ContainerSpec.Image}}'")"
+if [[ -z "${PREVIOUS_IMAGE}" ]]; then
+  echo "❌ Não foi possível registrar a imagem atual; deploy abortado antes do update."
+  exit 1
+fi
+echo "   ↩ Imagem de rollback: ${PREVIOUS_IMAGE}"
+
+UPDATE_FLAGS=(--detach=true --image "${FULL_TAG}")
+SERVICE_UPDATE_HELP="$(${SSH_CMD} "docker service update --help")"
+if grep -q -- '--update-failure-action' <<<"${SERVICE_UPDATE_HELP}"; then
+  UPDATE_FLAGS+=(--update-failure-action rollback)
+fi
+if grep -q -- '--update-order' <<<"${SERVICE_UPDATE_HELP}"; then
+  UPDATE_FLAGS+=(--update-order start-first)
+fi
+if grep -q -- '--rollback-failure-action' <<<"${SERVICE_UPDATE_HELP}"; then
+  UPDATE_FLAGS+=(--rollback-failure-action pause)
+fi
+
+printf -v REMOTE_UPDATE ' %q' "${UPDATE_FLAGS[@]}"
+${SSH_CMD} "docker service update${REMOTE_UPDATE} '${SERVICE_NAME}'"
+echo "   ✓ Update solicitado"
 
 # ── 4. Verificação rápida ─────────────────────────────────────
 echo ""
-echo "▶ [4/5] Verificando estado do serviço..."
-sleep 5
-${SSH_CMD} "docker service ps ${SERVICE_NAME} --format '{{.Name}}\t{{.CurrentState}}' | head -3"
+echo "▶ [4/5] Aguardando convergência e executando smoke HTTP..."
+
+wait_for_convergence() {
+  local expected_image="$1"
+  local deadline=$((SECONDS + ROLLOUT_TIMEOUT_SECONDS))
+  local state running desired current_image expected_image_ref current_image_ref
+
+  expected_image_ref="${expected_image%%@*}"
+  if (( deadline > RELEASE_DEADLINE )); then
+    deadline="${RELEASE_DEADLINE}"
+  fi
+
+  while (( SECONDS < deadline )); do
+    state="$(${SSH_CMD} "docker service inspect '${SERVICE_NAME}' --format '{{if .UpdateStatus}}{{.UpdateStatus.State}}{{else}}completed{{end}}'")"
+    read -r running desired <<<"$(${SSH_CMD} "running=\$(docker service ps '${SERVICE_NAME}' --filter desired-state=running --format '{{.CurrentState}}' | grep -c '^Running' || true); desired=\$(docker service inspect '${SERVICE_NAME}' --format '{{.Spec.Mode.Replicated.Replicas}}'); echo \"\$running \$desired\"")"
+    current_image="$(${SSH_CMD} "docker service inspect '${SERVICE_NAME}' --format '{{.Spec.TaskTemplate.ContainerSpec.Image}}'")"
+    current_image_ref="${current_image%%@*}"
+
+    if [[ "${current_image_ref}" == "${expected_image_ref}" && "${running}" == "${desired}" && "${state}" == "completed" ]]; then
+      return 0
+    fi
+    if [[ "${state}" =~ ^(paused|rollback_paused|rollback_completed)$ ]]; then
+      echo "   Estado terminal do Swarm: ${state}"
+      return 1
+    fi
+    sleep 5
+  done
+  echo "   Timeout aguardando convergência (limite do rollout: ${ROLLOUT_TIMEOUT_SECONDS}s; janela total: ${RELEASE_WINDOW_SECONDS}s)."
+  return 1
+}
+
+rollback_release() {
+  echo "❌ Verificação falhou; restaurando ${PREVIOUS_IMAGE}..."
+  ${SSH_CMD} "docker service update --detach=true --image '${PREVIOUS_IMAGE}' '${SERVICE_NAME}'" || {
+    echo "❌ Rollback explícito falhou. Intervenção manual imediata necessária."
+    return 1
+  }
+  if ! wait_for_convergence "${PREVIOUS_IMAGE}"; then
+    echo "❌ Rollback não convergiu dentro da janela. Intervenção manual necessária."
+    return 1
+  fi
+  echo "✓ Rollback concluído e convergente."
+}
+
+if ! wait_for_convergence "${FULL_TAG}"; then
+  rollback_release
+  exit 1
+fi
+
+if ! curl --fail --silent --show-error --location \
+  --connect-timeout 5 --max-time 15 --retry 2 --retry-delay 2 \
+  --output /dev/null "${SMOKE_URL}"; then
+  echo "   Smoke HTTP falhou: ${SMOKE_URL}"
+  rollback_release
+  exit 1
+fi
+
+${SSH_CMD} "docker service ps '${SERVICE_NAME}' --format '{{.Name}}\t{{.CurrentState}}' | head -3"
+echo "   ✓ Serviço convergente e smoke HTTP aprovado"
 
 # ── 5. Limpeza de imagens antigas ─────────────────────────────
 echo ""

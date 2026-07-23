@@ -8,8 +8,8 @@ import { FileText, ShieldCheck, Download, Ruler } from "lucide-react"
 import { URBAN_FAMILIES, desenhoTecnicoHref } from "@/lib/urban-downloads"
 
 export const metadata = {
-    title: "Downloads de Catálogos Corporativos | B&B Indústria",
-    description: "Baixe nossos catálogos técnicos em PDF. Soluções completas em postes metálicos e iluminação LED para seu projeto.",
+    title: "Downloads de Catálogos Técnicos | B&B Iluminação",
+    description: "Baixe catálogos, datasheets e desenhos técnicos da B&B. Soluções metálicas para urbanismo com documentação para especificação.",
 }
 
 export default async function DownloadsPage() {

@@ -17,7 +17,7 @@ export function Benefits() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {benefits.map((benefit, index) => (
-                        <div key={index} className="bg-gradient-to-br from-industrial-900 to-industrial-800/80 border-l-4 border-l-accent-premium p-8 hover:-translate-y-1 hover:shadow-xl hover:shadow-accent-premium/5 transition-all duration-300 group rounded-sm">
+                        <div key={index} className="bg-gradient-to-br from-industrial-900 to-industrial-800/80 border-l-4 border-l-accent-premium p-8 hover:-translate-y-1 hover:shadow-xl hover:shadow-accent-premium/5 transition-all duration-300 group rounded-lg">
                             <h3 className="text-xl font-bold uppercase tracking-widest text-white group-hover:text-accent-premium transition-colors mb-4">{benefit.title}</h3>
                             <p className="text-sm text-industrial-300 leading-relaxed font-medium">
                                 {benefit.description}

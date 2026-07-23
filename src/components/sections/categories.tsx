@@ -3,10 +3,11 @@ import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 
 import { getCategories } from "@/lib/data"
+import { getPrimaryCatalogCategories } from "@/lib/catalog-curation"
 import { getProductLineHref } from "@/lib/seo/product-line-links"
 
 export async function Categories() {
-    const categoriesList = await getCategories();
+    const categoriesList = getPrimaryCatalogCategories(await getCategories());
     return (
         <section className="py-24 bg-industrial-950">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -22,7 +23,7 @@ export async function Categories() {
                         <Link
                             key={index}
                             href={getProductLineHref(cat.slug)}
-                            className="group relative block aspect-[4/5] overflow-hidden"
+                            className="group relative block aspect-[4/5] overflow-hidden rounded-lg"
                         >
                             {/* Imagem de Fundo do CMS */}
                             {cat.image ? (
@@ -33,7 +34,7 @@ export async function Categories() {
                                     className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-40"
                                 />
                             ) : (
-                                <div className="absolute inset-0 bg-industrial-900 border border-industrial-800" />
+                                <div className="absolute inset-0 bg-industrial-900 border border-industrial-800 rounded-lg" />
                             )}
 
                             {/* Gradiente Overlay */}
@@ -56,7 +57,7 @@ export async function Categories() {
                             </div>
 
                             {/* Borda Decorativa */}
-                            <div className="absolute inset-0 border border-white/5 group-hover:border-accent-premium/20 transition-colors pointer-events-none z-30" />
+                            <div className="absolute inset-0 border border-white/5 group-hover:border-accent-premium/20 transition-colors pointer-events-none z-30 rounded-lg" />
                         </Link>
                     ))}
                 </div>

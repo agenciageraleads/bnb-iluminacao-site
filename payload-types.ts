@@ -197,7 +197,18 @@ export interface Product {
         id?: string | null;
       }[]
     | null;
-  badges?: ('NBR 6323' | 'NBR 6123' | 'Qualidade ISO' | 'Garantia B&B' | 'Selo Próprio')[] | null;
+  badges?:
+    | (
+        | 'NBR 6323'
+        | 'NBR 6123'
+        | 'NBR 14744'
+        | 'Qualidade ISO'
+        | 'Garantia B&B'
+        | 'Selo Próprio'
+        | 'LED Integrado'
+        | 'Lançamento'
+      )[]
+    | null;
   applications?:
     | {
         app: string;
@@ -431,6 +442,10 @@ export interface Region {
 export interface Representative {
   id: number;
   /**
+   * Usado para sincronização automática do onboarding do CRM.
+   */
+  crmUserId?: string | null;
+  /**
    * Menor número aparece primeiro. Use intervalos como 10, 20 e 30 para facilitar ajustes futuros.
    */
   displayOrder?: number | null;
@@ -474,6 +489,18 @@ export interface Representative {
    * Ex: "Nordeste e Norte", "Sul de Minas". Serve para categorização visual se necessário.
    */
   region?: string | null;
+  /**
+   * Sincronizado pelo CRM. Mantém UF, macro-região, cidades, DDDs e status de revisão.
+   */
+  territories?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
   /**
    * Selecione todos os canais/mercados atendidos por este representante.
    */
@@ -915,6 +942,7 @@ export interface RegionsSelect<T extends boolean = true> {
  * via the `definition` "representatives_select".
  */
 export interface RepresentativesSelect<T extends boolean = true> {
+  crmUserId?: T;
   displayOrder?: T;
   name?: T;
   company?: T;
@@ -922,6 +950,7 @@ export interface RepresentativesSelect<T extends boolean = true> {
   phone?: T;
   states?: T;
   region?: T;
+  territories?: T;
   markets?: T;
   updatedAt?: T;
   createdAt?: T;

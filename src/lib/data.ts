@@ -9,6 +9,19 @@ async function getClient() {
   return await getPayload({ config })
 }
 
+function shuffleItems<T>(items: T[]): T[] {
+  const shuffled = [...items]
+
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1))
+    const current = shuffled[index]
+    shuffled[index] = shuffled[swapIndex]
+    shuffled[swapIndex] = current
+  }
+
+  return shuffled
+}
+
 // Helper para converter Lexical JSON em string simples
 function extractTextFromLexical(node: any): string {
     if (!node) return "";
@@ -22,14 +35,29 @@ function extractTextFromLexical(node: any): string {
 }
 
 export interface Representative {
+    id: string | number
     name: string
     company?: string | null
     email: string
     phone: string
     states: string[]
     region?: string
+    territories?: RepresentativeTerritory[]
     displayOrder?: number | null
     markets?: string[] | null
+}
+
+export interface RepresentativeTerritory {
+    key?: string | null
+    uf: string
+    macroRegion: string
+    cities: string[]
+    ibgeCodes?: string[]
+    dddCodes?: string[]
+    priority?: number
+    isExclusive?: boolean
+    status?: string
+    notes?: string | null
 }
 
 export interface ClientLogo {
@@ -165,16 +193,20 @@ export const getRepresentatives = async (): Promise<Representative[]> => {
       sort: ['displayOrder', 'name'],
     })
 
-    return docs.map(doc => ({
+    const representatives = docs.map(doc => ({
+      id: doc.id as string | number,
       name: doc.name as string,
       company: doc.company as string | null,
       email: doc.email as string,
       phone: doc.phone as string,
       states: doc.states as string[] || [],
       region: doc.region as string || '',
+      territories: Array.isArray(doc.territories) ? doc.territories as RepresentativeTerritory[] : [],
       displayOrder: doc.displayOrder as number | null,
       markets: doc.markets as string[] || [],
     }))
+
+    return shuffleItems(representatives)
   } catch (error) {
     console.error("Erro ao conectar ao CMS para representantes.", error);
     return [];
@@ -282,6 +314,9 @@ export const getBlogPosts = async (limit: number = 10): Promise<Post[]> => {
       sort: '-createdAt',
       limit,
       depth: 1,
+      where: {
+        status: { equals: 'published' },
+      },
     })
 
     return docs.map(doc => ({
@@ -305,7 +340,10 @@ export const getBlogPostBySlug = async (slug: string): Promise<any> => {
     const { docs } = await payload.find({
       collection: 'blog' as any,
       where: {
-        slug: { equals: slug }
+        and: [
+          { slug: { equals: slug } },
+          { status: { equals: 'published' } },
+        ],
       },
       limit: 1,
       depth: 1,

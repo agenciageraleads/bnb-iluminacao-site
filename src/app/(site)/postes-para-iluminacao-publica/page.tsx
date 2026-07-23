@@ -24,6 +24,7 @@ import { SchemaOrg } from "@/components/seo/schema-org"
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
 import { WhatsAppLink } from "@/components/ui/whatsapp-link"
 import { getPortfolioProjects, getProducts } from "@/lib/data"
+import { getPrimaryCatalogProducts } from "@/lib/catalog-curation"
 import {
     SITE_URL,
     createBreadcrumbSchema,
@@ -39,21 +40,21 @@ export const dynamic = "force-dynamic"
 
 const pageUrl = "https://bebiluminacao.com.br/postes-para-iluminacao-publica"
 const pageDescription =
-    "Postes para iluminacao publica e urbana com modelos teleconicos, retos e curvos. Fabricacao propria, suporte tecnico, catalogos e entrega nacional."
+    "Postes de iluminacao publica e urbana: modelos retos, teleconicos, curvos, bracos e suportes. Fabricacao propria, NBR, catalogos e entrega nacional."
 const whatsappMessage =
     "Ola, vim pela pagina de postes para iluminacao publica e quero solicitar um orcamento tecnico."
 const heroImage = "/images/seo/postes-metalicos/via-iluminada-poste-teleconico-reto.webp"
 
 export const metadata: Metadata = {
     title: {
-        absolute: "Postes para Iluminacao Publica | Modelos e Orcamento B&B",
+        absolute: "Postes de Iluminacao Publica | Fabricante B&B",
     },
     description: pageDescription,
     alternates: {
         canonical: pageUrl,
     },
     openGraph: {
-        title: "Postes para Iluminacao Publica | Modelos e Orcamento B&B",
+        title: "Postes de Iluminacao Publica | Fabricante B&B",
         description: pageDescription,
         url: pageUrl,
         type: "website",
@@ -121,6 +122,22 @@ const decisionRows = [
     ["Loteamento", "Poste teleconico ou padrao urbano", "Repetibilidade, prazo, quantidade e padronizacao"],
     ["Estacionamento publico", "Poste reto ou teleconico", "Area de cobertura, altura e interferencias no piso"],
     ["Area institucional", "Poste sob especificacao", "Ambiente, durabilidade, acabamento e manutencao"],
+]
+
+const technicalCatalogRows = [
+    ["Poste reto para iluminacao publica", "TR engastado ou flangeado", "Vias locais, estacionamentos, patios e areas institucionais"],
+    ["Poste teleconico para iluminacao publica", "TCS/TCD/TR conforme projeto", "Avenidas, loteamentos, condominios e vias urbanas"],
+    ["Poste curvo simples", "Avanco unico para luminaria", "Ruas, acessos, calcadas e laterais de vias"],
+    ["Poste curvo duplo", "Dois avancos para luminarias", "Canteiros centrais, avenidas e areas com dois sentidos"],
+    ["Braco ou suporte para luminaria publica", "NEX e suportes metalicos", "Compatibilizacao entre poste, luminaria e projeto luminotecnico"],
+]
+
+const complianceRows = [
+    ["Material", "Aco carbono ou estrutural conforme desenho, memoriais e solicitacao do projeto."],
+    ["Acabamento", "Galvanizacao a fogo, pintura eletrostatica ou combinacao definida conforme ambiente e memorial."],
+    ["Normas de referencia", "NBR 14744 para postes de aco e NBR 6323 para galvanizacao a fogo quando aplicavel."],
+    ["Fixacao", "Postes engastados, flangeados, bases e chumbadores definidos conforme solo, obra civil e esforcos previstos."],
+    ["Documentacao", "Catalogo, datasheet, desenho tecnico, memorial e orientacao para briefing de orcamento."],
 ]
 
 const quoteData = [
@@ -225,6 +242,16 @@ const faq = [
         answer:
             "Sim. O time comercial pode orientar a conversa tecnica inicial para transformar a demanda em uma cotacao mais clara para engenharia e compras.",
     },
+    {
+        question: "Postes de iluminacao publica precisam seguir norma tecnica?",
+        answer:
+            "Projetos de iluminacao publica devem considerar requisitos tecnicos, memoriais, ambiente, fixacao, cargas e normas aplicaveis. A B&B orienta a cotacao com referencias como NBR 14744 e NBR 6323 quando cabiveis ao produto e acabamento.",
+    },
+    {
+        question: "Qual a diferenca entre poste reto, curvo e teleconico para iluminacao publica?",
+        answer:
+            "O poste reto atende aplicacoes objetivas e patios; o curvo posiciona a luminaria com avanco lateral; o teleconico combina rigidez, visual limpo e ampla aplicacao urbana. A escolha depende de altura, luminaria, via, fixacao e projeto.",
+    },
 ]
 
 function getSchema() {
@@ -266,7 +293,7 @@ export default async function PostesParaIluminacaoPublicaPage() {
         getPortfolioProjects(),
     ])
 
-    const featuredProducts = products
+    const featuredProducts = getPrimaryCatalogProducts(products)
         .filter((product) => /poste|braco|suporte/i.test(`${product.name} ${product.model}`))
         .slice(0, 6)
     const featuredProjects = projects.filter((project) => project.image).slice(0, 3)
@@ -409,6 +436,64 @@ export default async function PostesParaIluminacaoPublicaPage() {
                                 </div>
                                 <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-200">
                                     {criterion}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="py-20 md:py-28">
+                <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+                    <div className="space-y-5">
+                        <SectionLabel>Catalogo tecnico</SectionLabel>
+                        <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
+                            Modelos B&B para postes de iluminacao publica
+                        </h2>
+                        <p className="text-base leading-relaxed text-industrial-600">
+                            A pagina precisa responder a busca comercial e tecnica ao mesmo tempo. Por isso, a B&B
+                            apresenta os tipos de poste, acessorios e aplicacoes antes do orcamento, deixando claro o
+                            caminho entre demanda urbana e especificacao.
+                        </p>
+                    </div>
+                    <div className="overflow-hidden border border-industrial-200">
+                        {technicalCatalogRows.map(([model, configuration, use]) => (
+                            <div key={model} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[240px_1fr_1fr]">
+                                <div className="bg-industrial-50 px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-700">
+                                    {model}
+                                </div>
+                                <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-800">
+                                    {configuration}
+                                </div>
+                                <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-800">
+                                    {use}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="bg-industrial-50 py-20 md:py-28">
+                <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+                    <div className="space-y-5">
+                        <SectionLabel>Norma e acabamento</SectionLabel>
+                        <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
+                            Especificacao que evita retrabalho na obra
+                        </h2>
+                        <p className="text-base leading-relaxed text-industrial-600">
+                            O comprador de postes para iluminacao publica nao precisa apenas de preco. Precisa de um
+                            produto compativel com ambiente, luminaria, fixacao, memorial tecnico, prazo e fiscalizacao.
+                        </p>
+                    </div>
+                    <div className="overflow-hidden border border-industrial-200 bg-white">
+                        {complianceRows.map(([label, value]) => (
+                            <div key={label} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[220px_1fr]">
+                                <div className="bg-white px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-600">
+                                    {label}
+                                </div>
+                                <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-800">
+                                    {value}
                                 </div>
                             </div>
                         ))}

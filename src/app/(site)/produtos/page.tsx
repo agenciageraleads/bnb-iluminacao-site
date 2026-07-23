@@ -7,6 +7,7 @@ import Link from "next/link"
 import { getProducts, getCategories } from "@/lib/data"
 import { CategoryOverview } from "@/components/products/CategoryOverview"
 import { getProductLineHref } from "@/lib/seo/product-line-links"
+import { getPrimaryCatalogCategories, getPrimaryCatalogProducts } from "@/lib/catalog-curation"
 
 export const metadata: Metadata = {
     title: "Catálogo de Produtos | B&B Iluminação",
@@ -23,6 +24,8 @@ export default async function ProdutosPage() {
         getProducts(),
         getCategories()
     ]);
+    const primaryCategories = getPrimaryCatalogCategories(categoriesList)
+    const primaryProducts = getPrimaryCatalogProducts(products)
     
     return (
         <main className="min-h-screen bg-white">
@@ -45,7 +48,7 @@ export default async function ProdutosPage() {
             </section>
 
             {/* Resumo das Categorias — NOVO */}
-            <CategoryOverview categories={categoriesList} />
+            <CategoryOverview categories={primaryCategories} />
 
             <div className="container mx-auto px-4 py-8 md:py-12 border-t border-industrial-100">
                 <div className="mb-12">
@@ -81,7 +84,7 @@ export default async function ProdutosPage() {
                     >
                         Todos
                     </Link>
-                    {categoriesList.map((cat) => (
+                    {primaryCategories.map((cat) => (
                         <Link
                             key={cat.slug}
                             href={getProductLineHref(cat.slug)}
@@ -94,7 +97,7 @@ export default async function ProdutosPage() {
 
                 {/* Grid de produtos */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5" role="list" aria-label="Lista de produtos">
-                    {products.map((product) => (
+                    {primaryProducts.map((product) => (
                         <Link
                             key={product.id}
                             href={`/produtos/item/${product.id}`}
@@ -121,7 +124,7 @@ export default async function ProdutosPage() {
                                     </span>
                                 )}
                                 <span className="absolute top-3 right-3 bg-industrial-950 text-white text-[9px] font-black uppercase tracking-tight px-2 py-1">
-                                    {categoriesList.find(c => c.slug === product.category)?.title || product.category}
+                                    {primaryCategories.find(c => c.slug === product.category)?.title || product.category}
                                 </span>
                             </div>
 

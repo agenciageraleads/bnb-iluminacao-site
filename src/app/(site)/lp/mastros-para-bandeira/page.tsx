@@ -173,8 +173,8 @@ export default async function MastrosLP() {
                         <div className="flex-1 w-full max-w-2xl lg:max-w-none">
                             <div className="relative aspect-[4/3] lg:aspect-square bg-industrial-100 border-8 border-white shadow-2xl skew-y-2 lg:skew-y-0 lg:-rotate-2 hover:rotate-0 transition-transform duration-500">
                                 <Image
-                                    src="/portfolio/reserva-parque.webp"
-                                    alt="Mastro para bandeira em aço galvanizado instalado em área externa"
+                                    src="/images/produtos/mastro-bandeira-flangeado.jpg"
+                                    alt="Mastros para bandeira em aço galvanizado instalados em fachada corporativa"
                                     fill
                                     className="object-cover"
                                 />

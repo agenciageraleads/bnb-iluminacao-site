@@ -8,6 +8,14 @@ import { fileURLToPath } from 'url'
 // Configuração para compatibilidade de diretório
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
+const allowedBadges = ['NBR 6323', 'NBR 6123', 'NBR 14744', 'Qualidade ISO', 'Garantia B&B', 'Selo Próprio', 'LED Integrado', 'Lançamento']
+const mediaSourceDirs = ['temp_images', 'public/images/produtos', 'produto_imagens']
+const selectedSlugs = new Set(
+    (process.env.PRODUCT_IMPORT_SLUGS || '')
+        .split(',')
+        .map((slug) => slug.trim())
+        .filter(Boolean)
+)
 
 async function importProducts() {
     console.log('--- Iniciando Importação Massiva de Produtos ---')
@@ -33,6 +41,9 @@ async function importProducts() {
     for (const row of data) {
         try {
             if (!row.Nome) continue; // Pular linhas vazias
+            const slug = row.Slug || row.Nome.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-')
+            if (selectedSlugs.size > 0 && !selectedSlugs.has(slug)) continue
+
             console.log(`\n> Processando: ${row.Nome}`)
 
             // A. Gerenciar Categoria
@@ -110,7 +121,7 @@ async function importProducts() {
             // E. Criar Produto
             const productData: any = {
                 name: row.Nome,
-                slug: row.Slug || row.Nome.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '-'),
+                slug,
                 model: row.Modelo,
                 category: categoryId,
                 description: row.Descricao ? {
@@ -160,7 +171,7 @@ async function importProducts() {
                 gallery: galleryIds,
                 leadTime: row.Prazo_Producao,
                 badges: row.Badges 
-                    ? row.Badges.split(',').map((s: string) => s.trim()).filter((s: string) => ['NBR 6323', 'NBR 6123', 'Qualidade ISO', 'Garantia B&B', 'Selo Próprio'].includes(s)) 
+                    ? row.Badges.split(',').map((s: string) => s.trim()).filter((s: string) => allowedBadges.includes(s)) 
                     : [],
                 applications: (row.Aplicacoes || row.Aplicações) 
                     ? (row.Aplicacoes || row.Aplicações).split(',').map((s: string) => ({ app: s.trim() })) 
@@ -218,18 +229,21 @@ async function getOrCreateMedia(payload: any, fileName: string) {
 
     if (existingMedia.length > 0) return existingMedia[0].id
 
-    // 2. Se não existir, tentar subir da pasta temporária
-    const tempPath = path.resolve(__dirname, '../../temp_images', fileName)
-    if (fs.existsSync(tempPath)) {
+    // 2. Se não existir, tentar subir das pastas locais de importação
+    const localPath = mediaSourceDirs
+        .map((dir) => path.resolve(__dirname, '../..', dir, fileName))
+        .find((candidate) => fs.existsSync(candidate))
+
+    if (localPath) {
         console.log(`  - Subindo imagem: ${fileName}`)
-        const mediaFile = fs.readFileSync(tempPath)
+        const mediaFile = fs.readFileSync(localPath)
         const mediaDoc = await payload.create({
             collection: 'media',
             data: { alt: fileName },
             file: {
                 data: mediaFile,
                 name: fileName,
-                mimetype: fileName.endsWith('.png') ? 'image/png' : 'image/jpeg',
+                mimetype: getMimeType(fileName),
                 size: mediaFile.length,
             },
         })
@@ -238,6 +252,14 @@ async function getOrCreateMedia(payload: any, fileName: string) {
 
     console.warn(`  ! Imagem não encontrada: ${fileName}`)
     return null
+}
+
+function getMimeType(fileName: string) {
+    const ext = path.extname(fileName).toLowerCase()
+
+    if (ext === '.png') return 'image/png'
+    if (ext === '.webp') return 'image/webp'
+    return 'image/jpeg'
 }
 
 importProducts()

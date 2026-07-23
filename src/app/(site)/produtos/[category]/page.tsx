@@ -5,10 +5,15 @@ import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
 import { ArrowLeft, Filter } from "lucide-react"
 import Link from "next/link"
 import { getProducts, getCategories } from "@/lib/data"
-import { redirect } from "next/navigation"
+import { notFound, redirect } from "next/navigation"
 import { SITE_URL, absoluteUrl } from "@/lib/seo/schema"
+import { isPrimaryCatalogCategory } from "@/lib/catalog-curation"
 
 export const dynamic = 'force-dynamic'
+
+const legacyCategoryRedirects: Record<string, string> = {
+    "poste-metalico": "/postes-metalicos",
+}
 
 interface CategoryPageProps {
     params: Promise<{ category: string }>
@@ -16,6 +21,24 @@ interface CategoryPageProps {
 
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
     const { category: categorySlug } = await params
+
+    if (legacyCategoryRedirects[categorySlug]) {
+        return {
+            title: {
+                absolute: "Postes Metalicos e Galvanizados | Fabrica B&B",
+            },
+            description:
+                "Postes metalicos e galvanizados direto da fabrica: modelos retos, teleconicos, curvos e ornamentais para iluminacao publica, condominios e obras.",
+            robots: {
+                index: false,
+                follow: true,
+            },
+            alternates: {
+                canonical: `${SITE_URL}${legacyCategoryRedirects[categorySlug]}`,
+            },
+        }
+    }
+
     const allCategories = await getCategories()
     const category = allCategories.find(c => c.slug === categorySlug)
 
@@ -28,6 +51,12 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
                 absolute: `${category.title} | Produtos B&B Iluminacao`,
             },
             description: category.description,
+            robots: isPrimaryCatalogCategory(category.slug)
+                ? undefined
+                : {
+                    index: false,
+                    follow: true,
+                },
             alternates: {
                 canonical: pageUrl,
             },
@@ -81,6 +110,12 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
     const { category: categorySlug } = await params;
+
+    const legacyRedirect = legacyCategoryRedirects[categorySlug]
+
+    if (legacyRedirect) {
+        redirect(legacyRedirect)
+    }
     
     // Tentar encontrar se é uma categoria
     const allCategories = await getCategories();
@@ -94,6 +129,8 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         if (productAsCategory) {
             redirect(`/produtos/item/${categorySlug}`);
         }
+
+        notFound()
     }
 
     const products = await getProducts();

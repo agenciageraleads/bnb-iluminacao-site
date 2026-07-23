@@ -9,6 +9,7 @@ import Script from "next/script"
 import { Calendar, User, ArrowLeft, CheckCircle2 } from "lucide-react"
 import Link from "next/link"
 import { SITE_URL, absoluteUrl } from "@/lib/seo/schema"
+import { sanitizeBlogHtml, serializeJsonLd } from "@/lib/blog-html"
 
 interface BlogPostPageProps {
     params: Promise<{ slug: string }>
@@ -79,6 +80,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
     const authorId = `${SITE_URL}/#person-${post.author.replace(/\s+/g, '-').toLowerCase()}`
     const pageUrl = `${SITE_URL}/blog/${slug}`
+    const safeBodyHtml = sanitizeBlogHtml(post.bodyHtml)
 
     const jsonLd = {
       "@context": "https://schema.org",
@@ -126,7 +128,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <Script
                 id="article-schema"
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+                dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
             />
             <Header />
             
@@ -174,7 +176,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                         <div className="lg:col-span-8">
                             <div 
                                 className="prose-industrial max-w-none overflow-x-hidden"
-                                dangerouslySetInnerHTML={{ __html: post.bodyHtml || `<p className="text-industrial-400">Conteúdo técnico em processamento...</p>` }} 
+                                dangerouslySetInnerHTML={{ __html: safeBodyHtml || '<p>Conteúdo técnico em processamento...</p>' }}
                             />
 
                             {/* Seção de FAQ */}

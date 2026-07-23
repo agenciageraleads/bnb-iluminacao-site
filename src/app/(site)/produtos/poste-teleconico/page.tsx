@@ -38,7 +38,7 @@ import {
 
 const pageUrl = "https://bebiluminacao.com.br/produtos/poste-teleconico"
 const pageDescription =
-    "Poste teleconico para iluminacao publica, avenidas, pracas, condominios e estacionamentos. Modelos retos, curvos, flangeados e engastados com orcamento tecnico."
+    "Poste teleconico galvanizado, reto, curvo, flangeado ou engastado para iluminacao publica, avenidas, condominios e estacionamentos. Orcamento B&B."
 const whatsappMessage =
     "Ola, vim pela pagina de poste teleconico e quero solicitar um orcamento tecnico."
 const heroImage = "/images/produtos/poste-reto-avenida-dia.png"
@@ -147,6 +147,22 @@ const decisionRows = [
     ["Curvo duplo", "Avenidas, canteiros centrais e vias largas", "Quando o projeto precisa iluminar dois sentidos ou lados opostos."],
     ["Engastado", "Instalacoes com poste embutido no solo", "Quando o projeto civil preve fundacao para engastamento."],
     ["Flangeado", "Bases, lajes, chumbadores e areas com manutencao prevista", "Quando a fixacao precisa de base aparafusada conforme projeto."],
+]
+
+const searchIntentRows = [
+    ["Poste teleconico", "Entender modelo, aplicacao, altura, fixacao e acabamento antes da cotacao."],
+    ["Postes teleconicos", "Comparar familia de modelos para vias, loteamentos, condominios e estacionamentos."],
+    ["Poste teleconico galvanizado", "Validar acabamento para durabilidade e resistencia em ambiente externo."],
+    ["Fabricante de postes teleconicos", "Comprar com origem fabril, suporte tecnico e atendimento nacional."],
+    ["Poste teleconico reto ou curvo", "Escolher geometria conforme luminaria, avanco, via e manutencao."],
+]
+
+const complianceRows = [
+    ["Material", "Aco carbono ou estrutural definido conforme projeto, altura, esforcos e aplicacao."],
+    ["NBR 14744", "Referencia tecnica para postes de aco quando aplicavel ao escopo do produto."],
+    ["NBR 6323", "Referencia para galvanizacao a fogo quando o projeto especifica poste teleconico galvanizado."],
+    ["Fixacao", "Engastado ou flangeado conforme base, solo, chumbadores, manutencao e obra civil."],
+    ["Briefing", "Modelo, altura, luminaria, quantidade, cidade/UF, acabamento, prazo e memorial quando houver."],
 ]
 
 const finishOptions = [
@@ -273,6 +289,16 @@ const faq = [
         question: "Quais dados enviar para cotar poste teleconico?",
         answer:
             "Envie modelo desejado, aplicacao, altura aproximada, quantidade, cidade e UF, tipo de fixacao, acabamento, luminaria, prazo e, se houver, desenho ou memorial tecnico.",
+    },
+    {
+        question: "Quando usar poste teleconico galvanizado?",
+        answer:
+            "O poste teleconico galvanizado e indicado quando o projeto exige maior protecao contra corrosao e vida util em ambiente externo. A definicao deve considerar local, memorial, manutencao e acabamento desejado.",
+    },
+    {
+        question: "A B&B e fabricante de postes teleconicos?",
+        answer:
+            "Sim. A B&B fabrica postes metalicos e teleconicos com orientacao para modelo, fixacao, acabamento e aplicacao, usando Goiania como prova fabril e atendimento nacional para projetos B2B.",
     },
 ]
 
@@ -429,6 +455,33 @@ export default function PosteTeleconicoPage() {
                 </div>
             </section>
 
+            <section className="bg-industrial-50 py-20 md:py-28">
+                <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+                    <div className="space-y-5">
+                        <SectionLabel>Intencao de busca</SectionLabel>
+                        <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
+                            Variacoes que a pagina precisa cobrir
+                        </h2>
+                        <p className="text-base leading-relaxed text-industrial-600">
+                            A SERP de teleconicos mistura fabricante, revenda e produto fechado. A B&B precisa responder
+                            as variacoes principais em uma pagina tecnicamente completa, sem depender de texto generico.
+                        </p>
+                    </div>
+                    <div className="overflow-hidden border border-industrial-200 bg-white">
+                        {searchIntentRows.map(([term, answer]) => (
+                            <div key={term} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[260px_1fr]">
+                                <div className="bg-white px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-600">
+                                    {term}
+                                </div>
+                                <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-800">
+                                    {answer}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             <section className="bg-industrial-950 py-20 text-white md:py-28">
                 <div className="container mx-auto px-4">
                     <div className="mb-12 max-w-3xl space-y-5">
@@ -497,6 +550,33 @@ export default function PosteTeleconicoPage() {
                                 </div>
                                 <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-800">
                                     {criterion}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
+            <section className="bg-industrial-50 py-20 md:py-28">
+                <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
+                    <div className="space-y-5">
+                        <SectionLabel>Norma e briefing</SectionLabel>
+                        <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
+                            Criterios para especificar poste teleconico
+                        </h2>
+                        <p className="text-base leading-relaxed text-industrial-600">
+                            O comprador precisa comparar mais que preco. A especificacao correta depende de material,
+                            acabamento, norma aplicavel, fixacao, luminaria, altura e ambiente.
+                        </p>
+                    </div>
+                    <div className="overflow-hidden border border-industrial-200 bg-white">
+                        {complianceRows.map(([label, value]) => (
+                            <div key={label} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[220px_1fr]">
+                                <div className="bg-white px-5 py-4 text-xs font-black uppercase tracking-widest text-industrial-600">
+                                    {label}
+                                </div>
+                                <div className="px-5 py-4 text-sm font-medium leading-relaxed text-industrial-800">
+                                    {value}
                                 </div>
                             </div>
                         ))}

@@ -1,4 +1,11 @@
 export const productLineLinks: Record<string, string> = {
+    urban: "/produtos/poste-teleconico",
+    versa: "/produtos/versa",
+    forza: "/produtos/forza",
+    civis: "/lp/mastros-para-bandeira",
+    vigia: "/produtos/vigia",
+    nexo: "/produtos/braco-para-luminaria-publica",
+    orna: "/produtos/orna",
     "linha-urban": "/produtos/poste-teleconico",
     "linha-versa": "/postes-para-pracas",
     "linha-forza": "/postes-metalicos",
