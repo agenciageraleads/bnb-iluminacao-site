@@ -3,7 +3,7 @@ import { Header } from "@/components/layout/header"
 import { getBlogPosts, Post } from "@/lib/data"
 import Link from "next/link"
 import Image from "next/image"
-import { Calendar, ArrowRight, Anchor, BookOpen, Paintbrush, Ruler, Zap } from "lucide-react"
+import { Calendar, ArrowRight, Anchor, BookOpen, Lightbulb, Paintbrush, Ruler, Zap } from "lucide-react"
 import { unstable_noStore as noStore } from "next/cache"
 
 export const metadata: Metadata = {
@@ -17,6 +17,16 @@ export const metadata: Metadata = {
 export const dynamic = 'force-dynamic'
 
 const featuredGuides = [
+    {
+        title: "Qual Poste B&B para Cada Aplicacao",
+        summary:
+            "Guia de decisao pelas 7 linhas B&B (Urban, Orna, Versa, Forza, Vigia, Nexo e Civis): a linha certa por aplicacao, com codigos para cotar.",
+        href: "/blog/qual-poste-para-cada-aplicacao",
+        image: "/images/produtos/poste-curvo-duplo-avenida-dia.png",
+        date: "27/07/2026",
+        tier: "Guia tecnico P0",
+        icon: Lightbulb,
+    },
     {
         title: "Altura de Poste para Iluminacao Publica",
         summary:
