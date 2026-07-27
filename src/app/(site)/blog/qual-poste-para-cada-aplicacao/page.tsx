@@ -221,8 +221,8 @@ const internalLinks = [
         icon: Building2,
     },
     {
-        title: "Poste teleconico ou reto",
-        description: "Depois de escolher a linha Urban, defina a geometria do modelo.",
+        title: "Poste curvo ou reto",
+        description: "Depois de escolher a linha Urban, defina a geometria do topo do poste.",
         href: "/blog/poste-teleconico-ou-reto",
         icon: Ruler,
     },

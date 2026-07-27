@@ -3,19 +3,19 @@ import Image from "next/image"
 import Link from "next/link"
 import type { ReactNode } from "react"
 import {
-    Anchor,
     ArrowRight,
     Building2,
+    Camera,
     ClipboardCheck,
     Download,
-    Factory,
     FileText,
-    Landmark,
+    Gauge,
+    Lightbulb,
     MessageCircle,
-    Paintbrush,
     Ruler,
     ShieldCheck,
-    Zap,
+    Video,
+    Wind,
 } from "lucide-react"
 
 import { Footer } from "@/components/layout/footer"
@@ -35,24 +35,25 @@ import {
     createWebPageSchema,
 } from "@/lib/seo/schema"
 
-const pageUrl = "https://bebiluminacao.com.br/blog/poste-teleconico-ou-reto"
-const pageTitle = "Poste Curvo ou Reto"
+const pageUrl =
+    "https://bebiluminacao.com.br/blog/como-dimensionar-iluminacao-ideal-cameras-seguranca-cftv-postes-metalicos-externos-9006"
+const pageTitle = "Poste para Camera: Como Dimensionar CFTV"
 const pageDescription =
-    "Poste curvo (braco que avanca sobre a via) ou reto (topo livre para bracos e suportes)? Todo poste teleconico e afunilado — entenda a geometria certa para cotar conforme aplicacao e luminaria."
-const heroImage = "/images/produtos/poste-reto-avenida-dia.png"
+    "Altura, rigidez e iluminacao de apoio para imagem nitida: como dimensionar postes metalicos para cameras de seguranca (CFTV) em areas externas — dome e bullet, sem vibracao que borre a cena."
+const heroImage = "/images/seo/postes-metalicos/area-industrial-iluminada-postes-metalicos.webp"
 const whatsappMessage =
-    "Ola, vim pelo guia de poste curvo ou reto e quero ajuda para definir o modelo correto no orcamento."
+    "Ola, vim pelo guia de poste para camera (CFTV) e quero ajuda para dimensionar altura, rigidez e iluminacao do meu projeto."
 
 export const metadata: Metadata = {
     title: {
-        absolute: "Poste Curvo ou Reto | Guia Tecnico B&B",
+        absolute: "Poste para Camera (CFTV): Como Dimensionar Iluminacao e Rigidez | Guia B&B",
     },
     description: pageDescription,
     alternates: {
         canonical: pageUrl,
     },
     openGraph: {
-        title: "Poste Curvo ou Reto | Guia Tecnico B&B",
+        title: "Poste para Camera (CFTV): Como Dimensionar | Guia B&B",
         description: pageDescription,
         url: pageUrl,
         type: "article",
@@ -61,213 +62,164 @@ export const metadata: Metadata = {
                 url: absoluteUrl(heroImage),
                 width: 1200,
                 height: 630,
-                alt: "Poste metalico reto em via urbana",
+                alt: "Area externa iluminada com postes metalicos B&B para monitoramento",
             },
         ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Poste para Camera (CFTV): Como Dimensionar | Guia B&B",
+        description: pageDescription,
+        images: [absoluteUrl(heroImage)],
     },
 }
 
 const decisionCards = [
     {
-        title: "Nome certo evita retrabalho",
+        title: "Altura define a cobertura",
         description:
-            "Teleconico fala do fuste afunilado. Reto pode falar da geometria sem curva. Em muitas compras, os dois termos aparecem juntos.",
-        icon: FileText,
-    },
-    {
-        title: "Luminaria define avanco",
-        description:
-            "Se a luminaria precisa avancar sobre a via, a conversa muda para braco, curvo simples ou curvo duplo.",
+            "A altura da camera fixa o campo de visao e o angulo. Alto demais perde detalhe do rosto/placa; baixo demais reduz o alcance e expoe a vandalismo.",
         icon: Ruler,
     },
     {
-        title: "Projeto fecha o modelo",
+        title: "Rigidez define a nitidez",
         description:
-            "Altura, fixacao, acabamento, vento, quantidade e memorial devem orientar o modelo final antes da cotacao.",
-        icon: ClipboardCheck,
+            "Poste que balanca com vento borra a imagem e dispara alarmes falsos. A rigidez do poste e tao importante quanto a camera.",
+        icon: Wind,
+    },
+    {
+        title: "Luz de apoio define a cena",
+        description:
+            "Sem luz suficiente e uniforme, a camera nao entrega imagem util a noite. Iluminacao de apoio e parte do projeto de CFTV.",
+        icon: Lightbulb,
     },
 ]
 
-const vocabularyRows = [
+const cameraRows = [
     [
-        "Poste teleconico",
-        "Fuste com geometria afunilada ao longo da altura.",
-        "Usado em vias, loteamentos, condominios, pracas, estacionamentos e areas urbanas.",
+        "Camera dome",
+        "Visao ampla de area, em posicao elevada.",
+        "Postes mais altos (faixa de 6 a 15 m) para cobrir patios, perimetros e vias monitoradas.",
     ],
     [
-        "Poste reto",
-        "Termo comercial que pode indicar poste vertical, sem curva no topo.",
-        "Pode existir como poste teleconico reto ou como modelo reto conforme catalogo/fabricacao.",
+        "Camera bullet",
+        "Visao direcionada para um alvo ou corredor.",
+        "Postes mais baixos (faixa de 3 a 6 m) para acessos, cancelas e pontos especificos.",
     ],
     [
-        "Poste curvo simples",
-        "Modelo com avanco para um lado.",
-        "Indicado quando a luminaria precisa projetar luz sobre rua, acesso, calcada ou faixa lateral.",
-    ],
-    [
-        "Poste curvo duplo",
-        "Modelo com avancos para dois lados.",
-        "Usado em canteiros centrais, avenidas e areas que precisam iluminar dois sentidos.",
+        "Suporte e topo",
+        "Interface entre poste, camera e caixa de equipamentos.",
+        "Suporte de topo dedicado mantem a camera firme, alinhada e protegida (linha Nexo).",
     ],
 ]
 
-const applicationCards = [
+const lightingPoints = [
     {
-        title: "Via local ou loteamento",
-        description: "Poste teleconico reto ou curvo simples pode atender, conforme luminaria, altura e largura da via.",
-        icon: Landmark,
+        title: "Nivel e uniformidade",
+        items: [
+            "garanta lux suficiente na cena, nao so no ponto sob o poste;",
+            "uniformidade evita areas escuras onde a imagem perde detalhe;",
+            "confirme o minimo com a norma e o fabricante da camera.",
+        ],
+        icon: Gauge,
     },
     {
-        title: "Avenida ou canteiro",
-        description: "Curvo duplo ou solucao com dois pontos pode fazer mais sentido quando ha dois sentidos de iluminacao.",
-        icon: Ruler,
-    },
-    {
-        title: "Estacionamento e patio",
-        description: "Postes retos costumam aparecer quando a cobertura depende de distribuicao por area e luminarias no topo/suporte.",
-        icon: Building2,
-    },
-    {
-        title: "Condominio e praca",
-        description: "A decisao combina visual, altura, paisagismo, seguranca, acabamento e facilidade de manutencao.",
+        title: "Contraluz e ofuscamento",
+        items: [
+            "evite a luminaria dentro do campo de visao da camera;",
+            "controle contraluz que transforma pessoas em silhuetas;",
+            "posicione a luz para iluminar a cena, nao a lente.",
+        ],
         icon: ShieldCheck,
     },
     {
-        title: "Area industrial",
-        description: "Altura, fixacao, acabamento, vento e interferencias operacionais pesam mais que o nome comercial.",
-        icon: Factory,
-    },
-    {
-        title: "Compra sob memorial",
-        description: "Se o projeto ja define modelo, use o memorial como base e envie o documento para cotacao.",
-        icon: FileText,
+        title: "Luz branca ou infravermelho",
+        items: [
+            "luz branca ajuda cor e efeito dissuasorio; IR entrega imagem discreta;",
+            "combine com a tecnologia da camera (colorida noturna, IR, starlight);",
+            "temperatura de cor coerente evita distorcao na cena.",
+        ],
+        icon: Lightbulb,
     },
 ]
 
-const modelGuide = [
-    {
-        title: "Peca poste teleconico reto quando",
-        items: [
-            "a luminaria fica no topo ou em suporte sem avanco curvo relevante;",
-            "a obra precisa de geometria vertical e repetibilidade visual;",
-            "o projeto cita fuste teleconico, altura e fixacao;",
-            "a aplicacao e via, loteamento, condominio, estacionamento ou patio.",
-        ],
-        href: "/produtos/poste-teleconico",
-        icon: Zap,
-    },
-    {
-        title: "Peca poste curvo quando",
-        items: [
-            "a luminaria precisa avancar sobre a pista ou calcada;",
-            "o poste deve direcionar o ponto de luz para um lado especifico;",
-            "a instalacao pede leitura urbana com braco integrado;",
-            "o projeto diferencia curvo simples ou curvo duplo.",
-        ],
-        href: "/produtos/poste-curvo-simples",
-        icon: Ruler,
-    },
-    {
-        title: "Peca revisao tecnica quando",
-        items: [
-            "o comprador so tem a foto ou uma referencia generica;",
-            "a altura, a fixacao ou o acabamento ainda nao foram definidos;",
-            "a obra tem vento, base, braco ou luminaria fora do padrao;",
-            "o edital usa termos diferentes do catalogo comercial.",
-        ],
-        href: "/postes-metalicos",
-        icon: ClipboardCheck,
-    },
+const stabilityRows = [
+    ["Vento e regiao", "Velocidade de vento local define o esforco no poste.", "Poste e base dimensionados para a regiao mantem a camera estavel."],
+    ["Altura e balanco", "Quanto mais alto, mais o topo tende a oscilar.", "Rigidez e secao do poste controlam a deflexao no topo."],
+    ["Carga no topo", "Camera, suporte e caixa somam peso e area de vento.", "Informe a carga real para dimensionar o poste correto."],
+    ["Fixacao", "Engaste ou flange transferem o esforco para a fundacao.", "Fixacao adequada evita vibracao que borra a imagem."],
 ]
 
 const quoteChecklist = [
-    "Aplicacao: via publica, loteamento, condominio, praca, estacionamento, patio ou area industrial.",
-    "Cidade, UF, quantidade, prazo e local de entrega.",
-    "Altura pretendida ou faixa aproximada.",
-    "Modelo desejado: teleconico reto, curvo simples, curvo duplo ou indefinido.",
-    "Luminaria, quantidade de pontos por poste, braco/suporte e necessidade de avanco.",
-    "Fixacao: engastado, flangeado, base, chumbadores ou indefinido.",
-    "Acabamento: galvanizado, pintado, galvanizado com pintura ou sob memorial.",
-    "Projeto, memorial, desenho, foto do local ou referencia visual, quando houver.",
+    "Tipo de camera: dome, bullet ou combinacao, e quantidade por poste.",
+    "Objetivo: visao geral de area, leitura de placa (LPR) ou reconhecimento facial.",
+    "Altura pretendida e campo de visao esperado.",
+    "Carga no topo: peso e dimensoes de camera, suporte e caixa de equipamentos.",
+    "Iluminacao prevista e se ha necessidade de luz de apoio no mesmo poste.",
+    "Cidade, UF (para vento), quantidade, prazo e local de entrega.",
+    "Fixacao: engastado, flangeado, chumbadores ou indefinido.",
+    "Projeto, memorial ou planta do perimetro, quando houver.",
+]
+
+const downloadLinks = [
+    { title: "Datasheet suporte de luminarias (Nexo)", href: "/downloads/datasheets/DATASHEET-BB-NEXO-SUPORTE-LUMINARIAS.pdf" },
+    { title: "Datasheet chumbador (Nexo)", href: "/downloads/datasheets/DATASHEET-BB-NEXO-CHUMBADOR.pdf" },
+    { title: "Datasheet poste reto", href: "/downloads/datasheets/DATASHEET-BB-POSTE-RETO.pdf" },
+    { title: "Todos os catalogos, datasheets e desenhos tecnicos", href: "/downloads" },
 ]
 
 const internalLinks = [
     {
-        title: "Poste teleconico",
-        description: "Veja a pagina comercial do modelo teleconico reto, curvo simples e curvo duplo.",
-        href: "/produtos/poste-teleconico",
-        icon: Zap,
+        title: "Qual linha para cada aplicacao",
+        description: "A linha Vigia e dedicada a seguranca e CFTV entre as 7 linhas B&B.",
+        href: "/blog/qual-poste-para-cada-aplicacao",
+        icon: Camera,
     },
     {
-        title: "Postes metalicos",
-        description: "Compare modelos e aplicacoes no hub nacional de postes metalicos.",
-        href: "/postes-metalicos",
+        title: "Solucoes para infraestrutura",
+        description: "Perimetros, vias e areas monitoradas em projetos de infraestrutura.",
+        href: "/solucoes/infraestrutura",
         icon: Building2,
     },
     {
         title: "Altura de poste",
-        description: "Continue a triagem por altura, via, luminaria, braco e fixacao.",
+        description: "A altura da camera muda cobertura, detalhe e rigidez necessaria.",
         href: "/blog/altura-de-poste-para-iluminacao-publica",
         icon: Ruler,
     },
     {
-        title: "Poste flangeado ou engastado",
-        description: "Defina se a fixacao deve partir de base com chumbadores ou engastamento em fundacao.",
-        href: "/blog/poste-flangeado-ou-engastado",
-        icon: Anchor,
-    },
-    {
-        title: "Poste galvanizado ou pintado",
-        description: "Defina o acabamento depois de escolher modelo, aplicacao e ambiente.",
-        href: "/blog/poste-galvanizado-ou-pintado",
-        icon: Paintbrush,
-    },
-]
-
-const downloadLinks = [
-    {
-        title: "Datasheet poste reto",
-        href: "/downloads/datasheets/DATASHEET-BB-POSTE-RETO.pdf",
-    },
-    {
-        title: "Datasheet poste curvo simples",
-        href: "/downloads/datasheets/DATASHEET-BB-POSTE-CURVO-SIMPLES.pdf",
-    },
-    {
-        title: "Datasheet poste curvo duplo",
-        href: "/downloads/datasheets/DATASHEET-BB-POSTE-CURVO-DUPLO.pdf",
-    },
-    {
-        title: "Catalogos e desenhos tecnicos",
-        href: "/downloads",
+        title: "Poste curvo ou reto",
+        description: "Defina a geometria do poste conforme a posicao da camera e da luz.",
+        href: "/blog/poste-teleconico-ou-reto",
+        icon: Video,
     },
 ]
 
 const faq = [
     {
-        question: "Poste teleconico e poste reto sao a mesma coisa?",
+        question: "Qual altura de poste para camera de seguranca?",
         answer:
-            "Nao necessariamente. Teleconico descreve o fuste afunilado. Reto pode indicar que o poste nao tem curva no topo. Por isso existe a expressao poste teleconico reto em muitas conversas comerciais.",
+            "Depende do objetivo. Cameras dome de visao ampla costumam usar postes mais altos (faixa de 6 a 15 m); cameras bullet direcionadas usam postes mais baixos (faixa de 3 a 6 m). Leitura de placa e reconhecimento facial pedem altura e angulo especificos — confirme com o projeto de CFTV.",
     },
     {
-        question: "Quando escolher poste teleconico reto?",
+        question: "Por que a rigidez do poste importa no CFTV?",
         answer:
-            "Quando o projeto pede poste vertical, geometria limpa, luminaria no topo ou em suporte, e nao precisa de avanco curvo integrado para jogar luz sobre a via.",
+            "Poste que oscila com o vento faz a imagem tremer, reduz o alcance util do zoom e gera alarmes falsos em analitico de video. Um poste com rigidez adequada mantem a camera estavel e a cena nitida.",
     },
     {
-        question: "Quando escolher poste curvo simples?",
+        question: "Preciso de iluminacao junto com a camera?",
         answer:
-            "Quando a luminaria precisa avancar para um lado da via, acesso, calcada ou area de circulacao. O avanco ajuda a posicionar melhor o ponto de luz.",
+            "Quase sempre. Sem luz suficiente e uniforme, a camera nao entrega imagem util a noite. A luz de apoio deve iluminar a cena sem ofuscar a lente nem criar contraluz. Pode ser luz branca, infravermelho ou a combinacao com a tecnologia da camera.",
     },
     {
-        question: "Quando escolher poste curvo duplo?",
+        question: "Da para ter camera e luminaria no mesmo poste?",
         answer:
-            "Quando o projeto precisa iluminar dois sentidos, como canteiros centrais, avenidas ou areas amplas com dois lados de cobertura.",
+            "Sim, e comum em perimetros e patios. E preciso dimensionar o poste para a carga somada, posicionar a luz para nao ofuscar a camera e usar suporte de topo adequado. Informe todos os equipamentos previstos para dimensionar corretamente.",
     },
     {
-        question: "O que enviar para a B&B indicar o modelo correto?",
+        question: "A B&B fornece o poste ou tambem a camera?",
         answer:
-            "Envie aplicacao, cidade e UF, altura, quantidade, luminaria, necessidade de avanco, fixacao, acabamento, prazo e qualquer desenho, memorial ou foto do local.",
+            "A B&B fabrica o poste, o suporte e a fixacao (linhas Vigia e Nexo) dimensionados para a camera e a iluminacao do projeto. A camera e o sistema de CFTV ficam com o integrador; a B&B garante a estrutura estavel e correta para receber esses equipamentos.",
     },
 ]
 
@@ -278,8 +230,8 @@ function createArticleSchema() {
         headline: pageTitle,
         description: pageDescription,
         image: absoluteUrl(heroImage),
-        datePublished: "2026-06-14",
-        dateModified: "2026-06-14",
+        datePublished: "2026-07-27",
+        dateModified: "2026-07-27",
         author: {
             "@id": ORGANIZATION_ID,
             name: "B&B Iluminacao",
@@ -310,9 +262,9 @@ function getSchema() {
             { name: pageTitle, item: pageUrl },
         ]),
         createItemListSchema({
-            id: `${pageUrl}#modelos`,
-            name: "Comparativo de modelos de postes metalicos",
-            items: vocabularyRows.map(([name, definition, use]) => ({
+            id: `${pageUrl}#cameras`,
+            name: "Postes metalicos para cameras de seguranca (CFTV)",
+            items: cameraRows.map(([name, definition, use]) => ({
                 name,
                 description: `${definition} ${use}`,
             })),
@@ -329,16 +281,16 @@ function SectionLabel({ children }: { children: ReactNode }) {
     )
 }
 
-export default function PosteTeleconicoOuRetoPage() {
+export default function PosteParaCameraCftvPage() {
     return (
         <main className="min-h-screen bg-white text-industrial-950">
-            <SchemaOrg id="poste-teleconico-ou-reto-schema" data={getSchema()} />
+            <SchemaOrg id="poste-camera-cftv-schema" data={getSchema()} />
             <Header />
             <div className="hidden 2xl:block">
                 <FloatingWhatsApp
                     message={whatsappMessage}
-                    eventLabel="Solicitar orcamento pelo guia teleconico ou reto"
-                    eventSource="floating_teleconico_ou_reto"
+                    eventLabel="Solicitar orcamento pelo guia de poste para camera CFTV"
+                    eventSource="floating_poste_cftv"
                 />
             </div>
 
@@ -360,34 +312,33 @@ export default function PosteTeleconicoOuRetoPage() {
                 <div className="container relative z-10 mx-auto px-4 pb-20 pt-12 md:pb-28">
                     <div className="max-w-4xl">
                         <div className="mb-6 inline-flex items-center gap-3 border border-white/15 bg-white/10 px-4 py-2 text-[11px] font-black uppercase tracking-[0.22em] text-white rounded-md">
-                            <Zap className="size-4 text-accent-premium" aria-hidden="true" />
-                            Guia tecnico para escolher modelo
+                            <Camera className="size-4 text-accent-premium" aria-hidden="true" />
+                            Guia tecnico de CFTV e postes
                         </div>
                         <h1 className="max-w-4xl text-4xl font-black uppercase leading-[0.95] tracking-tight text-white md:text-6xl lg:text-7xl">
-                            Poste Curvo ou Reto: Entenda Antes de Cotar
+                            Poste para Camera: Como Dimensionar
                         </h1>
                         <p className="mt-8 max-w-3xl text-base font-medium leading-relaxed text-industrial-200 md:text-xl">
-                            Todo poste teleconico e afunilado — o que muda e o topo: curvo, com braco que avanca sobre a
-                            via, ou reto, com topo livre para bracos e suportes. Este guia ajuda a nomear o modelo certo
-                            antes de pedir preco.
+                            Altura, rigidez e iluminacao de apoio para imagem nitida — o dimensionamento certo de CFTV,
+                            sem vibracao que borre a cena. O poste e parte do sistema de seguranca, nao um detalhe.
                         </p>
                         <div className="mt-10 flex flex-col gap-4 sm:flex-row">
                             <WhatsAppLink
                                 message={whatsappMessage}
-                                eventLabel="Solicitar orcamento pelo guia teleconico ou reto"
-                                eventSource="hero_teleconico_ou_reto"
+                                eventLabel="Solicitar orcamento pelo guia de poste para camera CFTV"
+                                eventSource="hero_poste_cftv"
                                 className="inline-flex h-14 items-center justify-center gap-3 bg-accent-premium px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-yellow-300 rounded-lg"
-                                aria-label="Solicitar orcamento de poste teleconico ou reto pelo WhatsApp"
+                                aria-label="Solicitar dimensionamento de poste para camera CFTV pelo WhatsApp"
                             >
                                 <MessageCircle className="size-5" aria-hidden="true" />
-                                Solicitar orcamento
+                                Solicitar dimensionamento
                             </WhatsAppLink>
                             <Link
-                                href="/produtos/poste-teleconico"
+                                href="/blog/qual-poste-para-cada-aplicacao"
                                 className="inline-flex h-14 items-center justify-center gap-3 border border-white/25 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-white hover:text-industrial-950 rounded-lg"
                             >
-                                <Zap className="size-5" aria-hidden="true" />
-                                Ver poste teleconico
+                                <ShieldCheck className="size-5" aria-hidden="true" />
+                                Conheca a linha Vigia
                             </Link>
                         </div>
                     </div>
@@ -417,23 +368,18 @@ export default function PosteTeleconicoOuRetoPage() {
                 <section className="py-20 md:py-28">
                     <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
                         <div className="space-y-6">
-                            <SectionLabel>Nomenclatura</SectionLabel>
+                            <SectionLabel>Camera e poste</SectionLabel>
                             <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                                Antes de comparar, alinhe o que cada termo significa
+                                O tipo de camera aponta o poste
                             </h2>
                             <p className="text-base leading-relaxed text-industrial-600 md:text-lg">
-                                "Teleconico" geralmente descreve o fuste do poste. "Reto" pode significar que o poste e
-                                vertical, sem curva integrada no topo. Por isso, um pedido pode ser perfeitamente descrito
-                                como poste teleconico reto.
-                            </p>
-                            <p className="text-base leading-relaxed text-industrial-600 md:text-lg">
-                                A escolha correta depende de onde a luminaria precisa ficar: no topo, em suporte, em braco,
-                                em poste curvo simples ou em poste curvo duplo.
+                                Dome para visao ampla, bullet para alvo direcionado. Cada uma pede uma faixa de altura e um
+                                suporte de topo. A linha Vigia da B&B cobre os dois casos, com a linha Nexo nos suportes.
                             </p>
                         </div>
 
                         <div className="overflow-hidden border border-industrial-200 rounded-2xl">
-                            {vocabularyRows.map(([term, definition, use]) => (
+                            {cameraRows.map(([term, definition, use]) => (
                                 <div key={term} className="grid border-b border-industrial-200 last:border-b-0 md:grid-cols-[220px_1fr]">
                                     <div className="bg-industrial-950 px-5 py-4 text-xs font-black uppercase tracking-widest text-white">
                                         {term}
@@ -447,9 +393,7 @@ export default function PosteTeleconicoOuRetoPage() {
                         </div>
                         <p className="mt-4 text-xs text-industrial-400">
                             Fontes tecnicas:{" "}
-                            <a href="https://www.abnt.org.br/" target="_blank" rel="noopener noreferrer" className="underline hover:text-industrial-800">ABNT — NBR 14744 (postes de aço para iluminação)</a>
-                            {" · "}
-                            <a href="https://abrasip.org.br/" target="_blank" rel="noopener noreferrer" className="underline hover:text-industrial-800">ABRASIP</a>
+                            <a href="https://www.abnt.org.br/" target="_blank" rel="noopener noreferrer" className="underline hover:text-industrial-800">ABNT — NBR 14744 (postes de aço) e NBR 5101 (iluminação)</a>
                             {" · "}
                             <a href="https://www.inmetro.gov.br/" target="_blank" rel="noopener noreferrer" className="underline hover:text-industrial-800">INMETRO</a>
                         </p>
@@ -457,29 +401,34 @@ export default function PosteTeleconicoOuRetoPage() {
                 </section>
 
                 <section className="bg-industrial-950 py-20 text-white md:py-28">
-                    <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
-                        <div className="space-y-5">
-                            <SectionLabel>Aplicacoes</SectionLabel>
+                    <div className="container mx-auto px-4">
+                        <div className="mb-12 max-w-3xl space-y-5">
+                            <SectionLabel>Iluminacao para CFTV</SectionLabel>
                             <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                                O uso do local indica a geometria do poste
+                                Luz certa e o que da imagem util a noite
                             </h2>
                             <p className="text-base leading-relaxed text-industrial-300">
-                                A forma do poste deve acompanhar o local de instalacao, a luminaria, o braco, a altura, a
-                                fixacao e o resultado luminotecnico esperado.
+                                Camera boa com luz ruim entrega cena inutil. A iluminacao de apoio faz parte do projeto de
+                                seguranca — nivel, direcao e tecnologia da luz precisam conversar com a camera.
                             </p>
                         </div>
-                        <div className="grid gap-4 sm:grid-cols-2">
-                            {applicationCards.map((item) => {
-                                const Icon = item.icon
+                        <div className="grid gap-4 md:grid-cols-3">
+                            {lightingPoints.map((point) => {
+                                const Icon = point.icon
                                 return (
-                                    <div key={item.title} className="border border-white/15 bg-white/5 p-6 rounded-2xl">
+                                    <div key={point.title} className="border border-white/15 bg-white/5 p-6 rounded-2xl">
                                         <div className="mb-6 flex size-12 items-center justify-center bg-white text-industrial-950 rounded-lg">
                                             <Icon className="size-6 text-accent-dark" aria-hidden="true" />
                                         </div>
-                                        <h3 className="text-base font-black uppercase tracking-tight text-white">
-                                            {item.title}
-                                        </h3>
-                                        <p className="mt-3 text-sm leading-relaxed text-industrial-300">{item.description}</p>
+                                        <h3 className="text-base font-black uppercase tracking-tight text-white">{point.title}</h3>
+                                        <ul className="mt-5 space-y-3">
+                                            {point.items.map((item) => (
+                                                <li key={item} className="flex gap-3 text-sm leading-relaxed text-industrial-300">
+                                                    <span className="mt-2 size-1.5 shrink-0 bg-accent-premium" aria-hidden="true" />
+                                                    <span>{item}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
                                     </div>
                                 )
                             })}
@@ -488,44 +437,25 @@ export default function PosteTeleconicoOuRetoPage() {
                 </section>
 
                 <section className="py-20 md:py-28">
-                    <div className="container mx-auto px-4">
-                        <div className="mb-12 max-w-3xl space-y-5">
-                            <SectionLabel>Escolha inicial</SectionLabel>
+                    <div className="container mx-auto grid gap-12 px-4 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+                        <div className="space-y-5">
+                            <SectionLabel>Rigidez e vibracao</SectionLabel>
                             <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                                Como pedir o modelo com menos margem para erro
+                                Imagem estavel comeca no poste
                             </h2>
                             <p className="text-base leading-relaxed text-industrial-600">
-                                Use estes cenarios para organizar o pedido antes de falar com a fabrica. A confirmacao final
-                                depende de projeto, memorial, luminaria, fixacao, acabamento e local de instalacao.
+                                O que faz a imagem tremer nao e so a camera: e o poste oscilando. Estes fatores definem a
+                                rigidez necessaria para manter a cena nitida ao longo do ano.
                             </p>
                         </div>
-
-                        <div className="grid gap-5 lg:grid-cols-3">
-                            {modelGuide.map((group) => {
-                                const Icon = group.icon
-                                return (
-                                    <Link key={group.title} href={group.href} className="group border border-industrial-200 p-6 hover:border-industrial-950 rounded-2xl">
-                                        <div className="mb-6 flex size-12 items-center justify-center bg-industrial-950 text-accent-premium rounded-lg">
-                                            <Icon className="size-6" aria-hidden="true" />
-                                        </div>
-                                        <h3 className="text-base font-black uppercase tracking-tight text-industrial-950">
-                                            {group.title}
-                                        </h3>
-                                        <ul className="mt-5 space-y-3">
-                                            {group.items.map((item) => (
-                                                <li key={item} className="flex gap-3 text-sm leading-relaxed text-industrial-600">
-                                                    <span className="mt-2 size-1.5 shrink-0 bg-accent-dark" aria-hidden="true" />
-                                                    <span>{item}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                        <span className="mt-6 inline-flex items-center gap-2 text-[11px] font-black uppercase tracking-widest text-industrial-500 group-hover:text-industrial-950">
-                                            Ver caminho relacionado
-                                            <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
-                                        </span>
-                                    </Link>
-                                )
-                            })}
+                        <div className="grid gap-3">
+                            {stabilityRows.map(([factor, why, poste]) => (
+                                <div key={factor} className="border border-industrial-200 bg-white p-5 rounded-lg">
+                                    <p className="text-sm font-black uppercase tracking-tight text-industrial-950">{factor}</p>
+                                    <p className="mt-2 text-sm leading-relaxed text-industrial-700">{why}</p>
+                                    <p className="mt-1 text-sm leading-relaxed text-industrial-500">{poste}</p>
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </section>
@@ -535,11 +465,11 @@ export default function PosteTeleconicoOuRetoPage() {
                         <div className="space-y-5">
                             <SectionLabel>Dados para cotacao</SectionLabel>
                             <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                                O que enviar para definir teleconico, reto ou curvo
+                                O que enviar para dimensionar o poste de CFTV
                             </h2>
                             <p className="text-base leading-relaxed text-industrial-600">
-                                Quando o nome do modelo ainda esta confuso, envie a aplicacao e os dados da obra. Isso ajuda
-                                o time comercial a transformar a busca em uma cotacao tecnica.
+                                Com estes dados, a B&B dimensiona altura, rigidez, suporte e fixacao do poste para a camera
+                                e a iluminacao do projeto.
                             </p>
                         </div>
                         <div className="grid gap-3">
@@ -558,11 +488,11 @@ export default function PosteTeleconicoOuRetoPage() {
                         <div className="space-y-5">
                             <SectionLabel>Arquivos tecnicos</SectionLabel>
                             <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                                Compare os modelos antes de fechar o pedido
+                                Postes, suportes e fixacao para CFTV
                             </h2>
                             <p className="text-base leading-relaxed text-industrial-600">
-                                Datasheets e desenhos ajudam compras e engenharia a entender se o projeto pede poste reto,
-                                curvo simples, curvo duplo ou outra solucao.
+                                Datasheets de poste, suporte de topo e fixacao ajudam integrador e engenharia a montar um
+                                ponto de camera estavel.
                             </p>
                         </div>
                         <div className="grid gap-3">
@@ -590,11 +520,11 @@ export default function PosteTeleconicoOuRetoPage() {
                         <div className="space-y-5">
                             <SectionLabel>Perguntas frequentes</SectionLabel>
                             <h2 className="text-3xl font-black uppercase leading-tight md:text-5xl">
-                                Duvidas comuns sobre poste teleconico e reto
+                                Duvidas comuns sobre poste para camera
                             </h2>
                             <p className="text-base leading-relaxed text-industrial-300">
-                                Respostas para reduzir ambiguidade antes de compras, engenharia e fornecedor falarem de
-                                preco, prazo e fabricacao.
+                                Respostas para alinhar altura, rigidez e iluminacao antes de integrador e engenharia
+                                fecharem o ponto de CFTV.
                             </p>
                         </div>
                         <div className="space-y-4">
@@ -616,30 +546,30 @@ export default function PosteTeleconicoOuRetoPage() {
                 <div className="container mx-auto grid gap-8 px-4 lg:grid-cols-[1fr_auto] lg:items-center">
                     <div>
                         <h2 className="text-3xl font-black uppercase leading-tight text-industrial-950 md:text-5xl">
-                            Envie a aplicacao para escolher o modelo certo
+                            Envie o projeto de CFTV e receba o poste certo
                         </h2>
                         <p className="mt-4 max-w-3xl text-base font-bold leading-relaxed text-industrial-800">
-                            Informe altura, luminaria, avanco, fixacao, acabamento, cidade e prazo. A B&B ajuda a organizar
-                            a conversa entre teleconico, reto, curvo simples e curvo duplo.
+                            Informe tipo de camera, altura, carga no topo, iluminacao prevista e cidade. A B&B dimensiona
+                            altura, rigidez, suporte e fixacao para uma imagem estavel.
                         </p>
                     </div>
                     <div className="flex flex-col gap-4 sm:flex-row lg:flex-col">
                         <WhatsAppLink
                             message={whatsappMessage}
-                            eventLabel="Enviar dados para escolher modelo de poste"
-                            eventSource="final_teleconico_ou_reto"
+                            eventLabel="Enviar projeto de CFTV para dimensionar poste"
+                            eventSource="final_poste_cftv"
                             className="inline-flex h-14 items-center justify-center gap-3 bg-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-white transition-colors hover:bg-industrial-800 rounded-lg"
-                            aria-label="Enviar dados para escolher poste teleconico ou reto pelo WhatsApp"
+                            aria-label="Enviar projeto de CFTV para dimensionar poste pelo WhatsApp"
                         >
                             <MessageCircle className="size-5" aria-hidden="true" />
                             Falar com especialista
                         </WhatsAppLink>
                         <Link
-                            href="/produtos/poste-teleconico"
+                            href="/downloads"
                             className="inline-flex h-14 items-center justify-center gap-3 border-2 border-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-white rounded-lg"
                         >
-                            <Zap className="size-5" aria-hidden="true" />
-                            Ver teleconico
+                            <FileText className="size-5" aria-hidden="true" />
+                            Baixar fichas tecnicas
                         </Link>
                     </div>
                 </div>
@@ -661,29 +591,6 @@ export default function PosteTeleconicoOuRetoPage() {
                             </Link>
                         )
                     })}
-                </div>
-            </section>
-
-            <section className="bg-white py-10">
-                <div className="container mx-auto grid gap-3 px-4 sm:grid-cols-2 lg:grid-cols-3">
-                    {[
-                        ["Postes para iluminacao publica", "/postes-para-iluminacao-publica"],
-                        ["Poste curvo simples", "/produtos/poste-curvo-simples"],
-                        ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
-                        ["Poste flangeado ou engastado", "/blog/poste-flangeado-ou-engastado"],
-                        ["Poste metalico galvanizado", "/produtos/poste-metalico-galvanizado"],
-                        ["Fabricante de postes teleconicos", "/fabricante-de-postes-teleconicos"],
-                        ["Catalogos e downloads", "/downloads"],
-                    ].map(([label, href]) => (
-                        <Link
-                            key={href}
-                            href={href}
-                            className="group flex items-center justify-between gap-4 border border-industrial-200 p-5 text-sm font-black uppercase tracking-widest text-industrial-800 transition-colors hover:border-industrial-950 rounded-lg"
-                        >
-                            {label}
-                            <ArrowRight className="size-4 shrink-0 text-accent-dark transition-transform group-hover:translate-x-1" aria-hidden="true" />
-                        </Link>
-                    ))}
                 </div>
             </section>
 
