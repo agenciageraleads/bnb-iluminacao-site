@@ -58,9 +58,9 @@ const featuredGuides = [
         icon: Paintbrush,
     },
     {
-        title: "Poste Teleconico ou Reto",
+        title: "Poste Curvo ou Reto",
         summary:
-            "Guia para entender nomenclatura, geometria, avanco de luminaria e modelo correto antes da cotacao.",
+            "Todo poste teleconico e afunilado — o que muda e o topo: curvo, com braco que avanca sobre a via, ou reto. Entenda a geometria certa antes da cotacao.",
         href: "/blog/poste-teleconico-ou-reto",
         image: "/images/produtos/poste-reto-avenida-dia.png",
         date: "14/06/2026",
