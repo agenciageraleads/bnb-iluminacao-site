@@ -85,28 +85,35 @@ async function upsertMedia(payload: any, file: { path: string; fileName: string;
         limit: 1,
     });
 
+    const data = fs.readFileSync(file.path);
+    const upload = {
+        data,
+        name: file.fileName,
+        mimetype: file.mimetype,
+        size: data.length,
+    };
+
     if (existing.docs[0]) {
-        await payload.update({
+        // Reenvia o arquivo, e nao so o alt: o media do Payload vive num volume
+        // proprio (bnb-platform_media_data), entao trocar o PDF em public/downloads
+        // nao atualiza o que /downloads serve. Sem isso o seed vira no-op.
+        const updated = await payload.update({
             collection: 'media',
             id: existing.docs[0].id,
-            data: {
-                alt: file.alt,
-            },
+            data: { alt: file.alt },
+            file: upload,
         });
-        return existing.docs[0];
+        console.log(`   Midia atualizada: ${file.fileName} (${data.length} bytes)`);
+        return updated;
     }
 
-    const data = fs.readFileSync(file.path);
-    return payload.create({
+    const created = await payload.create({
         collection: 'media',
         data: { alt: file.alt },
-        file: {
-            data,
-            name: file.fileName,
-            mimetype: file.mimetype,
-            size: data.length,
-        },
+        file: upload,
     });
+    console.log(`   Midia criada: ${file.fileName} (${data.length} bytes)`);
+    return created;
 }
 
 seedCatalogs();
