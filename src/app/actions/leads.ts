@@ -45,6 +45,54 @@ function renderAttribution(attribution: Record<string, FormDataEntryValue>) {
     return rows ? `<hr /><h3>Atribuição</h3>${rows}` : ''
 }
 
+function digitsOnly(value: string) {
+    return value.replace(/\D/g, '')
+}
+
+async function createCatalogOpportunity(input: {
+    name: string
+    email: string
+    phone: string
+    company: string
+    companyCnpj: string
+    catalogId: string
+}) {
+    const crmApiUrl = process.env.CRM_API_URL
+    const crmApiKey = process.env.CRM_API_KEY
+
+    if (!crmApiUrl || !crmApiKey) {
+        throw new Error('Integração com o CRM não configurada')
+    }
+
+    const document = digitsOnly(input.companyCnpj)
+    const whatsapp = digitsOnly(input.phone)
+    const response = await fetch(`${crmApiUrl.replace(/\/$/, '')}/api/opportunities/sdr-sync`, {
+        method: 'POST',
+        signal: AbortSignal.timeout(10_000),
+        headers: {
+            Authorization: `Bearer ${crmApiKey}`,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            name: input.name,
+            whatsapp,
+            document,
+            company_name: input.company,
+            category: 'Lead Catálogo',
+            source: 'Site B&B',
+            source_reference: `site-catalogo:${document}:${input.catalogId}`,
+            demand: `Download do catálogo ${input.catalogId} · E-mail: ${input.email}`,
+            pipeline_slug: 'leads',
+            status: 'novo',
+        }),
+    })
+
+    if (!response.ok) {
+        const details = await response.text()
+        throw new Error(`CRM recusou a oportunidade (${response.status}): ${details}`)
+    }
+}
+
 export async function createCatalogLead(prevState: any, formData: FormData) {
     const payload = await getPayload({ config })
 
@@ -61,6 +109,15 @@ export async function createCatalogLead(prevState: any, formData: FormData) {
     }
 
     try {
+        await createCatalogOpportunity({
+            name,
+            email,
+            phone,
+            company,
+            companyCnpj,
+            catalogId,
+        })
+
         await payload.create({
             collection: 'catalog-leads' as any,
             data: {
