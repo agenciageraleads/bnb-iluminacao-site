@@ -29,3 +29,6 @@ jobs:
 
       - name: Lint
         run: npm run lint
+
+      - name: Test blog quality gate
+        run: node scripts/test-blog-validation.mjs

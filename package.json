@@ -10,6 +10,7 @@
     "lint": "eslint",
     "typecheck": "tsc --project tsconfig.typecheck.json --noEmit --incremental false",
     "smoke:public": "node scripts/smoke-public.mjs",
+    "test:blog-validation": "node scripts/test-blog-validation.mjs",
     "seo:audit:p0": "node scripts/audit-seo-p0.mjs",
     "seo:audit:canonical-coverage": "node scripts/audit-canonical-coverage.mjs",
     "seo:audit:regional": "node scripts/audit-regional-pages.mjs",
@@ -104,7 +105,7 @@
     "seo:audit:wave5": "node scripts/audit-wave5-authority-measurement.mjs",
     "seo:audit:wave6": "node scripts/audit-wave6-external-accesses.mjs",
     "seo:audit:wave1:deploy": "node scripts/audit-wave1-deploy-preflight.mjs",
-    "test:validate": "npm run typecheck && npm run lint && npm run build && npm run smoke:public && npm run seo:audit:nap && npm run seo:audit:cases"
+    "test:validate": "npm run typecheck && npm run lint && npm run test:blog-validation && npm run build && npm run smoke:public && npm run seo:audit:nap && npm run seo:audit:cases"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
