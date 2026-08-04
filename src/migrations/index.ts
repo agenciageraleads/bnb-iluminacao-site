@@ -4,6 +4,7 @@ import * as migration_20260617_190000_add_representative_crm_user_id from './202
 import * as migration_20260626_120000_add_representative_territories from './20260626_120000_add_representative_territories';
 import * as migration_20260706_150000_add_versa_product_badges from './20260706_150000_add_versa_product_badges';
 import * as migration_20260803_180000_add_catalog_lead_attribution from './20260803_180000_add_catalog_lead_attribution';
+import * as migration_20260804_230000_add_blog_quality_gate_fields from './20260804_230000_add_blog_quality_gate_fields';
 
 export const migrations = [
   {
@@ -35,5 +36,10 @@ export const migrations = [
     up: migration_20260803_180000_add_catalog_lead_attribution.up,
     down: migration_20260803_180000_add_catalog_lead_attribution.down,
     name: '20260803_180000_add_catalog_lead_attribution'
+  },
+  {
+    up: migration_20260804_230000_add_blog_quality_gate_fields.up,
+    down: migration_20260804_230000_add_blog_quality_gate_fields.down,
+    name: '20260804_230000_add_blog_quality_gate_fields'
   },
 ];
