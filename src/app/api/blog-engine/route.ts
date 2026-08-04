@@ -4,6 +4,9 @@ import { getPayload } from 'payload';
 import config from '@payload-config';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { AGENT_GROUND_TRUTH } from '@/lib/agent-context';
+import { runQualityGate } from '@/lib/blog-validation.mjs';
+
+const MODEL_NAME = 'gemini-2.5-flash';
 
 function verifyInternalToken(req: Request): boolean {
   const secret = process.env.BLOG_ENGINE_SECRET
@@ -103,10 +106,16 @@ export async function POST(req: Request) {
                 "slug": "slug-curto-com-3-a-5-palavras-chave",
                 "summary": "Resumo executivo de 50 palavras em TEXTO PURO, sem nenhuma tag HTML (nada de <strong>, <em>, <p> etc.)",
                 "bodyHtml": "Conteúdo rico em HTML estruturado aqui...",
-                "faqs": [ {"question": "...", "answer": "..."} ]
+                "faqs": [ {"question": "...", "answer": "..."} ],
+                "cta": { "label": "Texto curto do botão (ex: Fale com um engenheiro)", "url": "/caminho-interno-do-site (produto, case, datasheet ou orçamento)" },
+                "sources": [ { "label": "Nome da norma/fonte (ex: NBR 14744 — ABNT)", "url": "https://url-publica-da-fonte" } ]
             }
 
             REGRA DO SLUG: máximo 5 palavras, somente as palavras-chave do tema (sem artigos, preposições ou conjunções). Exemplos corretos: "postes-cameras-seguranca-vibracao", "galvanizacao-postes-externos", "nbr-14744-mastros-bandeira". Exemplos ERRADOS: "como-mitigar-vibracoes-e-garantir-imagens-nitidas-em-ambientes-externos", "como-a-nbr-14744-garante-qualidade-e-seguranca-na-fabricacao".
+
+            REGRA DE FONTES: toda vez que citar uma NBR específica (ex: "NBR 14744") no bodyHtml, inclua em "sources" uma entrada cuja label ou url mencione claramente aquele número de norma. Não cite NBR sem fonte correspondente.
+
+            REGRA DO CTA: "url" deve ser um caminho interno do site bebiluminacao.com.br (começando com "/"), nunca uma URL externa.
         `;
 
         const restRedator = await model.generateContent({
@@ -217,14 +226,44 @@ export async function POST(req: Request) {
         }
 
         // --------------------------------------------------------------------------------
-        // 5. PUBLICAÇÃO FINAL
+        // 5. GATE DE QUALIDADE (Sprint Blog 01) — bloqueia estrutura inválida,
+        // duplicidade/canibalização e afirmação normativa sem fonte ANTES de gravar qualquer coisa.
+        // --------------------------------------------------------------------------------
+        const finalSlug = conteudoAgente.slug.split('-').slice(0, 6).join('-') + '-' + Date.now().toString().slice(-4);
+
+        const gate = runQualityGate(
+            {
+                title: conteudoAgente.title,
+                slug: finalSlug,
+                summary: conteudoAgente.summary,
+                bodyHtml: conteudoAgente.bodyHtml,
+                cta: conteudoAgente.cta,
+                sources: conteudoAgente.sources,
+                featuredImageId,
+            },
+            postsExistentes.docs
+        );
+
+        if (!gate.passed) {
+            console.warn("Gate de qualidade reprovou o artigo:", gate.errors);
+            return NextResponse.json({
+                success: false,
+                warning: "Artigo reprovado pelo gate de qualidade (estrutura/duplicidade/fonte). Nenhum post foi criado.",
+                validationErrors: gate.errors,
+                cannibalization: gate.cannibalization,
+            }, { status: 200 });
+        }
+
+        // --------------------------------------------------------------------------------
+        // 6. CRIAÇÃO EM RASCUNHO — NUNCA publica direto. Fluxo obrigatório: draft -> ai_review -> published.
+        // A promoção para 'published' exige aprovação humana via /api/blog-engine/publish.
         // --------------------------------------------------------------------------------
         const novoPost = await payload.create({
             collection: 'blog',
             data: {
                 title: conteudoAgente.title,
-                slug: conteudoAgente.slug.split('-').slice(0, 6).join('-') + '-' + Date.now().toString().slice(-4),
-                status: 'published',
+                slug: finalSlug,
+                status: 'ai_review',
                 author: 'Eng. Lucas Borges',
                 summary: conteudoAgente.summary,
                 featuredImage: featuredImageId,
@@ -235,7 +274,7 @@ export async function POST(req: Request) {
                         children: [
                             {
                                 type: 'paragraph',
-                                children: [{ text: "Este post contém conteúdo técnico detalhado e foi revisado pelo Eng. Lucas Borges." }],
+                                children: [{ text: "Este post contém conteúdo técnico detalhado e aguarda revisão editorial humana antes da publicação." }],
                             }
                         ],
                         direction: 'ltr',
@@ -246,6 +285,8 @@ export async function POST(req: Request) {
                     }
                 },
                 faqs: conteudoAgente.faqs,
+                cta: conteudoAgente.cta,
+                sources: conteudoAgente.sources,
                 meta: {
                     title: conteudoAgente.title,
                     description: conteudoAgente.summary,
@@ -262,15 +303,22 @@ export async function POST(req: Request) {
                             "name": "Lucas Borges"
                         }
                     }
+                },
+                qualityAudit: {
+                    model: MODEL_NAME,
+                    revisorPrompt: promptRevisor,
+                    revisorVeredicto: veredicto,
+                    qualityGateErrors: gate.errors,
                 }
             } as any
         });
 
         return NextResponse.json({
             success: true,
-            message: "Sala de Redação operou com sucesso e publicou a matéria com imagem real.",
+            message: "Sala de Redação gerou um rascunho válido em 'ai_review'. Aguardando aprovação humana para publicar.",
             post: novoPost,
-            revisorLog: "Aprovado com maestria em compliance com NBRs"
+            revisorLog: "Aprovado com maestria em compliance com NBRs",
+            qualityGate: "Aprovado — nenhum erro estrutural, sem canibalização, fontes normativas ok."
         });
 
     } catch (error: any) {

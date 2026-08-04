@@ -8,6 +8,23 @@ const Blog: CollectionConfig = {
     access: {
         read: () => true,
     },
+    hooks: {
+        beforeChange: [
+            ({ data, originalDoc, req }) => {
+                // Gate draft -> ai_review -> published: só grava reviewedBy/reviewedAt quando um
+                // humano autenticado (Payload Admin) promove o post para 'published'. O motor de
+                // agentes nunca chama este hook com status 'published' diretamente.
+                if (data?.status === 'published' && originalDoc?.status !== 'published') {
+                    data.qualityAudit = {
+                        ...(data.qualityAudit ?? originalDoc?.qualityAudit ?? {}),
+                        reviewedBy: req?.user?.email ?? req?.user?.id ?? 'desconhecido',
+                        reviewedAt: new Date().toISOString(),
+                    }
+                }
+                return data
+            },
+        ],
+    },
     fields: [
         {
             name: 'title',
@@ -74,6 +91,30 @@ const Blog: CollectionConfig = {
             ]
         },
         {
+            name: 'cta',
+            type: 'group',
+            label: 'Call to Action',
+            admin: {
+                description: 'CTA obrigatório do gate de qualidade — deve apontar para produto/case/datasheet/orçamento (caminho interno).',
+            },
+            fields: [
+                { name: 'label', type: 'text' },
+                { name: 'url', type: 'text' },
+            ],
+        },
+        {
+            name: 'sources',
+            type: 'array',
+            label: 'Fontes / Normas',
+            admin: {
+                description: 'Fontes aprovadas que sustentam qualquer afirmação normativa (NBR) citada no corpo do artigo.',
+            },
+            fields: [
+                { name: 'label', type: 'text', required: true },
+                { name: 'url', type: 'text', required: true },
+            ],
+        },
+        {
             name: 'featuredImage',
             type: 'upload',
             relationTo: 'media',
@@ -95,6 +136,24 @@ const Blog: CollectionConfig = {
                 { name: 'articleSchema', type: 'json' },
                 { name: 'faqSchema', type: 'json' }
             ]
+        },
+        {
+            name: 'qualityAudit',
+            type: 'group',
+            label: 'Auditoria do Gate de Qualidade',
+            admin: {
+                position: 'sidebar',
+                description: 'Trilha de auditoria do pipeline de agentes: prompt, modelo e veredicto de cada etapa.',
+                readOnly: true,
+            },
+            fields: [
+                { name: 'model', type: 'text' },
+                { name: 'revisorPrompt', type: 'textarea' },
+                { name: 'revisorVeredicto', type: 'json' },
+                { name: 'qualityGateErrors', type: 'json' },
+                { name: 'reviewedBy', type: 'text' },
+                { name: 'reviewedAt', type: 'date' },
+            ],
         }
     ],
 }
