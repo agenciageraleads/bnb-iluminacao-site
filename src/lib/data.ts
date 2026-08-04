@@ -294,6 +294,9 @@ export const getBlogPosts = async (limit: number = 10): Promise<Post[]> => {
     const payload = await getClient()
     const { docs } = await payload.find({
       collection: 'blog' as any,
+      where: {
+        status: { equals: 'published' }
+      },
       sort: '-createdAt',
       limit,
       depth: 1,
@@ -320,7 +323,10 @@ export const getBlogPostBySlug = async (slug: string): Promise<any> => {
     const { docs } = await payload.find({
       collection: 'blog' as any,
       where: {
-        slug: { equals: slug }
+        and: [
+          { slug: { equals: slug } },
+          { status: { equals: 'published' } },
+        ]
       },
       limit: 1,
       depth: 1,
