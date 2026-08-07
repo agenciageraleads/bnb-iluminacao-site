@@ -6,11 +6,12 @@ import Image from "next/image"
 import Link from "next/link"
 import { getCatalogs } from "@/lib/data"
 import { DownloadGrid } from "./DownloadGrid"
-import { FileText, ShieldCheck, Download, Ruler } from "lucide-react"
+import { FileText, ShieldCheck, Download, Ruler, Wrench } from "lucide-react"
 import { URBAN_FAMILIES, desenhoTecnicoHref } from "@/lib/urban-downloads"
 import { VERSA_FAMILIES, VERSA_LUMINARIA, desenhoVersaHref, labelAlturaVersa } from "@/lib/versa-downloads"
 import { NEXO_DATASHEETS } from "@/lib/nexo-downloads"
 import { CIVIS_FAMILIES, desenhoMastroHref } from "@/lib/civis-downloads"
+import { MANUAIS_INSTALACAO } from "@/lib/manuais-downloads"
 
 export const metadata = {
     title: "Downloads de Catálogos Técnicos | B&B Iluminação",
@@ -124,6 +125,47 @@ export default async function DownloadsPage() {
                                     </Link>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    {/* Manuais de Instalação — documentos transversais a todas as linhas */}
+                    <div id="manuais-instalacao" className="max-w-6xl mx-auto mt-24 scroll-mt-32">
+                        <div className="text-center mb-12">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-[0.2em] uppercase mb-6 rounded-full">
+                                <Wrench className="size-4 text-accent-dark" />
+                                Manuais de Instalação
+                            </div>
+                            <h2 className="text-3xl md:text-5xl font-black text-industrial-950 uppercase tracking-tighter leading-none mb-4">
+                                Instalação <span className="text-accent-premium">em Obra</span>
+                            </h2>
+                            <p className="text-industrial-500 text-base md:text-lg font-medium max-w-2xl mx-auto">
+                                Passo a passo de campo para engastamento, sapata flangeada, chumbadores e ligação elétrica —
+                                com requisitos de norma e orientações de segurança. Válidos para todas as linhas de postes.
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                            {MANUAIS_INSTALACAO.map((manual) => (
+                                <div key={manual.codigo} className="bg-white border border-industrial-200 hover:border-accent-premium transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col rounded-2xl">
+                                    <div className="p-6 border-b border-industrial-100">
+                                        <div className="bg-accent-premium text-black inline-block px-3 py-1 text-[10px] font-black uppercase tracking-widest mb-3">
+                                            {manual.codigo}
+                                        </div>
+                                        <h3 className="font-black text-industrial-950 uppercase text-lg leading-tight">{manual.nome}</h3>
+                                        <p className="text-industrial-500 text-sm font-medium leading-relaxed mt-3">{manual.descricao}</p>
+                                    </div>
+                                    <div className="p-6 flex flex-col flex-1 justify-end">
+                                        <a
+                                            href={manual.arquivo}
+                                            download={manual.nomeArquivo}
+                                            className="w-full flex items-center justify-center gap-2 bg-industrial-950 text-white font-black uppercase text-xs tracking-widest py-4 hover:bg-industrial-800 transition-colors"
+                                        >
+                                            <Download className="size-4" />
+                                            Baixar Manual
+                                        </a>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
                     </div>
 
