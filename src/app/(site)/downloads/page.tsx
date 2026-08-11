@@ -11,6 +11,7 @@ import { URBAN_FAMILIES, desenhoTecnicoHref } from "@/lib/urban-downloads"
 import { VERSA_FAMILIES, VERSA_LUMINARIA, desenhoVersaHref, labelAlturaVersa } from "@/lib/versa-downloads"
 import { NEXO_DATASHEETS } from "@/lib/nexo-downloads"
 import { CIVIS_FAMILIES, desenhoMastroHref } from "@/lib/civis-downloads"
+import { FORZA_DATASHEETS } from "@/lib/forza-downloads"
 import { MANUAIS_INSTALACAO } from "@/lib/manuais-downloads"
 
 export const metadata = {
@@ -353,6 +354,63 @@ export default async function DownloadsPage() {
                         </div>
                     </div>
 
+                    {/* Datasheets — Linha Forza (projetos especiais) */}
+                    <div id="linha-forza" className="max-w-6xl mx-auto mt-24 scroll-mt-32">
+                        <div className="text-center mb-12">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-industrial-200 text-industrial-600 text-[11px] font-bold tracking-[0.2em] uppercase mb-6 rounded-full">
+                                <Ruler className="size-4 text-accent-dark" />
+                                Linha Forza
+                            </div>
+                            <h2 className="text-3xl md:text-5xl font-black text-industrial-950 uppercase tracking-tighter leading-none mb-4">
+                                Projetos <span className="text-accent-premium">Especiais</span>
+                            </h2>
+                            <p className="text-industrial-500 text-base md:text-lg font-medium max-w-2xl mx-auto">
+                                Estruturas para quando o projeto exige mais. O datasheet traz a base articulada
+                                peça a peça, as tabelas dimensionais por formato e o procedimento de instalação
+                                e rebatimento.
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 gap-8">
+                            {FORZA_DATASHEETS.map((item) => (
+                                <div key={item.codigo} className="bg-white border border-industrial-200 hover:border-accent-premium transition-all duration-300 shadow-sm hover:shadow-xl flex flex-col rounded-2xl">
+                                    <div className="p-6 border-b border-industrial-100">
+                                        <div className="bg-accent-premium text-black inline-block px-3 py-1 text-[10px] font-black uppercase tracking-widest mb-3">
+                                            {item.codigo}
+                                        </div>
+                                        <h3 className="font-black text-industrial-950 uppercase text-lg leading-tight">{item.nome}</h3>
+                                    </div>
+                                    <div className="p-6 space-y-5 flex flex-col flex-1">
+                                        <p className="text-industrial-500 text-sm font-medium leading-relaxed">{item.descricao}</p>
+                                        <div className="space-y-3">
+                                            <p className="text-[10px] font-black uppercase tracking-widest text-industrial-400">
+                                                Formatos na ficha
+                                            </p>
+                                            <div className="flex flex-wrap gap-2">
+                                                {item.formatos.map((formato) => (
+                                                    <span
+                                                        key={formato.codigo}
+                                                        className="px-3 py-1.5 bg-industrial-50 border border-industrial-200 text-[11px] font-black text-industrial-700 uppercase tracking-widest rounded-md"
+                                                    >
+                                                        {formato.nome} · {formato.alturas}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                        <a
+                                            href={item.datasheet}
+                                            download
+                                            className="w-full flex items-center justify-center gap-2 bg-industrial-950 text-white font-black uppercase text-xs tracking-widest py-4 hover:bg-industrial-800 transition-colors"
+                                        >
+                                            <Download className="size-4" />
+                                            Baixar Datasheet
+                                        </a>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
                     {/* Datasheets e Desenhos Técnicos — Linha Civis (Mastros para Bandeira) */}
                     <div id="linha-civis" className="max-w-6xl mx-auto mt-24 scroll-mt-32">
                         <div className="text-center mb-12">
@@ -436,7 +494,6 @@ export default async function DownloadsPage() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                             {([
                                 { slug: 'orna', nome: 'Orna', desc: 'Postes ornamentais que trazem identidade ao ambiente.' },
-                                { slug: 'forza', nome: 'Forza', desc: 'Projetos especiais e estruturas reforçadas.' },
                                 { slug: 'vigia', nome: 'Vigia', desc: 'Postes para segurança e monitoramento (CFTV).' },
                             ]).map((linha) => (
                                 <div
