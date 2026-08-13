@@ -1,5 +1,6 @@
 'use server'
 
+import { randomUUID } from 'node:crypto'
 import { getPayload } from 'payload'
 import config from '../../../payload.config'
 import { Resend } from 'resend'
@@ -10,6 +11,7 @@ export type LeadState = {
 }
 
 const resend = new Resend(process.env.RESEND_API_KEY)
+type CatalogDisposition = 'new_opportunity' | 'interaction_recorded' | 'internal_discarded'
 
 const attributionFields = [
     'formType',
@@ -66,6 +68,7 @@ async function createCatalogOpportunity(input: {
 
     const document = digitsOnly(input.companyCnpj)
     const whatsapp = digitsOnly(input.phone)
+    const interactionEventId = `site-catalogo:${randomUUID()}`
     const response = await fetch(`${crmApiUrl.replace(/\/$/, '')}/api/opportunities/sdr-sync`, {
         method: 'POST',
         signal: AbortSignal.timeout(10_000),
@@ -84,6 +87,8 @@ async function createCatalogOpportunity(input: {
             demand: `Download do catálogo ${input.catalogId} · E-mail: ${input.email}`,
             pipeline_slug: 'leads',
             status: 'novo',
+            interaction_only: true,
+            interaction_event_id: interactionEventId,
         }),
     })
 
@@ -91,6 +96,17 @@ async function createCatalogOpportunity(input: {
         const details = await response.text()
         throw new Error(`CRM recusou a oportunidade (${response.status}): ${details}`)
     }
+
+    const result = await response.json() as { disposition?: string }
+    const knownDispositions: CatalogDisposition[] = [
+        'new_opportunity',
+        'interaction_recorded',
+        'internal_discarded',
+    ]
+
+    return knownDispositions.includes(result.disposition as CatalogDisposition)
+        ? result.disposition as CatalogDisposition
+        : 'new_opportunity'
 }
 
 export async function createCatalogLead(prevState: any, formData: FormData) {
@@ -109,7 +125,7 @@ export async function createCatalogLead(prevState: any, formData: FormData) {
     }
 
     try {
-        await createCatalogOpportunity({
+        const disposition = await createCatalogOpportunity({
             name,
             email,
             phone,
@@ -117,6 +133,10 @@ export async function createCatalogLead(prevState: any, formData: FormData) {
             companyCnpj,
             catalogId,
         })
+
+        if (disposition === 'internal_discarded') {
+            return { status: 'success', message: 'Download liberado com sucesso!' }
+        }
 
         await payload.create({
             collection: 'catalog-leads' as any,
@@ -131,26 +151,28 @@ export async function createCatalogLead(prevState: any, formData: FormData) {
             },
         })
 
-        // Disparo via Resend (Alternativa ao N8N)
-        try {
-            await resend.emails.send({
-                from: 'Leads B&B <leads@bebiluminacao.com.br>',
-                to: ['contato@bebiluminacao.com'],
-                subject: `Novo Lead B2B: Catálogo ${catalogId}`,
-                html: `
-                    <h2>Novo Lead Interessado em Catálogo</h2>
-                    <p><strong>Nome:</strong> ${name}</p>
-                    <p><strong>E-mail:</strong> ${email}</p>
-                    <p><strong>Telefone/WhatsApp:</strong> ${phone}</p>
-                    <p><strong>Empresa:</strong> ${company}</p>
-                    <p><strong>CNPJ:</strong> ${companyCnpj}</p>
-                    <p><strong>Catálogo Baixado:</strong> ${catalogId}</p>
-                    ${renderAttribution(attribution)}
-                `
-            })
-        } catch (mailError) {
-            console.error('Erro ao enviar email via Resend:', mailError)
-            // Não falha a action se apenas o e-mail der erro, pois já salvou no banco
+        // Só uma oportunidade comercial realmente nova deve gerar alerta de novo lead.
+        if (disposition === 'new_opportunity') {
+            try {
+                await resend.emails.send({
+                    from: 'Leads B&B <leads@bebiluminacao.com.br>',
+                    to: ['contato@bebiluminacao.com'],
+                    subject: `Novo Lead B2B: Catálogo ${catalogId}`,
+                    html: `
+                        <h2>Novo Lead Interessado em Catálogo</h2>
+                        <p><strong>Nome:</strong> ${name}</p>
+                        <p><strong>E-mail:</strong> ${email}</p>
+                        <p><strong>Telefone/WhatsApp:</strong> ${phone}</p>
+                        <p><strong>Empresa:</strong> ${company}</p>
+                        <p><strong>CNPJ:</strong> ${companyCnpj}</p>
+                        <p><strong>Catálogo Baixado:</strong> ${catalogId}</p>
+                        ${renderAttribution(attribution)}
+                    `
+                })
+            } catch (mailError) {
+                console.error('Erro ao enviar email via Resend:', mailError)
+                // Não falha a action se apenas o e-mail der erro, pois já salvou no banco
+            }
         }
 
         return { status: 'success', message: 'Dados registrados com sucesso!' }
