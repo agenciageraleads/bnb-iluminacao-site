@@ -24,6 +24,7 @@ import { SeoProductGallery } from "@/components/seo/seo-product-gallery"
 import { SchemaOrg } from "@/components/seo/schema-org"
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
 import { WhatsAppLink } from "@/components/ui/whatsapp-link"
+import { TrackedContactLink } from "@/lib/lead-tracking"
 import { createSeoImage } from "@/lib/seo/images"
 import {
     SITE_URL,
@@ -713,11 +714,15 @@ export default function PosteTeleconicoPage() {
                     </div>
                     <div className="grid gap-3">
                         {downloadLinks.map((file) => (
-                            <a
+                            <TrackedContactLink
                                 key={file.href}
                                 href={file.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                channel="download"
+                                eventSource="produto_poste_teleconico"
+                                eventLabel={file.title}
+                                extraPayload={{ download_type: "datasheet" }}
                                 className="group flex items-center justify-between gap-4 border border-white/10 bg-white/5 p-5 text-sm font-black uppercase tracking-widest text-white transition-colors hover:border-accent-premium rounded-lg"
                             >
                                 <span className="inline-flex items-center gap-3">
@@ -725,7 +730,7 @@ export default function PosteTeleconicoPage() {
                                     {file.title}
                                 </span>
                                 <ArrowRight className="size-4 shrink-0 text-accent-premium transition-transform group-hover:translate-x-1" aria-hidden="true" />
-                            </a>
+                            </TrackedContactLink>
                         ))}
                         <Link
                             href="/downloads"
