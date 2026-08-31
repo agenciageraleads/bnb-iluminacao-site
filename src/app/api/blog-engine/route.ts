@@ -28,6 +28,14 @@ function verifyInternalToken(req: Request): boolean {
 const apiKey = process.env.GEMINI_API_KEY || '';
 const genAI = new GoogleGenerativeAI(apiKey);
 
+type BriefOverride = {
+    title: string
+    keyword?: string
+    resposta?: string
+    fontes?: string
+    ctaHint?: string
+}
+
 export async function POST(req: Request) {
     try {
         if (!verifyInternalToken(req)) {
@@ -35,6 +43,16 @@ export async function POST(req: Request) {
         }
         if (!process.env.GEMINI_API_KEY) {
             return NextResponse.json({ success: false, error: 'GEMINI_API_KEY não configurada no .env' }, { status: 200 });
+        }
+
+        // Brief opcional (Sprint Blog 03): quando informado, pula o Agente Estrategista
+        // e usa a pauta/resposta/fontes já pesquisadas em vez de deixar a IA escolher o tema.
+        let brief: BriefOverride | null = null;
+        try {
+            const body = await req.json();
+            if (body?.brief?.title) brief = body.brief;
+        } catch {
+            // corpo vazio é normal no fluxo autônomo (cron) — segue sem brief.
         }
 
         const payload = await getPayload({ config });
@@ -57,41 +75,58 @@ export async function POST(req: Request) {
 
         // --------------------------------------------------------------------------------
         // 1. O AGENTE ESTRATEGISTA (Definição de Pauta)
+        // Pulado quando um brief do Sprint Blog 03 já define a pauta — a pesquisa de
+        // palavra-chave/concorrentes já foi feita, não faz sentido a IA escolher de novo.
         // --------------------------------------------------------------------------------
-        const promptEstrategista = `
-            Você é o Diretor de Estratégia de Conteúdo B2B da B&B Iluminação.
-            Sua tarefa é usar a Pesquisa Google (Grounding) para identificar quais são as dúvidas REAIS, 
-            perguntas frequentes (PAA - People Also Ask) e tendências de busca técnica hoje no Brasil sobre:
-            - ${AGENT_GROUND_TRUTH.BRAND_VOICE}
+        let pauta: string;
+        if (brief) {
+            pauta = brief.title;
+        } else {
+            const promptEstrategista = `
+                Você é o Diretor de Estratégia de Conteúdo B2B da B&B Iluminação.
+                Sua tarefa é usar a Pesquisa Google (Grounding) para identificar quais são as dúvidas REAIS,
+                perguntas frequentes (PAA - People Also Ask) e tendências de busca técnica hoje no Brasil sobre:
+                - ${AGENT_GROUND_TRUTH.BRAND_VOICE}
 
-            PASSO 1: Pesquise no Google por termos como "dúvidas iluminação externa", "como instalar poste metálico", "norma NBR postes", "cálculo de lux estacionamento".
-            PASSO 2: Com base nos resultados reais da web, escolha uma pauta inédita e RELEVANTE.
-            
-            POSTAGENS JÁ REALIZADAS (É CRÍTICO NÃO REPETIR NENHUM DESTES TEMAS OU ÂNGULOS):
-            ${titulosAntigos || "Nenhuma postagem ainda."}
+                PASSO 1: Pesquise no Google por termos como "dúvidas iluminação externa", "como instalar poste metálico", "norma NBR postes", "cálculo de lux estacionamento".
+                PASSO 2: Com base nos resultados reais da web, escolha uma pauta inédita e RELEVANTE.
 
-            DIRETRIZ DE VARIEDADE:
-            - Alterne entre: Guia Técnico (Instalação/Normas), Economia de Energia, Design/Estética Industrial e Estudos de Caso.
-            - Evite ser generalista demais; foque em problemas específicos de engenharia ou arquitetura.
-            - Se um tema já foi abordado (veja a lista acima), escolha um nicho ou ângulo completamente diferente.
+                POSTAGENS JÁ REALIZADAS (É CRÍTICO NÃO REPETIR NENHUM DESTES TEMAS OU ÂNGULOS):
+                ${titulosAntigos || "Nenhuma postagem ainda."}
 
-            Retorne apenas o título (direto ao ponto, com pegada SEO Question-based). 
-        `;
+                DIRETRIZ DE VARIEDADE:
+                - Alterne entre: Guia Técnico (Instalação/Normas), Economia de Energia, Design/Estética Industrial e Estudos de Caso.
+                - Evite ser generalista demais; foque em problemas específicos de engenharia ou arquitetura.
+                - Se um tema já foi abordado (veja a lista acima), escolha um nicho ou ângulo completamente diferente.
 
-        const restEstrategista = await model.generateContent({
-            contents: [{ role: 'user', parts: [{ text: promptEstrategista }] }],
-            tools: [{ googleSearch: {} }] as any
-        });
-        const pauta = restEstrategista.response.text().trim();
+                Retorne apenas o título (direto ao ponto, com pegada SEO Question-based).
+            `;
+
+            const restEstrategista = await model.generateContent({
+                contents: [{ role: 'user', parts: [{ text: promptEstrategista }] }],
+                tools: [{ googleSearch: {} }] as any
+            });
+            pauta = restEstrategista.response.text().trim();
+        }
 
         // --------------------------------------------------------------------------------
         // 2. O AGENTE REDATOR (Gerando o Conteúdo)
         // --------------------------------------------------------------------------------
+        const briefGuidance = brief ? `
+            BRIEF OBRIGATÓRIO (Sprint Blog 03 — pesquisa de palavra-chave e concorrentes já feita,
+            siga à risca, não invente outro ângulo):
+            ${brief.keyword ? `- Keyword principal: ${brief.keyword}` : ''}
+            ${brief.resposta ? `- Resposta direta que o post PRECISA dar: ${brief.resposta}` : ''}
+            ${brief.fontes ? `- Fontes obrigatórias a citar: ${brief.fontes}` : ''}
+            ${brief.ctaHint ? `- Orientação de CTA: ${brief.ctaHint}` : ''}
+        ` : '';
+
         const promptRedator = `
             Você é um Engenheiro Sênior / Redator Técnico da B&B Iluminação.
             O título escolhido pelo estrategista foi: "${pauta}".
-            
-            Sua missão é gerar o conteúdo técnico em formato JSON ESTRITO. 
+            ${briefGuidance}
+
+            Sua missão é gerar o conteúdo técnico em formato JSON ESTRITO.
             Não inclua explicações antes ou depois do JSON.
             
             DIRETRIZES DE FORMATAÇÃO:
