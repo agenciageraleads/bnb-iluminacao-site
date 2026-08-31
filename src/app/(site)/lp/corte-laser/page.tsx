@@ -22,7 +22,7 @@ export default async function CorteLaserLP() {
                 <div className="container mx-auto px-4 flex justify-between items-center h-14">
                     <div className="relative h-10 w-40">
                         <Image
-                            src="/logo.png"
+                            src="/logo.svg"
                             alt="B&B Iluminação"
                             fill
                             className="object-contain object-left"

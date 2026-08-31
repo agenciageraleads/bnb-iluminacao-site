@@ -58,7 +58,7 @@ export default async function LaserCityLP({ params }: Props) {
       <header className="bg-white border-b border-industrial-200 shadow-sm py-3 sticky top-0 z-50">
         <div className="container mx-auto px-4 flex justify-between items-center h-14">
           <div className="relative h-10 w-40">
-            <Image src="/logo.png" alt="B&B Iluminação" fill className="object-contain object-left" priority />
+            <Image src="/logo.svg" alt="B&B Iluminação" fill className="object-contain object-left" priority />
           </div>
           <WhatsAppLink
             message={WA_MSG}
