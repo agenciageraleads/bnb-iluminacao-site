@@ -238,6 +238,10 @@ export async function POST(req: Request) {
                 const imagenData = await imagenResponse.json();
                 const base64Image = imagenData?.predictions?.[0]?.bytesBase64Encoded;
 
+                if (!base64Image) {
+                    console.error("Imagen respondeu OK mas sem bytesBase64Encoded:", JSON.stringify(imagenData).slice(0, 1000));
+                }
+
                 if (base64Image) {
                     // Fazendo upload para o Payload
                     const mediaDoc = await payload.create({
@@ -254,6 +258,9 @@ export async function POST(req: Request) {
                     });
                     featuredImageId = mediaDoc.id;
                 }
+            } else {
+                const errorBody = await imagenResponse.text();
+                console.error(`Imagen respondeu ${imagenResponse.status}:`, errorBody.slice(0, 1000));
             }
         } catch (imgError) {
             console.error("Erro na geração/upload da imagem:", imgError);
