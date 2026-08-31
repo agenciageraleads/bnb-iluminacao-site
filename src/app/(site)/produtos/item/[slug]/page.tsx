@@ -324,14 +324,18 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
                         <div className="space-y-4">
                             {(urbanDownloads?.datasheet || product.datasheet) && (
-                                <a
+                                <TrackedContactLink
                                     href={urbanDownloads?.datasheet ?? product.datasheet}
                                     download
+                                    channel="download"
+                                    eventSource="product_detail"
+                                    eventLabel={`${product.name} - Datasheet`}
+                                    extraPayload={{ product_id: product.id, product_model: product.model, lead_cluster: product.category, download_type: "datasheet" }}
                                     className="w-full flex items-center justify-center gap-3 bg-industrial-100 text-industrial-900 border border-industrial-200 font-black uppercase tracking-widest h-14 hover:bg-industrial-200 transition-colors group rounded-lg"
                                 >
                                     <Download className="size-5 group-hover:translate-y-0.5 transition-transform" />
                                     Baixar Datasheet (PDF)
-                                </a>
+                                </TrackedContactLink>
                             )}
 
                             {urbanDownloads?.desenhos && (
@@ -342,14 +346,18 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                                     </p>
                                     <div className="flex flex-wrap gap-2">
                                         {urbanDownloads.desenhos.map(({ altura, href }) => (
-                                            <a
+                                            <TrackedContactLink
                                                 key={altura}
                                                 href={href}
                                                 download
+                                                channel="download"
+                                                eventSource="product_detail"
+                                                eventLabel={`${product.name} - Desenho ${altura}m`}
+                                                extraPayload={{ product_id: product.id, product_model: product.model, lead_cluster: product.category, download_type: "desenho_tecnico" }}
                                                 className="px-3 py-1.5 bg-white border border-industrial-200 text-[11px] font-black text-industrial-700 uppercase tracking-widest hover:border-industrial-900 hover:text-industrial-950 transition-colors rounded-md"
                                             >
                                                 {altura}m
-                                            </a>
+                                            </TrackedContactLink>
                                         ))}
                                     </div>
                                 </div>
