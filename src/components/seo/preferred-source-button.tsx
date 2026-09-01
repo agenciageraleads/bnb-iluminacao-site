@@ -17,10 +17,12 @@ import Script from "next/script"
  * O idioma do botão segue o `lang` do <html> (pt-BR); por isso não passamos
  * `data-lang`, que exigiria um código da lista suportada pelo Google.
  *
- * A largura fixa não é decoração: o script do Google monta um <iframe> que
- * herda a largura do container. Sem largura explícita o container fica com
- * 0px (é um bloco dentro de um flex centralizado) e o botão renderiza
- * invisível — foi o que aconteceu no primeiro deploy.
+ * A largura fixa vai no WRAPPER, não no container do botão — e não é
+ * decoração. O script do Google escreve `style="width: 100%"` inline no
+ * container, o que vence qualquer classe CSS; a largura real passa a ser a
+ * do pai. Sem largura no wrapper ele colapsa para 0px (é um bloco dentro de
+ * um flex centralizado) e o botão renderiza invisível — foi o que aconteceu
+ * nos deploys de #78 e #81.
  */
 export function PreferredSourceButton({
     theme = "light",
@@ -30,12 +32,12 @@ export function PreferredSourceButton({
     className?: string
 }) {
     return (
-        <div className={className}>
+        <div className={`w-[260px] ${className ?? ""}`}>
             <Script
                 src="https://news.google.com/swg/js/v1/publisher.js"
                 strategy="lazyOnload"
             />
-            <div google-add-preferred-source-btn="" data-theme={theme} className="w-[260px]" />
+            <div google-add-preferred-source-btn="" data-theme={theme} />
         </div>
     )
 }
