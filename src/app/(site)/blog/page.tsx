@@ -5,6 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Calendar, ArrowRight, Anchor, BookOpen, Lightbulb, Paintbrush, Ruler, Zap } from "lucide-react"
 import { unstable_noStore as noStore } from "next/cache"
+import { PreferredSourceButton } from "@/components/seo/preferred-source-button"
 
 export const metadata: Metadata = {
     title: "Blog | Dicas e Guias de Iluminação | B&B Iluminação",
@@ -187,6 +188,14 @@ export default async function BlogPage() {
                             <p className="text-industrial-500 mt-2">Nossos especialistas estão preparando o próximo conteúdo técnico.</p>
                         </div>
                     )}
+                </div>
+
+                {/* Fonte preferida no Google */}
+                <div className="mt-24 py-12 border-t border-industrial-200 flex flex-col items-center gap-4 text-center">
+                    <p className="text-industrial-600 text-sm font-medium max-w-md">
+                        Quer ver nossos artigos técnicos com prioridade no Google? Marque a B&amp;B como fonte preferida.
+                    </p>
+                    <PreferredSourceButton />
                 </div>
             </div>
         </main>

@@ -2,6 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Instagram, Facebook, Linkedin, MapPin, Phone, Mail } from "lucide-react"
 import { TrackedContactLink } from "@/lib/lead-tracking"
+import { PreferredSourceButton } from "@/components/seo/preferred-source-button"
 
 export function Footer() {
     const currentYear = new Date().getFullYear()
@@ -98,6 +99,14 @@ export function Footer() {
                         </div>
                     </div>
 
+                </div>
+
+                {/* Fonte preferida no Google */}
+                <div className="pb-10 flex flex-col md:flex-row items-center justify-center gap-4 text-center">
+                    <p className="text-industrial-400 text-sm font-medium max-w-md">
+                        Acompanha nosso conteúdo técnico? Marque a B&amp;B como fonte preferida no Google.
+                    </p>
+                    <PreferredSourceButton theme="dark" className="shrink-0" />
                 </div>
 
                 {/* Bottom Bar */}
