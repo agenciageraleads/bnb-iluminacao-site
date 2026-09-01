@@ -210,57 +210,50 @@ export async function POST(req: Request) {
         }
 
         // --------------------------------------------------------------------------------
-        // 4. O AGENTE FOTÓGRAFO (Gerando a Imagem de Capa com Imagen 4)
+        // 4. O AGENTE FOTÓGRAFO (Gerando a Imagem de Capa)
+        // O endpoint standalone do Imagen (`imagen-4.0-generate-001:predict`) não está mais
+        // disponível nesta chave/projeto (404 "model not found"). Usa o modelo de imagem nativo
+        // do Gemini via generateContent, que devolve a imagem inline em vez de via `predict`.
         // --------------------------------------------------------------------------------
+        const IMAGE_MODEL_NAME = 'gemini-2.5-flash-image';
         let featuredImageId = null;
         try {
             const promptFoto = `
-                Generate a high-end, ultra-realistic industrial photography prompt in English for Google Imagen 4.
+                Generate a high-end, ultra-realistic industrial photography prompt in English.
                 Subject: ${conteudoAgente.title}.
-                Style: Professional night/dusk photography, realistic lighting, industrial aesthetic, high quality, 8k resolution. 
+                Style: Professional night/dusk photography, realistic lighting, industrial aesthetic, high quality, 8k resolution.
                 Focus on B&B Iluminação infrastructure: metallic poles, external lighting, public squares or parking lots.
                 Return only the prompt string.
             `;
             const resPromptFoto = await model.generateContent(promptFoto);
             const finalImagePrompt = resPromptFoto.response.text().trim();
 
-            const imagenUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`;
-            const imagenResponse = await fetch(imagenUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    instances: [{ prompt: finalImagePrompt }],
-                    parameters: { sampleCount: 1, aspectRatio: "16:9" }
-                })
-            });
+            const imageModel = genAI.getGenerativeModel(
+                { model: IMAGE_MODEL_NAME },
+                { apiVersion: 'v1beta' }
+            );
+            const imagenResult = await imageModel.generateContent(finalImagePrompt);
+            const imageParts = imagenResult.response.candidates?.[0]?.content?.parts ?? [];
+            const imagePart = imageParts.find((part: any) => part.inlineData?.data);
+            const base64Image = imagePart?.inlineData?.data;
 
-            if (imagenResponse.ok) {
-                const imagenData = await imagenResponse.json();
-                const base64Image = imagenData?.predictions?.[0]?.bytesBase64Encoded;
-
-                if (!base64Image) {
-                    console.error("Imagen respondeu OK mas sem bytesBase64Encoded:", JSON.stringify(imagenData).slice(0, 1000));
-                }
-
-                if (base64Image) {
-                    // Fazendo upload para o Payload
-                    const mediaDoc = await payload.create({
-                        collection: 'media',
-                        data: {
-                            alt: `Imagem gerada por IA para o post: ${conteudoAgente.title}`,
-                        },
-                        file: {
-                            data: Buffer.from(base64Image, 'base64'),
-                            name: `blog-${conteudoAgente.slug}-${Date.now()}.png`,
-                            mimetype: 'image/png',
-                            size: Buffer.from(base64Image, 'base64').length,
-                        },
-                    });
-                    featuredImageId = mediaDoc.id;
-                }
+            if (!base64Image) {
+                console.error(`${IMAGE_MODEL_NAME} respondeu sem inlineData:`, JSON.stringify(imagenResult.response).slice(0, 1000));
             } else {
-                const errorBody = await imagenResponse.text();
-                console.error(`Imagen respondeu ${imagenResponse.status}:`, errorBody.slice(0, 1000));
+                // Fazendo upload para o Payload
+                const mediaDoc = await payload.create({
+                    collection: 'media',
+                    data: {
+                        alt: `Imagem gerada por IA para o post: ${conteudoAgente.title}`,
+                    },
+                    file: {
+                        data: Buffer.from(base64Image, 'base64'),
+                        name: `blog-${conteudoAgente.slug}-${Date.now()}.png`,
+                        mimetype: imagePart?.inlineData?.mimeType || 'image/png',
+                        size: Buffer.from(base64Image, 'base64').length,
+                    },
+                });
+                featuredImageId = mediaDoc.id;
             }
         } catch (imgError) {
             console.error("Erro na geração/upload da imagem:", imgError);
