@@ -1,0 +1,72 @@
+[
+  {
+    "briefId": 1,
+    "title": "NBR 6123: como o vento dimensiona postes metálicos",
+    "keyword": "NBR 6123 postes vento",
+    "resposta": "Como a NBR 6123 (revisão 2023) se aplica ao cálculo de carga de vento em postes de iluminação/mastros metálicos — categoria de rugosidade do terreno, coeficiente de arrasto para seções tubulares/cônicas, e por que isso define a espessura de parede do poste.",
+    "fontes": "ABNT NBR 6123:2023, catálogo oficial em https://www.abntcatalogo.com.br/norma.aspx?ID=490001",
+    "ctaHint": "Peça o memorial de cálculo de vento do seu projeto -> /orcamento-poste-metalico",
+    "weekDay": "Terça",
+    "funnelStage": "TOFU técnico -> autoridade"
+  },
+  {
+    "briefId": 2,
+    "title": "Poste flangeado ou engastado: qual escolher e por quê",
+    "keyword": "poste flangeado ou engastado",
+    "resposta": "Diferença construtiva real entre fixação flangeada (fundação de concreto + chumbadores) e engastamento direto no solo, quando cada uma é indicada conforme terreno, prazo de obra e necessidade de remoção futura, com comparativo claro.",
+    "fontes": "ABNT NBR 14744:2019, catálogo oficial em https://www.abntcatalogo.com.br/norma.aspx?ID=419453",
+    "ctaHint": "Fale com um engenheiro sobre qual fixação serve pro seu projeto -> /orcamento-poste-metalico",
+    "weekDay": "Quinta",
+    "funnelStage": "MOFU -> BOFU"
+  },
+  {
+    "briefId": 3,
+    "title": "Poste metálico ou de concreto: comparativo para quem vai comprar",
+    "keyword": "poste metálico ou concreto",
+    "resposta": "Comparar custo inicial, logística/peso, prazo de instalação, manutenção (corrosão vs fissuração), vida útil e reciclabilidade entre poste metálico galvanizado e poste de concreto, com viés honesto mas favorável ao metálico nos pontos onde ele realmente vence: peso/logística, prazo de instalação e acabamento.",
+    "fontes": "ABNT NBR 6323:2004, catálogo oficial em https://www.abntcatalogo.com.br/norma.aspx?ID=1121",
+    "ctaHint": "Compare o custo total do seu projeto com poste metálico -> /orcamento-poste-metalico",
+    "weekDay": "Quinta",
+    "funnelStage": "BOFU"
+  },
+  {
+    "briefId": 4,
+    "title": "Quanto custa um poste metálico? Como funciona o orçamento",
+    "keyword": "orçamento poste metálico",
+    "resposta": "Por que poste metálico não tem preço fixo (variáveis: altura, bitola, acabamento galvanizado vs duplex, quantidade), com faixas de referência por altura (3m, 4m, 5m, 6m, 7m, 8m, 9m) sem citar preço fechado, e CTA claro para o formulário de orçamento real.",
+    "fontes": "ABNT NBR 14744:2019, catálogo oficial em https://www.abntcatalogo.com.br/norma.aspx?ID=419453",
+    "ctaHint": "Peça seu orçamento personalizado -> /orcamento-poste-metalico",
+    "weekDay": "Segunda",
+    "funnelStage": "BOFU"
+  },
+  {
+    "briefId": 5,
+    "title": "Fabricante de postes metálicos em Goiás: por que comprar direto da fábrica",
+    "keyword": "fabricante de postes metálicos em Goiás",
+    "resposta": "Por que comprar de fabricante local em Goiás: prazo de entrega, redução de frete, suporte técnico presencial e possibilidade de visita à fábrica. A B&B é sediada em Goiânia e fabrica postes metálicos sob medida (Linha Urban, NEX, VRS) com rigor de engenharia (NBR 14744 e NBR 6123).",
+    "fontes": "ABNT NBR 14744:2019, catálogo oficial em https://www.abntcatalogo.com.br/norma.aspx?ID=419453",
+    "ctaHint": "Agende uma visita à fábrica ou fale com o time comercial de Goiás -> /contato",
+    "weekDay": "Sexta",
+    "funnelStage": "BOFU regional"
+  },
+  {
+    "briefId": 6,
+    "title": "Poste ornamental para praça: altura, estilo e material certos",
+    "keyword": "poste ornamental para praça",
+    "resposta": "Altura recomendada por tipo de praça (praça de bairro vs praça/parque grande), estilo colonial x moderno, LED integrado, e por que aço galvanizado bate ferro fundido em custo-benefício e prazo de entrega.",
+    "fontes": "ABNT NBR 5101:2018, catálogo oficial em https://www.abntcatalogo.com.br/norma.aspx?ID=406739",
+    "ctaHint": "Veja o catálogo de postes para praças e áreas públicas -> /produtos",
+    "weekDay": "Quarta",
+    "funnelStage": "MOFU"
+  },
+  {
+    "briefId": 7,
+    "title": "Chumbador para poste metálico: como escolher e dimensionar",
+    "keyword": "chumbador para poste metálico",
+    "resposta": "Tipo J vs. parabolt, dimensionamento por altura/carga de vento do poste (ligado à NBR 6123), acompanha porca e arruela, aço galvanizado a fogo — o chumbador como parte de um sistema completo (poste + fixação), não um item avulso.",
+    "fontes": "ABNT NBR 6123:2023, catálogo oficial em https://www.abntcatalogo.com.br/norma.aspx?ID=490001",
+    "ctaHint": "Chumbador já incluso no seu poste B&B — peça o orçamento completo -> /orcamento-poste-metalico",
+    "weekDay": "Sexta",
+    "funnelStage": "MOFU/BOFU"
+  }
+]
