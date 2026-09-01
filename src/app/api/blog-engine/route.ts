@@ -382,7 +382,9 @@ export async function POST(req: Request) {
 
         return NextResponse.json({
             success: true,
-            message: "Sala de Redação gerou um rascunho válido em 'ai_review'. Aguardando aprovação humana para publicar.",
+            message: autoPublish
+                ? "Sala de Redação gerou e publicou o post automaticamente (autopilot, sem revisão humana)."
+                : "Sala de Redação gerou um rascunho válido em 'ai_review'. Aguardando aprovação humana para publicar.",
             post: novoPost,
             revisorLog: "Aprovado com maestria em compliance com NBRs",
             qualityGate: "Aprovado — nenhum erro estrutural, sem canibalização, fontes normativas ok."
