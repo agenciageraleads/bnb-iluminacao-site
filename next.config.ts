@@ -11,6 +11,12 @@ const nextConfig: NextConfig = {
   },
   /* config options here */
   images: {
+    // O logo agora é SVG (public/logo.svg). O otimizador do Next recusa SVG
+    // por padrão; liberamos com sandbox + CSP restritiva, já que o único SVG
+    // servido por aqui é um asset próprio do repositório.
+    dangerouslyAllowSVG: true,
+    contentDispositionType: 'attachment',
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     remotePatterns: [
       {
         protocol: 'https',

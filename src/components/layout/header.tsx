@@ -34,7 +34,7 @@ export function Header() {
 
                         {/* Logo */}
                         <Link href="/" className="flex items-center gap-2 group" aria-label="B&B Iluminação - Página Inicial">
-                            <Image src="/logo.png" alt="B&B Iluminação" width={200} height={48} className="h-10 md:h-12 w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity" priority />
+                            <Image src="/logo.svg" alt="B&B Iluminação" width={200} height={48} className="h-10 md:h-12 w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity" priority />
                         </Link>
 
                         {/* Desktop Navigation */}
