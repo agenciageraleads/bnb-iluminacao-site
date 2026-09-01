@@ -11,14 +11,17 @@ const Blog: CollectionConfig = {
     hooks: {
         beforeChange: [
             ({ data, originalDoc, req }) => {
-                // Gate draft -> ai_review -> published: só grava reviewedBy/reviewedAt quando um
-                // humano autenticado (Payload Admin) promove o post para 'published'. O motor de
-                // agentes nunca chama este hook com status 'published' diretamente.
+                // Gate draft -> ai_review -> published: grava reviewedBy/reviewedAt quando um
+                // humano autenticado (Payload Admin) promove o post para 'published'. Se o motor
+                // de agentes já marcou reviewedBy explicitamente (piloto autopilot do Sprint
+                // Blog 04 — publica direto sem revisão humana, mas nunca finge que houve uma),
+                // esse valor é preservado em vez de sobrescrito por 'desconhecido'.
                 if (data?.status === 'published' && originalDoc?.status !== 'published') {
+                    const jaMarcado = data?.qualityAudit?.reviewedBy
                     data.qualityAudit = {
                         ...(data.qualityAudit ?? originalDoc?.qualityAudit ?? {}),
-                        reviewedBy: req?.user?.email ?? req?.user?.id ?? 'desconhecido',
-                        reviewedAt: new Date().toISOString(),
+                        reviewedBy: jaMarcado ?? req?.user?.email ?? req?.user?.id ?? 'desconhecido',
+                        reviewedAt: data?.qualityAudit?.reviewedAt ?? new Date().toISOString(),
                     }
                 }
                 return data

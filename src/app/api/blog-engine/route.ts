@@ -5,6 +5,8 @@ import config from '@payload-config';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { AGENT_GROUND_TRUTH } from '@/lib/agent-context';
 import { runQualityGate } from '@/lib/blog-validation.mjs';
+import briefsPart1 from '@/data/blog-briefs-1-7.json';
+import briefsPart2 from '@/data/blog-briefs-8-20.json';
 
 const MODEL_NAME = 'gemini-2.5-flash';
 
@@ -47,10 +49,18 @@ export async function POST(req: Request) {
 
         // Brief opcional (Sprint Blog 03): quando informado, pula o Agente Estrategista
         // e usa a pauta/resposta/fontes já pesquisadas em vez de deixar a IA escolher o tema.
+        // autoMode: sem brief manual, a rota escolhe sozinha o próximo brief PRONTO não usado
+        // ainda do calendário de 90 dias (ordem 1..20). autoPublish: pula ai_review e publica
+        // direto — ligado explicitamente por pedido do Lucas em 2026-09-01 (piloto Sprint Blog 04
+        // automatizado ponta a ponta); reviewedBy fica marcado como autopilot, nunca finge revisão humana.
         let brief: BriefOverride | null = null;
+        let autoPublish = false;
+        let autoMode = false;
         try {
             const body = await req.json();
             if (body?.brief?.title) brief = body.brief;
+            if (body?.autoPublish === true) autoPublish = true;
+            if (body?.autoMode === true) autoMode = true;
         } catch {
             // corpo vazio é normal no fluxo autônomo (cron) — segue sem brief.
         }
@@ -66,6 +76,21 @@ export async function POST(req: Request) {
             }
         });
         const titulosAntigos = postsExistentes.docs.map(d => d.title).join(", ");
+
+        // Se o calendário de briefs PRONTO do Sprint Blog 03 acabar, NÃO bloqueia o piloto:
+        // cai de volta pro Agente Estrategista autônomo (pesquisa live via Google grounding,
+        // abaixo). Isso é só uma rede de segurança — a reposição de verdade da fila de briefs
+        // (repetir a metodologia do Sprint 03: keyword research + gap de concorrente, só tier
+        // gratuito) é feita por uma tarefa agendada separada antes da fila esvaziar de vez.
+        if (autoMode && !brief) {
+            const todosOsBriefs = [...briefsPart1, ...briefsPart2].sort((a: any, b: any) => a.briefId - b.briefId);
+            const restantes = todosOsBriefs.filter((b: any) => !titulosAntigos.includes(b.title));
+            if (restantes.length > 0) {
+                brief = restantes[0];
+            } else {
+                console.warn("autoMode: fila de briefs PRONTO do calendário esgotada — caindo para o Agente Estrategista autônomo (Google grounding).");
+            }
+        }
 
         // Usando gemini-2.5-flash (Modelo de elite disponível na chave do usuário)
         const model = genAI.getGenerativeModel(
@@ -290,15 +315,18 @@ export async function POST(req: Request) {
         }
 
         // --------------------------------------------------------------------------------
-        // 6. CRIAÇÃO EM RASCUNHO — NUNCA publica direto. Fluxo obrigatório: draft -> ai_review -> published.
-        // A promoção para 'published' exige aprovação humana via /api/blog-engine/publish.
+        // 6. CRIAÇÃO DO POST. Por padrão fica em 'ai_review' (draft -> ai_review -> published,
+        // promoção via aprovação humana no Payload Admin). Quando autoPublish=true (piloto
+        // automatizado do Sprint Blog 04, ligado por pedido explícito do Lucas em 2026-09-01),
+        // pula direto pra 'published' — qualityAudit.reviewedBy fica marcado como autopilot,
+        // nunca finge que um humano revisou.
         // --------------------------------------------------------------------------------
         const novoPost = await payload.create({
             collection: 'blog',
             data: {
                 title: conteudoAgente.title,
                 slug: finalSlug,
-                status: 'ai_review',
+                status: autoPublish ? 'published' : 'ai_review',
                 author: 'Eng. Lucas Borges',
                 summary: conteudoAgente.summary,
                 featuredImage: featuredImageId,
@@ -344,6 +372,10 @@ export async function POST(req: Request) {
                     revisorPrompt: promptRevisor,
                     revisorVeredicto: veredicto,
                     qualityGateErrors: gate.errors,
+                    ...(autoPublish ? {
+                        reviewedBy: 'autopilot (sem revisão humana — piloto Sprint Blog 04 automatizado, ligado por pedido do Lucas em 2026-09-01)',
+                        reviewedAt: new Date().toISOString(),
+                    } : {}),
                 }
             } as any
         });
