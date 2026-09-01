@@ -8,6 +8,11 @@ on:
       - 'feat/**'
       - 'fix/**'
   pull_request:
+  # Permite redisparar o Validate à mão. Necessário porque o Deploy só escuta
+  # `workflow_run` do Validate: quando um deploy se perde (corrida de
+  # concurrency, falha de infra), o `rerun` do run antigo NÃO redispara o Deploy,
+  # e sem isso a única saída era empurrar um commit vazio para a main.
+  workflow_dispatch:
 
 jobs:
   validate:
