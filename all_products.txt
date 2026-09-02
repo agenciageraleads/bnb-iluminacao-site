@@ -20,13 +20,11 @@
  Poste Ornamental Aquila Flangeado        | poste-ornamental-aquila-flangeado        | Geral
  Porte Ornamental Polaris                 | porte-ornamental-polaris                 | Geral
  Poste Ornamental Aurion                  | poste-ornamental-aurion                  | Geral
- Poste Ornamental Vespera                 | poste-ornamental-vespera                 | Geral
  Poste Ornamental Aurum                   | poste-ornamental-aurum                   | Geral
  Poste Ornamental Halo                    | poste-ornamental-halo                    | Geral
  Poste Ornamental Zéfiro                  | poste-ornamental-zefiro                  | Geral
  Poste Ornamental Pyxis                   | poste-ornamental-pyxis                   | Geral
  Poste Ornamental Vela                    | poste-ornamental-vela                    | Geral
- Poste Ornamental Serena                  | poste-ornamental-serena                  | Geral
  Poste Solar para Cochos                  | poste-solar-agro                         | Linha Agro
  Lixeira Industrial                       | lixeira-industrial                       | Linha Garden
  Trave de Futsal Oficial                  | trave-futsal                             | Linha Sport
@@ -46,8 +44,6 @@
  Poste Ornamental Harmonia Engastado      | poste-ornamental-harmonia-engastado      | Ornamental
  Poste Ornamental Harmonia Flangeado      | poste-ornamental-harmonia-flangeado      | Ornamental
  Poste Ornamental Aquila Engastado        | poste-ornamental-aquila-engastado        | Ornamental
- Porte Ornamental Autora Engastado        | porte-ornamental-autora-engastado        | Ornamental
- Poste Ornamental Aurora Flangeado        | poste-ornamental-aurora-flangeado        | Ornamental
  Poste Reto 4m                            | poste-reto-4m                            | Postes Metálicos
  Poste Curvo Simples                      | poste-curvo-simples                      | Postes Metálicos
  Poste Telecônico Curvo Simples Flangeado | poste-teleconico-curvo-simples-flangeado | Urban
@@ -68,4 +64,4 @@
  Poste p/ Câmera Dome Flangeado           | poste-camera-dome-flangeado              | Vigia
  Poste p/ Câmera Bullet Engastado         | poste-camera-bullet-engastado            | Vigia
  Poste p/ Câmera Dome Engastado           | poste-camera-dome-engastado              | Vigia
-(68 rows)
+(64 rows)
