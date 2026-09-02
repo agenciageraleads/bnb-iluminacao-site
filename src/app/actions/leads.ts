@@ -27,6 +27,8 @@ const attributionFields = [
     'utm_content',
     'utm_term',
     'gclid',
+    'gbraid',
+    'wbraid',
     'fbclid',
     'msclkid',
 ]
@@ -58,6 +60,7 @@ async function createCatalogOpportunity(input: {
     company: string
     companyCnpj: string
     catalogId: string
+    attribution: Record<string, FormDataEntryValue>
 }) {
     const crmApiUrl = process.env.CRM_API_URL
     const crmApiKey = process.env.CRM_API_KEY
@@ -69,6 +72,24 @@ async function createCatalogOpportunity(input: {
     const document = digitsOnly(input.companyCnpj)
     const whatsapp = digitsOnly(input.phone)
     const interactionEventId = `site-catalogo:${randomUUID()}`
+    const attributionResponse = await fetch(`${crmApiUrl.replace(/\/$/, '')}/api/marketing-attribution`, {
+        method: 'POST',
+        signal: AbortSignal.timeout(10_000),
+        headers: {
+            Authorization: `Bearer ${crmApiKey}`,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            channel: 'form',
+            form_type: 'catalog_download',
+            lead_cluster: 'catalogo',
+            ...Object.fromEntries(Object.entries(input.attribution).filter(([, value]) => typeof value === 'string')),
+            payload: input.attribution,
+        }),
+    })
+    const attributionResult = attributionResponse.ok
+        ? await attributionResponse.json() as { public_id?: string }
+        : null
     const response = await fetch(`${crmApiUrl.replace(/\/$/, '')}/api/opportunities/sdr-sync`, {
         method: 'POST',
         signal: AbortSignal.timeout(10_000),
@@ -89,6 +110,7 @@ async function createCatalogOpportunity(input: {
             status: 'novo',
             interaction_only: true,
             interaction_event_id: interactionEventId,
+            marketing_attribution_id: attributionResult?.public_id,
         }),
     })
 
@@ -132,6 +154,7 @@ export async function createCatalogLead(prevState: any, formData: FormData) {
             company,
             companyCnpj,
             catalogId,
+            attribution,
         })
 
         if (disposition === 'internal_discarded') {

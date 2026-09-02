@@ -68,6 +68,22 @@ export async function POST(req: Request) {
       const assignment = resolveCrmAssignment(representativeName);
       const stateSegment = normalizeSourceSegment(representativeState);
       const phoneDigits = digitsOnly(phone);
+      const attributionResponse = attribution && typeof attribution === 'object'
+        ? await fetch(`${crmApiUrl.replace(/\/$/, '')}/api/marketing-attribution`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${crmApiKey}` },
+            body: JSON.stringify({
+              channel: 'form',
+              form_type: 'representative_contact',
+              lead_cluster: 'representantes',
+              ...attribution,
+              payload: attribution,
+            }),
+          })
+        : null;
+      const attributionResult = attributionResponse?.ok
+        ? await attributionResponse.json() as { public_id?: string }
+        : null;
 
       const crmPayload = {
         name: name,
@@ -78,6 +94,7 @@ export async function POST(req: Request) {
         notes: attribution ? `Atribuição site: ${JSON.stringify(attribution)}` : undefined,
         pipeline_slug: 'leads',
         status: 'novo',
+        marketing_attribution_id: attributionResult?.public_id,
         ...assignment,
       };
 
