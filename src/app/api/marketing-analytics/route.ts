@@ -38,8 +38,15 @@ function verifyInternalToken(req: Request): boolean {
     }
 }
 
-function toGa4Date(d: Date): string {
+// Formato usado para comparar com o valor da dimensão "date" nas linhas retornadas pelo GA4
+// (sempre YYYYMMDD, sem hífen).
+function toGa4RowDate(d: Date): string {
     return d.toISOString().slice(0, 10).replace(/-/g, '')
+}
+
+// Formato exigido pelo campo startDate/endDate do corpo da requisição runReport (YYYY-MM-DD).
+function toGa4RequestDate(d: Date): string {
+    return d.toISOString().slice(0, 10)
 }
 
 export async function GET(req: Request) {
@@ -72,7 +79,7 @@ export async function GET(req: Request) {
             const t = new Date(p.createdAt).getTime()
             return t < min ? t : min
         }, Date.now())
-        const startDate = toGa4Date(new Date(oldestCreatedAt))
+        const startDate = toGa4RequestDate(new Date(oldestCreatedAt))
 
         const dailyReport = await runGa4Report(accessToken, propertyId, {
             dateRanges: [{ startDate, endDate: 'today' }],
@@ -104,7 +111,7 @@ export async function GET(req: Request) {
         function cumulativeAt(path: string, publishedAt: Date, offsetDays: number) {
             const targetDate = new Date(publishedAt.getTime() + offsetDays * 86400000)
             if (targetDate.getTime() > Date.now()) return { reached: false, pageViews: 0, sessions: 0 }
-            const targetStr = toGa4Date(targetDate)
+            const targetStr = toGa4RowDate(targetDate)
             const rows = rowsByPath[path] ?? []
             let pageViews = 0
             let sessions = 0
