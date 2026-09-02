@@ -1,7 +1,8 @@
-import { timingSafeEqual, createSign } from 'node:crypto'
+import { timingSafeEqual } from 'node:crypto'
 import { NextResponse } from 'next/server'
 import { getPayload } from 'payload'
 import config from '@payload-config'
+import { getGoogleAccessToken, runGa4Report } from '@/lib/ga4-client'
 
 // Endpoint de leitura só — resumo periódico de tráfego/engajamento dos posts publicados do
 // blog, usado pela automação do piloto Sprint Blog 04 (n8n dispara semanalmente e manda o
@@ -23,48 +24,6 @@ function verifyInternalToken(req: Request): boolean {
     } catch {
         return false
     }
-}
-
-function base64url(input: Buffer | string): string {
-    return Buffer.from(input).toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')
-}
-
-async function getGoogleAccessToken(): Promise<string> {
-    const clientEmail = process.env.GA4_SERVICE_ACCOUNT_EMAIL || ''
-    const privateKey = (process.env.GA4_SERVICE_ACCOUNT_PRIVATE_KEY || '').replace(/\\n/g, '\n')
-    if (!clientEmail || !privateKey) {
-        throw new Error('GA4_SERVICE_ACCOUNT_EMAIL / GA4_SERVICE_ACCOUNT_PRIVATE_KEY não configuradas')
-    }
-
-    const now = Math.floor(Date.now() / 1000)
-    const header = base64url(JSON.stringify({ alg: 'RS256', typ: 'JWT' }))
-    const claim = base64url(JSON.stringify({
-        iss: clientEmail,
-        scope: 'https://www.googleapis.com/auth/analytics.readonly',
-        aud: 'https://oauth2.googleapis.com/token',
-        exp: now + 3600,
-        iat: now,
-    }))
-    const signInput = `${header}.${claim}`
-    const signer = createSign('RSA-SHA256')
-    signer.update(signInput)
-    signer.end()
-    const signature = base64url(signer.sign(privateKey))
-    const jwt = `${signInput}.${signature}`
-
-    const res = await fetch('https://oauth2.googleapis.com/token', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams({
-            grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
-            assertion: jwt,
-        }),
-    })
-    if (!res.ok) {
-        throw new Error(`Falha ao obter access_token do Google: ${res.status} ${await res.text()}`)
-    }
-    const data = await res.json()
-    return data.access_token
 }
 
 export async function GET(req: Request) {
@@ -91,34 +50,18 @@ export async function GET(req: Request) {
 
         const accessToken = await getGoogleAccessToken()
 
-        const reportRes = await fetch(
-            `https://analyticsdata.googleapis.com/v1beta/properties/${propertyId}:runReport`,
-            {
-                method: 'POST',
-                headers: {
-                    Authorization: `Bearer ${accessToken}`,
-                    'Content-Type': 'application/json',
+        const reportData = await runGa4Report(accessToken, propertyId, {
+            dateRanges: [{ startDate: `${days}daysAgo`, endDate: 'today' }],
+            dimensions: [{ name: 'pagePath' }],
+            metrics: [{ name: 'screenPageViews' }, { name: 'sessions' }],
+            dimensionFilter: {
+                filter: {
+                    fieldName: 'pagePath',
+                    stringFilter: { matchType: 'BEGINS_WITH', value: '/blog/' },
                 },
-                body: JSON.stringify({
-                    dateRanges: [{ startDate: `${days}daysAgo`, endDate: 'today' }],
-                    dimensions: [{ name: 'pagePath' }],
-                    metrics: [{ name: 'screenPageViews' }, { name: 'sessions' }],
-                    dimensionFilter: {
-                        filter: {
-                            fieldName: 'pagePath',
-                            stringFilter: { matchType: 'BEGINS_WITH', value: '/blog/' },
-                        },
-                    },
-                    limit: 500,
-                }),
-            }
-        )
-
-        if (!reportRes.ok) {
-            const errText = await reportRes.text()
-            return NextResponse.json({ success: false, error: 'Falha na GA4 Data API', details: errText }, { status: 200 })
-        }
-        const reportData = await reportRes.json()
+            },
+            limit: 500,
+        })
 
         const viewsByPath: Record<string, { pageViews: number; sessions: number }> = {}
         for (const row of reportData.rows ?? []) {
