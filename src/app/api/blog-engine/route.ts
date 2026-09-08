@@ -5,6 +5,7 @@ import config from '@payload-config';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { AGENT_GROUND_TRUTH } from '@/lib/agent-context';
 import { runQualityGate } from '@/lib/blog-validation.mjs';
+import { ensureP0HubLink } from '@/lib/seo/p0-hub-interlinking';
 import briefsPart1 from '@/data/blog-briefs-1-7.json';
 import briefsPart2 from '@/data/blog-briefs-8-20.json';
 
@@ -159,7 +160,16 @@ export async function POST(req: Request) {
             - Use <strong> para destacar termos técnicos e normas.
             - MUITO IMPORTANTE: Se houver dados comparativos ou valores de NBR, use obrigatoriamente uma <table> HTML simples (thead, tbody, tr, th, td). O site está preparado para estilizar estas tabelas de forma premium.
             - Use <ul> e <li> para listas de benefícios ou especificações.
-            
+
+            REGRA DE INTERLINKING (Farol SEO Nacional B2B): se o artigo mencionar postes metálicos/galvanizados,
+            fabricante/fábrica/fornecedor de postes, poste teleconico ou iluminação pública, inclua UM link
+            interno contextual (dentro de um <p> do corpo, nunca forçado fora de contexto) para a página hub
+            correspondente: "/postes-metalicos", "/fabricante-de-postes-metalicos", "/produtos/poste-teleconico"
+            ou "/postes-para-iluminacao-publica". Escolha só o hub mais relevante ao tema central do artigo; não
+            precisa linkar todos. Se o sistema não conseguir inserir naturalmente, um link de reforço é
+            adicionado automaticamente depois — mas prefira fazer isso você mesmo, no ponto do texto onde fizer
+            mais sentido editorial.
+
             RETORNE EXATAMENTE NESTE FORMATO JSON:
             {
                 "title": "${pauta}",
@@ -189,6 +199,13 @@ export async function POST(req: Request) {
         // então qualquer tag HTML apareceria literal (ex.: "<strong>NBR</strong>"). Removemos as tags.
         if (typeof conteudoAgente.summary === 'string') {
             conteudoAgente.summary = conteudoAgente.summary.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+        }
+
+        // Rede de segurança do Farol SEO Nacional B2B: garante o link para o hub P0 mesmo se o
+        // Redator não seguir a instrução do prompt (backfill de 2026-09-02 achou 47/96 posts
+        // publicados mencionando esses clusters sem nenhum link para os hubs).
+        if (typeof conteudoAgente.bodyHtml === 'string') {
+            conteudoAgente.bodyHtml = ensureP0HubLink(conteudoAgente.bodyHtml, conteudoAgente.title, conteudoAgente.summary);
         }
 
         // --------------------------------------------------------------------------------
