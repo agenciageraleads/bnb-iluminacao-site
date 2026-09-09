@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, type CSSProperties, type MouseEventHandler, type ReactNode } from "react"
-import { persistFirstTouchAttribution, pushLeadEvent } from "@/lib/lead-tracking"
+import { createMarketingAttribution, persistFirstTouchAttribution, pushLeadEvent } from "@/lib/lead-tracking"
 
 interface WhatsAppLinkProps {
   phoneNumber?: string
@@ -30,11 +30,15 @@ export function WhatsAppLink({
     persistFirstTouchAttribution()
   }, [])
 
-  const url = message
-    ? `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
-    : `https://wa.me/${phoneNumber}`
+  const buildUrl = (attributionId?: string | null) => {
+    const attributionMessage = attributionId ? `\n\nRef: #${attributionId}` : ''
+    const finalMessage = `${message ?? ''}${attributionMessage}`.trim()
+    return finalMessage
+      ? `https://wa.me/${phoneNumber}?text=${encodeURIComponent(finalMessage)}`
+      : `https://wa.me/${phoneNumber}`
+  }
 
-  const handleClick: MouseEventHandler<HTMLAnchorElement> = (event) => {
+  const handleClick: MouseEventHandler<HTMLAnchorElement> = async (event) => {
     pushLeadEvent({
       event: 'whatsapp_click',
       cta_channel: 'whatsapp',
@@ -44,11 +48,32 @@ export function WhatsAppLink({
       has_prefilled_message: Boolean(message),
     })
     onClick?.(event)
+    if (event.defaultPrevented) return
+
+    event.preventDefault()
+    const popup = window.open('', '_blank')
+    const fallbackUrl = buildUrl()
+
+    try {
+      const attributionId = await createMarketingAttribution('whatsapp')
+      const targetUrl = buildUrl(attributionId)
+      if (popup) {
+        popup.location.assign(targetUrl)
+      } else {
+        window.location.assign(targetUrl)
+      }
+    } catch {
+      if (popup) {
+        popup.location.assign(fallbackUrl)
+      } else {
+        window.location.assign(fallbackUrl)
+      }
+    }
   }
 
   return (
     <a
-      href={url}
+      href={buildUrl()}
       target="_blank"
       rel="noopener noreferrer"
       onClick={handleClick}

@@ -159,6 +159,19 @@ export function pushLeadEvent(payload: LeadEventPayload) {
   })
 }
 
+export async function createMarketingAttribution(channel: 'form' | 'whatsapp') {
+  const response = await fetch('/api/marketing-attribution', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ channel, attribution: getLeadAttributionPayload() }),
+  })
+
+  if (!response.ok) return null
+
+  const result = await response.json() as { public_id?: unknown }
+  return typeof result.public_id === 'string' ? result.public_id : null
+}
+
 export function LeadAttributionFields({ formType, cluster }: LeadAttributionFieldsProps) {
   const containerRef = useRef<HTMLSpanElement>(null)
 
