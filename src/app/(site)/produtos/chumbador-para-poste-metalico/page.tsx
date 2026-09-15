@@ -28,7 +28,6 @@ import {
     createBreadcrumbSchema,
     createFaqSchema,
     createItemListSchema,
-    createProductSchema,
     createSchemaGraph,
     createWebPageSchema,
 } from "@/lib/seo/schema"
@@ -234,20 +233,11 @@ const faq = [
 
 function getSchema() {
     return createSchemaGraph([
-        createProductSchema({
-            url: pageUrl,
-            name: "Chumbador para Poste Metalico",
-            description: pageDescription,
-            image: heroImage,
-            category: "Base e chumbadores para postes metalicos",
-            properties: specificationRows.map(([name, value]) => ({ name, value })),
-        }),
         createWebPageSchema({
             url: pageUrl,
             name: "Chumbador para Poste Metalico",
             description: pageDescription,
             image: heroImage,
-            mainEntityId: `${pageUrl}#product`,
         }),
         createBreadcrumbSchema(pageUrl, [
             { name: "Inicio", item: SITE_URL },

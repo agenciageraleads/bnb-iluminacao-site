@@ -30,7 +30,6 @@ import {
     createFaqSchema,
     createImageSchemas,
     createItemListSchema,
-    createProductSchema,
     createSchemaGraph,
     createWebPageSchema,
 } from "@/lib/seo/schema"
@@ -284,19 +283,10 @@ const faq = [
 
 function getSchema() {
     return createSchemaGraph([
-        createProductSchema({
-            url: pageUrl,
-            name: "Braco para Luminaria Publica",
-            description: pageDescription,
-            image: heroImage,
-            category: "Bracos e suportes metalicos para iluminacao publica",
-            properties: specificationRows.map(([name, value]) => ({ name, value })),
-        }),
         createWebPageSchema({
             url: pageUrl,
             name: "Braco para Luminaria Publica",
             description: pageDescription,
-            mainEntityId: `${pageUrl}#product`,
         }),
         createBreadcrumbSchema(pageUrl, [
             { name: "Inicio", item: SITE_URL },
