@@ -31,7 +31,6 @@ import {
     createFaqSchema,
     createImageSchemas,
     createItemListSchema,
-    createProductSchema,
     createSchemaGraph,
     createWebPageSchema,
 } from "@/lib/seo/schema"
@@ -294,20 +293,11 @@ const faq = [
 
 function getSchema() {
     return createSchemaGraph([
-        createProductSchema({
-            url: pageUrl,
-            name: "Poste Metalico Galvanizado",
-            description: pageDescription,
-            image: heroImage,
-            category: "Postes metalicos para iluminacao",
-            properties: specificationRows.map(([name, value]) => ({ name, value })),
-        }),
         createWebPageSchema({
             url: pageUrl,
             name: "Poste Metalico Galvanizado",
             description: pageDescription,
             image: heroImage,
-            mainEntityId: `${pageUrl}#product`,
         }),
         createBreadcrumbSchema(pageUrl, [
             { name: "Inicio", item: SITE_URL },
