@@ -1,6 +1,6 @@
-import type { Product } from './constants'
+import type { Category, Product } from './constants'
 import { cache } from 'react'
-import { isPublicCatalogProduct } from './catalog-curation'
+import { getPrimaryCatalogCategories, isPublicCatalogProduct } from './catalog-curation'
 
 type PublicModel = {
     id: string; revision: number; lineSlug: string; lineName: string; modelSlug: string;
@@ -83,4 +83,20 @@ export function publicationProducts(feed: CatalogPublication): Product[] {
         description: product.description || `${product.name} — Linha ${product.lineName}. Consulte as configurações e o detalhamento técnico com a B&B Iluminação.`,
         specs: product.variants.map(variant => variant.label), badges: [], applications: [], optionals: [],
     }))
+}
+
+export function publicationCategories(feed: CatalogPublication): Category[] {
+    const lines = new Map<string, Category>()
+    const products = [...feed.products].sort((a, b) => (a.catalogPage ?? Number.MAX_SAFE_INTEGER) - (b.catalogPage ?? Number.MAX_SAFE_INTEGER) || (a.slug < b.slug ? -1 : a.slug > b.slug ? 1 : 0))
+    for (const product of products) {
+        const title = product.lineName.startsWith('Linha ') ? product.lineName : `Linha ${product.lineName}`
+        const line: Category = lines.get(product.lineSlug) ?? { title, slug: product.lineSlug, image: '', description: `Produtos da ${title} no catálogo B&B.`, featured: true }
+        if (!line.image && product.image) {
+            line.image = product.image.url
+            line.imageAlt = product.image.alt || `${product.name} — ${title}`
+            line.imageFit = 'contain'
+        }
+        lines.set(product.lineSlug, line)
+    }
+    return getPrimaryCatalogCategories([...lines.values()])
 }

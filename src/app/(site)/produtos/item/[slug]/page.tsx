@@ -138,27 +138,6 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
             "name": "Especificação Técnica",
             "value": spec
         })),
-        "mainEntity": {
-            "@type": "FAQPage",
-            "mainEntity": [
-                {
-                    "@type": "Question",
-                    "name": `O que é o ${product.name}?`,
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": `O ${product.name} modelo ${product.model} é fabricado pela B&B Iluminação com ${specs[0]}.`
-                    }
-                },
-                {
-                    "@type": "Question",
-                    "name": `Para quais aplicações o ${product.name} é recomendado?`,
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": `É amplamente recomendado para: ${productApplications.join(', ')}.`
-                    }
-                }
-            ]
-        }
     };
 
 

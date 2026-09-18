@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { isPublicCatalogProduct, officialOrnaModels, developmentLines } from '../src/lib/catalog-curation'
-import { parseCatalogPublication, publicationProducts, fetchCatalogPublication } from '../src/lib/commercial-catalog'
+import { parseCatalogPublication, publicationCategories, publicationProducts, fetchCatalogPublication } from '../src/lib/commercial-catalog'
 import { readPublicProducts, publicProductWhere } from '../src/lib/catalog-public-access'
 import { eosProducts } from '../src/lib/eos-products'
 
@@ -21,6 +21,23 @@ assert.equal(JSON.stringify(feed).includes('private'), false)
 assert.equal(JSON.stringify(feed).includes('erpCodprod'), false)
 assert.equal(JSON.stringify(feed).includes('cost'), false)
 assert.equal(publicationProducts(feed)[0].description, 'Descrição aprovada')
+assert.deepEqual(publicationProducts(feed)[0].specs, [])
+assert.equal(publicationCategories(feed)[0].image, '')
+const approvedImage = { url: `https://crm.bebiluminacao.com/catalog/${'a'.repeat(64)}.png`, alt: 'Poste Reto do catálogo', revision: 'a'.repeat(64) }
+const categoryFeed = parseCatalogPublication({ version: 1, developmentLines, products: [
+    { ...model, id: 'later', slug: 'poste-z', catalogPage: 8, image: { ...approvedImage, url: `https://crm.bebiluminacao.com/catalog/${'b'.repeat(64)}.png` } },
+    { ...model, id: 'no-image', slug: 'poste-a', catalogPage: 6, lineName: 'Linha Urban' },
+    { ...model, id: 'first-approved', slug: 'poste-b', catalogPage: 6, image: approvedImage },
+] })
+const categoryOrder = categoryFeed.products.map(product => product.id)
+const category = publicationCategories(categoryFeed)[0]
+assert.equal(category.image, approvedImage.url)
+assert.equal(category.imageAlt, approvedImage.alt)
+assert.equal(category.imageFit, 'contain')
+assert.equal(category.title, 'Linha Urban')
+assert.equal(category.description.includes('Linha Linha'), false)
+assert.deepEqual(publicationCategories({ ...categoryFeed, products: [...categoryFeed.products].reverse() }), [category])
+assert.deepEqual(categoryFeed.products.map(product => product.id), categoryOrder)
 assert.throws(() => parseCatalogPublication({ version: 1, products: [], developmentLines }))
 assert.throws(() => parseCatalogPublication({ version: 1, products: [{ ...model, status: 'hidden' }], developmentLines }))
 assert.throws(() => parseCatalogPublication({ version: 1, products: [model, model], developmentLines }))

@@ -72,7 +72,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
                                   url: image,
                                   width: 1200,
                                   height: 630,
-                                  alt: category.title,
+                                  alt: category.imageAlt || category.title,
                               },
                           ],
                       }

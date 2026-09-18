@@ -5,7 +5,7 @@ import fs from 'fs'
 import path from 'path'
 import { getPrimaryCatalogCategories, isPublicCatalogProduct } from './catalog-curation'
 import { publicProductWhere } from './catalog-public-access'
-import { fetchCatalogPublication, publicationProducts } from './commercial-catalog'
+import { fetchCatalogPublication, publicationCategories, publicationProducts } from './commercial-catalog'
 import { eosProducts } from './eos-products'
 
 // Funções auxiliares para buscar dados do Payload
@@ -105,12 +105,7 @@ export interface Region {
 
 export const getCategories = async (): Promise<Category[]> => {
   if (process.env.CATALOG_SOURCE === 'crm') {
-    const publication = await fetchCatalogPublication()
-    const lines = new Map(publication.products.map(product => [product.lineSlug, {
-      title: product.lineName.startsWith('Linha ') ? product.lineName : `Linha ${product.lineName}`,
-      slug: product.lineSlug, image: '', description: `Produtos da Linha ${product.lineName} no catálogo B&B.`, featured: true,
-    }]))
-    return getPrimaryCatalogCategories([...lines.values()])
+    return publicationCategories(await fetchCatalogPublication())
   }
   try {
     const payload = await getClient()

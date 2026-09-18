@@ -29,9 +29,9 @@ export async function Categories() {
                             {cat.image ? (
                                 <Image
                                     src={cat.image}
-                                    alt={cat.title}
+                                    alt={cat.imageAlt || cat.title}
                                     fill
-                                    className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-40"
+                                    className={`${cat.imageFit === 'contain' ? 'object-contain' : 'object-cover'} transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-40`}
                                 />
                             ) : (
                                 <div className="absolute inset-0 bg-industrial-900 border border-industrial-800" />
