@@ -1,6 +1,7 @@
 import { getCatalogById } from "@/lib/data";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { isPublicCatalogProduct } from '@/lib/catalog-curation';
 
 export default async function CatalogExportPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
@@ -75,7 +76,7 @@ export default async function CatalogExportPage({ params }: { params: Promise<{ 
                                 </header>
 
                                 <div className="grid grid-cols-2 gap-x-12 gap-y-16">
-                                    {block.products?.map((product: any) => (
+                                    {block.products?.filter((product: { slug?: string; lifecycle?: string; category?: { slug?: string } } | null) => product && isPublicCatalogProduct({ slug: product.slug, lifecycle: product.lifecycle, category: product.category?.slug ?? '' })).map((product: any) => (
                                         <div key={product.id} className="flex flex-col border border-industrial-100 p-6 bg-industrial-50/30 rounded-2xl">
                                             <div className="aspect-[4/3] relative mb-6 border border-industrial-200 bg-white rounded-2xl">
                                                 {product.mainImage && (

@@ -1,4 +1,6 @@
 export interface Product {
+    lifecycle?: 'active' | 'hidden' | 'development'
+    siteSlugs?: string[]
     id: string
     name: string
     category: string

@@ -1,4 +1,7 @@
 import type { Metadata } from "next"
+import { notFound, permanentRedirect } from 'next/navigation'
+import { eosHubSlug } from '@/lib/catalog-curation'
+import { EosOverview } from '@/components/products/EosOverview'
 import Script from 'next/script'
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
@@ -23,7 +26,10 @@ interface ProductDetailPageProps {
 
 export async function generateMetadata({ params }: ProductDetailPageProps): Promise<Metadata> {
     const { slug } = await params
+    if (slug === eosHubSlug) return { title: 'Éos Simples e Duplo | Linha Versa B&B', description: 'Compare Éos Simples, com um globo, e Éos Duplo, com dois globos. Modelos ornamentais da Linha Versa.', alternates: { canonical: `${SITE_URL}/produtos/item/${eosHubSlug}` } }
     const allProducts = await getProducts()
+    const alias = allProducts.find(p => p.id !== slug && p.siteSlugs?.includes(slug))
+    if (alias) permanentRedirect(`/produtos/item/${alias.id}`)
     const product = allProducts.find(p => p.id === slug)
 
     if (!product) {
@@ -80,23 +86,15 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
 export default async function ProductDetailPage({ params }: ProductDetailPageProps) {
     const { slug } = await params;
     const allProducts = await getProducts();
+    const alias = allProducts.find(p => p.id !== slug && p.siteSlugs?.includes(slug))
+    if (alias) permanentRedirect(`/produtos/item/${alias.id}`)
+    if (slug === eosHubSlug) return <EosOverview products={allProducts.filter(item => ['poste-ornamental-eos-simples', 'poste-ornamental-eos-duplo'].includes(item.id))} />
     const product = allProducts.find(p => p.id === slug);
     const allCategories = await getCategories();
     const category = allCategories.find(c => c.slug === product?.category);
 
     if (!product) {
-        return (
-            <main className="min-h-screen bg-white">
-                <Header />
-                <div className="container mx-auto px-4 pt-40 text-center">
-                    <p className="text-industrial-500 text-lg font-bold mb-6">Produto não encontrado.</p>
-                    <Link href="/produtos" className="text-industrial-900 font-black uppercase text-sm underline hover:no-underline">
-                        Ver catálogo completo
-                    </Link>
-                </div>
-                <Footer />
-            </main>
-        )
+        notFound()
     }
 
     const specs = product.specs ?? [
@@ -122,7 +120,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
         "@context": "https://schema.org/",
         "@type": "Product",
         "name": product.name,
-        "image": product.image ? [`https://bebiluminacao.com.br${product.image}`] : [],
+        "image": product.image ? [absoluteUrl(product.image)] : [],
         "description": product.description,
         "sku": product.model,
         "mpn": product.model,
@@ -134,17 +132,6 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
         "material": "Aço Galvanizado a Fogo",
         "manufacturer": {
             "@id": "https://bebiluminacao.com.br/#organization"
-        },
-        "offers": {
-            "@type": "Offer",
-            "url": `https://bebiluminacao.com.br/produtos/item/${product.id}`,
-            "priceCurrency": "BRL",
-            "availability": "https://schema.org/InStock",
-            "itemCondition": "https://schema.org/NewCondition",
-            "seller": {
-                "@type": "Organization",
-                "name": "B&B Iluminação"
-            }
         },
         "additionalProperty": specs.map(spec => ({
             "@type": "PropertyValue",
@@ -180,7 +167,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
             <Script
                 id={`product-schema-${product.id}`}
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
             />
             <Header />
             <FloatingWhatsApp />
