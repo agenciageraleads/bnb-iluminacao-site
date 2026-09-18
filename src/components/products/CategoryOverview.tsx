@@ -5,13 +5,7 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import { getProductLineHref } from "@/lib/seo/product-line-links"
-
-interface Category {
-    title: string
-    slug: string
-    image: string
-    description: string
-}
+import type { Category } from '@/lib/constants'
 
 interface CategoryOverviewProps {
     categories: Category[]
@@ -49,9 +43,9 @@ export function CategoryOverview({ categories }: CategoryOverviewProps) {
                                 {category.image ? (
                                     <Image
                                         src={category.image}
-                                        alt={category.title}
+                                        alt={category.imageAlt || category.title}
                                         fill
-                                        className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-50"
+                                        className={`${category.imageFit === 'contain' ? 'object-contain' : 'object-cover'} transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-50`}
                                     />
                                 ) : (
                                     <div className="absolute inset-0 bg-industrial-800 flex items-center justify-center">
