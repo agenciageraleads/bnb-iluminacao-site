@@ -12,11 +12,12 @@ import Link from "next/link"
 export const dynamic = 'force-dynamic'
 
 interface Props {
-  params: { city: string }
+  params: Promise<{ city: string }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const city = await getRegionBySlug(params.city)
+  const { city: citySlug } = await params
+  const city = await getRegionBySlug(citySlug)
   if (!city) return {}
 
   const title = `Braços para Luminária Pública em ${city.cityName} - ${city.uf} | B&B Iluminação`
@@ -35,7 +36,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function BracoCityLP({ params }: Props) {
-  const city = await getRegionBySlug(params.city)
+  const { city: citySlug } = await params
+  const city = await getRegionBySlug(citySlug)
   if (!city) notFound()
 
   const [projects, clients, allRegions] = await Promise.all([

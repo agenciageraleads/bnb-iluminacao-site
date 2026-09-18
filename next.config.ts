@@ -18,6 +18,8 @@ const nextConfig: NextConfig = {
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     remotePatterns: [
+      { protocol: 'https', hostname: 'crm.bebiluminacao.com', pathname: '/catalog/**' },
+      { protocol: 'https', hostname: 'www.bebiluminacao.com.br' },
       {
         protocol: 'https',
         hostname: 'images.unsplash.com',

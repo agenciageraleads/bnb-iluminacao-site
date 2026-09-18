@@ -7,7 +7,7 @@ import Link from "next/link"
 import { getProducts, getCategories } from "@/lib/data"
 import { CategoryOverview } from "@/components/products/CategoryOverview"
 import { getProductLineHref } from "@/lib/seo/product-line-links"
-import { getPrimaryCatalogCategories, getPrimaryCatalogProducts } from "@/lib/catalog-curation"
+import { developmentLines, getPrimaryCatalogCategories, getPrimaryCatalogProducts } from "@/lib/catalog-curation"
 
 export const metadata: Metadata = {
     title: "Catálogo de Produtos | B&B Iluminação",
@@ -49,6 +49,13 @@ export default async function ProdutosPage() {
 
             {/* Resumo das Categorias — NOVO */}
             <CategoryOverview categories={primaryCategories} />
+            <section aria-labelledby="development-lines" className="container mx-auto px-4 py-8">
+                <h2 id="development-lines" className="text-xl font-bold">Linhas em desenvolvimento</h2>
+                <p className="text-industrial-600 mt-2">Ainda não disponíveis para orçamento.</p>
+                <ul className="flex flex-wrap gap-6 mt-4">
+                    {developmentLines.map(line => <li key={line.slug}><strong>{line.name}</strong> <span className="text-industrial-600">— Em desenvolvimento</span></li>)}
+                </ul>
+            </section>
 
             <div className="container mx-auto px-4 py-8 md:py-12 border-t border-industrial-100">
                 <div className="mb-12">

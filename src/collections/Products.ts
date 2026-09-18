@@ -1,4 +1,5 @@
 import { CollectionConfig } from 'payload'
+import { readPublicProducts } from '../lib/catalog-public-access'
 
 const Products: CollectionConfig = {
     slug: 'products',
@@ -6,9 +7,19 @@ const Products: CollectionConfig = {
         useAsTitle: 'name',
     },
     access: {
-        read: () => true,
+        read: readPublicProducts,
     },
     fields: [
+        {
+            name: 'lifecycle',
+            type: 'select',
+            required: true,
+            defaultValue: 'hidden',
+            index: true,
+            label: 'Publicação comercial',
+            options: [{ label: 'Ativo', value: 'active' }, { label: 'Oculto (preservado)', value: 'hidden' }, { label: 'Em desenvolvimento', value: 'development' }],
+            admin: { description: 'Ocultar preserva o registro e as imagens. A aprovação comercial é mantida no CRM.' },
+        },
         {
             name: 'name',
             type: 'text',
