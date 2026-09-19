@@ -55,7 +55,7 @@ interface LeadAttributionFieldsProps {
 }
 
 interface TrackedContactLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
-  channel: "phone" | "email" | "maps" | "download" | "whatsapp"
+  channel: "phone" | "email" | "maps" | "download" | "whatsapp" | "cta"
   eventName?: string
   eventSource: string
   eventLabel: string

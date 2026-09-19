@@ -1,4 +1,7 @@
 import type { Metadata } from "next"
+import { notFound, permanentRedirect } from 'next/navigation'
+import { eosHubSlug } from '@/lib/catalog-curation'
+import { EosOverview } from '@/components/products/EosOverview'
 import Script from 'next/script'
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
@@ -23,7 +26,10 @@ interface ProductDetailPageProps {
 
 export async function generateMetadata({ params }: ProductDetailPageProps): Promise<Metadata> {
     const { slug } = await params
+    if (slug === eosHubSlug) return { title: 'Éos Simples e Duplo | Linha Versa B&B', description: 'Compare Éos Simples, com um globo, e Éos Duplo, com dois globos. Modelos ornamentais da Linha Versa.', alternates: { canonical: `${SITE_URL}/produtos/item/${eosHubSlug}` } }
     const allProducts = await getProducts()
+    const alias = allProducts.find(p => p.id !== slug && p.siteSlugs?.includes(slug))
+    if (alias) permanentRedirect(`/produtos/item/${alias.id}`)
     const product = allProducts.find(p => p.id === slug)
 
     if (!product) {
@@ -80,23 +86,15 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
 export default async function ProductDetailPage({ params }: ProductDetailPageProps) {
     const { slug } = await params;
     const allProducts = await getProducts();
+    const alias = allProducts.find(p => p.id !== slug && p.siteSlugs?.includes(slug))
+    if (alias) permanentRedirect(`/produtos/item/${alias.id}`)
+    if (slug === eosHubSlug) return <EosOverview products={allProducts.filter(item => ['poste-ornamental-eos-simples', 'poste-ornamental-eos-duplo'].includes(item.id))} />
     const product = allProducts.find(p => p.id === slug);
     const allCategories = await getCategories();
     const category = allCategories.find(c => c.slug === product?.category);
 
     if (!product) {
-        return (
-            <main className="min-h-screen bg-white">
-                <Header />
-                <div className="container mx-auto px-4 pt-40 text-center">
-                    <p className="text-industrial-500 text-lg font-bold mb-6">Produto não encontrado.</p>
-                    <Link href="/produtos" className="text-industrial-900 font-black uppercase text-sm underline hover:no-underline">
-                        Ver catálogo completo
-                    </Link>
-                </div>
-                <Footer />
-            </main>
-        )
+        notFound()
     }
 
     const specs = product.specs ?? [
@@ -122,7 +120,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
         "@context": "https://schema.org/",
         "@type": "Product",
         "name": product.name,
-        "image": product.image ? [`https://bebiluminacao.com.br${product.image}`] : [],
+        "image": product.image ? [absoluteUrl(product.image)] : [],
         "description": product.description,
         "sku": product.model,
         "mpn": product.model,
@@ -135,43 +133,11 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
         "manufacturer": {
             "@id": "https://bebiluminacao.com.br/#organization"
         },
-        "offers": {
-            "@type": "Offer",
-            "url": `https://bebiluminacao.com.br/produtos/item/${product.id}`,
-            "priceCurrency": "BRL",
-            "availability": "https://schema.org/InStock",
-            "itemCondition": "https://schema.org/NewCondition",
-            "seller": {
-                "@type": "Organization",
-                "name": "B&B Iluminação"
-            }
-        },
         "additionalProperty": specs.map(spec => ({
             "@type": "PropertyValue",
             "name": "Especificação Técnica",
             "value": spec
         })),
-        "mainEntity": {
-            "@type": "FAQPage",
-            "mainEntity": [
-                {
-                    "@type": "Question",
-                    "name": `O que é o ${product.name}?`,
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": `O ${product.name} modelo ${product.model} é fabricado pela B&B Iluminação com ${specs[0]}.`
-                    }
-                },
-                {
-                    "@type": "Question",
-                    "name": `Para quais aplicações o ${product.name} é recomendado?`,
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": `É amplamente recomendado para: ${productApplications.join(', ')}.`
-                    }
-                }
-            ]
-        }
     };
 
 
@@ -180,7 +146,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
             <Script
                 id={`product-schema-${product.id}`}
                 type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
             />
             <Header />
             <FloatingWhatsApp />
@@ -324,14 +290,18 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
                         <div className="space-y-4">
                             {(urbanDownloads?.datasheet || product.datasheet) && (
-                                <a
+                                <TrackedContactLink
                                     href={urbanDownloads?.datasheet ?? product.datasheet}
                                     download
+                                    channel="download"
+                                    eventSource="product_detail"
+                                    eventLabel={`${product.name} - Datasheet`}
+                                    extraPayload={{ product_id: product.id, product_model: product.model, lead_cluster: product.category, download_type: "datasheet" }}
                                     className="w-full flex items-center justify-center gap-3 bg-industrial-100 text-industrial-900 border border-industrial-200 font-black uppercase tracking-widest h-14 hover:bg-industrial-200 transition-colors group rounded-lg"
                                 >
                                     <Download className="size-5 group-hover:translate-y-0.5 transition-transform" />
                                     Baixar Datasheet (PDF)
-                                </a>
+                                </TrackedContactLink>
                             )}
 
                             {urbanDownloads?.desenhos && (
@@ -342,14 +312,18 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                                     </p>
                                     <div className="flex flex-wrap gap-2">
                                         {urbanDownloads.desenhos.map(({ altura, href }) => (
-                                            <a
+                                            <TrackedContactLink
                                                 key={altura}
                                                 href={href}
                                                 download
+                                                channel="download"
+                                                eventSource="product_detail"
+                                                eventLabel={`${product.name} - Desenho ${altura}m`}
+                                                extraPayload={{ product_id: product.id, product_model: product.model, lead_cluster: product.category, download_type: "desenho_tecnico" }}
                                                 className="px-3 py-1.5 bg-white border border-industrial-200 text-[11px] font-black text-industrial-700 uppercase tracking-widest hover:border-industrial-900 hover:text-industrial-950 transition-colors rounded-md"
                                             >
                                                 {altura}m
-                                            </a>
+                                            </TrackedContactLink>
                                         ))}
                                     </div>
                                 </div>

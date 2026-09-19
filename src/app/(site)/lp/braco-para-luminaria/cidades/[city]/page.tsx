@@ -12,11 +12,12 @@ import Link from "next/link"
 export const dynamic = 'force-dynamic'
 
 interface Props {
-  params: { city: string }
+  params: Promise<{ city: string }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const city = await getRegionBySlug(params.city)
+  const { city: citySlug } = await params
+  const city = await getRegionBySlug(citySlug)
   if (!city) return {}
 
   const title = `Braços para Luminária Pública em ${city.cityName} - ${city.uf} | B&B Iluminação`
@@ -35,7 +36,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function BracoCityLP({ params }: Props) {
-  const city = await getRegionBySlug(params.city)
+  const { city: citySlug } = await params
+  const city = await getRegionBySlug(citySlug)
   if (!city) notFound()
 
   const [projects, clients, allRegions] = await Promise.all([
@@ -54,7 +56,7 @@ export default async function BracoCityLP({ params }: Props) {
       <header className="bg-white border-b border-industrial-200 shadow-sm py-3 sticky top-0 z-50">
         <div className="container mx-auto px-4 flex justify-between items-center h-14">
           <div className="relative h-10 w-40">
-            <Image src="/logo.png" alt="B&B Iluminação" fill className="object-contain object-left" priority />
+            <Image src="/logo.svg" alt="B&B Iluminação" fill className="object-contain object-left" priority />
           </div>
           <WhatsAppLink
             message={WA_MSG}

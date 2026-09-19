@@ -25,6 +25,7 @@ import { SeoProductGallery } from "@/components/seo/seo-product-gallery"
 import { SchemaOrg } from "@/components/seo/schema-org"
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
 import { WhatsAppLink } from "@/components/ui/whatsapp-link"
+import { TrackedContactLink } from "@/lib/lead-tracking"
 import { createSeoImage } from "@/lib/seo/images"
 import {
     SITE_URL,
@@ -585,14 +586,20 @@ export default function PosteCurvoDuploPage() {
                     </div>
                     <div className="grid gap-4">
                         {downloadLinks.map((download) => (
-                            <Link
+                            <TrackedContactLink
                                 key={download.href}
                                 href={download.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                channel="download"
+                                eventSource="produto_poste_curvo_duplo"
+                                eventLabel={download.title}
+                                extraPayload={{ download_type: "datasheet" }}
                                 className="group flex items-center justify-between gap-5 border border-white/15 bg-white/5 p-5 transition-colors hover:bg-white hover:text-industrial-950 rounded-lg"
                             >
                                 <span className="text-sm font-black uppercase tracking-widest">{download.title}</span>
                                 <Download className="size-5 text-accent-premium transition-transform group-hover:translate-y-0.5" aria-hidden="true" />
-                            </Link>
+                            </TrackedContactLink>
                         ))}
                     </div>
                 </div>

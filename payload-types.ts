@@ -168,6 +168,10 @@ export interface User {
  */
 export interface Product {
   id: number;
+  /**
+   * Ocultar preserva o registro e as imagens. A aprovação comercial é mantida no CRM.
+   */
+  lifecycle: 'active' | 'hidden' | 'development';
   name: string;
   slug: string;
   /**
@@ -198,7 +202,16 @@ export interface Product {
       }[]
     | null;
   badges?:
-    | ('NBR 6323' | 'NBR 6123' | 'NBR 14744' | 'Qualidade ISO' | 'Garantia B&B' | 'Selo Próprio' | 'LED Integrado' | 'Lançamento')[]
+    | (
+        | 'NBR 6323'
+        | 'NBR 6123'
+        | 'NBR 14744'
+        | 'Qualidade ISO'
+        | 'Garantia B&B'
+        | 'Selo Próprio'
+        | 'LED Integrado'
+        | 'Lançamento'
+      )[]
     | null;
   applications?:
     | {
@@ -354,6 +367,23 @@ export interface Blog {
         id?: string | null;
       }[]
     | null;
+  /**
+   * CTA obrigatório do gate de qualidade — deve apontar para produto/case/datasheet/orçamento (caminho interno).
+   */
+  cta?: {
+    label?: string | null;
+    url?: string | null;
+  };
+  /**
+   * Fontes aprovadas que sustentam qualquer afirmação normativa (NBR) citada no corpo do artigo.
+   */
+  sources?:
+    | {
+        label: string;
+        url: string;
+        id?: string | null;
+      }[]
+    | null;
   featuredImage?: (number | null) | Media;
   meta?: {
     title?: string | null;
@@ -378,6 +408,33 @@ export interface Blog {
       | number
       | boolean
       | null;
+  };
+  /**
+   * Trilha de auditoria do pipeline de agentes: prompt, modelo e veredicto de cada etapa.
+   */
+  qualityAudit?: {
+    model?: string | null;
+    revisorPrompt?: string | null;
+    revisorVeredicto?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
+    qualityGateErrors?:
+      | {
+          [k: string]: unknown;
+        }
+      | unknown[]
+      | string
+      | number
+      | boolean
+      | null;
+    reviewedBy?: string | null;
+    reviewedAt?: string | null;
   };
   updatedAt: string;
   createdAt: string;
@@ -433,6 +490,10 @@ export interface Region {
 export interface Representative {
   id: number;
   /**
+   * Usado para sincronização automática do onboarding do CRM.
+   */
+  crmUserId?: string | null;
+  /**
    * Menor número aparece primeiro. Use intervalos como 10, 20 e 30 para facilitar ajustes futuros.
    */
   displayOrder?: number | null;
@@ -476,6 +537,18 @@ export interface Representative {
    * Ex: "Nordeste e Norte", "Sul de Minas". Serve para categorização visual se necessário.
    */
   region?: string | null;
+  /**
+   * Sincronizado pelo CRM. Mantém UF, macro-região, cidades, DDDs e status de revisão.
+   */
+  territories?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
   /**
    * Selecione todos os canais/mercados atendidos por este representante.
    */
@@ -588,6 +661,15 @@ export interface CatalogLead {
   company: string;
   companyCnpj: string;
   catalogDownloaded?: string | null;
+  attribution?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -730,6 +812,7 @@ export interface UsersSelect<T extends boolean = true> {
  * via the `definition` "products_select".
  */
 export interface ProductsSelect<T extends boolean = true> {
+  lifecycle?: T;
   name?: T;
   slug?: T;
   model?: T;
@@ -863,6 +946,19 @@ export interface BlogSelect<T extends boolean = true> {
         answer?: T;
         id?: T;
       };
+  cta?:
+    | T
+    | {
+        label?: T;
+        url?: T;
+      };
+  sources?:
+    | T
+    | {
+        label?: T;
+        url?: T;
+        id?: T;
+      };
   featuredImage?: T;
   meta?:
     | T
@@ -875,6 +971,16 @@ export interface BlogSelect<T extends boolean = true> {
     | {
         articleSchema?: T;
         faqSchema?: T;
+      };
+  qualityAudit?:
+    | T
+    | {
+        model?: T;
+        revisorPrompt?: T;
+        revisorVeredicto?: T;
+        qualityGateErrors?: T;
+        reviewedBy?: T;
+        reviewedAt?: T;
       };
   updatedAt?: T;
   createdAt?: T;
@@ -917,6 +1023,7 @@ export interface RegionsSelect<T extends boolean = true> {
  * via the `definition` "representatives_select".
  */
 export interface RepresentativesSelect<T extends boolean = true> {
+  crmUserId?: T;
   displayOrder?: T;
   name?: T;
   company?: T;
@@ -924,6 +1031,7 @@ export interface RepresentativesSelect<T extends boolean = true> {
   phone?: T;
   states?: T;
   region?: T;
+  territories?: T;
   markets?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -1010,6 +1118,7 @@ export interface CatalogLeadsSelect<T extends boolean = true> {
   company?: T;
   companyCnpj?: T;
   catalogDownloaded?: T;
+  attribution?: T;
   updatedAt?: T;
   createdAt?: T;
 }

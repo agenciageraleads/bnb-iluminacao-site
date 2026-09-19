@@ -71,6 +71,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/contato',
     '/servicos',
     '/produtos',
+    '/produtos/item/poste-ornamental-eos',
     '/obras',
     '/blog',
     '/blog/altura-de-poste-para-iluminacao-publica',

@@ -3,6 +3,10 @@ import config from '../../payload.config'
 import { Category, Product, categories, portfolioItems, benefits, clients, catalogs } from './constants'
 import fs from 'fs'
 import path from 'path'
+import { getPrimaryCatalogCategories, isPublicCatalogProduct } from './catalog-curation'
+import { publicProductWhere } from './catalog-public-access'
+import { fetchCatalogPublication, publicationCategories, publicationProducts } from './commercial-catalog'
+import { eosProducts } from './eos-products'
 
 // Funções auxiliares para buscar dados do Payload
 async function getClient() {
@@ -100,35 +104,44 @@ export interface Region {
 }
 
 export const getCategories = async (): Promise<Category[]> => {
+  if (process.env.CATALOG_SOURCE === 'crm') {
+    return publicationCategories(await fetchCatalogPublication())
+  }
   try {
     const payload = await getClient()
     const { docs } = await payload.find({
       collection: 'categories',
     })
 
-    return docs.map(doc => ({
+    return getPrimaryCatalogCategories(docs.map(doc => ({
       title: doc.name as string,
       slug: doc.slug as string,
       image: (doc.image as any)?.url || '',
       description: doc.description as string,
       featured: true, // Por enquanto, todos são featured para manter compatiblidade
-    }))
+    })))
   } catch (error) {
     console.error("Erro ao conectar ao CMS para categorias. Retornando mock estático.", error);
-    return categories; // fallback estático
+    return getPrimaryCatalogCategories(categories);
   }
 }
 
 export const getProducts = async (): Promise<Product[]> => {
+  if (process.env.CATALOG_SOURCE === 'crm') {
+    // Do not revive hidden CMS products if the master publication is unavailable.
+    return publicationProducts(await fetchCatalogPublication())
+  }
   try {
     const payload = await getClient()
     const { docs } = await payload.find({
       collection: 'products',
+      overrideAccess: false,
       depth: 1,
       limit: 1000,
+      where: publicProductWhere,
     })
 
-    return docs.map(doc => {
+    const products = docs.map(doc => {
       const specs = [];
       if (doc.specs?.material) specs.push(doc.specs.material);
       if (doc.specs?.altura) specs.push(doc.specs.altura);
@@ -151,6 +164,7 @@ export const getProducts = async (): Promise<Product[]> => {
 
       return {
         id: doc.slug as string,
+        lifecycle: doc.lifecycle,
         name: doc.name as string,
         category: categorySlug,
         model: doc.model as string,
@@ -163,7 +177,8 @@ export const getProducts = async (): Promise<Product[]> => {
         optionals: doc.optionals as string[] || [],
         applications: (doc.applications as any[])?.map(a => a.app) || [],
       }
-    })
+    }).filter(isPublicCatalogProduct)
+    return [...products.filter(product => !eosProducts.some(eos => eos.id === product.id)), ...eosProducts]
   } catch (error) {
     console.error("Erro ao conectar ao CMS para produtos. Retornando vazio.", error);
     return []; // Retorna lista vazia para evitar erro 500 do site
@@ -410,6 +425,7 @@ export const getCatalogById = async (id: string): Promise<any> => {
     const doc = await payload.findByID({
       collection: 'catalogs',
       id,
+      overrideAccess: false,
       depth: 2, // Aumentar depth para pegar detalhes dos produtos dentro do layout
     })
 

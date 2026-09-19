@@ -22,11 +22,12 @@ const PINTURA_CITY_LABELS: Record<string, { name: string; uf: string }> = {
 }
 
 interface Props {
-  params: { city: string }
+  params: Promise<{ city: string }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const label = PINTURA_CITY_LABELS[params.city]
+  const { city: citySlug } = await params
+  const label = PINTURA_CITY_LABELS[citySlug]
   if (!label) return {}
 
   const title = `Pintura Eletrostática Industrial em ${label.name} - ${label.uf} | B&B Iluminação`
@@ -35,17 +36,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description,
-    alternates: { canonical: `/lp/pintura-eletrostatica/cidades/${params.city}` },
+    alternates: { canonical: `/lp/pintura-eletrostatica/cidades/${citySlug}` },
   }
 }
 
 export default async function PinturaCityLP({ params }: Props) {
-  if (!PINTURA_CITIES.includes(params.city)) notFound()
+  const { city: citySlug } = await params
+  if (!PINTURA_CITIES.includes(citySlug)) notFound()
 
-  const label = PINTURA_CITY_LABELS[params.city]
+  const label = PINTURA_CITY_LABELS[citySlug]
   const [clients, region] = await Promise.all([
     getClientLogos(),
-    getRegionBySlug(params.city),
+    getRegionBySlug(citySlug),
   ])
 
   const cityName = region?.cityName || label.name
@@ -58,7 +60,7 @@ export default async function PinturaCityLP({ params }: Props) {
       <header className="bg-white border-b border-industrial-200 shadow-sm py-3 sticky top-0 z-50">
         <div className="container mx-auto px-4 flex justify-between items-center h-14">
           <div className="relative h-10 w-40">
-            <Image src="/logo.png" alt="B&B Iluminação" fill className="object-contain object-left" priority />
+            <Image src="/logo.svg" alt="B&B Iluminação" fill className="object-contain object-left" priority />
           </div>
           <WhatsAppLink
             message={WA_MSG}
@@ -118,7 +120,7 @@ export default async function PinturaCityLP({ params }: Props) {
             Cidades atendidas para pintura eletrostática
           </p>
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-3">
-            {PINTURA_CITIES.filter(c => c !== params.city).map(c => (
+            {PINTURA_CITIES.filter(c => c !== citySlug).map(c => (
               <Link
                 key={c}
                 href={`/lp/pintura-eletrostatica/cidades/${c}`}

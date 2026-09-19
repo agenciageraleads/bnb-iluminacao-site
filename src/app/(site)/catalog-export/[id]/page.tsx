@@ -1,6 +1,7 @@
 import { getCatalogById } from "@/lib/data";
 import Image from "next/image";
 import { notFound } from "next/navigation";
+import { isPublicCatalogProduct } from '@/lib/catalog-curation';
 
 export default async function CatalogExportPage({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
@@ -35,7 +36,7 @@ export default async function CatalogExportPage({ params }: { params: Promise<{ 
                                 <div className="relative z-10 text-center px-10">
                                     {/* Logo B&B */}
                                     <div className="mb-12">
-                                        <Image src="/logo.png" alt="B&B Iluminação" width={240} height={80} className="mx-auto" />
+                                        <Image src="/logo.svg" alt="B&B Iluminação" width={240} height={80} className="mx-auto" />
                                     </div>
                                     
                                     <h1 className="text-7xl md:text-8xl font-black font-outfit text-white uppercase tracking-tighter leading-none mb-6">
@@ -71,11 +72,11 @@ export default async function CatalogExportPage({ params }: { params: Promise<{ 
                                         <p className="text-accent-premium font-bold uppercase tracking-widest text-xs mb-2">Catálogo de Produtos</p>
                                         <h2 className="text-4xl font-black font-outfit text-industrial-950 uppercase tracking-tight">{block.title}</h2>
                                     </div>
-                                    <Image src="/logo.png" alt="B&B" width={100} height={35} />
+                                    <Image src="/logo.svg" alt="B&B" width={100} height={35} />
                                 </header>
 
                                 <div className="grid grid-cols-2 gap-x-12 gap-y-16">
-                                    {block.products?.map((product: any) => (
+                                    {block.products?.filter((product: { slug?: string; lifecycle?: string; category?: { slug?: string } } | null) => product && isPublicCatalogProduct({ slug: product.slug, lifecycle: product.lifecycle, category: product.category?.slug ?? '' })).map((product: any) => (
                                         <div key={product.id} className="flex flex-col border border-industrial-100 p-6 bg-industrial-50/30 rounded-2xl">
                                             <div className="aspect-[4/3] relative mb-6 border border-industrial-200 bg-white rounded-2xl">
                                                 {product.mainImage && (
@@ -149,7 +150,7 @@ export default async function CatalogExportPage({ params }: { params: Promise<{ 
                 {/* Contracapa padrão */}
                 <section className="h-[1123px] w-full bg-industrial-900 flex flex-col items-center justify-center text-white relative">
                     <div className="text-center">
-                        <Image src="/logo.png" alt="B&B" width={300} height={100} className="mx-auto mb-16" />
+                        <Image src="/logo.svg" alt="B&B" width={300} height={100} className="mx-auto mb-16" />
                         <h2 className="text-2xl font-bold uppercase tracking-widest mb-8">Solicite seu Orçamento</h2>
                         <div className="space-y-4 text-industrial-300">
                             <p className="text-lg">contato@bebiluminacao.com</p>

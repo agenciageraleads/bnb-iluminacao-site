@@ -1,0 +1,132 @@
+[
+  {
+    "briefId": 8,
+    "title": "Poste metálico para câmera de segurança (CFTV): altura, bitola e fixação",
+    "keyword": "poste para CFTV",
+    "resposta": "A altura certa depende do objetivo (reconhecimento facial x visão geral de pátio) e do tipo de câmera (fixa, bullet, speed dome). Aço galvanizado a fogo vence fibra de vidro e concreto porque é mais rígido (menos tremor de imagem no vento), permite passagem interna de cabo e fixação de múltiplas câmeras. A escolha entre engastado e flangeado muda conforme o tipo de piso. Os 3 cuidados que a concorrência cita mas não detalha: aterramento da estrutura metálica, vedação da entrada de cabo e caixa de passagem/atenuação. (Contexto interno de apoio, não citar como fonte pública: Spec interna da Linha Vigia (3 a 6 m, Ø88,9 mm, #2,0 mm; #2,65 mm só no 6 m); ABNT NBR 5419 (aterramento/SPDA).)",
+    "fontes": "ABNT NBR 6323:2004, catálogo oficial em https://www.abntcatalogo.com.br/norma.aspx?ID=1121",
+    "ctaHint": "\"Monte o poste da sua câmera com a altura e a bitola certas\" → /orcamento-poste-metalico",
+    "weekDay": "Quarta",
+    "funnelStage": "MOFU/BOFU — aplicação com intenção de compra explícita"
+  },
+  {
+    "briefId": 9,
+    "title": "Profundidade de engastamento: a tabela de cova por altura do poste metálico",
+    "keyword": "tabela de engastamento de poste",
+    "resposta": "Entregar uma tabela real de profundidade de cova por altura (3 a 12 m), mostrando de onde sai o número: momento de vento (NBR 6123) → reação na base → profundidade e diâmetro da cova → volume de concreto — não a regra de bolso solta de '1/3 do poste'. Explicitar o efeito do tipo de solo e a diferença entre cova simples com concreto e base pré-fabricada. Deixar claro que o comprimento engastado não é altura útil, amarrando com a tolerância de ±2% da NBR 14744. (Contexto interno de apoio, não citar como fonte pública: Motor estrutural interno (motor-estrutural-postes.md).)",
+    "fontes": "ABNT NBR 14744:2019, catálogo oficial em https://www.abntcatalogo.com.br/norma.aspx?ID=419453; ABNT NBR 6123:2023, catálogo oficial em https://www.abntcatalogo.com.br/norma.aspx?ID=490001",
+    "ctaHint": "\"Receba a tabela de fundação junto com o orçamento do seu poste\" → /orcamento-poste-metalico",
+    "weekDay": "Terça",
+    "funnelStage": "TOFU/MOFU técnico → autoridade"
+  },
+  {
+    "briefId": 10,
+    "title": "Distância entre postes de iluminação pública: como calcular o vão de verdade",
+    "keyword": "distância entre postes de iluminação pública",
+    "resposta": "Não existe 'distância padrão' fixa: o vão sai da classe da via (NBR 5101), da iluminância e uniformidade exigidas, da altura de montagem, do fluxo da luminária e do arranjo (unilateral, bilateral alternado, bilateral frente a frente). Entregar uma tabela de vãos típicos por altura (6, 8, 9, 10, 12 m) e classe de via, com a ressalva de que o projeto luminotécnico manda, corrigindo explicitamente o mito dos '35 metros sempre'. (Contexto interno de apoio, não citar como fonte pública: Saída do motor luminotécnico interno (skill bb-luminotecnica); ABNT NBR 5181 (citada só para desambiguar, é sobre túneis).)",
+    "fontes": "ABNT NBR 5101:2018, catálogo oficial em https://www.abntcatalogo.com.br/norma.aspx?ID=406739",
+    "ctaHint": "\"Quantos postes o seu projeto precisa? Envie a planta e receba o estudo\" → /contato ou /orcamento-poste-metalico",
+    "weekDay": "Terça",
+    "funnelStage": "TOFU técnico → autoridade"
+  },
+  {
+    "briefId": 11,
+    "title": "Altura do poste de iluminação: qual usar em cada aplicação",
+    "keyword": "altura de poste de iluminação pública",
+    "resposta": "Primeiro desambiguar poste de energia (concessionária) de poste de iluminação. Depois, tabela de altura recomendada por aplicação: passeio/praça (3-5 m), via local e condomínio (6-7 m), via coletora/arterial (8-10 m), pátio/estacionamento e área industrial (10-12 m), quadra esportiva (ver brief 13) — cada faixa amarrada à classe de via da NBR 5101 e ao catálogo real da B&B (Urban TCS/TCD/TR, 3 a 12 m). (Contexto interno de apoio, não citar como fonte pública: Tabela de alturas do catálogo Urban; Datasheets já publicados.)",
+    "fontes": "ABNT NBR 5101:2018, catálogo oficial em https://www.abntcatalogo.com.br/norma.aspx?ID=406739",
+    "ctaHint": "\"Veja os modelos disponíveis em cada altura\" → páginas de produto Urban",
+    "weekDay": "Terça",
+    "funnelStage": "TOFU técnico → MOFU"
+  },
+  {
+    "briefId": 12,
+    "title": "Mastro para bandeira em aço galvanizado: altura, medidas e o que a lei exige",
+    "keyword": "mastro para bandeira em aço galvanizado",
+    "resposta": "A Lei nº 5.700/1971 (Lei da Bandeira Nacional) define proporções da bandeira, regra de hasteamento e ordem de precedência quando há mais de um mastro — resposta que falta na SERP. A altura se escolhe pela largura da fachada/dimensão do pátio e pela relação altura do mastro × tamanho da bandeira. Aço galvanizado a fogo é a escolha certa em mastro externo permanente (contra alumínio fino e inox de loja), e o que acompanha de verdade é polia/roldana, cordão, ponteira, manivela nos mastros altos, base engastada ou flangeada. (Contexto interno de apoio, não citar como fonte pública: Lei nº 5.700/1971 (texto oficial no Planalto); Especificação real da linha de Mastros da B&B (3 a 12 m).)",
+    "fontes": "ABNT NBR 6323:2004, catálogo oficial em https://www.abntcatalogo.com.br/norma.aspx?ID=1121",
+    "ctaHint": "\"Escolha a altura do seu mastro\" → /mastros-para-bandeira",
+    "weekDay": "Sexta",
+    "funnelStage": "MOFU/FAQ comercial"
+  },
+  {
+    "briefId": 13,
+    "title": "Poste para quadra esportiva, beach tennis e areia: altura e número de refletores",
+    "keyword": "poste iluminação quadra esportiva preço",
+    "resposta": "A altura varia por modalidade e nível (recreativo x competição): beach tennis/futevôlei, poliesportiva, society, tênis. O que define quantos postes e quantos refletores por poste é a carga de topo (peso + área de vento dos refletores e da cruzeta), não o tamanho da quadra. Existe um teto estrutural por bitola: um Ø254 chega a ~155 kNm, o que em 15 m sustenta no máximo ~8 refletores. (Contexto interno de apoio, não citar como fonte pública: ABNT NBR ISO/CIE 8995 (iluminância por modalidade esportiva); Memória interna poste-cruzeta-refletores.md; Motor estrutural interno.)",
+    "fontes": "",
+    "ctaHint": "\"Diga a modalidade e o tamanho da quadra e receba a configuração de postes\" → /orcamento-poste-metalico",
+    "weekDay": "Quarta",
+    "funnelStage": "MOFU/BOFU — aplicação com intenção de compra e preço"
+  },
+  {
+    "briefId": 14,
+    "title": "Projeto luminotécnico de iluminação pública: quem pode fazer, o que entrega e quanto custa",
+    "keyword": "projeto luminotécnico iluminação pública",
+    "resposta": "O post é só sobre via pública/pátio/área industrial (nunca interiores residenciais). Explicar o que o estudo entrega (planta de pontos, mapa de falsa-cor, iluminância média e uniformidade, tabela de luminárias e alturas, memorial), quem pode assinar (engenheiro eletricista com ART/registro no CREA), o que faz o preço variar (área, classe de via, levantamento em campo) e por que fazer o estudo antes de comprar o poste evita refazer a obra. (Contexto interno de apoio, não citar como fonte pública: Material do BNDES/gov.br sobre iluminação pública municipal; Capacidade real da B&B via skill bb-luminotecnica.)",
+    "fontes": "ABNT NBR 5101:2018, catálogo oficial em https://www.abntcatalogo.com.br/norma.aspx?ID=406739",
+    "ctaHint": "\"Envie a planta e receba o estudo luminotécnico do seu projeto\" → /contato",
+    "weekDay": "Sexta",
+    "funnelStage": "FAQ comercial / autoridade"
+  },
+  {
+    "briefId": 15,
+    "title": "Postes para loteamento: concreto ou aço galvanizado?",
+    "keyword": "postes para loteamento concreto ou aço",
+    "resposta": "Recorte de loteamento (não o comparativo genérico de material): o que muda quando são 80 postes e não 3 — peso e frete por carreta, número de guindastes/munck necessários, prazo de fabricação x cronograma de etapas do loteamento, padronização exigida pela concessionária, manutenção nos 5 primeiros anos, e o custo total (não só o preço unitário). Responder também 'poste dentro do lote', 'como colocar poste no terreno' e 'quem instala postes de luz na rua é a prefeitura?'. (Contexto interno de apoio, não citar como fonte pública: Dados reais de peso/logística da B&B; Prazo de fabricação real da B&B (15 dias úteis).)",
+    "fontes": "ABNT NBR 6323:2004, catálogo oficial em https://www.abntcatalogo.com.br/norma.aspx?ID=1121; ABNT NBR 5101:2018, catálogo oficial em https://www.abntcatalogo.com.br/norma.aspx?ID=406739",
+    "ctaHint": "\"Receba o orçamento do pacote completo do seu loteamento\" → /orcamento-poste-metalico",
+    "weekDay": "Quinta",
+    "funnelStage": "BOFU — comparativo de decisão de compra"
+  },
+  {
+    "briefId": 16,
+    "title": "Quanto custa um poste metálico segundo o SINAPI (e quem fabrica)",
+    "keyword": "poste de aço cônico contínuo flangeado h=9m sinapi",
+    "resposta": "Tabela cruzando os códigos SINAPI reais (105956, 100620, 100621, insumos 5050/5052/14162/5051) com os modelos equivalentes da linha Urban da B&B (TCS/TCD/TR × -E/-F), o preço médio nacional de referência (ex.: insumo 14162 = R$1.977,85/un) versus o que a B&B entrega, e o que está incluso na composição de instalação (guindauto, aterramento, chumbador). (Contexto interno de apoio, não citar como fonte pública: Tabela SINAPI oficial (AF_04/2025); Motor de precificação interno (bom-precificacao-postes.md).)",
+    "fontes": "ABNT NBR 14744:2019, catálogo oficial em https://www.abntcatalogo.com.br/norma.aspx?ID=419453",
+    "ctaHint": "\"Peça cotação com equivalência SINAPI para sua licitação\" → /orcamento-poste-metalico",
+    "weekDay": "Segunda",
+    "funnelStage": "BOFU puro"
+  },
+  {
+    "briefId": 17,
+    "title": "Galvanização a fogo: as perguntas de decisão que importam (não o termo genérico)",
+    "keyword": "qual a diferença entre galvanização a fogo e a frio/eletrolítica",
+    "resposta": "Comparar os 3 métodos de proteção (a fogo/imersão, a frio/tinta rica em zinco, eletrolítica): espessura de camada de cada um, durabilidade real, e por que a B&B só usa galvanização a fogo (NBR 6323), nunca inox. Focar nas perguntas de decisão reais (diferença entre métodos, tempo de duração, espessura, norma) em vez do termo genérico 'galvanização a fogo', que na SERP é dominado por quem procura banho de zinco terceirizado por cidade. (Contexto interno de apoio, não citar como fonte pública: Garantia formal da B&B (prazo a confirmar — pendência registrada em conteudo-acabamentos-durabilidade.md).)",
+    "fontes": "ABNT NBR 6323:2004, catálogo oficial em https://www.abntcatalogo.com.br/norma.aspx?ID=1121",
+    "ctaHint": "\"Veja a garantia B&B por trás da galvanização a fogo\" → página institucional/garantia",
+    "weekDay": "Terça",
+    "funnelStage": "técnico/autoridade com viés BOFU"
+  },
+  {
+    "briefId": 18,
+    "title": "Braço de iluminação pública por padrão de concessionária: como escolher o certo",
+    "keyword": "braço de iluminação pública padrão copel modelo br2",
+    "resposta": "Tabela de referência organizada por concessionária (Copel BR2, Light, Enel etc.) cruzando medida × bitola do tubo × braço reto ou curvo, com nota clara de que a B&B fabrica sob medida para qualquer padrão regional — organização que nenhum concorrente faz hoje (eles só listam por medida solta). (Contexto interno de apoio, não citar como fonte pública: Especificações públicas de padrão de braço das principais concessionárias; Catálogo de braços da B&B.)",
+    "fontes": "",
+    "ctaHint": "\"Diga sua concessionária e receba o braço no padrão certo\" → /contato",
+    "weekDay": "Quarta",
+    "funnelStage": "MOFU/BOFU — decisão de especificação técnica com intenção de compra"
+  },
+  {
+    "briefId": 19,
+    "title": "Bloco DWG/Revit/SketchUp do poste B&B para projetistas",
+    "keyword": "poste de iluminação pública dwg",
+    "resposta": "O post é a própria entrega: texto curto explicando os modelos disponíveis por altura/acabamento, com os arquivos DWG/Revit/SketchUp da linha Urban disponíveis para download direto — nenhum fabricante brasileiro de poste publica hoje a própria família DWG/Revit, e a B&B já tem os modelos 3D e os 37 desenhos de cortes flangeados prontos internamente. (Contexto interno de apoio, não citar como fonte pública: Modelos 3D já existentes internamente (memória bb-poste-3d-fusion).)",
+    "fontes": "",
+    "ctaHint": "Download direto do bloco + \"precisa de uma variação específica? fale com a gente\"",
+    "weekDay": "Quinta",
+    "funnelStage": "TOFU técnico com efeito BOFU de longo prazo"
+  },
+  {
+    "briefId": 20,
+    "title": "Qual o NCM do poste de iluminação e da luminária LED",
+    "keyword": "ncm poste de iluminação",
+    "resposta": "Poste de aço galvanizado se enquadra no NCM 7308.90.90 ('construções e suas partes, de ferro/aço'), com base nas Soluções de Consulta COSIT nº 98.148/2020 e nº 98.173/2022, já que o poste é produto composto e não tubo simples. Luminária LED de iluminação pública se enquadra no NCM 9405.40.10, pois a posição 9405.10 exclui expressamente iluminação pública. (Contexto interno de apoio, não citar como fonte pública: Solução de Consulta COSIT nº 98.148/2020; Solução de Consulta COSIT nº 98.173/2022.)",
+    "fontes": "",
+    "ctaHint": "CTA suave de contato caso o comprador tenha dúvida na nota fiscal",
+    "weekDay": "Sexta",
+    "funnelStage": "BOFU — última dúvida antes de faturar o pedido"
+  }
+]

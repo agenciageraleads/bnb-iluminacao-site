@@ -5,6 +5,9 @@ import config from '@payload-config';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { AGENT_GROUND_TRUTH } from '@/lib/agent-context';
 import { runQualityGate } from '@/lib/blog-validation.mjs';
+import { ensureP0HubLink } from '@/lib/seo/p0-hub-interlinking';
+import briefsPart1 from '@/data/blog-briefs-1-7.json';
+import briefsPart2 from '@/data/blog-briefs-8-20.json';
 
 const MODEL_NAME = 'gemini-2.5-flash';
 
@@ -28,6 +31,14 @@ function verifyInternalToken(req: Request): boolean {
 const apiKey = process.env.GEMINI_API_KEY || '';
 const genAI = new GoogleGenerativeAI(apiKey);
 
+type BriefOverride = {
+    title: string
+    keyword?: string
+    resposta?: string
+    fontes?: string
+    ctaHint?: string
+}
+
 export async function POST(req: Request) {
     try {
         if (!verifyInternalToken(req)) {
@@ -35,6 +46,24 @@ export async function POST(req: Request) {
         }
         if (!process.env.GEMINI_API_KEY) {
             return NextResponse.json({ success: false, error: 'GEMINI_API_KEY não configurada no .env' }, { status: 200 });
+        }
+
+        // Brief opcional (Sprint Blog 03): quando informado, pula o Agente Estrategista
+        // e usa a pauta/resposta/fontes já pesquisadas em vez de deixar a IA escolher o tema.
+        // autoMode: sem brief manual, a rota escolhe sozinha o próximo brief PRONTO não usado
+        // ainda do calendário de 90 dias (ordem 1..20). autoPublish: pula ai_review e publica
+        // direto — ligado explicitamente por pedido do Lucas em 2026-09-01 (piloto Sprint Blog 04
+        // automatizado ponta a ponta); reviewedBy fica marcado como autopilot, nunca finge revisão humana.
+        let brief: BriefOverride | null = null;
+        let autoPublish = false;
+        let autoMode = false;
+        try {
+            const body = await req.json();
+            if (body?.brief?.title) brief = body.brief;
+            if (body?.autoPublish === true) autoPublish = true;
+            if (body?.autoMode === true) autoMode = true;
+        } catch {
+            // corpo vazio é normal no fluxo autônomo (cron) — segue sem brief.
         }
 
         const payload = await getPayload({ config });
@@ -49,6 +78,21 @@ export async function POST(req: Request) {
         });
         const titulosAntigos = postsExistentes.docs.map(d => d.title).join(", ");
 
+        // Se o calendário de briefs PRONTO do Sprint Blog 03 acabar, NÃO bloqueia o piloto:
+        // cai de volta pro Agente Estrategista autônomo (pesquisa live via Google grounding,
+        // abaixo). Isso é só uma rede de segurança — a reposição de verdade da fila de briefs
+        // (repetir a metodologia do Sprint 03: keyword research + gap de concorrente, só tier
+        // gratuito) é feita por uma tarefa agendada separada antes da fila esvaziar de vez.
+        if (autoMode && !brief) {
+            const todosOsBriefs = [...briefsPart1, ...briefsPart2].sort((a: any, b: any) => a.briefId - b.briefId);
+            const restantes = todosOsBriefs.filter((b: any) => !titulosAntigos.includes(b.title));
+            if (restantes.length > 0) {
+                brief = restantes[0];
+            } else {
+                console.warn("autoMode: fila de briefs PRONTO do calendário esgotada — caindo para o Agente Estrategista autônomo (Google grounding).");
+            }
+        }
+
         // Usando gemini-2.5-flash (Modelo de elite disponível na chave do usuário)
         const model = genAI.getGenerativeModel(
             { model: "gemini-2.5-flash" },
@@ -57,41 +101,58 @@ export async function POST(req: Request) {
 
         // --------------------------------------------------------------------------------
         // 1. O AGENTE ESTRATEGISTA (Definição de Pauta)
+        // Pulado quando um brief do Sprint Blog 03 já define a pauta — a pesquisa de
+        // palavra-chave/concorrentes já foi feita, não faz sentido a IA escolher de novo.
         // --------------------------------------------------------------------------------
-        const promptEstrategista = `
-            Você é o Diretor de Estratégia de Conteúdo B2B da B&B Iluminação.
-            Sua tarefa é usar a Pesquisa Google (Grounding) para identificar quais são as dúvidas REAIS, 
-            perguntas frequentes (PAA - People Also Ask) e tendências de busca técnica hoje no Brasil sobre:
-            - ${AGENT_GROUND_TRUTH.BRAND_VOICE}
+        let pauta: string;
+        if (brief) {
+            pauta = brief.title;
+        } else {
+            const promptEstrategista = `
+                Você é o Diretor de Estratégia de Conteúdo B2B da B&B Iluminação.
+                Sua tarefa é usar a Pesquisa Google (Grounding) para identificar quais são as dúvidas REAIS,
+                perguntas frequentes (PAA - People Also Ask) e tendências de busca técnica hoje no Brasil sobre:
+                - ${AGENT_GROUND_TRUTH.BRAND_VOICE}
 
-            PASSO 1: Pesquise no Google por termos como "dúvidas iluminação externa", "como instalar poste metálico", "norma NBR postes", "cálculo de lux estacionamento".
-            PASSO 2: Com base nos resultados reais da web, escolha uma pauta inédita e RELEVANTE.
-            
-            POSTAGENS JÁ REALIZADAS (É CRÍTICO NÃO REPETIR NENHUM DESTES TEMAS OU ÂNGULOS):
-            ${titulosAntigos || "Nenhuma postagem ainda."}
+                PASSO 1: Pesquise no Google por termos como "dúvidas iluminação externa", "como instalar poste metálico", "norma NBR postes", "cálculo de lux estacionamento".
+                PASSO 2: Com base nos resultados reais da web, escolha uma pauta inédita e RELEVANTE.
 
-            DIRETRIZ DE VARIEDADE:
-            - Alterne entre: Guia Técnico (Instalação/Normas), Economia de Energia, Design/Estética Industrial e Estudos de Caso.
-            - Evite ser generalista demais; foque em problemas específicos de engenharia ou arquitetura.
-            - Se um tema já foi abordado (veja a lista acima), escolha um nicho ou ângulo completamente diferente.
+                POSTAGENS JÁ REALIZADAS (É CRÍTICO NÃO REPETIR NENHUM DESTES TEMAS OU ÂNGULOS):
+                ${titulosAntigos || "Nenhuma postagem ainda."}
 
-            Retorne apenas o título (direto ao ponto, com pegada SEO Question-based). 
-        `;
+                DIRETRIZ DE VARIEDADE:
+                - Alterne entre: Guia Técnico (Instalação/Normas), Economia de Energia, Design/Estética Industrial e Estudos de Caso.
+                - Evite ser generalista demais; foque em problemas específicos de engenharia ou arquitetura.
+                - Se um tema já foi abordado (veja a lista acima), escolha um nicho ou ângulo completamente diferente.
 
-        const restEstrategista = await model.generateContent({
-            contents: [{ role: 'user', parts: [{ text: promptEstrategista }] }],
-            tools: [{ googleSearch: {} }] as any
-        });
-        const pauta = restEstrategista.response.text().trim();
+                Retorne apenas o título (direto ao ponto, com pegada SEO Question-based).
+            `;
+
+            const restEstrategista = await model.generateContent({
+                contents: [{ role: 'user', parts: [{ text: promptEstrategista }] }],
+                tools: [{ googleSearch: {} }] as any
+            });
+            pauta = restEstrategista.response.text().trim();
+        }
 
         // --------------------------------------------------------------------------------
         // 2. O AGENTE REDATOR (Gerando o Conteúdo)
         // --------------------------------------------------------------------------------
+        const briefGuidance = brief ? `
+            BRIEF OBRIGATÓRIO (Sprint Blog 03 — pesquisa de palavra-chave e concorrentes já feita,
+            siga à risca, não invente outro ângulo):
+            ${brief.keyword ? `- Keyword principal: ${brief.keyword}` : ''}
+            ${brief.resposta ? `- Resposta direta que o post PRECISA dar: ${brief.resposta}` : ''}
+            ${brief.fontes ? `- Fontes obrigatórias a citar: ${brief.fontes}` : ''}
+            ${brief.ctaHint ? `- Orientação de CTA: ${brief.ctaHint}` : ''}
+        ` : '';
+
         const promptRedator = `
             Você é um Engenheiro Sênior / Redator Técnico da B&B Iluminação.
             O título escolhido pelo estrategista foi: "${pauta}".
-            
-            Sua missão é gerar o conteúdo técnico em formato JSON ESTRITO. 
+            ${briefGuidance}
+
+            Sua missão é gerar o conteúdo técnico em formato JSON ESTRITO.
             Não inclua explicações antes ou depois do JSON.
             
             DIRETRIZES DE FORMATAÇÃO:
@@ -99,7 +160,16 @@ export async function POST(req: Request) {
             - Use <strong> para destacar termos técnicos e normas.
             - MUITO IMPORTANTE: Se houver dados comparativos ou valores de NBR, use obrigatoriamente uma <table> HTML simples (thead, tbody, tr, th, td). O site está preparado para estilizar estas tabelas de forma premium.
             - Use <ul> e <li> para listas de benefícios ou especificações.
-            
+
+            REGRA DE INTERLINKING (Farol SEO Nacional B2B): se o artigo mencionar postes metálicos/galvanizados,
+            fabricante/fábrica/fornecedor de postes, poste teleconico ou iluminação pública, inclua UM link
+            interno contextual (dentro de um <p> do corpo, nunca forçado fora de contexto) para a página hub
+            correspondente: "/postes-metalicos", "/fabricante-de-postes-metalicos", "/produtos/poste-teleconico"
+            ou "/postes-para-iluminacao-publica". Escolha só o hub mais relevante ao tema central do artigo; não
+            precisa linkar todos. Se o sistema não conseguir inserir naturalmente, um link de reforço é
+            adicionado automaticamente depois — mas prefira fazer isso você mesmo, no ponto do texto onde fizer
+            mais sentido editorial.
+
             RETORNE EXATAMENTE NESTE FORMATO JSON:
             {
                 "title": "${pauta}",
@@ -129,6 +199,13 @@ export async function POST(req: Request) {
         // então qualquer tag HTML apareceria literal (ex.: "<strong>NBR</strong>"). Removemos as tags.
         if (typeof conteudoAgente.summary === 'string') {
             conteudoAgente.summary = conteudoAgente.summary.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+        }
+
+        // Rede de segurança do Farol SEO Nacional B2B: garante o link para o hub P0 mesmo se o
+        // Redator não seguir a instrução do prompt (backfill de 2026-09-02 achou 47/96 posts
+        // publicados mencionando esses clusters sem nenhum link para os hubs).
+        if (typeof conteudoAgente.bodyHtml === 'string') {
+            conteudoAgente.bodyHtml = ensureP0HubLink(conteudoAgente.bodyHtml, conteudoAgente.title, conteudoAgente.summary);
         }
 
         // --------------------------------------------------------------------------------
@@ -175,50 +252,50 @@ export async function POST(req: Request) {
         }
 
         // --------------------------------------------------------------------------------
-        // 4. O AGENTE FOTÓGRAFO (Gerando a Imagem de Capa com Imagen 4)
+        // 4. O AGENTE FOTÓGRAFO (Gerando a Imagem de Capa)
+        // O endpoint standalone do Imagen (`imagen-4.0-generate-001:predict`) não está mais
+        // disponível nesta chave/projeto (404 "model not found"). Usa o modelo de imagem nativo
+        // do Gemini via generateContent, que devolve a imagem inline em vez de via `predict`.
         // --------------------------------------------------------------------------------
+        const IMAGE_MODEL_NAME = 'gemini-2.5-flash-image';
         let featuredImageId = null;
         try {
             const promptFoto = `
-                Generate a high-end, ultra-realistic industrial photography prompt in English for Google Imagen 4.
+                Generate a high-end, ultra-realistic industrial photography prompt in English.
                 Subject: ${conteudoAgente.title}.
-                Style: Professional night/dusk photography, realistic lighting, industrial aesthetic, high quality, 8k resolution. 
+                Style: Professional night/dusk photography, realistic lighting, industrial aesthetic, high quality, 8k resolution.
                 Focus on B&B Iluminação infrastructure: metallic poles, external lighting, public squares or parking lots.
                 Return only the prompt string.
             `;
             const resPromptFoto = await model.generateContent(promptFoto);
             const finalImagePrompt = resPromptFoto.response.text().trim();
 
-            const imagenUrl = `https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`;
-            const imagenResponse = await fetch(imagenUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    instances: [{ prompt: finalImagePrompt }],
-                    parameters: { sampleCount: 1, aspectRatio: "16:9" }
-                })
-            });
+            const imageModel = genAI.getGenerativeModel(
+                { model: IMAGE_MODEL_NAME },
+                { apiVersion: 'v1beta' }
+            );
+            const imagenResult = await imageModel.generateContent(finalImagePrompt);
+            const imageParts = imagenResult.response.candidates?.[0]?.content?.parts ?? [];
+            const imagePart = imageParts.find((part: any) => part.inlineData?.data);
+            const base64Image = imagePart?.inlineData?.data;
 
-            if (imagenResponse.ok) {
-                const imagenData = await imagenResponse.json();
-                const base64Image = imagenData?.predictions?.[0]?.bytesBase64Encoded;
-
-                if (base64Image) {
-                    // Fazendo upload para o Payload
-                    const mediaDoc = await payload.create({
-                        collection: 'media',
-                        data: {
-                            alt: `Imagem gerada por IA para o post: ${conteudoAgente.title}`,
-                        },
-                        file: {
-                            data: Buffer.from(base64Image, 'base64'),
-                            name: `blog-${conteudoAgente.slug}-${Date.now()}.png`,
-                            mimetype: 'image/png',
-                            size: Buffer.from(base64Image, 'base64').length,
-                        },
-                    });
-                    featuredImageId = mediaDoc.id;
-                }
+            if (!base64Image) {
+                console.error(`${IMAGE_MODEL_NAME} respondeu sem inlineData:`, JSON.stringify(imagenResult.response).slice(0, 1000));
+            } else {
+                // Fazendo upload para o Payload
+                const mediaDoc = await payload.create({
+                    collection: 'media',
+                    data: {
+                        alt: `Imagem gerada por IA para o post: ${conteudoAgente.title}`,
+                    },
+                    file: {
+                        data: Buffer.from(base64Image, 'base64'),
+                        name: `blog-${conteudoAgente.slug}-${Date.now()}.png`,
+                        mimetype: imagePart?.inlineData?.mimeType || 'image/png',
+                        size: Buffer.from(base64Image, 'base64').length,
+                    },
+                });
+                featuredImageId = mediaDoc.id;
             }
         } catch (imgError) {
             console.error("Erro na geração/upload da imagem:", imgError);
@@ -255,15 +332,18 @@ export async function POST(req: Request) {
         }
 
         // --------------------------------------------------------------------------------
-        // 6. CRIAÇÃO EM RASCUNHO — NUNCA publica direto. Fluxo obrigatório: draft -> ai_review -> published.
-        // A promoção para 'published' exige aprovação humana via /api/blog-engine/publish.
+        // 6. CRIAÇÃO DO POST. Por padrão fica em 'ai_review' (draft -> ai_review -> published,
+        // promoção via aprovação humana no Payload Admin). Quando autoPublish=true (piloto
+        // automatizado do Sprint Blog 04, ligado por pedido explícito do Lucas em 2026-09-01),
+        // pula direto pra 'published' — qualityAudit.reviewedBy fica marcado como autopilot,
+        // nunca finge que um humano revisou.
         // --------------------------------------------------------------------------------
         const novoPost = await payload.create({
             collection: 'blog',
             data: {
                 title: conteudoAgente.title,
                 slug: finalSlug,
-                status: 'ai_review',
+                status: autoPublish ? 'published' : 'ai_review',
                 author: 'Eng. Lucas Borges',
                 summary: conteudoAgente.summary,
                 featuredImage: featuredImageId,
@@ -309,13 +389,19 @@ export async function POST(req: Request) {
                     revisorPrompt: promptRevisor,
                     revisorVeredicto: veredicto,
                     qualityGateErrors: gate.errors,
+                    ...(autoPublish ? {
+                        reviewedBy: 'autopilot (sem revisão humana — piloto Sprint Blog 04 automatizado, ligado por pedido do Lucas em 2026-09-01)',
+                        reviewedAt: new Date().toISOString(),
+                    } : {}),
                 }
             } as any
         });
 
         return NextResponse.json({
             success: true,
-            message: "Sala de Redação gerou um rascunho válido em 'ai_review'. Aguardando aprovação humana para publicar.",
+            message: autoPublish
+                ? "Sala de Redação gerou e publicou o post automaticamente (autopilot, sem revisão humana)."
+                : "Sala de Redação gerou um rascunho válido em 'ai_review'. Aguardando aprovação humana para publicar.",
             post: novoPost,
             revisorLog: "Aprovado com maestria em compliance com NBRs",
             qualityGate: "Aprovado — nenhum erro estrutural, sem canibalização, fontes normativas ok."

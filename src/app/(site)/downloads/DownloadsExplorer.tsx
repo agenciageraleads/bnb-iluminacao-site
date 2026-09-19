@@ -5,6 +5,7 @@ import { FileText, Download, AlertTriangle } from 'lucide-react'
 import { DownloadGrid } from './DownloadGrid'
 import type { Catalog } from '@/lib/data'
 import { URBAN_FAMILIES, desenhoTecnicoHref } from '@/lib/urban-downloads'
+import { TrackedContactLink } from '@/lib/lead-tracking'
 
 type Familia = (typeof URBAN_FAMILIES)[number]
 
@@ -56,13 +57,17 @@ function FamilyCard({ familia }: { familia: Familia }) {
                 {/* Ficha Técnica */}
                 <div className="flex flex-col gap-2.5">
                     <BlockLabel hint="— datasheet do modelo">Ficha Técnica</BlockLabel>
-                    <a
+                    <TrackedContactLink
                         href={familia.datasheet}
                         download
+                        channel="download"
+                        eventSource="downloads_explorer"
+                        eventLabel={`${familia.nome} - Datasheet`}
+                        extraPayload={{ lead_cluster: familia.sigla, download_type: "datasheet" }}
                         className="w-full flex items-center justify-center gap-2 bg-industrial-950 text-white font-black uppercase text-[11px] tracking-widest py-3 rounded-lg hover:bg-industrial-800 transition-colors"
                     >
                         <Download className="size-4" /> Baixar Datasheet
-                    </a>
+                    </TrackedContactLink>
                 </div>
 
                 {/* Desenho Técnico (cotado por altura) */}
@@ -98,13 +103,17 @@ function FamilyCard({ familia }: { familia: Familia }) {
                                 ))}
                             </select>
                         </div>
-                        <a
+                        <TrackedContactLink
                             href={desenhoTecnicoHref(familia.sigla, altura, mount)}
                             download
+                            channel="download"
+                            eventSource="downloads_explorer"
+                            eventLabel={`${familia.nome} - Desenho ${altura}m ${mount}`}
+                            extraPayload={{ lead_cluster: familia.sigla, download_type: "desenho_tecnico" }}
                             className="shrink-0 flex items-center gap-2 bg-white border border-industrial-300 text-industrial-700 font-black uppercase text-[11px] tracking-widest px-4 py-2.5 rounded-lg hover:border-industrial-950 hover:text-industrial-950 transition-colors"
                         >
                             <Download className="size-4" /> Baixar
-                        </a>
+                        </TrackedContactLink>
                     </div>
                 </div>
             </div>

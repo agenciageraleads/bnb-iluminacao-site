@@ -2,6 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Instagram, Facebook, Linkedin, MapPin, Phone, Mail } from "lucide-react"
 import { TrackedContactLink } from "@/lib/lead-tracking"
+import { PreferredSourceButton } from "@/components/seo/preferred-source-button"
 
 export function Footer() {
     const currentYear = new Date().getFullYear()
@@ -14,7 +15,7 @@ export function Footer() {
                     {/* Coluna 1: Logo e Redes */}
                     <div className="space-y-8 text-center md:text-left">
                         <Link href="/" className="inline-block">
-                            <Image src="/logo.png" alt="B&B Iluminação" width={200} height={64} className="h-16 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity" />
+                            <Image src="/logo.svg" alt="B&B Iluminação" width={200} height={64} className="h-16 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity" />
                         </Link>
                         <p className="text-industrial-400 text-sm leading-relaxed max-w-xs mx-auto md:mx-0 font-medium">
                             Soluções metálicas para urbanismo. Na medida. No prazo. Na norma.
@@ -98,6 +99,14 @@ export function Footer() {
                         </div>
                     </div>
 
+                </div>
+
+                {/* Fonte preferida no Google */}
+                <div className="pb-10 flex flex-col md:flex-row items-center justify-center gap-4 text-center">
+                    <p className="text-industrial-400 text-sm font-medium max-w-md">
+                        Acompanha nosso conteúdo técnico? Marque a B&amp;B como fonte preferida no Google.
+                    </p>
+                    <PreferredSourceButton theme="dark" className="shrink-0" />
                 </div>
 
                 {/* Bottom Bar */}

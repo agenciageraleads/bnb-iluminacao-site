@@ -6,7 +6,7 @@ const Categories: CollectionConfig = {
         useAsTitle: 'name',
     },
     access: {
-        read: () => true,
+        read: ({ req }) => req.user ? true : { slug: { in: ['urban', 'orna', 'versa', 'forza', 'vigia', 'nexo', 'civis', 'linha-urban', 'linha-orna', 'linha-versa', 'linha-forza', 'linha-vigia', 'linha-nexo', 'linha-civis'] } },
     },
     fields: [
         {

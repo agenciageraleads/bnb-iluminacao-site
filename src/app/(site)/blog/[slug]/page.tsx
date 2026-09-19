@@ -9,6 +9,7 @@ import Script from "next/script"
 import { Calendar, User, ArrowLeft, CheckCircle2 } from "lucide-react"
 import Link from "next/link"
 import { SITE_URL, absoluteUrl } from "@/lib/seo/schema"
+import { TrackedContactLink } from "@/lib/lead-tracking"
 
 interface BlogPostPageProps {
     params: Promise<{ slug: string }>
@@ -177,6 +178,54 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                                 dangerouslySetInnerHTML={{ __html: post.bodyHtml || `<p className="text-industrial-400">Conteúdo técnico em processamento...</p>` }} 
                             />
 
+                            {/* CTA do post (gerado pelo motor de blog / gate de qualidade do Sprint 01) */}
+                            {post.cta?.url && post.cta?.label && (
+                                <div className="mt-16 p-8 md:p-10 bg-industrial-950 text-white rounded-3xl flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                                    <div>
+                                        <p className="text-[11px] font-black uppercase tracking-widest text-accent-premium mb-2">
+                                            Próximo passo
+                                        </p>
+                                        <p className="text-lg md:text-xl font-bold leading-snug">
+                                            {post.cta.label}
+                                        </p>
+                                    </div>
+                                    <TrackedContactLink
+                                        href={post.cta.url}
+                                        channel="cta"
+                                        eventName="blog_cta_click"
+                                        eventSource={`blog_post:${slug}`}
+                                        eventLabel={post.cta.label}
+                                        extraPayload={{ cta_url: post.cta.url, post_title: post.title }}
+                                        className="shrink-0 inline-flex items-center justify-center h-14 px-8 bg-accent-premium text-black font-black uppercase tracking-widest rounded-xl hover:bg-white transition-colors"
+                                    >
+                                        {post.cta.label}
+                                    </TrackedContactLink>
+                                </div>
+                            )}
+
+                            {/* Fontes citadas */}
+                            {post.sources && post.sources.length > 0 && (
+                                <div className="mt-10 pt-8 border-t border-industrial-100">
+                                    <p className="text-[11px] font-black uppercase tracking-widest text-industrial-400 mb-3">
+                                        Fontes e normas citadas
+                                    </p>
+                                    <ul className="space-y-1">
+                                        {post.sources.map((source: { label: string; url: string }, i: number) => (
+                                            <li key={i}>
+                                                <a
+                                                    href={source.url}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer nofollow"
+                                                    className="text-sm text-industrial-500 hover:text-accent-dark underline underline-offset-2"
+                                                >
+                                                    {source.label}
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+
                             {/* Seção de FAQ */}
                             {post.faqs && post.faqs.length > 0 && (
                                 <section className="mt-24 p-8 md:p-12 bg-industrial-50 border border-industrial-200 rounded-3xl">
@@ -217,9 +266,17 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                                         Engenheiro responsável pela curadoria técnica da B&B, garantindo que cada artigo siga rigorosamente as normas NBR vigentes.
                                     </p>
                                 </div>
-                                <Link href="/contato" className="mt-8 w-full py-4 bg-accent-premium text-black font-black uppercase tracking-widest text-xs rounded-xl flex items-center justify-center hover:bg-industrial-900 hover:text-white transition-colors">
+                                <TrackedContactLink
+                                    href="/contato"
+                                    channel="cta"
+                                    eventName="blog_cta_click"
+                                    eventSource={`blog_post_sidebar:${slug}`}
+                                    eventLabel="Solicitar consultoria"
+                                    extraPayload={{ cta_url: "/contato", post_title: post.title }}
+                                    className="mt-8 w-full py-4 bg-accent-premium text-black font-black uppercase tracking-widest text-xs rounded-xl flex items-center justify-center hover:bg-industrial-900 hover:text-white transition-colors"
+                                >
                                     SOLICITAR CONSULTORIA
-                                </Link>
+                                </TrackedContactLink>
                             </div>
                         </aside>
                     </div>

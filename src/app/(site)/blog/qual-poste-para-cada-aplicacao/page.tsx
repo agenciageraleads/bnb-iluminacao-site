@@ -25,6 +25,7 @@ import { Header } from "@/components/layout/header"
 import { SchemaOrg } from "@/components/seo/schema-org"
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
 import { WhatsAppLink } from "@/components/ui/whatsapp-link"
+import { TrackedContactLink } from "@/lib/lead-tracking"
 import {
     ORGANIZATION_ID,
     SITE_URL,
@@ -536,21 +537,39 @@ export default function QualPosteParaCadaAplicacaoPage() {
                             </p>
                         </div>
                         <div className="grid gap-3">
-                            {downloadLinks.map((file) => (
-                                <a
-                                    key={file.href}
-                                    href={file.href}
-                                    target={file.href === "/downloads" ? undefined : "_blank"}
-                                    rel={file.href === "/downloads" ? undefined : "noopener noreferrer"}
-                                    className="group flex items-center justify-between gap-4 border border-industrial-200 bg-white p-5 text-sm font-black uppercase tracking-widest text-industrial-800 transition-colors hover:border-industrial-950 rounded-lg"
-                                >
-                                    <span className="inline-flex items-center gap-3">
-                                        <Download className="size-5 text-accent-dark" aria-hidden="true" />
-                                        {file.title}
-                                    </span>
-                                    <ArrowRight className="size-4 shrink-0 text-accent-dark transition-transform group-hover:translate-x-1" aria-hidden="true" />
-                                </a>
-                            ))}
+                            {downloadLinks.map((file) =>
+                                file.href === "/downloads" ? (
+                                    <a
+                                        key={file.href}
+                                        href={file.href}
+                                        className="group flex items-center justify-between gap-4 border border-industrial-200 bg-white p-5 text-sm font-black uppercase tracking-widest text-industrial-800 transition-colors hover:border-industrial-950 rounded-lg"
+                                    >
+                                        <span className="inline-flex items-center gap-3">
+                                            <Download className="size-5 text-accent-dark" aria-hidden="true" />
+                                            {file.title}
+                                        </span>
+                                        <ArrowRight className="size-4 shrink-0 text-accent-dark transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                                    </a>
+                                ) : (
+                                    <TrackedContactLink
+                                        key={file.href}
+                                        href={file.href}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        channel="download"
+                                        eventSource="blog_qual_poste_para_cada_aplicacao"
+                                        eventLabel={file.title}
+                                        extraPayload={{ download_type: "datasheet" }}
+                                        className="group flex items-center justify-between gap-4 border border-industrial-200 bg-white p-5 text-sm font-black uppercase tracking-widest text-industrial-800 transition-colors hover:border-industrial-950 rounded-lg"
+                                    >
+                                        <span className="inline-flex items-center gap-3">
+                                            <Download className="size-5 text-accent-dark" aria-hidden="true" />
+                                            {file.title}
+                                        </span>
+                                        <ArrowRight className="size-4 shrink-0 text-accent-dark transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                                    </TrackedContactLink>
+                                )
+                            )}
                         </div>
                     </div>
                 </section>

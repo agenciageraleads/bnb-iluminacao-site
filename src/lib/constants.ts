@@ -1,4 +1,6 @@
 export interface Product {
+    lifecycle?: 'active' | 'hidden' | 'development'
+    siteSlugs?: string[]
     id: string
     name: string
     category: string
@@ -27,6 +29,8 @@ export interface Category {
     title: string
     slug: string
     image: string
+    imageAlt?: string
+    imageFit?: 'cover' | 'contain'
     description: string
     featured?: boolean
 }

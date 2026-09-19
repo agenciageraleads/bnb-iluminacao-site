@@ -100,6 +100,16 @@ ${SSH_CMD} "bash -c '
 echo "   ✓ Imagem construída"
 
 # ── 3. Deploy no Swarm ────────────────────────────────────────
+# Additive schema must be applied separately, after backup and homologation.
+# Never start the new application against a missing lifecycle column.
+echo "▶ Verificando migração do catálogo (somente leitura)..."
+RUNNING_CONTAINER=$(${SSH_CMD} "docker ps --filter label=com.docker.swarm.service.name=${SERVICE_NAME} --format '{{.ID}}' | head -1")
+if [[ ! "${RUNNING_CONTAINER}" =~ ^[a-f0-9]{12,64}$ ]]; then
+  echo "❌ Serviço atual não encontrado; não é seguro atualizar sem validar o schema."
+  exit 1
+fi
+${SSH_CMD} "docker exec -i '${RUNNING_CONTAINER}' node" < "${SCRIPT_REPO_ROOT}/scripts/check-catalog-schema.cjs"
+
 echo ""
 echo "▶ [3/5] Atualizando serviço Swarm..."
 ${SSH_CMD} "docker service update --image '${FULL_TAG}' ${SERVICE_NAME}"
