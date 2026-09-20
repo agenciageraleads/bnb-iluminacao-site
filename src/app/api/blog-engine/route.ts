@@ -6,6 +6,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import { AGENT_GROUND_TRUTH } from '@/lib/agent-context';
 import { runQualityGate } from '@/lib/blog-validation.mjs';
 import { ensureP0HubLink } from '@/lib/seo/p0-hub-interlinking';
+import { fetchStockPhoto } from '@/lib/blog-engine/stock-photo';
 import briefsPart1 from '@/data/blog-briefs-1-7.json';
 import briefsPart2 from '@/data/blog-briefs-8-20.json';
 
@@ -252,54 +253,87 @@ export async function POST(req: Request) {
         }
 
         // --------------------------------------------------------------------------------
-        // 4. O AGENTE FOTÓGRAFO (Gerando a Imagem de Capa)
-        // O endpoint standalone do Imagen (`imagen-4.0-generate-001:predict`) não está mais
-        // disponível nesta chave/projeto (404 "model not found"). Usa o modelo de imagem nativo
-        // do Gemini via generateContent, que devolve a imagem inline em vez de via `predict`.
+        // 4. FOTO DE CAPA — foto real primeiro, IA só como fallback
+        // Prioriza foto real de banco de imagens (Unsplash) sobre imagem gerada por IA: mais
+        // autêntico e evita a "cara de IA genérica". Cai para geração por IA (Gemini,
+        // gemini-2.5-flash-image) quando a busca não acha nada relevante ou a chave do
+        // Unsplash não está configurada.
         // --------------------------------------------------------------------------------
         const IMAGE_MODEL_NAME = 'gemini-2.5-flash-image';
         let featuredImageId = null;
         try {
-            const promptFoto = `
-                Generate a high-end, ultra-realistic industrial photography prompt in English.
-                Subject: ${conteudoAgente.title}.
-                Style: Professional night/dusk photography, realistic lighting, industrial aesthetic, high quality, 8k resolution.
-                Focus on B&B Iluminação infrastructure: metallic poles, external lighting, public squares or parking lots.
-                Return only the prompt string.
-            `;
-            const resPromptFoto = await model.generateContent(promptFoto);
-            const finalImagePrompt = resPromptFoto.response.text().trim();
+            let stockPhoto = null;
+            try {
+                const promptKeywords = `
+                    Return 2 to 4 English keywords for a stock photo search (Unsplash) that best
+                    represents the subject of this article, separated by spaces, no punctuation,
+                    no explanation. Subject: ${conteudoAgente.title}.
+                    Focus on concrete visual nouns (e.g. "steel light pole street", "galvanized
+                    steel pipe industrial", "metal fabrication welding"), never abstract terms.
+                    Return only the keywords string.
+                `;
+                const resKeywords = await model.generateContent(promptKeywords);
+                const keywords = resKeywords.response.text().trim();
+                stockPhoto = keywords ? await fetchStockPhoto(keywords) : null;
+            } catch (stockError) {
+                console.error("Erro ao buscar foto real (Unsplash), caindo para IA:", stockError);
+            }
 
-            const imageModel = genAI.getGenerativeModel(
-                { model: IMAGE_MODEL_NAME },
-                { apiVersion: 'v1beta' }
-            );
-            const imagenResult = await imageModel.generateContent(finalImagePrompt);
-            const imageParts = imagenResult.response.candidates?.[0]?.content?.parts ?? [];
-            const imagePart = imageParts.find((part: any) => part.inlineData?.data);
-            const base64Image = imagePart?.inlineData?.data;
-
-            if (!base64Image) {
-                console.error(`${IMAGE_MODEL_NAME} respondeu sem inlineData:`, JSON.stringify(imagenResult.response).slice(0, 1000));
-            } else {
-                // Fazendo upload para o Payload
+            if (stockPhoto) {
                 const mediaDoc = await payload.create({
                     collection: 'media',
                     data: {
-                        alt: `Imagem gerada por IA para o post: ${conteudoAgente.title}`,
+                        alt: `${stockPhoto.credit} — ${conteudoAgente.title}`,
                     },
                     file: {
-                        data: Buffer.from(base64Image, 'base64'),
-                        name: `blog-${conteudoAgente.slug}-${Date.now()}.png`,
-                        mimetype: imagePart?.inlineData?.mimeType || 'image/png',
-                        size: Buffer.from(base64Image, 'base64').length,
+                        data: stockPhoto.buffer,
+                        name: `blog-${conteudoAgente.slug}-${Date.now()}.jpg`,
+                        mimetype: stockPhoto.mimeType,
+                        size: stockPhoto.buffer.length,
                     },
                 });
                 featuredImageId = mediaDoc.id;
+            } else {
+                const promptFoto = `
+                    Generate a high-end, ultra-realistic industrial photography prompt in English.
+                    Subject: ${conteudoAgente.title}.
+                    Style: Professional night/dusk photography, realistic lighting, industrial aesthetic, high quality, 8k resolution.
+                    Focus on B&B Iluminação infrastructure: metallic poles, external lighting, public squares or parking lots.
+                    Return only the prompt string.
+                `;
+                const resPromptFoto = await model.generateContent(promptFoto);
+                const finalImagePrompt = resPromptFoto.response.text().trim();
+
+                const imageModel = genAI.getGenerativeModel(
+                    { model: IMAGE_MODEL_NAME },
+                    { apiVersion: 'v1beta' }
+                );
+                const imagenResult = await imageModel.generateContent(finalImagePrompt);
+                const imageParts = imagenResult.response.candidates?.[0]?.content?.parts ?? [];
+                const imagePart = imageParts.find((part: any) => part.inlineData?.data);
+                const base64Image = imagePart?.inlineData?.data;
+
+                if (!base64Image) {
+                    console.error(`${IMAGE_MODEL_NAME} respondeu sem inlineData:`, JSON.stringify(imagenResult.response).slice(0, 1000));
+                } else {
+                    const mediaDoc = await payload.create({
+                        collection: 'media',
+                        data: {
+                            alt: `Imagem gerada por IA para o post: ${conteudoAgente.title}`,
+                        },
+                        file: {
+                            data: Buffer.from(base64Image, 'base64'),
+                            name: `blog-${conteudoAgente.slug}-${Date.now()}.png`,
+                            mimetype: imagePart?.inlineData?.mimeType || 'image/png',
+                            size: Buffer.from(base64Image, 'base64').length,
+                        },
+                    });
+                    featuredImageId = mediaDoc.id;
+                }
             }
         } catch (imgError) {
-            console.error("Erro na geração/upload da imagem:", imgError);
-            // Continua sem imagem se falhar o fotógrafo
+            console.error("Erro na obtenção/upload da imagem:", imgError);
+            // Continua sem imagem se falhar tanto a foto real quanto a IA
         }
 
         // --------------------------------------------------------------------------------
