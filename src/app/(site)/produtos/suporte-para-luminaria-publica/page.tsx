@@ -28,7 +28,6 @@ import {
     createFaqSchema,
     createImageSchemas,
     createItemListSchema,
-    createProductSchema,
     createSchemaGraph,
     createWebPageSchema,
 } from "@/lib/seo/schema"
@@ -245,20 +244,11 @@ const faq = [
 
 function getSchema() {
     return createSchemaGraph([
-        createProductSchema({
-            url: pageUrl,
-            name: "Suporte para Luminaria Publica",
-            description: pageDescription,
-            image: heroImage,
-            category: "Suportes metalicos para luminaria publica",
-            properties: specificationRows.map(([name, value]) => ({ name, value })),
-        }),
         createWebPageSchema({
             url: pageUrl,
             name: "Suporte para Luminaria Publica",
             description: pageDescription,
             image: heroImage,
-            mainEntityId: `${pageUrl}#product`,
         }),
         createBreadcrumbSchema(pageUrl, [
             { name: "Inicio", item: SITE_URL },
