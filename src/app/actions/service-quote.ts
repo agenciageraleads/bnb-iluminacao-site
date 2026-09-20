@@ -1,6 +1,8 @@
 "use server"
 
+import { randomUUID } from 'node:crypto';
 import { Resend } from 'resend';
+import { digitsOnly, readAttribution, syncSiteLeadToCrm } from '@/lib/site-crm-lead';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -62,6 +64,20 @@ export async function sendPinturaQuote(formData: FormData) {
     return { success: false, error: "Preencha os campos obrigatórios: Empresa, Nome, Telefone e Volume." }
   }
 
+  // Demanda precisa conter "pintura eletrostática" — é assim que o CRM roteia
+  // automaticamente pro pipeline de serviços (ver SERVICE_DEMAND_PATTERNS no crm-bb).
+  await syncSiteLeadToCrm({
+    formType: 'service_quote_pintura',
+    leadCluster: 'servicos',
+    attribution: readAttribution(formData),
+    name: nome,
+    whatsapp: digitsOnly(telefone) || undefined,
+    companyName: empresa,
+    category: 'Pintura Eletrostática',
+    demand: `Cotação de Pintura Eletrostática — volume: ${volume}${material ? `, material: ${material}` : ''}${cidade ? `, cidade: ${cidade}` : ''}${mensagem ? `. Obs: ${mensagem}` : ''}`,
+    sourceReference: `site-pintura:${randomUUID()}`,
+  })
+
   // Processar arquivo anexo
   const attachments: { filename: string; content: Buffer }[] = []
   if (arquivoRaw instanceof File && arquivoRaw.size > 0) {
@@ -117,6 +133,20 @@ export async function sendLaserQuote(formData: FormData) {
   if (!empresa || !nome || !telefone) {
     return { success: false, error: "Preencha os campos obrigatórios: Empresa, Nome e Telefone." }
   }
+
+  // Demanda precisa conter "corte a laser" — é assim que o CRM roteia automaticamente
+  // pro pipeline de serviços (ver SERVICE_DEMAND_PATTERNS no crm-bb).
+  await syncSiteLeadToCrm({
+    formType: 'service_quote_laser',
+    leadCluster: 'servicos',
+    attribution: readAttribution(formData),
+    name: nome,
+    whatsapp: digitsOnly(telefone) || undefined,
+    companyName: empresa,
+    category: 'Corte a Laser',
+    demand: `Cotação de Corte a Laser — material: ${materialLaser || 'não informado'}${espessura ? `, espessura: ${espessura}` : ''}${quantidade ? `, quantidade: ${quantidade}` : ''}${cidade ? `, cidade: ${cidade}` : ''}${mensagem ? `. Descrição: ${mensagem}` : ''}`,
+    sourceReference: `site-laser:${randomUUID()}`,
+  })
 
   // Processar arquivo técnico anexo
   const attachments: { filename: string; content: Buffer }[] = []
