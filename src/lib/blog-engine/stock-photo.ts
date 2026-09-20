@@ -1,15 +1,11 @@
 // Farol SEO Nacional B2B: troca a capa gerada por IA por foto real de banco de imagens
-// (Unsplash) sempre que a busca achar algo relevante para o tema do post. Só cai para
-// geração por IA quando a busca não retorna nada ou a chave não está configurada.
+// sempre que a busca achar algo relevante para o tema do post. Pexels e a fonte principal
+// (decisao do Lucas 2026-09-19); Unsplash entra como fallback quando o Pexels nao acha nada
+// ou a chave nao esta configurada. So cai para geracao por IA quando nenhuma das duas fontes
+// retorna resultado.
 
+const PEXELS_SEARCH_URL = "https://api.pexels.com/v1/search"
 const UNSPLASH_SEARCH_URL = "https://api.unsplash.com/search/photos"
-
-type UnsplashPhoto = {
-    id: string
-    urls: { regular: string }
-    links: { download_location: string }
-    user: { name: string; links: { html: string } }
-}
 
 export type StockPhotoResult = {
     buffer: Buffer
@@ -18,13 +14,58 @@ export type StockPhotoResult = {
     sourceUrl: string
 }
 
-/**
- * Busca uma foto real no Unsplash a partir de palavras-chave em ingles, baixa o binario e
- * dispara o ping de download exigido pelas diretrizes da API do Unsplash. Retorna null se a
- * chave nao estiver configurada, a busca nao achar nada, ou qualquer etapa falhar (o chamador
- * deve tratar null como "cair para geracao por IA").
- */
-export async function fetchStockPhoto(keywords: string): Promise<StockPhotoResult | null> {
+type PexelsPhoto = {
+    src: { large2x: string }
+    photographer: string
+    photographer_url: string
+}
+
+async function fetchFromPexels(keywords: string): Promise<StockPhotoResult | null> {
+    const apiKey = process.env.PEXELS_API_KEY
+    if (!apiKey) return null
+
+    try {
+        const searchUrl = new URL(PEXELS_SEARCH_URL)
+        searchUrl.searchParams.set("query", keywords)
+        searchUrl.searchParams.set("orientation", "landscape")
+        searchUrl.searchParams.set("per_page", "1")
+
+        const searchRes = await fetch(searchUrl, {
+            headers: { Authorization: apiKey },
+        })
+        if (!searchRes.ok) {
+            console.error("Pexels search falhou:", searchRes.status, await searchRes.text().catch(() => ""))
+            return null
+        }
+
+        const searchData = await searchRes.json()
+        const photo: PexelsPhoto | undefined = searchData.photos?.[0]
+        if (!photo) return null
+
+        const imageRes = await fetch(photo.src.large2x)
+        if (!imageRes.ok) return null
+        const arrayBuffer = await imageRes.arrayBuffer()
+        const mimeType = imageRes.headers.get("content-type") || "image/jpeg"
+
+        return {
+            buffer: Buffer.from(arrayBuffer),
+            mimeType,
+            credit: `Foto: ${photo.photographer} / Pexels`,
+            sourceUrl: photo.photographer_url,
+        }
+    } catch (err) {
+        console.error("Erro ao buscar foto real no Pexels:", err)
+        return null
+    }
+}
+
+type UnsplashPhoto = {
+    urls: { regular: string }
+    links: { download_location: string }
+    user: { name: string; links: { html: string } }
+}
+
+async function fetchFromUnsplash(keywords: string): Promise<StockPhotoResult | null> {
     const accessKey = process.env.UNSPLASH_ACCESS_KEY
     if (!accessKey) return null
 
@@ -67,4 +108,17 @@ export async function fetchStockPhoto(keywords: string): Promise<StockPhotoResul
         console.error("Erro ao buscar foto real no Unsplash:", err)
         return null
     }
+}
+
+/**
+ * Busca uma foto real a partir de palavras-chave em ingles: tenta o Pexels primeiro, cai para
+ * o Unsplash se o Pexels nao achar nada ou nao estiver configurado. Retorna null se nenhuma das
+ * duas fontes tiver chave configurada ou achar resultado (o chamador deve tratar null como
+ * "cair para geracao por IA").
+ */
+export async function fetchStockPhoto(keywords: string): Promise<StockPhotoResult | null> {
+    const pexelsResult = await fetchFromPexels(keywords)
+    if (pexelsResult) return pexelsResult
+
+    return fetchFromUnsplash(keywords)
 }
