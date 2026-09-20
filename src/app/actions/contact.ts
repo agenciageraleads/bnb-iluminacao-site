@@ -1,6 +1,8 @@
 "use server"
 
+import { randomUUID } from 'node:crypto';
 import { Resend } from 'resend';
+import { digitsOnly, readAttribution, syncSiteLeadToCrm } from '@/lib/site-crm-lead';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -46,6 +48,19 @@ export async function sendContactEmail(formData: FormData) {
   if (!nome || !email || !assunto || !mensagem) {
     return { success: false, error: "Por favor, preencha todos os campos obrigatórios." };
   }
+
+  const whatsapp = digitsOnly(telefone);
+  await syncSiteLeadToCrm({
+    formType: 'contact',
+    leadCluster: 'contato',
+    attribution: readAttribution(formData),
+    name: nome,
+    whatsapp: whatsapp || undefined,
+    category: assunto,
+    demand: `Contato via site — ${assunto}: ${mensagem}${empresa ? ` (empresa: ${empresa})` : ''}`,
+    sourceReference: `site-contato:${randomUUID()}`,
+    pipelineSlug: 'leads',
+  });
 
   try {
     const { data, error } = await resend.emails.send({
