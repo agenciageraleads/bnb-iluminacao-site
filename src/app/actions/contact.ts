@@ -45,7 +45,7 @@ export async function sendContactEmail(formData: FormData) {
   const assunto = formData.get('assunto') as string;
   const mensagem = formData.get('mensagem') as string;
 
-  if (!nome || !email || !assunto || !mensagem) {
+  if (!nome || !email || !telefone || !assunto || !mensagem) {
     return { success: false, error: "Por favor, preencha todos os campos obrigatórios." };
   }
 

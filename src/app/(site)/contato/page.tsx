@@ -159,12 +159,13 @@ function ContatoContent() {
                                     </div>
                                     <div className="space-y-1.5">
                                         <label htmlFor="telefone" className="text-[11px] font-bold uppercase tracking-widest text-industrial-600 block">
-                                            Telefone / WhatsApp
+                                            Telefone / WhatsApp <span className="text-red-600" aria-label="campo obrigatório">*</span>
                                         </label>
                                         <input
                                             id="telefone"
                                             type="tel"
                                             name="telefone"
+                                            required
                                             autoComplete="tel"
                                             className="w-full bg-white border border-industrial-300 focus:border-industrial-900 rounded-lg px-4 h-14 text-sm text-industrial-900 placeholder:text-industrial-400 outline-none transition-colors"
                                             placeholder="(62) 90000-0000"
