@@ -11,7 +11,7 @@ interface FloatingWhatsAppProps {
 }
 
 export function FloatingWhatsApp({
-    phoneNumber = "556235761988",
+    phoneNumber = "5562981767802",
     message = "Olá! Gostaria de solicitar um orçamento de postes metálicos.",
     eventLabel = "Solicitar orcamento",
     eventSource = "floating_whatsapp",
