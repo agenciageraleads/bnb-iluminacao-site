@@ -1,7 +1,17 @@
 {
   "officialPublicEmail": "contato@bebiluminacao.com",
   "officialPhone": "62 3576-1988",
-  "officialWhatsapp": "62 3576-1988",
+  "officialWhatsapp": "55 62 98176-7802",
+  "whatsappContingency": {
+    "active": true,
+    "since": "2026-09-24",
+    "reviewBy": "2026-10-08",
+    "reason": "O numero 62 3576-1988 (instancia Evolution WhatsAppBeB2) teve o vinculo de dispositivos bloqueado pelo WhatsApp em 22/09/2026 16:28 e nao recebe mensagens. Os links wa.me do site apontam temporariamente para 5562981767802 (instancia FernandaBeB, jid 556281767802@s.whatsapp.net), que roda a MarIA v5.32.",
+    "scope": "Apenas links de clique-para-conversar (wa.me). O telefone publicado (62) 3576-1988 permanece inalterado em schema.org, rodape, contato, canais-oficiais, termos, politica de privacidade, catalog-export e no campo telefone do Google Meu Negocio.",
+    "playbook": "Analises e Docs/MarIA/PLANO-CONTINGENCIA-WHATSAPP.md",
+    "revertTo": "Restaurar officialWhatsapp para '62 3576-1988' (igual a officialPhone) e reverter o commit que trocou os links wa.me.",
+    "knownAuditGap": "scripts/audit-nap-consistency.mjs e scripts/audit-wave1-nap-scope.mjs tem o numero 556235761988 / '62 3576-1988' embutido no codigo. Enquanto a contingencia durar: o audit-nap-consistency nao enxerga mais nenhum WhatsApp (regex fixa) e o audit-wave1-nap-scope acusa divergencia em officialWhatsapp. Nenhum dos dois roda no CI (.github/workflows/validate.yml = typecheck + lint + blog). Esperado, nao e regressao."
+  },
   "cnpjExposure": "visible",
   "officialCnpj": "14.401.288/0002-00",
   "requiredAddressSignals": [

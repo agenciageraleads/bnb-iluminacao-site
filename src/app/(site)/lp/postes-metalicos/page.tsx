@@ -39,7 +39,7 @@ export default async function PostesMetalicosLP() {
                     </div>
                     {/* CTA de contato visível no header em mobile */}
                     <a
-                        href="https://wa.me/556235761988"
+                        href="https://wa.me/5562981767802"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 bg-industrial-950 text-white hover:bg-industrial-800 active:bg-industrial-700 font-black uppercase tracking-widest text-[10px] px-4 h-10 rounded-lg transition-colors"
@@ -77,7 +77,7 @@ export default async function PostesMetalicosLP() {
                             {/* CTAs */}
                             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                                 <a
-                                    href="https://wa.me/556235761988?text=Olá, vim pela página de postes metálicos e quero solicitar um orçamento."
+                                    href="https://wa.me/5562981767802?text=Olá, vim pela página de postes metálicos e quero solicitar um orçamento."
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center justify-center gap-3 bg-industrial-950 text-white hover:bg-industrial-800 active:bg-industrial-700 font-black h-16 px-10 w-full sm:w-auto uppercase tracking-widest rounded-lg transition-transform hover:-translate-y-1 shadow-xl shadow-industrial-950/20 group"
@@ -175,7 +175,7 @@ export default async function PostesMetalicosLP() {
                         Fale diretamente com nossa engenharia ou equipe comercial e receba uma proposta técnica comercial em menos de 24 horas.
                     </p>
                     <a
-                        href="https://wa.me/556235761988"
+                        href="https://wa.me/5562981767802"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center justify-center gap-3 bg-black text-white hover:bg-industrial-800 font-black h-16 w-full sm:w-auto px-12 text-lg uppercase tracking-widest rounded-lg transition-transform hover:scale-105 shadow-2xl"
