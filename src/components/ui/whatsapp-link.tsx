@@ -16,7 +16,7 @@ interface WhatsAppLinkProps {
 }
 
 export function WhatsAppLink({
-  phoneNumber = "5562981767802",
+  phoneNumber = "556235761988",
   message,
   className,
   style,

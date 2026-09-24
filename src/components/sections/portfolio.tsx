@@ -160,7 +160,7 @@ export function Portfolio({ projects = [] }: { projects?: Project[] }) {
                 <div className="mt-12 flex flex-col items-center">
                     <div className="flex flex-col sm:flex-row gap-4">
                         <a
-                            href="https://wa.me/5562981767802?text=Olá! Vi o portfólio de vocês e gostaria de solicitar um orçamento para um projeto."
+                            href="https://wa.me/556235761988?text=Olá! Vi o portfólio de vocês e gostaria de solicitar um orçamento para um projeto."
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-3 bg-industrial-950 text-white font-black uppercase tracking-widest px-10 h-16 hover:bg-industrial-800 active:scale-95 transition-all text-sm group rounded-lg"
