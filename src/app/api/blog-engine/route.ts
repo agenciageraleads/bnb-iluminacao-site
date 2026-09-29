@@ -84,6 +84,10 @@ export async function POST(req: Request) {
                 const aprovado = (orfao as any)?.qualityAudit?.revisorVeredicto?.aprovado === true;
                 const antigo = new Date(orfao.createdAt).getTime() < umaHoraAtras;
                 if (aprovado && antigo) {
+                    // payload-types.ts está desatualizado em relação a Blog.ts (não lista
+                    // 'qualityAudit' no tipo gerado, mesmo já usado do mesmo jeito no
+                    // payload.create mais abaixo) — mesmo cast que o resto do arquivo já
+                    // precisa pra esse campo.
                     await payload.update({
                         collection: 'blog',
                         id: orfao.id,
@@ -94,7 +98,7 @@ export async function POST(req: Request) {
                                 reviewedBy: 'autopilot (resgate automático de fila ai_review órfã)',
                                 reviewedAt: new Date().toISOString(),
                             },
-                        },
+                        } as any,
                     });
                     console.warn(`Resgatado post órfão de ai_review: ${orfao.slug}`);
                 }
