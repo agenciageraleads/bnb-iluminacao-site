@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, type CSSProperties, type MouseEventHandler, type ReactNode } from "react"
+import { useEffect, useRef, useState, type CSSProperties, type MouseEventHandler, type ReactNode } from "react"
 import { createMarketingAttribution, persistFirstTouchAttribution, pushLeadEvent } from "@/lib/lead-tracking"
 
 interface WhatsAppLinkProps {
@@ -26,19 +26,35 @@ export function WhatsAppLink({
   eventSource = "inline_whatsapp",
   'aria-label': ariaLabel,
 }: WhatsAppLinkProps) {
+  // A referência de atribuição é buscada aqui, no mount, e não no clique.
+  // Em mobile (app nativo do WhatsApp e, principalmente, WebViews in-app de
+  // Instagram/Facebook), abrir uma aba vazia com window.open() e só navegá-la
+  // depois de um await quebra o handoff do link https://wa.me/... pro app —
+  // o SO não trata mais como navegação direta do toque do usuário. Buscando
+  // antes, o clique vira uma navegação <a href> comum, sem preventDefault.
+  const [attributionId, setAttributionId] = useState<string | null>(null)
+  const attributionRequested = useRef(false)
+
   useEffect(() => {
     persistFirstTouchAttribution()
+
+    if (attributionRequested.current) return
+    attributionRequested.current = true
+
+    createMarketingAttribution('whatsapp')
+      .then((id) => setAttributionId(id))
+      .catch(() => setAttributionId(null))
   }, [])
 
-  const buildUrl = (attributionId?: string | null) => {
-    const attributionMessage = attributionId ? `\n\nRef: #${attributionId}` : ''
+  const buildUrl = (id?: string | null) => {
+    const attributionMessage = id ? `\n\nRef: #${id}` : ''
     const finalMessage = `${message ?? ''}${attributionMessage}`.trim()
     return finalMessage
       ? `https://wa.me/${phoneNumber}?text=${encodeURIComponent(finalMessage)}`
       : `https://wa.me/${phoneNumber}`
   }
 
-  const handleClick: MouseEventHandler<HTMLAnchorElement> = async (event) => {
+  const handleClick: MouseEventHandler<HTMLAnchorElement> = (event) => {
     pushLeadEvent({
       event: 'whatsapp_click',
       cta_channel: 'whatsapp',
@@ -46,34 +62,16 @@ export function WhatsAppLink({
       cta_label: eventLabel ?? ariaLabel ?? 'WhatsApp',
       whatsapp_phone: phoneNumber,
       has_prefilled_message: Boolean(message),
+      attribution_ready: attributionId !== null,
     })
     onClick?.(event)
-    if (event.defaultPrevented) return
-
-    event.preventDefault()
-    const popup = window.open('', '_blank')
-    const fallbackUrl = buildUrl()
-
-    try {
-      const attributionId = await createMarketingAttribution('whatsapp')
-      const targetUrl = buildUrl(attributionId)
-      if (popup) {
-        popup.location.assign(targetUrl)
-      } else {
-        window.location.assign(targetUrl)
-      }
-    } catch {
-      if (popup) {
-        popup.location.assign(fallbackUrl)
-      } else {
-        window.location.assign(fallbackUrl)
-      }
-    }
+    // O href já carrega a referência (ou não, se a busca ainda não voltou) —
+    // deixa o navegador seguir com a navegação nativa normalmente.
   }
 
   return (
     <a
-      href={buildUrl()}
+      href={buildUrl(attributionId)}
       target="_blank"
       rel="noopener noreferrer"
       onClick={handleClick}
