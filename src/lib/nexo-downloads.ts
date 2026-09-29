@@ -1,9 +1,9 @@
 // Downloads técnicos da Linha Nexo (datasheets por produto).
 // Os PDFs vivem em public/downloads/ e são gerados em Documentos/B&B/datasheet-assets.
 //
-// Publicados por enquanto: Suporte para Luminárias e Conjunto Chumbador.
-// Os demais itens da linha (braços curvo/reto p/ luminária e câmera, cruzeta
-// p/ refletores) seguem em validação e entram numa próxima atualização.
+// Publicados por enquanto: Suporte para Luminárias, Conjunto Chumbador e
+// Cruzeta para Refletores. Os braços (curvo/reto p/ luminária e p/ câmera)
+// seguem em validação e entram numa próxima atualização.
 
 export type NexoDatasheet = {
     codigo: string
@@ -21,5 +21,10 @@ export const NEXO_DATASHEETS: NexoDatasheet[] = [
         codigo: 'BB-NEX-CH',
         nome: 'Conjunto Chumbador',
         datasheet: '/downloads/datasheets/DATASHEET-BB-NEXO-CHUMBADOR.pdf',
+    },
+    {
+        codigo: 'BB-NEX-CRZ2 a CRZ4',
+        nome: 'Cruzeta p/ Refletores',
+        datasheet: '/downloads/datasheets/DATASHEET-BB-NEXO-CRUZETA-REFLETORES.pdf',
     },
 ]
