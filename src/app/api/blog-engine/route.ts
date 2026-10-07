@@ -69,6 +69,46 @@ export async function POST(req: Request) {
 
         const payload = await getPayload({ config });
 
+        // Rede de segurança: desde que autoPublish=true virou o modo padrão do agendador (n8n,
+        // 2026-09-01), nada mais lê a fila 'ai_review' — um post que caia ali (ex.: chamada manual
+        // sem autoPublish) fica esquecido pra sempre, como aconteceu com 5 posts de 2026-09-01
+        // (só descobertos e resgatados em 2026-09-29). Antes de gerar conteúdo novo, resgata
+        // qualquer post que já passou no gate da IA (revisorVeredicto.aprovado) e está parado há
+        // mais de 1h — nunca finge revisão humana: fica registrado como resgate automático.
+        try {
+            const orfaos = await payload.find({
+                collection: 'blog',
+                where: { status: { equals: 'ai_review' } },
+                limit: 20,
+            });
+            const umaHoraAtras = Date.now() - 60 * 60 * 1000;
+            for (const orfao of orfaos.docs) {
+                const aprovado = (orfao as any)?.qualityAudit?.revisorVeredicto?.aprovado === true;
+                const antigo = new Date(orfao.createdAt).getTime() < umaHoraAtras;
+                if (aprovado && antigo) {
+                    // payload-types.ts está desatualizado em relação a Blog.ts (não lista
+                    // 'qualityAudit' no tipo gerado, mesmo já usado do mesmo jeito no
+                    // payload.create mais abaixo) — mesmo cast que o resto do arquivo já
+                    // precisa pra esse campo.
+                    await payload.update({
+                        collection: 'blog',
+                        id: orfao.id,
+                        data: {
+                            status: 'published',
+                            qualityAudit: {
+                                ...((orfao as any).qualityAudit ?? {}),
+                                reviewedBy: 'autopilot (resgate automático de fila ai_review órfã)',
+                                reviewedAt: new Date().toISOString(),
+                            },
+                        } as any,
+                    });
+                    console.warn(`Resgatado post órfão de ai_review: ${orfao.slug}`);
+                }
+            }
+        } catch (resgateError) {
+            console.error('Falha ao checar fila ai_review órfã (não bloqueia a geração):', resgateError);
+        }
+
         // Buscar títulos das postagens recentes para evitar repetição
         const postsExistentes = await payload.find({
             collection: 'blog',
@@ -340,7 +380,13 @@ export async function POST(req: Request) {
         // 5. GATE DE QUALIDADE (Sprint Blog 01) — bloqueia estrutura inválida,
         // duplicidade/canibalização e afirmação normativa sem fonte ANTES de gravar qualquer coisa.
         // --------------------------------------------------------------------------------
-        const finalSlug = conteudoAgente.slug.split('-').slice(0, 6).join('-') + '-' + Date.now().toString().slice(-4);
+        // O LLM às vezes devolve slug com acento (ex.: "postes-metálicos-corrosão"), que o
+        // sitemap.ts (hasCleanPathSegment) filtra silenciosamente — o post fica publicado mas
+        // invisível pro Google. Normaliza pra ASCII aqui, na origem, em vez de remendar o sitemap.
+        const slugBase = conteudoAgente.slug
+            .normalize('NFD').replace(/[̀-ͯ]/g, '')
+            .toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+        const finalSlug = slugBase.split('-').slice(0, 6).join('-') + '-' + Date.now().toString().slice(-4);
 
         const gate = runQualityGate(
             {
