@@ -1,7 +1,19 @@
 "use client"
 
-import { useEffect, useRef, useState, type CSSProperties, type MouseEventHandler, type ReactNode } from "react"
+import { useEffect, useState, type CSSProperties, type MouseEventHandler, type ReactNode } from "react"
 import { createMarketingAttribution, persistFirstTouchAttribution, pushLeadEvent } from "@/lib/lead-tracking"
+
+// Um único touch por carregamento de página, compartilhado por todos os links,
+// criado só quando o visitante demonstra intenção (hover, toque ou foco) — e não
+// a cada render de cada link, que gerava ~500 touches/dia sem clique algum.
+let sharedAttribution: Promise<string | null> | null = null
+
+function requestAttribution() {
+  if (!sharedAttribution) {
+    sharedAttribution = createMarketingAttribution('whatsapp').catch(() => null)
+  }
+  return sharedAttribution
+}
 
 interface WhatsAppLinkProps {
   phoneNumber?: string
@@ -26,25 +38,18 @@ export function WhatsAppLink({
   eventSource = "inline_whatsapp",
   'aria-label': ariaLabel,
 }: WhatsAppLinkProps) {
-  // A referência de atribuição é buscada aqui, no mount, e não no clique.
-  // Em mobile (app nativo do WhatsApp e, principalmente, WebViews in-app de
-  // Instagram/Facebook), abrir uma aba vazia com window.open() e só navegá-la
-  // depois de um await quebra o handoff do link https://wa.me/... pro app —
-  // o SO não trata mais como navegação direta do toque do usuário. Buscando
-  // antes, o clique vira uma navegação <a href> comum, sem preventDefault.
+  // O href ganha a referência assim que o visitante mostra intenção, antes do
+  // clique; o clique segue como navegação <a href> nativa, sem popup nem await
+  // (window.open + await quebra o handoff do wa.me para o app em mobile).
   const [attributionId, setAttributionId] = useState<string | null>(null)
-  const attributionRequested = useRef(false)
 
   useEffect(() => {
     persistFirstTouchAttribution()
-
-    if (attributionRequested.current) return
-    attributionRequested.current = true
-
-    createMarketingAttribution('whatsapp')
-      .then((id) => setAttributionId(id))
-      .catch(() => setAttributionId(null))
   }, [])
+
+  const handleIntent = () => {
+    void requestAttribution().then((id) => setAttributionId(id))
+  }
 
   const buildUrl = (id?: string | null) => {
     const attributionMessage = id ? `\n\nRef: #${id}` : ''
@@ -75,6 +80,9 @@ export function WhatsAppLink({
       target="_blank"
       rel="noopener noreferrer"
       onClick={handleClick}
+      onPointerEnter={handleIntent}
+      onTouchStart={handleIntent}
+      onFocus={handleIntent}
       className={className}
       style={style}
       aria-label={ariaLabel}
