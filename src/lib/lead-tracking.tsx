@@ -20,6 +20,8 @@ const attributionParamNames = [
   "gclid",
   "gbraid",
   "wbraid",
+  "gad_source",
+  "gad_campaignid",
   "fbclid",
   "msclkid",
 ] as const
