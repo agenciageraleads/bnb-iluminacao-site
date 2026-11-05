@@ -207,11 +207,6 @@ const gallery = [
 ]
 
 const internalLinks = [
-    ["Fabrica de postes metalicos", "/fabrica-de-postes-metalicos"],
-    ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
-    ["Fabricante de postes metalicos", "/fabricante-de-postes-metalicos"],
-    ["Industria de postes metalicos", "/industria-de-postes-metalicos"],
-    ["Orcamento de poste metalico", "/orcamento-poste-metalico"],
     ["Postes metalicos", "/postes-metalicos"],
     ["Postes para loteamentos", "/postes-para-loteamentos"],
     ["Postes para condominios", "/postes-para-condominios"],
@@ -838,7 +833,7 @@ export default async function PostesParaIluminacaoPublicaPage() {
                         <Zap className="size-6 text-accent-dark" aria-hidden="true" />
                         <span className="text-sm font-black uppercase tracking-widest">Comparar modelos de postes</span>
                     </Link>
-                    <Link href="/fabricante-de-postes-metalicos" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950 rounded-lg">
+                    <Link href="/postes-metalicos" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950 rounded-lg">
                         <Factory className="size-6 text-accent-dark" aria-hidden="true" />
                         <span className="text-sm font-black uppercase tracking-widest">Comprar direto de fabricante</span>
                     </Link>

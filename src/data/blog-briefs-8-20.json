@@ -5,7 +5,7 @@
     "keyword": "poste para CFTV",
     "resposta": "A altura certa depende do objetivo (reconhecimento facial x visão geral de pátio) e do tipo de câmera (fixa, bullet, speed dome). Aço galvanizado a fogo vence fibra de vidro e concreto porque é mais rígido (menos tremor de imagem no vento), permite passagem interna de cabo e fixação de múltiplas câmeras. A escolha entre engastado e flangeado muda conforme o tipo de piso. Os 3 cuidados que a concorrência cita mas não detalha: aterramento da estrutura metálica, vedação da entrada de cabo e caixa de passagem/atenuação. (Contexto interno de apoio, não citar como fonte pública: Spec interna da Linha Vigia (3 a 6 m, Ø88,9 mm, #2,0 mm; #2,65 mm só no 6 m); ABNT NBR 5419 (aterramento/SPDA).)",
     "fontes": "ABNT NBR 6323:2004, catálogo oficial em https://www.abntcatalogo.com.br/norma.aspx?ID=1121",
-    "ctaHint": "\"Monte o poste da sua câmera com a altura e a bitola certas\" → /orcamento-poste-metalico",
+    "ctaHint": "\"Monte o poste da sua câmera com a altura e a bitola certas\" → /contato",
     "weekDay": "Quarta",
     "funnelStage": "MOFU/BOFU — aplicação com intenção de compra explícita"
   },
@@ -15,7 +15,7 @@
     "keyword": "tabela de engastamento de poste",
     "resposta": "Entregar uma tabela real de profundidade de cova por altura (3 a 12 m), mostrando de onde sai o número: momento de vento (NBR 6123) → reação na base → profundidade e diâmetro da cova → volume de concreto — não a regra de bolso solta de '1/3 do poste'. Explicitar o efeito do tipo de solo e a diferença entre cova simples com concreto e base pré-fabricada. Deixar claro que o comprimento engastado não é altura útil, amarrando com a tolerância de ±2% da NBR 14744. (Contexto interno de apoio, não citar como fonte pública: Motor estrutural interno (motor-estrutural-postes.md).)",
     "fontes": "ABNT NBR 14744:2019, catálogo oficial em https://www.abntcatalogo.com.br/norma.aspx?ID=419453; ABNT NBR 6123:2023, catálogo oficial em https://www.abntcatalogo.com.br/norma.aspx?ID=490001",
-    "ctaHint": "\"Receba a tabela de fundação junto com o orçamento do seu poste\" → /orcamento-poste-metalico",
+    "ctaHint": "\"Receba a tabela de fundação junto com o orçamento do seu poste\" → /contato",
     "weekDay": "Terça",
     "funnelStage": "TOFU/MOFU técnico → autoridade"
   },
@@ -25,7 +25,7 @@
     "keyword": "distância entre postes de iluminação pública",
     "resposta": "Não existe 'distância padrão' fixa: o vão sai da classe da via (NBR 5101), da iluminância e uniformidade exigidas, da altura de montagem, do fluxo da luminária e do arranjo (unilateral, bilateral alternado, bilateral frente a frente). Entregar uma tabela de vãos típicos por altura (6, 8, 9, 10, 12 m) e classe de via, com a ressalva de que o projeto luminotécnico manda, corrigindo explicitamente o mito dos '35 metros sempre'. (Contexto interno de apoio, não citar como fonte pública: Saída do motor luminotécnico interno (skill bb-luminotecnica); ABNT NBR 5181 (citada só para desambiguar, é sobre túneis).)",
     "fontes": "ABNT NBR 5101:2018, catálogo oficial em https://www.abntcatalogo.com.br/norma.aspx?ID=406739",
-    "ctaHint": "\"Quantos postes o seu projeto precisa? Envie a planta e receba o estudo\" → /contato ou /orcamento-poste-metalico",
+    "ctaHint": "\"Quantos postes o seu projeto precisa? Envie a planta e receba o estudo\" → /contato",
     "weekDay": "Terça",
     "funnelStage": "TOFU técnico → autoridade"
   },
@@ -55,7 +55,7 @@
     "keyword": "poste iluminação quadra esportiva preço",
     "resposta": "A altura varia por modalidade e nível (recreativo x competição): beach tennis/futevôlei, poliesportiva, society, tênis. O que define quantos postes e quantos refletores por poste é a carga de topo (peso + área de vento dos refletores e da cruzeta), não o tamanho da quadra. Existe um teto estrutural por bitola: um Ø254 chega a ~155 kNm, o que em 15 m sustenta no máximo ~8 refletores. (Contexto interno de apoio, não citar como fonte pública: ABNT NBR ISO/CIE 8995 (iluminância por modalidade esportiva); Memória interna poste-cruzeta-refletores.md; Motor estrutural interno.)",
     "fontes": "",
-    "ctaHint": "\"Diga a modalidade e o tamanho da quadra e receba a configuração de postes\" → /orcamento-poste-metalico",
+    "ctaHint": "\"Diga a modalidade e o tamanho da quadra e receba a configuração de postes\" → /contato",
     "weekDay": "Quarta",
     "funnelStage": "MOFU/BOFU — aplicação com intenção de compra e preço"
   },
@@ -75,7 +75,7 @@
     "keyword": "postes para loteamento concreto ou aço",
     "resposta": "Recorte de loteamento (não o comparativo genérico de material): o que muda quando são 80 postes e não 3 — peso e frete por carreta, número de guindastes/munck necessários, prazo de fabricação x cronograma de etapas do loteamento, padronização exigida pela concessionária, manutenção nos 5 primeiros anos, e o custo total (não só o preço unitário). Responder também 'poste dentro do lote', 'como colocar poste no terreno' e 'quem instala postes de luz na rua é a prefeitura?'. (Contexto interno de apoio, não citar como fonte pública: Dados reais de peso/logística da B&B; Prazo de fabricação real da B&B (15 dias úteis).)",
     "fontes": "ABNT NBR 6323:2004, catálogo oficial em https://www.abntcatalogo.com.br/norma.aspx?ID=1121; ABNT NBR 5101:2018, catálogo oficial em https://www.abntcatalogo.com.br/norma.aspx?ID=406739",
-    "ctaHint": "\"Receba o orçamento do pacote completo do seu loteamento\" → /orcamento-poste-metalico",
+    "ctaHint": "\"Receba o orçamento do pacote completo do seu loteamento\" → /contato",
     "weekDay": "Quinta",
     "funnelStage": "BOFU — comparativo de decisão de compra"
   },
@@ -85,7 +85,7 @@
     "keyword": "poste de aço cônico contínuo flangeado h=9m sinapi",
     "resposta": "Tabela cruzando os códigos SINAPI reais (105956, 100620, 100621, insumos 5050/5052/14162/5051) com os modelos equivalentes da linha Urban da B&B (TCS/TCD/TR × -E/-F), o preço médio nacional de referência (ex.: insumo 14162 = R$1.977,85/un) versus o que a B&B entrega, e o que está incluso na composição de instalação (guindauto, aterramento, chumbador). (Contexto interno de apoio, não citar como fonte pública: Tabela SINAPI oficial (AF_04/2025); Motor de precificação interno (bom-precificacao-postes.md).)",
     "fontes": "ABNT NBR 14744:2019, catálogo oficial em https://www.abntcatalogo.com.br/norma.aspx?ID=419453",
-    "ctaHint": "\"Peça cotação com equivalência SINAPI para sua licitação\" → /orcamento-poste-metalico",
+    "ctaHint": "\"Peça cotação com equivalência SINAPI para sua licitação\" → /contato",
     "weekDay": "Segunda",
     "funnelStage": "BOFU puro"
   },

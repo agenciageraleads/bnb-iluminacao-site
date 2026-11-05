@@ -5,53 +5,41 @@ import { fileURLToPath } from 'url'
 
 const dirname = path.dirname(fileURLToPath(import.meta.url))
 
-// Consolidação das páginas de SEO quase iguais (fabricante/fábrica/fornecedor e uma por estado).
+// Consolidação das páginas de SEO quase iguais (fabricante/fábrica/fornecedor e uma por estado) na
+// página principal do assunto. Aprovado pelo Lucas na Central em 05/11/2026 ("5. ok, faca isso").
 // Ensaio e números: Análises e Docs/farol-seo-nacional-b2b/ENSAIO-25-PAGINAS-2026-11-05.md
-//
-// Opção B (ativa): só as páginas com menos de 10 impressões em 90 dias no Google (GSC, 08/08 a
-// 02/11/2026) viram 301. As páginas de iluminação pública vão para o hub do mesmo assunto; o resto,
-// para /postes-metalicos, que é a página principal do assunto.
-const paginasConsolidadasOpcaoB: Record<string, string> = {
-  '/fabrica-de-postes-para-iluminacao-publica': '/postes-para-iluminacao-publica',
-  '/fornecedor-de-postes-para-iluminacao-publica': '/postes-para-iluminacao-publica',
-  '/fabricante-de-postes-de-iluminacao': '/postes-metalicos',
-  '/postes-metalicos-parana': '/postes-metalicos',
-  '/postes-metalicos-santa-catarina': '/postes-metalicos',
-  '/postes-metalicos-rio-grande-do-sul': '/postes-metalicos',
-  '/postes-metalicos-para': '/postes-metalicos',
-  '/postes-metalicos-mato-grosso': '/postes-metalicos',
-  '/postes-metalicos-mato-grosso-do-sul': '/postes-metalicos',
-  '/postes-metalicos-tocantins': '/postes-metalicos',
-}
-
-// Opção A (desligada): mandar TODAS para /postes-metalicos. Para ativar, troque a constante para
-// true E apague as pastas destas páginas em src/app/(site)/ (o 301 do next.config vence a rota,
-// mas a página apagada evita código morto e saída do sitemap). Também tirar do sitemap.ts e dos
-// links internos. Estas páginas têm posição média entre 3 e 9 e somam a maior parte dos cliques.
-const CONSOLIDAR_TODAS_OPCAO_A = false
-const paginasConsolidadasSomenteOpcaoA: string[] = [
+const paginasConsolidadasEmPostesMetalicos = [
   '/fabrica-de-postes-metalicos',
+  '/fabrica-de-postes-para-iluminacao-publica',
   '/fabricante-de-postes-metalicos',
+  '/fabricante-de-postes-de-iluminacao',
   '/fabricante-de-postes-teleconicos',
   '/fornecedor-de-postes-metalicos',
+  '/fornecedor-de-postes-para-iluminacao-publica',
   '/industria-de-postes-metalicos',
   '/orcamento-poste-metalico',
   '/postes-metalicos-sao-paulo',
   '/postes-metalicos-minas-gerais',
   '/postes-metalicos-rio-de-janeiro',
+  '/postes-metalicos-parana',
+  '/postes-metalicos-santa-catarina',
+  '/postes-metalicos-rio-grande-do-sul',
   '/postes-metalicos-bahia',
   '/postes-metalicos-pernambuco',
   '/postes-metalicos-ceara',
+  '/postes-metalicos-para',
+  '/postes-metalicos-mato-grosso',
+  '/postes-metalicos-mato-grosso-do-sul',
   '/postes-metalicos-goias',
   '/postes-metalicos-distrito-federal',
+  '/postes-metalicos-tocantins',
 ]
 
-const redirecionamentosConsolidacao = [
-  ...Object.entries(paginasConsolidadasOpcaoB),
-  ...(CONSOLIDAR_TODAS_OPCAO_A
-    ? paginasConsolidadasSomenteOpcaoA.map((origem) => [origem, '/postes-metalicos'] as const)
-    : []),
-].map(([source, destination]) => ({ source, destination, permanent: true }))
+const redirecionamentosConsolidacao = paginasConsolidadasEmPostesMetalicos.map((source) => ({
+  source,
+  destination: '/postes-metalicos',
+  permanent: true,
+}))
 
 const nextConfig: NextConfig = {
   turbopack: {

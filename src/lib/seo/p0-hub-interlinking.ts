@@ -18,9 +18,9 @@ export const P0_HUB_LINKS: P0HubLink[] = [
     },
     {
         pattern: /fabricante de postes|f[aá]brica de postes|fornecedor de postes|ind[uú]stria de postes/i,
-        url: "/fabricante-de-postes-metalicos",
+        url: "/postes-metalicos",
         snippet:
-            '<p>A B&amp;B é <a href="/fabricante-de-postes-metalicos">fabricante de postes metálicos</a> com fábrica própria em Goiânia — veja a estrutura de produção e o portfólio completo.</p>',
+            '<p>A B&amp;B é <a href="/postes-metalicos">fabricante de postes metálicos</a> com fábrica própria em Goiânia — veja a estrutura de produção e o portfólio completo.</p>',
     },
     {
         pattern: /postes? met[aá]lico/i,

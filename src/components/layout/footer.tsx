@@ -39,7 +39,6 @@ export function Footer() {
                         <ul className="space-y-3">
                             <li><Link href="/postes-metalicos" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Postes Metálicos</Link></li>
                             <li><Link href="/postes-para-iluminacao-publica" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Iluminação Pública</Link></li>
-                            <li><Link href="/fabricante-de-postes-teleconicos" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Fabricante Telecônico</Link></li>
                             <li><Link href="/produtos/poste-teleconico" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Poste Telecônico</Link></li>
                             <li><Link href="/produtos/poste-curvo-simples" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Poste Curvo Simples</Link></li>
                             <li><Link href="/produtos/poste-curvo-duplo" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Poste Curvo Duplo</Link></li>
@@ -68,9 +67,6 @@ export function Footer() {
                         <h3 className="text-sm font-black uppercase tracking-[0.2em] text-accent-premium">B&B Iluminação</h3>
                         <ul className="space-y-3">
                             <li><Link href="/quem-somos" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">A Empresa</Link></li>
-                            <li><Link href="/fabrica-de-postes-metalicos" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Fábrica de Postes</Link></li>
-                            <li><Link href="/fabricante-de-postes-metalicos" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Fabricante</Link></li>
-                            <li><Link href="/fornecedor-de-postes-metalicos" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Fornecedor</Link></li>
                             <li><Link href="/obras" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Nosso Portfólio</Link></li>
                             <li><Link href="/downloads" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Catálogos</Link></li>
                             <li><Link href="/contato" className="text-industrial-400 hover:text-white transition-colors text-sm font-bold uppercase tracking-widest">Fale Conosco</Link></li>

@@ -1,41 +1,23 @@
 import type { Metadata } from "next"
 import { redirect } from "next/navigation"
 
-import { regionalUfPageList } from "@/lib/seo/regional-ufs"
+// As páginas por estado foram consolidadas em /postes-metalicos (05/11/2026); as URLs antigas
+// /lp/estados/<estado> seguem direto para lá.
+const destino = "/postes-metalicos"
 
 export const dynamic = "force-dynamic"
 
-const legacyStateRedirects: Record<string, string> = Object.fromEntries(
-    regionalUfPageList.map((page) => [page.stateSlug, page.path])
-)
-
-interface LegacyStatePageProps {
-    params: Promise<{ estado: string }>
+export const metadata: Metadata = {
+    title: "Redirecionando | B&B Iluminação",
+    alternates: {
+        canonical: `https://bebiluminacao.com.br${destino}`,
+    },
+    robots: {
+        index: false,
+        follow: true,
+    },
 }
 
-export async function generateMetadata({ params }: LegacyStatePageProps): Promise<Metadata> {
-    const { estado } = await params
-    const destination = legacyStateRedirects[estado] ?? "/postes-metalicos"
-
-    return {
-        title: "Redirecionando | B&B Iluminacao",
-        alternates: {
-            canonical: `https://bebiluminacao.com.br${destination}`,
-        },
-        robots: {
-            index: false,
-            follow: true,
-        },
-    }
-}
-
-export async function generateStaticParams() {
-    return regionalUfPageList.map((page) => ({
-        estado: page.stateSlug,
-    }))
-}
-
-export default async function LegacyEstadoPage({ params }: LegacyStatePageProps) {
-    const { estado } = await params
-    redirect(legacyStateRedirects[estado] ?? "/postes-metalicos")
+export default function LegacyEstadoPage() {
+    redirect(destino)
 }

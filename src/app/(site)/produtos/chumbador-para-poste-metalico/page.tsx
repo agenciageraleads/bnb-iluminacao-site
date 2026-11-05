@@ -179,12 +179,6 @@ const applicationCards = [
         href: "/postes-para-loteamentos",
         icon: Building2,
     },
-    {
-        title: "Fabrica e estruturas",
-        description: "Compra direta com fabricante para alinhar poste, base, chumbador e acabamento.",
-        href: "/fabrica-de-postes-metalicos",
-        icon: Factory,
-    },
 ]
 
 const internalLinks = [

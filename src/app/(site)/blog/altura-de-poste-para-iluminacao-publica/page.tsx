@@ -598,7 +598,7 @@ export default function AlturaDePosteParaIluminacaoPublicaPage() {
                             Falar com especialista
                         </WhatsAppLink>
                         <Link
-                            href="/fabricante-de-postes-metalicos"
+                            href="/postes-metalicos"
                             className="inline-flex h-14 items-center justify-center gap-3 border-2 border-industrial-950 px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:bg-white rounded-lg"
                         >
                             <Factory className="size-5" aria-hidden="true" />
@@ -618,7 +618,7 @@ export default function AlturaDePosteParaIluminacaoPublicaPage() {
                         <Landmark className="size-6 text-accent-dark" aria-hidden="true" />
                         <span className="text-sm font-black uppercase tracking-widest">Postes para iluminacao publica</span>
                     </Link>
-                    <Link href="/fornecedor-de-postes-metalicos" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950 rounded-lg">
+                    <Link href="/postes-metalicos" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950 rounded-lg">
                         <Truck className="size-6 text-accent-dark" aria-hidden="true" />
                         <span className="text-sm font-black uppercase tracking-widest">Fornecedor nacional</span>
                     </Link>
@@ -635,7 +635,6 @@ export default function AlturaDePosteParaIluminacaoPublicaPage() {
                         ["Postes para condominios", "/postes-para-condominios"],
                         ["Postes para pracas", "/postes-para-pracas"],
                         ["Postes para estacionamentos", "/postes-para-estacionamentos"],
-                        ["Fabricante de postes teleconicos", "/fabricante-de-postes-teleconicos"],
                         ["Normas para postes de iluminacao", "/blog/normas-para-postes-de-iluminacao"],
                         ["Poste curvo simples", "/produtos/poste-curvo-simples"],
                         ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],

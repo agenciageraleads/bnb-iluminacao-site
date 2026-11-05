@@ -215,12 +215,6 @@ const relatedPages = [
         icon: Zap,
     },
     {
-        title: "Fabrica de postes metalicos",
-        description: "Origem fabril para compra tecnica de postes para estacionamentos, patios e acessos.",
-        href: "/fabrica-de-postes-metalicos",
-        icon: Factory,
-    },
-    {
         title: "Postes para condominios",
         description: "Referencia para vagas externas, acessos, portarias e areas comuns.",
         href: "/postes-para-condominios",
@@ -291,10 +285,6 @@ const internalLinks = [
     ["Postes para loteamentos", "/postes-para-loteamentos"],
     ["Postes para pracas", "/postes-para-pracas"],
     ["Postes para iluminacao publica", "/postes-para-iluminacao-publica"],
-    ["Industria de postes metalicos", "/industria-de-postes-metalicos"],
-    ["Orcamento de poste metalico", "/orcamento-poste-metalico"],
-    ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
-    ["Fabrica de postes metalicos", "/fabrica-de-postes-metalicos"],
     ["Poste teleconico", "/produtos/poste-teleconico"],
     ["Poste curvo simples", "/produtos/poste-curvo-simples"],
     ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
@@ -742,7 +732,7 @@ export default function PostesParaEstacionamentosPage() {
                         <Zap className="size-6 text-accent-dark" aria-hidden="true" />
                         <span className="text-sm font-black uppercase tracking-widest">Ver poste teleconico</span>
                     </Link>
-                    <Link href="/fabrica-de-postes-metalicos" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950 rounded-lg">
+                    <Link href="/postes-metalicos" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950 rounded-lg">
                         <Factory className="size-6 text-accent-dark" aria-hidden="true" />
                         <span className="text-sm font-black uppercase tracking-widest">Comprar direto da fabrica</span>
                     </Link>
