@@ -689,8 +689,6 @@ export default function NormasParaPostesDeIluminacaoPage() {
             <section className="bg-white py-10">
                 <div className="container mx-auto grid gap-3 px-4 sm:grid-cols-2 lg:grid-cols-3">
                     {[
-                        ["Fabricante de postes metalicos", "/fabricante-de-postes-metalicos"],
-                        ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
                         ["Poste curvo simples", "/produtos/poste-curvo-simples"],
                         ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
                         ["Braco para luminaria publica", "/produtos/braco-para-luminaria-publica"],

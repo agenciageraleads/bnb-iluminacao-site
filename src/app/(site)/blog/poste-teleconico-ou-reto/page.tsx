@@ -691,7 +691,6 @@ export default function PosteTeleconicoOuRetoPage() {
                         ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
                         ["Poste flangeado ou engastado", "/blog/poste-flangeado-ou-engastado"],
                         ["Poste metalico galvanizado", "/produtos/poste-metalico-galvanizado"],
-                        ["Fabricante de postes teleconicos", "/fabricante-de-postes-teleconicos"],
                         ["Catalogos e downloads", "/downloads"],
                     ].map(([label, href]) => (
                         <Link

@@ -134,12 +134,6 @@ const useCases = [
         href: "/postes-metalicos",
         icon: Factory,
     },
-    {
-        title: "Ambientes agressivos",
-        description: "Regioes com maior exposicao a umidade, intemperies ou agentes que pedem cuidado no acabamento.",
-        href: "/fornecedor-de-postes-metalicos",
-        icon: Waves,
-    },
 ]
 
 const specificationRows = [
@@ -224,15 +218,6 @@ const buyingSteps = [
 
 const internalLinks = [
     ["Postes metalicos", "/postes-metalicos"],
-    ["Fabricante de postes metalicos", "/fabricante-de-postes-metalicos"],
-    ["Fabrica de postes metalicos", "/fabrica-de-postes-metalicos"],
-    ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
-    ["Fabrica de postes para iluminacao publica", "/fabrica-de-postes-para-iluminacao-publica"],
-    ["Fornecedor de postes para iluminacao publica", "/fornecedor-de-postes-para-iluminacao-publica"],
-    ["Fabricante de postes de iluminacao", "/fabricante-de-postes-de-iluminacao"],
-    ["Industria de postes metalicos", "/industria-de-postes-metalicos"],
-    ["Orcamento de poste metalico", "/orcamento-poste-metalico"],
-    ["Fabricante de postes teleconicos", "/fabricante-de-postes-teleconicos"],
     ["Poste curvo simples", "/produtos/poste-curvo-simples"],
     ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
     ["Poste teleconico", "/produtos/poste-teleconico"],
@@ -712,11 +697,11 @@ export default function PosteMetalicoGalvanizadoPage() {
                                     Solicitar cotacao
                                 </WhatsAppLink>
                                 <Link
-                                    href="/fornecedor-de-postes-metalicos"
+                                    href="/postes-metalicos"
                                     className="inline-flex h-14 items-center justify-center gap-3 border border-industrial-300 px-7 text-xs font-black uppercase tracking-widest text-industrial-950 transition-colors hover:border-industrial-950 rounded-lg"
                                 >
                                     <FileText className="size-5" aria-hidden="true" />
-                                    Ver fornecedor
+                                    Ver postes metálicos
                                 </Link>
                             </div>
                         </div>

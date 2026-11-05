@@ -210,7 +210,6 @@ const internalLinks = [
     ["Poste flangeado ou engastado", "/blog/poste-flangeado-ou-engastado"],
     ["Chumbador para poste metalico", "/produtos/chumbador-para-poste-metalico"],
     ["Poste galvanizado ou pintado", "/blog/poste-galvanizado-ou-pintado"],
-    ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
     ["Catalogos e downloads", "/downloads"],
 ]
 

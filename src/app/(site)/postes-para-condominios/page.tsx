@@ -276,13 +276,6 @@ const internalLinks = [
     ["Postes para pracas", "/postes-para-pracas"],
     ["Postes para estacionamentos", "/postes-para-estacionamentos"],
     ["Postes para iluminacao publica", "/postes-para-iluminacao-publica"],
-    ["Fabrica de postes para iluminacao publica", "/fabrica-de-postes-para-iluminacao-publica"],
-    ["Fornecedor de postes para iluminacao publica", "/fornecedor-de-postes-para-iluminacao-publica"],
-    ["Fabricante de postes de iluminacao", "/fabricante-de-postes-de-iluminacao"],
-    ["Industria de postes metalicos", "/industria-de-postes-metalicos"],
-    ["Orcamento de poste metalico", "/orcamento-poste-metalico"],
-    ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
-    ["Fabrica de postes metalicos", "/fabrica-de-postes-metalicos"],
     ["Poste teleconico", "/produtos/poste-teleconico"],
     ["Poste curvo simples", "/produtos/poste-curvo-simples"],
     ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
@@ -729,7 +722,7 @@ export default function PostesParaCondominiosPage() {
                         <Building2 className="size-6 text-accent-dark" aria-hidden="true" />
                         <span className="text-sm font-black uppercase tracking-widest">Ver postes para loteamentos</span>
                     </Link>
-                    <Link href="/fornecedor-de-postes-metalicos" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950 rounded-lg">
+                    <Link href="/postes-metalicos" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950 rounded-lg">
                         <Factory className="size-6 text-accent-dark" aria-hidden="true" />
                         <span className="text-sm font-black uppercase tracking-widest">Comprar direto de fornecedor</span>
                     </Link>

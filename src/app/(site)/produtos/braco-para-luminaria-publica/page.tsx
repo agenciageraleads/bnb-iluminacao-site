@@ -238,11 +238,6 @@ const primaryInternalLinks = [
         href: "/postes-metalicos",
         icon: Zap,
     },
-    {
-        label: "Comprar direto da fabrica",
-        href: "/fabricante-de-postes-metalicos",
-        icon: Factory,
-    },
 ]
 
 const secondaryInternalLinks = [

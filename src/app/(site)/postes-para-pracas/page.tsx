@@ -226,12 +226,6 @@ const relatedPages = [
         icon: Building2,
     },
     {
-        title: "Fabrica de postes metalicos",
-        description: "Origem fabril para compra tecnica de postes urbanos, ornamentais e sob projeto.",
-        href: "/fabrica-de-postes-metalicos",
-        icon: Factory,
-    },
-    {
         title: "Poste flangeado ou engastado",
         description: "Compare fixacao, base, chumbadores e fundacao antes da proposta.",
         href: "/blog/poste-flangeado-ou-engastado",
@@ -288,13 +282,6 @@ const internalLinks = [
     ["Postes para condominios", "/postes-para-condominios"],
     ["Postes para loteamentos", "/postes-para-loteamentos"],
     ["Postes para estacionamentos", "/postes-para-estacionamentos"],
-    ["Fabrica de postes para iluminacao publica", "/fabrica-de-postes-para-iluminacao-publica"],
-    ["Fornecedor de postes para iluminacao publica", "/fornecedor-de-postes-para-iluminacao-publica"],
-    ["Fabricante de postes de iluminacao", "/fabricante-de-postes-de-iluminacao"],
-    ["Industria de postes metalicos", "/industria-de-postes-metalicos"],
-    ["Orcamento de poste metalico", "/orcamento-poste-metalico"],
-    ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
-    ["Fabrica de postes metalicos", "/fabrica-de-postes-metalicos"],
     ["Poste teleconico", "/produtos/poste-teleconico"],
     ["Poste curvo simples", "/produtos/poste-curvo-simples"],
     ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
@@ -755,7 +742,7 @@ export default function PostesParaPracasPage() {
                         <Trees className="size-6 text-accent-dark" aria-hidden="true" />
                         <span className="text-sm font-black uppercase tracking-widest">Comparar postes metalicos</span>
                     </Link>
-                    <Link href="/fabrica-de-postes-metalicos" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950 rounded-lg">
+                    <Link href="/postes-metalicos" className="flex items-center gap-4 border border-industrial-200 p-5 hover:border-industrial-950 rounded-lg">
                         <Factory className="size-6 text-accent-dark" aria-hidden="true" />
                         <span className="text-sm font-black uppercase tracking-widest">Comprar direto da fabrica</span>
                     </Link>

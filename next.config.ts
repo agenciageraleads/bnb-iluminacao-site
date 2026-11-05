@@ -5,6 +5,42 @@ import { fileURLToPath } from 'url'
 
 const dirname = path.dirname(fileURLToPath(import.meta.url))
 
+// Consolidação das páginas de SEO quase iguais (fabricante/fábrica/fornecedor e uma por estado) na
+// página principal do assunto. Aprovado pelo Lucas na Central em 05/11/2026 ("5. ok, faca isso").
+// Ensaio e números: Análises e Docs/farol-seo-nacional-b2b/ENSAIO-25-PAGINAS-2026-11-05.md
+const paginasConsolidadasEmPostesMetalicos = [
+  '/fabrica-de-postes-metalicos',
+  '/fabrica-de-postes-para-iluminacao-publica',
+  '/fabricante-de-postes-metalicos',
+  '/fabricante-de-postes-de-iluminacao',
+  '/fabricante-de-postes-teleconicos',
+  '/fornecedor-de-postes-metalicos',
+  '/fornecedor-de-postes-para-iluminacao-publica',
+  '/industria-de-postes-metalicos',
+  '/orcamento-poste-metalico',
+  '/postes-metalicos-sao-paulo',
+  '/postes-metalicos-minas-gerais',
+  '/postes-metalicos-rio-de-janeiro',
+  '/postes-metalicos-parana',
+  '/postes-metalicos-santa-catarina',
+  '/postes-metalicos-rio-grande-do-sul',
+  '/postes-metalicos-bahia',
+  '/postes-metalicos-pernambuco',
+  '/postes-metalicos-ceara',
+  '/postes-metalicos-para',
+  '/postes-metalicos-mato-grosso',
+  '/postes-metalicos-mato-grosso-do-sul',
+  '/postes-metalicos-goias',
+  '/postes-metalicos-distrito-federal',
+  '/postes-metalicos-tocantins',
+]
+
+const redirecionamentosConsolidacao = paginasConsolidadasEmPostesMetalicos.map((source) => ({
+  source,
+  destination: '/postes-metalicos',
+  permanent: true,
+}))
+
 const nextConfig: NextConfig = {
   turbopack: {
     root: dirname,
@@ -49,6 +85,7 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      ...redirecionamentosConsolidacao,
       {
         // Portal do Representante migrou para o CRM (crm.bebiluminacao.com).
         // O antigo portal de treinamento do site foi aposentado.

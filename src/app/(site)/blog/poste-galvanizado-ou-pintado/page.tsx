@@ -686,7 +686,6 @@ export default function PosteGalvanizadoOuPintadoPage() {
                         ["Poste curvo duplo", "/produtos/poste-curvo-duplo"],
                         ["Poste flangeado ou engastado", "/blog/poste-flangeado-ou-engastado"],
                         ["Durabilidade dos postes metalicos", "/blog/durabilidade-dos-postes-metalicos"],
-                        ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
                         ["Catalogos e downloads", "/downloads"],
                     ].map(([label, href]) => (
                         <Link

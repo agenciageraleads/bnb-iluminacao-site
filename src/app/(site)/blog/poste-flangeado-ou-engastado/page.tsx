@@ -696,7 +696,6 @@ export default function PosteFlangeadoOuEngastadoPage() {
                         ["Poste teleconico", "/produtos/poste-teleconico"],
                         ["Poste teleconico ou reto", "/blog/poste-teleconico-ou-reto"],
                         ["Poste metalico galvanizado", "/produtos/poste-metalico-galvanizado"],
-                        ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
                         ["Catalogos e downloads", "/downloads"],
                     ].map(([label, href]) => (
                         <Link

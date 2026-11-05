@@ -155,12 +155,6 @@ const useCases = [
         href: "/postes-metalicos",
         icon: Ruler,
     },
-    {
-        title: "Compra tecnica",
-        description: "Pagina para alinhar modelo, acabamento, fixacao, quantidade, prazo e cidade de entrega.",
-        href: "/fornecedor-de-postes-metalicos",
-        icon: ClipboardCheck,
-    },
 ]
 
 const buyingSteps = [
@@ -222,11 +216,8 @@ const internalLinks = [
     ["Postes para iluminacao publica", "/postes-para-iluminacao-publica"],
     ["Suporte para luminaria publica", "/produtos/suporte-para-luminaria-publica"],
     ["Chumbador para poste metalico", "/produtos/chumbador-para-poste-metalico"],
-    ["Fabricante de postes metalicos", "/fabricante-de-postes-metalicos"],
-    ["Fabricante de postes teleconicos", "/fabricante-de-postes-teleconicos"],
     ["Postes metalicos", "/postes-metalicos"],
     ["Catalogos e downloads", "/downloads"],
-    ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
 ]
 
 const faq = [

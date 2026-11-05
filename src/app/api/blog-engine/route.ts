@@ -205,7 +205,7 @@ export async function POST(req: Request) {
             REGRA DE INTERLINKING (Farol SEO Nacional B2B): se o artigo mencionar postes metálicos/galvanizados,
             fabricante/fábrica/fornecedor de postes, poste teleconico ou iluminação pública, inclua UM link
             interno contextual (dentro de um <p> do corpo, nunca forçado fora de contexto) para a página hub
-            correspondente: "/postes-metalicos", "/fabricante-de-postes-metalicos", "/produtos/poste-teleconico"
+            correspondente: "/postes-metalicos", "/produtos/poste-teleconico"
             ou "/postes-para-iluminacao-publica". Escolha só o hub mais relevante ao tema central do artigo; não
             precisa linkar todos. Se o sistema não conseguir inserir naturalmente, um link de reforço é
             adicionado automaticamente depois — mas prefira fazer isso você mesmo, no ponto do texto onde fizer

@@ -158,14 +158,14 @@ const LINE_CIVIS = {
 
 const LINK_DOWNLOADS = { label: "Catálogos e downloads", href: "/downloads" }
 const LINK_PRODUTOS = { label: "Todos os produtos", href: "/produtos" }
-const LINK_ORCAMENTO = { label: "Orçamento de poste metálico", href: "/orcamento-poste-metalico" }
+const LINK_ORCAMENTO = { label: "Solicitar orçamento", href: "/contato" }
 const LINK_NORMAS = { label: "Normas para postes de iluminação", href: "/blog/normas-para-postes-de-iluminacao" }
 const LINK_FIXACAO = { label: "Poste flangeado ou engastado", href: "/blog/poste-flangeado-ou-engastado" }
 const LINK_ACABAMENTO = { label: "Poste galvanizado ou pintado", href: "/blog/poste-galvanizado-ou-pintado" }
 const LINK_ALTURA = { label: "Altura de poste para iluminação pública", href: "/blog/altura-de-poste-para-iluminacao-publica" }
 const LINK_OBRAS = { label: "Obras entregues", href: "/obras" }
 const LINK_QUEM_SOMOS = { label: "Quem somos", href: "/quem-somos" }
-const LINK_FABRICA = { label: "Fábrica de postes metálicos", href: "/fabrica-de-postes-metalicos" }
+const LINK_FABRICA = { label: "Fábrica de postes metálicos", href: "/postes-metalicos" }
 const LINK_IP = { label: "Postes para iluminação pública", href: "/postes-para-iluminacao-publica" }
 const LINK_REPRESENTANTES = { label: "Representantes B&B", href: "/representantes" }
 const LINK_CONTATO = { label: "Falar com a engenharia", href: "/contato" }
@@ -539,8 +539,6 @@ export const segmentPages: Record<SegmentSlug, SegmentPageConfig> = {
         ],
         internalLinks: [
             LINK_IP,
-            { label: "Fábrica de postes para iluminação pública", href: "/fabrica-de-postes-para-iluminacao-publica" },
-            { label: "Fornecedor de postes para iluminação pública", href: "/fornecedor-de-postes-para-iluminacao-publica" },
             LINK_ALTURA,
             LINK_ACABAMENTO,
             LINK_NORMAS,
@@ -660,7 +658,6 @@ export const segmentPages: Record<SegmentSlug, SegmentPageConfig> = {
         ],
         internalLinks: [
             { label: "Postes para estacionamentos", href: "/postes-para-estacionamentos" },
-            { label: "Indústria de postes metálicos", href: "/industria-de-postes-metalicos" },
             LINK_NORMAS,
             LINK_ALTURA,
             LINK_FIXACAO,
@@ -782,7 +779,6 @@ export const segmentPages: Record<SegmentSlug, SegmentPageConfig> = {
         internalLinks: [
             LINK_PRODUTOS,
             LINK_FABRICA,
-            { label: "Fornecedor de postes metálicos", href: "/fornecedor-de-postes-metalicos" },
             LINK_REPRESENTANTES,
             LINK_FIXACAO,
             LINK_ACABAMENTO,
@@ -1035,7 +1031,6 @@ export const segmentPages: Record<SegmentSlug, SegmentPageConfig> = {
             },
         ],
         internalLinks: [
-            { label: "Indústria de postes metálicos", href: "/industria-de-postes-metalicos" },
             { label: "Postes para estacionamentos", href: "/postes-para-estacionamentos" },
             LINK_ACABAMENTO,
             LINK_ALTURA,
