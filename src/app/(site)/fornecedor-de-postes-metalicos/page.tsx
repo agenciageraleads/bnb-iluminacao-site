@@ -57,14 +57,14 @@ const supplyProofGallery = [
 
 export const metadata: Metadata = {
     title: {
-        absolute: "Fornecedor de Postes Metalicos Direto da Fabrica | B&B",
+        absolute: "Fornecedor de Postes Metálicos Direto da Fábrica | B&B",
     },
     description: pageDescription,
     alternates: {
         canonical: pageUrl,
     },
     openGraph: {
-        title: "Fornecedor de Postes Metalicos Direto da Fabrica | B&B",
+        title: "Fornecedor de Postes Metálicos Direto da Fábrica | B&B",
         description: pageDescription,
         url: pageUrl,
         type: "website",
@@ -174,9 +174,6 @@ const internalLinks = [
     ["Fabrica de postes metalicos", "/fabrica-de-postes-metalicos"],
     ["Industria de postes metalicos", "/industria-de-postes-metalicos"],
     ["Orcamento de poste metalico", "/orcamento-poste-metalico"],
-    ["Fabricante de postes de iluminacao", "/fabricante-de-postes-de-iluminacao"],
-    ["Fabrica de postes para iluminacao publica", "/fabrica-de-postes-para-iluminacao-publica"],
-    ["Fornecedor de postes para iluminacao publica", "/fornecedor-de-postes-para-iluminacao-publica"],
     ["Postes metalicos", "/postes-metalicos"],
     ["Postes para iluminacao publica", "/postes-para-iluminacao-publica"],
     ["Postes para loteamentos", "/postes-para-loteamentos"],
@@ -286,7 +283,7 @@ export default function FornecedorDePostesMetalicosPage() {
                             Compra tecnica, atendimento nacional
                         </div>
                         <h1 className="max-w-4xl text-4xl font-black uppercase leading-[0.95] tracking-tight text-white md:text-6xl lg:text-7xl">
-                            Fornecedor de Postes Metalicos
+                            Fornecedor de Postes Metálicos
                         </h1>
                         <p className="mt-8 max-w-3xl text-base font-medium leading-relaxed text-industrial-200 md:text-xl">
                             A B&B atende compras de postes metalicos para iluminacao publica, loteamentos, condominios,

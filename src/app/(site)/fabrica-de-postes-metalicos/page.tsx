@@ -44,14 +44,14 @@ const heroImage = "/hero-industrial.jpg"
 
 export const metadata: Metadata = {
     title: {
-        absolute: "Fabrica de Postes Metalicos Direto da Fabrica | B&B",
+        absolute: "Fábrica de Postes Metálicos Direto da Fábrica | B&B",
     },
     description: pageDescription,
     alternates: {
         canonical: pageUrl,
     },
     openGraph: {
-        title: "Fabrica de Postes Metalicos Direto da Fabrica | B&B",
+        title: "Fábrica de Postes Metálicos Direto da Fábrica | B&B",
         description: pageDescription,
         url: pageUrl,
         type: "website",
@@ -238,9 +238,6 @@ const primaryInternalLinks = [
 const secondaryInternalLinks = [
     ["Industria de postes metalicos", "/industria-de-postes-metalicos"],
     ["Orcamento de poste metalico", "/orcamento-poste-metalico"],
-    ["Fabricante de postes de iluminacao", "/fabricante-de-postes-de-iluminacao"],
-    ["Fabrica de postes para iluminacao publica", "/fabrica-de-postes-para-iluminacao-publica"],
-    ["Fornecedor de postes para iluminacao publica", "/fornecedor-de-postes-para-iluminacao-publica"],
     ["Postes para loteamentos", "/postes-para-loteamentos"],
     ["Postes para condominios", "/postes-para-condominios"],
     ["Postes para pracas", "/postes-para-pracas"],
@@ -350,7 +347,7 @@ export default function FabricaDePostesMetalicosPage() {
                             Producao propria em Goiania, atendimento nacional
                         </div>
                         <h1 className="max-w-4xl text-4xl font-black uppercase leading-[0.95] tracking-tight text-white md:text-6xl lg:text-7xl">
-                            Fabrica de Postes Metalicos
+                            Fábrica de Postes Metálicos
                         </h1>
                         <p className="mt-8 max-w-3xl text-base font-medium leading-relaxed text-industrial-200 md:text-xl">
                             Processo fabril para postes metalicos, bracos, suportes e estruturas de iluminacao, com

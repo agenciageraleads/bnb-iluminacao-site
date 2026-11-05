@@ -6,11 +6,11 @@ import { p0CommercialPages } from "@/lib/seo/p0-commercial-pages"
 const config = p0CommercialPages.industriaPostesMetalicos
 
 export const metadata: Metadata = {
-    title: { absolute: "Industria de Postes Metalicos | B&B Iluminacao" },
+    title: { absolute: "Indústria de Postes Metálicos | B&B Iluminação" },
     description: config.description,
     alternates: { canonical: config.pageUrl },
     openGraph: {
-        title: "Industria de Postes Metalicos | B&B Iluminacao",
+        title: "Indústria de Postes Metálicos | B&B Iluminação",
         description: config.description,
         url: config.pageUrl,
         type: "website",

@@ -6,11 +6,11 @@ import { p0CommercialPages } from "@/lib/seo/p0-commercial-pages"
 const config = p0CommercialPages.orcamentoPosteMetalico
 
 export const metadata: Metadata = {
-    title: { absolute: "Orcamento de Poste Metalico | Cotacao Tecnica B&B" },
+    title: { absolute: "Orçamento de Poste Metálico | Cotação Técnica B&B" },
     description: config.description,
     alternates: { canonical: config.pageUrl },
     openGraph: {
-        title: "Orcamento de Poste Metalico | Cotacao Tecnica B&B",
+        title: "Orçamento de Poste Metálico | Cotação Técnica B&B",
         description: config.description,
         url: config.pageUrl,
         type: "website",

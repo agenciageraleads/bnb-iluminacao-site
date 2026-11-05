@@ -207,8 +207,6 @@ const gallery = [
 ]
 
 const internalLinks = [
-    ["Fabrica de postes para iluminacao publica", "/fabrica-de-postes-para-iluminacao-publica"],
-    ["Fornecedor de postes para iluminacao publica", "/fornecedor-de-postes-para-iluminacao-publica"],
     ["Fabrica de postes metalicos", "/fabrica-de-postes-metalicos"],
     ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
     ["Fabricante de postes metalicos", "/fabricante-de-postes-metalicos"],

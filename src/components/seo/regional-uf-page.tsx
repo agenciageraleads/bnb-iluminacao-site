@@ -252,7 +252,7 @@ export function RegionalUfPage({ data }: RegionalUfPageProps) {
                         </div>
 
                         <h1 className="max-w-[calc(100vw-2rem)] text-[2.05rem] font-black uppercase leading-[0.98] tracking-normal sm:text-[2.55rem] md:max-w-4xl md:text-7xl md:leading-[0.95] md:tracking-tight">
-                            <span className="block">Postes metalicos</span>
+                            <span className="block">Postes metálicos</span>
                             <span className="block">para projetos</span>
                             <span className="block break-words">em {data.stateName}</span>
                         </h1>

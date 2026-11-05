@@ -253,8 +253,6 @@ const primaryInternalLinks = [
 ]
 
 const secondaryInternalLinks = [
-    ["Fabrica de postes para iluminacao publica", "/fabrica-de-postes-para-iluminacao-publica"],
-    ["Fornecedor de postes para iluminacao publica", "/fornecedor-de-postes-para-iluminacao-publica"],
     ["Fabricante de postes metalicos", "/fabricante-de-postes-metalicos"],
     ["Fabricante de postes teleconicos", "/fabricante-de-postes-teleconicos"],
     ["Fabrica de postes metalicos", "/fabrica-de-postes-metalicos"],

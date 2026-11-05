@@ -539,8 +539,6 @@ export const segmentPages: Record<SegmentSlug, SegmentPageConfig> = {
         ],
         internalLinks: [
             LINK_IP,
-            { label: "Fábrica de postes para iluminação pública", href: "/fabrica-de-postes-para-iluminacao-publica" },
-            { label: "Fornecedor de postes para iluminação pública", href: "/fornecedor-de-postes-para-iluminacao-publica" },
             LINK_ALTURA,
             LINK_ACABAMENTO,
             LINK_NORMAS,

@@ -41,14 +41,14 @@ const heroImage = "/images/produtos/poste-curvo-duplo-avenida-dia.png"
 
 export const metadata: Metadata = {
     title: {
-        absolute: "Fabricante de Postes Teleconicos | Retos e Curvos B&B",
+        absolute: "Fabricante de Postes Telecônicos | Retos e Curvos B&B",
     },
     description: pageDescription,
     alternates: {
         canonical: pageUrl,
     },
     openGraph: {
-        title: "Fabricante de Postes Teleconicos | Retos e Curvos B&B",
+        title: "Fabricante de Postes Telecônicos | Retos e Curvos B&B",
         description: pageDescription,
         url: pageUrl,
         type: "website",
@@ -341,7 +341,7 @@ export default function FabricanteDePostesTeleconicosPage() {
                             Producao propria, atendimento nacional
                         </div>
                         <h1 className="max-w-4xl text-4xl font-black uppercase leading-[0.95] tracking-tight text-white md:text-6xl lg:text-7xl">
-                            Fabricante de Postes Teleconicos
+                            Fabricante de Postes Telecônicos
                         </h1>
                         <p className="mt-8 max-w-3xl text-base font-medium leading-relaxed text-industrial-200 md:text-xl">
                             Postes teleconicos retos, curvos simples e curvos duplos para iluminacao publica, loteamentos,

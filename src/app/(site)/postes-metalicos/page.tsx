@@ -38,20 +38,20 @@ export const dynamic = "force-dynamic"
 
 const pageUrl = "https://bebiluminacao.com.br/postes-metalicos"
 const pageDescription =
-    "Postes metalicos e galvanizados direto da fabrica: modelos retos, teleconicos, curvos e ornamentais para iluminacao publica, condominios e obras."
+    "Fábrica de postes metálicos galvanizados a fogo: retos, telecônicos, curvos e ornamentais, sob medida e conforme a NBR 14744. Peça orçamento."
 const whatsappMessage = "Ola, vim pela pagina de postes metalicos e quero solicitar um orcamento tecnico."
 const heroImage = "/images/seo/postes-metalicos/via-urbana-iluminada-postes.jpg"
 
 export const metadata: Metadata = {
     title: {
-        absolute: "Postes Metalicos e Galvanizados | Fabrica B&B",
+        absolute: "Postes Metálicos Galvanizados | Fábrica B&B Iluminação",
     },
     description: pageDescription,
     alternates: {
         canonical: pageUrl,
     },
     openGraph: {
-        title: "Postes Metalicos e Galvanizados | Fabrica B&B",
+        title: "Postes Metálicos Galvanizados | Fábrica B&B Iluminação",
         description: pageDescription,
         url: pageUrl,
         type: "website",
@@ -207,9 +207,6 @@ const internalLinks = [
     ["Fabrica de postes metalicos", "/fabrica-de-postes-metalicos"],
     ["Fabricante de postes metalicos", "/fabricante-de-postes-metalicos"],
     ["Fornecedor de postes metalicos", "/fornecedor-de-postes-metalicos"],
-    ["Fabricante de postes de iluminacao", "/fabricante-de-postes-de-iluminacao"],
-    ["Fabrica de postes para iluminacao publica", "/fabrica-de-postes-para-iluminacao-publica"],
-    ["Fornecedor de postes para iluminacao publica", "/fornecedor-de-postes-para-iluminacao-publica"],
     ["Industria de postes metalicos", "/industria-de-postes-metalicos"],
     ["Orcamento de poste metalico", "/orcamento-poste-metalico"],
     ["Postes para iluminacao publica", "/postes-para-iluminacao-publica"],
@@ -345,7 +342,7 @@ export default async function PostesMetalicosPage() {
                             Postes para projetos em todo o Brasil
                         </div>
                         <h1 className="max-w-4xl text-4xl font-black uppercase leading-[0.95] tracking-tight text-white md:text-6xl lg:text-7xl">
-                            Postes Metalicos
+                            Postes Metálicos
                         </h1>
                         <p className="mt-8 max-w-3xl text-base font-medium leading-relaxed text-industrial-200 md:text-xl">
                             Hub tecnico e comercial para escolher postes metalicos e galvanizados por modelo, aplicacao,
