@@ -41,8 +41,8 @@ function ContatoContent() {
         {
             icon: <MapPin className="size-5" aria-hidden="true" />,
             label: "Endereço",
-            value: "Rua CV10, Qd 26 Lt 02, Residencial Centerville, Goiania, GO",
-            href: "https://maps.google.com/?q=Rua%20CV10%20Qd%2026%20Lt%2002%20Residencial%20Centerville%20Goiania%20GO",
+            value: "Rua CV-10, 204, Qd 26 Lt 02, Residencial Center Ville, Goiânia - GO, CEP 74369-035",
+            href: "https://www.google.com/maps/search/?api=1&query=B%26B%20Ilumina%C3%A7%C3%A3o&query_place_id=ChIJ0yrkMsr3XpMRRiLUaGTdrpc",
         },
         {
             icon: <Clock className="size-5" aria-hidden="true" />,

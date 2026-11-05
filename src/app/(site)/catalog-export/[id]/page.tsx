@@ -155,7 +155,7 @@ export default async function CatalogExportPage({ params }: { params: Promise<{ 
                         <div className="space-y-4 text-industrial-300">
                             <p className="text-lg">contato@bebiluminacao.com</p>
                             <p className="text-lg">+55 (62) 3576-1988</p>
-                            <p className="text-base">Rua CV10, Qd 26 Lt 02, Residencial Centerville, Goiania, GO</p>
+                            <p className="text-base">Rua CV-10, 204, Qd 26 Lt 02, Residencial Center Ville, Goiânia - GO, CEP 74369-035</p>
                         </div>
                     </div>
                     <div className="absolute bottom-0 w-full h-4 bg-accent-premium" />

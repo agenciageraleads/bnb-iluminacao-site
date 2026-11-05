@@ -142,7 +142,7 @@ for (const [key, expected] of [
   }
 }
 
-for (const signal of ['Rua CV10', 'Residencial Centerville', 'Goiania, GO']) {
+for (const signal of ['CV-10', 'Center Ville', 'Goiânia - GO']) {
   if (!Array.isArray(napGovernance.requiredAddressSignals) || !napGovernance.requiredAddressSignals.includes(signal)) {
     failures.push(`nap-governance.json sem sinal de endereco: ${signal}`)
   }
