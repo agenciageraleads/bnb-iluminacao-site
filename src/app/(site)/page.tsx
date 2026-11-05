@@ -12,6 +12,7 @@ import { BlogPreview } from "@/components/sections/blog-preview"
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
 import { generateSeoMetadata } from "@/lib/seo"
 import { SchemaOrg } from "@/components/seo/schema-org"
+import napGovernance from "@/lib/seo/nap-governance.json"
 import { getClientLogos, getPortfolioProjects, getBlogPosts, getCatalogs } from "@/lib/data"
 
 export const metadata = generateSeoMetadata({
@@ -26,10 +27,9 @@ const homeSchema = {
   "image": "https://www.bebiluminacao.com.br/logo.png",
   "address": {
     "@type": "PostalAddress",
-    "addressLocality": "Goiânia",
-    "addressRegion": "GO",
-    "addressCountry": "BR"
+    ...napGovernance.officialAddress,
   },
+  "taxID": napGovernance.officialCnpj,
   "url": "https://bebiluminacao.com.br"
 }
 

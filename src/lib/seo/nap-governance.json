@@ -8,5 +8,12 @@
     "CV-10",
     "Center Ville",
     "Goiânia - GO"
-  ]
+  ],
+  "officialAddress": {
+    "streetAddress": "Rua CV-10, 204, Qd 26 Lt 02, Residencial Center Ville",
+    "addressLocality": "Goiânia",
+    "addressRegion": "GO",
+    "postalCode": "74369-035",
+    "addressCountry": "BR"
+  }
 }
