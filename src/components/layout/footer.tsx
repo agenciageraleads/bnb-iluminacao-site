@@ -81,7 +81,7 @@ export function Footer() {
                             <div className="flex items-start justify-center md:justify-start gap-4 group">
                                 <MapPin className="size-5 text-accent-premium shrink-0" />
                                 <p className="text-sm text-industrial-400 leading-tight font-medium">
-                                    Rua CV10, Qd 26 Lt 02 <br /> Residencial Centerville - Goiania, GO
+                                    Rua CV-10, 204, Qd 26 Lt 02 <br /> Residencial Center Ville - Goiânia - GO <br /> CEP 74369-035
                                 </p>
                             </div>
                             <div className="flex items-center justify-center md:justify-start gap-4 group">
