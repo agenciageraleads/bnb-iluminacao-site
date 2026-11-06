@@ -2,11 +2,12 @@
 // Os PDFs vivem em public/downloads/ e são gerados em Documentos/B&B/datasheet-assets.
 
 export const URBAN_HEIGHTS = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+const URBAN_S_PRO_HEIGHTS = URBAN_HEIGHTS.filter(h => h <= 12)
 
 export type UrbanMount = 'E' | 'F'
 
 export type UrbanFamily = {
-    sigla: 'TCS' | 'TCD' | 'TR'
+    sigla: 'TCS' | 'TCD' | 'TR' | 'S-TR' | 'PRO-TR'
     nome: string
     datasheet: string
     alturasEng: number[]   // engastado
@@ -37,6 +38,21 @@ export const URBAN_FAMILIES: UrbanFamily[] = [
         alturasEng: URBAN_HEIGHTS,
         alturasFla: URBAN_HEIGHTS,
     },
+    // Urban S (20 daN, topo 2.1/2") e Urban PRO (30 daN, topo 3"): 3 a 12 m, cortes aprovados em 04/11/2026
+    {
+        sigla: 'S-TR',
+        nome: 'Poste Telecônico Reto Urban S (20 daN)',
+        datasheet: '/downloads/datasheets/DATASHEET-BB-POSTE-RETO-URBAN-S.pdf',
+        alturasEng: URBAN_S_PRO_HEIGHTS,
+        alturasFla: URBAN_S_PRO_HEIGHTS,
+    },
+    {
+        sigla: 'PRO-TR',
+        nome: 'Poste Telecônico Reto Urban PRO (30 daN)',
+        datasheet: '/downloads/datasheets/DATASHEET-BB-POSTE-RETO-URBAN-PRO.pdf',
+        alturasEng: URBAN_S_PRO_HEIGHTS,
+        alturasFla: URBAN_S_PRO_HEIGHTS,
+    },
 ]
 
 export function desenhoTecnicoHref(sigla: string, alturaM: number, mount: UrbanMount = 'E') {
@@ -45,7 +61,7 @@ export function desenhoTecnicoHref(sigla: string, alturaM: number, mount: UrbanM
 
 /** Deriva os downloads disponíveis a partir do código do produto (ex.: BB-URB-TCSXX-E). */
 export function getUrbanDownloads(model?: string) {
-    const match = model?.match(/^BB-URB-(TCS|TCD|TR)XX-([EF])$/i)
+    const match = model?.match(/^BB-URB-(TCS|TCD|TR|S-TR|PRO-TR)XX-([EF])$/i)
     if (!match) return null
     const familia = URBAN_FAMILIES.find(f => f.sigla === match[1].toUpperCase())
     if (!familia) return null
