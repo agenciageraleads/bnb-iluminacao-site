@@ -1,3 +1,5 @@
+import napGovernance from "./nap-governance.json"
+
 export type SchemaNode = Record<string, unknown>
 
 export const SITE_URL = "https://bebiluminacao.com.br"
@@ -209,11 +211,7 @@ export function createFactoryOrganizationSchema(): SchemaNode {
         ...SHARED_ORG_FIELDS,
         address: {
             "@type": "PostalAddress",
-            streetAddress: "Rua CV-10, 204, Qd 26 Lt 02, Residencial Center Ville",
-            addressLocality: "Goiânia",
-            addressRegion: "GO",
-            postalCode: "74369-035",
-            addressCountry: "BR",
+            ...napGovernance.officialAddress,
         },
     }
 }

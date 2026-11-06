@@ -9,21 +9,30 @@ import { sendContactEmail } from "../../actions/contact"
 import { LeadAttributionFields, TrackedContactLink, pushLeadEvent } from "@/lib/lead-tracking"
 import { WhatsAppLink } from "@/components/ui/whatsapp-link"
 
-function ContatoContent() {
-    const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-    const [message, setMessage] = useState('');
-    const [assunto, setAssunto] = useState('');
+// Lê ?servico= / ?assunto= da URL. Fica isolado no próprio Suspense para que o
+// resto da página (endereço, telefone, formulário) saia renderizado no servidor;
+// com useSearchParams no componente da página inteira, o Next fazia a página toda
+// cair para renderização só no navegador (BAILOUT_TO_CLIENT_SIDE_RENDERING).
+function AssuntoDaUrl({ onAssunto }: { onAssunto: (assunto: string) => void }) {
     const searchParams = useSearchParams();
 
     useEffect(() => {
         const servico = searchParams.get('servico');
         const assuntoParam = searchParams.get('assunto');
         if (servico) {
-            setAssunto('orcamento');
+            onAssunto('orcamento');
         } else if (assuntoParam) {
-            setAssunto(assuntoParam);
+            onAssunto(assuntoParam);
         }
-    }, [searchParams]);
+    }, [searchParams, onAssunto]);
+
+    return null;
+}
+
+function ContatoContent() {
+    const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+    const [message, setMessage] = useState('');
+    const [assunto, setAssunto] = useState('');
 
     const infos = [
         {
@@ -77,6 +86,9 @@ function ContatoContent() {
 
     return (
         <main className="min-h-screen bg-white">
+            <Suspense fallback={null}>
+                <AssuntoDaUrl onAssunto={setAssunto} />
+            </Suspense>
             <Header />
             <FloatingWhatsApp />
 
@@ -287,9 +299,5 @@ function ContatoContent() {
 }
 
 export default function ContatoPage() {
-    return (
-        <Suspense fallback={null}>
-            <ContatoContent />
-        </Suspense>
-    )
+    return <ContatoContent />
 }
