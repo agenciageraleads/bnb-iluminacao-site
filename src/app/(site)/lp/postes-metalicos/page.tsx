@@ -2,7 +2,6 @@ import { Check, Phone, Shield, Truck, Zap, Calculator, FileText } from "lucide-r
 import type { Metadata } from "next"
 import { ClientsMarquee } from "@/components/sections/clients-marquee"
 import { Portfolio } from "@/components/sections/portfolio"
-import { GoogleReviews } from "@/components/sections/google-reviews"
 import { FaqSection } from "@/components/sections/faq"
 import { getPortfolioProjects, getClientLogos } from "@/lib/data"
 
@@ -155,7 +154,6 @@ export default async function PostesMetalicosLP() {
             <Portfolio projects={projects} />
 
             {/* Prova Social 3: Avaliações do Google */}
-            <GoogleReviews />
 
             {/* Seção de FAQ (Quebra de objeções B2B) */}
             <FaqSection />
