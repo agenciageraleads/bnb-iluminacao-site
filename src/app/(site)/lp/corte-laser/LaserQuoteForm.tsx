@@ -228,7 +228,7 @@ export function LaserQuoteForm({ cidade }: Props) {
       </button>
 
       <p className="text-[11px] text-industrial-400 text-center leading-relaxed">
-        Trabalhamos com projetos técnicos e lotes repetitivos. Para envio de DXF, entre em contato via WhatsApp após preencher o formulário.
+        Trabalhamos com projetos técnicos e lotes a partir de 10 peças por pedido, ou demanda programada e recorrente. Para envio de DXF, entre em contato via WhatsApp após preencher o formulário.
       </p>
     </form>
   )

@@ -59,6 +59,9 @@ export default async function CorteLaserLP() {
                             <p className="text-industrial-500 text-lg font-medium leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">
                                 Fibra óptica de alta potência para cortes de precisão em chapas e tubos de aço. Peças prontas para uso, sem rebarbas, com tolerâncias milimétricas. Atendemos projetos técnicos e lotes repetitivos.
                             </p>
+                            <p className="inline-flex items-center gap-2 px-3 py-2 bg-industrial-50 border border-industrial-200 text-industrial-800 text-xs font-bold rounded-md mb-8">
+                                Lote mínimo: 10 peças por pedido, ou demanda programada e recorrente.
+                            </p>
 
                             {/* Stats técnicos */}
                             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-xl mx-auto lg:mx-0 mb-10">

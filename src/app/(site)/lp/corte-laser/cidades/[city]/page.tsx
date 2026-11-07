@@ -89,6 +89,9 @@ export default async function LaserCityLP({ params }: Props) {
               <p className="text-industrial-500 text-lg font-medium leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">
                 Serviço de corte a laser fibra óptica para metalúrgicas, construtoras e indústrias em {cityName}. Chapas e tubos até 19mm. Precisão milimétrica, sem rebarbas.
               </p>
+              <p className="inline-flex items-center gap-2 px-3 py-2 bg-industrial-50 border border-industrial-200 text-industrial-800 text-xs font-bold rounded-md mb-8">
+                  Lote mínimo: 10 peças por pedido, ou demanda programada e recorrente.
+              </p>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-xl mx-auto lg:mx-0 mb-6">
                 {[

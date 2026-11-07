@@ -21,6 +21,14 @@ const faqs = [
         answer: "Podemos fornecer a solução 100% completa. Além dos postes e braços metálicos, fornecemos toda a linha de materiais elétricos (cabos, disjuntores, relés) e as luminárias LED para a instalação."
     },
     {
+        question: "O que a B&B fabrica?",
+        answer: "Postes metálicos em aço carbono, galvanizados a fogo ou pintados, fabricados sob encomenda: Linha Urban (curvo simples, curvo duplo e reto, engastado ou flangeado), postes decorativos da Linha Versa, postes para câmera, mastros para bandeira, braços, suportes e acessórios da Linha Nexo. Também prestamos serviço de pintura eletrostática e de corte a laser a partir de 10 peças por pedido, ou para demanda programada e recorrente."
+    },
+    {
+        question: "O que a B&B não fabrica?",
+        answer: "Não fabricamos poste de concreto, de madeira nem de aço inox: tudo é aço carbono. Hoje não fabricamos poste cônico contínuo; nossos postes são telecônicos, montados em seções. Não fabricamos luminária, arandela nem balizador. E não trabalhamos com pronta entrega: cada pedido é fabricado sob encomenda, conforme a especificação da obra."
+    },
+    {
         question: "Quais alturas de postes vocês fabricam?",
         answer: "Fabricamos postes desde 2 metros (ideais para linha garden e decorativa) até 15 metros de altura (ideais para rodovias, pátios industriais e grandes praças)."
     },

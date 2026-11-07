@@ -39,7 +39,7 @@ export default async function PostesMetalicosLP() {
                     </div>
                     {/* CTA de contato visível no header em mobile */}
                     <a
-                        href="https://wa.me/556235761988"
+                        href="https://wa.me/556235761988?text=Olá, quero cotar postes metálicos."
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 bg-industrial-950 text-white hover:bg-industrial-800 active:bg-industrial-700 font-black uppercase tracking-widest text-[10px] px-4 h-10 rounded-lg transition-colors"
@@ -175,7 +175,7 @@ export default async function PostesMetalicosLP() {
                         Fale diretamente com nossa engenharia ou equipe comercial e receba uma proposta técnica comercial em menos de 24 horas.
                     </p>
                     <a
-                        href="https://wa.me/556235761988"
+                        href="https://wa.me/556235761988?text=Olá, quero cotar postes metálicos."
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center justify-center gap-3 bg-black text-white hover:bg-industrial-800 font-black h-16 w-full sm:w-auto px-12 text-lg uppercase tracking-widest rounded-lg transition-transform hover:scale-105 shadow-2xl"
