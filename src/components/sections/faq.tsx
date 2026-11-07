@@ -26,7 +26,7 @@ const faqs = [
     },
     {
         question: "O que a B&B não fabrica?",
-        answer: "Não fabricamos poste de concreto, de madeira nem de aço inox: tudo é aço carbono. Hoje não fabricamos poste cônico contínuo; nossos postes são telecônicos, montados em seções. Não fabricamos luminária, arandela nem balizador. E não trabalhamos com pronta entrega: cada pedido é fabricado sob encomenda, conforme a especificação da obra."
+        answer: "Não fabricamos poste de concreto, de madeira nem de aço inox: tudo é aço carbono. Hoje não fabricamos poste cônico contínuo; nossos postes são telecônicos, escalonados e montados em seções com emendas. E não trabalhamos com pronta entrega: fabricamos sob encomenda, conforme a especificação da obra, em 10 a 20 dias úteis."
     },
     {
         question: "Quais alturas de postes vocês fabricam?",
