@@ -1,3 +1,4 @@
+import { FAQ_O_QUE_FABRICA, FAQ_O_QUE_NAO_FABRICA } from "@/lib/seo/faq-fabricacao"
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
@@ -232,6 +233,8 @@ const faq = [
         answer:
             "Os modelos mais comuns incluem postes teleconicos, retos, curvos simples, curvos duplos, ornamentais, decorativos e estruturas com bracos ou suportes para luminarias.",
     },
+    FAQ_O_QUE_FABRICA,
+    FAQ_O_QUE_NAO_FABRICA,
     {
         question: "Poste metalico e indicado para iluminacao publica?",
         answer:

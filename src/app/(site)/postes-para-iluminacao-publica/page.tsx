@@ -1,3 +1,4 @@
+import { FAQ_O_QUE_FABRICA, FAQ_O_QUE_NAO_FABRICA } from "@/lib/seo/faq-fabricacao"
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
@@ -231,6 +232,8 @@ const faq = [
         answer:
             "Sim. A B&B fabrica postes metalicos para aplicacoes urbanas e orienta a especificacao conforme ambiente, modelo, altura, fixacao, acabamento, quantidade e prazo.",
     },
+    FAQ_O_QUE_FABRICA,
+    FAQ_O_QUE_NAO_FABRICA,
     {
         question: "Quais modelos podem ser usados em iluminacao publica?",
         answer:
