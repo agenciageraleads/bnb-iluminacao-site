@@ -1,7 +1,6 @@
 import { Check, Phone, Shield, Truck, Zap, Calculator, FileText } from "lucide-react"
 import { ClientsMarquee } from "@/components/sections/clients-marquee"
 import { Portfolio } from "@/components/sections/portfolio"
-import { GoogleReviews } from "@/components/sections/google-reviews"
 import { FaqSection } from "@/components/sections/faq"
 import { WhatsAppLink } from "@/components/ui/whatsapp-link"
 import { getPortfolioProjects, getClientLogos } from "@/lib/data"
@@ -126,7 +125,7 @@ export default async function BracoParaLuminariaLP() {
                     <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         {[
                             { title: "Galvanização a Fogo", desc: "Proteção superior contra corrosão, ideal para ambientes externos e regiões litorâneas.", icon: <Shield /> },
-                            { title: "Produção Ágil", desc: "Lotes de até 500 braços entregues em 10 a 15 dias úteis. Planejamos com você.", icon: <Zap /> },
+                            { title: "Produção Ágil", desc: "Prazo de fabricação de 10 a 20 dias úteis, conforme acabamento e volume. Planejamos com você.", icon: <Zap /> },
                             { title: "Normas ABNT", desc: "Braços dimensionados conforme NBR 6123, garantindo segurança estrutural ao projeto.", icon: <Check /> },
                             { title: "Solução Completa", desc: "Braço, poste, luminária LED — compre tudo em um só fornecedor e simplifique a obra.", icon: <Calculator /> },
                         ].map((item, i) => (
@@ -144,7 +143,6 @@ export default async function BracoParaLuminariaLP() {
 
             <Portfolio projects={projects} />
 
-            <GoogleReviews />
 
             <FaqSection />
 

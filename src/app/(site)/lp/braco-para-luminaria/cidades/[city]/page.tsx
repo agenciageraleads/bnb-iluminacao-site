@@ -46,7 +46,7 @@ export default async function BracoCityLP({ params }: Props) {
     getRegions(),
   ])
 
-  const deliveryCondition = city.trust?.deliveryTime || "Prazo e frete confirmados no orçamento conforme volume, rota e cidade de entrega."
+  const deliveryCondition = city.trust?.deliveryTime || "Fabricação de 10 a 20 dias úteis + transporte informado na proposta."
   const logisticsText = city.trust?.logistics || "Logística avaliada por projeto, com rota, volume e descarga confirmados na proposta."
 
   const WA_MSG = `Olá, estou em ${city.cityName} e preciso de um orçamento de braços para luminária pública.`
@@ -141,7 +141,7 @@ export default async function BracoCityLP({ params }: Props) {
               { title: "Prazo sob orçamento", desc: `Frete, rota e prazo para ${city.cityName} são confirmados conforme volume e cronograma da obra.`, icon: <Zap /> },
               { title: "Galvanização", desc: "Proteção superior a fogo contra corrosão, maresia e intempéries.", icon: <Shield /> },
               { title: "NBR ABNT", desc: "Braços dimensionados conforme NBR 6123 para máxima segurança estrutural.", icon: <Check /> },
-              { title: "Fábrica Direta", desc: "Sem intermediários. Melhor preço e suporte técnico especializado.", icon: <Calculator /> },
+              { title: "Fábrica Própria", desc: "Fábrica própria, sem intermediários, com engenharia no atendimento.", icon: <Calculator /> },
             ].map((item, i) => (
               <div key={i} className="bg-white border border-industrial-200 p-8 hover:border-accent-premium transition-colors hover:shadow-md rounded-2xl">
                 <div className="size-12 bg-industrial-950 text-white flex items-center justify-center mb-6 rounded-lg">

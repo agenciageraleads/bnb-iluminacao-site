@@ -10,7 +10,7 @@ const faqs = [
     },
     {
         question: "Qual o prazo padrão para produção?",
-        answer: "Para lotes de até 100 postes, nosso prazo padrão é de 10 a 15 dias úteis. Pedidos com quantidades maiores ou especificações muito fora do padrão requerem um planejamento de produção dedicado, informado no momento do orçamento."
+        answer: "O prazo de fabricação é de 10 a 20 dias úteis, conforme fixação, acabamento e volume, com teto de 20 dias úteis para lotes de até 100 postes. Pedidos maiores ou especificações fora do padrão recebem um plano de produção e entrega faseado, informado no orçamento."
     },
     {
         question: "A B&B Iluminação realiza faturamento ou venda no boleto?",

@@ -1,6 +1,5 @@
 import { Phone, Cpu, ShieldCheck, Maximize2, FileCheck } from "lucide-react"
 import { ClientsMarquee } from "@/components/sections/clients-marquee"
-import { GoogleReviews } from "@/components/sections/google-reviews"
 import { WhatsAppLink } from "@/components/ui/whatsapp-link"
 import { LaserQuoteForm } from "./LaserQuoteForm"
 import { getClientLogos } from "@/lib/data"
@@ -58,6 +57,9 @@ export default async function CorteLaserLP() {
                             </h1>
                             <p className="text-industrial-500 text-lg font-medium leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">
                                 Laser de fibra para corte e furação em chapas e tubos de aço, com mesa de 3×1,5 m. Peças sem rebarba, com medida repetível, prontas para dobra ou solda.
+                            </p>
+                            <p className="inline-flex items-center gap-2 px-3 py-2 bg-industrial-50 border border-industrial-200 text-industrial-800 text-xs font-bold rounded-md mb-8">
+                                Lote mínimo: 10 peças por pedido, ou demanda programada e recorrente.
                             </p>
                             <p className="inline-flex items-center gap-2 px-3 py-2 bg-industrial-50 border border-industrial-200 text-industrial-800 text-xs font-bold rounded-md mb-8">
                                 Lote mínimo: 10 peças por pedido, ou demanda programada e recorrente.
@@ -147,7 +149,6 @@ export default async function CorteLaserLP() {
                 </div>
             </section>
 
-            <GoogleReviews />
 
             {/* CTA Final */}
             <section className="py-20 md:py-28 bg-industrial-950 relative overflow-hidden" aria-labelledby="cta-laser">

@@ -1,6 +1,5 @@
 import { Phone, ShieldCheck, Palette, Layers, Zap } from "lucide-react"
 import { ClientsMarquee } from "@/components/sections/clients-marquee"
-import { GoogleReviews } from "@/components/sections/google-reviews"
 import { WhatsAppLink } from "@/components/ui/whatsapp-link"
 import { PinturaQuoteForm } from "./PinturaQuoteForm"
 import { getClientLogos } from "@/lib/data"
@@ -58,6 +57,9 @@ export default async function PinturaEletrostaticaLP() {
                             </h1>
                             <p className="text-industrial-500 text-lg font-medium leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">
                                 Pó poliéster para uso externo, aplicado sobre peça limpa, desengraxada e fosfatizada, com cura em estufa. Cabine e estufa de 6 m próprias, em Goiânia-GO.
+                            </p>
+                            <p className="inline-flex items-center gap-2 px-3 py-2 bg-industrial-50 border border-industrial-200 text-industrial-800 text-xs font-bold rounded-md mb-8">
+                                Lote mínimo: 10 peças por pedido, ou demanda programada e recorrente.
                             </p>
                             <p className="inline-flex items-center gap-2 px-3 py-2 bg-industrial-50 border border-industrial-200 text-industrial-800 text-xs font-bold rounded-md mb-8">
                                 Lote mínimo: 10 peças por pedido, ou demanda programada e recorrente.
@@ -145,7 +147,6 @@ export default async function PinturaEletrostaticaLP() {
                 </div>
             </section>
 
-            <GoogleReviews />
 
             {/* CTA Final */}
             <section className="py-20 md:py-28 bg-industrial-950 relative overflow-hidden" aria-labelledby="cta-pintura">

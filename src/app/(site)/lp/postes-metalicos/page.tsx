@@ -2,7 +2,6 @@ import { Check, Phone, Shield, Truck, Zap, Calculator, FileText } from "lucide-r
 import type { Metadata } from "next"
 import { ClientsMarquee } from "@/components/sections/clients-marquee"
 import { Portfolio } from "@/components/sections/portfolio"
-import { GoogleReviews } from "@/components/sections/google-reviews"
 import { FaqSection } from "@/components/sections/faq"
 import { getPortfolioProjects, getClientLogos } from "@/lib/data"
 
@@ -135,7 +134,7 @@ export default async function PostesMetalicosLP() {
                     <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         {[
                             { title: "Alta Durabilidade", desc: "Estruturas desenvolvidas para resistir aos climas mais agressivos (opção de galvanização a fogo).", icon: <Shield /> },
-                            { title: "Produção Ágil", desc: "Capacidade produtiva otimizada. Entregamos lotes de até 100 postes em apenas 10 a 15 dias úteis.", icon: <Zap /> },
+                            { title: "Produção Ágil", desc: "Fábrica própria. Lotes de até 100 postes fabricados em 10 a 20 dias úteis, conforme fixação, acabamento e volume.", icon: <Zap /> },
                             { title: "Normas da ABNT", desc: "Cálculos estruturais rigorosos que superam as exigências da norma NBR 6123 para forças de vento.", icon: <Check /> },
                             { title: "Solução Completa", desc: "Do poste à luminária LED e cabeamento elétrico, compre tudo em um só lugar.", icon: <Calculator /> },
                         ].map((item, i) => (
@@ -155,7 +154,6 @@ export default async function PostesMetalicosLP() {
             <Portfolio projects={projects} />
 
             {/* Prova Social 3: Avaliações do Google */}
-            <GoogleReviews />
 
             {/* Seção de FAQ (Quebra de objeções B2B) */}
             <FaqSection />
