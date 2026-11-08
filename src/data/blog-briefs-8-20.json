@@ -81,11 +81,11 @@
   },
   {
     "briefId": 16,
-    "title": "Quanto custa um poste metálico segundo o SINAPI (e quem fabrica)",
+    "title": "Quanto custa um poste metálico segundo o SINAPI",
     "keyword": "poste de aço cônico contínuo flangeado h=9m sinapi",
-    "resposta": "Tabela cruzando os códigos SINAPI reais (105956, 100620, 100621, insumos 5050/5052/14162/5051) com os modelos equivalentes da linha Urban da B&B (TCS/TCD/TR × -E/-F), o preço médio nacional de referência (ex.: insumo 14162 = R$1.977,85/un) versus o que a B&B entrega, e o que está incluso na composição de instalação (guindauto, aterramento, chumbador). (Contexto interno de apoio, não citar como fonte pública: Tabela SINAPI oficial (AF_04/2025); Motor de precificação interno (bom-precificacao-postes.md).)",
+    "resposta": "Tabela com insumos SINAPI de poste cônico contínuo (5052, 14162, 5051, 14163, 14164) e a alternativa telecônica da B&B a avaliar (TCS/TCD × -E/-F), sem afirmar equivalência: a B&B não fabrica cônico contínuo e avalia a adequação ao projeto; orientar a confirmar se o edital aceita alternativa. Valores só como referência SINAPI, com mês e fonte, nunca como preço da B&B. Composições 100620/100621: poste, chumbadores, guindauto, cabo de cobre nu e mão de obra. Não afirmar serviço de instalação da B&B. (Contexto interno de apoio, não citar como fonte pública: Tabela SINAPI oficial.)",
     "fontes": "ABNT NBR 14744:2019, catálogo oficial em https://www.abntcatalogo.com.br/norma.aspx?ID=419453",
-    "ctaHint": "\"Peça cotação com equivalência SINAPI para sua licitação\" → /contato",
+    "ctaHint": "\"Peça cotação de poste telecônico para sua obra\" → /contato",
     "weekDay": "Segunda",
     "funnelStage": "BOFU puro"
   },
