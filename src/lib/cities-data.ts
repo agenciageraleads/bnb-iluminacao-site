@@ -19,7 +19,7 @@ export const citiesData: CityData[] = [
     name: "Goiânia",
     uf: "GO",
     region: "Centro-Oeste",
-    deliveryTime: "3 a 5 dias úteis",
+    deliveryTime: "Fabricação de 10 a 20 dias úteis + transporte informado na proposta.",
     description: "Sediada em Goiânia, a B&B Iluminação é referência na fabricação de postes metálicos para construtoras, condomínios e indústrias em toda a capital.",
     isMainBase: true,
   },
@@ -28,7 +28,7 @@ export const citiesData: CityData[] = [
     name: "Aparecida de Goiânia",
     uf: "GO",
     region: "Centro-Oeste",
-    deliveryTime: "3 a 5 dias úteis",
+    deliveryTime: "Fabricação de 10 a 20 dias úteis + transporte informado na proposta.",
     description: "Atendemos o polo industrial de Aparecida de Goiânia com postes metálicos de alta resistência e entrega rápida.",
   },
   {
@@ -36,7 +36,7 @@ export const citiesData: CityData[] = [
     name: "Anápolis",
     uf: "GO",
     region: "Centro-Oeste",
-    deliveryTime: "5 a 7 dias úteis",
+    deliveryTime: "Fabricação de 10 a 20 dias úteis + transporte informado na proposta.",
     description: "Soluções em iluminação industrial e postes metálicos certificados para o polo logístico de Anápolis.",
   },
   {
@@ -44,7 +44,7 @@ export const citiesData: CityData[] = [
     name: "Senador Canedo",
     uf: "GO",
     region: "Centro-Oeste",
-    deliveryTime: "5 a 7 dias úteis",
+    deliveryTime: "Fabricação de 10 a 20 dias úteis + transporte informado na proposta.",
     description: "Postes metálicos robustos para loteamentos e indústrias em Senador Canedo.",
   },
   {
@@ -52,7 +52,7 @@ export const citiesData: CityData[] = [
     name: "Trindade",
     uf: "GO",
     region: "Centro-Oeste",
-    deliveryTime: "5 a 7 dias úteis",
+    deliveryTime: "Fabricação de 10 a 20 dias úteis + transporte informado na proposta.",
     description: "Fornecimento de postes e mastros para projetos urbanos e comerciais em Trindade.",
   },
   {
@@ -60,7 +60,7 @@ export const citiesData: CityData[] = [
     name: "Rio Verde",
     uf: "GO",
     region: "Centro-Oeste",
-    deliveryTime: "7 a 10 dias úteis",
+    deliveryTime: "Fabricação de 10 a 20 dias úteis + transporte informado na proposta.",
     description: "Atendemos o agronegócio de Rio Verde com postes galvanizados a fogo de alta durabilidade.",
   },
 
@@ -70,7 +70,7 @@ export const citiesData: CityData[] = [
     name: "Brasília",
     uf: "DF",
     region: "Centro-Oeste",
-    deliveryTime: "5 a 8 dias úteis",
+    deliveryTime: "Fabricação de 10 a 20 dias úteis + transporte informado na proposta.",
     description: "Postes metálicos dentro das normas da ABNT para Brasília e região administrativa. Atendimento especializado para licitações e obras públicas.",
   },
 
@@ -80,7 +80,7 @@ export const citiesData: CityData[] = [
     name: "São Paulo",
     uf: "SP",
     region: "Sudeste",
-    deliveryTime: "7 a 12 dias úteis",
+    deliveryTime: "Fabricação de 10 a 20 dias úteis + transporte informado na proposta.",
     description: "Fabricamos e entregamos postes metálicos em São Paulo para grandes construtoras e empreendimentos logísticos.",
   },
   {
@@ -88,7 +88,7 @@ export const citiesData: CityData[] = [
     name: "Belo Horizonte",
     uf: "MG",
     region: "Sudeste",
-    deliveryTime: "7 a 10 dias úteis",
+    deliveryTime: "Fabricação de 10 a 20 dias úteis + transporte informado na proposta.",
     description: "Postes metálicos certificados para Belo Horizonte e região metropolitana. Qualidade industrial direto da fábrica.",
   },
   {
@@ -96,7 +96,7 @@ export const citiesData: CityData[] = [
     name: "Cuiabá",
     uf: "MT",
     region: "Centro-Oeste",
-    deliveryTime: "7 a 10 dias úteis",
+    deliveryTime: "Fabricação de 10 a 20 dias úteis + transporte informado na proposta.",
     description: "Liderança em postes metálicos para Cuiabá. Estruturas resistentes para iluminação pública e privada.",
   },
   {
@@ -104,7 +104,7 @@ export const citiesData: CityData[] = [
     name: "Palmas",
     uf: "TO",
     region: "Norte",
-    deliveryTime: "7 a 10 dias úteis",
+    deliveryTime: "Fabricação de 10 a 20 dias úteis + transporte informado na proposta.",
     description: "Entrega ágil de postes metálicos para Palmas. Soluções ideais para o clima da região Norte.",
   }
 ];
