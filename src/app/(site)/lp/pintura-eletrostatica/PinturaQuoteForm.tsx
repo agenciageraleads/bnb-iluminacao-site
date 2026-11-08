@@ -126,7 +126,7 @@ export function PinturaQuoteForm({ cidade }: Props) {
             className="w-full bg-white border border-industrial-300 focus:border-industrial-900 rounded-lg px-4 h-12 text-sm text-industrial-900 outline-none transition-colors appearance-none"
           >
             <option value="">Selecione…</option>
-            <option value="Até 50 peças">Até 50 peças</option>
+            <option value="10 a 50 peças">10 a 50 peças</option>
             <option value="50–200 peças">50–200 peças</option>
             <option value="200–500 peças">200–500 peças</option>
             <option value="Acima de 500 peças">Acima de 500 peças</option>

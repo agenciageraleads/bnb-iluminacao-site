@@ -146,7 +146,7 @@ export function LaserQuoteForm({ cidade }: Props) {
             <option value="Até 3mm">Até 3mm</option>
             <option value="3–6mm">3–6mm</option>
             <option value="6–12mm">6–12mm</option>
-            <option value="12–19mm">12–19mm</option>
+            <option value="Acima de 12mm">Acima de 12mm</option>
           </select>
         </div>
 

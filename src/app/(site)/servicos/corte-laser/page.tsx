@@ -4,8 +4,8 @@ import Link from "next/link"
 import Image from "next/image"
 
 export const metadata = {
-    title: "Corte a Laser de Alta Precisão | B&B Iluminação",
-    description: "Serviço industrial de corte a laser em fibra óptica para chapas de aço. Precisão milimétrica e acabamento superior.",
+    title: "Corte a Laser Industrial | B&B Iluminação",
+    description: "Corte a laser de fibra em chapas e tubos de aço, sem rebarba. A partir de 10 peças por pedido, ou demanda programada e recorrente.",
 }
 
 export default function CorteLaserPage() {
@@ -32,7 +32,7 @@ export default function CorteLaserPage() {
                             <span className="text-accent-premium">Industrial</span>
                         </h1>
                         <p className="text-industrial-400 text-xl max-w-2xl leading-relaxed mb-10">
-                            Equipamentos de fibra óptica de última geração para cortes complexos e de alta precisão em <strong className="text-white">tubos e chapas</strong>. Cortamos metais com espessuras de até <strong className="text-white">19mm</strong> com a agilidade que sua obra precisa e a qualidade que só a B&B entrega.
+                            Laser de fibra para corte e furação em <strong className="text-white">tubos e chapas</strong> de aço, com mesa de 3×1,5 m e medida repetível. <strong className="text-white">Lote mínimo: 10 peças por pedido, ou demanda programada e recorrente.</strong>
                         </p>
                         <div className="flex flex-wrap gap-4">
                             <Link href="/contato" className="bg-accent-premium text-black h-16 px-10 flex items-center justify-center font-black uppercase tracking-widest text-xs rounded-lg hover:bg-white transition-all shadow-xl">
@@ -49,9 +49,9 @@ export default function CorteLaserPage() {
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                         {[
                             { value: "Tubos & Chapas", label: "Formatos Suportados" },
-                            { value: "3kW", label: "Potência" },
-                            { value: "Até 19mm", label: "Espessura Máxima" },
-                            { value: "3x1.5m", label: "Área de Mesa" }
+                            { value: "Fibra", label: "Tipo de Laser" },
+                            { value: "3×1,5 m", label: "Área de Mesa" },
+                            { value: "Sem rebarba", label: "Acabamento do Corte" }
                         ].map((stat, i) => (
                             <div key={i} className="text-center md:text-left">
                                 <p className="text-4xl font-black text-industrial-900 mb-2">{stat.value}</p>
@@ -78,8 +78,8 @@ export default function CorteLaserPage() {
                                 <div className="absolute inset-0 bg-industrial-950/20 mix-blend-overlay" />
                             </div>
                             <div className="absolute -bottom-8 -right-8 size-40 bg-accent-premium rounded-2xl flex flex-col items-center justify-center text-center p-4 shadow-2xl">
-                                <p className="text-4xl font-black text-industrial-950">100%</p>
-                                <p className="text-[10px] font-black uppercase tracking-tight text-industrial-950 leading-none">Sem rebarbas ou retrabalho</p>
+                                <p className="text-4xl font-black text-industrial-950">Sem</p>
+                                <p className="text-[10px] font-black uppercase tracking-tight text-industrial-950 leading-none">rebarba nem quina viva</p>
                             </div>
                         </div>
 
@@ -87,15 +87,15 @@ export default function CorteLaserPage() {
                             <div>
                                 <h2 className="text-4xl font-black uppercase text-industrial-950 mb-6">Por que escolher o <span className="text-industrial-400">Laser B&B?</span></h2>
                                 <p className="text-industrial-600 text-lg leading-relaxed">
-                                    Diferente dos processos de plasma ou oxicorte, o laser de fibra permite a criação de geometrias complexas, furações precisas e encaixes perfeitos, eliminando a necessidade de acabamento manual posterior.
+                                    O laser de fibra faz corte e furação com medida repetível, sem rebarba nem quina viva. As peças seguem para dobra ou solda.
                                 </p>
                             </div>
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                                 {[
-                                    { icon: <Cpu />, title: "Agilidade", desc: "Ciclos de produção até 5x mais rápidos que métodos convencionais." },
-                                    { icon: <ShieldCheck />, title: "Consistência", desc: "Repetibilidade garantida em lotes de alto volume." },
-                                    { icon: <Maximize2 />, title: "Capacidade", desc: "Corte de alto rendimento em tubos e chapas com espessuras de até 19mm." },
+                                    { icon: <Cpu />, title: "Arquivo Técnico", desc: "Cotação a partir do seu arquivo: DXF, DWG, PDF ou imagem da peça." },
+                                    { icon: <ShieldCheck />, title: "Consistência", desc: "Medida repetível entre as peças do lote." },
+                                    { icon: <Maximize2 />, title: "Formatos", desc: "Corte e furação em chapas e tubos de aço, com mesa de 3×1,5 m." },
                                     { icon: <FileCheck />, title: "Pronto para Uso", desc: "Peças saem prontas para a etapa de dobra ou soldagem." }
                                 ].map((item, i) => (
                                     <div key={i} className="space-y-3">
@@ -134,11 +134,11 @@ export default function CorteLaserPage() {
             <section className="py-24 text-center">
                 <div className="container mx-auto px-4">
                     <h2 className="text-4xl md:text-6xl font-black uppercase text-industrial-950 mb-8">
-                        Reduza os custos da <br />
-                        <span className="text-accent-premium">Sua Obra</span>
+                        Tem um Lote <br />
+                        <span className="text-accent-premium">para Cortar?</span>
                     </h2>
                     <p className="text-industrial-500 mb-12 max-w-xl mx-auto font-medium">
-                        A precisão do laser economiza material e tempo de montagem. Peça um orçamento técnico hoje mesmo.
+                        Envie o arquivo técnico e a quantidade de peças. Atendemos a partir de 10 peças por pedido, ou demanda programada e recorrente.
                     </p>
                     <Link 
                         href="/contato" 

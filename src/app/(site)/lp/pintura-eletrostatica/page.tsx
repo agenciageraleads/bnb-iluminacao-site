@@ -8,7 +8,7 @@ import Image from "next/image"
 
 export const metadata = {
     title: "Pintura Eletrostática Industrial para Lotes | B&B Iluminação",
-    description: "Serviço de pintura eletrostática a pó para construtoras, indústrias e prefeituras. Paleta RAL, resistência UV. Atendemos lotes e projetos de grande porte em Goiânia-GO.",
+    description: "Pintura eletrostática a pó poliéster para uso externo, com fosfatização e cura em estufa, em Goiânia-GO. A partir de 10 peças por pedido, ou demanda programada e recorrente.",
 }
 
 const WA_MSG = "Olá, preciso de orçamento para pintura eletrostática industrial."
@@ -57,17 +57,17 @@ export default async function PinturaEletrostaticaLP() {
                                 <span className="text-accent-premium">Industrial</span>
                             </h1>
                             <p className="text-industrial-500 text-lg font-medium leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">
-                                Acabamento a pó poliéster para lotes e projetos de grande porte. Alta resistência UV, paleta RAL completa e cura em estufa. Atendemos em Goiânia e região.
+                                Pó poliéster para uso externo, aplicado sobre peça limpa, desengraxada e fosfatizada, com cura em estufa. Cabine e estufa de 6 m próprias, em Goiânia-GO.
                             </p>
                             <p className="inline-flex items-center gap-2 px-3 py-2 bg-industrial-50 border border-industrial-200 text-industrial-800 text-xs font-bold rounded-md mb-8">
                                 Lote mínimo: 10 peças por pedido, ou demanda programada e recorrente.
                             </p>
                             <div className="grid grid-cols-2 gap-3 max-w-xs mx-auto lg:mx-0 mb-10">
                                 {[
-                                    "Resistência UV",
-                                    "Paleta RAL",
+                                    "Poliéster Externo",
+                                    "Fosfatização",
                                     "Cura em Estufa",
-                                    "Alta Produtividade",
+                                    "Estufa de 6 m",
                                 ].map((tag) => (
                                     <div key={tag} className="flex items-center gap-2 text-industrial-600 text-[11px] font-bold uppercase tracking-widest">
                                         <div className="size-1.5 bg-accent-premium shrink-0" />
@@ -84,7 +84,7 @@ export default async function PinturaEletrostaticaLP() {
                                     Solicite sua Cotação
                                 </h2>
                                 <p className="text-industrial-500 text-xs mb-6">
-                                    Preencha os dados abaixo — nossa equipe retorna em até 24h.
+                                    Preencha os dados abaixo. A equipe comercial retorna pelo contato informado.
                                 </p>
                                 <PinturaQuoteForm />
                             </div>
@@ -111,7 +111,7 @@ export default async function PinturaEletrostaticaLP() {
                             Cabine de pintura<br />e estufa de cura<br />industrial
                         </h2>
                         <p className="text-white/70 text-sm mt-4 max-w-sm font-medium">
-                            Linha de produção preparada para lotes industriais com controle de temperatura e camada uniforme.
+                            Limpeza, desengraxe, fosfatização, secagem, pintura a pó, cura em estufa e inspeção visual.
                         </p>
                     </div>
                 </div>
@@ -122,16 +122,16 @@ export default async function PinturaEletrostaticaLP() {
                 <div className="container mx-auto px-4 max-w-5xl">
                     <div className="text-center mb-14">
                         <h2 id="diferenciais-pintura" className="text-3xl md:text-4xl font-black text-industrial-950 uppercase tracking-tight mb-4">
-                            Tecnologia Industrial no Acabamento
+                            Como Fazemos o Acabamento
                         </h2>
                         <div className="w-24 h-1 bg-accent-premium mx-auto" />
                     </div>
                     <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         {[
-                            { icon: <ShieldCheck />, title: "Resistência Extrema", desc: "Suporta radiação UV, maresia e abrasão sem descascar ou perder brilho." },
-                            { icon: <Palette />, title: "Paleta RAL Completa", desc: "Qualquer cor RAL, fosca ou brilhante. Identidade visual do projeto preservada." },
-                            { icon: <Layers />, title: "Cura em Estufa", desc: "Polimerização a 200°C. Camada contínua, sem bolhas, sem escorrimentos." },
-                            { icon: <Zap />, title: "Alta Capacidade", desc: "Linha de produção para lotes industriais. Prazo curto mesmo em grandes volumes." },
+                            { icon: <ShieldCheck />, title: "Uso Externo", desc: "Tinta poliéster indicada para sol e chuva em ambiente urbano. Em litoral, a indicação é galvanizado ou galvanizado + pintado." },
+                            { icon: <Palette />, title: "Cor por Referência RAL", desc: "Informe a cor e o acabamento na cotação. A disponibilidade entra na proposta." },
+                            { icon: <Layers />, title: "Cura em Estufa", desc: "Estufa de 6 m. A peça entra limpa, desengraxada e fosfatizada." },
+                            { icon: <Zap />, title: "Para Lotes", desc: "A partir de 10 peças por pedido, ou demanda programada e recorrente. O prazo vem na proposta." },
                         ].map((item, i) => (
                             <div key={i} className="bg-industrial-50 border border-industrial-200 rounded-2xl p-8 hover:border-accent-premium transition-colors">
                                 <div className="size-12 bg-industrial-950 text-white rounded-lg flex items-center justify-center mb-6">

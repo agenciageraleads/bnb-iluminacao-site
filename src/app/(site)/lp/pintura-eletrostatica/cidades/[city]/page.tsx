@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!label) return {}
 
   const title = `Pintura Eletrostática Industrial em ${label.name} - ${label.uf} | B&B Iluminação`
-  const description = `Serviço de pintura eletrostática a pó para lotes industriais em ${label.name}. Paleta RAL, resistência UV, cura em estufa. Construtoras, prefeituras e indústrias.`
+  const description = `Pintura eletrostática a pó poliéster para ${label.name}, com fosfatização e cura em estufa. A partir de 10 peças por pedido, ou demanda programada e recorrente.`
 
   return {
     title,
@@ -87,7 +87,7 @@ export default async function PinturaCityLP({ params }: Props) {
                 em <span className="text-accent-premium">{cityName}</span>
               </h1>
               <p className="text-industrial-500 text-lg font-medium leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">
-                Serviço de pintura a pó poliéster para construtoras, indústrias e prefeituras em {cityName} e região. Atendemos lotes industriais com paleta RAL completa e cura em estufa.
+                Pintura a pó poliéster para construtoras, indústrias e prefeituras em {cityName} e região, com fosfatização e cura em estufa.
               </p>
               <p className="inline-flex items-center gap-2 px-3 py-2 bg-industrial-50 border border-industrial-200 text-industrial-800 text-xs font-bold rounded-md mb-8">
                   Lote mínimo: 10 peças por pedido, ou demanda programada e recorrente.
@@ -103,7 +103,7 @@ export default async function PinturaCityLP({ params }: Props) {
                   Cotação para {cityName}
                 </h2>
                 <p className="text-industrial-500 text-xs mb-6">
-                  Preencha e nossa equipe retorna em até 24h.
+                  Preencha e a equipe comercial retorna pelo contato informado.
                 </p>
                 <PinturaQuoteForm cidade={cityName} />
               </div>
