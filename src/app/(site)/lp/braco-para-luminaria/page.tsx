@@ -125,7 +125,7 @@ export default async function BracoParaLuminariaLP() {
                     <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         {[
                             { title: "Galvanização a Fogo", desc: "Proteção superior contra corrosão, ideal para ambientes externos e regiões litorâneas.", icon: <Shield /> },
-                            { title: "Produção Ágil", desc: "Lotes de até 500 braços entregues em 10 a 15 dias úteis. Planejamos com você.", icon: <Zap /> },
+                            { title: "Produção Ágil", desc: "Prazo de fabricação de 10 a 20 dias úteis, conforme acabamento e volume. Planejamos com você.", icon: <Zap /> },
                             { title: "Normas ABNT", desc: "Braços dimensionados conforme NBR 6123, garantindo segurança estrutural ao projeto.", icon: <Check /> },
                             { title: "Solução Completa", desc: "Braço, poste, luminária LED — compre tudo em um só fornecedor e simplifique a obra.", icon: <Calculator /> },
                         ].map((item, i) => (
