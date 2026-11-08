@@ -6,8 +6,8 @@ import { getClientLogos } from "@/lib/data"
 import Image from "next/image"
 
 export const metadata = {
-    title: "Corte a Laser Industrial — Fibra Óptica 3kW | B&B Iluminação",
-    description: "Serviço de corte a laser para construtoras, metalúrgicas e indústrias. Fibra óptica 3kW, até 19mm de espessura, chapas e tubos. Goiânia e região.",
+    title: "Corte a Laser Industrial em Goiânia | B&B Iluminação",
+    description: "Corte a laser de fibra em chapas e tubos de aço para construtoras, metalúrgicas e indústrias, em Goiânia-GO. A partir de 10 peças por pedido, ou demanda programada e recorrente.",
 }
 
 const WA_MSG = "Olá, preciso de orçamento para corte a laser industrial."
@@ -56,7 +56,10 @@ export default async function CorteLaserLP() {
                                 <span className="text-accent-premium">Industrial</span>
                             </h1>
                             <p className="text-industrial-500 text-lg font-medium leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">
-                                Fibra óptica de alta potência para cortes de precisão em chapas e tubos de aço. Peças prontas para uso, sem rebarbas, com tolerâncias milimétricas. Atendemos projetos técnicos e lotes repetitivos.
+                                Laser de fibra para corte e furação em chapas e tubos de aço, com mesa de 3×1,5 m. Peças sem rebarba, com medida repetível, prontas para dobra ou solda.
+                            </p>
+                            <p className="inline-flex items-center gap-2 px-3 py-2 bg-industrial-50 border border-industrial-200 text-industrial-800 text-xs font-bold rounded-md mb-8">
+                                Lote mínimo: 10 peças por pedido, ou demanda programada e recorrente.
                             </p>
                             <p className="inline-flex items-center gap-2 px-3 py-2 bg-industrial-50 border border-industrial-200 text-industrial-800 text-xs font-bold rounded-md mb-8">
                                 Lote mínimo: 10 peças por pedido, ou demanda programada e recorrente.
@@ -65,13 +68,13 @@ export default async function CorteLaserLP() {
                             {/* Stats técnicos */}
                             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-xl mx-auto lg:mx-0 mb-10">
                                 {[
-                                    { value: "3kW", label: "Potência" },
-                                    { value: "19mm", label: "Espessura máx." },
+                                    { value: "Fibra", label: "Tipo de laser" },
                                     { value: "3×1,5m", label: "Área de mesa" },
-                                    { value: "100%", label: "Sem rebarbas" },
+                                    { value: "Chapa e tubo", label: "Formatos" },
+                                    { value: "Sem rebarba", label: "Acabamento do corte" },
                                 ].map((stat) => (
                                     <div key={stat.label} className="bg-industrial-50 border border-industrial-200 rounded-lg p-4 text-center">
-                                        <p className="text-2xl font-black text-industrial-950">{stat.value}</p>
+                                        <p className="text-base font-black text-industrial-950 leading-tight">{stat.value}</p>
                                         <p className="text-[10px] font-bold text-industrial-400 uppercase tracking-widest mt-1">{stat.label}</p>
                                     </div>
                                 ))}
@@ -109,10 +112,10 @@ export default async function CorteLaserLP() {
                     <div className="container mx-auto px-4">
                         <p className="text-accent-premium text-[11px] font-bold uppercase tracking-widest mb-3">Equipamento próprio em Goiânia-GO</p>
                         <h2 className="text-3xl md:text-5xl font-black text-white uppercase leading-none tracking-tighter max-w-xl">
-                            Fibra óptica 3kW<br />para chapas e tubos<br />até 19mm
+                            Laser de fibra<br />para chapas e tubos<br />mesa de 3×1,5 m
                         </h2>
                         <p className="text-white/70 text-sm mt-4 max-w-sm font-medium">
-                            Cortes de precisão milimétrica, sem rebarbas, prontos para solda ou dobra.
+                            Corte sem rebarba, com medida repetível, pronto para dobra ou solda.
                         </p>
                     </div>
                 </div>
@@ -129,10 +132,10 @@ export default async function CorteLaserLP() {
                     </div>
                     <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         {[
-                            { icon: <Cpu />, title: "Agilidade", desc: "Ciclos de produção até 5× mais rápidos que plasma ou oxicorte convencional." },
-                            { icon: <ShieldCheck />, title: "Consistência", desc: "Repetibilidade garantida em lotes de alto volume, peça a peça idêntica." },
-                            { icon: <Maximize2 />, title: "Versatilidade", desc: "Tubos, chapas e perfis até 19mm. Geometrias complexas sem retrabalho." },
-                            { icon: <FileCheck />, title: "Pronto para Uso", desc: "Peças saem direto para dobra ou soldagem — sem acabamento manual." },
+                            { icon: <Cpu />, title: "Arquivo Técnico", desc: "Cotação a partir do seu arquivo: DXF, DWG, PDF ou imagem da peça." },
+                            { icon: <ShieldCheck />, title: "Consistência", desc: "Medida repetível entre as peças do lote." },
+                            { icon: <Maximize2 />, title: "Versatilidade", desc: "Corte e furação em chapas e tubos de aço." },
+                            { icon: <FileCheck />, title: "Pronto para Uso", desc: "Sem rebarba e sem quina viva, as peças seguem para dobra ou solda." },
                         ].map((item, i) => (
                             <div key={i} className="bg-white border border-industrial-200 rounded-2xl p-8 hover:border-accent-premium transition-colors">
                                 <div className="size-12 bg-industrial-950 text-white rounded-lg flex items-center justify-center mb-6">
@@ -151,11 +154,11 @@ export default async function CorteLaserLP() {
             <section className="py-20 md:py-28 bg-industrial-950 relative overflow-hidden" aria-labelledby="cta-laser">
                 <div className="container mx-auto px-4 text-center space-y-8 relative z-10">
                     <h2 id="cta-laser" className="text-4xl md:text-6xl font-black text-white uppercase leading-none tracking-tighter">
-                        REDUZA CUSTOS<br />
-                        <span className="text-accent-premium">NA SUA OBRA</span>
+                        TEM UM LOTE<br />
+                        <span className="text-accent-premium">PARA CORTAR?</span>
                     </h2>
                     <p className="text-industrial-400 font-medium text-lg max-w-xl mx-auto">
-                        Precisão laser economiza material e tempo de montagem. Peça uma cotação técnica agora.
+                        Envie o arquivo técnico e a quantidade de peças para a cotação.
                     </p>
                     <WhatsAppLink
                         message={WA_MSG}

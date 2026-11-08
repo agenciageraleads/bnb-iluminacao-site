@@ -4,8 +4,8 @@ import Link from "next/link"
 import Image from "next/image"
 
 export const metadata = {
-    title: "Pintura Eletrostática Premium (Pó) | B&B Iluminação",
-    description: "Serviço de pintura eletrostática a pó poliéster. Acabamento uniforme, alta resistência UV e proteção total contra corrosão.",
+    title: "Pintura Eletrostática a Pó | B&B Iluminação",
+    description: "Pintura eletrostática a pó poliéster para uso externo, com fosfatização e cura em estufa. A partir de 10 peças por pedido, ou demanda programada e recorrente.",
 }
 
 export default function PinturaEletrostaticaPage() {
@@ -30,7 +30,7 @@ export default function PinturaEletrostaticaPage() {
                             <span className="text-accent-premium">Eletrostático</span>
                         </h1>
                         <p className="text-industrial-300 text-xl max-w-2xl leading-relaxed mb-10">
-                            A tecnologia de pintura a pó poliéster aplicada pela B&B oferece uma blindagem estética e funcional, protegendo o aço contra intempéries e garantindo um visual impecável por anos.
+                            Pó poliéster para uso externo, aplicado sobre peça limpa, desengraxada e fosfatizada, com cura em estufa. Cabine e estufa de 6 m próprias, em Goiânia-GO. Lote mínimo: 10 peças por pedido, ou demanda programada e recorrente.
                         </p>
                         <div className="flex flex-wrap gap-4">
                             <Link href="/contato" className="bg-accent-premium text-black h-16 px-10 flex items-center justify-center font-black uppercase tracking-widest text-xs rounded-lg hover:bg-white transition-all shadow-xl">
@@ -46,9 +46,9 @@ export default function PinturaEletrostaticaPage() {
                 <div className="container mx-auto px-4">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {[
-                            { icon: <ShieldCheck />, title: "Resistência Extrema", desc: "Suporta radiação UV, maresia e impacto sem descascar." },
-                            { icon: <Palette />, title: "Paleta RAL", desc: "Cores vivas e foscas seguindo o padrão internacional RAL." },
-                            { icon: <Paintbrush />, title: "Acabamento Ideal", desc: "Uniformidade total, sem escorrimentos ou bolhas." }
+                            { icon: <ShieldCheck />, title: "Uso Externo", desc: "Indicada para sol e chuva em ambiente urbano. Em litoral, a indicação é galvanizado ou galvanizado + pintado." },
+                            { icon: <Palette />, title: "Referência RAL", desc: "Informe a cor na cotação. A disponibilidade entra na proposta." },
+                            { icon: <Paintbrush />, title: "Preparação", desc: "Limpeza, desengraxe e fosfatização antes da tinta." }
                         ].map((item, i) => (
                             <div key={i} className="flex items-start gap-4 text-industrial-950">
                                 <div className="p-2 bg-industrial-950 text-accent-premium rounded-lg">
@@ -70,18 +70,18 @@ export default function PinturaEletrostaticaPage() {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                         <div className="order-2 lg:order-1 space-y-8">
                             <h2 className="text-4xl md:text-6xl font-black uppercase text-industrial-900 leading-[0.9]">
-                                Mais que Cor, <br />
-                                <span className="text-industrial-400">é Proteção Ativa.</span>
+                                A Pintura Começa <br />
+                                <span className="text-industrial-400">Antes da Tinta.</span>
                             </h2>
                             <p className="text-industrial-600 text-lg leading-relaxed">
-                                A pintura eletrostática a pó utiliza cargas elétricas para fixar a tinta no aço antes da cura em estufa. Este processo cria uma camada polimérica contínua e resistente, muito superior à pintura líquida convencional.
+                                A tinta em pó recebe carga elétrica, adere ao aço e cura em estufa. Antes disso, a peça passa por limpeza, desengraxe, fosfatização e secagem. Depois da cura, passa por inspeção visual.
                             </p>
                             
                             <div className="space-y-6">
                                 {[
-                                    { icon: <Sun />, title: "Proteção UV", desc: "Cores que não desbotam com a exposição solar prolongada." },
-                                    { icon: <Droplets />, title: "Dureza de Superfície", desc: "Alta resistência a riscos e abrasão durante transporte e instalação." },
-                                    { icon: <Layers />, title: "Cura em Estufa", desc: "Polimerização a 200°C para máxima ancoragem e vitrificação." }
+                                    { icon: <Sun />, title: "Tinta para Uso Externo", desc: "Resina poliéster indicada para sol em ambiente urbano." },
+                                    { icon: <Droplets />, title: "Fosfatização", desc: "Prepara a superfície do aço para receber a tinta." },
+                                    { icon: <Layers />, title: "Cura em Estufa", desc: "Estufa de 6 m para curar a camada de tinta." }
                                 ].map((benefit, i) => (
                                     <div key={i} className="flex gap-6 group">
                                         <div className="size-12 shrink-0 border border-industrial-200 rounded-lg flex items-center justify-center text-industrial-900 group-hover:bg-accent-premium group-hover:border-accent-premium transition-all">
@@ -117,8 +117,8 @@ export default function PinturaEletrostaticaPage() {
             {/* Colors Section */}
             <section className="py-24 bg-industrial-950 text-white overflow-hidden">
                 <div className="container mx-auto px-4 text-center mb-16">
-                    <h2 className="text-3xl font-black uppercase mb-4">Escolha sua Identidade</h2>
-                    <p className="text-industrial-400 max-w-xl mx-auto">Trabalhamos com toda a gama de cores RAL, permitindo que o poste se integre perfeitamente à arquitetura do projeto.</p>
+                    <h2 className="text-3xl font-black uppercase mb-4">Cor do Projeto</h2>
+                    <p className="text-industrial-400 max-w-xl mx-auto">Informe a cor por referência RAL na cotação. A disponibilidade e o efeito no prazo entram na proposta. Cores abaixo apenas ilustrativas.</p>
                 </div>
                 <div className="flex flex-wrap justify-center gap-4 px-4 opacity-70 hover:opacity-100 transition-opacity">
                     {["bg-[#000000]", "bg-[#333333]", "bg-[#FFFFFF]", "bg-[#C0C0C0]", "bg-[#0b5394]", "bg-[#38761d]", "bg-[#990000]"].map((color, i) => (
@@ -132,11 +132,11 @@ export default function PinturaEletrostaticaPage() {
                 <div className="container mx-auto px-4">
                     <div className="max-w-3xl mx-auto">
                         <h2 className="text-4xl md:text-7xl font-black uppercase text-industrial-900 mb-8 leading-none">
-                            Pronto para o <br />
-                            <span className="text-accent-premium">Próximo Nível?</span>
+                            Tem um Lote <br />
+                            <span className="text-accent-premium">para Pintar?</span>
                         </h2>
                         <p className="text-industrial-500 mb-12 text-lg font-medium leading-relaxed">
-                            Eleve o padrão dos seus projetos com o acabamento eletrostático da B&B. Durabilidade industrial com estética impecável.
+                            Envie o tipo de peça, a quantidade e a cor. Atendemos a partir de 10 peças por pedido, ou demanda programada e recorrente.
                         </p>
                         <Link 
                             href="/contato" 

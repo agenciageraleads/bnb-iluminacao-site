@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!label) return {}
 
   const title = `Corte a Laser Industrial em ${label.name} - ${label.uf} | B&B Iluminação`
-  const description = `Serviço de corte a laser fibra óptica 3kW para indústrias e metalúrgicas em ${label.name}. Chapas e tubos até 19mm. Precisão milimétrica, sem rebarbas.`
+  const description = `Corte a laser de fibra para indústrias e metalúrgicas em ${label.name}. Chapas e tubos de aço, sem rebarba. A partir de 10 peças por pedido, ou demanda programada e recorrente.`
 
   return {
     title,
@@ -86,7 +86,10 @@ export default async function LaserCityLP({ params }: Props) {
                 em <span className="text-accent-premium">{cityName}</span>
               </h1>
               <p className="text-industrial-500 text-lg font-medium leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">
-                Serviço de corte a laser fibra óptica para metalúrgicas, construtoras e indústrias em {cityName}. Chapas e tubos até 19mm. Precisão milimétrica, sem rebarbas.
+                Corte a laser de fibra para metalúrgicas, construtoras e indústrias em {cityName}. Chapas e tubos de aço, sem rebarba e com medida repetível.
+              </p>
+              <p className="inline-flex items-center gap-2 px-3 py-2 bg-industrial-50 border border-industrial-200 text-industrial-800 text-xs font-bold rounded-md mb-8">
+                  Lote mínimo: 10 peças por pedido, ou demanda programada e recorrente.
               </p>
               <p className="inline-flex items-center gap-2 px-3 py-2 bg-industrial-50 border border-industrial-200 text-industrial-800 text-xs font-bold rounded-md mb-8">
                   Lote mínimo: 10 peças por pedido, ou demanda programada e recorrente.
@@ -94,13 +97,13 @@ export default async function LaserCityLP({ params }: Props) {
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-xl mx-auto lg:mx-0 mb-6">
                 {[
-                  { value: "3kW", label: "Potência" },
-                  { value: "19mm", label: "Espessura máx." },
+                  { value: "Fibra", label: "Tipo de laser" },
                   { value: "3×1,5m", label: "Área de mesa" },
-                  { value: "100%", label: "Sem rebarbas" },
+                  { value: "Chapa e tubo", label: "Formatos" },
+                  { value: "Sem rebarba", label: "Acabamento do corte" },
                 ].map((stat) => (
                   <div key={stat.label} className="bg-industrial-50 border border-industrial-200 p-4 text-center rounded-lg">
-                    <p className="text-xl font-black text-industrial-950">{stat.value}</p>
+                    <p className="text-base font-black text-industrial-950 leading-tight">{stat.value}</p>
                     <p className="text-[10px] font-bold text-industrial-400 uppercase tracking-widest mt-1">{stat.label}</p>
                   </div>
                 ))}
@@ -149,8 +152,8 @@ export default async function LaserCityLP({ params }: Props) {
       <section className="py-20 bg-industrial-950">
         <div className="container mx-auto px-4 text-center space-y-8">
           <h2 className="text-4xl md:text-5xl font-black text-white uppercase leading-none tracking-tighter">
-            REDUZA CUSTOS<br />
-            <span className="text-accent-premium">NA SUA OBRA</span>
+            TEM UM LOTE<br />
+            <span className="text-accent-premium">PARA CORTAR?</span>
           </h2>
           <WhatsAppLink
             message={WA_MSG}

@@ -5,8 +5,8 @@ import Link from "next/link"
 import Image from "next/image"
 
 export const metadata: Metadata = {
-    title: "Serviços Industriais de Alta Performance | B&B Iluminação",
-    description: "Processamento de metais, corte a laser de precisão milimétrica e acabamento em pintura eletrostática a pó poliéster premium para todo o Brasil.",
+    title: "Corte a Laser e Pintura Eletrostática | B&B Iluminação",
+    description: "Corte a laser e pintura eletrostática a pó poliéster na fábrica da B&B, em Goiânia-GO. A partir de 10 peças por pedido, ou demanda programada e recorrente.",
     alternates: {
         canonical: "https://bebiluminacao.com.br/servicos",
     }
@@ -18,8 +18,8 @@ export default function ServicesPage() {
             id: "corte-laser",
             title: "Corte a Laser",
             icon: <Scissors className="size-8" />,
-            description: "Tecnologia de ponta em fibra óptica para cortes de precisão milimétrica em aço carbono e outras ligas.",
-            features: ["Precisão de 0.1mm", "Alta Produtividade", "Sem necessidade de retrabalho"],
+            description: "Laser de fibra para corte e furação em chapas e tubos de aço, com medida repetível.",
+            features: ["Mesa de 3×1,5 m", "Chapas e tubos de aço", "Sem rebarba"],
             href: "/servicos/corte-laser",
             image: "/images/servicos/corte-laser.jpg"
         },
@@ -27,8 +27,8 @@ export default function ServicesPage() {
             id: "pintura-eletrostatica",
             title: "Pintura Eletrostática",
             icon: <Palette className="size-8" />,
-            description: "Acabamento premium com pó poliéster, garantindo durabilidade extrema e estética superior para seus projetos.",
-            features: ["Paleta RAL completa", "Resistência UV e Química", "Acabamento Uniforme"],
+            description: "Pó poliéster para uso externo, aplicado sobre peça limpa e fosfatizada, com cura em estufa.",
+            features: ["Fosfatização antes da pintura", "Cabine e estufa de 6 m", "Cor por referência RAL"],
             href: "/servicos/pintura-eletrostatica",
             image: "/images/servicos/pintura-eletrostatica.jpg"
         }
@@ -48,10 +48,10 @@ export default function ServicesPage() {
                         </span>
                         <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tight mb-8 leading-[0.9]">
                             Serviços de <br />
-                            <span className="text-accent-premium">Alta Performance</span>
+                            <span className="text-accent-premium">Corte e Pintura</span>
                         </h1>
                         <p className="text-industrial-400 text-lg md:text-xl leading-relaxed mb-10">
-                            A B&B Iluminação oferece processamento técnico de aço e acabamentos de nível industrial para parceiros que buscam excelência e agilidade na entrega.
+                            A B&B faz corte a laser e pintura eletrostática na própria fábrica, em Goiânia-GO. Lote mínimo: 10 peças por pedido, ou demanda programada e recorrente.
                         </p>
                     </div>
                 </div>
@@ -117,7 +117,7 @@ export default function ServicesPage() {
                                 Capacidades Adicionais
                             </h2>
                             <p className="text-industrial-500 font-medium leading-relaxed">
-                                Além do processamento de base, oferecemos suporte técnico em todas as etapas da obra, da concepção à logística final.
+                                Além do corte e da pintura, a B&B apoia a especificação e a entrega da obra.
                             </p>
                         </div>
                         <Link href="/contato" className="text-accent-premium font-black uppercase tracking-widest text-xs border-b-2 border-accent-premium pb-1">
@@ -127,9 +127,9 @@ export default function ServicesPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {[
-                            { title: "Galvanização a Fogo", icon: <Zap />, desc: "Proteção total contra corrosão conforme NBR 6323." },
-                            { title: "Luminotécnica", icon: <Cog />, desc: "Cálculos Dialux para máxima eficiência em projetos externos." },
-                            { title: "Logística Nacional", icon: <Truck className="size-6" />, desc: "Frota própria e parceiros para entrega em todo o Brasil." }
+                            { title: "Galvanização a Fogo", icon: <Zap />, desc: "Proteção contra corrosão conforme NBR 6323." },
+                            { title: "Luminotécnica", icon: <Cog />, desc: "Estudo luminotécnico de apoio ao projeto, com verificação pela NBR 5101." },
+                            { title: "Logística Nacional", icon: <Truck className="size-6" />, desc: "Entrega em todo o Brasil por transportadoras parceiras." }
                         ].map((s, i) => (
                             <div key={i} className="p-8 bg-industrial-50 border border-industrial-100 rounded-2xl hover:bg-white hover:shadow-xl transition-all group">
                                 <div className="size-12 bg-industrial-900 text-accent-premium rounded-lg flex items-center justify-center mb-6 group-hover:bg-accent-premium group-hover:text-industrial-900 transition-colors">
