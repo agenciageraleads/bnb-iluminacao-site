@@ -1,7 +1,6 @@
 import { Check, Phone, Shield, Truck, Zap, Calculator, FileText } from "lucide-react"
 import { ClientsMarquee } from "@/components/sections/clients-marquee"
 import { Portfolio } from "@/components/sections/portfolio"
-import { GoogleReviews } from "@/components/sections/google-reviews"
 import { FaqSection } from "@/components/sections/faq"
 import { WhatsAppLink } from "@/components/ui/whatsapp-link"
 import { getPortfolioProjects, getClientLogos } from "@/lib/data"
@@ -144,7 +143,6 @@ export default async function BracoParaLuminariaLP() {
 
             <Portfolio projects={projects} />
 
-            <GoogleReviews />
 
             <FaqSection />
 

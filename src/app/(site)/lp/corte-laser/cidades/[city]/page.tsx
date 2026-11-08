@@ -1,6 +1,5 @@
 import { Phone, MapPin } from "lucide-react"
 import { ClientsMarquee } from "@/components/sections/clients-marquee"
-import { GoogleReviews } from "@/components/sections/google-reviews"
 import { WhatsAppLink } from "@/components/ui/whatsapp-link"
 import { LaserQuoteForm } from "../../LaserQuoteForm"
 import { getClientLogos, getRegionBySlug } from "@/lib/data"
@@ -122,7 +121,6 @@ export default async function LaserCityLP({ params }: Props) {
 
       <ClientsMarquee clients={clients} />
 
-      <GoogleReviews />
 
       {/* Interlinking cidades locais */}
       <section className="py-12 bg-white border-t border-industrial-100">

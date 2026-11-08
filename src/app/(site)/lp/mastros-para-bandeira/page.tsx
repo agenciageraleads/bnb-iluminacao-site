@@ -4,7 +4,6 @@ import Image from "next/image"
 import { Phone, Shield, Truck, Flag, Ruler, Sun, CheckCircle2, Paintbrush, MessageCircle, ArrowRight, Store, Landmark, Factory, Scale, Building2, Construction } from "lucide-react"
 import { ClientsMarquee } from "@/components/sections/clients-marquee"
 import { Portfolio } from "@/components/sections/portfolio"
-import { GoogleReviews } from "@/components/sections/google-reviews"
 import { getPortfolioProjects, getClientLogos } from "@/lib/data"
 
 // Metadados SEO otimizados para mastros
@@ -308,7 +307,6 @@ export default async function MastrosLP() {
             <Portfolio projects={projects} />
 
             {/* Prova Social 3: Avaliações do Google */}
-            <GoogleReviews />
 
             {/* FAQ */}
             <section className="py-20 bg-industrial-50 border-y border-industrial-100" aria-labelledby="faq-mastros-heading">

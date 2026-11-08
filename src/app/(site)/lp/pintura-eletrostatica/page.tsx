@@ -1,6 +1,5 @@
 import { Phone, ShieldCheck, Palette, Layers, Zap } from "lucide-react"
 import { ClientsMarquee } from "@/components/sections/clients-marquee"
-import { GoogleReviews } from "@/components/sections/google-reviews"
 import { WhatsAppLink } from "@/components/ui/whatsapp-link"
 import { PinturaQuoteForm } from "./PinturaQuoteForm"
 import { getClientLogos } from "@/lib/data"
@@ -142,7 +141,6 @@ export default async function PinturaEletrostaticaLP() {
                 </div>
             </section>
 
-            <GoogleReviews />
 
             {/* CTA Final */}
             <section className="py-20 md:py-28 bg-industrial-950 relative overflow-hidden" aria-labelledby="cta-pintura">
