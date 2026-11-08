@@ -88,6 +88,9 @@ export default async function PinturaCityLP({ params }: Props) {
               <p className="text-industrial-500 text-lg font-medium leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">
                 Serviço de pintura a pó poliéster para construtoras, indústrias e prefeituras em {cityName} e região. Atendemos lotes industriais com paleta RAL completa e cura em estufa.
               </p>
+              <p className="inline-flex items-center gap-2 px-3 py-2 bg-industrial-50 border border-industrial-200 text-industrial-800 text-xs font-bold rounded-md mb-8">
+                  Lote mínimo: 10 peças por pedido, ou demanda programada e recorrente.
+              </p>
               <p className="text-[11px] text-industrial-400 font-bold uppercase tracking-widest max-w-sm mx-auto lg:mx-0">
                 * Serviço com retirada em Goiânia-GO ou entrega para lotes de grande porte
               </p>

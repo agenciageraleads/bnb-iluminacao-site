@@ -214,7 +214,7 @@ export function PinturaQuoteForm({ cidade }: Props) {
       </button>
 
       <p className="text-[11px] text-industrial-400 text-center leading-relaxed">
-        Atendemos pedidos industriais e comerciais. Para peças avulsas, consulte nossos representantes.
+        Atendemos pedidos industriais e comerciais a partir de 10 peças por pedido, ou demanda programada e recorrente. Não pintamos peça avulsa.
       </p>
     </form>
   )
