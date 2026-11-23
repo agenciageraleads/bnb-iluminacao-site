@@ -86,6 +86,17 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       ...redirecionamentosConsolidacao,
+      // Links internos que os artigos do blog usam e que davam 404 (auditoria SEO 11/2026).
+      ...['/orcamento', '/solicite-orcamento', '/contato/orcamento', '/contato/orcamento-postes-iluminacao'].map((source) => ({
+        source,
+        destination: '/contato',
+        permanent: true,
+      })),
+      {
+        source: '/mastros-para-bandeira',
+        destination: '/lp/mastros-para-bandeira',
+        permanent: true,
+      },
       {
         // Portal do Representante migrou para o CRM (crm.bebiluminacao.com).
         // O antigo portal de treinamento do site foi aposentado.
