@@ -13,7 +13,7 @@ import { ProductGallery } from "@/components/ui/product-gallery"
 import { getProductLineHref } from "@/lib/seo/product-line-links"
 
 import { getUrbanDownloads } from "@/lib/urban-downloads"
-import { SITE_URL, absoluteUrl } from "@/lib/seo/schema"
+import { SITE_URL, absoluteUrl, createBreadcrumbSchema } from "@/lib/seo/schema"
 import { withSocial } from "@/lib/seo/metadata"
 import { SchemaOrg } from "@/components/seo/schema-org"
 import { WhatsAppLink } from "@/components/ui/whatsapp-link"
@@ -141,10 +141,20 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
         })),
     };
 
+    const breadcrumbJsonLd = {
+        "@context": "https://schema.org",
+        ...createBreadcrumbSchema(`${SITE_URL}/produtos/item/${product.id}`, [
+            { name: "Início", item: SITE_URL },
+            { name: "Produtos", item: `${SITE_URL}/produtos` },
+            ...(category ? [{ name: category.title, item: `${SITE_URL}/produtos/${category.slug}` }] : []),
+            { name: product.name, item: `${SITE_URL}/produtos/item/${product.id}` },
+        ]),
+    };
 
     return (
         <main className="min-h-screen bg-white pt-24">
             <SchemaOrg id={`product-schema-${product.id}`} data={jsonLd} />
+            <SchemaOrg id={`breadcrumb-schema-${product.id}`} data={breadcrumbJsonLd} />
             <Header />
             <FloatingWhatsApp />
 
@@ -203,10 +213,10 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
                         {/* Aplicações */}
                         <div className="space-y-4">
-                            <h3 className="text-xs font-black uppercase tracking-widest text-industrial-950 flex items-center gap-2">
+                            <h2 className="text-xs font-black uppercase tracking-widest text-industrial-950 flex items-center gap-2">
                                 <Factory className="size-4 text-accent-premium" />
                                 Aplicações Recomendadas
-                            </h3>
+                            </h2>
                             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                                 {productApplications.map((app, i) => (
                                     <div key={i} className="bg-industrial-50 p-3 border border-industrial-100 flex items-center gap-3 group hover:border-accent-premium transition-colors rounded-lg">
@@ -242,7 +252,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                             <div className="space-y-6 pt-4">
                                 <div className="flex items-center gap-3">
                                     <div className="h-px bg-accent-premium flex-1" />
-                                    <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-premium">Opcionais Disponíveis</h3>
+                                    <h2 className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-premium">Opcionais Disponíveis</h2>
                                     <div className="h-px bg-industrial-200 flex-1" />
                                 </div>
                                 <div className="grid grid-cols-2 gap-4">
@@ -378,9 +388,9 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                                         </div>
                                     </div>
                                     <div className="p-4 flex flex-col flex-1">
-                                        <h4 className="text-sm font-black text-industrial-950 group-hover:text-accent-premium transition-colors uppercase leading-tight mb-2 flex-1">
+                                        <h3 className="text-sm font-black text-industrial-950 group-hover:text-accent-premium transition-colors uppercase leading-tight mb-2 flex-1">
                                             {rel.name}
-                                        </h4>
+                                        </h3>
                                         <div className="flex items-center justify-between text-[10px] font-bold text-industrial-400 uppercase tracking-widest text-industrial-400">
                                             <span>Ver Detalhes</span>
                                             <ArrowRight className="size-3 transition-transform group-hover:translate-x-1" />
