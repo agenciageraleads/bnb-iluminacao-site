@@ -6,7 +6,7 @@ import { getClientLogos } from "@/lib/data"
 import Image from "next/image"
 
 export const metadata = {
-    title: "Pintura Eletrostática Industrial para Lotes | B&B Iluminação",
+    title: "Pintura Eletrostática Industrial para Lotes",
     description: "Pintura eletrostática a pó poliéster para uso externo, com fosfatização e cura em estufa, em Goiânia-GO. A partir de 10 peças por pedido, ou demanda programada e recorrente.",
 }
 

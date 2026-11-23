@@ -5,16 +5,17 @@ import { ArrowRight, UserPlus } from "lucide-react"
 import Link from "next/link"
 import { getRepresentatives } from "@/lib/data"
 import { RepresentativesClient } from "./RepresentativesClient"
+import { withSocial } from "@/lib/seo/metadata"
 
 export const dynamic = 'force-dynamic'
 
-export const metadata: Metadata = {
-    title: "Representantes Comerciais | B&B Iluminação",
+export const metadata: Metadata = withSocial("/representantes", {
+    title: "Representantes Comerciais",
     description: "Encontre representantes comerciais da B&B Iluminação por estado e macro-região de atendimento para orientar seu projeto de iluminação pública ou industrial.",
     alternates: {
         canonical: 'https://bebiluminacao.com.br/representantes',
     },
-}
+})
 
 export default async function RepresentantesPage() {
     // Busca dados reais do banco (Payload CMS) via Server Component

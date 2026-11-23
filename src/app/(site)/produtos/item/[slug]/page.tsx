@@ -2,7 +2,6 @@ import type { Metadata } from "next"
 import { notFound, permanentRedirect } from 'next/navigation'
 import { eosHubSlug } from '@/lib/catalog-curation'
 import { EosOverview } from '@/components/products/EosOverview'
-import Script from 'next/script'
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import Image from "next/image"
@@ -15,6 +14,8 @@ import { getProductLineHref } from "@/lib/seo/product-line-links"
 
 import { getUrbanDownloads } from "@/lib/urban-downloads"
 import { SITE_URL, absoluteUrl } from "@/lib/seo/schema"
+import { withSocial } from "@/lib/seo/metadata"
+import { SchemaOrg } from "@/components/seo/schema-org"
 import { WhatsAppLink } from "@/components/ui/whatsapp-link"
 import { TrackedContactLink } from "@/lib/lead-tracking"
 
@@ -26,7 +27,7 @@ interface ProductDetailPageProps {
 
 export async function generateMetadata({ params }: ProductDetailPageProps): Promise<Metadata> {
     const { slug } = await params
-    if (slug === eosHubSlug) return { title: 'Éos Simples e Duplo | Linha Versa B&B', description: 'Compare Éos Simples, com um globo, e Éos Duplo, com dois globos. Modelos ornamentais da Linha Versa.', alternates: { canonical: `${SITE_URL}/produtos/item/${eosHubSlug}` } }
+    if (slug === eosHubSlug) return withSocial(`/produtos/item/${eosHubSlug}`, { title: 'Éos Simples e Duplo | Linha Versa', description: 'Compare Éos Simples, com um globo, e Éos Duplo, com dois globos. Modelos ornamentais da Linha Versa.' })
     const allProducts = await getProducts()
     const alias = allProducts.find(p => p.id !== slug && p.siteSlugs?.includes(slug))
     if (alias) permanentRedirect(`/produtos/item/${alias.id}`)
@@ -143,11 +144,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
     return (
         <main className="min-h-screen bg-white pt-24">
-            <Script
-                id={`product-schema-${product.id}`}
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
-            />
+            <SchemaOrg id={`product-schema-${product.id}`} data={jsonLd} />
             <Header />
             <FloatingWhatsApp />
 

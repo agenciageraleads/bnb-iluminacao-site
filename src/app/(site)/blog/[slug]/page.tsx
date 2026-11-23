@@ -5,10 +5,10 @@ import { Footer } from "@/components/layout/footer"
 import { getBlogPostBySlug } from "@/lib/data"
 import { notFound } from "next/navigation"
 import Image from "next/image"
-import Script from "next/script"
 import { Calendar, User, ArrowLeft, CheckCircle2 } from "lucide-react"
 import Link from "next/link"
 import { SITE_URL, absoluteUrl } from "@/lib/seo/schema"
+import { SchemaOrg } from "@/components/seo/schema-org"
 import { TrackedContactLink } from "@/lib/lead-tracking"
 
 interface BlogPostPageProps {
@@ -124,11 +124,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
     return (
         <main className="min-h-screen bg-background text-industrial-950 font-sans">
-            <Script
-                id="article-schema"
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-            />
+            <SchemaOrg id="article-schema" data={jsonLd} />
             <Header />
             
             {/* Hero do Post */}

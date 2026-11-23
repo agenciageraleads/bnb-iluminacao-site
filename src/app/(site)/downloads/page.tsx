@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 export const dynamic = 'force-dynamic'
 
 import { Header } from "@/components/layout/header"
@@ -13,11 +14,12 @@ import { NEXO_DATASHEETS } from "@/lib/nexo-downloads"
 import { CIVIS_FAMILIES, desenhoMastroHref } from "@/lib/civis-downloads"
 import { FORZA_DATASHEETS } from "@/lib/forza-downloads"
 import { MANUAIS_INSTALACAO } from "@/lib/manuais-downloads"
+import { withSocial } from "@/lib/seo/metadata"
 
-export const metadata = {
-    title: "Downloads de Catálogos Técnicos | B&B Iluminação",
+export const metadata: Metadata = withSocial("/downloads", {
+    title: "Downloads de Catálogos Técnicos",
     description: "Baixe catálogos, datasheets e desenhos técnicos da B&B. Soluções metálicas para urbanismo com documentação para especificação.",
-}
+})
 
 export default async function DownloadsPage() {
     const catalogs = await getCatalogs()

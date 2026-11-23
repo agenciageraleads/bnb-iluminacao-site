@@ -7,7 +7,7 @@ import { getPortfolioProjects, getClientLogos } from "@/lib/data"
 import Image from "next/image"
 
 export const metadata = {
-    title: "Braços para Luminária Pública | B&B Iluminação — Direto da Fábrica",
+    title: "Braços para Luminária Pública — Direto da Fábrica",
     description: "Braços e suportes metálicos para luminária pública. Galvanizados a fogo, dentro das normas ABNT. Entrega em todo o Brasil. Solicite orçamento.",
 }
 
