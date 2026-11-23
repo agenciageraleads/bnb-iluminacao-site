@@ -21,6 +21,20 @@ import { TrackedContactLink } from "@/lib/lead-tracking"
 
 export const dynamic = 'force-dynamic'
 
+const PLACEHOLDER_DESCRIPTION = /em breve|sob consulta\.?$/i
+
+// Descrição de busca: usa a do CMS; se estiver vazia ou for texto de preenchimento,
+// monta uma frase só com dados do cadastro (nome, categoria e especificações).
+function metaDescription(product: { name: string; description?: string; specs?: string[] }, categoryTitle?: string): string {
+    const text = (product.description ?? '').trim()
+    if (text && !(text.length < 60 && PLACEHOLDER_DESCRIPTION.test(text))) return text
+    const specs = (product.specs ?? []).slice(0, 2).join(', ')
+    const base = `${product.name}${categoryTitle ? `, ${categoryTitle}` : ''}, fabricado pela B&B Iluminação em aço galvanizado a fogo.`
+    const withSpecs = specs ? `${base} ${specs}.` : base
+    const full = `${withSpecs} Solicite orçamento.`
+    return full.length <= 160 ? full : withSpecs.length <= 160 ? withSpecs : base
+}
+
 interface ProductDetailPageProps {
     params: Promise<{ slug: string }>
 }
@@ -50,18 +64,19 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
     const category = allCategories.find(c => c.slug === product.category)
     const pageUrl = `${SITE_URL}/produtos/item/${product.id}`
     const image = product.image ? absoluteUrl(product.image) : undefined
+    const description = metaDescription(product, category?.title)
 
     return {
         title: {
             absolute: category ? `${product.name} | ${category.title}` : `${product.name} | B&B Iluminação`,
         },
-        description: product.description,
+        description,
         alternates: {
             canonical: pageUrl,
         },
         openGraph: {
             title: product.name,
-            description: product.description,
+            description,
             url: pageUrl,
             type: "website",
             ...(image
