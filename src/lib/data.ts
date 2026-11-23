@@ -71,6 +71,7 @@ export interface Post {
     date: string
     image: string
     author: string
+    updatedAt?: string
 }
 
 export interface Catalog {
@@ -325,6 +326,7 @@ export const getBlogPosts = async (limit: number = 10): Promise<Post[]> => {
       date: doc.createdAt ? new Date(doc.createdAt).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' }) : '',
       image: (doc.featuredImage as any)?.url || '',
       author: doc.author as string,
+      updatedAt: doc.updatedAt ? String(doc.updatedAt) : undefined,
     }))
   } catch (error) {
     console.error("Erro ao conectar ao CMS para posts do blog.", error);

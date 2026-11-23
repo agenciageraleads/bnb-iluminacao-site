@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
 
     return {
         title: {
-            absolute: `${product.name} | Produto B&B Iluminacao`,
+            absolute: category ? `${product.name} | ${category.title}` : `${product.name} | B&B Iluminação`,
         },
         description: product.description,
         alternates: {
