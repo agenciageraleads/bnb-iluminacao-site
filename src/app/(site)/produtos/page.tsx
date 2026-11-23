@@ -8,13 +8,38 @@ import { getProducts, getCategories } from "@/lib/data"
 import { CategoryOverview } from "@/components/products/CategoryOverview"
 import { getProductLineHref } from "@/lib/seo/product-line-links"
 import { developmentLines, getPrimaryCatalogCategories, getPrimaryCatalogProducts } from "@/lib/catalog-curation"
+import { SchemaOrg } from "@/components/seo/schema-org"
+import {
+    SITE_URL,
+    createBreadcrumbSchema,
+    createItemListSchema,
+    createSchemaGraph,
+    createWebPageSchema,
+} from "@/lib/seo/schema"
+
+const pageUrl = `${SITE_URL}/produtos`
+const pageTitle = "Catálogo de Produtos"
+const pageDescription = "Postes metálicos galvanizados, braços, suportes e mastros fabricados conforme normas ABNT para iluminação pública, decorativa, monitoramento e bandeiras."
 
 export const metadata: Metadata = {
-    title: "Catálogo de Produtos | B&B Iluminação",
-    description: "Conheça nossa linha completa de postes metálicos certificados ABNT. Soluções em iluminação viária, decorativa, monitoramento e mastros para bandeira.",
+    title: pageTitle,
+    description: pageDescription,
     alternates: {
-        canonical: "https://bebiluminacao.com.br/produtos",
-    }
+        canonical: pageUrl,
+    },
+    openGraph: {
+        title: `${pageTitle} | B&B Iluminação`,
+        description: pageDescription,
+        url: pageUrl,
+        siteName: "B&B Iluminação",
+        locale: "pt_BR",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: `${pageTitle} | B&B Iluminação`,
+        description: pageDescription,
+    },
 }
 
 export const dynamic = 'force-dynamic'
@@ -26,9 +51,38 @@ export default async function ProdutosPage() {
     ]);
     const primaryCategories = getPrimaryCatalogCategories(categoriesList)
     const primaryProducts = getPrimaryCatalogProducts(products)
-    
+    const schema = createSchemaGraph([
+        createWebPageSchema({
+            url: pageUrl,
+            name: pageTitle,
+            description: pageDescription,
+        }),
+        createBreadcrumbSchema(pageUrl, [
+            { name: "Início", item: SITE_URL },
+            { name: "Produtos", item: pageUrl },
+        ]),
+        createItemListSchema({
+            id: `${pageUrl}#linhas`,
+            name: "Linhas de produtos B&B Iluminação",
+            items: primaryCategories.map((cat) => ({
+                name: cat.title,
+                description: cat.description,
+                url: getProductLineHref(cat.slug),
+            })),
+        }),
+        createItemListSchema({
+            id: `${pageUrl}#produtos`,
+            name: "Produtos B&B Iluminação",
+            items: primaryProducts.map((product) => ({
+                name: product.name,
+                url: `/produtos/item/${product.id}`,
+            })),
+        }),
+    ])
+
     return (
         <main className="min-h-screen bg-white">
+            <SchemaOrg id="produtos-schema" data={schema} />
             <Header />
             <FloatingWhatsApp />
 
@@ -120,6 +174,7 @@ export default async function ProdutosPage() {
                                             src={product.image}
                                             alt={product.name}
                                             fill
+                                            sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                                             className="object-contain transition-transform duration-500"
                                         />
                                 ) : (
@@ -137,9 +192,9 @@ export default async function ProdutosPage() {
 
                             {/* Info */}
                             <div className="p-4 flex flex-col flex-1">
-                                <h2 className="text-sm font-black text-industrial-900 uppercase tracking-tight group-hover:text-industrial-700 transition-colors mb-1">
+                                <h3 className="text-sm font-black text-industrial-900 uppercase tracking-tight group-hover:text-industrial-700 transition-colors mb-1">
                                     {product.name}
-                                </h2>
+                                </h3>
                                 <p className="text-industrial-500 text-[11px] leading-relaxed flex-1 mb-3">
                                     {product.description}
                                 </p>

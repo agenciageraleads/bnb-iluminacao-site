@@ -45,6 +45,7 @@ export function CategoryOverview({ categories }: CategoryOverviewProps) {
                                         src={category.image}
                                         alt={category.imageAlt || category.title}
                                         fill
+                                        sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                                         className={`${category.imageFit === 'contain' ? 'object-contain' : 'object-cover'} transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-50`}
                                     />
                                 ) : (
