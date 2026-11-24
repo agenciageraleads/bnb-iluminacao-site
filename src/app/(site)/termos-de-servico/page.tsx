@@ -3,14 +3,15 @@ import { Header } from "@/components/layout/header"
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
 import { SchemaOrg } from "@/components/seo/schema-org"
 import { createSchemaGraph, createFactoryOrganizationSchema, createWebPageSchema, SITE_URL } from "@/lib/seo/schema"
+import { withSocial } from "@/lib/seo/metadata"
 
-export const metadata: Metadata = {
-    title: "Termos de Serviço | B&B Iluminação",
+export const metadata: Metadata = withSocial("/termos-de-servico", {
+    title: "Termos de Serviço",
     description: "Termos de Serviço e condições de uso dos canais de mensageria móvel oficiais da B&B Iluminação: WhatsApp Cloud API (Meta) e Google RCS Business Messaging.",
     alternates: {
         canonical: `${SITE_URL}/termos-de-servico`,
     },
-}
+})
 
 export default function TermosDeServicoPage() {
     const pageUrl = `${SITE_URL}/termos-de-servico`

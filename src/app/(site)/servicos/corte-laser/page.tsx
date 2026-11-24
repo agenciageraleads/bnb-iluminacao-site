@@ -1,12 +1,14 @@
+import type { Metadata } from "next"
 import { Header } from "@/components/layout/header"
 import { ArrowRight, Scissors, ShieldCheck, Zap, Maximize2, Cpu, FileCheck } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { withSocial } from "@/lib/seo/metadata"
 
-export const metadata = {
-    title: "Corte a Laser Industrial | B&B Iluminação",
+export const metadata: Metadata = withSocial("/servicos/corte-laser", {
+    title: "Corte a Laser Industrial",
     description: "Corte a laser de fibra em chapas e tubos de aço, sem rebarba. A partir de 10 peças por pedido, ou demanda programada e recorrente.",
-}
+})
 
 export default function CorteLaserPage() {
     return (

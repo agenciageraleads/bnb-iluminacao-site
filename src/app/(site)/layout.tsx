@@ -25,15 +25,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: "B&B Iluminação | Soluções Metálicas para Urbanismo",
     description: "Postes metálicos, braços, suportes e estruturas para iluminação, urbanismo e segurança.",
-    url: "https://bebiluminacao.com.br",
     siteName: "B&B Iluminação",
     locale: "pt_BR",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "B&B Iluminação",
-    description: "Soluções metálicas para urbanismo. Na medida. No prazo. Na norma.",
   },
   robots: {
     index: true,

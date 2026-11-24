@@ -3,14 +3,15 @@ import { Header } from "@/components/layout/header"
 import { ArrowRight, Scissors, Palette, ShieldCheck, Zap, Cog } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { withSocial } from "@/lib/seo/metadata"
 
-export const metadata: Metadata = {
-    title: "Corte a Laser e Pintura Eletrostática | B&B Iluminação",
+export const metadata: Metadata = withSocial("/servicos", {
+    title: "Corte a Laser e Pintura Eletrostática",
     description: "Corte a laser e pintura eletrostática a pó poliéster na fábrica da B&B, em Goiânia-GO. A partir de 10 peças por pedido, ou demanda programada e recorrente.",
     alternates: {
         canonical: "https://bebiluminacao.com.br/servicos",
     }
-}
+})
 
 export default function ServicesPage() {
     const services = [

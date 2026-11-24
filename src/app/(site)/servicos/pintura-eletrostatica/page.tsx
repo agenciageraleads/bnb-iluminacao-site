@@ -1,12 +1,14 @@
+import type { Metadata } from "next"
 import { Header } from "@/components/layout/header"
 import { ArrowRight, Palette, ShieldCheck, Sun, Droplets, Paintbrush, Layers } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { withSocial } from "@/lib/seo/metadata"
 
-export const metadata = {
-    title: "Pintura Eletrostática a Pó | B&B Iluminação",
+export const metadata: Metadata = withSocial("/servicos/pintura-eletrostatica", {
+    title: "Pintura Eletrostática a Pó",
     description: "Pintura eletrostática a pó poliéster para uso externo, com fosfatização e cura em estufa. A partir de 10 peças por pedido, ou demanda programada e recorrente.",
-}
+})
 
 export default function PinturaEletrostaticaPage() {
     return (

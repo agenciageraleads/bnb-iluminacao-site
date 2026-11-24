@@ -1,14 +1,15 @@
 import { Metadata } from "next"
-import Script from "next/script"
+import { SchemaOrg } from "@/components/seo/schema-org"
 import Image from "next/image"
 import { Phone, Shield, Truck, Flag, Ruler, Sun, CheckCircle2, Paintbrush, MessageCircle, ArrowRight, Store, Landmark, Factory, Scale, Building2, Construction } from "lucide-react"
 import { ClientsMarquee } from "@/components/sections/clients-marquee"
 import { Portfolio } from "@/components/sections/portfolio"
 import { getPortfolioProjects, getClientLogos } from "@/lib/data"
+import { withSocial } from "@/lib/seo/metadata"
 
 // Metadados SEO otimizados para mastros
-export const metadata: Metadata = {
-    title: "Mastros para Bandeira em Aço Galvanizado | 3m a 12m | B&B Iluminação",
+export const metadata: Metadata = withSocial("/lp/mastros-para-bandeira", {
+    title: "Mastros para Bandeira em Aço Galvanizado | 3m a 12m",
     description: "Fabricante de mastros para bandeira em aço galvanizado a fogo. De 3 a 12 metros. Kit completo com bandeira. Uso externo. Envio para todo o Brasil.",
     keywords: ["mastro para bandeira", "mastro de bandeira", "mastro externo", "bandeira com mastro", "mastro galvanizado", "hasteamento de bandeira"],
     alternates: {
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
         type: "website",
         images: [{ url: "https://bebiluminacao.com.br/logo.png", width: 1200, height: 630, alt: "Mastros para Bandeira B&B Iluminação" }],
     },
-}
+})
 
 // Schema.org para produto
 const productSchema = {
@@ -88,11 +89,7 @@ export default async function MastrosLP() {
 
     return (
         <main className="min-h-screen bg-white">
-            <Script
-                id="mastro-product-schema"
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
-            />
+            <SchemaOrg id="mastro-product-schema" data={productSchema} />
 
             {/* Header Minimal LP — foco na conversão */}
             <header className="bg-white border-b border-industrial-200 shadow-sm py-3 sticky top-0 z-50">

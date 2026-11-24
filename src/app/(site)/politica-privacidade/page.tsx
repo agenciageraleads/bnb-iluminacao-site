@@ -3,14 +3,15 @@ import { Header } from "@/components/layout/header"
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
 import { SchemaOrg } from "@/components/seo/schema-org"
 import { createSchemaGraph, createFactoryOrganizationSchema, createWebPageSchema, SITE_URL } from "@/lib/seo/schema"
+import { withSocial } from "@/lib/seo/metadata"
 
-export const metadata: Metadata = {
-    title: "Política de Privacidade | B&B Iluminação",
+export const metadata: Metadata = withSocial("/politica-privacidade", {
+    title: "Política de Privacidade",
     description: "Política de Privacidade da B&B Indústria e Comércio de Produtos para Iluminação Ltda., em conformidade com a LGPD e com os canais oficiais de mensageria (WhatsApp Cloud API e Google RCS Business Messaging).",
     alternates: {
         canonical: `${SITE_URL}/politica-privacidade`,
     },
-}
+})
 
 export default function PoliticaPrivacidadePage() {
     const pageUrl = `${SITE_URL}/politica-privacidade`

@@ -6,7 +6,7 @@ import { getClientLogos } from "@/lib/data"
 import Image from "next/image"
 
 export const metadata = {
-    title: "Corte a Laser Industrial em Goiânia | B&B Iluminação",
+    title: "Corte a Laser Industrial em Goiânia",
     description: "Corte a laser de fibra em chapas e tubos de aço para construtoras, metalúrgicas e indústrias, em Goiânia-GO. A partir de 10 peças por pedido, ou demanda programada e recorrente.",
 }
 

@@ -4,14 +4,15 @@ import { Header } from "@/components/layout/header"
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp"
 import { SchemaOrg } from "@/components/seo/schema-org"
 import { createSchemaGraph, createFactoryOrganizationSchema, createWebPageSchema, SITE_URL } from "@/lib/seo/schema"
+import { withSocial } from "@/lib/seo/metadata"
 
-export const metadata: Metadata = {
-    title: "Canais Oficiais de Atendimento | B&B Iluminação",
+export const metadata: Metadata = withSocial("/canais-oficiais", {
+    title: "Canais Oficiais de Atendimento",
     description: "Canais oficiais de comunicação da B&B Iluminação via WhatsApp Cloud API (Meta) e Google RCS Business Messaging: identificação, finalidade e como falar com o financeiro.",
     alternates: {
         canonical: `${SITE_URL}/canais-oficiais`,
     },
-}
+})
 
 export default function CanaisOficiaisPage() {
     const pageUrl = `${SITE_URL}/canais-oficiais`

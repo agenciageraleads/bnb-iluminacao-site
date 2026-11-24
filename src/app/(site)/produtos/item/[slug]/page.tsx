@@ -2,7 +2,6 @@ import type { Metadata } from "next"
 import { notFound, permanentRedirect } from 'next/navigation'
 import { eosHubSlug } from '@/lib/catalog-curation'
 import { EosOverview } from '@/components/products/EosOverview'
-import Script from 'next/script'
 import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import Image from "next/image"
@@ -14,11 +13,27 @@ import { ProductGallery } from "@/components/ui/product-gallery"
 import { getProductLineHref } from "@/lib/seo/product-line-links"
 
 import { getUrbanDownloads } from "@/lib/urban-downloads"
-import { SITE_URL, absoluteUrl } from "@/lib/seo/schema"
+import { SITE_URL, absoluteUrl, createBreadcrumbSchema } from "@/lib/seo/schema"
+import { withSocial } from "@/lib/seo/metadata"
+import { SchemaOrg } from "@/components/seo/schema-org"
 import { WhatsAppLink } from "@/components/ui/whatsapp-link"
 import { TrackedContactLink } from "@/lib/lead-tracking"
 
 export const dynamic = 'force-dynamic'
+
+const PLACEHOLDER_DESCRIPTION = /em breve|sob consulta\.?$/i
+
+// Descrição de busca: usa a do CMS; se estiver vazia ou for texto de preenchimento,
+// monta uma frase só com dados do cadastro (nome, categoria e especificações).
+function metaDescription(product: { name: string; description?: string; specs?: string[] }, categoryTitle?: string): string {
+    const text = (product.description ?? '').trim()
+    if (text && !(text.length < 60 && PLACEHOLDER_DESCRIPTION.test(text))) return text
+    const specs = (product.specs ?? []).slice(0, 2).join(', ')
+    const base = `${product.name}${categoryTitle ? `, ${categoryTitle}` : ''}, fabricado pela B&B Iluminação em aço galvanizado a fogo.`
+    const withSpecs = specs ? `${base} ${specs}.` : base
+    const full = `${withSpecs} Solicite orçamento.`
+    return full.length <= 160 ? full : withSpecs.length <= 160 ? withSpecs : base
+}
 
 interface ProductDetailPageProps {
     params: Promise<{ slug: string }>
@@ -26,7 +41,7 @@ interface ProductDetailPageProps {
 
 export async function generateMetadata({ params }: ProductDetailPageProps): Promise<Metadata> {
     const { slug } = await params
-    if (slug === eosHubSlug) return { title: 'Éos Simples e Duplo | Linha Versa B&B', description: 'Compare Éos Simples, com um globo, e Éos Duplo, com dois globos. Modelos ornamentais da Linha Versa.', alternates: { canonical: `${SITE_URL}/produtos/item/${eosHubSlug}` } }
+    if (slug === eosHubSlug) return withSocial(`/produtos/item/${eosHubSlug}`, { title: 'Éos Simples e Duplo | Linha Versa', description: 'Compare Éos Simples, com um globo, e Éos Duplo, com dois globos. Modelos ornamentais da Linha Versa.' })
     const allProducts = await getProducts()
     const alias = allProducts.find(p => p.id !== slug && p.siteSlugs?.includes(slug))
     if (alias) permanentRedirect(`/produtos/item/${alias.id}`)
@@ -49,18 +64,19 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
     const category = allCategories.find(c => c.slug === product.category)
     const pageUrl = `${SITE_URL}/produtos/item/${product.id}`
     const image = product.image ? absoluteUrl(product.image) : undefined
+    const description = metaDescription(product, category?.title)
 
     return {
         title: {
-            absolute: `${product.name} | Produto B&B Iluminacao`,
+            absolute: category ? `${product.name} | ${category.title}` : `${product.name} | B&B Iluminação`,
         },
-        description: product.description,
+        description,
         alternates: {
             canonical: pageUrl,
         },
         openGraph: {
             title: product.name,
-            description: product.description,
+            description,
             url: pageUrl,
             type: "website",
             ...(image
@@ -140,14 +156,20 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
         })),
     };
 
+    const breadcrumbJsonLd = {
+        "@context": "https://schema.org",
+        ...createBreadcrumbSchema(`${SITE_URL}/produtos/item/${product.id}`, [
+            { name: "Início", item: SITE_URL },
+            { name: "Produtos", item: `${SITE_URL}/produtos` },
+            ...(category ? [{ name: category.title, item: `${SITE_URL}/produtos/${category.slug}` }] : []),
+            { name: product.name, item: `${SITE_URL}/produtos/item/${product.id}` },
+        ]),
+    };
 
     return (
         <main className="min-h-screen bg-white pt-24">
-            <Script
-                id={`product-schema-${product.id}`}
-                type="application/ld+json"
-                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, '\\u003c') }}
-            />
+            <SchemaOrg id={`product-schema-${product.id}`} data={jsonLd} />
+            <SchemaOrg id={`breadcrumb-schema-${product.id}`} data={breadcrumbJsonLd} />
             <Header />
             <FloatingWhatsApp />
 
@@ -206,10 +228,10 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
                         {/* Aplicações */}
                         <div className="space-y-4">
-                            <h3 className="text-xs font-black uppercase tracking-widest text-industrial-950 flex items-center gap-2">
+                            <h2 className="text-xs font-black uppercase tracking-widest text-industrial-950 flex items-center gap-2">
                                 <Factory className="size-4 text-accent-premium" />
                                 Aplicações Recomendadas
-                            </h3>
+                            </h2>
                             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                                 {productApplications.map((app, i) => (
                                     <div key={i} className="bg-industrial-50 p-3 border border-industrial-100 flex items-center gap-3 group hover:border-accent-premium transition-colors rounded-lg">
@@ -245,7 +267,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                             <div className="space-y-6 pt-4">
                                 <div className="flex items-center gap-3">
                                     <div className="h-px bg-accent-premium flex-1" />
-                                    <h3 className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-premium">Opcionais Disponíveis</h3>
+                                    <h2 className="text-[10px] font-black uppercase tracking-[0.2em] text-accent-premium">Opcionais Disponíveis</h2>
                                     <div className="h-px bg-industrial-200 flex-1" />
                                 </div>
                                 <div className="grid grid-cols-2 gap-4">
@@ -381,9 +403,9 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                                         </div>
                                     </div>
                                     <div className="p-4 flex flex-col flex-1">
-                                        <h4 className="text-sm font-black text-industrial-950 group-hover:text-accent-premium transition-colors uppercase leading-tight mb-2 flex-1">
+                                        <h3 className="text-sm font-black text-industrial-950 group-hover:text-accent-premium transition-colors uppercase leading-tight mb-2 flex-1">
                                             {rel.name}
-                                        </h4>
+                                        </h3>
                                         <div className="flex items-center justify-between text-[10px] font-bold text-industrial-400 uppercase tracking-widest text-industrial-400">
                                             <span>Ver Detalhes</span>
                                             <ArrowRight className="size-3 transition-transform group-hover:translate-x-1" />

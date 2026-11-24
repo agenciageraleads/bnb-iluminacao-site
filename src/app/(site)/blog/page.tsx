@@ -6,14 +6,15 @@ import Image from "next/image"
 import { Calendar, ArrowRight, Anchor, BookOpen, Lightbulb, Paintbrush, Ruler, Zap } from "lucide-react"
 import { unstable_noStore as noStore } from "next/cache"
 import { PreferredSourceButton } from "@/components/seo/preferred-source-button"
+import { withSocial } from "@/lib/seo/metadata"
 
-export const metadata: Metadata = {
-    title: "Blog | Dicas e Guias de Iluminação | B&B Iluminação",
+export const metadata: Metadata = withSocial("/blog", {
+    title: "Blog | Dicas e Guias de Iluminação",
     description: "Acompanhe artigos técnicos, dicas de instalação e novidades sobre postes metálicos, iluminação externa e engenharia industrial.",
     alternates: {
         canonical: "https://bebiluminacao.com.br/blog",
     }
-}
+})
 
 export const dynamic = 'force-dynamic'
 
